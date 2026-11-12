@@ -1,0 +1,9 @@
+<!doctype html><meta charset="utf-8"><title>Aube — 21 montre</title>
+<link rel="stylesheet" href="../brand/aube.css"><link rel="stylesheet" href="motion.css">
+<script src="../brand/aube.js"></script><script src="lib.js"></script><script src="scenes.js"></script>
+<body style="background:#1C1122"><div id="s"></div>
+<script>
+// 1400 × 800, 7 s : node tools/record.mjs motion/21-montre.html out/motion/21-montre.mp4 --w 1400 --h 800 --fps 30 --dur 7
+window.seek = Scenes.montre(document.getElementById('s'), { w: 1400, h: 800 });
+seek(0);
+</script></body>

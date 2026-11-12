@@ -1,0 +1,9 @@
+<!doctype html><meta charset="utf-8"><title>Aube — 26 logo</title>
+<link rel="stylesheet" href="../brand/aube.css"><link rel="stylesheet" href="motion.css">
+<script src="../brand/aube.js"></script><script src="lib.js"></script><script src="scenes.js"></script>
+<body style="background:#1C1122"><div id="s"></div>
+<script>
+// 1920 × 1080, 5 s : node tools/record.mjs motion/26-logo.html out/motion/26-logo.mp4 --w 1920 --h 1080 --fps 30 --dur 5
+window.seek = Scenes.logo(document.getElementById('s'), { w: 1920, h: 1080, descriptor: true });
+seek(0);
+</script></body>

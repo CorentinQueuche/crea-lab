@@ -1,0 +1,45 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates.css"><script src="../brand/marque.js"></script>
+<style>
+  /* 17 · Archive du système, grille 3 × 2. Préfixe q17- */
+  .q17-grid{position:absolute;left:84px;right:84px;top:120px;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:410px 410px}
+  .q17-c{position:relative;overflow:hidden}
+  .q17-mini{position:absolute;left:14px;right:14px;top:12px;display:grid;grid-template-columns:1.2fr 1fr 1.4fr auto;font-family:var(--mono);font-size:7px;letter-spacing:.06em;text-transform:uppercase;line-height:1.5;z-index:60}
+  .q17-rc{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:6px}
+  .q17-card{border-radius:6px;background:var(--scene);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--sur-scene) 10%,transparent);padding:7px 7px 7px;font-family:var(--mono);font-size:6.5px;letter-spacing:.04em;line-height:1.5}
+  .q17-card .v{position:relative;height:96px;margin-top:6px;border-radius:3px;overflow:hidden}
+  .q17-esc{position:absolute;inset:0;display:grid;grid-template-columns:repeat(8,1fr);grid-template-rows:repeat(8,1fr)}
+  .q17-esc i{font-style:normal;display:grid;place-items:center;font-family:var(--mono);font-size:19px;font-weight:400;background:var(--scene);color:var(--sur-scene);box-shadow:inset 0 0 0 .5px color-mix(in srgb,var(--sur-scene) 18%,transparent)}
+  .q17-sl{display:flex;align-items:center;gap:5px;font-family:var(--mono);font-size:7.5px;letter-spacing:.06em;color:var(--encre)}
+  .q17-sl b{font-weight:400;background:var(--encre);color:var(--papier);padding:1px 4px}
+  .q17-sl s{position:relative;width:30px;height:1px;background:color-mix(in srgb,var(--encre) 30%,transparent);text-decoration:none}
+  .q17-sl s::after{content:"";position:absolute;top:-3px;left:var(--x);width:7px;height:7px;margin-left:-3.5px;background:var(--vif);box-shadow:0 0 0 1px var(--encre)}
+</style>
+<body><div class="plate" id="p" style="height:1030px;background:var(--scene)"></div>
+<script>
+const A = Marque, C = A.COULEURS, N = A.ECHELLE, NB = '&nbsp;', SUR = '#F3F6F4';
+const mini = (cols, c) => `<div class="q17-mini" style="color:${c}">${cols.map((x) => `<span>${x}</span>`).join('')}</div>`;
+const MINI = ['payout.fr', 'Client${NB}: Payout'.replace('${NB}', NB), 'Archive du système<br>proposition KLYRA', '2026'];
+/* Escalier de glyphes : la colonne c porte c + 1 cases, depuis le bas */
+const GL = '0123456789€%,.−+:/()#&éèàçÉÀÇôûœæ°±×½«»?!'.split('');
+let esc = '', k = 0;
+for (let r = 0; r < 8; r++) for (let c = 0; c < 8; c++) { const plein = 7 - r <= c; esc += plein ? `<i style="grid-row:${r + 1};grid-column:${c + 1}">${GL[k++ % GL.length]}</i>` : ''; }
+const card = (t, l, v) => `<div class="q17-card"><div style="opacity:.9">${t}</div><div style="opacity:.5">${l}</div><div class="v">${v}</div></div>`;
+const recette = (motif, n, seed) => `<div class="q17-rc">${card('Base', 'Opacité 100${NB}%<br>Fusion normale'.replace(/\$\{NB\}/g, NB), A.recette('base', motif, { n, seed }))}${card('Grain', 'Opacité 50${NB}%<br>Fusion incrustation'.replace(/\$\{NB\}/g, NB), A.recette('grain', motif, { n, seed }))}${card('Teinte', 'Net 500 · 100${NB}%<br>Fusion couleur'.replace(/\$\{NB\}/g, NB), A.recette('teinte', motif, { n, seed }))}</div>`;
+/* Spécimen « 85 » : colonnes de chasse fixe en Net 50 derrière chaque chiffre */
+const spec = `<div style="position:absolute;left:50%;top:47%;transform:translate(-50%,-50%);display:flex;gap:0">
+  ${['8', '5'].map((d) => `<div style="position:relative;width:132px;height:206px;background:${N[50]};box-shadow:inset 1px 0 0 ${N[200]},inset -1px 0 0 ${N[200]};display:grid;place-items:center"><span class="chiffre" style="font-size:216px;color:${C.coffre};letter-spacing:0">${d}</span></div>`).join('')}
+  <i style="position:absolute;left:-20px;right:-20px;bottom:24px;height:1px;background:${N[200]}"></i></div>`;
+const curseurs = `<div style="position:absolute;left:0;right:0;bottom:22px;display:flex;justify-content:center;gap:14px">
+  <span class="q17-sl">GRAISSE <b>500</b><s style="--x:62%"></s></span><span class="q17-sl">INTERLETTRAGE <b>−60</b><s style="--x:30%"></s></span><span class="q17-sl">CORPS <b>320</b><s style="--x:88%"></s></span></div>`;
+document.getElementById('p').innerHTML = `
+  ${A.entete(['KLYRA.FR', `CLIENT${NB}: PAYOUT`, 'ARCHIVE DU SYSTÈME<br>TYPOGRAPHIE, COULEUR, MOTIFS ET RÈGLES', '©2026'], SUR)}
+  <div class="q17-grid">
+    <div class="q17-c g2 grain">${mini(MINI, SUR)}<div class="pl-net" style="position:absolute;left:50%;top:44%;transform:translate(-50%,-50%)">${A.wordmark(SUR, 'style="width:200px;display:block"')}</div></div>
+    <div class="q17-c" style="background:${C.coffre};padding:40px 14px 14px">${mini(['Dégradé 01 · bandes', '', '', ''], SUR)}
+      ${recette('bandes', 16, 5)}<div style="font-family:var(--mono);font-size:7px;letter-spacing:.06em;text-transform:uppercase;margin:14px 0 0">Dégradé 03 · stries</div>${recette('stries', 14, 9)}</div>
+    <div class="q17-c" style="background:${C.net}"><div class="q17-esc">${esc}</div></div>
+    <div class="q17-c" style="background:${C.acier}">${mini(MINI, C.blanc)}<div style="position:absolute;left:50%;top:52%;transform:translate(-50%,-50%)">${A.symbol(C.blanc, 'style="height:230px;display:block"')}</div></div>
+    <div class="q17-c" style="background:${C.blanc}">${mini(['Licence OFL', '', 'Chivo Mono<br>Medium · 500', ''], C.coffre)}${spec}${curseurs}</div>
+    <div class="q17-c grain">${A.damier({ cols: 6, rows: 6, seed: 12 })}</div>
+  </div>`;
+</script></body>

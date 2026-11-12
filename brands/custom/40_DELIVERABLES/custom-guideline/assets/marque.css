@@ -1,0 +1,218 @@
+/* CUSTOM — socle de marque (feuille de style).
+   L'identité est celle de Custom, livrée par KLYRA en 2025 : logo, couleurs et polices ne sont pas changés.
+   Ce fichier la met en système. Tout le projet le lit, personne ne le modifie hors du socle.
+   Ordre : polices, couleurs, rôles, typographie, surligneur, repères, textures, photo, masques, blocs, appareils, planche. */
+
+@font-face{font-family:"Archivo";src:url("fonts/archivo-latin-wdth-normal.woff2") format("woff2");font-weight:100 900;font-stretch:62% 125%;font-display:block}
+@font-face{font-family:"Inter";src:url("fonts/inter-latin-wght-normal.woff2") format("woff2");font-weight:100 900;font-display:block}
+@font-face{font-family:"JetBrains Mono";src:url("fonts/jetbrains-mono-latin-wght-normal.woff2") format("woff2");font-weight:100 800;font-display:block}
+@font-face{font-family:"Bebas Neue";src:url("fonts/bebas-neue-latin-400-normal.woff2") format("woff2");font-weight:400;font-display:block}
+
+:root{
+  /* ---------- Couleurs de Custom (codes de la charte livrée, inchangés) ---------- */
+  --noir:#101012;      /* Noir atelier — le fond de la marque */
+  --fluo:#E2FF21;      /* Fluo — la couleur de Custom. Seule couleur vive permanente */
+  --blanc:#FFFFFF;     /* Blanc */
+  --graphite:#272728;  /* Graphite — cartes et panneaux sur le noir */
+  --fonte:#404042;     /* Fonte — filets pleins, pictos éteints */
+  --acier:#56565A;     /* Acier — pixels au repos, pictos éteints (pas de texte courant sur le noir : 2,6:1 ; le texte secondaire est .t-doux) */
+  --violet:#8E3EFF;    /* Violet — couleur d'atelier n° 2 : une coulure, un fond de scène */
+  --orange:#FE3600;    /* Orange — couleur d'atelier n° 3 : le ballon, une sangle, une coulure */
+  --encre:#03010E;     /* Encre — le texte posé sur le fluo et sur le blanc */
+  /* Extensions déclarées (absentes de la charte d'origine) */
+  --craie:#DBDBDE;     /* Craie — le gris clair relevé derrière les écrans du site (planche « dash ») */
+  --fluo-100:#F8FFC9;--fluo-200:#F1FF93;--fluo-300:#EAFF5C;--fluo-500:#E2FF21;--fluo-600:#C2DC0C;--fluo-700:#8EA20A;--fluo-800:#5A6609;--fluo-900:#2B3008;
+
+  /* ---------- Rôles (la mécanique partagée n'utilise que ceux-ci) ---------- */
+  --vif:var(--fluo);
+  --clair:var(--fluo-200);
+  --moyen:var(--acier);
+  --sombre:var(--graphite);
+  --scene:var(--noir);
+  --sur-scene:#FFFFFF;
+  --papier:var(--blanc);
+  --doux:var(--craie);
+  --filet:rgba(255,255,255,.12);
+  --filet-clair:rgba(3,1,14,.14);
+
+  /* ---------- Polices ---------- */
+  --large:"Archivo",system-ui,sans-serif;        /* grotesque étirée : les grands titres du site (« Transformez ») */
+  --titre:"Bebas Neue","Archivo",sans-serif;     /* capitales étroites : les titres de section, avec un mot surligné */
+  --font:"Inter",system-ui,sans-serif;           /* texte courant et interface */
+  --mono:"JetBrains Mono",ui-monospace,monospace;/* repères, cotes, métadonnées */
+
+  /* Le pas : l'inclinaison du Cran (13,3°), réutilisée par tout ce qui penche */
+  --pente:-13.3deg;
+  --pas:.2364;                                    /* tan(13,3°) */
+}
+
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--noir);color:var(--sur-scene);font-family:var(--font);font-weight:400;-webkit-font-smoothing:antialiased;text-rendering:geometricPrecision;font-feature-settings:"ss01","cv11"}
+img,svg,canvas{display:block}
+
+/* ---------- Typographie ---------- */
+/* Large : Archivo étirée à 125 %, graisse 800. Bas de casse, interlignage serré. */
+.t-large{font-family:var(--large);font-stretch:125%;font-weight:800;line-height:.9;letter-spacing:-.035em}
+.t-large.gras{font-weight:900}
+.t-large.moyen{font-weight:600;letter-spacing:-.03em}
+/* Titre : Bebas Neue en capitales. C'est la voix des sections. */
+.t-titre{font-family:var(--titre);font-weight:400;text-transform:uppercase;line-height:.88;letter-spacing:.004em}
+/* Texte */
+.t-chapo{font-size:22px;line-height:1.32;letter-spacing:-.012em;font-weight:500}
+.t-txt{font-size:15px;line-height:1.45}
+.t-petit{font-size:12.5px;line-height:1.45}
+.t-doux{opacity:.62}
+/* Repère : JetBrains Mono, capitales espacées */
+.t-mono{font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;line-height:1.5;font-weight:500}
+.t-mono.grand{font-size:13px}
+/* Échelle des titres en Bebas (nom = taille en px sur une planche de 1400) */
+.h-420{font-size:420px}.h-300{font-size:300px}.h-220{font-size:220px}.h-160{font-size:160px}.h-120{font-size:120px}.h-84{font-size:84px}.h-56{font-size:56px}.h-36{font-size:36px}.h-24{font-size:24px}
+
+/* ---------- Le surligneur : un mot pris dans un bloc de couleur, légèrement tourné ---------- */
+.surl{display:inline-block;position:relative;background:var(--fluo);color:var(--encre);padding:.03em .13em 0;margin:0 .04em;border-radius:.07em;transform:rotate(-1.6deg);line-height:.92;white-space:nowrap}
+.surl.droit{transform:none}
+.surl.monte{transform:rotate(1.4deg)}
+.surl.violet{background:var(--violet);color:#fff}
+.surl.orange{background:var(--orange);color:var(--encre)}
+.surl.blanc{background:#fff;color:var(--encre)}
+.surl.noir{background:var(--noir);color:var(--fluo)}
+.t-large .surl{padding:.0em .16em .06em;border-radius:.09em}
+/* En texte courant : même geste, sans rotation */
+.surl-t{background:var(--fluo);color:var(--encre);padding:.05em .3em;border-radius:.25em;font-weight:600}
+
+/* ---------- Les repères d'impression : croix, cadre, barre de contrôle ---------- */
+/* Croix de repérage (une seule) : <i class="croix"></i>, taille par --t */
+.croix{--t:22px;position:absolute;width:var(--t);height:var(--t);pointer-events:none;color:inherit;opacity:.5}
+.croix::before,.croix::after{content:"";position:absolute;background:currentColor}
+.croix::before{left:50%;top:0;bottom:0;width:1px;margin-left:-.5px}
+.croix::after{top:50%;left:0;right:0;height:1px;margin-top:-.5px}
+/* Cadre à repères : filets fins et une croix à chaque angle (Marque.reperes() pose les quatre croix) */
+.cadre-r{position:relative}
+.cadre-r>.cr-f{position:absolute;inset:0;border:1px solid currentColor;opacity:.16;pointer-events:none}
+.cadre-r>.croix.hg{left:calc(var(--t)/-2);top:calc(var(--t)/-2)}
+.cadre-r>.croix.hd{right:calc(var(--t)/-2);top:calc(var(--t)/-2)}
+.cadre-r>.croix.bg{left:calc(var(--t)/-2);bottom:calc(var(--t)/-2)}
+.cadre-r>.croix.bd{right:calc(var(--t)/-2);bottom:calc(var(--t)/-2)}
+/* Barre de contrôle : la gamme de l'imprimeur, aux couleurs de la marque */
+.barre-c{display:flex;align-items:stretch;height:14px;gap:0}
+.barre-c>i{flex:1;display:block}
+.barre-c>i.fin{flex:.5}
+.barre-c.v{flex-direction:column;height:auto;width:14px}
+/* Mire ronde de repérage */
+.mire{--t:26px;display:block;position:relative;width:var(--t);height:var(--t);border-radius:50%;box-shadow:inset 0 0 0 1px currentColor;flex:none}
+.mire::before,.mire::after{content:"";position:absolute;background:currentColor}
+.mire::before{left:50%;top:-22%;bottom:-22%;width:1px;margin-left:-.5px}
+.mire::after{top:50%;left:-22%;right:-22%;height:1px;margin-top:-.5px}
+
+/* ---------- Grain ---------- */
+.grain{position:relative;isolation:isolate}
+.grain::after{content:"";position:absolute;inset:0;z-index:50;pointer-events:none;opacity:.5;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)'/%3E%3C/svg%3E")}
+.grain.fort::after{opacity:.85}
+.grain.leger::after{opacity:.28}
+/* .net : au-dessus du grain. La position relative est posée sans poids (:where) : une classe en position absolue garde la main. */
+.net{z-index:60}
+:where(.net){position:relative}
+
+/* ---------- Textures en CSS (fonds). La couleur vient de currentColor ou de --c. ---------- */
+/* Toile : le tissage serré du fond des pictos */
+.tx-toile{background-color:var(--noir);background-image:
+  repeating-linear-gradient(60deg,rgba(255,255,255,.035) 0 2px,transparent 2px 7px),
+  repeating-linear-gradient(-60deg,rgba(0,0,0,.5) 0 2px,transparent 2px 7px),
+  repeating-linear-gradient(0deg,rgba(255,255,255,.02) 0 1px,transparent 1px 4px)}
+/* Trame : points de sérigraphie, pas réglé par --tp */
+.tx-trame{--tp:10px;--c:currentColor;background-image:radial-gradient(circle at 50% 50%,var(--c) 0 28%,transparent 31%);background-size:var(--tp) var(--tp)}
+.tx-trame.fine{--tp:6px}
+.tx-trame.grosse{--tp:18px}
+/* Trame qui s'éteint vers le bas ou la droite (masque) */
+.tx-fondu-b{-webkit-mask-image:linear-gradient(#000,transparent);mask-image:linear-gradient(#000,transparent)}
+.tx-fondu-h{-webkit-mask-image:linear-gradient(transparent,#000);mask-image:linear-gradient(transparent,#000)}
+.tx-fondu-d{-webkit-mask-image:linear-gradient(90deg,#000,transparent);mask-image:linear-gradient(90deg,#000,transparent)}
+/* Lignes : balayage horizontal, celui des coulures */
+.tx-lignes{--c:currentColor;background-image:repeating-linear-gradient(0deg,var(--c) 0 2px,transparent 2px 5px)}
+/* Motif de blocs inclinés (cartes de visite, fonds du site) : masque posé par marque.js dans --m-motif */
+.tx-motif{--c:currentColor;--tm:120px;background-color:var(--c);-webkit-mask-image:var(--m-motif);mask-image:var(--m-motif);-webkit-mask-size:var(--tm) auto;mask-size:var(--tm) auto;-webkit-mask-repeat:repeat;mask-repeat:repeat}
+/* Bande de signalisation : hachures inclinées à la pente du Cran */
+.tx-hachures{--c:currentColor;--th:18px;background-image:repeating-linear-gradient(calc(90deg + var(--pente)),var(--c) 0 var(--th),transparent var(--th) calc(var(--th)*2))}
+
+/* ---------- Photo : six traitements. Marque.photo() pose la structure. ---------- */
+.ph{position:relative;overflow:hidden;background:var(--graphite);isolation:isolate}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+/* brut : la photo telle quelle, à peine assombrie pour tenir sous un logo */
+.ph.brut.sombre img{filter:brightness(.78) contrast(1.05)}
+/* nb : noir et blanc dense */
+.ph.nb img{filter:grayscale(1) contrast(1.18) brightness(.92)}
+/* duo : noir et une couleur (multiplication) */
+.ph.duo img{filter:grayscale(1) contrast(1.25) brightness(1.08)}
+.ph.duo::after,.ph.tr::after{content:"";position:absolute;inset:0;z-index:3;background:var(--tc,var(--fluo));mix-blend-mode:multiply;pointer-events:none}
+/* tr : tramée. .ph-t contient l'image et la trame, seuillées par le contraste ; la couleur est multipliée par-dessus */
+.ph.tr{background:#000}
+.ph .ph-t{position:absolute;inset:0;filter:contrast(60);background:#fff;overflow:hidden}
+.ph .ph-t img{filter:grayscale(1) contrast(var(--ct,1.1)) brightness(var(--lu,1)) blur(.7px)}
+.ph .ph-t i{position:absolute;inset:-60%;z-index:2;opacity:.5;pointer-events:none}
+.ph .ph-t i.points{background:radial-gradient(circle at 50% 50%,#000 0,#fff 72%) 0 0/var(--tp,9px) var(--tp,9px);transform:rotate(var(--ta,22deg))}
+.ph .ph-t i.lignes{background:repeating-linear-gradient(0deg,#000 0,#fff calc(var(--tp,7px)/2),#000 var(--tp,7px));transform:rotate(var(--ta,0deg))}
+.ph .ph-t i.seuil{background:#808080}
+/* inversé : la couleur dans les ombres (sur fond clair) */
+.ph.tr.inv .ph-t img{filter:grayscale(1) contrast(var(--ct,1.1)) brightness(var(--lu,1)) blur(.7px) invert(1)}
+
+/* ---------- Masques : une image ou un aplat dans la forme du Cran, d'un bloc, d'une coulure ---------- */
+/* --m-cran, --m-bloc sont posés par marque.js. .dans-cran garde la proportion du symbole (191 × 110). */
+.dans-cran{-webkit-mask-image:var(--m-cran);mask-image:var(--m-cran);-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;aspect-ratio:191.05/110}
+.dans-bloc{-webkit-mask-image:var(--m-bloc);mask-image:var(--m-bloc);-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;aspect-ratio:132.55/62.4}
+/* (si largeur et hauteur sont toutes deux fixées, la proportion est ignorée et la pente du bloc change : ne fixer que la largeur) */
+/* Pan incliné : un rectangle coupé à la pente du Cran, sans arrondi (grands aplats, bandeaux) */
+.pan{clip-path:polygon(calc(var(--pas)*100cqh) 0,100% 0,calc(100% - var(--pas)*100cqh) 100%,0 100%);container-type:size}
+
+/* ---------- Bloc : le pixel arrondi de la marque ---------- */
+.bloc{display:block;background:currentColor;border-radius:14%}
+/* Pastille, bouton, étiquette (interface et planches) */
+.pastille{display:inline-flex;align-items:center;gap:8px;height:30px;padding:0 13px;border-radius:8px;font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;font-weight:500;white-space:nowrap;box-shadow:inset 0 0 0 1px var(--filet)}
+.pastille.on{background:var(--fluo);color:var(--encre);box-shadow:none}
+.pastille.clair{box-shadow:inset 0 0 0 1px var(--filet-clair)}
+.bouton{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:48px;padding:0 22px;border-radius:10px;background:var(--fluo);color:var(--encre);font-weight:600;font-size:15px;letter-spacing:-.01em;white-space:nowrap}
+.bouton.filet{background:transparent;color:inherit;box-shadow:inset 0 0 0 1px rgba(255,255,255,.3)}
+.bouton.noir{background:var(--noir);color:#fff}
+/* Carte */
+.carte{position:relative;border-radius:18px;background:var(--graphite);overflow:hidden}
+.carte.fluo{background:var(--fluo);color:var(--encre)}
+.carte.blanc{background:#fff;color:var(--encre)}
+.carte.filet{background:transparent;box-shadow:inset 0 0 0 1px var(--filet)}
+
+/* ---------- Bandeau d'en-tête et pied de planche ---------- */
+.entete{position:absolute;left:28px;right:28px;top:22px;z-index:70;display:grid;grid-template-columns:40% 16.5% 1fr auto;font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;line-height:1.5}
+.entete span{padding-right:16px}
+.pfoot{position:absolute;left:28px;right:28px;bottom:22px;z-index:70;display:grid;grid-template-columns:40% 16.5% 1fr auto;align-items:end;font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;line-height:1.5}
+.pfoot svg{height:18px;width:auto}
+.pfoot span{padding-right:16px}
+
+/* ---------- Planche ---------- */
+.plate{position:relative;width:1400px;overflow:hidden;background:var(--noir);color:var(--sur-scene)}
+.plate.clair{background:#fff;color:var(--encre);--filet:var(--filet-clair)}
+.plate.fluo{background:var(--fluo);color:var(--encre);--filet:var(--filet-clair)}
+.plate.craie{background:var(--craie);color:var(--encre);--filet:var(--filet-clair)}
+
+/* ---------- Appareils (taille fixe, mis à l'échelle par zoom:var(--k)) ---------- */
+.phone{--k:1;zoom:var(--k);position:relative;width:414px;height:868px;border-radius:58px;background:#0A0A0B;padding:12px;flex:none;
+  box-shadow:0 0 0 1.5px #3A3A3D,0 0 0 4px #161618,0 50px 90px -30px rgba(0,0,0,.8)}
+.phone>.scr{position:relative;width:390px;height:844px;border-radius:47px;overflow:hidden;background:var(--noir);color:#fff}
+.phone>.ilot{position:absolute;left:50%;top:24px;width:112px;height:32px;margin-left:-56px;border-radius:16px;background:#000;z-index:80}
+.browser{--k:1;zoom:var(--k);position:relative;width:1440px;border-radius:16px;overflow:hidden;background:#1B1B1D;flex:none;box-shadow:0 0 0 1px rgba(255,255,255,.12),0 60px 110px -40px rgba(0,0,0,.85)}
+.browser.clair{background:#ECECEE;box-shadow:0 0 0 1px rgba(3,1,14,.12),0 60px 110px -50px rgba(3,1,14,.45)}
+.browser>.bar{height:44px;display:flex;align-items:center;gap:8px;padding:0 16px;font-family:var(--mono);font-size:11.5px;letter-spacing:.02em;color:rgba(255,255,255,.55)}
+.browser.clair>.bar{color:rgba(3,1,14,.55)}
+.browser>.bar>b{width:11px;height:11px;border-radius:50%;background:#3A3A3D;display:block}
+.browser.clair>.bar>b{background:#C9C9CD}
+.browser>.bar>span{margin:0 auto;padding:5px 60px;border-radius:7px;background:rgba(255,255,255,.07)}
+.browser.clair>.bar>span{background:rgba(3,1,14,.06)}
+.browser>.vue{position:relative;width:1440px;overflow:hidden;background:var(--noir);color:#fff}
+.laptop{--k:1;zoom:var(--k);position:relative;width:1560px;flex:none}
+.laptop>.ecran{position:relative;margin:0 auto;width:1480px;padding:20px 20px 24px;border-radius:26px 26px 0 0;background:#0A0A0B;box-shadow:0 0 0 2px #2C2C2F}
+.laptop>.ecran>.vue{position:relative;width:1440px;height:900px;overflow:hidden;border-radius:6px;background:var(--noir);color:#fff}
+.laptop>.socle{height:22px;border-radius:0 0 22px 22px;background:linear-gradient(#3A3A3D,#1C1C1E)}
+.laptop>.socle::after{content:"";display:block;margin:0 auto;width:220px;height:8px;border-radius:0 0 10px 10px;background:#0E0E10}
+
+/* ---------- Icône d'application ---------- */
+.icone-app{display:grid;place-items:center;border-radius:22.5%;overflow:hidden;flex:none}
+.icone-app svg{width:64%;height:auto}

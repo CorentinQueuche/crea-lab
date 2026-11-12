@@ -1,0 +1,14 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../brand/aube.css"><link rel="stylesheet" href="plates.css"><script src="../brand/aube.js"></script>
+<body>
+<div class="plate" id="p" style="height:640px;background:var(--brume)"></div>
+<script>
+/* Quatre écrans, composition décalée : le premier sort par le haut, le troisième par le bas. */
+const A = Aube, K = .6;
+const at = (x, y, html) => `<div class="abs" style="left:${x}px;top:${y}px">${html}</div>`;
+document.getElementById('p').innerHTML =
+  at(108, -130, A.phone(A.screens.chat(), K)) +
+  at(424, 64, A.phone(A.screens.voix(), K)) +
+  at(738, 330, A.phone(A.screens.jour(), K)) +
+  at(1044, 64, A.phone(A.screens.bord(), K));
+</script>
+</body>

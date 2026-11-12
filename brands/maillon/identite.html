@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Maillon — identité</title>
+<style>
+@font-face { font-family: "Geist"; src: url("assets/fonts/Geist-Variable.woff2") format("woff2"); font-weight: 100 900; font-display: block; }
+@font-face { font-family: "Geist Mono"; src: url("assets/fonts/GeistMono-Variable.woff2") format("woff2"); font-weight: 100 900; font-display: block; }
+* { box-sizing: border-box; margin: 0; }
+body { width: 1600px; height: 1200px; overflow: hidden; background: #121213; color: #f3f1ec; font-family: "Geist", sans-serif; -webkit-font-smoothing: antialiased; }
+body::before { content: ""; position: absolute; inset: 0; background: radial-gradient(900px 700px at 18% 0%, rgba(255, 154, 46, .13), transparent 65%), radial-gradient(900px 700px at 100% 100%, rgba(143, 123, 255, .10), transparent 65%); }
+.mono { font-family: "Geist Mono", monospace; }
+.board { position: absolute; left: 170px; top: 150px; width: 1260px; height: 760px; border-radius: 44px; overflow: hidden; display: grid; grid-template-columns: 1.15fr 1fr; box-shadow: 0 60px 120px -40px #000; }
+.noir { background: #050506; padding: 40px 48px; position: relative; }
+.papier { background: #f3f1ec; color: #0b0b0c; padding: 40px 48px; position: relative; overflow: hidden; }
+.hex { font-size: 15px; color: #7d7a73; letter-spacing: .04em; }
+.papier .hex { color: #8a877f; text-align: right; }
+.lbl { font-size: 19px; color: #8e8b85; margin-top: 200px; }
+.spec { font-size: 148px; font-weight: 500; letter-spacing: -.045em; line-height: 1; margin-top: 10px; white-space: nowrap; position: relative; z-index: 2; }
+.abc { position: absolute; left: 48px; bottom: 92px; font-size: 17px; letter-spacing: .19em; color: #8e8b85; line-height: 2; white-space: nowrap; }
+.num { position: absolute; left: 48px; bottom: 44px; font-size: 20px; color: #b9b6ae; letter-spacing: .02em; }
+.logo { position: absolute; right: 44px; bottom: 40px; display: flex; align-items: flex-end; gap: 30px; }
+.logo svg { display: block; }
+.regle { position: absolute; left: 48px; right: 44px; bottom: 150px; font-size: 14px; line-height: 1.5; color: #6d6a63; }
+.papier svg.lien { position: absolute; left: 0; top: 150px; width: 640px; height: 420px; }
+.bars { position: absolute; left: 170px; top: 968px; width: 1260px; display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 12px; }
+.bars div { height: 14px; border-radius: 4px; }
+.bars span { display: block; margin-top: 16px; font-size: 15px; color: #7d7a73; letter-spacing: .04em; text-align: center; }
+</style>
+</head>
+<body>
+<div class="board">
+  <div class="noir">
+    <div class="hex mono">#050506 · Nuit d’atelier</div>
+    <div class="lbl">Caractère</div>
+    <div class="spec">Geist</div>
+    <div class="abc">A B C D E F G H I J K L M N O P Q R S T U V W X Y Z<br>a b c d e f g h i j k l m n o p q r s t u v w x y z é è à ç</div>
+    <div class="num mono">AGC-2026-118 · 18 426,80 € · 29,6 %</div>
+  </div>
+  <div class="papier">
+    <div class="hex mono">#F3F1EC · Papier</div>
+    <svg class="lien" viewBox="0 0 640 420" fill="none">
+      <defs><filter id="g" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="9"/></filter></defs>
+      <path d="M-20 330 C 200 330, 180 110, 400 110 S 560 250, 700 250" stroke="#ff9a2e" stroke-width="16" opacity=".35" filter="url(#g)"/>
+      <path d="M-20 330 C 200 330, 180 110, 400 110 S 560 250, 700 250" stroke="#ff8a1f" stroke-width="3.500" stroke-linecap="round"/>
+      <path d="M392 97 L416 110 L392 123 Z" fill="#ff8a1f"/>
+      <circle cx="400" cy="110" r="46" stroke="#0b0b0c" stroke-opacity=".12" stroke-width="1.500"/>
+    </svg>
+    <div class="regle">Logotype tracé d’un seul trait, graisse 11 sur une hauteur d’x de 60. Les deux « l » sont deux maillons emboîtés : le second passe devant en haut, derrière en bas.</div>
+    <div class="logo" id="logo-id"></div>
+  </div>
+</div>
+<div class="bars">
+  <div style="background:#ff9a2e;box-shadow:0 0 30px rgba(255,154,46,.5)"><span class="mono" style="padding-top:14px">#FF9A2E · Lien actif</span></div>
+  <div style="background:#8f7bff"><span class="mono" style="padding-top:14px">#8F7BFF · Document</span></div>
+  <div style="background:#58d68a"><span class="mono" style="padding-top:14px">#58D68A · Validé</span></div>
+  <div style="background:#ff5a4d"><span class="mono" style="padding-top:14px">#FF5A4D · Alerte</span></div>
+</div>
+<script src="marque.js"></script>
+<script>
+  document.getElementById('logo-id').innerHTML = Marque.symbole({ hauteur: 86, fond: '#f3f1ec', encre: '#0b0b0c' }) + Marque.logotype({ hauteur: 86, fond: '#f3f1ec', encre: '#0b0b0c' });
+</script>
+</body>
+</html>

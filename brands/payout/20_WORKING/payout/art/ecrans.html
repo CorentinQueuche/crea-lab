@@ -1,0 +1,39 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="art.css"><script src="../brand/marque.js"></script>
+<!-- Faces d'écran des scènes 3D. Une page, plusieurs visuels : choisir avec --sel.
+     #site      1440 × 900  (16:10)  écran du portable, scène C (remplacé par out/motion/21-site-ecran.png s'il existe)
+     #bord      1440 × 900  (16:10)  le cockpit : moniteur du bureau (scène H), variante de la scène C
+     #mur       1600 × 900  (16:9)   mur d'écran du stand, 2,0 × 1,125 m (scène F)
+     #tel-solde  390 × 844           écran du téléphone, coins arrondis sur fond transparent (scène D)
+     #tel-cra    390 × 844           variante
+     node tools/shot.mjs art/ecrans.html out/art/ecran-site.png --w 1600 --sel "#site"
+     node tools/shot.mjs art/ecrans.html out/art/tel-solde.png --w 1600 --scale 4 --transparent --sel "#tel-solde" -->
+<style>
+  html,body{background:transparent}
+  .a-tel{width:390px;height:844px;border-radius:36px;background:#060A08}
+  .a-ile{position:absolute;top:11px;left:50%;margin-left:-62px;width:124px;height:36px;border-radius:20px;background:#000;z-index:20}
+  .a-ile::after{content:"";position:absolute;right:13px;top:12px;width:12px;height:12px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#1c2a23,#050706 70%)}
+</style>
+<body>
+<div id="site" class="a-v" style="width:1440px;height:900px"></div>
+<div id="bord" class="a-v" style="width:1440px;height:900px"></div>
+<div id="mur" class="a-v" style="width:1600px;height:900px;background:#060A08"></div>
+<div style="display:flex;gap:40px">
+  <div id="tel-solde" class="a-v a-tel"></div>
+  <div id="tel-cra" class="a-v a-tel"></div>
+</div>
+<script>
+const A = Marque, C = A.COULEURS, NOIR = '#04140A';
+const $ = (id) => document.getElementById(id);
+$('site').innerHTML = A.desk.site();
+$('bord').innerHTML = A.desk.bord();
+// Mur d'écran : le tableau de bord à sa taille (1440 × 900), et une bande Net de 160 px qui signe l'écran
+$('mur').innerHTML = `<div style="position:absolute;left:0;top:0;width:1440px;height:900px">${A.desk.bord()}</div>
+<div style="position:absolute;left:1440px;top:0;width:160px;height:900px;background:${C.net};color:${NOIR}">
+  <div style="position:absolute;left:0;right:0;top:44px;display:grid;justify-items:center">${A.symbol(NOIR, 'style="height:92px;display:block"')}</div>
+  <div class="a-cap" style="position:absolute;left:50%;top:50%;font-size:15px;white-space:nowrap;transform:translate(-50%,-50%) rotate(-90deg)">Le copilote des freelances · payout.fr</div>
+  <div class="chiffre" style="position:absolute;left:0;right:0;bottom:40px;text-align:center;font-size:58px">${A.pcH(85)}</div>
+  <div class="a-cap" style="position:absolute;left:0;right:0;bottom:104px;text-align:center;font-size:11px">jusqu'à</div>
+</div>`;
+$('tel-solde').innerHTML = `<div class="a-ile"></div>${A.screens.solde()}`;
+$('tel-cra').innerHTML = `<div class="a-ile"></div>${A.screens.cra()}`;
+</script></body>

@@ -1,0 +1,72 @@
+<!doctype html><meta charset="utf-8"><title>Payout — V3, un détail s'allume</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="motion.css">
+<script src="../brand/marque.js"></script>
+<!-- Jeu complet d'icônes du designer (planche 15) : window.Icones (noms, svg). Sans lui, les 37 icônes du socle. -->
+<script src="../plates/icones.js"></script>
+<script src="lib.js"></script>
+<style>
+  .z-grille{position:absolute;display:grid}
+  .z-cel{position:relative;display:grid;place-items:center;z-index:2}
+  .z-sq{position:absolute;left:0;top:0;background:var(--net);z-index:1}
+</style>
+<body><div class="m-stage" id="s" style="width:1080px;height:1080px"></div>
+<script>
+/* V3 · Un détail s'allume · 1080 × 1080 · 6 s, boucle
+   node tools/record.mjs motion/16-detail.html out/motion/16-detail.mp4 --w 1080 --h 1080 --fps 30 --dur 6 --planche
+   La grille d'icônes sur Coffre ; un carré Net saute d'icône en icône, une par demi-seconde (12 sauts, puis la boucle repart).
+   Chaque saut est un changement d'état de 160 ms : le carré s'allume, l'ancien s'éteint. Rien ne clignote plus de deux fois par seconde. */
+const A = Marque, C = A.COULEURS, NB = ' ', SUR = '#F3F6F4', SUR_NET = '#04140A';
+const W = 1080, PAS = 0.5, SAUTS = 12, BOUCLE = PAS * SAUTS;
+const NOMS = { maison: 'Tableau de bord', comparatif: 'Comparatif', planning: 'Planning', tresorerie: 'Trésorerie', entreprise: 'Mon entreprise', compte: 'Compte pro',
+  factures: 'Factures', cashout: 'Cash-Out', drive: 'Drive', menu: 'Menu', recherche: 'Recherche', filtres: 'Filtres', colonnes: 'Colonnes', check: 'Validé',
+  fleche: 'Suivant', plus: 'Ajouter', chevron: 'Ouvrir', bas: 'Déplier', haut: 'Replier', cadenas: 'Sécurisé', telecharger: 'Exporter', horloge: 'Échéance',
+  cloche: 'Alertes', eclair: 'Automatique', bouclier: 'Protection', lien: 'Compte connecté', graphique: 'Revenus', document: 'Justificatif', utilisateur: 'Profil',
+  reglages: 'Réglages', euro: 'Montant', pourcent: 'Part gardée', virement: 'Virement', voiture: 'Indemnités kilométriques', repas: 'Frais de repas', calcul: 'Simulation',
+  enveloppe: 'Message', telephone: 'Téléphone', alerte: 'Alerte', info: 'Information', aide: 'Aide', oeil: 'Aperçu', crayon: 'Modifier', corbeille: 'Supprimer',
+  copier: 'Copier', envoyer: 'Envoyer', trombone: 'Pièce jointe', signature: 'Signature', recu: 'Reçu', sablier: 'En attente', synchro: 'Synchronisation',
+  hausse: 'Hausse', baisse: 'Baisse', pieces: 'Pièces', balance: 'Balance', cible: 'Objectif', globe: 'Site', sortie: 'Déconnexion', paie: 'Paie',
+  part: 'La part qui revient', 'doc-valide': 'Document validé' };
+const nomDe = (k) => NOMS[k] || (k[0].toUpperCase() + k.slice(1).replace(/[-_]/g, ' '));
+
+/* Les icônes : le jeu complet de plates/icones.js (Icones.noms, 60, dans l'ordre de la planche 15), sinon celles du socle.
+   Grille de 10 × 6 pour 60 ; sinon autant de colonnes que la racine du nombre, lignes pleines seulement. */
+const JEU = window.Icones ? { noms: Icones.noms, svg: Icones.svg } : { noms: A.ICONES, svg: A.icon };
+const tout = JEU.noms.filter((k) => /<path|<rect|<circle/.test(JEU.svg(k) || ''));
+const COLS = tout.length === 60 ? 10 : Math.floor(Math.sqrt(tout.length)), ROWS = Math.floor(tout.length / COLS), N = COLS * ROWS, liste = tout.slice(0, N);
+const ZONE = COLS >= 10 ? 960 : 780, P = ZONE / COLS, X0 = (W - ZONE) / 2, Y0 = (W - P * ROWS) / 2 - 10;
+const TAILLE_IC = Math.round(P * 0.44), SQ = Math.round(P * 0.76);
+
+/* Suite des sauts : tirée une fois avec une graine, jamais deux fois la même icône, toujours à deux cases au moins de la précédente */
+const R = M.graine(85), suite = [];
+while (suite.length < SAUTS) { const i = Math.floor(R() * N), prev = suite[suite.length - 1], first = suite[0];
+  const loin = (a, b) => b == null || Math.max(Math.abs((a % COLS) - (b % COLS)), Math.abs(Math.floor(a / COLS) - Math.floor(b / COLS))) >= 2;
+  if (!suite.includes(i) && loin(i, prev) && (suite.length < SAUTS - 1 || loin(i, first))) suite.push(i); }
+
+const s = document.getElementById('s');
+s.innerHTML = `
+  <div class="m-abs" style="left:${X0}px;right:${X0}px;top:84px;display:flex;justify-content:space-between">
+    <span class="m-cap" style="opacity:.55">Icônes · trait de 1,6 sur 18</span><span class="m-cap" style="opacity:.55">${N} icônes</span></div>
+  <div class="z-sq" id="sqA" style="width:${SQ}px;height:${SQ}px"></div><div class="z-sq" id="sqB" style="width:${SQ}px;height:${SQ}px"></div>
+  <div class="z-grille" style="left:${X0}px;top:${Y0}px;grid-template-columns:repeat(${COLS},${P}px);grid-auto-rows:${P}px">
+    ${liste.map((k) => `<div class="z-cel" style="color:${SUR}">${JEU.svg(k, 'currentColor', TAILLE_IC, 1.6)}</div>`).join('')}</div>
+  <div class="m-abs" style="left:${X0}px;right:${X0}px;bottom:84px;display:flex;justify-content:space-between;align-items:baseline">
+    <span class="m-cap"><span id="num" style="font-variant-numeric:tabular-nums"></span><span style="opacity:.55">${NB}/${NB}${N}</span><span style="opacity:.55;margin:0 10px">·</span><span id="nom" style="color:${C.net}"></span></span>
+    <span style="display:flex;align-items:center;gap:12px;opacity:.55" class="m-cap">${A.symbol(SUR, 'style="height:22px;width:auto"')}Payout</span></div>`;
+const cels = [...s.querySelectorAll('.z-cel')], sqA = s.querySelector('#sqA'), sqB = s.querySelector('#sqB'), num = s.querySelector('#num'), nom = s.querySelector('#nom');
+const place = (el, i, k) => { const x = X0 + (i % COLS) * P + (P - SQ) / 2, y = Y0 + Math.floor(i / COLS) * P + (P - SQ) / 2;
+  el.style.transform = `translate(${x}px, ${y}px)`; el.style.opacity = k.toFixed(3); };
+
+window.seek = (t) => {
+  /* les sauts tombent à 0,25 s, 0,75 s… : la première image de la boucle montre déjà un carré allumé et immobile */
+  const tl = (((t - PAS / 2) % BOUCLE) + BOUCLE) % BOUCLE, n = Math.floor(tl / PAS) % SAUTS, loc = tl - n * PAS;
+  const cur = suite[n], prev = suite[(n + SAUTS - 1) % SAUTS];
+  const kOn = M.tw(loc, 0, M.ETAT, M.cubicOut), kOff = 1 - kOn;
+  place(sqA, cur, kOn); place(sqB, prev, kOff);
+  cels.forEach((c, i) => { c.style.color = i === cur ? M.melange(SUR, SUR_NET, kOn) : i === prev ? M.melange(SUR, SUR_NET, kOff) : SUR;
+    c.style.opacity = (0.78 + 0.22 * (i === cur ? kOn : i === prev ? kOff : 0)).toFixed(3); });
+  const vu = kOn >= 0.5 ? cur : prev;   // la légende suit le carré le plus allumé
+  num.textContent = String(vu + 1).padStart(2, '0');
+  nom.textContent = nomDe(liste[vu]);
+};
+seek(0);
+</script></body>

@@ -1,0 +1,82 @@
+<!doctype html><meta charset="utf-8"><title>Custom — 10 · Couleurs</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates.css"><script src="../brand/marque.js"></script>
+<style>
+  /* 10 · Couleurs. Préfixe q10- */
+  .q10-regles{position:absolute;left:820px;right:84px;top:132px;z-index:60}
+  .q10-regles .pl-ligne{grid-template-columns:28px 1fr;font-size:14px;line-height:1.4;padding:9px 0 10px}
+  .q10-regles .pl-ligne span:first-child{font-family:var(--mono);font-size:10.5px;opacity:.5}
+  .q10-barre{position:absolute;left:84px;right:84px;top:378px;height:420px;display:flex;color:#fff;--t:26px}
+  .q10-b{position:relative;height:100%;overflow:hidden;flex:none}
+  .q10-b .q10-l{position:absolute;left:16px;bottom:16px;right:6px;font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.03em;text-transform:uppercase;line-height:1.55}
+  .q10-b .q10-l b{display:block;font-family:var(--font);font-size:20px;letter-spacing:-.02em;text-transform:none;font-weight:600;margin-bottom:6px}
+  .q10-b .q10-v{position:absolute;left:50%;bottom:14px;writing-mode:vertical-rl;text-orientation:sideways;transform:translateX(-50%) rotate(180deg);font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;white-space:nowrap}
+  .q10-b .q10-p{position:absolute;left:18px;top:18px}
+  .q10-prop{position:absolute;left:84px;right:84px;top:822px;height:40px;display:flex}
+  .q10-prop>div{position:relative;flex:none;border-top:1px solid currentColor;padding-top:10px;font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;white-space:nowrap}
+  .q10-prop>div::before,.q10-prop>div::after{content:"";position:absolute;top:-5px;width:1px;height:9px;background:currentColor}
+  .q10-prop>div::before{left:0}.q10-prop>div::after{right:0}
+  .q10-bas{position:absolute;left:84px;right:84px;top:906px;height:400px;display:grid;grid-template-columns:640px 1fr 268px;gap:16px}
+  .q10-ctr{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:1fr 1fr;gap:10px;margin-top:12px;height:370px}
+  .q10-ct{position:relative;border-radius:20px;overflow:hidden;padding:14px 16px}
+  .q10-ct .q10-aa{font-family:var(--large);font-stretch:125%;font-weight:800;letter-spacing:-.035em;font-size:58px;line-height:.9;margin-top:8px}
+  .q10-ct .q10-r{position:absolute;left:16px;right:14px;bottom:13px;font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;line-height:1.45;display:flex;justify-content:space-between;align-items:flex-end}
+  .q10-ct .q10-r b{font-size:17px;letter-spacing:0;font-weight:600}
+  .q10-ech{display:flex;flex-direction:column;margin-top:12px;height:370px;border-radius:20px;overflow:hidden}
+  .q10-ech>div{flex:1;display:flex;justify-content:space-between;align-items:center;padding:0 16px;font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase}
+</style>
+<body><div class="plate grain leger" id="p" style="height:1386px"></div>
+<script>
+const A = Marque, C = A.COULEURS, N = A.NOMS, NB = A.NB, W = 1232;
+const rvb = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16)).join(' ');
+const v = (n) => String(n).replace('.', ',');
+/* La gamme : largeurs en % de la barre. Noir et gris 60, fluo 25, blanc 10, couleurs d'atelier 5. */
+const G = [
+  ['noir', 49.5, 'Le fond'], ['graphite', 3.5, 'Cartes sur le noir'], ['fonte', 3, 'Filets, pictos éteints'], ['acier', 2.5, 'Texte secondaire'], ['encre', 1.5, 'Texte sur fluo et blanc'],
+  ['fluo', 25, 'La couleur de Custom'], ['blanc', 10, 'Le texte sur noir'], ['violet', 2.5, 'Couleur d’atelier'], ['orange', 2.5, 'Couleur d’atelier']];
+const sur = (k) => (A.contraste(C[k], C.encre) > 6 ? C.encre : '#fff');
+const bande = ([k, pc, role]) => { const w = (W * pc) / 100, c = sur(k);
+  if (w < 100) return `<div class="q10-b" style="width:${w}px;background:${C[k]};color:${c}"><div class="q10-v">${N[k]} · ${C[k]} · ${role}</div></div>`;
+  const pxn = { noir: '60', fluo: '25', blanc: '10' }[k];
+  return `<div class="q10-b" style="width:${w}px;background:${C[k]};color:${c}">
+    <div class="q10-p" style="color:${k === 'noir' ? C.fonte : C.encre};opacity:${k === 'noir' ? 1 : .9}">${A.pix(pxn, { attrs: `style="height:${k === 'noir' ? 150 : k === 'fluo' ? 104 : 54}px"` })}</div>
+    <div class="q10-l"><b>${N[k]}</b>${C[k]}<br>RVB ${rvb(C[k])}<br>${role}</div></div>`; };
+
+/* Couples de contraste, calculés par Marque.contraste */
+const P = [['encre', 'fluo'], ['blanc', 'noir'], ['fluo', 'noir'], ['blanc', 'violet'], ['encre', 'orange'], ['encre', 'blanc'], ['encre', 'craie'], ['blanc', 'fluo']];
+const note = (r) => (r >= 7 ? 'AAA' : r >= 4.5 ? 'AA' : r >= 3 ? 'AA grand' : 'Refusé');
+const ctr = P.map(([t, f]) => { const r = A.contraste(C[t], C[f]), non = t === 'blanc' && f === 'fluo';
+  return `<div class="q10-ct" style="background:${C[f]};color:${C[t]};${f === 'noir' ? 'box-shadow:inset 0 0 0 1px var(--filet)' : ''}">
+    <div class="pl-lbl" style="opacity:.75;${non ? 'color:' + C.encre : ''}">${N[t]} sur ${N[f].toLowerCase()}</div><div class="q10-aa">Aa</div>
+    <div class="q10-r" style="${non ? 'color:' + C.encre : ''}"><span><b>${v(r)}</b> : 1</span><span>${non ? 'Jamais' : note(r)}</span></div>${non ? '<i class="pl-barre-x" style="--xa:48deg"></i>' : ''}</div>`; }).join('');
+
+const ech = Object.keys(A.ECHELLE).map((k) => { const h = A.ECHELLE[k], c = A.contraste(h, C.encre) > 6 ? C.encre : '#fff';
+  return `<div style="background:${h};color:${c}"><span>${k}${k === '500' ? ' · fluo de la charte' : ''}</span><span>${h}</span></div>`; }).join('');
+
+const props = [['60 · Noir et gris', 60], ['25 · Fluo', 25], ['10 · Blanc', 10], ['5 · Atelier', 5]];
+
+document.getElementById('p').innerHTML =
+  A.entete() +
+  `<div class="pl-intro"><div class="pl-lbl doux">10 · La marque · couleurs</div>
+    <div class="t-titre h-120">Noir, ${A.surl('fluo')}, blanc</div>
+    <p class="pl-chapo">Les codes de la charte de 2025, inchangés. Le noir porte, le fluo signe, le blanc parle. Le violet et l’orange restent des couleurs d’atelier.</p></div>
+  <div class="q10-regles"><div class="pl-lbl doux" style="margin-bottom:10px">Trois règles</div>
+    <div class="pl-ligne"><span>01</span><span>Une seule couleur d’atelier domine par support : violet ou orange. L’autre n’apparaît qu’en détail.</span></div>
+    <div class="pl-ligne"><span>02</span><span>Sur le fluo, le texte est toujours en Encre. Jamais de blanc sur fluo.</span></div>
+    <div class="pl-ligne"><span>03</span><span>Pas de couleur hors palette, gris compris.</span></div></div>
+  <div class="q10-barre cadre-r">${G.map(bande).join('')}${A.reperes({ t: 26 })}
+    ${A.mire(26, 'position:absolute;left:-46px;top:50%;margin-top:-13px;color:#fff;opacity:.6')}${A.mire(26, 'position:absolute;right:-46px;top:50%;margin-top:-13px;color:#fff;opacity:.6')}</div>
+  <span class="pl-tag" style="left:84px;top:354px;opacity:.55">Gamme de contrôle · largeurs aux proportions d’un support</span>
+  <div class="pl-abs" style="right:84px;top:358px;width:260px">${A.barre({ n: 2, style: 'height:8px' })}</div>
+  <div class="q10-prop">${props.map(([t, pc]) => `<div style="width:${(W * pc) / 100 - (pc === 5 ? 0 : 6)}px;margin-right:${pc === 5 ? 0 : 6}px;">${pc === 5 ? `<span style="position:absolute;right:0;top:10px">${t}</span>` : t}</div>`).join('')}</div>
+  <div class="q10-bas">
+    <div><div class="pl-lbl doux">Couples de contraste · calculés (WCAG)</div><div class="q10-ctr">${ctr}</div></div>
+    <div><div class="pl-lbl doux">Échelle de fluo · extension</div><div class="q10-ech">${ech}</div></div>
+    <div><div class="pl-lbl doux">Craie · extension</div>
+      <div class="pl-tuile craie" style="margin-top:12px;height:370px;padding:20px 22px">
+        <div class="t-titre h-56">Craie</div>
+        <div class="pl-mono" style="margin-top:12px">#DBDBDE<br>RVB ${rvb(C.craie)}</div>
+        <p class="pl-txt" style="margin-top:16px">Le gris clair relevé derrière les écrans du site. Il n’était pas dans la charte : nous l’y ajoutons, pour les fonds clairs.</p>
+        <div class="pl-lbl" style="position:absolute;left:22px;bottom:18px;opacity:.6">Encre sur craie · ${v(A.contraste(C.encre, C.craie))} : 1</div></div></div>
+  </div>` +
+  A.foot('10 · Couleurs', 'Custom · direction artistique');
+</script></body>

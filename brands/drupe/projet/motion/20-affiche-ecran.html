@@ -1,0 +1,11 @@
+<!doctype html><meta charset="utf-8"><title>Drupe — 20 affiche de la colonne</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="motion.css">
+<script src="../brand/marque.js"></script><script src="lib.js"></script><script src="scenes.js"></script>
+<body style="background:var(--pulpe)"><div id="s"></div>
+<script>
+// 800 × 1200, 7 s, contenu seul de l'affiche (à incruster dans la colonne d'affichage) :
+// node tools/record.mjs motion/20-affiche-ecran.html out/motion/20-affiche-ecran.mp4 --w 800 --h 1200 --fps 30 --dur 7
+// Le triptyque s'écrit ligne par ligne, puis le symbole entre en grand par un bord.
+window.seek = Scenes.affiche(document.getElementById('s'), { w: 800, h: 1200 });
+seek(0);
+</script></body>

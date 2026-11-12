@@ -1,0 +1,32 @@
+<!doctype html><meta charset="utf-8"><title>Custom — 38 · Affiches</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates-c.css"><script src="../brand/marque.js"></script>
+<style>
+  /* Idée : la série collée sur le mur de l'atelier. Le béton passe à travers le papier (multiplication). */
+  .p38-af{position:absolute;width:372px;height:521px;overflow:hidden}
+  .p38-af>img{position:absolute;inset:0;width:100%;height:100%}
+  /* le mur repasse par-dessus l'affiche : le grain du béton et le pli du papier */
+  .p38-af>.mur{position:absolute;inset:0;mix-blend-mode:multiply;opacity:.42;background-size:1400px auto}
+  .p38-af>.pli{position:absolute;inset:0;background:linear-gradient(100deg,rgba(255,255,255,0) 46%,rgba(255,255,255,.18) 50%,rgba(0,0,0,.12) 52%,rgba(255,255,255,0) 58%);mix-blend-mode:soft-light}
+  .p38-cap{position:absolute;width:372px}
+  .p38-cap b{display:block;font-weight:600;font-size:15px;letter-spacing:-.01em;margin-top:8px}
+  .p38-cap p{margin:4px 0 0;font-size:13px;line-height:1.4;opacity:.66}
+</style>
+<body><div class="plate" id="p" style="height:1060px"></div>
+<script>
+const A = Marque, C = A.COULEURS;
+const X = [84, 514, 944], Y = [196, 168, 210], R = [-1.1, .6, -.4];
+const caps = [['Le Cran comme fenêtre', 'La photo de sport cadrée par le symbole, sur fluo.'], ['Le sprite et la coulure', 'Un coureur en blocs, pris dans l’encre orange.'], ['Le mot et le fil', 'La phrase de la marque posée sur le piquage.']];
+const murURL = A.photoURL('mur');
+document.getElementById('p').innerHTML =
+  // le mur de l'atelier, en noir et blanc, assombri
+  `<div class="pc-abs" style="inset:0">${A.photo('mur', { mode: 'nb', style: 'position:absolute;inset:0' })}<div class="pc-abs" style="inset:0;background:rgba(16,16,18,.42)"></div></div>` +
+  A.entete(undefined, '#fff') +
+  X.map((x, i) => `<div class="p38-af pc-ombre" style="left:${x}px;top:${Y[i]}px;transform:rotate(${R[i]}deg)">
+      <img src="../out/art/affiche-${i + 1}.png" alt="">
+      <div class="mur" style="background-image:url('${murURL}');background-position:${-x}px ${-Y[i]}px;filter:grayscale(1) brightness(1.5) contrast(1.4)"></div><div class="pli"></div></div>`).join('') +
+  X.map((x, i) => `<div class="p38-cap pc-z" style="left:${x}px;top:${Y[i] + 548}px;color:#fff"><div class="pc-lbl" style="opacity:.7">Affiche 0${i + 1} · 5:7</div><b>${caps[i][0]}</b><p>${caps[i][1]}</p></div>`).join('') +
+  `<div class="pc-abs pc-z" style="left:84px;top:900px;color:#fff;display:flex;align-items:flex-end;gap:28px">
+     <div class="t-titre h-56">Donnez vie ${A.surl('à vos idées')}</div>
+     <div class="t-petit" style="opacity:.7;max-width:420px;padding-bottom:6px">Trois affiches, trois entrées dans le même système : la photo, le bloc, le mot. Chacune tient seule ; ensemble, elles font une série.</div></div>` +
+  A.foot('38 · Affiches', 'Custom · direction artistique');
+</script></body>

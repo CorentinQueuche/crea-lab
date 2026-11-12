@@ -1,0 +1,10 @@
+<!doctype html><meta charset="utf-8"><title>Aube — 18 affiche numérique</title>
+<link rel="stylesheet" href="../brand/aube.css"><link rel="stylesheet" href="motion.css">
+<script src="../brand/aube.js"></script><script src="lib.js"></script><script src="scenes.js"></script>
+<body style="background:#0A0609"><div id="s"></div>
+<script>
+// 800 × 1200, 6 s, contenu seul de l'affiche (à incruster) :
+// node tools/record.mjs motion/18-affiche-ecran.html out/motion/18-affiche-ecran.mp4 --w 800 --h 1200 --fps 30 --dur 6
+window.seek = Scenes.affiche(document.getElementById('s'), { w: 800, h: 1200 });
+seek(0);
+</script></body>

@@ -1,0 +1,37 @@
+{
+  "brands": {
+    "aube": {
+      "files": 330,
+      "bytes": 371667428
+    },
+    "payout": {
+      "files": 524,
+      "bytes": 445299877
+    },
+    "custom": {
+      "files": 704,
+      "bytes": 882012168
+    },
+    "drupe": {
+      "files": 407,
+      "bytes": 303272656
+    },
+    "sillon": {
+      "files": 111,
+      "bytes": 179824479
+    },
+    "roulement": {
+      "files": 86,
+      "bytes": 167321148
+    },
+    "maillon": {
+      "files": 103,
+      "bytes": 170120347
+    }
+  },
+  "files": 2265,
+  "bytes": 2519518103,
+  "unique_bytes": 1912055214,
+  "unique_blobs": 1743,
+  "blocked": []
+}

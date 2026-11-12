@@ -1,0 +1,34 @@
+<!doctype html><meta charset="utf-8"><title>Custom — 24 · Section · Le site</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="../brand/ecrans.css"><link rel="stylesheet" href="plates-b.css">
+<script src="../brand/marque.js"></script><script src="../brand/ecrans.js"></script>
+<style>
+  /* Idée : le site sort de la planche. L'accueil, incliné, passe derrière le titre et quitte le cadre par la droite et par le bas,
+     posé sur une coulure violette comme sur les visuels d'origine. */
+  .p24-ecran{position:absolute;left:640px;top:126px;transform-origin:0 0;transform:perspective(2400px) rotateY(-26deg) rotateX(12deg) rotateZ(-5deg)}
+  .p24-gros{position:absolute;left:72px;top:500px;font-size:330px;line-height:.84;white-space:nowrap;z-index:40}
+  .p24-chif{display:flex;gap:46px;align-items:flex-end}
+  .p24-chif>div{display:flex;flex-direction:column;gap:12px}
+</style>
+<body><div class="plate" id="p" style="height:900px"></div>
+<script>
+const A = Marque, C = A.COULEURS, S = A.site, NB = A.NB;
+document.getElementById('p').innerHTML =
+  `<div class="pb-fond tx-toile"></div>` +
+  // la coulure violette derrière l'écran (reprise du site d'origine)
+  `<div class="pb-abs" style="left:560px;top:-210px;width:1000px;height:760px">${A.coulure({ w: 1000, h: 900, c: C.violet, seed: 7, cx: 0.5, cy: 0.5, rx: 0.44, ry: 0.42, frange: 0.22, pas: 4, attrs: 'style="width:100%;height:100%"' })}</div>` +
+  // l'accueil, en grand, incliné : il sort par la droite et par le bas
+  `<div class="p24-ecran pb-ombre">${A.browser(S.accueil(), 0.66, { h: 1500 })}</div>` +
+  // croix de repérage posées sur le fond, autour du fragment
+  `<div class="pb-abs pb-z" style="left:640px;top:126px;color:#fff">${A.croix('left:-11px;top:-11px;opacity:.85', 22)}</div>` +
+  `<div class="pb-abs" style="left:0;right:0;bottom:0;height:150px;z-index:30;background:linear-gradient(rgba(16,16,18,0),rgba(16,16,18,.92) 62%)"></div>` +
+
+  `<div class="pb-abs pb-z" style="left:84px;top:48px">${A.onglets(A.SECTIONS, 2)}</div>` +
+  `<div class="pb-abs pb-z pb-lbl" style="left:84px;top:96px;opacity:.7">Section 03${NB}·${NB}pièces 24 à 33</div>` +
+  `<p class="pb-abs pb-z pb-chapo" style="left:84px;top:170px;width:440px">Le site est la preuve de l’atelier intégré : quatre univers séparés, la page Atelier au centre, et un devis qui arrive qualifié.</p>` +
+  `<div class="pb-abs pb-z p24-chif" style="left:84px;top:318px">
+     <div><div style="color:${C.fluo}">${A.pix('800', { attrs: 'style="height:62px;width:auto"' })}</div><span class="pb-lbl" style="width:190px">vues de la page Atelier<br>en deux mois</span></div>
+     <div><div style="color:#fff">${A.pix('<5s', { attrs: 'style="height:62px;width:auto"' })}</div><span class="pb-lbl" style="width:200px">pour identifier<br>son univers</span></div></div>` +
+  `<div class="p24-gros t-titre">Le ${A.surl('site')}</div>` +
+  A.foot('24 · Section · Le site', 'Custom · direction artistique');
+{ const P = document.getElementById('p'); P.innerHTML = P.innerHTML.replace(/ ([:;?])(?=[ <])/g, NB + '$1'); }   // espace insécable avant : ; ?
+</script></body>

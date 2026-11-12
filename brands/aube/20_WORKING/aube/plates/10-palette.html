@@ -1,0 +1,26 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../brand/aube.css"><link rel="stylesheet" href="plates.css"><script src="../brand/aube.js"></script>
+<style>
+  .band{position:relative;height:800px;border-radius:22px;flex:none}
+  .band .v{position:absolute;left:50%;writing-mode:vertical-rl;transform:translateX(-50%);white-space:nowrap}
+  .band .nm{top:40px;font-size:24px;font-weight:300}
+  .band .hx{bottom:40px;font-family:var(--mono);font-size:19px;letter-spacing:.04em}
+</style>
+<body>
+<div class="plate" id="p" style="height:800px;background:#fff;display:flex"></div>
+<script>
+/* Huit couleurs, largeurs selon l'importance, dans l'ordre du lever : de la nuit à la lumière, puis les neutres. */
+const C = [
+  ['Nuit', '#1C1122', 270, '#fff'],
+  ['Prune', '#4B1838', 160, '#fff'],
+  ['Braise', '#C4391A', 170, '#fff'],
+  ['Aurore', '#FF632B', 250, '#1C1122'],
+  ['Miel', '#FFC46B', 170, '#1C1122'],
+  ['Blanc', '#FFFFFF', 110, '#1C1122'],
+  ['Brume', '#E9E3DE', 120, '#1C1122'],
+  ['Noir', '#0A0609', 150, '#fff'],
+];
+document.getElementById('p').innerHTML = C.map(([n, h, w, t]) =>
+  `<div class="band" style="width:${w}px;background:${h};color:${t};${n === 'Blanc' ? 'box-shadow:inset 0 0 0 1px #E9E3DE' : ''}">
+     <span class="v nm">${n}</span><span class="v hx">HEX# ${h.slice(1)}</span></div>`).join('');
+</script>
+</body>

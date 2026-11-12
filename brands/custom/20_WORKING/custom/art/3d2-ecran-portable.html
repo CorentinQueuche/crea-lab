@@ -1,0 +1,37 @@
+<!doctype html><meta charset="utf-8"><title>Custom — écran du portable (scène 26)</title>
+<!-- Texture d'écran du portable : 1440 × 900 (16:10), le haut de l'accueil du site.
+     Si brand/ecrans.js existe : Marque.site.accueil(), décalé de ?y= pixels (0 par défaut). Sinon, un accueil composé avec le socle.
+     Rendu : node tools/shot.mjs art/3d2-ecran-portable.html out/art/3d2-ecran-portable.png --w 1440 --h 900 --scale 2 --sel "#ecran" -->
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="../brand/ecrans.css">
+<script src="../brand/marque.js"></script><script src="../brand/ecrans.js" onerror="window.a2SansEcrans = 1"></script>
+<link rel="stylesheet" href="3d2-art.css">
+<style>
+  #ecran{width:1440px;height:900px;background:var(--noir);color:#fff}
+  #ecran>.a2-defile{position:absolute;left:0;top:0;width:1440px}
+  /* Accueil de secours (sans brand/ecrans.js) */
+  .a2-nav{position:absolute;left:0;right:0;top:0;height:88px;display:flex;align-items:center;gap:44px;padding:0 52px;z-index:5;border-bottom:1px solid var(--filet)}
+  .a2-nav .a2-menu{display:flex;gap:34px;font-size:15px;font-weight:500;color:rgba(255,255,255,.72)}
+  .a2-puce{display:inline-flex;align-items:center;gap:9px;font-size:14px;color:rgba(255,255,255,.82)}
+  .a2-puce i{width:6px;height:6px;border-radius:50%;background:#fff}
+  .a2-uni{position:absolute;left:52px;right:52px;bottom:0;height:150px;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--filet)}
+  .a2-uni>div{padding:26px 22px;border-left:1px solid var(--filet)}
+  .a2-uni b{display:block;font-size:17px;font-weight:600}
+  .a2-uni span{display:block;margin-top:5px;font-size:13px;color:rgba(255,255,255,.55)}
+</style>
+<body><div id="ecran" class="a2-v"></div>
+<script>
+const A = Marque, C = A.COULEURS, y = +(new URLSearchParams(location.search).get('y') || 0);
+const E = document.getElementById('ecran');
+if (A.site && A.site.accueil) {
+  E.innerHTML = `<div class="a2-defile" style="transform:translateY(${-y}px)">${A.site.accueil()}</div>`;
+} else {
+  const U = A.DONNEES.univers, sous = ['Projets réalisés depuis notre création', 'Délai moyen de livraison garanti', 'Un objet pour chaque occasion', 'Production intégrée dans nos ateliers'];
+  E.innerHTML = `
+    <div class="a2-abs" style="left:560px;top:150px;width:640px;height:560px;-webkit-mask-image:${A.coulureURL({ w: 640, h: 560, seed: 7, rx: 0.44, ry: 0.46 })};mask-image:${A.coulureURL({ w: 640, h: 560, seed: 7, rx: 0.44, ry: 0.46 })};-webkit-mask-size:100% 100%;mask-size:100% 100%">${A.photo('dunk', { mode: 'nb', style: 'position:absolute;inset:0' })}</div>
+    <div class="a2-nav">${A.logo('#fff', 'style="height:27px"')}<div class="a2-menu">${A.DONNEES.menu.map((m) => `<span>${m}</span>`).join('')}</div><span style="flex:1"></span><span class="bouton" style="height:42px;font-size:14px">Demander un devis</span></div>
+    <div class="a2-abs t-large" style="left:52px;top:190px;font-size:236px;color:${C.fluo}">Transformez</div>
+    <div class="a2-abs t-large" style="left:60px;top:470px;font-size:62px">vos idées en ${A.surl('produits personnalisés premium')}</div>
+    <div class="a2-abs" style="left:60px;top:590px;display:flex;gap:44px"><span class="a2-puce"><i></i>Production 100${A.NB}% intégrée</span><span class="a2-puce"><i></i>Livraison sous 7-10 jours</span><span class="a2-puce"><i></i>+500 projets réalisés</span></div>
+    <div class="a2-uni">${U.map((u, i) => `<div><b>${u.nom}</b><span>${sous[i]}</span></div>`).join('')}</div>`;
+}
+</script></body>

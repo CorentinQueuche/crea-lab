@@ -1,0 +1,36 @@
+<!doctype html><meta charset="utf-8"><title>Payout — 03, mosaïque d'ouverture</title>
+<link rel="stylesheet" href="../brand/marque.css"><script src="../brand/marque.js"></script>
+<style>
+  /* Planche 03 · mur de visuels incliné, sans texte : la quantité fait la preuve (procédé pris à Sui).
+     Rendu planche :  node tools/shot.mjs plates/03-mosaique.html out/plates/03-mosaique.png
+     Rendu pour la vidéo V7 (4200 px de large) :  node tools/shot.mjs plates/03-mosaique.html out/plates/03-mosaique-4k.png --scale 3
+     ?d3=blender : prend les scènes 3D avant finition, pour un aperçu. */
+  .mo-mur{position:absolute;left:50%;top:50%;width:1640px;display:flex;gap:8px;align-items:flex-start;transform-origin:50% 50%}
+  .mo-col{flex:1;display:flex;flex-direction:column;gap:8px}
+  .mo-t{position:relative;overflow:hidden;border-radius:10px;background:var(--ardoise)}
+  .mo-t img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+  .mo-t::after{content:"";position:absolute;inset:0;border-radius:10px;box-shadow:inset 0 0 0 1px rgba(243,246,244,.07)}
+</style>
+<body><div class="plate" id="p" style="height:1050px;background:var(--coffre);overflow:hidden"></div>
+<script>
+const D3 = new URLSearchParams(location.search).get('d3') || 'final';
+const P = (n) => `../out/plates/${n}.png`, T = (n) => `../out/${D3}/${n}.png`, V = (n) => `../out/motion/${n}.png`;
+/* [image, hauteur / largeur de la tuile, position verticale du cadrage en %] — l'ordre alterne planches, scènes et vidéos */
+const TUILES = [
+  [T('02-monument'), .5625, 50], [P('07-construction'), .76, 10], [V('10-jauge'), .5625, 50], [P('25-cockpit'), .74, 34], [T('18-abribus'), .5625, 50], [P('12-couleur'), .9, 18],
+  [P('11-jauge-etats'), .6, 4], [T('28-telephone'), .5625, 50], [P('22-pages-site'), .72, 4], [P('01-couverture'), .714, 50], [P('15-icones'), 1, 62], [V('08-logo'), .5625, 50],
+  [P('29-theme-clair'), .76, 40], [P('06-bento'), .79, 50], [T('19-papeterie'), .5625, 50], [P('14-typographie'), .6, 6], [V('28-telephone'), 1.25, 50], [P('04-avant-apres'), .62, 16],
+  [V('16-detail'), 1, 50], [P('20-section-site'), .8, 92], [P('33-icone-app'), .757, 50], [T('35-enseigne'), .5625, 50], [P('09-logo-variantes'), .62, 6], [P('27-cra-facture'), .7, 58],
+  [P('13-degrades'), .76, 46], [T('21-portable'), .5625, 50], [P('26-ecran-detail'), .736, 50], [P('34-reseaux'), .72, 78], [P('05-section-marque'), .76, 86], [V('21-site-ecran'), .625, 50],
+  [P('31-trois-supports'), .7, 96], [P('17-archive'), .736, 50], [P('11-jauge-etats'), .42, 60], [T('32-stand'), .5625, 50], [P('24-section-web-app'), .72, 92], [P('30-composants'), .8, 96],
+  [T('10-jauge'), .5625, 50], [P('22-pages-site'), .6, 98], [P('39-cloture'), .6, 12], [P('07-construction'), .5, 96], [V('23-mur'), .5625, 50], [P('12-couleur'), .42, 97],
+  [P('09-logo-variantes'), .5, 52], [P('14-typographie'), .7, 60], [P('25-cockpit'), .6, 96], [P('29-theme-clair'), .6, 96], [P('13-degrades'), .5, 2], [P('31-trois-supports'), .6, 4],
+];
+const N = 6, L = (1640 - 8 * (N - 1)) / N, DEC = [70, 0, 110, 30, 90, 10];
+const cols = Array.from({ length: N }, (_, i) => ({ h: DEC[i], t: [] }));
+TUILES.forEach((t) => { const c = cols.reduce((a, b) => (b.h < a.h ? b : a)); c.t.push(t); c.h += L * t[1] + 8; });
+const haut = Math.max(...cols.map((c) => c.h));
+document.getElementById('p').innerHTML = `<div class="mo-mur" style="height:${haut}px;transform:translate(-50%,-50%) rotate(-8deg)">${cols.map((c, i) =>
+  `<div class="mo-col" style="margin-top:${DEC[i]}px">${c.t.map(([src, r, y]) =>
+    `<div class="mo-t" style="height:${(L * r).toFixed(1)}px"><img src="${src}" style="object-position:50% ${y}%" alt=""></div>`).join('')}</div>`).join('')}</div>`;
+</script></body>

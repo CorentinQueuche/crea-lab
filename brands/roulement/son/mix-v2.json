@@ -1,0 +1,54 @@
+{
+ "duree": 23,
+ "musique": {"son": "musique", "debut": 157.2, "decalage": 0, "gain": 0.62, "fondu_entree": 1.2, "fondu_sortie": 1.6, "creuse_db": 3.5 },
+ "reverb": {
+  "duree": 1.3,
+  "retour": 0.5
+ },
+ "maitre": {
+  "lufs": -15,
+  "crete_db": -1.5
+ },
+ "poses": [
+  {"son": "souffle-entree", "t": 0.1, "gain": 0.15, "entree": 0.05 },
+  {"geste": "plongee", "t": 1.85, "duree": 1.4, "de": 450, "a": 1900, "forme": "accel", "note": 0, "gain": 0.11 },
+  {"geste": "courbe", "t": 2.0, "duree": 3.6, "de": 480, "a": 2300, "forme": "lineaire", "pan": -0.45, "pan_a": 0.45, "note": 0.32, "gain": 0.13 },
+  {"son": "alerte", "t": 3.76, "gain": 0.08, "pan": -0.05, "ton": 0 },
+  {"son": "alerte", "t": 4.26, "gain": 0.08, "pan": 0.07, "ton": 1 },
+  {"son": "alerte", "t": 4.64, "gain": 0.08, "pan": 0.19, "ton": 2 },
+  {"son": "alerte", "t": 4.88, "gain": 0.08, "pan": 0.31, "ton": 2 },
+  {"son": "souffle-coupe", "t": 6.14, "gain": 0.16 },
+  {"son": "clic", "t": 7.4, "gain": 0.13, "pan": -0.2 },
+  {"son": "bulle", "t": 7.48, "gain": 0.06, "pan": -0.2 },
+  {"son": "bulle", "t": 7.65, "gain": 0.06, "pan": -0.2, "ton": 2 },
+  {"son": "bulle", "t": 7.82, "gain": 0.06, "pan": -0.2, "ton": 3 },
+  {"son": "souffle-coupe", "t": 8.94, "gain": 0.16, "ton": -2 },
+  {"son": "clic", "t": 9.9, "gain": 0.13, "pan": -0.3, "ton": -2 },
+  {"geste": "glisse", "t": 10.0, "duree": 1.6, "de": 650, "a": 1500, "pan": -0.35, "pan_a": 0.25, "note": 0.2, "gain": 0.12 },
+  {"son": "impact", "t": 11.56, "gain": 0.32, "creuse_db": 5 },
+  {"son": "pose", "t": 11.6, "gain": 0.26, "pan": 0.2 },
+  {"son": "carillon", "t": 11.68, "gain": 0.17 },
+  {"son": "souffle-coupe", "t": 12.84, "gain": 0.16, "ton": 2 },
+  {"son": "compteur", "t": 13.3, "gain": 0.08, "pan": 0.3, "entree": 0.02 },
+  {"son": "compteur", "t": 14.05, "gain": 0.06, "pan": 0.3, "ton": 2, "entree": 0.02 },
+  {"son": "clic", "t": 17.4, "gain": 0.14, "pan": 0.4 },
+  {"son": "carillon", "t": 17.56, "gain": 0.12, "pan": 0.3, "ton": 2, "fin": 1.2 },
+  {"son": "souffle-recul", "t": 17.8, "gain": 0.22, "entree": 0.05, "creuse_db": 2 },
+  {"son": "envoi", "t": 18.45, "gain": 0.12, "pan": -0.2, "entree": 0.02 },
+  {"son": "souffle-recul", "t": 20.22, "gain": 0.16, "ton": -2, "entree": 0.05 }
+ ],
+ "traitements": {
+  "clic": {"hp": 250, "lp": 6000, "doux": 3, "rev": 0.1 },
+  "pose": {"hp": 120, "lp": 7000, "doux": 2, "rev": 0.15 },
+  "bulle": {"hp": 180, "lp": 8000, "rev": 0.28 },
+  "alerte": {"hp": 200, "lp": 7000, "rev": 0.22 },
+  "souffle-entree": {"hp": 120, "lp": 8000, "rev": 0.3 },
+  "souffle-coupe": {"hp": 150, "lp": 8000, "rev": 0.25 },
+  "souffle-recul": {"hp": 60, "lp": 8000, "rev": 0.3 },
+  "impact": {"hp": 30, "lp": 9000, "rev": 0.35 },
+  "carillon": {"hp": 300, "lp": 10000, "rev": 0.45 },
+  "compteur": {"hp": 400, "lp": 7000, "doux": 2, "rev": 0.15 },
+  "envoi": {"hp": 200, "lp": 9000, "rev": 0.3 },
+  "geste": {"hp": 180, "lp": 8500, "rev": 0.32 }
+ }
+}

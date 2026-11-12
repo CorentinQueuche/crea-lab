@@ -1,0 +1,99 @@
+<!doctype html><meta charset="utf-8"><title>Custom — 35 · Textile à plat</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates-c.css"><script src="../brand/marque.js"></script>
+<style>
+  /* Idée : la fiche technique d'une vraie collection d'équipe. Pièces à plat, toutes habillées avec le système, chacune avec sa technique. */
+  .p35-c{position:absolute;width:290px}
+  .p35-v{position:relative;width:290px;height:320px;display:grid;place-items:center}
+  .p35-v svg{width:270px;height:auto;overflow:visible;filter:drop-shadow(0 16px 14px rgba(3,1,14,.22)) drop-shadow(0 2px 2px rgba(3,1,14,.18))}
+  .p35-n{display:flex;justify-content:space-between;align-items:baseline;border-top:1.5px solid var(--encre);padding-top:10px;margin-top:6px}
+  .p35-n b{font-weight:600;font-size:15px;letter-spacing:-.01em}
+  .p35-f{margin-top:6px}
+  .p35-f .pc-fiche{padding:5px 0}
+</style>
+<body><div class="plate craie" id="p" style="height:1270px"></div>
+<script>
+const A = Marque, C = A.COULEURS, NB = A.NB;
+const nest = (svg, x, y, w, h) => svg.replace('<svg ', `<svg x="${x}" y="${y}" width="${w}" height="${h}" `);
+let uid = 0;
+// une pièce : sa silhouette, sa couleur, et ce qui est imprimé dessus (découpé par la silhouette)
+const piece = (d, base, deco = '', dessus = '', vb = '0 0 300 340') => { const id = 'cl' + (++uid);
+  return `<svg viewBox="${vb}"><defs><clipPath id="${id}"><path d="${d}"/></clipPath>${PAT}</defs>
+    <path d="${d}" fill="${base}"/><g clip-path="url(#${id})">${deco}</g>${dessus}
+    <path d="${d}" fill="none" stroke="${C.encre}" stroke-opacity=".28" stroke-width="1.1" stroke-linejoin="round"/></svg>`; };
+const PAT = `<pattern id="hach" width="16" height="20" patternUnits="userSpaceOnUse" patternTransform="skewX(${-A.CONSTRUCTION.angle})"><rect width="8" height="20" fill="${C.fluo}"/></pattern>
+  <pattern id="hachE" width="12" height="20" patternUnits="userSpaceOnUse" patternTransform="skewX(${-A.CONSTRUCTION.angle})"><rect width="6" height="20" fill="${C.encre}"/></pattern>
+  <linearGradient id="gf" x1="0" y1="0" x2="0" y2="340" gradientUnits="userSpaceOnUse"><stop offset=".36" stop-color="#000"/><stop offset=".66" stop-color="#fff"/></linearGradient>
+  <mask id="mfade" maskUnits="userSpaceOnUse" x="0" y="0" width="300" height="340"><rect width="300" height="340" fill="url(#gf)"/></mask>
+  <pattern id="mesh" width="6" height="6" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="1.15" fill="${C.encre}" fill-opacity=".28"/></pattern>`;
+const piq = (c, seed) => nest(A.piquage({ w: 600, h: 680, px: 15, py: 30, c, seed, angle: 74, courbe: .6 }), 0, 0, 300, 340);
+const num = (txt, x, y, cell, c) => { const r = A.pixRows(txt); return `<path transform="translate(${x} ${y})" fill="${c}" d="${A.grillePath(r, { cell })}"/>`; };
+const numW = (txt, cell) => A.grilleBox(A.pixRows(txt), cell)[0];
+const logoF = (c, x, y, w, ep) => nest(A.logo(c, '', { contour: ep }), x, y, w, w * 110 / 714);
+const logo = (c, x, y, w, sym) => nest(A.logo(c, '', { sym }), x, y, w, w * 110 / 714);
+const mot = (c, x, y, w) => nest(A.wordmark(c), x, y, w, w * 82 / 487);
+const cran = (c, x, y, w, o) => nest(A.symbol(c, '', o), x, y, w, w * 110 / 191.05);
+const point = (d) => `<path d="${d}" fill="none" stroke="${C.encre}" stroke-opacity=".35" stroke-width="1" stroke-dasharray="3 3"/>`;
+
+// ---------- silhouettes ----------
+const MAILLOT = 'M112,22 Q150,54 188,22 L238,34 L292,98 L262,140 L236,120 L236,318 Q150,330 64,318 L64,120 L38,140 L8,98 L62,34 Z';
+const MAILLOT_DOS = 'M112,22 Q150,36 188,22 L238,34 L292,98 L262,140 L236,120 L236,318 Q150,330 64,318 L64,120 L38,140 L8,98 L62,34 Z';
+const VELO = 'M118,22 Q150,32 182,22 L232,36 L286,94 L260,128 L232,112 Q224,200 236,306 Q150,332 64,306 Q76,200 68,112 L40,128 L14,94 L68,36 Z';
+const VESTE = 'M112,14 L188,14 L192,30 L240,40 L282,94 L298,300 L262,306 L246,132 L242,320 L58,320 L54,132 L38,306 L2,300 L18,94 L60,40 L108,30 Z';
+const SHORT = 'M58,60 L242,60 L260,272 L162,286 L150,148 L138,286 L40,272 Z';
+const CRAN_CASQ = 'M52,196 C52,74 248,74 248,196 Z';
+const VISIERE = 'M30,194 Q150,170 270,194 Q284,230 246,240 Q150,220 54,240 Q16,230 30,194 Z';
+const CHASUBLE = 'M96,22 L130,22 Q150,66 170,22 L204,22 L250,68 L240,150 L254,318 L46,318 L60,150 L50,68 Z';
+
+const pieces = [
+  { nom: 'Maillot · face', svg: piece(MAILLOT, C.noir, `<g mask="url(#mfade)">${piq(C.fluo, 6)}</g>`,
+      `<path d="M112,22 Q150,54 188,22" fill="none" stroke="${C.fluo}" stroke-width="7"/><path d="M292,98 L262,140 M8,98 L38,140" stroke="${C.fluo}" stroke-width="7"/>` + logoF(C.fluo, 100, 88, 100, 5)),
+    fiche: [['Corps', 'SUB · piquage'], ['Logo', 'FLO · filaire'], ['Col', 'Bord côte fluo']] },
+  { nom: 'Maillot · dos', svg: piece(MAILLOT_DOS, C.noir, `<rect x="0" y="292" width="300" height="40" fill="url(#hach)"/>`,
+      `<path d="M112,22 Q150,36 188,22" fill="none" stroke="${C.fluo}" stroke-width="6"/><path d="M292,98 L262,140 M8,98 L38,140" stroke="${C.fluo}" stroke-width="7"/>` + mot('#fff', 112, 50, 76) + num('07', 150 - numW('07', 11) / 2, 112, 11, C.fluo)),
+    fiche: [['Numéro', 'FLO · chiffres en blocs'], ['Nom', 'FLO · logotype'], ['Bas', 'SUB · hachures']] },
+  { nom: 'Maillot de vélo · dos', svg: piece(VELO, C.fluo, nest(A.motif({ w: 300, h: 190, c: 'encre', l: 26, seed: 6, trou: .28 }), 0, 186, 300, 190) +
+      `<rect x="60" y="250" width="180" height="46" fill="${C.encre}"/>`,
+      point('M80,250 V296 M126,250 V296 M174,250 V296 M220,250 V296') + `<path d="M118,22 Q150,32 182,22" fill="none" stroke="${C.encre}" stroke-width="6"/>` + logo(C.encre, 96, 66, 108) + `<path d="M286,94 L260,128 M14,94 L40,128" stroke="${C.encre}" stroke-width="6"/>`),
+    fiche: [['Corps', 'SUB · bord à bord'], ['Motif', 'Blocs en quinconce'], ['Poches', 'Trois, bande encre']] },
+  { nom: 'Veste · face', svg: piece(VESTE, C.noir,
+      `<path d="M240,40 L282,94 L286,140 L250,128 L232,70 Z" fill="url(#hach)"/><path d="M60,40 L18,94 L14,140 L50,128 L68,70 Z" fill="url(#hach)"/>`,
+      `<path d="M112,14 L188,14 L192,40 L150,56 L108,40 Z" fill="${C.graphite}"/><path d="M150,56 V320" stroke="#fff" stroke-opacity=".6" stroke-width="1.6"/>` +
+      point('M60,300 H240') + logo(C.fluo, 172, 92, 54) + `<rect x="254" y="200" width="36" height="26" rx="4" transform="rotate(4 272 213)" fill="${C.graphite}" stroke="${C.fluo}" stroke-width="1.2"/>` + cran(C.fluo, 262, 207, 20)),
+    fiche: [['Cœur', 'BRO · logo fluo'], ['Épaules', 'SER · bandes à 13,3°'], ['Manche', 'BRO · écusson']] },
+  { nom: 'Short', svg: piece(SHORT, C.noir,
+      nest(A.coulure({ w: 300, h: 340, c: 'fluo', seed: 9, cx: .06, cy: .62, rx: .15, ry: .36, pas: 3, frange: .07 }), 0, 0, 300, 340) +
+      nest(A.coulure({ w: 300, h: 340, c: 'fluo', seed: 12, cx: .94, cy: .62, rx: .15, ry: .36, pas: 3, frange: .07 }), 0, 0, 300, 340) + `<rect x="0" y="60" width="300" height="24" fill="url(#hach)"/>`,
+      num('07', 166, 222, 3, '#fff') + point('M48,262 L136,274 M164,274 L252,262')),
+    fiche: [['Côtés', 'SUB · coulure fluo'], ['Ceinture', 'SUB · hachures'], ['Jambe', 'FLO · numéro']] },
+  { nom: 'Casquette', svg: `<svg viewBox="0 0 300 300"><defs><clipPath id="cq"><path d="${CRAN_CASQ}"/></clipPath></defs>
+      <path d="${CRAN_CASQ}" fill="${C.noir}"/>
+      <g clip-path="url(#cq)"><path d="M150,106 V196 M150,106 C114,116 98,150 94,196 M150,106 C186,116 202,150 206,196" fill="none" stroke="#000" stroke-width="1.6" stroke-opacity=".7"/></g>
+      ${cran(C.fluo, 108, 120, 84)}${point('M70,186 Q150,174 230,186')}
+      <circle cx="150" cy="106" r="6" fill="${C.graphite}"/>
+      <path d="${VISIERE}" fill="${C.noir}"/><path d="M42,198 Q150,178 258,198" fill="none" stroke="${C.fluo}" stroke-width="3"/>
+      <path d="${CRAN_CASQ}" fill="none" stroke="${C.encre}" stroke-opacity=".28" stroke-width="1.1"/><path d="${VISIERE}" fill="none" stroke="${C.encre}" stroke-opacity=".28" stroke-width="1.1"/></svg>`,
+    fiche: [['Face', 'BRO · Cran en relief'], ['Visière', 'Liseré fluo'], ['Calotte', 'Six panneaux']] },
+  { nom: 'Chasuble', svg: piece(CHASUBLE, C.fluo, `<rect width="300" height="340" fill="url(#mesh)"/><rect x="0" y="286" width="300" height="34" fill="url(#hachE)"/>`,
+      `<path d="M130,22 Q150,66 170,22" fill="none" stroke="${C.encre}" stroke-width="5"/>` + num('12', 150 - numW('12', 12) / 2, 130, 12, C.encre) + mot(C.encre, 118, 90, 64)),
+    fiche: [['Numéro', 'SER · chiffres en blocs'], ['Maille', 'Filet ajouré'], ['Bas', 'SER · hachures']] } ];
+const X = [84, 398, 712, 1026], Y = [262, 744];
+const cell = (p, i) => { const x = X[i % 4], y = Y[Math.floor(i / 4)];
+  return `<div class="p35-c" style="left:${x}px;top:${y}px"><div class="p35-v">${p.svg}</div>
+    <div class="p35-n"><b>${p.nom}</b><span class="pc-lbl" style="opacity:.55">0${i + 1}</span></div>
+    <div class="p35-f">${p.fiche.map(([k, v]) => `<div class="pc-fiche"><span>${k}</span><i></i><b>${v}</b></div>`).join('')}</div></div>`; };
+document.getElementById('p').innerHTML =
+  A.entete(undefined, C.encre) +
+  `<div class="pc-abs pc-z" style="left:84px;top:100px"><div class="pc-lbl" style="margin-bottom:16px;opacity:.6">35 · Textile à plat</div><div class="t-titre h-84">On fait plus ${A.surl('qu’un maillot', 'noir')}</div></div>` +
+  `<div class="pc-abs pc-z t-txt" style="left:916px;top:132px;width:400px;opacity:.8">Une collection d’équipe complète, du maillot à la casquette. Chaque pièce reprend un élément du système : piquage, blocs, coulure, hachures, chiffres. Et chaque marquage a sa technique.</div>` +
+  pieces.map(cell).join('') +
+  // la huitième case : la gamme de la collection
+  `<div class="p35-c" style="left:${X[3]}px;top:${Y[1]}px;height:440px;border-radius:14px;background:${C.noir};color:#fff;overflow:hidden">
+     <div class="pc-abs" style="inset:0;opacity:.9">${A.piquage({ w: 580, h: 880, px: 15, py: 30, seed: 2, attrs: 'style="width:100%;height:100%"' })}</div>
+     <div class="pc-abs" style="left:22px;top:22px;right:22px;background:${C.noir};border-radius:10px;padding:14px 14px 16px"><div class="pc-lbl" style="opacity:.7">Collection d’équipe</div>
+       <div class="t-titre" style="font-size:44px;margin-top:10px">Domicile et<br>${A.surl('entraînement', 'droit')}</div></div>
+     <div class="pc-abs" style="left:22px;right:22px;bottom:22px;background:${C.noir};border-radius:10px;padding:14px 14px 12px">
+       <div style="display:flex;gap:6px;margin-bottom:12px">${[C.noir, C.fluo, '#fff', C.encre].map((c) => `<i style="flex:1;height:26px;border-radius:6px;background:${c};box-shadow:inset 0 0 0 1px rgba(255,255,255,.2)"></i>`).join('')}</div>
+       <div class="pc-lbl">Noir · Fluo · Blanc · Encre</div>
+       <div class="pc-lbl" style="margin-top:6px;opacity:.6">${A.code('CST', 'SUB', 'FLO', 'BRO', 'SER')}</div></div></div>` +
+  A.foot('35 · Textile à plat', 'Custom · direction artistique', C.encre);
+</script></body>

@@ -1,0 +1,26 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates-b.css"><script src="../brand/marque.js"></script>
+<style>
+  .s24-menu{display:flex;flex-wrap:wrap;gap:8px;margin-top:48px;max-width:1000px}
+  .s24-menu .pilule{height:30px;font-size:13px;padding:0 14px}
+  .s24-tel{position:absolute;display:grid;gap:14px}
+</style>
+<body><div class="plate" id="p" style="background:var(--coffre)"></div>
+<script>
+const A = Marque, NB = ' ', SUR = '#F3F6F4', K = 0.7;
+const intitules = ['Tableau de bord', 'Comparatif', 'Planning', 'Trésorerie', 'Mon entreprise', 'Compte pro', 'Factures', 'Cash-Out', 'Payout', 'Drive', 'Gestion de la paie', 'Obligations déclaratives', 'Ressources'];
+const tels = [
+  [A.screens.solde(), 'Compte pro', 0],
+  [A.screens.cra(), 'Planning', 70],
+  [A.screens.simulateur(), 'Comparatif', 20],
+  [A.screens.cashouts(), 'Cash-Out', 90],
+];
+document.getElementById('p').innerHTML = `
+  <div class="grain g2" style="position:relative;height:300px;overflow:hidden">${A.entete(A.ENTETE, SUR)}</div>
+  ${A.section({ titre: 'La web app', num: '03', actif: 2, sombre: true, style: 'margin-top:-44px;padding-bottom:0;z-index:2',
+    phrase: `Un cockpit financier qui réunit <b>comptes, frais pro, CRA, TVA et déclarations.</b> Il calcule, et il déclenche <b>à votre place.</b>` })}
+  <div style="position:relative;background:var(--ardoise);padding:0 56px;height:1040px;display:flow-root">
+    <div class="pb-lbl doux" style="margin-top:44px">Les intitulés du produit, inchangés</div>
+    <div class="s24-menu">${intitules.map((t, i) => A.pilule(t, i === 0, i === 0 ? '' : 'filet')).join('')}</div>
+    ${tels.map(([s, t, dy], i) => `<div class="s24-tel" style="left:${84 + i * (290 + 24)}px;top:${250 + dy}px">${A.phone(s, K)}</div>`).join('')}
+  </div>`;
+</script></body>

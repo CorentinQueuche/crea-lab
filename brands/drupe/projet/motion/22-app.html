@@ -1,0 +1,10 @@
+<!doctype html><meta charset="utf-8"><title>Drupe — 22 l'application</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="motion.css">
+<script src="../brand/marque.js"></script><script src="lib.js"></script><script src="scenes.js"></script>
+<body style="background:var(--fleur)"><div id="s"></div>
+<script>
+// 1920 × 1080, 9 s : node tools/record.mjs motion/22-app.html out/motion/22-app.mp4 --w 1920 --h 1080 --fps 30 --dur 9
+// Composer sa boîte : la carte défile, deux pastilles se posent dans la boîte, le bouton passe à « C'est noté pour mardi ».
+window.seek = Scenes.app(document.getElementById('s'), { w: 1920, h: 1080 });
+seek(0);
+</script></body>

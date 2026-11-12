@@ -1,0 +1,72 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates.css"><script src="../brand/marque.js"></script>
+<style>
+  /* 09 · Logo et variantes. Préfixe q9- */
+  .q9-w{position:absolute;left:40px;right:40px;top:84px;display:grid;gap:16px}
+  .q9-r1{display:grid;grid-template-columns:2fr 1fr;gap:16px;height:400px}
+  .q9-r2{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;height:260px}
+  .q9-r3{display:grid;grid-template-columns:1.25fr 1fr;gap:16px;height:380px}
+  .q9-r4{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;height:230px}
+  .q9-c{position:absolute;inset:0;display:grid;place-items:center}
+  .q9-cap{position:absolute;left:24px;right:24px;bottom:20px;z-index:60;font-size:14px;line-height:1.3;font-weight:500;letter-spacing:-.01em}
+  .q9-cap span{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;font-weight:400;opacity:.55;margin-top:4px}
+  .q9-min{position:absolute;left:30px;right:30px;bottom:96px;display:flex;align-items:flex-end;gap:44px}
+  .q9-min>div{display:grid;gap:14px;justify-items:start}
+  .q9-min .pl-cote{opacity:.7;line-height:1.5}
+  .q9-sec{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;opacity:.6;padding:14px 0 0}
+</style>
+<body><div class="plate" id="p" style="height:1520px;background:var(--scene)"></div>
+<script>
+const A = Marque, C = A.COULEURS, N = A.ECHELLE, NB = '&nbsp;', SUR = '#F3F6F4', NOIR = '#04140A';
+const T = (html, o) => A.tuile(html, o);
+const W = A.wordPath(), S = A.symbolPath();
+/* Zone de protection : deux graisses (52) autour du logotype, une graisse (26) autour du symbole */
+const zone = `<svg viewBox="-80 -120 1020 340" style="position:absolute;left:30px;right:30px;top:70px;width:calc(100% - 60px);overflow:visible">
+  <defs><pattern id="hz" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="1.4" height="9" fill="${C.net}" opacity=".5"/></pattern></defs>
+  <rect x="-52" y="-92" width="752" height="284" fill="url(#hz)"/><rect x="0" y="-40" width="648" height="180" fill="${C.ardoise}"/>
+  <rect x="-52" y="-92" width="752" height="284" fill="none" stroke="${C.net}" stroke-width="1.6" stroke-dasharray="6 5"/>
+  <path d="${W}" fill="${SUR}" fill-rule="evenodd"/>
+  <g fill="none" stroke="${SUR}" stroke-width="1.2" opacity=".7"><path d="M-52,-104V-112M0,-104V-112M-52,-108H0"/></g>
+  <text x="-26" y="-118" text-anchor="middle" font-family="Chivo Mono" font-size="17" fill="${SUR}" opacity=".8">52</text>
+  <g transform="translate(790,-40)"><rect x="-26" y="-26" width="152" height="192" fill="url(#hz)"/><rect x="0" y="0" width="100" height="140" fill="${C.ardoise}"/>
+    <rect x="-26" y="-26" width="152" height="192" fill="none" stroke="${C.net}" stroke-width="1.6" stroke-dasharray="6 5"/><path d="${S}" fill="${SUR}" fill-rule="evenodd"/>
+    <text x="50" y="-38" text-anchor="middle" font-family="Chivo Mono" font-size="17" fill="${SUR}" opacity=".8">26</text></g>
+</svg>`;
+const non = (html, t, s, o = {}) => T(html + `<div class="q9-cap">${t}<span>${s}</span></div>`, { ton: o.ton || '', cls: 'pl-non', style: o.style || '' });
+const centre = (html, extra = '', dy = -46) => `<div class="q9-c" style="${extra}"><div style="margin-top:${dy}px">${html}</div></div>`;
+/* Règle graduée en pixels, à l'échelle 1 */
+let regle = ''; for (let x = 0; x <= 520; x += 10) regle += `<i style="position:absolute;left:${x}px;bottom:0;width:1px;height:${x % 50 ? 6 : 12}px;background:currentColor;opacity:${x % 50 ? .35 : .7}"></i>` + (x % 100 ? '' : `<span class="pl-cote" style="position:absolute;left:${x + 4}px;bottom:10px;font-size:9.5px;opacity:.55">${x}</span>`);
+document.getElementById('p').innerHTML = `
+  ${A.entete(A.ENTETE, SUR)}
+  <div class="q9-w">
+    <div class="q9-r1">
+      ${T(`<div class="g6 grain" style="position:absolute;inset:0"></div>${centre(A.lockup(SUR, 'style="width:720px;display:block"'), 'z-index:60', 10)}`, { lbl: 'Version complète · logotype et descripteur' })}
+      ${T(centre(A.lockupV(SUR, 'style="width:300px;display:block"'), '', 10), { lbl: 'Version empilée · supports étroits' })}
+    </div>
+    <div class="q9-r2">
+      ${T(centre(A.wordmark(C.net, 'style="width:250px;display:block"'), '', 24), { ton: 'noire', lbl: 'Logotype · Net sur Coffre', style: 'box-shadow:inset 0 0 0 1px rgba(255,255,255,.1)' })}
+      ${T(centre(A.symbol(C.coffre, 'style="height:124px;display:block"'), '', 24), { ton: 'vive', lbl: 'Symbole · Coffre sur Net' })}
+      ${T(centre(A.wordmark(C.coffre, 'style="width:250px;display:block"'), '', 24), { ton: 'claire', lbl: 'Logotype · Coffre sur Relevé' })}
+      ${T(centre(A.symbol(C.releve, 'style="height:124px;display:block"'), '', 24), { lbl: 'Symbole · Relevé sur Ardoise' })}
+    </div>
+    <div class="q9-r3">
+      ${T(zone + `<div class="q9-cap" style="max-width:520px">Zone de protection${NB}: deux graisses autour du logotype, une autour du symbole.<span>52 dans le repère, soit 52${NB}% de la hauteur d'x · symbole${NB}: 26</span></div>`, { lbl: 'Zone de protection' })}
+      ${T(`<div class="q9-min">
+          <div>${A.lockup(SUR, 'style="width:180px;display:block"')}<span class="pl-cote">180 px<br>48 mm</span></div>
+          <div>${A.wordmark(SUR, 'style="width:64px;display:block"')}<span class="pl-cote">64 px<br>18 mm</span></div>
+          <div>${A.symbol(C.net, 'style="height:16px;display:block"')}<span class="pl-cote">16 px<br>5 mm</span></div>
+          <div>${A.icone(16, 'net')}<span class="pl-cote">16 px<br>icône</span></div></div>
+        <div style="position:absolute;left:30px;width:520px;bottom:30px;height:40px;color:#F3F6F4">${regle}</div><div class="q9-cap" style="bottom:auto;top:62px;max-width:420px">En dessous de ces tailles, l'anneau se bouche et l'ouverture de 15${NB}% ne se lit plus.</div>`, { ton: 'noire', lbl: 'Tailles minimales · à l\'échelle 1', style: 'box-shadow:inset 0 0 0 1px rgba(255,255,255,.1)' })}
+    </div>
+  </div>
+  <div style="position:absolute;left:40px;right:40px;top:1176px">
+    <div class="q9-sec" style="margin-bottom:14px">À ne pas faire</div>
+    <div class="q9-r4">
+      ${non(centre(A.wordmark(SUR, 'style="width:124px;display:block;transform:scaleX(1.35)"')), 'Déformer', 'Aucun étirement')}
+      ${non(centre(A.wordmark(SUR, 'style="width:150px;display:block;transform:rotate(-14deg)"')), 'Pivoter', 'Toujours à l\'horizontale')}
+      ${non(centre(`<div style="display:flex;align-items:center;gap:10px">${A.symbol(C.net, 'style="height:40px"')}${A.wordmark(SUR, 'style="width:130px"')}</div>`), 'Doubler le P', 'Un seul P, celui du mot')}
+      ${non(centre(`<svg viewBox="0 -40 648 180" style="width:150px;display:block"><defs><linearGradient id="gd" x1="0" x2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".5" stop-color="${C.net}"/><stop offset="1" stop-color="${N[700]}"/></linearGradient></defs><path fill="url(#gd)" fill-rule="evenodd" d="${W}"/></svg>`), 'Dégrader', 'Le logo est un aplat')}
+      ${non(centre(A.wordmark(C.net, 'style="width:150px;display:block"')), 'Net sur clair', 'Contraste de 1,2', { ton: 'claire' })}
+      ${non(`<div class="grain" style="position:absolute;inset:0">${A.bandes({ n: 18, seed: 4, profil: 'plat', sens: 'bas', k: .78 })}</div>` + centre(A.wordmark(SUR, 'style="width:150px;display:block"'), 'z-index:60'), 'Sans marge', 'Jamais sur le motif plein', { ton: 'noire' })}
+    </div>
+  </div>`;
+</script></body>

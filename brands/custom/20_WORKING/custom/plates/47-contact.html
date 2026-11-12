@@ -1,0 +1,49 @@
+<!doctype html><meta charset="utf-8"><title>Custom — 47, planche-contact</title>
+<link rel="stylesheet" href="../brand/marque.css"><script src="../brand/marque.js"></script>
+<style>
+  /* Planche 47 · toutes les pièces, numérotées, en sept colonnes, dans l'ordre de presentation.json.
+     node tools/shot.mjs plates/47-contact.html out/plates/47-contact.png        (?d3=blender pour un aperçu avant finition) */
+  .ct-g{column-count:7;column-gap:10px}
+  .ct-c{break-inside:avoid;margin-bottom:14px}
+  .ct-c .im{position:relative;border-radius:6px;overflow:hidden;background:var(--graphite);box-shadow:inset 0 0 0 1px rgba(255,255,255,.07)}
+  .ct-c img{display:block;width:100%;height:auto}
+  .ct-c .lg{display:flex;gap:8px;margin-top:6px;font-family:var(--mono);font-size:8.5px;letter-spacing:.06em;text-transform:uppercase;line-height:1.35}
+  .ct-c .lg b{font-weight:500;color:var(--fluo)}
+  .ct-c .lg span{opacity:.6}
+  .ct-v{position:absolute;right:6px;top:6px;font-family:var(--mono);font-size:7.5px;letter-spacing:.06em;text-transform:uppercase;padding:2px 5px;border-radius:4px;background:var(--fluo);color:var(--encre)}
+</style>
+<body><div class="plate" id="p" style="padding-bottom:84px"></div>
+<script>
+const A = Marque;
+const D3 = new URLSearchParams(location.search).get('d3') || 'final';
+const P = (n) => `../out/plates/${n}.png`, T = (n) => `../out/${D3}/${n}.png`, V = (n) => `../out/motion/${n}.png`;
+/* [numéro, image, titre, genre] — même ordre que presentation.json */
+const L = [
+  ['01', P('01-couverture'), 'Couverture'], ['02', T('02-ecusson'), 'L’écusson', '3D'], ['03', P('03-mosaique'), 'Mosaïque'], ['04', P('04-existant'), 'L’existant'],
+  ['05', P('05-section-marque'), 'Section · la marque'], ['06', P('06-bento'), 'Bento'], ['07', P('07-construction'), 'Construction du Cran'], ['08', V('08-logo'), 'Révélation du logo', 'Vidéo'],
+  ['09', P('09-logo-variantes'), 'Logo et variantes'], ['10', P('10-couleurs'), 'Couleurs'], ['11', P('11-typographie'), 'Typographie'], ['12', V('12-surligneur'), 'Le surligneur', 'Vidéo'],
+  ['13', P('13-bloc'), 'Le bloc'], ['14', V('14-sprites'), 'Les sprites', 'Vidéo'], ['15', P('15-matieres-encre'), 'Encre, fil, trame'], ['16', P('16-photographie'), 'Photographie'],
+  ['17', P('17-reperes'), 'Repères d’impression'], ['18', P('18-section-atelier'), 'Section · l’atelier'], ['19', P('19-cinq-techniques'), 'Cinq techniques'], ['20', V('20-techniques'), 'En fabrication', 'Vidéo'],
+  ['21', T('21-serigraphie'), 'Le cadre de sérigraphie', '3D'], ['22', P('22-matieres'), 'Matières'], ['23', P('23-quatre-univers'), 'Quatre univers'], ['24', P('24-section-site'), 'Section · le site'],
+  ['25', P('25-accueil'), 'L’accueil'], ['26', T('26-portable'), 'Le site, tenu par les sangles', '3D · vidéo'], ['27', P('27-pages-univers'), 'Pages d’univers'], ['28', V('28-site-ecran'), 'Le site défile', 'Vidéo'],
+  ['29', P('29-atelier'), 'La page Atelier'], ['30', P('30-devis'), 'Le devis'], ['31', P('31-composants'), 'Composants'], ['32', T('32-telephone'), 'Le téléphone', '3D'],
+  ['33', V('33-mobile'), 'Le site mobile', 'Vidéo'], ['34', P('34-section-supports'), 'Section · les supports'], ['35', P('35-textile-a-plat'), 'Textile à plat'], ['36', P('36-sweat-porte'), 'Le sweat porté'],
+  ['37', T('37-etiquettes'), 'Étiquettes et emballage', '3D'], ['38', P('38-affiches'), 'Affiches'], ['39', T('39-papeterie'), 'Papeterie', '3D'], ['40', T('40-goodies'), 'Goodies', '3D'],
+  ['41', T('41-signaletique'), 'Signalétique', '3D'], ['42', P('42-vehicule'), 'Le fourgon'], ['43', P('43-reseaux'), 'Réseaux sociaux'], ['44', P('44-icone'), 'Icône et favicon'],
+  ['45', P('45-guide'), 'Guide de marque'], ['46', V('46-derive'), 'Mosaïque en dérive', 'Vidéo'], ['48', P('48-cloture'), 'Clôture'],
+];
+const nv = L.filter((l) => /vidéo/i.test(l[3] || '')).length, n3 = L.filter((l) => /3D/.test(l[3] || '')).length;
+document.getElementById('p').innerHTML = `
+  ${A.entete()}
+  <div class="net" style="padding:150px 84px 0;display:flex;justify-content:space-between;align-items:flex-end">
+    <div><div class="t-mono t-doux">47 · Planche-contact</div>
+      <div class="t-titre h-120" style="margin-top:18px">Tout le système,<br>d’un seul ${A.surl('regard')}</div></div>
+    <div style="display:flex;gap:44px;text-align:right">
+      ${[[L.length + 1, 'pièces'], [nv, 'vidéos'], [n3, 'scènes 3D']].map(([n, t]) => `<div><div style="color:var(--fluo);display:flex;justify-content:flex-end">${A.pix(String(n), { attrs: 'style="height:46px"' })}</div><div class="t-mono t-doux" style="margin-top:10px">${t}</div></div>`).join('')}
+    </div>
+  </div>
+  <div class="ct-g net" style="margin:70px 28px 0">${L.map(([n, src, t, g]) =>
+    `<div class="ct-c"><div class="im"><img src="${src}" alt="">${g ? `<span class="ct-v">${g}</span>` : ''}</div><div class="lg"><b>${n}</b><span>${t}</span></div></div>`).join('')}</div>
+  <div style="position:absolute;left:28px;right:28px;bottom:26px;display:flex;justify-content:space-between;align-items:center">${A.barre({ style: 'width:260px' })}<span class="t-mono t-doux">CST · 47 · 2026</span></div>
+`;
+</script></body>

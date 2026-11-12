@@ -1,0 +1,37 @@
+<!doctype html><meta charset="utf-8"><title>Custom — 27 · Quatre pages d’univers</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="../brand/ecrans.css"><link rel="stylesheet" href="plates-b.css">
+<script src="../brand/marque.js"></script><script src="../brand/ecrans.js"></script>
+<style>
+  /* Idée : reprise de la planche d'origine (pages côte à côte sur une coulure violette). Les quatre pages, pleine hauteur,
+     sortent par le bas ; des filets pointillés traversent les quatre à chaque changement de section : même grille, quatre univers. */
+  .p27-tete{position:absolute;top:262px;display:flex;justify-content:space-between;align-items:flex-end;z-index:60}
+  .p27-reg{position:absolute;left:28px;z-index:62;display:flex;flex-direction:column;gap:2px}
+</style>
+<body><div class="plate" id="p" style="height:980px"></div>
+<script>
+const A = Marque, C = A.COULEURS, S = A.site, D = A.DONNEES, NB = A.NB;
+const k = 0.205, W = 1440 * k, G = 16, X0 = 126, TOP = 330, BAR = 44 * k;
+const CODE = { textile: 'TEX', print: 'PRT', goodies: 'GDS', signaletique: 'SIG' };
+const cles = ['textile', 'print', 'goodies', 'signaletique'];
+const x = (i) => X0 + i * (W + G);
+const secs = [['Héros', 0, 860], ['Familles', 860, 800], ['Usages', 1660, 720], ['Appel', 2380, 540], ['Pied', 2920, 520]];
+const yPage = (y) => TOP + BAR + y * k;
+
+document.getElementById('p').innerHTML =
+  A.entete() +
+  // la coulure violette du visuel d'origine, derrière les pages
+  `<div class="pb-abs" style="left:-80px;top:120px;width:1600px;height:520px">${A.coulure({ w: 1600, h: 520, c: C.violet, seed: 27, cx: 0.5, cy: 0.5, rx: 0.46, ry: 0.36, frange: 0.2, pas: 5, attrs: 'style="width:100%;height:100%"' })}</div>` +
+  `<div class="pb-abs pb-z pb-lbl doux" style="left:84px;top:104px">27${NB}·${NB}Pages d’univers${NB}·${NB}1440${NB}×${NB}${S.H.textile}</div>` +
+  `<div class="pb-abs pb-z t-titre" style="left:84px;top:144px;font-size:76px">Même grille, ${A.surl('quatre univers')}</div>` +
+  `<p class="pb-abs pb-z pb-txt" style="left:930px;top:148px;width:386px">Chaque univers a sa page, son accroche, ses photos et ses techniques conseillées. La structure ne bouge pas : on passe de l’un à l’autre sans réapprendre.</p>` +
+  // les quatre pages
+  cles.map((c, i) => `<div class="pb-abs pb-ombre" style="left:${x(i)}px;top:${TOP}px;z-index:10">${A.browser(S.univers(c), k, { h: S.H[c], url: 'custom.fr/' + c })}</div>
+    <div class="pb-abs pb-z" style="left:${x(i)}px;top:276px;width:${W}px;display:flex;justify-content:space-between;align-items:baseline">
+      <span class="t-titre" style="font-size:34px">${D.univers[i].nom}</span><span class="pb-lbl">0${i + 1}${NB}·${NB}${CODE[c]}</span></div>`).join('') +
+  // les filets de grille, communs aux quatre pages
+  secs.slice(1, 4).map(([n, y]) => `<div class="pb-pointi pb-z" style="left:28px;right:28px;top:${yPage(y)}px;color:${C.fluo};opacity:.9"></div>`).join('') +
+  secs.slice(0, 4).map(([n, y, h]) => `<div class="p27-reg pb-lbl" style="top:${yPage(y) + 8}px;color:${C.fluo}"><span>${n}</span><span style="opacity:.6">${h}</span></div>`).join('') +
+  `<div class="pb-abs" style="left:0;right:0;bottom:0;height:130px;z-index:40;background:linear-gradient(rgba(16,16,18,0),rgba(16,16,18,.95) 70%)"></div>` +
+  A.foot('27 · Quatre pages d’univers', 'Custom · direction artistique');
+{ const P = document.getElementById('p'); P.innerHTML = P.innerHTML.replace(/ ([:;?])(?=[ <])/g, NB + '$1'); }   // espace insécable avant : ; ?
+</script></body>

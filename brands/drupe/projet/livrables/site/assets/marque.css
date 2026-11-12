@@ -1,0 +1,145 @@
+/* DRUPE — socle de marque : couleurs, typographie, dégradés, motifs (semis, pastille), appareils, interface.
+   Toute planche ou vidéo charge ce fichier puis marque.js. Marque de jour : les fonds sont clairs, le texte est en Grain. */
+
+@font-face{font-family:"Bricolage Grotesque";src:url("fonts/bricolage-grotesque-latin-wght-normal.woff2") format("woff2");font-weight:200 800;font-display:block}
+@font-face{font-family:"IBM Plex Mono";src:url("fonts/ibm-plex-mono-latin-400-normal.woff2") format("woff2");font-weight:400;font-display:block}
+@font-face{font-family:"IBM Plex Mono";src:url("fonts/ibm-plex-mono-latin-500-normal.woff2") format("woff2");font-weight:500;font-display:block}
+
+:root{
+  --fleur:#FFFDF8;     /* Fleur — blanc de la fleur du caféier : papier, cartes, texte sur Cerise et sur Feuille */
+  --parche:#F4ECDD;    /* Parche — la peau claire du grain : fond de marque */
+  --pulpe:#F6C3C0;     /* Pulpe — la chair du fruit : lumière, aplats doux */
+  --cerise:#CF2145;    /* Cerise — le fruit mûr : couleur vive, rare */
+  --vert:#C7D5A9;      /* Café vert — le grain avant le feu : second aplat doux */
+  --feuille:#1E4A36;   /* Feuille — fond sombre de marque, texte d'accent */
+  --grain:#2A1A14;     /* Grain — le café torréfié : encre du texte */
+  --marc:#150F0C;      /* Marc — noir de scène (3D, vidéo) */
+  /* Rôles : à utiliser dans les feuilles de style communes plutôt que les noms de couleur */
+  --encre:var(--grain);
+  --vif:var(--cerise);
+  --clair:var(--parche);
+  --sombre:var(--feuille);
+  --moyen:var(--vert);        /* le ton moyen */
+  --scene:var(--parche);      /* le fond des scènes et du site (marque claire) */
+  --sur-scene:var(--grain);   /* le texte posé sur --scene */
+  --papier:var(--fleur);      /* le fond des pages de charte */
+  --doux:var(--parche);       /* le fond neutre teinté */
+  --font:"Bricolage Grotesque",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--fleur);color:var(--grain);font-family:var(--font);font-weight:400;-webkit-font-smoothing:antialiased;text-rendering:geometricPrecision}
+body{overflow:hidden}
+.mono{font-family:var(--mono);font-weight:400;letter-spacing:.01em}
+
+/* ---------- Dégradés de marque (9 préréglages) : toujours dans l'ordre du mûrissement,
+   Feuille → Café vert → Parche → Pulpe → Cerise. g1 à g6 sont clairs (texte Grain), g7 à g9 sont denses (texte Fleur). ---------- */
+.g1{background:radial-gradient(85% 115% at 0% 0%,#CF2145 0%,#F6C3C0 40%,rgba(246,195,192,0) 82%),radial-gradient(70% 90% at 100% 100%,#C7D5A9 0%,rgba(199,213,169,0) 72%),#F4ECDD}
+.g2{background:radial-gradient(80% 110% at 100% 100%,#F6C3C0 0%,rgba(246,195,192,.6) 40%,rgba(246,195,192,0) 85%),radial-gradient(60% 80% at 0% 0%,#C7D5A9 0%,rgba(199,213,169,0) 75%),#FFFDF8}
+.g3{background:radial-gradient(120% 90% at 50% 118%,#CF2145 0%,#F6C3C0 36%,rgba(246,195,192,0) 78%),#F4ECDD}
+.g4{background:radial-gradient(60% 120% at 0% 50%,#C7D5A9 0%,rgba(199,213,169,.7) 40%,rgba(199,213,169,0) 85%),radial-gradient(50% 70% at 100% 0%,#F6C3C0 0%,rgba(246,195,192,0) 80%),#F4ECDD}
+.g5{background:radial-gradient(70% 70% at 28% 18%,#FFFDF8 0%,rgba(255,253,248,0) 70%),radial-gradient(70% 80% at 96% 96%,#CF2145 0%,rgba(207,33,69,.5) 32%,rgba(207,33,69,0) 72%),#F6C3C0}
+.g6{background:radial-gradient(90% 60% at 50% -10%,#FFFDF8 0%,rgba(255,253,248,0) 80%),radial-gradient(60% 70% at 100% 100%,#F4ECDD 0%,rgba(244,236,221,0) 75%),#C7D5A9}
+.g7{background:radial-gradient(60% 80% at 50% 112%,#FFFDF8 0%,#F6C3C0 24%,rgba(246,195,192,0) 78%),#CF2145}
+.g8{background:linear-gradient(105deg,#1E4A36 0%,#C7D5A9 30%,#F4ECDD 52%,#F6C3C0 72%,#CF2145 100%)}
+.g9{background:radial-gradient(75% 95% at 85% 8%,#F4ECDD 0%,#C7D5A9 24%,rgba(199,213,169,0) 72%),#1E4A36}
+/* Aplat lumineux : fond de couverture */
+.g-vif{background:radial-gradient(110% 140% at 0% 100%,rgba(246,195,192,.5) 0%,rgba(246,195,192,0) 62%),#CF2145}
+
+/* Grain de papier : casse les bandes des dégradés, donne la matière d'un papier d'emballage */
+.grain{position:relative;isolation:isolate}
+.grain::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:50;opacity:.2;mix-blend-mode:multiply;border-radius:inherit;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='320'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .55  0 0 0 0 .45  0 0 0 0 .38  0 0 0 .55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");background-size:320px 320px}
+
+/* ---------- Le semis : drupes en quinconce (Marque.semis). Remplit son parent, qui doit être en position relative. ---------- */
+.semis{position:absolute;inset:0;width:100%;height:100%;display:block}
+
+/* ---------- La pastille : l'étiquette ronde de chaque café (Marque.pastille) ---------- */
+.pastille{display:block;flex:none}
+.pastille.pose{filter:drop-shadow(0 1px 1px rgba(42,26,20,.16)) drop-shadow(0 6px 10px rgba(42,26,20,.1))}
+
+/* Tampon dateur : la date de torréfaction, posée à la main */
+.tampon{display:inline-block;font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--cerise);border:1.5px solid var(--cerise);border-radius:5px;padding:4px 8px 3px;transform:rotate(-3deg)}
+
+/* ---------- Téléphone (dessiné à 414 × 868, mis à l'échelle par --k) ---------- */
+.phone{--k:1;zoom:var(--k);position:relative;width:414px;height:868px;border-radius:66px;padding:12px;flex:none;
+  background:linear-gradient(150deg,#f3efe8 0%,#bdb6ab 14%,#8f887d 38%,#d6d0c6 62%,#8a8378 82%,#e2ddd3 100%);
+  box-shadow:0 0 0 1px rgba(42,26,20,.28),0 50px 80px -30px rgba(42,26,20,.34),0 18px 30px -18px rgba(42,26,20,.26)}
+.phone::before{content:"";position:absolute;inset:3px;border-radius:63px;background:#0d0a09}
+.phone .screen{position:relative;width:390px;height:844px;border-radius:54px;overflow:hidden;background:var(--parche)}
+.phone .island{position:absolute;top:11px;left:50%;margin-left:-62px;width:124px;height:36px;border-radius:20px;background:#000;z-index:20}
+.phone .island::after{content:"";position:absolute;right:13px;top:12px;width:12px;height:12px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#2a3550,#07080d 70%)}
+.phone .btn{position:absolute;width:4px;background:#a8a195;border-radius:2px}
+.phone .btn.l1{left:-3px;top:170px;height:34px}.phone .btn.l2{left:-3px;top:230px;height:62px}.phone .btn.l3{left:-3px;top:306px;height:62px}.phone .btn.r1{right:-3px;top:260px;height:100px}
+
+/* ---------- Interface (390 × 844), claire ---------- */
+.ui{position:absolute;inset:0;color:var(--grain);font-family:var(--font);font-weight:400;overflow:hidden;background:var(--parche)}
+.ui .status{position:absolute;top:0;left:0;right:0;height:58px;display:flex;justify-content:space-between;align-items:center;padding:6px 34px 0 40px;font-weight:600;font-size:16px;z-index:10}
+.ui .status svg{height:12px;width:auto}
+.ui .home{position:absolute;bottom:9px;left:50%;margin-left:-70px;width:140px;height:5px;border-radius:3px;background:var(--grain);opacity:.9;z-index:10}
+.ui-bg-a{background:radial-gradient(90% 46% at 100% 0%,#F6C3C0 0%,rgba(246,195,192,.55) 45%,rgba(246,195,192,0) 100%),#F4ECDD}
+.ui-bg-b{background:#FFFDF8}
+.ui-bg-c{background:radial-gradient(80% 40% at 0% 0%,#C7D5A9 0%,rgba(199,213,169,.5) 50%,rgba(199,213,169,0) 100%),#F4ECDD}
+.cap{font-family:var(--mono);font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;opacity:.72}
+.u-h{font-weight:500;letter-spacing:-.025em;line-height:1.04}
+.u-card{background:var(--fleur);border-radius:26px;box-shadow:0 1px 0 rgba(42,26,20,.05),0 14px 30px -18px rgba(42,26,20,.22)}
+.u-line{height:1px;background:rgba(42,26,20,.1)}
+.u-btn{display:flex;align-items:center;justify-content:center;gap:8px;height:50px;border-radius:25px;background:var(--cerise);color:var(--fleur);font-weight:500;font-size:16px;letter-spacing:-.005em}
+.u-btn.ghost{background:none;color:var(--grain);box-shadow:inset 0 0 0 1.5px rgba(42,26,20,.28)}
+.u-chip{display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:16px;font-size:13.5px;font-weight:500;box-shadow:inset 0 0 0 1.2px rgba(42,26,20,.2)}
+.u-chip.on{background:var(--grain);color:var(--parche);box-shadow:none}
+.u-add{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;box-shadow:inset 0 0 0 1.4px rgba(42,26,20,.3)}
+.u-add.on{background:var(--cerise);box-shadow:none}
+.u-add svg{width:14px;height:14px}
+.u-tabs{position:absolute;left:16px;right:16px;bottom:26px;height:54px;border-radius:27px;background:var(--fleur);display:grid;grid-template-columns:repeat(3,1fr);padding:5px;font-size:13.5px;font-weight:500;z-index:9;
+  box-shadow:0 1px 0 rgba(42,26,20,.06),0 16px 30px -16px rgba(42,26,20,.3)}
+.u-tabs span{display:grid;place-items:center;border-radius:22px;opacity:.6}
+.u-tabs span.on{background:var(--grain);color:var(--parche);opacity:1}
+.u-seg{display:grid;grid-template-columns:repeat(3,1fr);height:42px;border-radius:21px;padding:4px;background:var(--parche);font-size:13.5px;font-weight:500}
+.u-seg span{display:grid;place-items:center;border-radius:17px;opacity:.6}
+.u-seg span.on{background:var(--fleur);opacity:1;box-shadow:0 1px 2px rgba(42,26,20,.14)}
+.u-bar{height:8px;border-radius:4px;background:rgba(42,26,20,.08);overflow:hidden}
+.u-bar b{display:block;height:100%;border-radius:4px;background:var(--cerise)}
+
+/* ---------- Montre (dessinée à 300 × 480) ---------- */
+.watch{--k:1;zoom:var(--k);position:relative;width:300px;height:480px;flex:none}
+.watch .band{position:absolute;left:54px;width:192px;height:150px;background:linear-gradient(90deg,#16382a,#24553f 22%,#1E4A36 50%,#24553f 78%,#16382a)}
+.watch .band.t{top:0;border-radius:26px 26px 0 0}.watch .band.b{bottom:0;border-radius:0 0 26px 26px}
+.watch .band::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,253,248,.07) 0 2px,transparent 2px 14px)}
+.watch .case{position:absolute;left:24px;top:104px;width:252px;height:272px;border-radius:70px;padding:15px;
+  background:linear-gradient(145deg,#f3efe8,#bdb6ab 22%,#8f887d 50%,#d6d0c6 78%,#a8a195);box-shadow:0 30px 50px -22px rgba(42,26,20,.5),inset 0 0 0 1px rgba(255,255,255,.4)}
+.watch .case::before{content:"";position:absolute;inset:7px;border-radius:63px;background:#0d0a09}
+.watch .crown{position:absolute;right:8px;top:176px;width:18px;height:52px;border-radius:7px;background:linear-gradient(90deg,#a8a195,#f3efe8 45%,#8f887d)}
+.watch .side{position:absolute;right:13px;top:244px;width:10px;height:58px;border-radius:5px;background:linear-gradient(90deg,#8f887d,#d6d0c6)}
+.watch .wscreen{position:relative;width:222px;height:242px;border-radius:55px;overflow:hidden;color:var(--fleur);background:radial-gradient(110% 80% at 0% 100%,rgba(246,195,192,.45) 0%,rgba(246,195,192,0) 70%),#CF2145}
+
+/* ---------- Carte de message (notification du torréfacteur) ---------- */
+.ncard{width:340px;border-radius:30px;padding:20px 22px 18px;color:var(--grain);background:var(--fleur);box-shadow:0 1px 0 rgba(42,26,20,.05),0 22px 40px -22px rgba(42,26,20,.35)}
+.ncard .hd{display:flex;align-items:center;gap:12px;font-weight:600;font-size:17px;letter-spacing:-.01em}
+.ncard .hd i{flex:none;width:42px;height:42px;border-radius:50%;background:var(--cerise);display:grid;place-items:center}
+.ncard .hd i svg{width:22px;height:22px}
+.ncard .hd .cap{margin-left:auto}
+.ncard .tx{font-size:15px;line-height:1.38;margin:14px 0 16px;min-height:62px}
+.ncard .in{display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(42,26,20,.12);padding-top:13px;font-size:14px;font-weight:500;color:var(--cerise)}
+
+/* ---------- Étiquette de sachet (Marque.etiquette) : dessinée à 320 × 430 ---------- */
+.etiquette{--k:1;zoom:var(--k);position:relative;width:320px;height:430px;flex:none;background:var(--fleur);color:var(--grain);border-radius:6px;padding:22px 22px 20px;box-shadow:0 1px 0 rgba(42,26,20,.06),0 18px 34px -20px rgba(42,26,20,.3)}
+.etiquette .et-top{display:flex;justify-content:space-between;align-items:flex-start}
+.etiquette .et-top svg{height:20px;width:auto}
+.etiquette .et-nom{font-weight:500;font-size:46px;letter-spacing:-.03em;line-height:1;margin-top:14px}
+.etiquette .et-notes{font-size:15px;line-height:1.3;margin-top:8px;max-width:170px}
+.etiquette .pastille{position:absolute;right:14px;top:62px}
+.etiquette dl{position:absolute;left:22px;right:22px;bottom:20px;display:grid;grid-template-columns:104px 1fr;font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase}
+.etiquette dt,.etiquette dd{padding:7px 0 6px;border-top:1px solid rgba(42,26,20,.16)}
+.etiquette dt{opacity:.6}
+.etiquette dd{text-align:right;font-weight:500}
+.etiquette .tampon{position:absolute;left:22px;top:214px}
+
+/* ---------- Planches de présentation (1400 px de large, rendu ×2) ---------- */
+.plate{position:relative;width:1400px;overflow:hidden}
+.plate.pad{padding:84px}
+.pfoot{position:absolute;left:84px;right:84px;bottom:56px;display:grid;grid-template-columns:312px 312px 1fr auto;align-items:end;font-size:12px;font-weight:500}
+.pfoot svg{height:38px;width:auto}
+.h-xl{font-weight:500;font-size:60px;line-height:1.02;letter-spacing:-.03em}
+.h-l{font-weight:500;font-size:44px;line-height:1.05;letter-spacing:-.025em}
+.body-l{font-size:19px;line-height:1.4}

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="fr">
+<meta charset="utf-8">
+<title>Custom · contrôle des cinq techniques de marquage</title>
+<style>
+  /* Page de contrôle de brand/techniques.js : n'utilise ni marque.css ni marque.js. */
+  html, body { margin: 0; background: #101012; }
+  .plate { width: 1400px; box-sizing: border-box; padding: 44px 40px 30px; background: #101012; color: #FFFFFF;
+    font: 11px/1.45 ui-monospace, 'Cascadia Mono', Consolas, monospace; letter-spacing: .04em; }
+  .t-titre { font-size: 12px; text-transform: uppercase; opacity: .55; margin: 0 0 14px; font-weight: 400; }
+  .t-rang { display: grid; gap: 14px; margin-bottom: 38px; }
+  .t-r5 { grid-template-columns: repeat(5, 1fr); }
+  .t-r4 { grid-template-columns: repeat(4, 1fr); }
+  .t-r2 { grid-template-columns: 1fr 1fr; }
+  figure { margin: 0; }
+  canvas { display: block; width: 100%; height: auto; background: #272728; }
+  figcaption { margin-top: 8px; display: flex; justify-content: space-between; gap: 10px; text-transform: uppercase; }
+  figcaption span:last-child { opacity: .45; }
+</style>
+<body>
+<div class="plate">
+  <h2 class="t-titre">1 · Les cinq techniques · cran fluo sur maille noire</h2>
+  <div class="t-rang t-r5">
+    <figure><canvas data-r="1.3333" data-tech="broderie" data-forme="cran" data-c="#E2FF21" data-fond="maille"></canvas><figcaption><span>Broderie</span><span></span></figcaption></figure>
+    <figure><canvas data-r="1.3333" data-tech="serigraphie" data-forme="cran" data-c="#E2FF21" data-fond="maille"></canvas><figcaption><span>Sérigraphie</span><span></span></figcaption></figure>
+    <figure><canvas data-r="1.3333" data-tech="dtf" data-forme="cran" data-c="#E2FF21" data-fond="maille"></canvas><figcaption><span>DTF</span><span></span></figcaption></figure>
+    <figure><canvas data-r="1.3333" data-tech="flocage" data-forme="cran" data-c="#E2FF21" data-fond="maille"></canvas><figcaption><span>Flocage</span><span></span></figcaption></figure>
+    <figure><canvas data-r="1.3333" data-tech="sublimation" data-forme="cran" data-c="#E2FF21" data-fond="maille"></canvas><figcaption><span>Sublimation</span><span></span></figcaption></figure>
+  </div>
+
+  <h2 class="t-titre">2 · Le logo complet</h2>
+  <div class="t-rang t-r2">
+    <figure><canvas data-r="2.4" data-tech="broderie" data-forme="logo" data-c="#FFFFFF" data-fond="serge" data-cf="#E2FF21" data-marge="0.07"></canvas><figcaption><span>Broderie blanche · sergé fluo</span><span></span></figcaption></figure>
+    <figure><canvas data-r="2.4" data-tech="serigraphie" data-forme="logo" data-c="#E2FF21" data-c2="#8E3EFF" data-fond="coton" data-marge="0.07"></canvas><figcaption><span>Sérigraphie fluo + violet · coton noir</span><span></span></figcaption></figure>
+  </div>
+
+  <h2 class="t-titre">3 · Les quatre tissus</h2>
+  <div class="t-rang t-r4">
+    <figure><canvas data-r="1.3333" data-tissu="maille" data-c="#101012"></canvas><figcaption><span>Maille sport</span><span></span></figcaption></figure>
+    <figure><canvas data-r="1.3333" data-tissu="serge" data-c="#101012"></canvas><figcaption><span>Sergé</span><span></span></figcaption></figure>
+    <figure><canvas data-r="1.3333" data-tissu="coton" data-c="#101012"></canvas><figcaption><span>Coton jersey</span><span></span></figcaption></figure>
+    <figure><canvas data-r="1.3333" data-tissu="molleton" data-c="#101012"></canvas><figcaption><span>Molleton</span><span></span></figcaption></figure>
+  </div>
+
+  <h2 class="t-titre">4 · Broderie en cours de couture</h2>
+  <div class="t-rang t-r4">
+    <figure><canvas data-r="1.3333" data-tech="broderie" data-forme="cran" data-p="0.25"></canvas><figcaption><span>p = 0,25</span><span></span></figcaption></figure>
+    <figure><canvas data-r="1.3333" data-tech="broderie" data-forme="cran" data-p="0.5"></canvas><figcaption><span>p = 0,5</span><span></span></figcaption></figure>
+    <figure><canvas data-r="1.3333" data-tech="broderie" data-forme="cran" data-p="0.75"></canvas><figcaption><span>p = 0,75</span><span></span></figcaption></figure>
+    <figure><canvas data-r="1.3333" data-tech="broderie" data-forme="cran" data-p="1"></canvas><figcaption><span>p = 1</span><span></span></figcaption></figure>
+  </div>
+</div>
+<script src="../brand/traces.js"></script>
+<script src="../brand/techniques.js"></script>
+<script>
+  // Taille de rendu = double de la taille affichée, proportion lue dans data-r.
+  document.querySelectorAll('canvas[data-r]').forEach((c) => {
+    const w = c.parentNode.clientWidth;
+    c.width = Math.round(w * 2); c.height = Math.round(w * 2 / +c.dataset.r);
+  });
+  // Le temps de rendu de chaque vignette s'affiche à droite de sa légende.
+  MarqueTech.tous().forEach(({ el, ms }) => { el.parentNode.querySelector('figcaption span:last-child').textContent = el.width + '×' + el.height + ' · ' + Math.round(ms) + ' ms'; });
+</script>
+</body>
+</html>

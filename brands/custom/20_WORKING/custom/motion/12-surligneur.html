@@ -1,0 +1,92 @@
+<!doctype html><meta charset="utf-8"><title>Custom — V · Le surligneur</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="motion.css">
+<script src="../brand/marque.js"></script><script src="lib.js"></script>
+<style>
+  .s-carte{position:absolute;inset:0;overflow:hidden}
+  .s-txt{position:absolute;left:72px;right:60px;top:50%;font-family:var(--titre);text-transform:uppercase;line-height:.86;letter-spacing:.004em}
+  .s-meta{position:absolute;z-index:58}
+  .s-tri .m-ligne{margin-bottom:.02em}
+</style>
+<body><div class="m-stage" id="s" style="width:1080px;height:1080px"></div>
+<script>
+/* 12 · Le surligneur · 1080 × 1080 · 8 s, boucle parfaite
+   node tools/record.mjs motion/12-surligneur.html out/motion/12-surligneur.mp4 --w 1080 --h 1080 --fps 30 --dur 8 --planche --fixe 1.6
+   Typographie cinétique : une phrase du site par carte, en Bebas géant, coupes sèches sur des crans (8 i/s).
+   À chaque carte : les lignes montent le long de la pente (0,5 s, 40 ms d'écart), le surligneur se pose de gauche à droite
+   en 0,25 s, puis le mot passe dans sa couleur. Fonds : noir, fluo, photo traitée, piquage, toile (triptyque en escalier).
+   Boucle : la carte « On fait plus qu'un maillot » entre à 6,65 s et tient jusqu'à 0,35 s ; seek(0) et seek(8) sont identiques,
+   et les images 0 et 239 aussi (la carte est posée et immobile de part et d'autre du raccord). */
+const A = Marque, C = A.COULEURS, NB = A.NB, W = 1080, D = 8;
+const SL = (txt, cls) => ({ sl: txt, cls });
+/* lignes : chaînes, ou tableaux de morceaux (chaîne, ou SL(mot, couleur)) */
+const CARTES = [
+  { id: 'maillot', debut: 6.65, fin: 8.35, fond: 'noir', txt: '#FFFFFF', lignes: ['On fait plus', [SL('qu’un maillot', 'fluo')]], cap: 'On fait plus qu’un maillot' },
+  { id: 'technique', debut: 0.35, fin: 1.7, fond: 'fluo', txt: C.encre, lignes: ['Chaque objet,', ['sa ', SL('technique', 'violet')]], cap: 'Chaque objet, sa technique' },
+  { id: 'idees', debut: 1.7, fin: 3.05, fond: 'photo', txt: '#FFFFFF', lignes: ['Donnez vie', ['à vos ', SL('idées', 'orange')]], cap: 'Donnez vie à vos idées' },
+  { id: 'projet', debut: 3.05, fin: 4.4, fond: 'piquage', txt: '#FFFFFF', lignes: ['Prêt à donner', 'vie à votre', [SL('projet' + NB + '?', 'blanc')]], cap: 'Prêt à donner vie à votre projet ?' },
+  { id: 'tri', debut: 4.4, fin: 6.65, fond: 'toile', txt: '#FFFFFF', tri: true, cap: 'Imaginé chez vous. Fabriqué chez nous. Porté partout.' } ];
+const TRI = [['Imaginé ', SL('chez vous.', 'fluo')], ['Fabriqué ', SL('chez nous.', 'fluo')], ['Porté ', SL('partout.', 'fluo')]], TRI_T = [4.4, 5.15, 5.9];
+const SURL = { fluo: [C.fluo, C.encre], violet: [C.violet, '#FFFFFF'], orange: [C.orange, C.encre], blanc: ['#FFFFFF', C.encre] };
+
+const morceau = (m, coul) => typeof m === 'string' ? m.replace(/ $/, NB)
+  : `<span class="surl m-sl" data-c="${m.cls}" data-t="${coul}" style="color:${coul}"><i style="background:${SURL[m.cls][0]}"></i>${m.sl}</span>`;
+const ligne = (l, coul) => `<span class="m-ligne"><span>${(Array.isArray(l) ? l : [l]).map((m) => morceau(m, coul)).join('')}</span></span>`;
+const fondHTML = (c) => ({
+  noir: `<div class="m-fill" style="background:${C.noir}"></div>`,
+  fluo: `<div class="m-fill" style="background:${C.fluo}"></div>`,
+  photo: `<div class="m-fill s-zoom" style="filter:brightness(.5) contrast(1.1)">${A.photo('dunk', { mode: 'nb', style: 'position:absolute;inset:0', pos: '50% 30%' })}</div>`,
+  piquage: `<div class="m-fill" style="background:${C.noir}"></div><div class="m-fill s-zoom">${A.piquage({ w: 1200, h: 1200, c: 'fonte', px: 16, py: 32, seed: 5, attrs: 'style="position:absolute;left:-60px;top:-60px;width:1200px;height:1200px"' })}</div>`,
+  toile: `<div class="m-fill tx-toile"></div>` }[c]);
+
+const s = document.getElementById('s');
+s.innerHTML = CARTES.map((c) => `<div class="s-carte" data-id="${c.id}" style="color:${c.txt}">${fondHTML(c.fond)}
+    ${c.tri ? TRI.map((l, i) => `<div class="s-txt s-tri" data-i="${i}" style="top:auto">${ligne(l, '#FFFFFF')}</div>`).join('')
+      : `<div class="s-txt">${c.lignes.map((l) => ligne(l, c.txt)).join('')}</div>`}
+    <div class="s-meta m-cap" style="left:72px;top:58px;opacity:.65">CST${NB}·${NB}${String(CARTES.indexOf(c) + 1).padStart(2, '0')}${NB}/${NB}05</div>
+    <div class="s-meta m-cap" style="right:60px;top:58px;opacity:.65">Le surligneur</div>
+    <div class="s-meta m-cap" style="left:72px;bottom:52px;opacity:.65">${c.cap}</div>
+    <div class="s-meta" style="right:60px;bottom:58px;width:150px">${A.barre({ style: 'height:10px' })}</div>
+  </div>`).join('') + `<i class="m-grain"></i>`;
+
+/* Mise à la taille, une fois les polices chargées (au premier seek) : la ligne la plus longue de chaque carte occupe la
+   largeur utile (948 px). Le triptyque descend en escalier : chaque ligne un pas plus bas et plus à droite. */
+const cartes = [...s.querySelectorAll('.s-carte')];
+let pret = false;
+const miseEnPage = () => { pret = true; cartes.forEach((el) => (el.style.display = ''));
+  cartes.forEach((el, k) => { const blocs = [...el.querySelectorAll('.s-txt')], tri = CARTES[k].tri;
+    blocs.forEach((b) => { b.style.fontSize = '100px'; b.style.right = 'auto'; });
+    const larg = Math.max(...blocs.flatMap((b) => [...b.querySelectorAll('.m-ligne>span')].map((x) => x.getBoundingClientRect().width)));
+    const fs = Math.min(320, ((tri ? 800 : 948) / larg) * 100);
+    blocs.forEach((b) => (b.style.fontSize = fs.toFixed(1) + 'px'));
+    if (tri) { const h = fs * 0.86, pasY = h * 1.18, pasX = 148 / 2, y0 = (1080 - 2 * pasY - h) / 2;
+      blocs.forEach((b, i) => { b.style.top = (y0 + i * pasY).toFixed(1) + 'px'; b.style.left = (72 + i * pasX).toFixed(1) + 'px'; }); }
+    else blocs.forEach((b) => (b.style.marginTop = (-b.getBoundingClientRect().height / 2 - 10).toFixed(1) + 'px')); }); };
+
+/* Pose d'un bloc de texte : lignes qui montent, surligneur qui se pose, couleur du mot */
+const poser = (bloc, t, t0, coulTexte) => {
+  const lignes = [...bloc.querySelectorAll('.m-ligne>span')], fs = parseFloat(bloc.style.fontSize);
+  lignes.forEach((l, i) => M.glisse(l, t, t0 + i * M.DECALAGE, { montee: fs * 0.95 }));
+  bloc.querySelectorAll('.m-sl').forEach((sl) => { const k = M.tw(t, t0 + 0.3 + (lignes.length - 1) * M.DECALAGE, M.SURL, M.cubicOut);
+    sl.style.setProperty('--k', k.toFixed(4)); sl.style.color = k >= 1 ? SURL[sl.dataset.c][1] : (coulTexte || sl.dataset.t); }); };
+
+window.seek = (tt) => {
+  if (!pret) miseEnPage();
+  const t = M.boucle(tt, D);
+  /* la carte du raccord couvre [6,65 ; 8,35) : on la lit sur un temps prolongé */
+  const actif = CARTES.findIndex((c) => (t >= c.debut && t < c.fin) || (t + D >= c.debut && t + D < c.fin));
+  M.montre(cartes, actif);
+  const c = CARTES[actif], tl = t < c.debut ? t + D : t, el = cartes[actif];
+  /* le fond avance d'un pas à chaque cran : zoom de 0,6 % par image de 8 i/s */
+  el.querySelectorAll('.s-zoom').forEach((z) => (z.style.transform = `scale(${(1.02 + 0.006 * Math.floor((tl - c.debut) * 8)).toFixed(4)})`));
+  if (!c.tri) { poser(el.querySelector('.s-txt'), tl, c.debut); return; }
+  /* Triptyque en escalier : chaque ligne entre sur sa coupe ; les précédentes restent, éteintes en acier, sans surligneur */
+  const blocs = [...el.querySelectorAll('.s-tri')];
+  blocs.forEach((b, i) => { const on = tl >= TRI_T[i], courant = on && (i === 2 || tl < TRI_T[i + 1]);
+    b.style.visibility = on ? 'visible' : 'hidden';
+    b.style.color = courant ? '#FFFFFF' : C.acier;
+    poser(b, tl, TRI_T[i], courant ? null : C.acier);
+    b.querySelectorAll('.m-sl').forEach((sl) => { if (!courant) { sl.style.setProperty('--k', 0); sl.style.color = C.acier; } }); });
+};
+/* première image dès que les polices sont là (l'enregistreur attend document.fonts.ready avant d'appeler seek) */
+document.fonts.ready.then(() => { if (!pret) seek(0); });
+</script></body>

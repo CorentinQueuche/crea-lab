@@ -1,0 +1,18 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../brand/aube.css"><link rel="stylesheet" href="plates.css"><script src="../brand/aube.js"></script>
+<style>
+  .tile{height:300px;display:grid;place-items:center}
+</style>
+<body>
+<div class="plate" id="p" style="height:1200px;background:#fff"></div>
+<script>
+const A = Aube;
+document.getElementById('p').innerHTML = `
+  <div style="height:600px;display:grid;place-items:center">${A.lockup('#1C1122', 'style="width:600px;margin-top:8px"')}</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr">
+    <div class="tile" style="background:var(--nuit)">${A.lockup('#FF632B', 'style="width:300px"')}</div>
+    <div class="tile g1 grain">${A.lockup('#fff', 'style="width:300px"')}</div>
+    <div class="tile" style="background:var(--aurore)">${A.lockup('#1C1122', 'style="width:300px"')}</div>
+    <div class="tile" style="background:var(--braise)">${A.lockup('#fff', 'style="width:300px"')}</div>
+  </div>`;
+</script>
+</body>

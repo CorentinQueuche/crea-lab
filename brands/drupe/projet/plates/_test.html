@@ -1,0 +1,70 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../brand/marque.css"><script src="../brand/marque.js"></script>
+<style>
+  /* Styles propres à cette page de test (préfixe t- pour ne rien heurter dans le socle) */
+  .t-lbl{position:absolute;left:24px;top:20px;font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;opacity:.65;z-index:60}
+  .t-cell{position:relative;display:grid;place-items:center;overflow:hidden}
+  .t-sw{position:relative;height:150px;padding:16px;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;display:flex;flex-direction:column;justify-content:flex-end;gap:3px}
+  .t-sw b{font-family:var(--font);font-size:19px;font-weight:500;letter-spacing:-.02em;text-transform:none}
+  .t-gr{position:relative;height:118px;padding:12px 14px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em}
+</style>
+<body><div class="plate" id="p" style="background:var(--parche)"></div>
+<script>
+const A = Marque, C = A.COULEURS;
+const sw = (nom, hex, role, fg) => `<div class="t-sw" style="background:${hex};color:${fg}"><b>${nom}</b><span>${hex}</span><span style="opacity:.7">${role}</span></div>`;
+const gr = (cls, fg) => `<div class="t-gr ${cls} grain" style="color:${fg}">.${cls}</div>`;
+document.getElementById('p').innerHTML = `
+<!-- 1. Logo complet : sur clair, sur aplat vif -->
+<div style="display:grid;grid-template-columns:1fr 1fr">
+  <div class="t-cell" style="background:${C.fleur};height:330px"><span class="t-lbl">Logo complet · Cerise sur Fleur</span>${A.lockup(C.cerise, 'style="width:540px"')}</div>
+  <div class="t-cell g-vif grain" style="height:330px"><span class="t-lbl" style="color:${C.fleur}">Fleur sur .g-vif</span>${A.lockup(C.fleur, 'style="width:540px"')}</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr 220px">
+  <div class="t-cell g4 grain" style="height:210px"><span class="t-lbl">Grain sur .g4</span>${A.wordmark(C.grain, 'style="width:300px"')}</div>
+  <div class="t-cell g6 grain" style="height:210px"><span class="t-lbl" style="color:${C.feuille}">Feuille sur .g6</span>${A.wordmark(C.feuille, 'style="width:300px"')}</div>
+  <div class="t-cell g9 grain" style="height:210px"><span class="t-lbl" style="color:${C.fleur}">Fleur sur .g9</span>${A.wordmark(C.fleur, 'style="width:300px"')}</div>
+  <div class="t-cell" style="height:210px;background:${C.fleur}"><span class="t-lbl">64 px · 32 px</span><div style="display:grid;gap:18px;justify-items:center">${A.wordmark(C.grain, 'style="width:64px"')}<div style="display:flex;gap:14px;align-items:center">${A.symbol(C.cerise, 'style="width:32px"')}${A.symbol(C.grain, 'style="width:16px"')}</div></div></div>
+</div>
+
+<!-- 2. Motifs : le semis, la pastille, le symbole en grand -->
+<div style="display:grid;grid-template-columns:460px 1fr 400px;height:540px">
+  <div style="display:grid;grid-template-rows:1fr 1fr">
+    <div class="t-cell grain" style="background:${C.parche}"><span class="t-lbl">Le semis · trois tons</span>${A.semis({ cols: 6, rows: 3, pas: 92, taille: 50, tons: [C.pulpe, C.vert, C.pulpe, C.cerise, C.vert] })}</div>
+    <div class="t-cell g-vif grain"><span class="t-lbl" style="color:${C.fleur}">Le semis · ton sur ton</span>${A.semis({ cols: 6, rows: 3, pas: 92, taille: 50, tons: [C.pulpe], opacite: .32, seed: 2 })}</div>
+  </div>
+  <div class="t-cell" style="background:${C.fleur}"><span class="t-lbl">La pastille · un ton par café</span>
+    <div style="display:grid;grid-template-columns:repeat(3,auto);gap:20px 18px;justify-content:center;justify-items:center;margin-top:24px">
+      ${A.pastille('guji', 158, { angle: -6, pose: true })}${A.pastille('huila', 158, { angle: 4, pose: true })}${A.pastille('nyeri', 158, { angle: -3, pose: true })}
+      <div style="grid-column:1/-1;display:flex;gap:18px">${A.pastille('cerrado', 158, { angle: 5, pose: true })}${A.pastille('cauca', 158, { angle: -7, pose: true })}${A.pastille({ nom: 'Maison', pays: 'Assemblage', alt: 'Espresso', notes: ['Rond', 'Tous les jours'], ton: 'fleur' }, 158, { angle: 3, pose: true })}</div>
+    </div></div>
+  <div class="t-cell g5 grain"><span class="t-lbl">Le symbole en grand, coupé par deux bords</span>
+    <div style="position:absolute;left:-230px;top:44px">${A.symbol(C.cerise, 'style="width:620px;display:block"')}</div></div>
+</div>
+
+<!-- 3. Palette et dégradés -->
+<div style="display:grid;grid-template-columns:repeat(8,1fr)">
+  ${sw('Fleur', C.fleur, 'Papier', C.grain)}${sw('Parche', C.parche, 'Fond de marque', C.grain)}${sw('Pulpe', C.pulpe, 'Lumière', C.grain)}${sw('Cerise', C.cerise, 'Vive, rare', C.fleur)}
+  ${sw('Café vert', C.vert, 'Aplat doux', C.feuille)}${sw('Feuille', C.feuille, 'Fond dense', C.fleur)}${sw('Grain', C.grain, 'Encre', C.parche)}${sw('Marc', C.marc, 'Noir de scène', C.parche)}
+</div>
+<div style="display:grid;grid-template-columns:repeat(10,1fr)">
+  ${gr('g1', C.grain)}${gr('g2', C.grain)}${gr('g3', C.grain)}${gr('g4', C.grain)}${gr('g5', C.grain)}${gr('g6', C.feuille)}${gr('g7', C.fleur)}${gr('g8', C.fleur)}${gr('g9', C.fleur)}${gr('g-vif', C.fleur)}
+</div>
+
+<!-- 4. Écrans de l'app, montre -->
+<div class="g2" style="position:relative;display:flex;gap:36px;padding:70px 40px 64px;align-items:center;justify-content:center"><span class="t-lbl">Écrans · accueil, carte, abonnement, fiche · montre</span>
+  ${A.phone(A.screens.accueil(), .58)} ${A.phone(A.screens.carte(), .58)} ${A.phone(A.screens.abonnement(), .58)} ${A.phone(A.screens.fiche('guji'), .58)}
+  ${A.watch(A.watchScreen(), .72)}
+</div>
+
+<!-- 5. Cartes de message, étiquette de sachet, symbole, typographie -->
+<div class="g-vif grain" style="position:relative;padding:64px 50px 56px;display:flex;gap:30px;justify-content:center;align-items:center"><span class="t-lbl" style="color:${C.fleur}">Cartes de message · étiquette · symbole</span>
+  <div style="display:grid;gap:18px">${A.ncard('Torréfié ce matin', 'Votre Guji sort du tambour. Il repose deux jours, puis il part à vélo jeudi, avant 9 h.')}${A.ncard('Plus que ce soir', 'La carte de la semaine ferme à 20 h. Sans nouvelles de vous, on remet les deux mêmes cafés.', { heure: '17:30', action: 'Voir la carte' })}</div>
+  ${A.etiquette('guji', .92)}${A.etiquette('huila', .92)}
+  <div style="display:grid;gap:14px">${A.symbol(C.fleur, 'style="width:96px"')}${A.symbol(C.pulpe, 'style="width:96px"')}${A.symbol(C.grain, 'style="width:96px"')}</div>
+</div>
+<div style="background:${C.fleur};padding:54px 84px 110px;position:relative;display:grid;grid-template-columns:800px 1fr;gap:50px;align-items:end">
+  <div><div class="cap" style="margin-bottom:14px">Bricolage Grotesque · Medium 500 pour les titres</div><div class="h-xl">Le café est un fruit.<br>Torréfié au coin de la rue.</div></div>
+  <div><div class="body-l">Chaque mardi, nous torréfions par fournées de 12 kg. Vous choisissez vos cafés jusqu'au lundi soir ; ils arrivent à vélo le jeudi, datés à la main.</div>
+    <div class="mono" style="font-size:12px;letter-spacing:.06em;margin-top:16px;opacity:.75">IBM PLEX MONO · ÉTHIOPIE · 2 050 M · 11,50 € · 17.11.26</div></div>
+  ${A.foot('Socle de marque', 'Page de test')}
+</div>`;
+</script></body>

@@ -1,0 +1,33 @@
+<!doctype html><meta charset="utf-8"><title>Sillon · 05 · Le jeudi</title><meta name="robots" content="noindex">
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates.css">
+<script src="../brand/marque.js"></script><script src="../brand/matiere.js"></script><script src="../brand/verse.js"></script>
+<style>
+  /* 05 · Le jeudi. La dégustation du jeudi soir, sur le trottoir. L'enseigne de bois était vierge : le logotype y est peint
+     (deux couleurs, une peinture qui prend le fil du bois). Sur le panneau bleu de la devanture, l'affiche du jeudi.
+     Les deux sont posés en perspective dans les pixels de la photo. Préfixe p05-. */
+  .p05-bois{display:grid;place-items:center;mix-blend-mode:multiply}
+  .p05-bois .t-etq{color:#16298A;font-size:17px;letter-spacing:.13em;margin-top:16px}
+  .p05-aff{box-shadow:0 0 0 1px rgba(3,6,30,.35),4px 7px 16px rgba(3,6,30,.55)}
+  .p05-aff::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,rgba(255,220,150,.16),rgba(3,6,30,.3));pointer-events:none}
+</style>
+<body><div class="plate clair" id="p"></div>
+<script>
+const A = Marque, C = A.COULEURS, NB = A.NB;
+/* l'enseigne : ses quatre coins relevés sur la photo ; l'affiche : sur le panneau bleu, à droite de la vitrine */
+const ENSEIGNE = [[1412, 50], [1765, 85], [1768, 315], [1412, 298]], AFFICHE = [[1703, 404], [1851, 408], [1851, 702], [1703, 708]];
+const peint = `<div class="usure" style="display:grid;justify-items:center">${A.wordmark('#16298A', 'style="width:560px;height:auto"', 'maceration', { detail: true })}<div class="t-etq">${A.DESCRIPTEUR}</div></div>`;
+const habits = A.pose(peint, { l: 700, h: 470, quad: ENSEIGNE, cls: 'p05-bois' }) + A.pose(A.affiche({ l: 300 }), { l: 300, h: 424, quad: AFFICHE, cls: 'p05-aff' });
+
+document.getElementById('p').innerHTML =
+  A.scene('jeudi', habits + `<div class="t-etq pl-sur-photo" style="left:144px;top:96px;font-size:20px">05 · Le jeudi</div>`) +
+  `<div class="pl-bande fond-cave lumiere"><div class="net" style="grid-template-columns:300px 1fr 430px;align-items:center">
+     <div style="box-shadow:0 26px 50px -22px #000,0 0 0 1px rgba(242,239,228,.14)">${A.affiche({ l: 300 })}</div>
+     <div>
+       <div class="pl-voix" style="font-size:40px;white-space:nowrap">Venez comme<br>vous êtes.<br>Repartez à pied.</div>
+       <p class="t-chapo t-doux" style="max-width:400px;margin:22px 0 0">Le jeudi soir, on goûte. L’enseigne est peinte à même le bois, l’affiche change de phrase chaque semaine, la mention sanitaire a sa place en bas.</p>
+     </div>
+     <div class="pl-plan">${A.scene('jeudi', habits, { l: 430, cadre: [1370, 20, 520, 720] })}<span class="t-etq">Gros plan · l’enseigne et l’affiche</span></div>
+   </div>
+   <div class="pl-pied t-etq"><span>05 · Le jeudi</span><span>${A.DESCRIPTEUR} · ${A.LIEU}</span><span>2026</span></div></div>`;
+window.pret = Verse.tout();
+</script></body>

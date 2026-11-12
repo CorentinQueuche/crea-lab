@@ -1,0 +1,59 @@
+<!doctype html><meta charset="utf-8"><title>Payout — V5, mur de pages</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="motion.css">
+<script src="../brand/marque.js"></script><script src="lib.js"></script>
+<style>
+  .z-col{position:absolute;top:0;display:flex;flex-direction:column;will-change:transform}
+  .z-col .browser{box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+  .z-voile{position:absolute;left:0;right:0;height:150px;z-index:5;pointer-events:none}
+</style>
+<body><div class="m-stage" id="s" style="width:1920px;height:1080px"></div>
+<script>
+/* V5 · Mur de pages · 1920 × 1080 · 14 s, boucle
+   node tools/record.mjs motion/23-mur.html out/motion/23-mur.mp4 --w 1920 --h 1080 --fps 30 --dur 14 --planche
+   Cinq colonnes de pages de 420 px (plus lisibles qu'à six) (site, cockpit sombre et clair) qui montent et descendent en sens alternés, à vitesse constante :
+   chaque colonne parcourt exactement sa hauteur en 14 s, la boucle raccorde sans saut. Le mur déborde du cadre des deux côtés. */
+const A = Marque, D = A.desk, W = 1920, H = 1080, BOUCLE = 14;
+const LC = 420, K = LC / 1440, G = 28, NCOL = 5, X0 = (W - (NCOL * LC + (NCOL - 1) * G)) / 2;
+const HS = Math.round(946 * K);                                  // hauteur d'une page standard (1440 × 900 + barre)
+const HT = 3 * HS + 2 * G, HTP = Math.round(HT / K - 46);        // une page longue occupe trois cases
+const SITE = 'payout.fr', APP = 'app.payout.fr';
+const tranche = (y) => A.browser(`<div style="margin-top:-${y}px">${D.sitePage()}</div>`, K, { url: SITE });
+const P = {
+  site: () => A.browser(D.site(), K, { url: SITE }),
+  bord: () => A.browser(D.bord(), K, { url: APP + '/tableau-de-bord' }),
+  bordC: () => A.browser(D.bord({ clair: true }), K, { url: APP + '/tableau-de-bord', clair: true }),
+  cash: () => A.browser(D.cashouts(), K, { url: APP + '/cash-out' }),
+  cashC: () => A.browser(D.cashouts({ clair: true }), K, { url: APP + '/cash-out', clair: true }),
+  cra: () => A.browser(D.cra(), K, { url: APP + '/planning' }),
+  craC: () => A.browser(D.cra({ clair: true }), K, { url: APP + '/planning', clair: true }),
+  s1: () => tranche(900), s2: () => tranche(1660), s3: () => tranche(2420), s4: () => tranche(D.SITE_H - 900),
+  long: () => A.browser(D.sitePage(), K, { url: SITE, h: HTP }),
+};
+/* Chaque colonne fait six cases (une page longue en vaut trois) : toutes ont la même hauteur, donc la même vitesse */
+const COLS = [
+  ['site', 'bordC', 'cash', 's1', 'cra', 's3'],
+  ['long', 'bord', 'craC', 'cash'],
+  ['cra', 's2', 'bord', 'site', 'cashC', 's4'],
+  ['bordC', 's1', 'long', 'bord'],
+  ['cash', 'site', 'craC', 's3', 'bord', 's2'],
+];
+const PERIODE = 6 * (HS + G);   // hauteur d'un tour de colonne
+const s = document.getElementById('s');
+s.innerHTML = COLS.map((c, i) => { const pile = c.map((k) => `<div style="margin-bottom:${G}px">${P[k]()}</div>`).join('');
+  return `<div class="z-col" style="left:${X0 + i * (LC + G)}px;width:${LC}px">${pile}${pile}</div>`; }).join('') +
+  `<div class="z-voile" style="top:0;background:linear-gradient(180deg,rgba(6,10,8,.55),rgba(6,10,8,0))"></div>` +
+  `<div class="z-voile" style="bottom:0;background:linear-gradient(0deg,rgba(6,10,8,.55),rgba(6,10,8,0))"></div>`;
+const cols = [...s.querySelectorAll('.z-col')];
+/* La période réelle de chaque colonne est mesurée (le zoom des navigateurs arrondit au pixel) : la boucle raccorde au pixel près */
+let per = null;
+const DEPART = cols.map((_, i) => (i * 0.381966) % 1);   // décalages de départ, en fraction de tour
+
+window.seek = (t) => {
+  if (!per) per = cols.map((c) => c.getBoundingClientRect().height / 2);
+  const u = (((t % BOUCLE) + BOUCLE) % BOUCLE) / BOUCLE;
+  cols.forEach((c, i) => { const sens = i % 2 ? 1 : -1, Pc = per[i];   // colonnes paires : montent ; impaires : descendent
+    const y = ((((DEPART[i] + sens * u) * Pc) % Pc) + Pc) % Pc;
+    c.style.transform = `translate3d(0, ${(-y).toFixed(2)}px, 0)`; });
+};
+seek(0);
+</script></body>

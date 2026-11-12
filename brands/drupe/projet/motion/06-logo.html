@@ -1,0 +1,10 @@
+<!doctype html><meta charset="utf-8"><title>Drupe — 06 révélation du logotype</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="motion.css">
+<script src="../brand/marque.js"></script><script src="lib.js"></script><script src="scenes.js"></script>
+<body style="background:var(--parche)"><div id="s"></div>
+<script>
+// 1920 × 1080, 7 s : node tools/record.mjs motion/06-logo.html out/motion/06-logo.mp4 --w 1920 --h 1080 --fps 30 --dur 7
+// Les lettres arrivent pleines en Café vert, mûrissent jusqu'à la Cerise, le sillon les fend, le descripteur se pose.
+window.seek = Scenes.logo(document.getElementById('s'), { w: 1920, h: 1080, descriptor: true });
+seek(0);
+</script></body>

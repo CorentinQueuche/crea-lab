@@ -1,0 +1,32 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates.css"><script src="../brand/marque.js"></script>
+<style>
+  .lv-tile{position:relative;height:320px;display:grid;place-items:center}
+  .lv-tile .lbl{position:absolute;left:32px;top:28px;opacity:.8}
+  .lv-tile .ct{left:auto;right:32px}
+  .lv-min{display:grid;grid-template-columns:312px 312px 1fr;align-items:end}
+  .lv-min .lbl{opacity:.62;margin-top:18px}
+</style>
+<body>
+<div class="plate" id="p" style="height:1480px;background:var(--parche)"></div>
+<script>
+const A = Marque, C = A.COULEURS;
+const tile = (bg, fg, nom, ct) => `<div class="lv-tile" style="background:${bg};color:${fg}"><span class="lbl">${nom}</span><span class="lbl ct">Contraste ${ct}</span>${A.lockup(fg, 'style="width:380px;margin-top:6px"')}</div>`;
+document.getElementById('p').innerHTML = `
+  <div class="abs lbl" style="left:84px;top:84px;opacity:.6">Logo complet</div>
+  <div style="height:560px;display:grid;place-items:center">${A.lockup(C.cerise, 'style="width:860px;margin-top:10px"')}</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr">
+    ${tile(C.fleur, C.cerise, 'Cerise sur Fleur', '5,2')}
+    ${tile(C.cerise, C.fleur, 'Fleur sur Cerise', '5,2')}
+    ${tile(C.parche, C.grain, 'Grain sur Parche', '14,2')}
+    ${tile(C.vert, C.feuille, 'Feuille sur Café vert', '6,5')}
+  </div>
+  <div style="position:absolute;left:0;right:0;top:1200px;bottom:0;background:${C.fleur}">
+    <div class="abs lv-min" style="left:84px;right:84px;top:62px">
+      <div><div style="height:40px;display:flex;align-items:flex-end">${A.wordmark(C.grain, 'style="width:64px;display:block"')}</div><div class="lbl">Logotype · 64 px · 18 mm</div></div>
+      <div><div style="height:40px;display:flex;align-items:flex-end;gap:20px">${A.symbol(C.grain, 'style="width:32px;display:block"')}${A.symbol(C.grain, 'style="width:16px;display:block"')}</div><div class="lbl">Symbole · 32 px · 16 px</div></div>
+      <div class="body-l" style="font-size:16px;line-height:1.45;opacity:.8;max-width:460px;justify-self:end">Pas de logotype sous 64&nbsp;px&nbsp;: en dessous, le sillon se ferme. Le logo tient en un seul aplat&nbsp;: aucune contre-forme fermée, il se découpe en pochoir.</div>
+    </div>
+    ${A.foot('Logo', 'Variantes et tailles minimales')}
+  </div>`;
+</script>
+</body>

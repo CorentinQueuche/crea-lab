@@ -1,0 +1,97 @@
+<!doctype html><meta charset="utf-8"><title>Custom — visuels des étiquettes et de l'emballage (scène 37)</title>
+<link rel="stylesheet" href="../brand/marque.css"><script src="../brand/marque.js"></script>
+<!-- Visuels plaqués sur les objets de la scène 37 (blender/s37_etiquettes.py). Classes préfixées a1-.
+     #tag-noir, #tag-fluo, #tag-dos   550 × 950 px    étiquette volante 55 × 95 mm (1 px = 0,1 mm), œillet à 9 mm du haut
+     #tissee                          640 × 220 px    étiquette tissée 64 × 22 mm
+     #ruban                           1000 × 250 px   ruban adhésif de 50 mm, motif raccordable tous les 200 mm (1 px = 0,2 mm)
+     #carton-etiquette                900 × 600 px    étiquette d'expédition 90 × 60 mm
+     #pastille                        400 × 400 px    pastille de taille, 40 mm, fond transparent
+     #tee-plie                        1300 × 1600 px  tee-shirt plié dans sa pochette, 260 × 320 mm (1 px = 0,2 mm)
+     Rendu : bash art/3d1-rendre.sh etiquettes -->
+<style>
+  html,body{background:transparent;margin:0}
+  body{display:flex;flex-wrap:wrap;gap:40px;padding:0;align-items:flex-start}
+  .a1-v{position:relative;overflow:hidden;flex:none;font-family:var(--font)}
+  .a1-abs{position:absolute}
+  .a1-mono{font-family:var(--mono);text-transform:uppercase;letter-spacing:.07em;font-weight:500;white-space:nowrap}
+  .a1-l{display:flex;justify-content:space-between;align-items:baseline;border-top:1.5px solid currentColor;padding:13px 0 12px;font-size:19px}
+  .a1-l b{font-weight:600;font-size:24px;letter-spacing:-.02em}
+</style>
+<body>
+<div id="tag-noir" class="a1-v" style="width:550px;height:950px;background:#101012;color:#fff"></div>
+<div id="tag-fluo" class="a1-v" style="width:550px;height:950px;background:#E2FF21;color:#03010E"></div>
+<div id="tag-dos" class="a1-v" style="width:550px;height:950px;background:#fff;color:#03010E"></div>
+<div id="tissee" class="a1-v" style="width:640px;height:220px;background:#E2FF21;color:#03010E"></div>
+<div id="ruban" class="a1-v" style="width:1000px;height:250px;background:#E2FF21;color:#03010E"></div>
+<div id="carton-etiquette" class="a1-v" style="width:900px;height:600px;background:#fff;color:#03010E"></div>
+<div id="pastille" class="a1-v" style="width:400px;height:400px;border-radius:50%;background:#E2FF21;color:#03010E"></div>
+<div id="tee-plie" class="a1-v" style="width:1300px;height:1600px;background:#0B0B0D;color:#fff"></div>
+<script>
+const A = Marque, C = A.COULEURS, NB = A.NB;
+const $ = (id) => document.getElementById(id);
+const oeillet = (c) => `<div class="a1-abs" style="left:50%;top:90px;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;box-shadow:inset 0 0 0 1.5px ${c};opacity:.35"></div>`;
+
+/* ---------- Étiquette volante noire : le logo empilé, l'idée, le code d'atelier, la barre de contrôle ---------- */
+$('tag-noir').innerHTML = oeillet('#fff') + `
+  <div class="a1-abs" style="left:0;right:0;top:186px;display:grid;place-items:center">${A.logoV('#fff', 'style="width:330px"', { sym: C.fluo })}</div>
+  <div class="a1-abs t-titre" style="left:46px;right:46px;top:478px;font-size:118px;line-height:.9;text-align:left">Tout<br>est ${A.surl('fait ici')}</div>
+  <div class="a1-abs a1-mono" style="left:46px;bottom:98px;font-size:15.5px">CST${NB}·${NB}BRO${NB}·${NB}2026</div>
+  <div class="a1-abs a1-mono" style="right:46px;bottom:98px;font-size:15.5px;opacity:.6">custom.fr</div>
+  <div class="a1-abs" style="left:46px;right:46px;bottom:48px">${A.barre({ n: 1, style: 'height:22px' })}</div>`;
+
+/* ---------- Étiquette volante fluo : le Cran, « Fabriqué chez nous. », 100 % en blocs ---------- */
+$('tag-fluo').innerHTML = oeillet(C.encre) + `
+  <div class="a1-abs" style="left:46px;top:176px">${A.symbol(C.encre, 'style="width:230px"')}</div>
+  <div class="a1-abs t-titre" style="left:46px;right:30px;top:372px;font-size:112px;line-height:.9">Fabriqué<br>${A.surl('chez nous', 'noir')}</div>
+  <div class="a1-abs" style="left:46px;top:640px;color:${C.encre}">${A.pix('100%', { attrs: 'style="height:104px"' })}</div>
+  <div class="a1-abs" style="left:46px;top:762px;font-size:19px;font-weight:600;letter-spacing:-.01em">dans nos ateliers</div>
+  <div class="a1-abs a1-mono" style="left:46px;bottom:98px;font-size:15.5px">CST${NB}·${NB}SER${NB}·${NB}2026</div>
+  <div class="a1-abs" style="left:46px;right:46px;bottom:48px">${A.barre({ couleurs: ['encre', 'graphite', 'fonte', 'acier', 'blanc', 'violet', 'orange'], n: 1, style: 'height:22px' })}</div>`;
+
+/* ---------- Dos d'étiquette : la fiche de la pièce ---------- */
+const lg = (k, v) => `<div class="a1-l"><span class="a1-mono" style="font-size:14px;opacity:.6">${k}</span><b>${v}</b></div>`;
+$('tag-dos').innerHTML = oeillet(C.encre) + `
+  <div class="a1-abs" style="left:46px;top:176px">${A.logo(C.encre, 'style="height:44px"')}</div>
+  <div class="a1-abs" style="left:46px;right:46px;top:290px">${lg('Univers', 'Textile')}${lg('Technique', 'Broderie')}${lg('Matière', 'Sergé de coton')}${lg('Taille', 'M')}${lg('Contrôle', 'Atelier')}<div style="border-top:1.5px solid currentColor"></div></div>
+  <div class="a1-abs" style="left:46px;right:46px;top:650px;font-size:27px;font-weight:600;letter-spacing:-.03em;line-height:1.16">${A.TRIPTYQUE.join('<br>')}</div>
+  <div class="a1-abs a1-mono" style="left:46px;bottom:98px;font-size:15.5px">CST${NB}·${NB}BRO${NB}·${NB}2026</div>
+  <div class="a1-abs" style="right:46px;bottom:92px">${A.mire(30)}</div>
+  <div class="a1-abs" style="left:46px;right:46px;bottom:48px">${A.barre({ couleurs: ['encre', 'graphite', 'fonte', 'acier', 'fluo', 'violet', 'orange'], n: 1, style: 'height:22px' })}</div>`;
+
+/* ---------- Étiquette tissée : fluo, logo en Encre ---------- */
+$('tissee').innerHTML = `
+  <div class="a1-abs" style="inset:0;display:grid;place-items:center">${A.logo(C.encre, 'style="height:76px"')}</div>
+  <div class="a1-abs" style="left:0;right:0;top:14px;height:5px;background:${C.encre}"></div><div class="a1-abs" style="left:0;right:0;bottom:14px;height:5px;background:${C.encre}"></div>`;
+
+/* ---------- Ruban adhésif : le motif de blocs, le Cran et l'adresse du site tous les 20 cm ---------- */
+$('ruban').innerHTML = `
+  <div class="a1-abs" style="inset:0">${A.motif({ w: 1000, h: 250, c: 'encre', l: 62, seed: 11, trou: 0.16, attrs: 'style="width:100%;height:100%"' })}</div>
+  <div class="a1-abs" style="left:330px;top:63px;width:340px;height:124px;background:${C.fluo}"></div>
+  <div class="a1-abs" style="left:330px;width:340px;top:0;bottom:0;display:grid;place-items:center">${A.logo(C.encre, 'style="height:46px"')}</div>`;
+
+/* ---------- Étiquette d'expédition : de l'atelier à vous (le schéma du site) ---------- */
+$('carton-etiquette').innerHTML = `
+  <div class="a1-abs" style="left:44px;top:42px">${A.logo(C.encre, 'style="height:50px"')}</div>
+  <div class="a1-abs a1-mono" style="right:44px;top:56px;font-size:16px">CST${NB}·${NB}EXP${NB}·${NB}2026</div>
+  <div class="a1-abs" style="left:44px;right:44px;top:132px;border-top:2px solid ${C.encre}"></div>
+  <div class="a1-abs" style="left:30px;top:150px;color:${C.encre}">${A.chemin({ w: 560, h: 280, ep: 4, taille: 24 })}</div>
+  <div class="a1-abs t-titre" style="right:44px;top:176px;font-size:92px;line-height:.88;text-align:right">Tout est<br>${A.surl('fait ici')}</div>
+  <div class="a1-abs" style="left:44px;right:44px;bottom:112px;border-top:2px solid ${C.encre}"></div>
+  <div class="a1-abs a1-mono" style="left:44px;bottom:66px;font-size:16px">Textile${NB}·${NB}Print${NB}·${NB}Goodies${NB}·${NB}Signalétique</div>
+  <div class="a1-abs" style="left:44px;right:44px;bottom:30px">${A.barre({ couleurs: ['encre', 'graphite', 'fonte', 'acier', 'fluo', 'violet', 'orange'], n: 2, style: 'height:20px' })}</div>`;
+
+/* ---------- Pastille de taille ---------- */
+$('pastille').innerHTML = `
+  <div class="a1-abs t-titre" style="left:0;right:0;top:70px;text-align:center;font-size:230px;line-height:1">M</div>
+  <div class="a1-abs a1-mono" style="left:0;right:0;bottom:66px;text-align:center;font-size:21px">CST${NB}·${NB}SER</div>`;
+
+/* ---------- Tee-shirt plié : le dos du col, l'étiquette tissée cousue, le Cran imprimé sur la poitrine ---------- */
+$('tee-plie').innerHTML = `
+  <svg class="a1-abs" style="left:0;top:0;width:1300px;height:1600px" viewBox="0 0 1300 1600">
+    <path d="M330,0 Q650,330 970,0 L1040,0 Q650,420 260,0 Z" fill="#17171A"/>
+    <path d="M300,0 Q650,372 1000,0" fill="none" stroke="#2A2A2E" stroke-width="5" stroke-dasharray="14 10"/>
+    <path d="M0,330 H1300" stroke="#060607" stroke-width="3" opacity=".0"/>
+  </svg>
+  <div class="a1-abs" style="left:545px;top:150px;width:210px;height:74px;background:${C.fluo};display:grid;place-items:center">${A.logo(C.encre, 'style="height:26px"')}</div>
+  <div class="a1-abs" style="left:285px;top:560px">${A.symbol(C.fluo, 'style="width:730px"')}</div>`;
+</script></body>

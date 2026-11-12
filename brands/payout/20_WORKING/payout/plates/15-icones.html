@@ -1,0 +1,51 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates.css"><script src="../brand/marque.js"></script><script src="icones.js"></script>
+<style>
+  /* 15 · Grille d'icônes. Préfixe q15- */
+  .q15-hd{position:absolute;left:40px;right:40px;top:92px;height:380px;display:grid;grid-template-columns:1fr 380px 380px;gap:16px}
+  .q15-k{position:relative;border-radius:20px;background:var(--sombre);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--sur-scene) 10%,transparent);overflow:hidden}
+  .q15-grid{position:absolute;left:40px;right:40px;top:500px;display:grid;grid-template-columns:repeat(10,1fr);border-top:1px solid color-mix(in srgb,var(--sur-scene) 9%,transparent);border-left:1px solid color-mix(in srgb,var(--sur-scene) 9%,transparent)}
+  .q15-c{position:relative;height:128px;display:grid;place-items:center;border-right:1px solid color-mix(in srgb,var(--sur-scene) 9%,transparent);border-bottom:1px solid color-mix(in srgb,var(--sur-scene) 9%,transparent)}
+  .q15-c span{position:absolute;left:10px;bottom:8px;font-family:var(--mono);font-size:9.5px;letter-spacing:.04em;opacity:.45}
+  .q15-c em{position:absolute;right:10px;top:8px;font-style:normal;font-family:var(--mono);font-size:9.5px;opacity:.3}
+  .q15-c.on{background:var(--vif);color:var(--encre)}
+  .q15-c.on span,.q15-c.on em{opacity:.7}
+  .q15-pied{position:absolute;left:40px;right:40px;top:1300px;display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+  .q15-pied div{border-top:1px solid color-mix(in srgb,var(--sur-scene) 14%,transparent);padding-top:12px;font-family:var(--mono);font-size:11px;line-height:1.5;letter-spacing:.02em}
+  .q15-pied span{display:block;font-size:10px;letter-spacing:.06em;text-transform:uppercase;opacity:.55;margin-bottom:4px}
+</style>
+<body><div class="plate" id="p" style="height:1400px;background:var(--scene)"></div>
+<script>
+const A = Marque, C = A.COULEURS, NB = '&nbsp;', SUR = '#F3F6F4', I = Icones;
+const ALLUMEES = ['cashout', 'part', 'doc-valide'];
+/* Construction d'une icône sur sa grille de 18 */
+let g = ''; for (let i = 0; i <= 18; i++) g += `M${i},0V18M0,${i}H18`;
+const constr = (nom) => `<svg viewBox="-1.5 -1.5 21 21" style="position:absolute;left:50%;top:54%;transform:translate(-50%,-50%);width:290px;overflow:visible">
+  <path d="${g}" stroke="rgba(255,255,255,.08)" stroke-width=".04" fill="none"/>
+  <rect x="1.5" y="1.5" width="15" height="15" fill="none" stroke="${SUR}" stroke-width=".05" stroke-dasharray=".3 .3" opacity=".6"/>
+  <circle cx="9" cy="9" r="6.5" fill="none" stroke="${SUR}" stroke-width=".05" stroke-dasharray=".3 .3" opacity=".6"/>
+  <g fill="none" stroke="${C.net}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${(I.ajout[nom] || '')}</g>
+  <path d="M0,-.8V-.4M18,-.8V-.4M0,-.6H18" stroke="${SUR}" stroke-width=".05" fill="none" opacity=".8"/>
+  <text x="9" y="-1.05" text-anchor="middle" font-family="Chivo Mono" font-size=".62" fill="${SUR}" opacity=".8">18</text>
+  <text x="17" y="19.4" text-anchor="end" font-family="Chivo Mono" font-size=".62" fill="${SUR}" opacity=".8">trait 1,6 · zone 15</text>
+</svg>`;
+const tailles = [16, 18, 24, 32, 48];
+document.getElementById('p').innerHTML = `
+  ${A.entete(A.ENTETE, SUR)}
+  <div class="q15-hd">
+    <div style="display:flex;flex-direction:column;justify-content:space-between;padding-bottom:6px">
+      <div><div class="pl-lbl doux" style="margin-bottom:20px">15 · Grille d'icônes</div><div class="h-xl">Soixante icônes,<br>un seul trait.</div></div>
+      ${A.bicolore(`Toutes sur la même grille de 18, <b>trait de 1,6, bouts arrondis</b>, dans la couleur du texte. <b class="vif">Une icône s'allume</b> quand elle est l'action de l'écran.`, 'font-size:21px;line-height:1.28;max-width:560px')}</div>
+    <div class="q15-k"><span class="pl-tag">Construction · grille de 18</span>${constr('part')}</div>
+    <div class="q15-k"><span class="pl-tag">Tailles · 16 à 48 px</span>
+      <div style="position:absolute;left:26px;right:26px;top:96px;bottom:22px;display:flex;justify-content:space-between">
+        ${tailles.map((t) => `<div style="display:flex;flex-direction:column;align-items:center;justify-content:space-between">${['cashout', 'factures', 'part'].map((n) => `<div style="height:60px;display:flex;align-items:center">${I.svg(n, n === 'part' ? C.net : SUR, t, 1.6)}</div>`).join('')}<span class="pl-cote" style="opacity:.55;margin-top:24px">${t}</span></div>`).join('')}</div></div>
+  </div>
+  <div class="q15-grid">${I.noms.map((n, i) => `<div class="q15-c${ALLUMEES.includes(n) ? ' on' : ''}">${I.svg(n, 'currentColor', 30, 1.6)}<span>${n}</span><em>${String(i + 1).padStart(2, '0')}</em></div>`).join('')}</div>
+  <div class="q15-pied">
+    <div><span>Grille</span>18 × 18, zone utile de 15</div>
+    <div><span>Trait</span>1,6, bouts et angles arrondis</div>
+    <div><span>Couleur</span>Celle du texte${NB}; Net pour l'action</div>
+    <div><span>Tailles</span>16, 18, 24${NB}; 32 et 48 en illustration</div>
+    <div><span>Fichier</span>plates/icones.js, ${I.noms.length} icônes</div>
+  </div>`;
+</script></body>

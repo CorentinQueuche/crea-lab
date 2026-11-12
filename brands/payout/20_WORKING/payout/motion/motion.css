@@ -1,0 +1,10 @@
+/* PAYOUT — styles communs des vidéos (en plus du socle brand/marque.css). Aucune animation ni transition CSS : tout est posé par seek(t).
+   Classes préfixées m- pour ne rien heurter dans le socle. */
+.m-stage{position:relative;overflow:hidden;background:var(--coffre);color:var(--sur-scene)}
+.m-abs{position:absolute}
+.m-fill{position:absolute;inset:0}
+.m-stage svg{display:block}
+.m-cap{font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;line-height:1.5;white-space:nowrap}
+/* contenu à garder net au-dessus du grain (.grain::after est en z-index 50) */
+.m-net{z-index:60}
+.m-net:not(.m-abs){position:relative}

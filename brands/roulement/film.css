@@ -1,0 +1,41 @@
+/* Roulement — ce qui n'existe que pour le film : carton titre, curseur, étiquette glissée, ondes, états après action */
+.s, .c .vide, .c .comble, .cand, .trou, .toast { will-change: transform, opacity; }
+.s, .c .vide { transform-origin: 50% 70%; }
+
+#titre { position: absolute; inset: 0; z-index: 60; background: #ece5d6; display: grid; place-items: center; }
+#titre::before { content: ""; position: absolute; inset: 0; background: radial-gradient(900px 600px at 50% 42%, rgba(255, 252, 244, .9), transparent 70%), radial-gradient(900px 600px at 88% 100%, rgba(30, 92, 73, .10), transparent 70%); }
+#titre .bloc { position: relative; display: flex; flex-direction: column; align-items: center; gap: 30px; }
+#titre svg.logotype { display: block; overflow: visible; }
+#titre .tag { font-size: 30px; color: #554b40; letter-spacing: -.01em; }
+#titre .tag b { color: #1e5c49; font-weight: 600; }
+
+#fx { position: absolute; inset: 0; pointer-events: none; z-index: 55; }
+.onde { position: absolute; border-radius: 50%; border: 2px solid #1f1a15; opacity: 0; }
+.onde.b { border-color: var(--accent); }
+.onde.c { border-color: #f2ede1; }
+.vague { position: absolute; border-radius: 50%; border: 2px solid rgba(30, 92, 73, .55); box-shadow: 0 0 34px rgba(30, 92, 73, .28), 0 0 34px rgba(30, 92, 73, .18) inset; opacity: 0; }
+#fx-grille { position: absolute; left: 0; top: 76px; right: 0; bottom: 0; overflow: hidden; pointer-events: none; z-index: 3; }
+.curseur { position: absolute; width: 34px; height: 34px; left: 0; top: 0; opacity: 0; transform-origin: 4px 3px; filter: drop-shadow(0 5px 6px rgba(31, 26, 21, .35)); }
+.pointe { fill: #de4526; }
+
+/* étiquette que l'on fait glisser du candidat jusqu'au créneau vide */
+.fantome { position: absolute; left: 0; top: 0; display: flex; align-items: center; gap: 10px; padding: 8px 16px 8px 8px; border-radius: 14px; background: var(--bar-f); color: var(--bar-e); box-shadow: inset 0 0 0 1.5px rgba(150, 105, 15, .45), 0 3px 6px rgba(60, 42, 20, .16), 0 18px 34px rgba(60, 42, 20, .26); opacity: 0; transform-origin: 20px 20px; white-space: nowrap; }
+.fantome .av { width: 30px; height: 30px; background: #fbf3dc; color: var(--bar-e); font-size: 11.5px; }
+.fantome b { display: block; font-size: 14px; font-weight: 600; letter-spacing: -.01em; }
+.fantome small { display: block; font-family: "Geist Mono", monospace; font-size: 12px; letter-spacing: -.03em; word-spacing: -.34em; opacity: .85; }
+
+/* états après action */
+.trou.fait { opacity: .5; }
+.trou.fait b { text-decoration: line-through; text-decoration-color: rgba(31, 26, 21, .5); }
+.cand .tag.ok { background: var(--accent); color: #eaf3ed; }
+.cpt.calme { background: rgba(60, 42, 20, .10); color: var(--encre-2); }
+.p-lab.pourvu b { color: var(--accent); }
+.p-lab.pourvu .av { border-style: solid; border-color: rgba(30, 92, 73, .5); color: var(--accent); }
+.etat.ok .pt { background: #2b7f66; box-shadow: 0 0 0 3px rgba(43, 127, 102, .25); }
+.etat.ok { color: var(--accent); }
+.btn.primary.publie { background: var(--accent-clair); color: var(--accent); border-color: rgba(30, 92, 73, .35); box-shadow: none; }
+.btn.primary.publie .ico { color: var(--accent); }
+.toast { left: auto; right: 430px; top: 86px; transform-origin: 100% 0; }
+.delta { position: absolute; right: 22px; top: 74px; font-size: 14px; padding: 4px 10px; border-radius: 999px; background: #e2b659; color: #1b2321; font-weight: 500; opacity: 0; transform-origin: 100% 50%; }
+.histo .barre { transform-origin: 50% 100%; }
+.charge i { transform-origin: 0 50%; }

@@ -1,0 +1,30 @@
+/* CUSTOM — styles communs des vidéos (en plus du socle brand/marque.css).
+   Aucune animation ni transition CSS : tout est posé par seek(t). Classes préfixées m- pour ne rien heurter dans le socle
+   (attention : les variables --m-cran, --m-bloc, --m-motif appartiennent au socle). */
+.m-stage{position:relative;overflow:hidden;background:var(--noir);color:var(--sur-scene)}
+.m-abs{position:absolute}
+.m-fill{position:absolute;inset:0}
+.m-stage svg{display:block}
+.m-scene{position:absolute;inset:0;overflow:hidden}
+/* Légendes de repère : JetBrains Mono, capitales espacées */
+.m-cap{font-family:var(--mono);font-size:15px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;line-height:1.45;white-space:nowrap}
+.m-cap.petit{font-size:12px}
+/* Contenu à garder net au-dessus du grain (.grain::after est en z-index 50) */
+.m-net{z-index:60}
+.m-net:not(.m-abs){position:relative}
+/* Grain fixe plein cadre (un seul calque, il ne bouge pas : le fichier reste léger) */
+.m-grain{position:absolute;inset:0;z-index:55;pointer-events:none;opacity:.32;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E")}
+/* Ligne de texte masquée : le texte glisse depuis sous sa ligne de base */
+.m-ligne{display:block;overflow:hidden;padding:.08em .14em .07em;margin:-.08em -.14em -.07em}
+.m-ligne>span{display:inline-block;white-space:nowrap}
+/* Surligneur animé : même dessin que .surl du socle, le bloc de couleur se pose de gauche à droite (--k : 0 → 1) */
+.m-sl{background:transparent !important;isolation:isolate}
+.m-sl>i{position:absolute;inset:0;z-index:-1;border-radius:inherit;transform-origin:0 50%;transform:scaleX(var(--k,1))}
+/* La mire du socle est un <i> : bloc, pour qu'elle garde sa taille hors d'un conteneur flex */
+.m-stage .mire{display:block}
+/* Repères d'impression posés en absolu sur la scène */
+.m-croix{position:absolute;width:44px;height:44px;margin:-22px 0 0 -22px;pointer-events:none}
+.m-croix::before,.m-croix::after{content:"";position:absolute;background:currentColor}
+.m-croix::before{left:50%;top:0;bottom:0;width:1.5px;margin-left:-.75px}
+.m-croix::after{top:50%;left:0;right:0;height:1.5px;margin-top:-.75px}

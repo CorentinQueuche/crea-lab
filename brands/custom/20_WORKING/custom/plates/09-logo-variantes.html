@@ -1,0 +1,89 @@
+<!doctype html><meta charset="utf-8"><title>Custom — 09 · Logo et variantes</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates.css"><script src="../brand/marque.js"></script>
+<style>
+  /* 09 · Logo et variantes. Préfixe q09- */
+  .q09-min{position:absolute;left:900px;right:84px;top:96px;height:208px}
+  .q09-min .q09-it{position:absolute;bottom:26px;display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+  .q09-regle{position:absolute;left:22px;right:22px;bottom:78px;height:8px;border-bottom:1px solid var(--filet)}
+  .q09-pro{position:absolute;left:84px;right:84px;top:324px;height:420px}
+  .q09-pro svg text{font-family:var(--mono);font-weight:500;letter-spacing:.04em}
+  .q09-six{position:absolute;left:84px;right:84px;top:760px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .q09-six .pl-tuile{height:180px}
+  .q09-six .q09-c{position:absolute;inset:0;display:grid;place-items:center;padding-bottom:6px}
+  .q09-six .q09-u{position:absolute;left:22px;bottom:16px;font-size:13px;line-height:1.3;opacity:.6}
+  .q09-fonds{position:absolute;left:84px;right:84px;top:1176px;display:grid;grid-template-columns:repeat(7,1fr);gap:12px}
+  .q09-fonds .pl-tuile{height:150px;border-radius:22px}
+  .q09-fonds .q09-c{position:absolute;inset:0;display:grid;place-items:center;z-index:5}
+  .q09-fonds .pl-tag{left:16px;top:13px;font-size:9.5px}
+  .q09-non{position:absolute;left:84px;right:84px;top:1370px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .q09-non .pl-tuile{height:178px}
+  .q09-non .q09-c{position:absolute;inset:0;display:grid;place-items:center;padding-bottom:18px}
+  .q09-non .q09-u{position:absolute;left:22px;bottom:16px;font-size:13px;line-height:1.3}
+  .q09-sec{position:absolute;left:84px;z-index:60}
+</style>
+<body><div class="plate grain leger" id="p" style="height:1620px"></div>
+<script>
+const A = Marque, C = A.COULEURS, NB = A.NB, F = C.fluo, E = C.encre;
+
+/* Tailles minimales, à l'échelle 1 */
+const mins = [[A.logo(F, 'style="width:90px;height:auto"'), `90${NB}px · 24${NB}mm`, 'Logo de référence', 22], [A.wordmark('#fff', 'style="width:64px;height:auto"'), `64${NB}px · 18${NB}mm`, 'Logotype seul', 172], [A.symbol(F, 'style="width:16px;height:auto"'), `16${NB}px · 4${NB}mm`, 'Cran seul', 312]];
+
+/* Règle graduée en millimètres (1 mm = 3,78 px à l'échelle 1) */
+let tk = '', tl = '';
+for (let i = 0; i <= 100; i++) { const xx = (i * 3.7795).toFixed(2), hh = i % 10 === 0 ? 12 : i % 5 === 0 ? 8 : 5; tk += `M${xx},0V${hh}`; if (i % 10 === 0) tl += `<text x="${xx}" y="24" text-anchor="middle">${i / 10}</text>`; }
+const regle = `<svg viewBox="-4 0 386 30" style="position:absolute;left:18px;top:52px;width:386px;height:30px"><path d="${tk}" stroke="rgba(255,255,255,.45)" stroke-width="1" fill="none"/><g fill="rgba(255,255,255,.45)" font-family="JetBrains Mono" font-size="9">${tl}</g></svg>`;
+
+/* Zone de protection, en unités du tracé (logo 714 × 110, x = 0,28 × 110 = 30,8) */
+const k = 1.2, lw = 714 * k, lh = 110 * k, TW = 1232, TH = 420, lx = (TW - lw) / 2, ly = (TH - lh) / 2 + 8, x = 30.8, fs = 11 / k;
+const pro = `<svg viewBox="0 0 ${TW} ${TH}" style="position:absolute;inset:0;width:100%;height:100%">
+  <defs><pattern id="q09h" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(-58.3)"><rect width="1.1" height="7" fill="${E}" opacity=".3"/></pattern>
+    <mask id="q09m"><rect x="-40" y="-40" width="800" height="200" fill="#fff"/><rect x="0" y="0" width="714" height="110" fill="#000"/></mask></defs>
+  <g transform="translate(${lx} ${ly}) scale(${k})" fill="none" stroke="${E}" stroke-width="${1 / k}">
+    <rect x="${-x}" y="${-x}" width="${714 + 2 * x}" height="${110 + 2 * x}" fill="url(#q09h)" stroke="none" mask="url(#q09m)"/>
+    <rect x="${-x}" y="${-x}" width="${714 + 2 * x}" height="${110 + 2 * x}" stroke-dasharray="${4 / k} ${3 / k}"/>
+    <rect x="0" y="0" width="714" height="110" opacity=".35"/>
+    <path d="${A.symbolPath()}" fill="${E}" stroke="none"/><g transform="translate(227.05 0)"><path d="${A.wordPath()}" fill="${E}" fill-rule="evenodd" stroke="none"/></g>
+    <path d="M${-x},-52V-44M0,-52V-44M${-x},-48H0"/><text x="${-x / 2}" y="-58" font-size="${fs}" fill="${E}" stroke="none" text-anchor="middle">x</text>
+    <path d="M714,-52V-44M${714 + x},-52V-44M714,-48H${714 + x}"/><text x="${714 + x / 2}" y="-58" font-size="${fs}" fill="${E}" stroke="none" text-anchor="middle">x</text>
+    <path d="M${714 + x + 14},0H${714 + x + 22}M${714 + x + 14},110H${714 + x + 22}M${714 + x + 18},0V110"/><text x="${714 + x + 26}" y="${58}" font-size="${fs}" fill="${E}" stroke="none">h</text>
+    <path d="M-${x + 22},0H-${x + 14}M-${x + 22},${-x}H-${x + 14}M-${x + 18},${-x}V0"/><text x="-${x + 26}" y="${-x / 2 + 3}" font-size="${fs}" fill="${E}" stroke="none" text-anchor="end">x</text>
+  </g></svg>`;
+
+const six = [
+  ['01 · Référence', A.logo(F, 'style="height:44px"'), 'Le Cran puis le logotype, sur une ligne. Partout où la place le permet.'],
+  ['02 · Empilé', A.logoV('#fff', 'style="height:92px"', { sym: F }), 'Le Cran au-dessus, centré. Formats carrés et hauts.'],
+  ['03 · Logotype seul', A.wordmark('#fff', 'style="height:52px"'), 'Pour les très grands usages.'],
+  ['04 · Cran seul', A.symbol(F, 'style="height:74px"'), 'Icône, bouton, signalétique, fin de vidéo.'],
+  ['05 · Filaire', A.logo(F, 'style="height:52px"', { contour: 2 }), 'Le contour au fil, sur le textile.'],
+  ['06 · Avec descripteur', A.lockup('#fff', 'style="height:36px"'), 'Quand il faut dire le métier.']];
+
+const fonds = [['fluo', E, 'Encre sur fluo'], ['noir', F, 'Fluo sur noir'], ['noir', '#fff', 'Blanc sur noir'], ['blanc', E, 'Encre sur blanc'], ['violet', '#fff', 'Blanc sur violet'], ['orange', E, 'Encre sur orange'], ['photo', F, 'Fluo sur photo']];
+
+const nons = [
+  ['Pas de dégradé', `<svg width="0" height="0" style="position:absolute"><defs><linearGradient id="q09g" x1="0" x2="1"><stop offset="0" stop-color="${F}"/><stop offset="1" stop-color="${C.violet}"/></linearGradient></defs></svg>${A.logo('url(#q09g)', 'style="height:40px"')}`],
+  ['Pas d’ombre', A.logo(F, `style="height:40px;filter:drop-shadow(6px 7px 0 ${C.acier})"`)],
+  ['Pas de rotation', A.logo(F, 'style="height:40px;transform:rotate(-14deg)"')],
+  ['Pas de déformation', A.logo(F, 'style="height:34px;transform:scale(1.3,.6)"')]];
+
+document.getElementById('p').innerHTML =
+  A.entete() +
+  `<div class="pl-intro"><div class="pl-lbl doux">09 · La marque · logo</div>
+    <div class="t-titre h-84">Un logo, ${A.surl('six versions')}</div>
+    <p class="pl-chapo">Le Cran puis « Custom.fr », sur une ligne : c’est la référence. Les cinq autres versions en dérivent, sans jamais le redessiner.</p></div>
+  <div class="q09-min pl-tuile"><span class="pl-tag" style="opacity:.6">Tailles minimales · échelle 1 · règle en cm</span>
+    ${regle}
+    ${mins.map(([svg, cote, nom, l]) => `<div class="q09-it" style="left:${l}px"><div style="height:40px;display:flex;align-items:flex-end">${svg}</div><div><div class="pl-cote" style="color:${F}">${cote}</div><div class="pl-lbl doux" style="margin-top:4px">${nom}</div></div></div>`).join('')}</div>
+  <div class="q09-pro pl-tuile fluo">${pro}
+    <span class="pl-tag" style="opacity:.7">Logo de référence · zone de protection</span>
+    <span class="pl-tag" style="left:auto;right:22px;opacity:.7">x = ½ bloc = 0,28 × h</span>
+    <span class="pl-tag" style="top:auto;bottom:18px;opacity:.7">Rien n’entre dans la zone hachurée : ni texte, ni bord, ni image</span>
+    <span class="pl-tag" style="top:auto;bottom:18px;left:auto;right:22px;opacity:.7">Encre #03010E sur fluo #E2FF21</span></div>
+  <div class="q09-six">${six.map(([t, svg, u]) => `<div class="pl-tuile"><span class="pl-tag" style="opacity:.6">${t}</span><div class="q09-c">${svg}</div><div class="q09-u">${u}</div></div>`).join('')}</div>
+  <div class="pl-lbl doux" style="position:absolute;left:84px;top:1150px">Fonds autorisés · une couleur de logo par fond</div>
+  <div class="q09-fonds">${fonds.map(([f, c, t]) => f === 'photo'
+    ? `<div class="pl-tuile">${A.photo('peloton', { mode: 'sombre', style: 'position:absolute;inset:0' })}<span class="pl-tag" style="color:#fff;opacity:.8">${t}</span><div class="q09-c">${A.logo(c, 'style="width:132px;height:auto"')}</div></div>`
+    : `<div class="pl-tuile ${f}" style="${f === 'noir' ? '' : ''}"><span class="pl-tag" style="opacity:.65">${t}</span><div class="q09-c">${A.logo(c, 'style="width:132px;height:auto"')}</div></div>`).join('')}</div>
+  <div class="pl-lbl doux" style="position:absolute;left:84px;top:1344px">À ne pas faire · le logo ne se transforme jamais</div>
+  <div class="q09-non">${nons.map(([t, svg]) => `<div class="pl-tuile"><div class="q09-c">${svg}</div><i class="pl-barre-x" style="--xa:${Math.round(Math.atan(178 / 296) * 180 / Math.PI)}deg"></i><div class="q09-u">${t}</div></div>`).join('')}</div>` +
+  A.foot('09 · Logo et variantes', 'Custom · direction artistique');
+</script></body>

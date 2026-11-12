@@ -1,0 +1,102 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="art.css"><script src="../brand/marque.js"></script>
+<!-- Papeterie (scène G, planche 19). Toutes les données viennent de Marque.DONNEES : rien d'inventé.
+     #carte-recto, #carte-verso  850 × 550 px   carte de visite 85 × 55 mm (1 px = 0,1 mm)
+     #facture, #cra             1050 × 1485 px  A4, 210 × 297 mm (1 px = 0,2 mm)
+     #enveloppe                 1100 × 550 px   220 × 110 mm
+     node tools/shot.mjs art/papeterie.html out/art/facture.png --w 1200 --sel "#facture" -->
+<body>
+<div style="display:flex;gap:40px"><div id="carte-recto" class="a-v" style="width:850px;height:550px;background:#060A08"></div><div id="carte-verso" class="a-v" style="width:850px;height:550px;background:#36FF72;color:#04140A"></div></div>
+<div style="display:flex;gap:40px"><div id="facture" class="a-v a-papier" style="width:1050px;height:1485px"></div><div id="cra" class="a-v a-papier" style="width:1050px;height:1485px"></div></div>
+<div id="enveloppe" class="a-v" style="width:1100px;height:550px;background:#060A08"></div>
+<script>
+const A = Marque, C = A.COULEURS, N = A.ECHELLE, D = A.DONNEES, NB = ' ', SUR = '#F3F6F4', NOIR = '#04140A';
+const $ = (id) => document.getElementById(id);
+const F = D.freelance, K = D.cra, REF = `<span class="a-nb">${K.facture}</span>`;
+
+// ---------- Carte de visite ----------
+$('carte-recto').innerHTML = `
+<div style="position:absolute;right:-190px;top:-150px;width:620px;height:620px;border-radius:50%;background:radial-gradient(closest-side,rgba(10,102,42,.55),rgba(6,10,8,0))"></div>
+<div class="a-cap" style="position:absolute;left:56px;top:54px;font-size:15px;opacity:.6">Le copilote des freelances</div>
+<div style="position:absolute;left:56px;bottom:56px">${A.wordmark(C.net, 'style="width:380px;display:block"')}</div>
+<div class="a-m" style="position:absolute;right:56px;bottom:58px;font-size:17px;opacity:.6">payout.fr</div>`;
+$('carte-verso').innerHTML = `
+<div style="position:absolute;right:56px;top:52px">${A.symbol(NOIR, 'style="height:96px;display:block"')}</div>
+<div style="position:absolute;left:56px;top:50px">
+  <div style="font-size:52px;font-weight:500;letter-spacing:-.05em;line-height:1">Inès Caron</div>
+  <div style="font-size:23px;font-weight:500;letter-spacing:-.02em;margin-top:12px;opacity:.72">Accompagnement des freelances</div>
+</div>
+<div class="a-m" style="position:absolute;left:56px;bottom:112px;font-size:23px;font-weight:500;line-height:1.5;letter-spacing:-.01em">01 99 00 12 85<br>payout.fr</div>
+<div style="position:absolute;left:56px;right:56px;bottom:54px">${A.jauge({ forme: 'segments', n: 50, p: 85, h: 30, g: 4, c: NOIR, c2: NOIR })}</div>`;
+
+// ---------- Facture F-2026-010 : générée depuis le CRA d'octobre ----------
+const lig = (a, b, fort) => `<div class="a-lig" style="padding:${fort ? 14 : 9}px 0;font-size:${fort ? 21 : 19}px;font-weight:${fort ? 600 : 400}"><span>${a}</span><i></i><span class="a-m" style="font-weight:500">${b}</span></div>`;
+const pied = (txt) => `<div style="position:absolute;left:84px;right:84px;bottom:66px;display:flex;justify-content:space-between;align-items:flex-end;border-top:1px solid rgba(6,10,8,.14);padding-top:22px">
+  <div style="display:flex;gap:16px;align-items:center">${A.symbol(C.coffre, 'style="height:38px;display:block"')}<div class="a-cap" style="font-size:12px;line-height:1.55">${txt}</div></div>
+  <div class="a-m" style="font-size:15px;font-weight:500">payout.fr</div></div>`;
+const tete = (titre, sous) => `<div style="display:flex;justify-content:space-between;align-items:flex-start">
+  <div><div style="font-size:34px;font-weight:600;letter-spacing:-.04em;line-height:1">${F.societe}</div>
+    <div style="font-size:16px;line-height:1.5;margin-top:12px;opacity:.7">${F.forme} · ${F.prenom} ${F.nom}, ${F.metier.toLowerCase()}<br>${F.mail}</div></div>
+  <div style="text-align:right"><div class="a-t" style="font-size:76px;line-height:.9">${titre}</div><div class="a-m" style="font-size:22px;font-weight:500;margin-top:14px">${sous}</div></div></div>`;
+const bloc = (k, v, s) => `<div><div class="a-cap" style="font-size:12px">${k}</div><div style="font-size:24px;font-weight:500;letter-spacing:-.03em;margin-top:9px">${v}</div>${s ? `<div style="font-size:15px;opacity:.66;margin-top:5px">${s}</div>` : ''}</div>`;
+
+$('facture').innerHTML = `<div class="theme clair" style="position:absolute;inset:0;padding:84px 84px 0">
+  ${tete('Facture', REF)}
+  <div style="display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:30px;margin-top:92px;padding:30px 0;border-top:1.5px solid #060A08;border-bottom:1px solid rgba(6,10,8,.14)">
+    ${bloc('Adressée à', D.mission.client, 'Mission principale')}
+    ${bloc('Période', K.mois, K.factures + ' jours facturés')}
+    <div><div class="a-cap" style="font-size:12px">Statut</div><div style="margin-top:10px;zoom:1.5"><span class="d-pill ok">Payée</span></div><div style="font-size:15px;opacity:.66;margin-top:9px">Reçu le ${D.transactions[0].date} 2026</div></div>
+  </div>
+  <div class="a-th a-cap" style="grid-template-columns:1fr 110px 170px 190px;font-size:12px;margin-top:64px"><span>Désignation</span><span style="text-align:right">Jours</span><span style="text-align:right">TJM HT</span><span style="text-align:right">Montant HT</span></div>
+  <div class="a-tr" style="grid-template-columns:1fr 110px 170px 190px;font-size:20px">
+    <div><b style="font-weight:600">Mission de conseil data</b><div style="font-size:15px;opacity:.66;margin-top:6px;line-height:1.45">Compte rendu d'activité d'${K.mois.toLowerCase()}, validé.<br>${K.site} jours sur site, ${K.tele.length} jours en télétravail.</div></div>
+    <span class="a-m" style="text-align:right;font-weight:500">${K.factures}</span><span class="a-m" style="text-align:right;font-weight:500">${A.eurH(K.tjm)}</span><span class="a-m" style="text-align:right;font-weight:500">${A.eurH(K.ht)}</span>
+  </div>
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-top:54px">
+  <div style="width:380px;padding-top:9px">
+    <div class="a-cap" style="font-size:12px">Source</div>
+    <div style="font-size:17px;line-height:1.45;margin-top:10px">Chaque montant vient du compte rendu d'activité : ${K.factures} jours à ${A.eur(K.tjm, 0)} HT. Zéro ressaisie.</div>
+  </div>
+  <div style="width:470px">
+    ${lig('Total HT', A.eurH(K.ht))}${lig(`TVA 20${NB}%`, A.eurH(K.tva))}
+    <div style="background:${C.net};color:${NOIR};margin-top:16px;padding:22px 24px 24px">
+      <div class="a-cap" style="font-size:12px;color:${NOIR};opacity:.75">Total TTC</div>
+      <div class="chiffre" style="font-size:62px;margin-top:12px">${A.eurH(K.ttc)}</div>
+    </div>
+  </div></div>
+  ${pied(`Facture générée depuis le CRA d'${K.mois.toLowerCase()}<br>Payout · le copilote des freelances`)}
+</div>`;
+
+// ---------- CRA d'octobre 2026, imprimé ----------
+const stat = (k, v) => `<div style="border-top:1.5px solid #060A08;padding-top:14px"><div class="a-cap" style="font-size:12px">${k}</div><div class="a-m" style="font-size:38px;font-weight:500;letter-spacing:-.05em;margin-top:12px">${v}</div></div>`;
+$('cra').innerHTML = `<div class="theme clair" style="position:absolute;inset:0;padding:84px 84px 0">
+  ${tete('CRA', K.mois)}
+  <div style="display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:30px;margin-top:92px;padding:30px 0;border-top:1.5px solid #060A08">
+    ${bloc('Client', D.mission.client, 'Mission principale')}
+    ${bloc('Document', "Compte rendu d'activité")}
+    <div><div class="a-cap" style="font-size:12px">Statut</div><div style="margin-top:10px;zoom:1.5"><span class="d-pill ok">Validé</span></div></div>
+  </div>
+  <div style="margin-top:20px;background:${C.releve};padding:26px 0 30px;display:grid;justify-items:center;gap:22px">
+    ${A.cra({ cell: 74, cw: 108, gap: 9 })}
+    <div style="display:flex;gap:34px;align-items:center;font-size:16px;font-weight:500">
+      <span style="display:flex;align-items:center;gap:9px"><i style="width:18px;height:18px;border-radius:4px;background:${C.net}"></i>Sur site</span>
+      <span style="display:flex;align-items:center;gap:9px"><i style="width:18px;height:18px;border-radius:4px;background:${N[100]};box-shadow:inset 0 0 0 1px ${N[800]}"></i>Télétravail</span>
+      <span style="display:flex;align-items:center;gap:9px"><i style="width:18px;height:18px;border-radius:4px;background:repeating-linear-gradient(-45deg,rgba(6,10,8,.58) 0 1.2px,transparent 1.2px 5px)"></i>Absence</span>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:34px">
+    ${stat('Jours ouvrés', K.ouvres)}${stat('Jours facturés', K.factures)}${stat('Sur site', K.site)}${stat('Télétravail', K.tele.length)}
+  </div>
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-top:30px;background:#060A08;color:${SUR};padding:24px 26px 26px">
+    <div><div class="a-cap" style="font-size:12px;color:${SUR};opacity:.6">Montant facturé HT · ${K.factures} jours à ${A.eur(K.tjm, 0)}</div><div class="chiffre" style="font-size:62px;color:${C.net};margin-top:12px">${A.eurH(K.ht)}</div></div>
+    <div style="text-align:right"><div class="a-cap" style="font-size:12px;color:${SUR};opacity:.6">Facture</div><div class="a-m" style="font-size:24px;font-weight:500;margin-top:10px">${REF}</div></div>
+  </div>
+  ${pied(`Votre CRA devient une facture. Zéro ressaisie.<br>Payout · le copilote des freelances`)}
+</div>`;
+
+// ---------- Enveloppe 220 × 110 mm ----------
+$('enveloppe').innerHTML = `
+<div style="position:absolute;left:60px;top:58px">${A.wordmark(C.net, 'style="width:230px;display:block"')}</div>
+<div class="a-cap" style="position:absolute;left:60px;top:150px;font-size:12px;opacity:.6">Le copilote des freelances</div>
+<div class="a-m" style="position:absolute;right:60px;bottom:86px;font-size:17px;opacity:.7">payout.fr</div>
+<div style="position:absolute;left:60px;right:60px;bottom:52px">${A.jauge({ forme: 'segments', n: 100, p: 85, h: 14, g: 3 })}</div>`;
+</script></body>

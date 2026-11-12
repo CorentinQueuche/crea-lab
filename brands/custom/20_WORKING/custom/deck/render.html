@@ -1,0 +1,7 @@
+<!doctype html><meta charset="utf-8">
+<!-- Rendu d'une page du guide Custom à 1280 × 720 (tools/deck.mjs appelle window.show(clé) puis capture).
+     show() écrit la page puis rend ses canvas (GuideApres, synchrone) : la capture suit le rendu complet. -->
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="../brand/ecrans.css"><link rel="stylesheet" href="pages.css">
+<script src="../brand/marque.js"></script><script src="../brand/techniques.js"></script><script src="../brand/ecrans.js"></script><script src="pages.js"></script>
+<body style="background:#101012"><div class="mp-in" id="in"></div>
+<script>window.show = (k) => { const el = document.getElementById('in'); el.innerHTML = window.GuidePages[k]; window.GuideApres(el); };</script></body>

@@ -1,0 +1,19 @@
+/* Visuels plaqués sur les objets 3D du lot 3D-2 (26 portable, 32 téléphone, 40 goodies, 41 signalétique).
+   Chaque visuel est un élément à taille fixe, à la proportion exacte de la surface habillée, rendu avec
+   node tools/shot.mjs art/3d2-x.html out/art/3d2-y.png --sel "#id" --scale 2   (tout rendre : bash art/3d2-rendre.sh).
+   Ajouter ?t à l'adresse et --transparent pour un fond transparent (étiquettes, marquages, coins arrondis).
+   Classes préfixées a2- pour ne rien heurter dans le socle. */
+html,body{background:#050506;margin:0}
+html.a2-t,html.a2-t body{background:transparent}
+body{overflow:visible;display:flex;flex-direction:column;align-items:flex-start;gap:40px;padding:0}
+.a2-v{position:relative;overflow:hidden;flex:none;font-family:var(--font)}
+.a2-fluo{background:var(--fluo);color:var(--encre)}
+.a2-noir{background:var(--noir);color:#fff}
+.a2-blanc{background:#fff;color:var(--encre)}
+.a2-vide{background:transparent}
+.a2-abs{position:absolute}
+.a2-c{display:flex;align-items:center;justify-content:center}
+.a2-col{display:flex;flex-direction:column;align-items:center}
+.a2-mono{font-family:var(--mono);font-weight:500;text-transform:uppercase;letter-spacing:.07em;line-height:1.45;white-space:nowrap}
+.a2-filet{height:3px;background:currentColor}
+.a2-nb{white-space:nowrap}

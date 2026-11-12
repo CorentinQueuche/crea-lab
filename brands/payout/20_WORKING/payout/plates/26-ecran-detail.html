@@ -1,0 +1,50 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates-b.css"><script src="../brand/marque.js"></script>
+<style>
+  .s26-zoom{position:absolute;overflow:hidden;z-index:4;box-shadow:0 0 0 1px rgba(255,255,255,.16),0 70px 110px -40px rgba(0,0,0,.95),0 0 140px -40px rgba(54,255,114,.25)}
+  .s26-cadre{position:absolute;z-index:3;box-shadow:0 0 0 1.5px var(--net);pointer-events:none}
+  .s26-fait{display:grid;grid-template-columns:150px 1fr;gap:14px;padding:13px 0;border-top:1px solid var(--filet);font-size:14.5px;line-height:1.4}
+  .s26-fait span:last-child{opacity:.7}
+</style>
+<body><div class="plate" id="p" style="height:1190px;background:var(--coffre)"></div>
+<script>
+const A = Marque, NB = ' ', SUR = '#F3F6F4';
+const KB = 0.52, K2 = KB * 2;                 // l'écran, puis le détail agrandi deux fois
+const B = { x: 84, y: 262 };
+const faits = [
+  ['Le chiffre', `85${NB}%, en Chivo Mono, 136${NB}px à l'écran`],
+  ['La jauge', `100 segments, un par euro sur 100${NB}€ facturés`],
+  ['Le repère', 'Un trait Prélevé à 54, la seule touche chaude de la carte'],
+  ['Les montants', `Jusqu'à 95${NB}880${NB}€ sur l'exercice simulé, au lieu de 60${NB}912${NB}€`],
+];
+const p = document.getElementById('p');
+p.innerHTML = `
+  ${A.entete(A.ENTETE, SUR)}
+  <div class="pb-abs" style="left:84px;top:104px;width:760px">
+    <div class="pb-lbl doux">La web app · écran et détail</div>
+    <div class="pb-t" style="margin-top:16px">La carte qui dit tout.</div>
+  </div>
+  <div class="pb-abs" style="left:${B.x}px;top:${B.y}px" id="nav">${A.browser(A.desk.bord(), KB, { url: 'app.payout.fr/tableau-de-bord' })}</div>
+  <div class="pb-abs" style="left:816px;top:122px;width:500px">
+    ${A.bicolore(`Une seule carte porte la promesse${NB}: <b>la part qui vous revient,</b> en chiffre de scène et <b>en jauge.</b>`, 'font-size:23px;line-height:1.28')}
+    </div><div class="pb-abs" style="left:900px;top:262px;width:416px"><div>${faits.map(([a, b]) => `<div class="s26-fait"><span class="pb-lbl" style="opacity:.55;padding-top:3px">${a}</span><span>${b}</span></div>`).join('')}</div>
+  </div>
+  <div class="s26-zoom" id="zoom"><div id="inner" style="position:absolute;left:0;top:0;width:1440px;height:900px;zoom:${K2}">${A.desk.bord()}</div></div>
+  <div class="s26-cadre" id="cadre"></div>
+  <svg class="pb-abs" id="fil" style="left:0;top:0;z-index:3;overflow:visible" width="1400" height="1190"></svg>`;
+
+document.fonts.ready.then(() => {
+// Mesures : la carte « La part qui vous revient » dans l'écran, puis dans la copie agrandie
+const P = p.getBoundingClientRect();
+const rel = (el) => { const r = el.getBoundingClientRect(); return { x: r.left - P.left, y: r.top - P.top, w: r.width, h: r.height }; };
+const cNav = rel(document.querySelector('#nav .d-main .d-card'));
+const inner = document.getElementById('inner'), I = rel(inner), s = I.w / 1440;
+const cIn = rel(inner.querySelector('.d-main .d-card'));
+const ox = (cIn.x - I.x) / s, oy = (cIn.y - I.y) / s, cw = cIn.w / s, ch = cIn.h / s;
+const Z = { w: cw * K2, h: ch * K2 }; Z.x = 1316 - Z.w; Z.y = 626; p.style.height = Math.ceil(Z.y + Z.h + 84) + 'px';
+Object.assign(document.getElementById('zoom').style, { left: Z.x + 'px', top: Z.y + 'px', width: Z.w + 'px', height: Z.h + 'px', borderRadius: 20 * K2 + 'px' });
+inner.style.left = (-ox) + 'px'; inner.style.top = (-oy) + 'px';
+Object.assign(document.getElementById('cadre').style, { left: cNav.x - 5 + 'px', top: cNav.y - 5 + 'px', width: cNav.w + 10 + 'px', height: cNav.h + 10 + 'px', borderRadius: '14px' });
+const fx = cNav.x + cNav.w + 5, fy = cNav.y + cNav.h + 5;
+document.getElementById('fil').innerHTML = `<text x="${Z.x + Z.w}" y="${Z.y - 18}" text-anchor="end" fill="#36FF72" style="font:10.5px var(--mono);letter-spacing:.07em">DÉTAIL · ×2</text>`;
+});
+</script></body>

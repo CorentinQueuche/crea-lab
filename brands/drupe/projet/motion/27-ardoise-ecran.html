@@ -1,0 +1,11 @@
+<!doctype html><meta charset="utf-8"><title>Drupe — 27 l'ardoise</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="motion.css">
+<script src="../brand/marque.js"></script><script src="lib.js"></script><script src="scenes.js"></script>
+<body style="background:var(--feuille)"><div id="s"></div>
+<script>
+// 1920 × 1080, 8 s, contenu seul de l'écran derrière le comptoir (à incruster) :
+// node tools/record.mjs motion/27-ardoise-ecran.html out/motion/27-ardoise-ecran.mp4 --w 1920 --h 1080 --fps 30 --dur 8
+// Le chiffre 48 h monte, puis la carte de la semaine s'affiche café par café.
+window.seek = Scenes.ardoise(document.getElementById('s'), { w: 1920, h: 1080 });
+seek(0);
+</script></body>

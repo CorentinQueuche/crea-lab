@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aube — Guide de marque</title>
+<meta name="description" content="Guide de marque d'Aube, assistant personnel : logo, couleurs, typographie, éléments graphiques, interface, mouvement et ressources.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0A0609">
+<link rel="icon" href="logo/aube-symbole-aurore.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/aube.css">
+<link rel="stylesheet" href="assets/guide.css">
+<script src="assets/aube.js"></script>
+</head>
+<body>
+
+<button class="burger" id="burger" aria-label="Ouvrir le sommaire">☰</button>
+<aside class="sommaire" id="side">
+  <a class="brand" href="#accueil" id="brand"></a>
+  <nav class="nav" id="nav" aria-label="Sommaire"></nav>
+  <div class="foot">
+    <a href="presentation.html">Ouvrir la présentation (23 pages)</a>
+    <a href="deck/aube-guide-de-marque.pdf" download>Télécharger le guide en PDF</a>
+    <a href="etude-de-cas.html">Voir l'étude de cas en défilement</a>
+    <a href="logo/aube-logos.zip" download>Télécharger les logos (ZIP)</a>
+    <span>Version 1.0 · novembre 2026<br>Projet vitrine KLYRA</span>
+  </div>
+</aside>
+
+<main id="main">
+
+<!-- ======================= ACCUEIL ======================= -->
+<div class="page" id="accueil" data-title="Accueil">
+  <div class="hero grain">
+    <div class="horizon"></div>
+    <div style="position:relative;z-index:2">
+      <span class="kicker">Guide de marque · v1.0</span>
+      <h1>Le jour se lève.<br>Tout est prêt.</h1>
+      <p class="lead">Aube est un assistant personnel. Ce guide rassemble tout ce qu'il faut pour le représenter juste : son idée, son logo, ses couleurs, sa typographie, ses écrans et sa façon de bouger.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:30px"><a class="bt" href="#marque">Commencer par la marque</a><a class="bt ghost" href="deck/aube-guide-de-marque.pdf" download>Télécharger le PDF</a></div>
+    </div>
+    <div class="o" id="hero-orb"></div>
+  </div>
+  <section>
+    <h2>Le guide en présentation</h2>
+    <p class="t">Le même guide en 23 pages au format 16:9, à projeter, à envoyer ou à imprimer.</p>
+    <div class="card pdfcard">
+      <a href="presentation.html" class="pv" aria-label="Ouvrir la présentation"><img src="deck/01.jpg" alt="" loading="lazy"><img src="deck/09.jpg" alt="" loading="lazy"><img src="deck/14.jpg" alt="" loading="lazy"><img src="deck/19.jpg" alt="" loading="lazy"></a>
+      <div><span class="cap2">PDF · 23 pages · 16:9 · 4 Mo</span><div class="big" style="margin:10px 0 18px">Guide de marque Aube</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="bt" href="deck/aube-guide-de-marque.pdf" download>Télécharger le PDF</a><a class="bt ghost" href="presentation.html">Ouvrir la présentation</a></div></div>
+    </div>
+  </section>
+  <section>
+    <h2>Sommaire</h2>
+    <p class="t">Neuf chapitres. Chacun tient sur une page, avec ses règles, ses exemples et ses fichiers.</p>
+    <div class="grid c3 tiles" id="tiles"></div>
+  </section>
+  <div class="pager" data-pager></div>
+</div>
+
+<!-- ======================= 01 MARQUE ======================= -->
+<div class="page" id="marque" data-title="La marque" data-subs="idee:L'idée|mots:Mots-clés|valeurs:Valeurs|personnalite:Personnalité|ton:Ton de voix">
+  <span class="kicker">01 — La marque</span>
+  <h1>Un assistant qui travaille la nuit pour que le matin soit simple.</h1>
+  <p class="lead">Aube est un assistant personnel intelligent, pensé pour celles et ceux qui mènent de front un métier et une vie. Pendant la nuit, il trie, prépare et anticipe ; au réveil, la journée est déjà en ordre.</p>
+
+  <section id="idee">
+    <h2><small>1.1</small>L'idée</h2>
+    <p class="t">Tout le système vient d'une seule image : le lever du jour. Elle donne le nom, la forme du logo, la couleur et le mouvement.</p>
+    <div class="grid c3">
+      <div class="card"><span class="num">MISSION</span><div class="big">Rendre à chacun le temps de bien commencer sa journée.</div></div>
+      <div class="card"><span class="num">SIGNATURE</span><div class="big">Le jour se lève.<br>Tout est prêt.</div><p style="margin-top:14px">Pour les titres, les ouvertures, la fin d'une vidéo.</p></div>
+      <div class="card"><span class="num">TRIPTYQUE</span><div class="big">Clair.<br>Calme.<br>Prêt.</div><p style="margin-top:14px">Pour l'affichage et les formats courts.</p></div>
+    </div>
+  </section>
+
+  <section id="mots">
+    <h2><small>1.2</small>Mots-clés</h2>
+    <p class="t">Quatre mots, dans l'ordre d'une matinée : on y voit clair, on prend de l'élan, on a un temps d'avance, on est tranquille.</p>
+    <div class="grid c4 keep2" id="mots-grid"></div>
+    <img class="shot" style="margin-top:16px" data-lb="03-mots-cles.jpg" src="media/vignettes/03-mots-cles.jpg" alt="Planche des mots-clés" loading="lazy">
+  </section>
+
+  <section id="valeurs">
+    <h2><small>1.3</small>Valeurs</h2>
+    <div class="grid c2" id="valeurs-grid"></div>
+  </section>
+
+  <section id="personnalite">
+    <h2><small>1.4</small>Personnalité</h2>
+    <p class="t">Aube est calme, chaleureux et concret. Il parle comme une personne de confiance, jamais comme une machine ni comme une publicité.</p>
+    <div class="card" id="perso"></div>
+  </section>
+
+  <section id="ton">
+    <h2><small>1.5</small>Ton de voix</h2>
+    <p class="t">Aube tutoie. Il fait des phrases courtes, dit ce qu'il a fait et ce qu'il propose, et s'arrête là.</p>
+    <div class="grid c2">
+      <div class="card"><h3>Quatre règles</h3>
+        <div class="rule" style="margin-top:14px"><b>01</b><span>Tutoiement, toujours. Aube connaît la personne à qui il parle.</span><b>02</b><span>Une idée par phrase. Si la phrase a besoin d'une virgule de plus, on la coupe.</span><b>03</b><span>Du concret : une heure, un prénom, une action déjà faite.</span><b>04</b><span>Aucun jargon, aucune exclamation de vendeur, aucun message d'erreur technique.</span></div>
+      </div>
+      <div class="card" style="padding:8px 26px 14px"><table><thead><tr><th style="padding-top:18px"><span class="ok">On dit</span></th><th style="padding-top:18px"><span class="ko">On ne dit pas</span></th></tr></thead><tbody id="ton-table"></tbody></table></div>
+    </div>
+  </section>
+  <div class="pager" data-pager></div>
+</div>
+
+<!-- ======================= 02 LOGO ======================= -->
+<div class="page" id="logo" data-title="Le logo" data-subs="versions:Les trois versions|construction:Construction|protection:Zone de protection|tailles:Tailles minimales|couleurs-logo:Couleurs|interdits:À ne pas faire|animation:Animation">
+  <span class="kicker">02 — Le logo</span>
+  <h1>Quatre disques, un soleil dans chaque lettre.</h1>
+  <p class="lead">Le logotype s'écrit « aube », en minuscules. Chaque lettre est construite sur un disque dont la moitié basse est pleine ; la contre-forme est un dôme posé sur la ligne d'horizon.</p>
+
+  <section id="versions">
+    <h2><small>2.1</small>Les trois versions</h2>
+    <p class="t">La version complète est la version par défaut. Le logotype seul sert quand le contexte dit déjà ce qu'est Aube. Le symbole sert en petit : icône, avatar, pied de page.</p>
+    <div class="stage" id="stage"></div>
+    <div class="sw" id="stage-sw"></div>
+    <div class="grid c3" style="margin-top:22px" id="logo-cards"></div>
+  </section>
+
+  <section id="construction">
+    <h2><small>2.2</small>Construction</h2>
+    <p class="t">Le dessin tient en cinq cotes. On ne redessine jamais le logo : on utilise les fichiers fournis.</p>
+    <img class="shot" data-lb="05-construction.jpg" src="media/05-construction.jpg" alt="Construction du logotype sur sa grille" loading="lazy">
+    <div class="grid c4 keep2" style="margin-top:16px">
+      <div class="card"><span class="num">DISQUE</span><div class="big">100</div><p>Diamètre de chaque lettre, égal à la hauteur d'x.</p></div>
+      <div class="card"><span class="num">GRAISSE</span><div class="big">24</div><p>Épaisseur des fûts et de l'arche.</p></div>
+      <div class="card"><span class="num">DÔME</span><div class="big">r 26</div><p>Contre-forme posée sur l'horizon, à mi-hauteur.</p></div>
+      <div class="card"><span class="num">ESPACE</span><div class="big">14</div><p>Entre deux lettres. La hampe du b monte de 42.</p></div>
+    </div>
+  </section>
+
+  <section id="protection">
+    <h2><small>2.3</small>Zone de protection</h2>
+    <p class="t">Autour du logo, on laisse libre une marge égale à la moitié de la hauteur d'x (la hauteur de la moitié pleine d'une lettre). Aucun texte, aucune image, aucun bord de format n'y entre.</p>
+    <div class="stage" style="background:#fff;min-height:380px" id="protect"></div>
+  </section>
+
+  <section id="tailles">
+    <h2><small>2.4</small>Tailles minimales</h2>
+    <p class="t">En dessous de ces largeurs, les dômes se bouchent. On passe alors à la version plus simple.</p>
+    <div class="card" style="padding:8px 26px 14px"><table><thead><tr><th style="padding-top:18px">Version</th><th style="padding-top:18px">Écran</th><th style="padding-top:18px">Impression</th><th style="padding-top:18px">Aperçu à la taille minimale</th></tr></thead><tbody id="tailles-table"></tbody></table></div>
+  </section>
+
+  <section id="couleurs-logo">
+    <h2><small>2.5</small>Couleurs du logo</h2>
+    <p class="t">Le logo est toujours d'une seule couleur : Nuit sur fond clair, Blanc sur fond sombre ou sur dégradé, Aurore sur Nuit, Nuit sur Aurore.</p>
+    <div class="grid c4 keep2" id="combos"></div>
+  </section>
+
+  <section id="interdits">
+    <h2><small>2.6</small>À ne pas faire</h2>
+    <div class="grid c3" id="misuse"></div>
+  </section>
+
+  <section id="animation">
+    <h2><small>2.7</small>Animation</h2>
+    <p class="t">Le logo ne tombe pas, ne tourne pas, ne rebondit pas : il se lève. Une ligne d'horizon se trace, quatre disques montent, les lettres s'ouvrent.</p>
+    <video class="v" src="media/06-logo-anime.mp4" poster="media/vignettes/06-logo-anime.jpg" controls loop muted playsinline preload="none"></video>
+  </section>
+  <div class="pager" data-pager></div>
+</div>
+
+<!-- ======================= 03 COULEURS ======================= -->
+<div class="page" id="couleurs" data-title="Les couleurs" data-subs="palette:Palette|proportions:Proportions|contrastes:Contrastes|degrades:Dégradés">
+  <span class="kicker">03 — Les couleurs</span>
+  <h1>La nuit, puis la lumière.</h1>
+  <p class="lead">Huit couleurs qui racontent un lever de soleil : un fond aubergine très sombre, une braise qui monte, une aurore vive, un miel clair. Clique sur une couleur pour copier son code.</p>
+
+  <section id="palette">
+    <h2><small>3.1</small>Palette</h2>
+    <div class="bands" id="bands"></div>
+    <p class="t" style="margin-top:16px">Pour le texte courant sur fond clair, on utilise Encre <span class="mono">#231A26</span>, un Nuit légèrement adouci.</p>
+  </section>
+
+  <section id="proportions">
+    <h2><small>3.2</small>Proportions</h2>
+    <p class="t">Aurore est une lumière, pas un fond de page. Sur une composition sombre, le noir et la nuit tiennent la majorité de la surface ; la couleur vive reste rare pour rester forte.</p>
+    <div class="prop" id="prop"></div>
+    <div class="grid c2" style="margin-top:16px">
+      <div class="card"><h3>Scènes et écrans</h3><p>Fond Noir ou Nuit. La lumière vient d'un seul point, en bas ou sur un côté. Texte Blanc.</p></div>
+      <div class="card"><h3>Pages de texte et documents</h3><p>Fond Blanc ou Brume. Texte Encre. Aurore pour un numéro, un lien, un point d'attention, jamais pour un paragraphe.</p></div>
+    </div>
+  </section>
+
+  <section id="contrastes">
+    <h2><small>3.3</small>Contrastes</h2>
+    <p class="t">Rapports calculés selon WCAG 2.1. AA demande 4,5 pour le texte courant et 3 pour les grands titres (24 px et plus, ou 19 px en gras).</p>
+    <div class="card" style="padding:8px 26px 14px"><table><thead><tr><th style="padding-top:18px">Aperçu</th><th style="padding-top:18px">Texte</th><th style="padding-top:18px">Fond</th><th style="padding-top:18px">Rapport</th><th style="padding-top:18px">Usage</th></tr></thead><tbody id="contrast"></tbody></table></div>
+  </section>
+
+  <section id="degrades">
+    <h2><small>3.4</small>Dégradés</h2>
+    <p class="t">Les dégradés vont toujours dans le même ordre : Noir, Prune, Braise, Aurore, Miel. Aucune autre teinte. Sur une grande surface, on ajoute un grain léger. Clique pour copier le CSS.</p>
+    <div class="grid c4 keep2" id="grads"></div>
+  </section>
+  <div class="pager" data-pager></div>
+</div>
+
+<!-- ======================= 04 TYPOGRAPHIE ======================= -->
+<div class="page" id="typographie" data-title="La typographie" data-subs="outfit:Outfit|mono:DM Mono|hierarchie:Hiérarchie|regles-typo:Règles">
+  <span class="kicker">04 — La typographie</span>
+  <h1>Une voix légère, des lettres rondes.</h1>
+  <p class="lead">Outfit porte toute la marque : ses formes géométriques répondent aux disques du logo. DM Mono s'occupe des étiquettes, des codes et des numéros.</p>
+
+  <section id="outfit">
+    <h2><small>4.1</small>Outfit</h2>
+    <p class="t">Trois graisses suffisent : Light 300 pour les titres et le texte, Regular 400 pour l'interface, Medium 500 pour les intitulés. Le texte ci-dessous est modifiable.</p>
+    <div class="spec" id="spec" contenteditable="true" spellcheck="false">Outfit</div>
+    <div class="ctl"><label for="wght">Graisse <span id="wv">300</span></label><input id="wght" type="range" min="100" max="900" step="10" value="300"><div class="sw" style="margin:0" id="wbtn"></div></div>
+    <div class="grid c3" style="margin-top:22px" id="weights"></div>
+  </section>
+
+  <section id="mono">
+    <h2><small>4.2</small>DM Mono</h2>
+    <div class="card"><div class="mono" style="font-size:clamp(22px,3.4vw,44px);color:#fff;line-height:1.2">07:12:34 · #FF632B · 01 — 04</div><p style="margin-top:14px">Toujours petit, en capitales, avec un peu d'interlettrage. Pour dater, numéroter, étiqueter. Jamais pour une phrase.</p></div>
+  </section>
+
+  <section id="hierarchie">
+    <h2><small>4.3</small>Hiérarchie</h2>
+    <div class="card" style="padding:8px 26px 14px"><table class="hier"><thead><tr><th style="padding-top:18px">Style</th><th style="padding-top:18px">Exemple</th><th style="padding-top:18px">Réglage</th></tr></thead><tbody id="hier"></tbody></table></div>
+  </section>
+
+  <section id="regles-typo">
+    <h2><small>4.4</small>Règles</h2>
+    <div class="grid c2">
+      <div class="card"><div class="rule"><b>01</b><span>Texte aligné à gauche. On ne justifie pas, on ne centre que les formats très courts.</span><b>02</b><span>Titres en bas de casse, avec une seule majuscule en début de phrase.</span><b>03</b><span>Les titres finissent par un point quand ce sont des phrases : « Clair. Calme. Prêt. »</span></div></div>
+      <div class="card"><div class="rule"><b>04</b><span>Espace insécable avant « : », « ; », « ? » et « ! », et dans les heures : 7 h 12.</span><b>05</b><span>Lignes de 45 à 75 signes pour le texte courant.</span><b>06</b><span>Interlettrage légèrement resserré sur les grands titres (-1 à -2 %), jamais sur le texte.</span></div></div>
+    </div>
+    <p class="t" style="margin-top:20px">Si Outfit n'est pas disponible (mail, document partagé), on prend la police sans empattement du système.</p>
+  </section>
+  <div class="pager" data-pager></div>
+</div>
+
+<!-- ======================= 05 ÉLÉMENTS ======================= -->
+<div class="page" id="elements" data-title="Les éléments graphiques" data-subs="astre:L'astre|horizon:L'horizon|grain:Le grain">
+  <span class="kicker">05 — Les éléments graphiques</span>
+  <h1>Un astre, un horizon.</h1>
+  <p class="lead">Deux formes suffisent à reconnaître Aube sans son logo : une sphère de verre chaude et vivante, et une grande courbe lumineuse qui monte dans le cadre.</p>
+
+  <section id="astre">
+    <h2><small>5.1</small>L'astre</h2>
+    <p class="t">L'astre est le visage de l'assistant : il apparaît quand Aube écoute, réfléchit ou répond. Les couleurs circulent lentement à l'intérieur du verre.</p>
+    <div class="dark-stage grain" id="astre-stage" style="background:radial-gradient(80% 70% at 50% 110%,rgba(196,57,26,.5),rgba(75,24,56,.4) 45%,rgba(10,6,9,0) 80%),#0A0609;gap:70px;grid-auto-flow:column;padding:60px 30px"></div>
+    <div class="grid c2" style="margin-top:16px">
+      <div class="card"><span class="ok">À faire</span><div class="rule" style="margin-top:14px"><b>—</b><span>Toujours sur fond Noir ou Nuit, avec de l'air autour.</span><b>—</b><span>Avec le logotype blanc au centre, ou seul.</span><b>—</b><span>En mouvement lent : une boucle de six à huit secondes.</span></div></div>
+      <div class="card"><span class="ko">À éviter</span><div class="rule" style="margin-top:14px"><b>—</b><span>Le poser sur une photo ou sur un fond clair.</span><b>—</b><span>Le recadrer, l'aplatir ou changer ses couleurs.</span><b>—</b><span>En mettre plusieurs dans la même image.</span></div></div>
+    </div>
+    <video class="v" style="margin-top:16px" src="media/08-astre.mp4" poster="media/vignettes/08-astre.jpg" controls loop muted playsinline preload="none"></video>
+  </section>
+
+  <section id="horizon">
+    <h2><small>5.2</small>L'horizon</h2>
+    <p class="t">Un très grand disque dont on ne voit que le bord, souligné d'un liseré de lumière. Il entre par le bas, comme un soleil, ou par un côté. Déplace le curseur pour le faire monter.</p>
+    <div class="dark-stage" id="hz-stage" style="min-height:420px"><div class="horizon" id="hz"></div><div style="position:absolute;right:34px;top:30px;font-size:34px;line-height:1.1;font-weight:300;color:#fff;text-align:right;z-index:2">Clair.<br>Calme.<br>Prêt.</div></div>
+    <div class="ctl"><label for="hzr">Lever</label><input id="hzr" type="range" min="0" max="100" value="55"></div>
+    <div class="card" style="margin-top:10px"><div class="rule"><b>01</b><span>Un seul horizon par composition, jamais un cercle entier.</span><b>02</b><span>Le disque fait au moins une fois et demie la largeur du format.</span><b>03</b><span>Le texte se place du côté sombre, jamais à cheval sur le liseré.</span></div></div>
+  </section>
+
+  <section id="grain">
+    <h2><small>5.3</small>Le grain</h2>
+    <p class="t">Un grain fin recouvre les grandes surfaces de dégradé. Il évite les bandes de couleur à l'écran et donne de la matière à l'impression.</p>
+    <div class="grid c2">
+      <div><div class="g1" style="height:220px;border-radius:18px"></div><p class="cap2" style="margin-top:10px">Sans grain</p></div>
+      <div><div class="g1 grain" style="height:220px;border-radius:18px"></div><p class="cap2" style="margin-top:10px">Avec grain</p></div>
+    </div>
+  </section>
+  <div class="pager" data-pager></div>
+</div>
+
+<!-- ======================= 06 INTERFACE ======================= -->
+<div class="page" id="interface" data-title="L'interface" data-subs="principes:Principes|ecrans:Écrans|composants:Composants|icone:Icône d'application">
+  <span class="kicker">06 — L'interface</span>
+  <h1>Peu de choses à l'écran, toutes utiles.</h1>
+  <p class="lead">L'application ressemble à la marque : un fond de nuit, une lumière qui vient du bas, des cartes de verre et une seule action mise en avant.</p>
+
+  <section id="principes">
+    <h2><small>6.1</small>Principes</h2>
+    <div class="grid c3">
+      <div class="card"><span class="num">01</span><h3>Une chose à la fois</h3><p>Chaque écran répond à une question : que dois-je faire, où en suis-je, que me proposes-tu.</p></div>
+      <div class="card"><span class="num">02</span><h3>La lumière guide</h3><p>La zone la plus lumineuse est celle où l'on agit : le micro, la case à cocher, la barre du jour.</p></div>
+      <div class="card"><span class="num">03</span><h3>La voix d'abord</h3><p>Tout peut se dire. Le bouton micro est présent sur chaque écran, au même endroit.</p></div>
+    </div>
+  </section>
+
+  <section id="ecrans">
+    <h2><small>6.2</small>Écrans</h2>
+    <div class="tabs sw" id="tabs"></div>
+    <div class="ui-stage"><div id="phone"></div><div id="watch"></div></div>
+    <div class="grid c2" style="margin-top:16px">
+      <video class="v" src="media/21-app.mp4" poster="media/vignettes/21-app.jpg" controls loop muted playsinline preload="none"></video>
+      <video class="v" src="media/22-montre.mp4" poster="media/vignettes/22-montre.jpg" controls loop muted playsinline preload="none"></video>
+    </div>
+  </section>
+
+  <section id="composants">
+    <h2><small>6.3</small>Composants</h2>
+    <div class="grid c3" id="comps"></div>
+    <div class="g-vif grain" style="margin-top:16px;border-radius:22px;padding:44px 24px;display:flex;gap:22px;justify-content:center;flex-wrap:wrap" id="ncards"></div>
+  </section>
+
+  <section id="icone">
+    <h2><small>6.4</small>Icône d'application</h2>
+    <p class="t">Le symbole blanc sur le dégradé du lever. Quatre variantes en aplat existent pour les contextes où le dégradé ne passe pas.</p>
+    <img class="shot" data-lb="20-icone.jpg" src="media/20-icone.jpg" alt="Icône d'application et variantes" loading="lazy">
+  </section>
+  <div class="pager" data-pager></div>
+</div>
+
+<!-- ======================= 07 MOUVEMENT ======================= -->
+<div class="page" id="mouvement" data-title="Le mouvement" data-subs="principes-m:Principes|courbes:Durées et courbes|exemples-m:Exemples">
+  <span class="kicker">07 — Le mouvement</span>
+  <h1>Tout se lève, rien ne rebondit.</h1>
+  <p class="lead">Le mouvement d'Aube imite un lever de soleil : il part vite, ralentit longtemps et se pose sans bruit.</p>
+
+  <section id="principes-m">
+    <h2><small>7.1</small>Principes</h2>
+    <div class="grid c3">
+      <div class="card"><span class="num">01</span><h3>Depuis l'horizon</h3><p>Les éléments entrent par le bas, de quelques pixels seulement, en même temps qu'ils apparaissent.</p></div>
+      <div class="card"><span class="num">02</span><h3>Net, puis doux</h3><p>Départ rapide, arrivée très amortie. Aucun mouvement linéaire, aucun rebond, aucune élasticité.</p></div>
+      <div class="card"><span class="num">03</span><h3>L'un après l'autre</h3><p>Les éléments d'un groupe se suivent avec un court décalage, puis l'écran reste immobile.</p></div>
+    </div>
+  </section>
+
+  <section id="courbes">
+    <h2><small>7.2</small>Durées et courbes</h2>
+    <p class="t">Clique sur une piste pour rejouer le mouvement.</p>
+    <div id="tracks"></div>
+    <pre id="motion-css" style="margin-top:18px"></pre>
+  </section>
+
+  <section id="exemples-m">
+    <h2><small>7.3</small>Exemples</h2>
+    <div class="grid c2">
+      <video class="v" src="media/10-mosaique.mp4" poster="media/vignettes/10-mosaique.jpg" controls loop muted playsinline preload="none"></video>
+      <video class="v" src="media/16-scene.mp4" poster="media/vignettes/16-scene.jpg" controls loop muted playsinline preload="none"></video>
+      <video class="v" src="media/19-affiche-rue.mp4" poster="media/vignettes/19-affiche-rue.jpg" controls loop muted playsinline preload="none"></video>
+      <video class="v" src="media/06-logo-anime.mp4" poster="media/vignettes/06-logo-anime.jpg" controls loop muted playsinline preload="none"></video>
+    </div>
+  </section>
+  <div class="pager" data-pager></div>
+</div>
+
+<!-- ======================= 08 EN SITUATION ======================= -->
+<div class="page" id="situation" data-title="En situation" data-subs="galerie:Galerie|regles-app:Règles d'application">
+  <span class="kicker">08 — En situation</span>
+  <h1>La marque dans le monde.</h1>
+  <p class="lead">Affichage, signalétique, papeterie, réseaux, scène : les mêmes règles partout. Clique sur une image pour l'agrandir, puis navigue avec les flèches.</p>
+
+  <section id="galerie">
+    <h2><small>8.1</small>Galerie</h2>
+    <div class="filters sw" id="filters"></div>
+    <div class="gal" id="gal"></div>
+  </section>
+
+  <section id="regles-app">
+    <h2><small>8.2</small>Règles d'application</h2>
+    <div class="grid c2">
+      <div class="card"><h3>Affichage et écrans géants</h3><p>Fond sombre, un horizon, le triptyque en haut, le logo en bas. Une seule information chiffrée à la fois.</p></div>
+      <div class="card"><h3>Signalétique</h3><p>Logo en lettres lumineuses blanches, ou symbole Nuit sur caisson blanc. Jamais de dégradé sur une enseigne.</p></div>
+      <div class="card"><h3>Papeterie</h3><p>Recto en dégradé avec la version complète en blanc. Verso clair, symbole Aurore, texte Nuit.</p></div>
+      <div class="card"><h3>Réseaux sociaux</h3><p>Trois gabarits : la signature sur dégradé, l'astre sur fond sombre, le triptyque avec l'horizon. Avatar : symbole Aurore sur Nuit.</p></div>
+    </div>
+  </section>
+  <div class="pager" data-pager></div>
+</div>
+
+<!-- ======================= 09 RESSOURCES ======================= -->
+<div class="page" id="ressources" data-title="Ressources" data-subs="guide-pdf:Guide en PDF|fichiers:Logos|variables:Couleurs en CSS|polices:Polices|credits:Crédits">
+  <span class="kicker">09 — Ressources</span>
+  <h1>Les fichiers.</h1>
+  <p class="lead">Tout ce qu'il faut pour produire aux couleurs d'Aube sans rien redessiner.</p>
+
+  <section id="guide-pdf">
+    <h2><small>9.1</small>Guide en PDF</h2>
+    <p class="t">Le guide de marque complet en présentation : couverture, sommaire, cinq chapitres, 23 pages au format 16:9.</p>
+    <div class="card pdfcard">
+      <a href="presentation.html" class="pv" aria-label="Ouvrir la présentation"><img src="deck/01.jpg" alt="" loading="lazy"><img src="deck/11.jpg" alt="" loading="lazy"><img src="deck/15.jpg" alt="" loading="lazy"><img src="deck/22.jpg" alt="" loading="lazy"></a>
+      <div><span class="cap2">PDF · 23 pages · 16:9 · 4 Mo</span><div class="big" style="margin:10px 0 18px">Guide de marque Aube</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="bt" href="deck/aube-guide-de-marque.pdf" download>Télécharger le PDF</a><a class="bt ghost" href="presentation.html">Ouvrir la présentation</a></div></div>
+    </div>
+  </section>
+
+  <section id="fichiers">
+    <h2><small>9.2</small>Logos</h2>
+    <p class="t">Fichiers vectoriels SVG, en quatre couleurs. Le texte de la version complète est vectorisé : aucune police à installer.</p>
+    <a class="bt" href="logo/aube-logos.zip" download>Tout télécharger (ZIP)</a>
+    <div class="card" style="padding:8px 26px 14px;margin-top:20px"><table><thead><tr><th style="padding-top:18px">Version</th><th style="padding-top:18px">Nuit</th><th style="padding-top:18px">Blanc</th><th style="padding-top:18px">Aurore</th><th style="padding-top:18px">Noir</th></tr></thead><tbody id="files"></tbody></table></div>
+  </section>
+
+  <section id="variables">
+    <h2><small>9.3</small>Couleurs en CSS</h2>
+    <button class="bt ghost s" id="copy-vars" style="margin-bottom:12px">Copier</button>
+    <pre id="vars"></pre>
+  </section>
+
+  <section id="polices">
+    <h2><small>9.4</small>Polices</h2>
+    <div class="grid c2">
+      <div class="card"><h3>Outfit</h3><p>Police variable, licence libre OFL. Graisses utilisées : 300, 400, 500.</p><div class="dl"><a class="bt ghost s" href="https://fonts.google.com/specimen/Outfit" target="_blank" rel="noopener">Google Fonts</a></div></div>
+      <div class="card"><h3>DM Mono</h3><p>Licence libre OFL. Graisses utilisées : 400, 500.</p><div class="dl"><a class="bt ghost s" href="https://fonts.google.com/specimen/DM+Mono" target="_blank" rel="noopener">Google Fonts</a></div></div>
+    </div>
+  </section>
+
+  <section id="credits">
+    <h2><small>9.5</small>Crédits</h2>
+    <div class="card"><p>Aube est une marque fictive, créée comme projet vitrine. Direction artistique, identité de marque et motion design : KLYRA, 2026. Structure de présentation inspirée de l'étude de cas « Jor Personal Assistant » de Typefool et Sam Miles. Matières et ciels des scènes 3D : Poly Haven (CC0).</p>
+    <div class="dl" style="margin-top:16px"><a class="bt ghost s" href="presentation.html">Ouvrir la présentation</a><a class="bt ghost s" href="etude-de-cas.html">Voir l'étude de cas en défilement</a></div></div>
+  </section>
+  <div class="pager" data-pager></div>
+</div>
+
+</main>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Agrandissement"><div class="m" id="lb-m"></div><div class="c"><span id="lb-c"></span><span class="mono" id="lb-n" style="opacity:.6"></span></div><button class="p" id="lb-p" aria-label="Précédent">←</button><button class="n" id="lb-nx" aria-label="Suivant">→</button><button class="x" id="lb-x" aria-label="Fermer">✕</button></div>
+<div class="toast" id="toast" role="status"></div>
+<script src="assets/guide.js"></script>
+</body>
+</html>

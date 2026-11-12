@@ -1,0 +1,133 @@
+<!doctype html><meta charset="utf-8"><title>Custom — visuels de la papeterie (scène 39)</title>
+<link rel="stylesheet" href="../brand/marque.css"><script src="../brand/marque.js"></script>
+<!-- Visuels plaqués sur les objets de la scène 39 (blender/s39_papeterie.py). Classes préfixées a1-.
+     #carte-recto-a, #carte-recto-b, #carte-verso   850 × 550 px    carte de visite 85 × 55 mm (1 px = 0,1 mm)
+     #chemise, #chemise-int                         1100 × 1550 px  chemise à rabats 220 × 310 mm (1 px = 0,2 mm)
+     #lettre                                        1050 × 1485 px  A4
+     #enveloppe-dos                                 1100 × 550 px   enveloppe 220 × 110 mm ;  #enveloppe-rabat 1100 × 290 px (patte de 58 mm)
+     #carnet                                        740 × 1050 px   A5, 148 × 210 mm
+     #nuancier                                      620 × 1600 px   carte à fils 62 × 160 mm
+     #tapis                                         3600 × 2400 px  tapis de coupe 900 × 600 mm (1 px = 0,25 mm)
+     Noms fictifs, seul custom.fr est cité, téléphone fictif 01 99 00 12 34.
+     Rendu : bash art/3d1-rendre.sh -->
+<style>
+  html,body{background:#3a3a3e;margin:0}
+  body{display:flex;flex-wrap:wrap;gap:40px;padding:0;align-items:flex-start}
+  .a1-v{position:relative;overflow:hidden;flex:none;font-family:var(--font)}
+  .a1-abs{position:absolute}
+  .a1-mono{font-family:var(--mono);text-transform:uppercase;letter-spacing:.07em;font-weight:500;white-space:nowrap}
+  .a1-vert{writing-mode:vertical-rl;transform:rotate(180deg)}
+  .a1-tapis{background:#141416;color:#55555a}
+  .a1-tapis .a1-g{position:absolute;inset:0;
+    background-image:linear-gradient(#3b3b40 0 0),linear-gradient(#3b3b40 0 0);background-size:0 0}
+</style>
+<body>
+<div id="carte-recto-a" class="a1-v" style="width:850px;height:550px;background:#fff;color:#03010E"></div>
+<div id="carte-recto-b" class="a1-v" style="width:850px;height:550px;background:#fff;color:#03010E"></div>
+<div id="carte-verso" class="a1-v" style="width:850px;height:550px;background:#E2FF21;color:#03010E"></div>
+<div id="chemise" class="a1-v" style="width:1100px;height:1550px;background:#101012;color:#fff"></div>
+<div id="chemise-int" class="a1-v" style="width:1100px;height:1550px;background:#E2FF21;color:#03010E"></div>
+<div id="lettre" class="a1-v" style="width:1050px;height:1485px;background:#fff;color:#03010E"></div>
+<div id="enveloppe-dos" class="a1-v" style="width:1100px;height:550px;background:#fff;color:#03010E"></div>
+<div id="enveloppe-rabat" class="a1-v" style="width:1100px;height:290px;background:#E2FF21;color:#03010E"></div>
+<div id="carnet" class="a1-v" style="width:740px;height:1050px;background:#101012;color:#fff"></div>
+<div id="nuancier" class="a1-v" style="width:620px;height:1600px;background:#101012;color:#fff"></div>
+<div id="tapis" class="a1-v a1-tapis" style="width:3600px;height:2400px"></div>
+<script>
+const A = Marque, C = A.COULEURS, NB = A.NB, TAN = 0.2364;
+const $ = (id) => document.getElementById(id);
+
+/* Nuage de blocs : le motif des cartes de visite d'origine, des rangs de blocs entiers en quinconce, aux bords irréguliers. */
+function nuage(o = {}) {
+  const { cols = 9, rangs = 8, l = 56, c = '#fff', seed = 3, trou = 0.1, attrs = '' } = o, R = A.rnd(seed);
+  const bh = l * 0.53, dx = l + bh * TAN + l * 0.16, dy = bh * 0.763 * 2;
+  let d = '';
+  for (let j = 0; j < rangs; j++) {
+    const t = (j + 0.5) / rangs, larg = 0.62 + 0.38 * Math.sin(Math.PI * t), n = Math.max(2, Math.round(cols * larg + (R() - 0.5) * 2.2));
+    const i0 = Math.round((cols - n) / 2 + (R() - 0.5) * 1.6);
+    for (let i = i0; i < i0 + n; i++) { if (R() < trou) continue;
+      d += A.blocPath(i * dx + (j % 2 ? dx / 2 : 0) + (rangs - j) * dy * TAN * 0.5 + dx, j * dy, l, bh, bh * 0.12) + ' '; } }
+  const W = (cols + 2.5) * dx, H = (rangs - 1) * dy + bh;
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W.toFixed(1)} ${H.toFixed(1)}" ${attrs}><path fill="${c}" d="${d}"/></svg>`;
+}
+
+/* ---------- Cartes de visite : recto blanc (logo, nom, coordonnées, nuage gris), verso fluo (nuage blanc) ---------- */
+const recto = (nom, role, seed) => `
+  <div class="a1-abs" style="left:58px;top:56px">${A.logo(C.encre, 'style="height:60px"')}</div>
+  <div class="a1-abs" style="left:58px;top:132px;font-size:17.5px;font-weight:500;letter-spacing:-.01em;opacity:.62">${A.DESCRIPTEUR}</div>
+  <div class="a1-abs" style="right:34px;top:150px">${nuage({ cols: 6, rangs: 6, l: 40, c: C.craie, seed, attrs: 'style="width:330px"' })}</div>
+  <div class="a1-abs" style="left:58px;bottom:120px">
+    <div style="font-size:31px;font-weight:600;letter-spacing:-.03em;line-height:1">${nom}</div>
+    <div style="font-size:18.5px;font-weight:400;letter-spacing:-.01em;margin-top:9px;opacity:.7">${role}</div></div>
+  <div class="a1-abs a1-mono" style="left:58px;bottom:56px;font-size:16px">01 99 00 12 34</div>
+  <div class="a1-abs a1-mono" style="right:58px;bottom:56px;font-size:16px">custom.fr</div>`;
+$('carte-recto-a').innerHTML = recto('Maëlle Vasseur', 'Cheffe d’atelier', 5);
+$('carte-recto-b').innerHTML = recto('Jonas Perrin', 'Chargé de projets', 9);
+$('carte-verso').innerHTML = `
+  <div class="a1-abs" style="left:0;right:0;top:0;bottom:0;display:grid;place-items:center">${nuage({ cols: 8, rangs: 7, l: 62, c: '#fff', seed: 7, attrs: 'style="width:690px"' })}</div>
+  <div class="a1-abs a1-mono a1-vert" style="left:26px;top:50%;font-size:13.5px;margin-top:-52px">custom.fr</div>
+  <div class="a1-abs a1-mono a1-vert" style="right:26px;top:50%;font-size:13.5px;margin-top:-70px;transform:none">CST${NB}·${NB}PRT${NB}·${NB}2026</div>
+  <div class="a1-abs" style="left:26px;bottom:26px">${A.symbol(C.encre, 'style="height:19px"')}</div>
+  <div class="a1-abs" style="right:26px;top:26px">${A.symbol(C.encre, 'style="height:19px"')}</div>`;
+
+/* ---------- Chemise à rabats : couverture noire, une macro d'atelier dans le Cran, titre surligné ---------- */
+$('chemise').innerHTML = `<div class="tx-toile" style="position:absolute;inset:0;opacity:.7"></div>
+  <div class="a1-abs a1-mono" style="left:72px;top:70px;font-size:17px;opacity:.6">Custom${NB}·${NB}Atelier de personnalisation</div>
+  <div class="a1-abs a1-mono" style="right:72px;top:70px;font-size:17px;opacity:.6">CST${NB}·${NB}PRT${NB}·${NB}2026</div>
+  <div class="a1-abs dans-cran" style="left:72px;top:170px;width:956px">${A.photo('fils', { mode: 'duo', style: 'position:absolute;inset:0' })}</div>
+  <div class="a1-abs t-titre" style="left:72px;top:800px;font-size:196px;line-height:.86">Chaque<br>objet, sa<br>${A.surl('technique')}</div>
+  <div class="a1-abs" style="left:72px;bottom:74px">${A.logo(C.fluo, 'style="height:54px"')}</div>
+  <div class="a1-abs" style="right:72px;bottom:82px;width:300px">${A.barre({ n: 1, style: 'height:16px' })}</div>`;
+$('chemise-int').innerHTML = `<div class="a1-abs" style="inset:0">${A.motif({ w: 1100, h: 1550, c: 'encre', l: 86, seed: 4, trou: 0.2, attrs: 'style="width:100%;height:100%;opacity:.92"' })}</div>`;
+
+/* ---------- Papier à en-tête (il dépasse de la chemise) ---------- */
+const ligne = (w, o = 0.16) => `<div style="height:9px;width:${w}%;background:#03010E;opacity:${o};border-radius:5px;margin-top:17px"></div>`;
+$('lettre').innerHTML = `
+  <div class="a1-abs" style="left:84px;top:84px">${A.logo(C.encre, 'style="height:50px"')}</div>
+  <div class="a1-abs a1-mono" style="right:84px;top:98px;font-size:14px;opacity:.6">custom.fr</div>
+  <div class="a1-abs t-titre" style="left:84px;top:250px;font-size:92px">Votre ${A.surl('devis')}</div>
+  <div class="a1-abs" style="left:84px;right:84px;top:420px">${ligne(92)}${ligne(88)}${ligne(95)}${ligne(61)}<div style="height:40px"></div>${ligne(90)}${ligne(84)}${ligne(93)}${ligne(48)}</div>
+  <div class="a1-abs" style="left:84px;right:84px;bottom:84px;display:flex;justify-content:space-between;align-items:flex-end">
+    <div class="a1-mono" style="font-size:13px;opacity:.6;line-height:1.6">Textile${NB}·${NB}Print${NB}·${NB}Goodies${NB}·${NB}Signalétique<br>Tout est fait ici.</div>
+    <div style="width:260px">${A.barre({ n: 1 })}</div></div>`;
+
+/* ---------- Enveloppe : dos blanc, patte ouverte doublée du motif de blocs ---------- */
+$('enveloppe-dos').innerHTML = `
+  <div class="a1-abs" style="left:0;right:0;bottom:120px;display:grid;place-items:center">${A.symbol(C.encre, 'style="height:74px"')}</div>
+  <div class="a1-abs a1-mono" style="left:0;right:0;bottom:62px;text-align:center;font-size:17px">custom.fr</div>
+  <div class="a1-abs" style="left:0;right:0;top:0;height:2px;background:#03010E;opacity:.12"></div>`;
+$('enveloppe-rabat').innerHTML = `<div class="a1-abs" style="inset:0">${A.motif({ w: 1100, h: 290, c: 'encre', l: 58, seed: 6, trou: 0.2, attrs: 'style="width:100%;height:100%;opacity:.92"' })}</div>`;
+
+/* ---------- Carnet d'atelier : toile noire, Cran fluo ---------- */
+$('carnet').innerHTML = `<div class="tx-toile" style="position:absolute;inset:0"></div>
+  <div class="a1-abs" style="left:64px;top:64px">${A.symbol(C.fluo, 'style="height:118px"')}</div>
+  <div class="a1-abs t-titre" style="left:64px;bottom:150px;font-size:118px;line-height:.86">Carnet<br>${A.surl('d’atelier')}</div>
+  <div class="a1-abs a1-mono" style="left:64px;bottom:66px;font-size:15px;opacity:.6">CST${NB}·${NB}Repères, cotes, essais</div>`;
+
+/* ---------- Nuancier de fils : cinq teintes de la charte, bobinées sur la carte (les fils sont en 3D) ---------- */
+const TEINTES = [['01', 'Fluo', C.fluo], ['02', 'Blanc', C.blanc], ['03', 'Violet', C.violet], ['04', 'Orange', C.orange], ['05', 'Acier', C.acier]];
+$('nuancier').innerHTML = `
+  <div class="a1-abs" style="left:44px;top:46px">${A.symbol(C.fluo, 'style="height:40px"')}</div>
+  <div class="a1-abs a1-mono" style="right:44px;top:58px;font-size:15px;opacity:.6">CST${NB}·${NB}BRO</div>
+  <div class="a1-abs t-titre" style="left:44px;top:128px;font-size:104px;line-height:.86">Nuancier<br>${A.surl('fils')}</div>
+  ${TEINTES.map((t, k) => `<div class="a1-abs" style="left:44px;right:44px;top:${400 + k * 232}px;height:232px">
+      <div style="position:absolute;left:0;right:0;top:0;height:150px;border-radius:6px;background:${t[2]};opacity:.22"></div>
+      <div class="a1-mono" style="position:absolute;left:0;top:168px;font-size:19px">${t[0]}${NB}·${NB}${t[1]}</div>
+      <div class="a1-mono" style="position:absolute;right:0;top:168px;font-size:19px;opacity:.6">${t[2].toUpperCase()}</div></div>`).join('')}`;
+
+/* ---------- Tapis de coupe : quadrillage au centimètre, chiffres, croix de repérage, lignes à la pente du Cran ---------- */
+(function () {
+  const W = 3600, H = 2400, cm = 40; let s = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" style="position:absolute;inset:0;width:100%;height:100%">`;
+  for (let x = 0; x <= W; x += cm / 2) { const k = Math.round(x / (cm / 2)); s += `<line x1="${x}" y1="0" x2="${x}" y2="${H}" stroke="${k % 10 === 0 ? '#5d5d63' : k % 2 === 0 ? '#3a3a3f' : '#232326'}" stroke-width="${k % 10 === 0 ? 2.2 : 1.2}"/>`; }
+  for (let y = 0; y <= H; y += cm / 2) { const k = Math.round(y / (cm / 2)); s += `<line x1="0" y1="${y}" x2="${W}" y2="${y}" stroke="${k % 10 === 0 ? '#5d5d63' : k % 2 === 0 ? '#3a3a3f' : '#232326'}" stroke-width="${k % 10 === 0 ? 2.2 : 1.2}"/>`; }
+  /* lignes de pente : 13,3° (le Cran), tracées depuis quelques points du bord bas */
+  for (let k = 0; k < 10; k++) { const x0 = 200 + k * 360; s += `<line x1="${x0}" y1="${H}" x2="${x0 + H * TAN}" y2="0" stroke="#55555b" stroke-width="1.6" stroke-dasharray="14 10"/>`; }
+  for (let x = 0; x <= W; x += cm * 5) for (let y = 0; y <= H; y += cm * 5) s += `<g stroke="#8a8a92" stroke-width="2"><line x1="${x - 16}" y1="${y}" x2="${x + 16}" y2="${y}"/><line x1="${x}" y1="${y - 16}" x2="${x}" y2="${y + 16}"/></g>`;
+  for (let x = cm * 5; x < W; x += cm * 5) for (let y = cm * 5; y <= H; y += cm * 5) s += `<text x="${x + 8}" y="${y - 9}" font-family="JetBrains Mono" font-size="17" font-weight="500" fill="#6c6c73">${x / cm}·${(H - y) / cm}</text>`;
+  s += '</svg>';
+  $('tapis').innerHTML = s +
+    `<div class="a1-abs a1-mono" style="left:1586px;top:1970px;font-size:25px;color:#77777e;background:#141416;padding:2px 12px">Custom${NB}·${NB}Table de coupe 01${NB}·${NB}Pente 13,3°</div>
+     <div class="a1-abs" style="left:2210px;top:1298px;width:372px;background:#141416;padding:0 6px">${A.barre({ n: 1, style: 'height:20px;opacity:.85' })}</div>
+     <div class="a1-abs" style="left:1616px;top:1614px;color:#77777e;background:#141416;padding:8px">${A.symbol('#4a4a50', 'style="height:150px"')}</div>`;
+})();
+</script></body>

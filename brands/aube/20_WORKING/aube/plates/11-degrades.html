@@ -1,0 +1,12 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../brand/aube.css"><link rel="stylesheet" href="plates.css"><script src="../brand/aube.js"></script>
+<body>
+<div class="plate" id="p" style="height:840px;background:#fff">
+  <h1 class="h-xl abs" style="left:84px;top:57px">Dégradés</h1>
+  <p class="body-l abs" style="left:84px;top:160px;width:270px">Les dégradés racontent le lever du jour. Ils montent toujours de la nuit vers la lumière&nbsp;: Noir, Prune, Braise, Aurore, puis Miel. Aucune autre teinte. Sur les grandes surfaces, un grain léger leur donne de la matière.</p>
+  <div class="abs" id="g" style="left:396px;top:70px;width:920px;height:636px;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr)"></div>
+</div>
+<script>
+document.getElementById('g').innerHTML = [1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => `<div class="g${i} grain"></div>`).join('');
+document.getElementById('p').insertAdjacentHTML('beforeend', Aube.foot('Couleurs', 'Dégradés'));
+</script>
+</body>

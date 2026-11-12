@@ -1,0 +1,86 @@
+<!doctype html><meta charset="utf-8"><title>Custom — visuels de la scène 40 (goodies)</title>
+<link rel="stylesheet" href="../brand/marque.css"><script src="../brand/marque.js"></script>
+<link rel="stylesheet" href="3d2-art.css">
+<style>
+  /* Tapis de découpe de l'atelier : 0,90 × 0,60 m, 2 px = 1 mm */
+  #tapis{width:1800px;height:1200px;background:#131315;color:#fff}
+  #tapis .a2-g1{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:20px 20px}
+  #tapis .a2-g5{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.13) 2px,transparent 2px),linear-gradient(90deg,rgba(255,255,255,.13) 2px,transparent 2px);background-size:100px 100px}
+  #tapis .a2-cote{position:absolute;font-family:var(--mono);font-size:13px;font-weight:500;letter-spacing:.06em;color:rgba(255,255,255,.42)}
+  #tapis .croix{opacity:1;color:var(--fluo)}
+  #tapis .croix::before{width:3px;margin-left:-1.5px}
+  #tapis .croix::after{height:3px;margin-top:-1.5px}
+  /* Carnets A5 : 148 × 210 mm, 4 px = 1 mm, coins de 6 mm */
+  .a2-carnet{width:592px;height:840px;border-radius:24px}
+  /* Tote bag : 380 × 420 mm, 4 px = 1 mm */
+  #tote{width:1520px;height:1680px;background:#D2C09C;color:var(--encre)}
+  /* Badges de 38 mm, 4 px = 1 mm */
+  .a2-badge{width:152px;height:152px;border-radius:50%}
+  /* Étiquette volante kraft : 50 × 90 mm, 8 px = 1 mm, coins de 3 mm */
+  #etiquette{width:400px;height:720px;border-radius:24px;background:#B8926A;color:var(--encre)}
+</style>
+<body>
+<div id="tapis" class="a2-v"></div>
+<div id="gourde-marque" class="a2-v a2-vide a2-c" style="width:340px;height:440px"></div>
+<div id="mug-marque" class="a2-v a2-vide a2-col" style="width:450px;height:290px;justify-content:center;gap:16px"></div>
+<div id="carnet-fluo" class="a2-v a2-carnet a2-fluo"></div>
+<div id="carnet-kraft" class="a2-v a2-carnet" style="background:#B8926A;color:#03010E"></div>
+<div id="tote" class="a2-v"></div>
+<div id="badge-1" class="a2-v a2-badge a2-fluo a2-c"></div>
+<div id="badge-2" class="a2-v a2-badge a2-noir a2-c"></div>
+<div id="badge-3" class="a2-v a2-badge a2-blanc a2-c"></div>
+<div id="badge-4" class="a2-v a2-badge a2-c" style="background:#FE3600"></div>
+<div id="stylo-marque" class="a2-v a2-vide" style="width:72px;height:440px"></div>
+<div id="etiquette" class="a2-v"></div>
+<script>
+if (location.search.indexOf('t') > -1) document.documentElement.classList.add('a2-t');
+const A = Marque, C = A.COULEURS, $ = (id) => document.getElementById(id);
+
+/* ---------- Tapis de découpe : grille au centimètre, cotes, repères fluo, le Cran au trait ---------- */
+(() => { let h = '<i class="a2-g1"></i><i class="a2-g5"></i>';
+  for (let i = 1; i < 18; i++) h += `<span class="a2-cote" style="left:${i * 100 + 6}px;top:${i % 2 ? 1106 : 6}px">${String(i * 5).padStart(2, '0')}</span>`;
+  for (let j = 1; j < 12; j++) h += `<span class="a2-cote" style="left:6px;top:${j * 100 + 5}px">${String(j * 5).padStart(2, '0')}</span>`;
+  [[300, 300], [900, 300], [1500, 300], [300, 900], [900, 900], [1500, 900], [600, 600], [1200, 600]].forEach(([x, y]) => { h += `<i class="croix" style="--t:44px;left:${x - 22}px;top:${y - 22}px"></i>`; });
+  h += `<div class="a2-abs" style="left:420px;top:330px;opacity:.5">${A.symbol(C.acier, 'style="width:960px"', { contour: 0.7 })}</div>`;
+  h += `<div class="a2-abs a2-mono" style="left:1310px;top:1150px;font-size:15px;color:rgba(255,255,255,.55)">CST · GOO · 2026 — Tapis d’atelier 90 × 60</div>`;
+  h += `<div class="a2-abs" style="left:110px;top:1150px">${A.barre({ style: 'width:420px;height:20px' })}</div>`;
+
+  $('tapis').innerHTML = h; })();
+
+/* ---------- Marquages ---------- */
+$('gourde-marque').innerHTML = A.logoV('#fff', 'style="width:300px"', { sym: C.fluo });
+$('mug-marque').innerHTML = A.sprite('moto', 3, { c: C.encre, attrs: 'style="height:200px"' }) + `<div class="a2-mono" style="font-size:22px;color:${C.encre}">custom.fr</div>`;
+$('stylo-marque').innerHTML = `<div class="a2-abs" style="left:36px;top:220px;width:400px;height:60px;margin:-30px 0 0 -200px;transform:rotate(-90deg);display:flex;align-items:center;justify-content:center">${A.wordmark(C.fluo, 'style="height:54px"')}</div>`;
+
+/* ---------- Carnet fluo : le motif de blocs des cartes de visite ---------- */
+$('carnet-fluo').innerHTML = `
+  <div class="a2-abs" style="left:0;right:0;top:330px;bottom:0;-webkit-mask-image:linear-gradient(transparent,#000 22%);mask-image:linear-gradient(transparent,#000 22%)">${A.motif({ w: 592, h: 510, c: '#fff', l: 92, seed: 8, trou: 0.26, attrs: 'style="width:100%;height:100%"' })}</div>
+  <div class="a2-abs" style="left:46px;top:50px">${A.logo(C.encre, 'style="height:46px"')}</div>
+  <div class="a2-abs a2-mono" style="left:46px;top:128px;font-size:13px">Carnet d’atelier<br>CST · GOO · 2026</div>`;
+/* ---------- Carnet kraft : le Cran seul ---------- */
+$('carnet-kraft').innerHTML = `
+  <div class="a2-abs a2-c" style="inset:0">${A.symbol(C.encre, 'style="width:330px"')}</div>
+  <div class="a2-abs a2-mono" style="left:46px;bottom:48px;font-size:13px">custom.fr</div>`;
+
+/* ---------- Tote bag : le dunk et la phrase du site ---------- */
+$('tote').innerHTML = `
+  <div class="a2-abs" style="left:0;right:0;top:70px;border-top:5px dashed rgba(60,45,20,.35)"></div>
+  <div class="a2-abs" style="left:0;right:0;top:100px;border-top:5px dashed rgba(60,45,20,.35)"></div>
+  <div class="a2-abs" style="left:150px;top:120px;width:500px;height:1480px;color:${C.encre}">${A.dunk(5, { attrs: 'width="493" height="1480"' })}</div>
+  <div class="a2-abs t-titre" style="left:660px;top:540px;font-size:158px;line-height:.98">On fait<br>plus<br>${A.surl('qu’un maillot')}</div>
+  <div class="a2-abs" style="left:666px;top:1090px">${A.logo(C.encre, 'style="height:70px"')}</div>
+  <div class="a2-abs a2-mono" style="left:150px;top:1500px;font-size:22px">Atelier de personnalisation — textile · print · goodies · signalétique</div>`;
+
+/* ---------- Badges ---------- */
+$('badge-1').innerHTML = A.symbol(C.encre, 'style="width:92px"');
+$('badge-2').innerHTML = A.pix('24h', { c: C.fluo, attrs: 'style="width:98px"' });
+$('badge-3').innerHTML = A.sprite('course', 1, { c: C.encre, attrs: 'style="height:96px"' });
+$('badge-4').innerHTML = A.symbol(C.encre, 'style="width:92px"');
+
+/* ---------- Étiquette volante : le triptyque ---------- */
+$('etiquette').innerHTML = `
+  <i class="a2-abs" style="left:176px;top:36px;width:48px;height:48px;border-radius:50%;background:#0B0B0C;box-shadow:0 0 0 7px #2A2A2D"></i>
+  <div class="a2-abs" style="left:40px;top:136px">${A.symbol(C.encre, 'style="width:112px"')}</div>
+  <div class="a2-abs t-titre" style="left:40px;top:236px;font-size:64px;line-height:1.02">Imaginé<br>chez vous.<br>Fabriqué<br>${A.surl('chez nous.', 'noir')}<br>Porté<br>partout.</div>
+  <div class="a2-abs a2-mono" style="left:40px;bottom:36px;font-size:15px">CST · GOO · 2026 — custom.fr</div>`;
+</script></body>

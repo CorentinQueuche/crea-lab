@@ -1,0 +1,66 @@
+/* Planches de présentation Payout : styles communs (complète brand/marque.css, ne le remplace pas).
+   Seules les variables de rôle du socle sont utilisées (--vif, --clair, --moyen, --sombre, --scene, --sur-scene, --papier, --doux, --encre).
+   Toutes les classes sont préfixées pl- (le socle réserve beaucoup de noms courts : voir « Pièges connus » dans MARQUE.md).
+   Propriétaire : planches 01 à 17. Les planches 20 à 39 ajoutent leurs styles dans plates-b.css. */
+
+/* ---------- Étiquettes et filets ---------- */
+.pl-lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;line-height:1.5}
+.pl-lbl.doux{opacity:.6}
+.pl-tag{position:absolute;left:28px;top:22px;z-index:60;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;line-height:1.5;opacity:.6}
+.pl-filet{height:1px;background:color-mix(in srgb,var(--sur-scene) 10%,transparent)}
+.pl-clair .pl-filet,.pl-filet.sur-clair{background:color-mix(in srgb,var(--encre) 12%,transparent)}
+/* Cote d'un schéma : chiffre en chasse fixe, petit, en capitales */
+.pl-cote{font-family:var(--mono);font-size:11px;letter-spacing:.04em;font-variant-numeric:tabular-nums;white-space:nowrap}
+/* Bloc de texte posé sur un motif grainé : reste net au-dessus du grain */
+.pl-net{position:relative;z-index:60}
+/* Numéro de planche ou d'index, en chasse fixe */
+.pl-num{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;opacity:.55}
+
+/* ---------- Grille de crédits, quatre colonnes alignées sur le bandeau d'en-tête ---------- */
+.pl-cred{position:absolute;left:28px;right:28px;display:grid;grid-template-columns:40% 16.5% 1fr auto;font-size:14.5px;line-height:1.4}
+.pl-cred b{display:block;font-family:var(--mono);font-weight:400;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;opacity:.6;margin-bottom:8px}
+
+/* ---------- À ne pas faire : une croix fine dans l'angle ---------- */
+.pl-non{position:relative;overflow:hidden}
+.pl-non::before,.pl-non::after{content:"";position:absolute;right:18px;top:26px;width:18px;height:1.6px;background:currentColor;z-index:61}
+.pl-non::before{transform:rotate(45deg)}
+.pl-non::after{transform:rotate(-45deg)}
+
+/* ---------- Mini-pages du guide (dessinées à 1280 × 720, réduites par zoom). Utilisées par deck/pages.js et la planche du guide. ---------- */
+.mp{position:absolute;width:380px;height:214px;overflow:hidden;border-radius:6px;box-shadow:0 0 0 1px color-mix(in srgb,var(--sur-scene) 10%,transparent),0 18px 34px -20px rgba(0,0,0,.7)}
+.mp>.in{position:relative;width:1280px;height:720px;zoom:.296875;overflow:hidden;background:var(--scene);color:var(--sur-scene);font-family:var(--font);font-weight:400}
+/* Une page = .mp-pg (1280 × 720). Classes préfixées mp- : le socle a déjà .t, .tx, .hd, .in, .clair. Tailles prises dans l'échelle de MARQUE.md.
+   Grille : marges de 40, colonne de texte 40 → 380, zone de démonstration 420 → 1240, de 92 à 682. Propriétaire : deck/. */
+.mp-pg{position:absolute;inset:0;overflow:hidden;background:var(--scene);color:var(--sur-scene)}
+.mp-pg.mp-clair{background:var(--doux);color:var(--encre);--filet:rgba(6,10,8,.12);--bi-fort:var(--encre);--bi-doux:rgba(6,10,8,.36)}
+/* Bandeau en chasse fixe, quatre colonnes comme Marque.entete : marque, chapitre, page, numéro */
+.mp-bd{position:absolute;left:40px;right:40px;top:24px;display:grid;grid-template-columns:40% 16.5% 1fr auto;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;line-height:1.5;z-index:70}
+.mp-bd.mp-bas{top:auto;bottom:24px}
+.mp-bd span{padding-right:16px}
+.mp-k{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;line-height:1.5;opacity:.6}
+.mp-cote{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;line-height:1.5}
+.mp-d{font-size:96px;line-height:.92;font-weight:500;letter-spacing:-.055em}
+.mp-t{font-size:52px;line-height:.98;font-weight:500;letter-spacing:-.045em}
+.mp-t1{font-size:28px;line-height:1.05;font-weight:500;letter-spacing:-.035em}
+.mp-tx{font-size:14.5px;line-height:1.4}
+.mp-tx2{font-size:19px;line-height:1.4;letter-spacing:-.01em}
+.mp-col{position:absolute;left:40px;top:92px;bottom:38px;width:340px;display:flex;flex-direction:column;z-index:60}
+.mp-col .mp-t{margin-top:16px}
+.mp-col .bicolore{margin-top:22px;font-size:21px;line-height:1.3}
+.mp-regles{margin-top:auto;padding-top:20px}
+.mp-r{font-size:14.5px;line-height:1.4;padding:9px 0 10px;border-top:1px solid var(--filet)}
+.mp-r b{font-weight:500}
+.mp-fl{height:1px;background:var(--filet)}
+/* Cadre : carte à rayon 20, filet fin ; une image s'y pose par-dessus un fond de repli */
+.mp-cad{position:absolute;overflow:hidden;border-radius:20px;background:var(--ardoise);box-shadow:inset 0 0 0 1px var(--filet)}
+.mp-cad>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:2}
+.mp-cad>.mp-k{position:absolute;left:20px;top:16px;z-index:60}
+.mp-pg.mp-clair .mp-cad{box-shadow:none}
+/* Curseurs (spécimen, réglages) */
+.sl{display:grid;grid-template-columns:150px 1fr 150px;align-items:center;font-size:16px;height:44px}
+.sl .tr{position:relative;height:1px;background:color-mix(in srgb,currentColor 25%,transparent)}
+.sl .tr i{position:absolute;top:-6px;width:13px;height:13px;margin-left:-6.5px;border-radius:50%;background:var(--vif)}
+.sl span:last-child{text-align:right}
+/* Icône d'app dans une mini-page (le socle a Marque.icone pour tout le reste) */
+.appi{position:relative;display:grid;place-items:center;border-radius:22.5%;overflow:hidden;flex:none}
+.appi svg{height:62%;width:auto}

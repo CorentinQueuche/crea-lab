@@ -1,0 +1,28 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates.css"><script src="../brand/marque.js"></script>
+<body>
+<div class="plate g5 grain" id="p" style="height:720px"></div>
+<script>
+/* Quatre mots-clés, chacun dans une pastille vide (le cercle, l'anneau, le symbole, rien d'autre), posées de travers sur le semis ton sur ton. */
+const A = Marque, C = A.COULEURS, T = A.TONS;
+const vide = (mot, n, ton, size, angle) => {
+  const t = T[ton];
+  return `<svg class="pastille pose" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="${size}" height="${size}" style="transform:rotate(${angle}deg)">` +
+    `<circle cx="100" cy="100" r="99" fill="${t.bg}"/><circle cx="100" cy="100" r="91.5" fill="none" stroke="${t.fg}" stroke-opacity=".5" stroke-width="1"/>` +
+    `<g transform="translate(86 40) scale(.28)"><path fill="${t.acc}" fill-rule="evenodd" d="${A.symbolPath()}"/></g>` +
+    `<text x="100" y="114" text-anchor="middle" fill="${t.fg}" font-family="Bricolage Grotesque" font-weight="600" font-size="${mot.length > 6 ? 26 : 36}" letter-spacing="-1">${mot}</text>` +
+    `<text x="100" y="150" text-anchor="middle" fill="${t.fg}" fill-opacity=".8" font-family="IBM Plex Mono" font-weight="500" font-size="9" letter-spacing="1.5">${n}</text></svg>`;
+};
+const mots = [
+  ['Fruit', '01', 'fleur', -7, 0],
+  ['Fraîcheur', '02', 'cerise', 5, 34],
+  ['Voisinage', '03', 'vert', -4, -10],
+  ['Franchise', '04', 'feuille', 9, 26],
+];
+const S = 262, x0 = 84, step = (1400 - 168 - S) / 3;
+document.getElementById('p').innerHTML =
+  A.semis({ cols: 10, rows: 5, pas: 140, taille: 62, tons: [C.fleur], opacite: .42, seed: 3 }) +
+  `<div class="abs lbl" style="left:84px;top:84px;z-index:2">Mots-clés</div>` +
+  mots.map(([m, n, ton, a, dy], i) => `<div class="abs" style="left:${Math.round(x0 + i * step)}px;top:${214 + dy}px;z-index:2">${vide(m, n, ton, S, a)}</div>`).join('') +
+  A.foot('La marque', 'Mots-clés');
+</script>
+</body>

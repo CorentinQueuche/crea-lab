@@ -1,0 +1,3 @@
+/* Présentation plein format : une page du guide à 1280 × 720, sans réduction. */
+.mp.one{position:relative;width:1280px;height:720px;box-shadow:none;border-radius:0}
+.mp.one>.in{zoom:1}

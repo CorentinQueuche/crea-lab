@@ -1,0 +1,43 @@
+/* Planches 24, 25, 27, 29, 30, 31, 48 (le site, les composants, la clôture) : styles communs.
+   Complète brand/marque.css et brand/ecrans.css (lecture seule). Préfixe pb- pour ne heurter aucune classe du socle.
+   Grille : marges de 84 px pour le contenu, 28 px pour le bandeau. */
+
+.pb-abs{position:absolute}
+.pb-z{z-index:60}
+.pb-z:not(.pb-abs){position:relative}
+.pb-fond{position:absolute;inset:0}
+
+/* Étiquette en chasse fixe, capitales espacées (ni adresse ni nom de classe dedans) */
+.pb-lbl{font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;line-height:1.5}
+.pb-lbl.doux{opacity:.6}
+.pb-txt{font-size:15px;line-height:1.45;letter-spacing:-.005em;margin:0}
+.pb-txt.doux{opacity:.66}
+.pb-chapo{font-size:19px;line-height:1.38;letter-spacing:-.015em;font-weight:500;margin:0}
+
+/* Numéro de légende : pastille ronde en chasse fixe */
+.pb-num{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--fluo);color:var(--encre);font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:0;flex:none;box-shadow:0 0 0 5px rgba(16,16,18,.55)}
+.pb-num.blanc{background:#fff}
+.pb-num.encre{background:var(--encre);color:var(--fluo);box-shadow:0 0 0 5px rgba(219,219,222,.6)}
+
+/* Légende numérotée : numéro, titre, texte */
+.pb-leg{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;align-items:center}
+.pb-leg b{font-weight:600;font-size:17px;letter-spacing:-.02em}
+.pb-leg p{grid-column:2;margin:0;font-size:13.5px;line-height:1.42;opacity:.66}
+
+/* Fenêtre de détail : une zone d'une page, agrandie (voir crop() dans chaque planche) */
+.pb-crop{position:relative;overflow:hidden;border-radius:16px;flex:none;background:var(--noir);
+  box-shadow:0 0 0 1px rgba(255,255,255,.14),0 50px 90px -40px rgba(0,0,0,.9)}
+.pb-crop.clair{box-shadow:0 0 0 1px rgba(3,1,14,.14),0 50px 90px -46px rgba(3,1,14,.55)}
+.pb-crop>.pb-in{position:absolute;left:0;top:0;width:1440px}
+
+/* Ombre portée d'un écran incliné */
+.pb-ombre{filter:drop-shadow(0 70px 60px rgba(0,0,0,.55))}
+
+/* Filet pointillé (repère de grille) */
+.pb-pointi{position:absolute;height:0;border-top:1px dashed currentColor}
+
+/* Cellule de la grappe de composants (planche 31) */
+.pb-cel{position:absolute;border-radius:18px;padding:22px 22px 20px}
+.pb-cel>.pb-lbl{position:absolute;left:22px;top:16px}
+.pb-cel .pb-pc{position:absolute;left:22px;right:22px;bottom:20px}
+.pb-etat{font-family:var(--mono);font-size:9.5px;letter-spacing:.07em;text-transform:uppercase;opacity:.55;margin-top:9px;white-space:nowrap}

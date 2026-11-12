@@ -1,0 +1,101 @@
+<!doctype html><meta charset="utf-8"><title>Custom — 07 · Construction du Cran</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates.css"><script src="../brand/marque.js"></script>
+<style>
+  /* 07 · Construction du Cran. Préfixe q07- */
+  .q07-plan{position:absolute;left:0;top:0;width:1400px;height:1220px;z-index:10;overflow:visible}
+  .q07-plan text{font-family:var(--mono);font-weight:500;letter-spacing:.04em}
+  .q07-tab{position:absolute;right:84px;top:96px;width:372px;z-index:60}
+  .q07-tab .pl-ligne{grid-template-columns:132px 1fr;font-family:var(--mono);font-size:11.5px;font-weight:500;letter-spacing:.03em;padding:8px 0 9px}
+  .q07-tab .pl-ligne span:first-child{font-size:10px;letter-spacing:.07em;text-transform:uppercase;opacity:.55}
+  .q07-tab .pl-ligne span:last-child{color:var(--fluo)}
+  .q07-bas{position:absolute;left:84px;right:84px;top:1222px;height:228px;display:grid;grid-template-columns:.95fr .95fr 1.3fr;gap:16px;z-index:60}
+  .q07-case{position:relative;border-radius:28px;background:var(--graphite);padding:20px 24px;overflow:hidden}
+  .q07-case .pl-lbl{opacity:.6}
+  .q07-row{position:absolute;left:24px;right:24px;bottom:22px;display:flex;align-items:flex-end;justify-content:space-between}
+  .q07-row .pl-cote{opacity:.55;margin-top:10px;display:block;text-align:center}
+</style>
+<body><div class="plate grain leger" id="p" style="height:1520px"></div>
+<script>
+const A = Marque, C = A.COULEURS, K = A.CONSTRUCTION, NB = A.NB;
+const v = (n) => String(n).replace('.', ',');
+/* Repère du plan : 1 unité = s px ; origine du Cran en (ox, oy) px de la planche */
+const s = 5.4, ox = 270, oy = 512, fs = 11 / s, W = 1400 / s, H = 1220 / s;
+const X = (u) => +(u).toFixed(2);
+let grille = '', grille50 = '';
+for (let x = -50; x <= 210; x += 10) (x % 50 === 0 ? (grille50 += `M${x},-30V130`) : (grille += `M${x},-30V130`));
+for (let y = -30; y <= 130; y += 10) (y % 50 === 0 ? (grille50 += `M-50,${y}H210`) : (grille += `M-50,${y}H210`));
+/* Cote horizontale (x0 → x1 à la hauteur y) et verticale */
+const tick = 1.6;
+const coteH = (x0, x1, y, t, dy = -1.6, anchor = 'middle') => `<path d="M${x0},${y - tick}V${y + tick}M${x1},${y - tick}V${y + tick}M${x0},${y}H${x1}"/>` +
+  `<text x="${anchor === 'middle' ? (x0 + x1) / 2 : x1 + 2}" y="${y + dy}" text-anchor="${anchor}" font-size="${fs}" fill="#fff" stroke="none">${t}</text>`;
+const coteV = (y0, y1, x, t, side = -1) => `<path d="M${x - tick},${y0}H${x + tick}M${x - tick},${y1}H${x + tick}M${x},${y0}V${y1}"/>` +
+  `<text x="${x + side * 2.2}" y="${(y0 + y1) / 2 + fs * 0.35}" text-anchor="${side < 0 ? 'end' : 'start'}" font-size="${fs}" fill="#fff" stroke="none">${t}</text>`;
+const P = A.symbolParts();
+/* Recouvrement : la bande commune aux deux blocs (y 47,6 → 62,4) */
+const xh = (y) => 75.25 - y * K.tan, xb = (y) => 130.65 - (y - 47.6) * K.tan;
+const rec = `M${X(xh(47.6))},47.6H130.65L${X(xb(62.4))},62.4H60.5Z`;
+/* Arc de l'angle, au coin bas gauche du bloc du bas */
+const a0 = [-1.9, 110], ra = 34, ang = K.angle * Math.PI / 180;
+const pA = [X(a0[0] + ra * Math.sin(ang)), X(a0[1] - ra * Math.cos(ang))];
+/* Centre du rayon de coin (coin haut droit du bloc du haut) */
+const rc = [184.21, 6.99];
+const plan = `<svg class="q07-plan" viewBox="${X(-ox / s)} ${X(-oy / s)} ${X(W)} ${X(H)}">
+  <defs><pattern id="q07h" width="2" height="2" patternUnits="userSpaceOnUse" patternTransform="rotate(${-K.angle - 45})"><rect width=".42" height="2" fill="${C.encre}"/></pattern></defs>
+  <path d="${grille}" stroke="rgba(255,255,255,.045)" stroke-width="${1 / s}" fill="none"/>
+  <path d="${grille50}" stroke="rgba(255,255,255,.1)" stroke-width="${1 / s}" fill="none"/>
+  <clipPath id="q07c"><path d="${A.symbolPath()}"/></clipPath>
+  <g clip-path="url(#q07c)"><path d="${P.bas}" fill="${C.fluo}"/><path d="${P.haut}" fill="${C.fluo}"/><path d="${rec}" fill="url(#q07h)"/></g>
+  <path d="${A.symbolPath()}" fill="none" stroke="#fff" stroke-width="${1.4 / s}"/>
+  <g fill="none" stroke="#fff" stroke-width="${1.1 / s}">
+    <!-- lignes de rappel -->
+    <g stroke-dasharray="${3 / s} ${3 / s}" opacity=".55">
+      <path d="M75.25,-2V-30M12.85,45V-30M193.05,-2V-16M-1.9,112V124M191.05,112V124"/>
+      <path d="M73,0H-20M10,47.6H-20M-4,110H-36"/>
+      <path d="M${a0[0]},${a0[1]}V${a0[1] - 52}"/>
+      <path d="M195,0H207M180,62.4H207"/>
+    </g>
+    ${coteH(75.25, 193.05, -10, `bloc · ${v(K.bloc.l)}`)}
+    ${coteH(12.85, 75.25, -26, `pas · ${v(K.decalage.x)}`)}
+    ${coteV(0, 62.4, 203, `${v(K.bloc.h)}`, -1)}
+    ${coteV(0, 47.6, -16, `pas · ${v(K.decalage.y)}`)}
+    ${coteV(-0.01, 110, -32, '110', 1)}
+    ${coteH(0, 191.05, 122, `repère · ${v(K.box[0])} × ${K.box[1]}`, 4.4)}
+    <path d="M${a0[0]},${a0[1] - ra} A${ra},${ra} 0 0 1 ${pA[0]},${pA[1]}"/>
+    <circle cx="${rc[0]}" cy="${rc[1]}" r="${K.bloc.rayon}" stroke-dasharray="${2 / s} ${2 / s}" stroke="${C.encre}"/>
+  </g>
+  <g stroke="${C.encre}" stroke-width="${1.2 / s}" fill="none"><path d="M140,47.6V62.4M138.6,47.6H141.4M138.6,62.4H141.4"/></g>
+  <text x="142.6" y="${55 + fs * 0.35}" font-size="${fs}" fill="${C.encre}">recouvrement · ${v(K.recouvrement)}</text>
+  <text x="-5" y="${a0[1] - ra + 3}" font-size="${fs * 1.18}" fill="#fff" text-anchor="end">${v(K.angle)}°</text>
+  <text x="${rc[0] - 9.5}" y="${rc[1] + fs * 0.35}" font-size="${fs}" fill="${C.encre}" text-anchor="end">r · ${K.bloc.rayon}</text>
+  <g fill="#fff">${[[75.25, 0], [12.85, 47.6], [-1.9, 110]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="${2.6 / s}"/>`).join('')}</g>
+  <text x="22" y="${96}" font-size="${fs}" fill="${C.encre}">bloc du bas</text>
+  <text x="120" y="${32}" font-size="${fs}" fill="${C.encre}">bloc du haut</text>
+</svg>`;
+
+const rows = [['Angle', `${v(K.angle)}° · tangente ${v(K.tan)}`], ['Bloc', `${v(K.bloc.l)} × ${v(K.bloc.h)}`], ['Pas', `${v(K.decalage.x)} en x · ${v(K.decalage.y)} en y`], ['Recouvrement', `${v(K.recouvrement)} en hauteur`], ['Rayon de coin', `${K.bloc.rayon}`], ['Repère', `${v(K.box[0])} × ${K.box[1]}`], ['Rapport l / h', `${v(K.rapports['largeur / hauteur du bloc'])}`]];
+
+/* Bande basse : séparés → assemblés, marches, chemin */
+const etat = (dx, dy, op) => `<svg viewBox="-20 -14 232 138" style="height:54px;overflow:visible"><path d="${P.bas}" fill="${C.fluo}" transform="translate(${-dx} ${dy})"/><path d="${P.haut}" fill="${C.fluo}" opacity="${op}" transform="translate(${dx} ${-dy})"/></svg>`;
+const m = (n, hh) => { const M = A.marches(n); return `<svg viewBox="${M.box.join(' ')}" style="height:${hh}px"><path d="${M.d}" fill="${C.fluo}"/></svg>`; };
+
+document.getElementById('p').innerHTML =
+  A.entete() +
+  `<div class="pl-intro"><div class="pl-lbl doux">07 · La marque · construction</div>
+    <div class="t-titre h-120">Deux blocs, ${A.surl('un pas')}</div>
+    <p class="pl-chapo">Le tracé officiel du Cran ne bouge pas. Nous l’avons mesuré : deux blocs identiques, inclinés de 13,3°, décalés d’un pas.</p></div>
+  <div class="q07-tab"><div class="pl-lbl doux" style="margin-bottom:10px">Cotes · Marque.CONSTRUCTION</div>
+    ${rows.map(([a, b]) => `<div class="pl-ligne"><span>${a}</span><span>${b}</span></div>`).join('')}</div>
+  ${plan}
+  <span class="pl-tag" style="left:84px;top:1192px;opacity:.55">Plan 1 · le Cran sur sa grille de 10 · unités du tracé officiel</span>
+  <span class="pl-tag" style="right:84px;top:1192px;opacity:.55">Hachures : la bande commune aux deux blocs</span>
+  <div class="q07-bas">
+    <div class="q07-case"><div class="pl-lbl">Les deux blocs arrivent l’un après l’autre</div>
+      <div class="q07-row">${[[34, 22, 0.35, 'Séparés'], [14, 9, 0.7, 'En approche'], [0, 0, 1, 'Assemblés']].map(([dx, dy, op, t]) => `<div>${etat(dx, dy, op)}<span class="pl-cote">${t}</span></div>`).join('')}</div></div>
+    <div class="q07-case"><div class="pl-lbl">Les marches · le Cran prolongé</div>
+      <div class="q07-row" style="justify-content:flex-start;gap:16px">${[[2, 34], [3, 50], [5, 78]].map(([n, hh]) => `<div>${m(n, hh)}<span class="pl-cote" style="text-align:left">${n}${NB}marches</span></div>`).join('')}</div></div>
+    <div class="q07-case" style="background:var(--fluo);color:var(--encre)"><div class="pl-lbl" style="opacity:.7">L’idée dans le dessin</div>
+      <p style="position:absolute;left:24px;right:24px;top:48px;margin:0;font-size:15px;line-height:1.36;font-weight:600;letter-spacing:-.01em">Deux blocs identiques, décalés d’un pas. L’atelier et vous, à&nbsp;une marche l’un de l’autre.</p>
+      <div style="position:absolute;left:12px;bottom:4px;color:${C.encre}">${A.chemin({ w: 440, h: 150, ep: 2.6, taille: 13 })}</div></div>
+  </div>` +
+  A.foot('07 · Construction du Cran', 'Custom · direction artistique');
+</script></body>

@@ -1,0 +1,9 @@
+<!doctype html><meta charset="utf-8"><title>Aube — 20 app</title>
+<link rel="stylesheet" href="../brand/aube.css"><link rel="stylesheet" href="motion.css">
+<script src="../brand/aube.js"></script><script src="lib.js"></script><script src="scenes.js"></script>
+<body style="background:#E9E3DE"><div id="s"></div>
+<script>
+// 1920 × 1080, 7 s : node tools/record.mjs motion/20-app.html out/motion/20-app.mp4 --w 1920 --h 1080 --fps 30 --dur 7
+window.seek = Scenes.app(document.getElementById('s'), { w: 1920, h: 1080 });
+seek(0);
+</script></body>

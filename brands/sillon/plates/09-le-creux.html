@@ -1,0 +1,16 @@
+<!doctype html><meta charset="utf-8"><title>Sillon · 09 · Le creux, de près</title><meta name="robots" content="noindex">
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates.css">
+<script src="../brand/marque.js"></script><script src="../brand/matiere.js"></script><script src="../brand/verse.js"></script>
+<style>
+  /* 09 · Le creux, de près. Une image plein cadre, sans un mot : le creux du logotype à quatorze fois sa taille, en pierre
+     de tuffeau, le vin de macération dedans (sa robe, son ménisque, son dépôt, la matière de la photo fondue dans sa
+     masse). Le sergé bleu est agrandi d'autant. Préfixe p09-. */
+  #p{height:1000px;background-size:2100px}
+  #p canvas{position:absolute;left:0;top:0}
+</style>
+<body><div class="plate" id="p"><canvas id="c"></canvas><div class="pl-pied t-etq" style="z-index:9;color:#0E1638"><span>09 · Le creux, de près</span><span></span><span>2026</span></div></div>
+<script>
+const A = Marque, K = A.CONSTRUCTION, S = 14, d = new Path2D(A.letterPath('LL'));
+window.pret = Verse.pret().then(() => Verse.formes(document.getElementById('c'), { l: 1400, h: 1000, ech: 100 * S, ombre: false, jus: 'maceration', p: A.NIVEAU, mini: 0.0005,
+  tracer: (c) => { c.translate(700, 500); c.scale(S, S); c.translate(-(K.creux.x + K.creux.l / 2), -45); c.fill(d); } }));
+</script></body>

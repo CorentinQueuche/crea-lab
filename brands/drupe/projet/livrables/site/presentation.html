@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Drupe — Guide de marque, la présentation</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#F4ECDD">
+<link rel="icon" href="logo/drupe-symbole-cerise.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/marque.css">
+<link rel="stylesheet" href="assets/plates.css">
+<style>
+/* Visionneuse : marque claire, uniquement les rôles et les couleurs du socle. Classes préfixées vz- (le socle et plates.css sont chargés). */
+:root{--vz-ligne:color-mix(in srgb,var(--encre) 12%,transparent);--vz-ligne-forte:color-mix(in srgb,var(--encre) 24%,transparent);--vz-douce:cubic-bezier(.22,1,.36,1)}
+html,body{height:100%;background:var(--scene);color:var(--sur-scene);overflow:hidden}
+body{display:grid;grid-template-rows:auto 1fr auto;font-size:15px}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--sombre);outline-offset:3px;border-radius:6px}
+.vz-barre{display:flex;align-items:center;gap:14px;padding:14px 22px;border-bottom:1px solid var(--vz-ligne);background:var(--papier)}
+.vz-accueil{display:flex;align-items:flex-end;gap:12px;text-decoration:none}
+.vz-accueil svg{height:20px;width:auto}
+.vz-accueil span{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:color-mix(in srgb,var(--encre) 62%,var(--scene))}
+.vz-esp{flex:1}
+.vz-titre{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:color-mix(in srgb,var(--encre) 78%,var(--scene))}
+.vz-b{font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;padding:9px 14px;border-radius:99px;border:1px solid var(--vz-ligne-forte);background:none;color:var(--encre);cursor:pointer;text-decoration:none;white-space:nowrap;transition:background 180ms ease-out}
+.vz-b:hover{background:color-mix(in srgb,var(--encre) 5%,transparent)}
+.vz-b.vz-vif{background:var(--vif);border-color:var(--vif);color:var(--papier)}
+.vz-scene{position:relative;display:grid;place-items:center;min-height:0;overflow:hidden}
+.mp.vz-une{position:relative;flex:none;border-radius:6px;box-shadow:0 30px 60px -36px color-mix(in srgb,var(--encre) 45%,transparent),0 0 0 1px var(--vz-ligne)}
+.mp.vz-une>.in{zoom:var(--k,1)}
+.mp.vz-une.vz-entre{animation:vz-entree .42s var(--vz-douce)}
+@keyframes vz-entree{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.mp.vz-une.vz-entre{animation:none}}
+.vz-fleche{position:absolute;top:0;bottom:0;width:18%;border:0;background:none;color:var(--encre);cursor:pointer;font-size:26px;opacity:0;transition:opacity .2s;z-index:5}
+.vz-fleche:hover,.vz-fleche:focus-visible{opacity:.9}
+.vz-fleche.vz-g{left:0;text-align:left;padding-left:22px;background:linear-gradient(90deg,color-mix(in srgb,var(--scene) 70%,transparent),transparent)}
+.vz-fleche.vz-d{right:0;text-align:right;padding-right:22px;background:linear-gradient(270deg,color-mix(in srgb,var(--scene) 70%,transparent),transparent)}
+.vz-pied{display:flex;align-items:center;gap:16px;padding:12px 22px 14px;border-top:1px solid var(--vz-ligne);background:var(--papier)}
+.vz-pied .vz-n{font-family:var(--mono);font-size:12px;letter-spacing:.06em;min-width:70px}
+.vz-prog{flex:1;height:3px;background:var(--vz-ligne);border-radius:2px;overflow:hidden}
+.vz-prog i{display:block;height:100%;background:linear-gradient(90deg,var(--moyen),var(--pulpe),var(--vif));transition:width .5s var(--vz-douce)}
+.vz-grille{position:fixed;inset:0;z-index:20;background:color-mix(in srgb,var(--scene) 97%,transparent);display:none;overflow:auto;padding:26px 26px 60px}
+.vz-grille.on{display:block}
+.vz-grille h2{font-weight:500;font-size:30px;letter-spacing:-.02em;color:var(--encre);margin:6px 0 22px;display:flex;justify-content:space-between;align-items:center}
+.vz-gg{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.vz-gg button{padding:0;border:1px solid var(--vz-ligne);border-radius:8px;overflow:hidden;background:var(--papier);cursor:pointer;color:inherit;text-align:left;font-family:inherit}
+.vz-gg button.vz-cur{box-shadow:0 0 0 2px var(--vif)}
+.vz-gg img{display:block;width:100%;height:auto;aspect-ratio:16/9;background:var(--clair)}
+.vz-gg span{display:flex;gap:10px;padding:9px 12px 11px;font-size:13px}
+.vz-gg span i{font-family:var(--mono);font-style:normal;font-size:10.5px;color:var(--sombre);padding-top:2px}
+@media (max-width:760px){.vz-titre,.vz-accueil span,.vz-masque{display:none}.vz-barre{gap:8px;padding:10px 12px}.vz-b{padding:8px 11px}.vz-fleche{display:none}}
+</style>
+<script src="assets/marque.js"></script>
+<script>window.GuideMedia = 'guide-media/'; /* rendus 3D allégés (1100 px) pour les pages « En situation » */</script>
+<script src="assets/pages.js"></script>
+</head>
+<body>
+<header class="vz-barre">
+  <a class="vz-accueil" href="index.html" id="accueil" title="Retour au guide de marque"></a>
+  <span class="vz-titre" id="ttl"></span>
+  <span class="vz-esp"></span>
+  <button class="vz-b" id="bgrille" title="Touche G">Toutes les pages</button>
+  <button class="vz-b vz-masque" id="bplein" title="Touche F">Plein écran</button>
+  <a class="vz-b vz-vif" href="deck/drupe-guide-de-marque.pdf" download>PDF</a>
+</header>
+<main class="vz-scene" id="scene">
+  <div class="mp vz-une" id="page"><div class="in" id="contenu"></div></div>
+  <button class="vz-fleche vz-g" id="prec" aria-label="Page précédente">←</button>
+  <button class="vz-fleche vz-d" id="suiv" aria-label="Page suivante">→</button>
+</main>
+<footer class="vz-pied"><span class="vz-n" id="num"></span><div class="vz-prog"><i id="prog"></i></div><span class="vz-n vz-masque" style="text-align:right;opacity:.55;min-width:150px">← → pour naviguer</span></footer>
+<div class="vz-grille" id="grille" role="dialog" aria-label="Toutes les pages"><h2>Guide de marque <button class="vz-b" id="gfermer">Fermer</button></h2><div class="vz-gg" id="gg"></div></div>
+<script>
+(function () {
+  const P = window.GuidePages, O = window.GuideOrder, T = window.GuideTitles, A = window.Marque;
+  const $ = (s) => document.querySelector(s), pad = (n) => String(n).padStart(2, '0');
+  $('#accueil').innerHTML = A.wordmark(A.COULEURS.cerise, 'aria-hidden="true"') + '<span>Guide de marque</span>';
+  if (!P || !O || !O.length) { $('#contenu').innerHTML = ''; $('#ttl').textContent = 'Les pages du guide ne sont pas disponibles.'; return; }
+  let i = 0;
+  const fit = () => { const st = $('#scene'); const k = Math.min((st.clientWidth - 40) / 1280, (st.clientHeight - 40) / 720); const s = $('#page'); s.style.setProperty('--k', k); s.style.width = 1280 * k + 'px'; s.style.height = 720 * k + 'px'; };
+  const go = (n, anim = true) => {
+    i = Math.max(0, Math.min(O.length - 1, n));
+    $('#contenu').innerHTML = P[O[i]];
+    const s = $('#page'); s.classList.remove('vz-entre'); if (anim) { void s.offsetWidth; s.classList.add('vz-entre'); }
+    $('#num').textContent = pad(i + 1) + ' / ' + pad(O.length); $('#ttl').textContent = T[i] || '';
+    $('#prog').style.width = ((i + 1) / O.length) * 100 + '%';
+    document.title = (T[i] ? T[i] + ' — ' : '') + 'Drupe, guide de marque';
+    history.replaceState(null, '', '#' + (i + 1));
+    document.querySelectorAll('#gg button').forEach((b, k) => b.classList.toggle('vz-cur', k === i));
+  };
+  $('#gg').innerHTML = O.map((k, n) => `<button data-n="${n}"><img src="deck/${pad(n + 1)}.jpg" alt="" loading="lazy"><span><i>${pad(n + 1)}</i>${T[n] || ''}</span></button>`).join('');
+  const grille = (on) => $('#grille').classList.toggle('on', on);
+  document.querySelectorAll('#gg button').forEach((b) => b.addEventListener('click', () => { go(+b.dataset.n); grille(false); }));
+  $('#bgrille').addEventListener('click', () => grille(true)); $('#gfermer').addEventListener('click', () => grille(false));
+  $('#prec').addEventListener('click', () => go(i - 1)); $('#suiv').addEventListener('click', () => go(i + 1));
+  const plein = () => { if (document.fullscreenElement) document.exitFullscreen(); else document.documentElement.requestFullscreen && document.documentElement.requestFullscreen(); };
+  $('#bplein').addEventListener('click', plein);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') return grille(false);
+    if (e.key === 'g' || e.key === 'G') return grille(!$('#grille').classList.contains('on'));
+    if ($('#grille').classList.contains('on')) return;
+    if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); go(i + 1); }
+    if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); go(i - 1); }
+    if (e.key === 'Home') go(0); if (e.key === 'End') go(O.length - 1);
+    if (e.key === 'f' || e.key === 'F') plein();
+  });
+  let x0 = null;
+  $('#scene').addEventListener('touchstart', (e) => { x0 = e.touches[0].clientX; }, { passive: true });
+  $('#scene').addEventListener('touchend', (e) => { if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 40) go(i + (dx < 0 ? 1 : -1)); x0 = null; });
+  window.addEventListener('resize', fit);
+  window.addEventListener('hashchange', () => { const n = parseInt(location.hash.slice(1), 10); if (n && n - 1 !== i) go(n - 1); });
+  fit(); go((parseInt(location.hash.slice(1), 10) || 1) - 1, false);
+  // Le semis des pages se balance, comme dans les vidéos (boucle de 8 s)
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) { const t0 = performance.now(); const loop = (now) => { if (!document.hidden) A.seekSemis((now - t0) / 1000, 8, $('#contenu')); requestAnimationFrame(loop); }; requestAnimationFrame(loop); }
+})();
+</script>
+</body>
+</html>

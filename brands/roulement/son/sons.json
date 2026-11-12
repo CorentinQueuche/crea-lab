@@ -1,0 +1,96 @@
+{
+  "nom_projet_sunra": "Roulement — film",
+  "sons": [
+    {
+      "nom": "musique",
+      "model": "suno-v5.5",
+      "force_instrumental": true,
+      "prompt": "Instrumental, no vocals. Warm elegant cafe-jazz meets soft electronica, soundtrack for a premium product film about a restaurant staff scheduling app. Felt upright piano motif, round upright bass, brushed drums with a soft kick, muted Rhodes chords, light glassy bell accents. 92 BPM, F major, relaxed confident groove that starts right away, steady and uplifting, polished modern production, never aggressive."
+    },
+    {
+      "nom": "clic",
+      "model": "elevenlabs-sound-effects",
+      "duration_seconds": 0.5,
+      "prompt": "Single crisp soft computer mouse click, close mic, clean, dry, no reverb"
+    },
+    {
+      "nom": "bulle",
+      "model": "elevenlabs-sound-effects",
+      "duration_seconds": 0.5,
+      "prompt": "Short soft pleasant interface pop, round wooden bubble blip, clean, dry, close mic, no reverb"
+    },
+    {
+      "nom": "trace",
+      "model": "elevenlabs-sound-effects",
+      "duration_seconds": 1,
+      "prompt": "Smooth soft rising glide of a line being drawn, felt pen on thick paper with a light airy shimmer, subtle, clean user interface sound"
+    },
+    {
+      "nom": "alerte",
+      "model": "elevenlabs-sound-effects",
+      "duration_seconds": 0.5,
+      "prompt": "Single short muted warning blip, two quick soft low marimba notes falling, clean, dry, close mic, no reverb"
+    },
+    {
+      "nom": "souffle-entree",
+      "model": "elevenlabs-sound-effects",
+      "duration_seconds": 1.5,
+      "prompt": "Soft airy cinematic whoosh swelling in and rising smoothly, clean, elegant, no impact, no distortion"
+    },
+    {
+      "nom": "souffle-coupe",
+      "model": "elevenlabs-sound-effects",
+      "duration_seconds": 1,
+      "prompt": "Fast smooth transition whoosh passing by, airy and subtle, clean, modern motion design"
+    },
+    {
+      "nom": "souffle-recul",
+      "model": "elevenlabs-sound-effects",
+      "duration_seconds": 2.5,
+      "prompt": "Long deep downward whoosh, camera pulling back into a wide space, spacious soft reverb tail, clean"
+    },
+    {
+      "nom": "glisse",
+      "model": "elevenlabs-sound-effects",
+      "duration_seconds": 1.5,
+      "prompt": "A card being dragged smoothly across a surface, soft continuous paper slide with a gentle rising airy tone, clean, ends abruptly"
+    },
+    {
+      "nom": "pose",
+      "model": "elevenlabs-sound-effects",
+      "duration_seconds": 0.5,
+      "prompt": "Single soft satisfying snap of a card dropping into its slot, muted wooden tock with a tiny click, close mic, dry, no reverb"
+    },
+    {
+      "nom": "impact",
+      "model": "elevenlabs-sound-effects",
+      "duration_seconds": 3,
+      "prompt": "Deep soft warm sub boom impact followed by a shimmering airy sparkle tail, clean, elegant, not distorted"
+    },
+    {
+      "nom": "carillon",
+      "model": "elevenlabs-sound-effects",
+      "duration_seconds": 2,
+      "prompt": "Bright elegant interface success chime, three glassy bell notes rising, shimmering reverb tail, positive confirmation"
+    },
+    {
+      "nom": "compteur",
+      "model": "elevenlabs-sound-effects",
+      "duration_seconds": 1.5,
+      "prompt": "Rapid soft counter ticking upward, tiny light clicks like an old cash register dial starting fast and slowing down to a stop, clean, dry"
+    },
+    {
+      "nom": "envoi",
+      "model": "elevenlabs-sound-effects",
+      "duration_seconds": 1,
+      "prompt": "Short soft message sent swoosh rising upward and away, light and airy, clean interface sound, no reverb"
+    },
+    {
+      "nom": "logo",
+      "model": "elevenlabs-sound-effects",
+      "duration_seconds": 3,
+      "prompt": "Warm deep felt piano chord with soft sub bass and a small brass bell ring, elegant logo reveal sting, long smooth reverb tail"
+    }
+  ],
+  "projet_sunra": "312e4327-6f88-4251-ba27-eb5299405806"
+}

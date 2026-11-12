@@ -1,0 +1,26 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates.css"><script src="../brand/marque.js"></script>
+<style>
+  /* 01 · Couverture. Préfixe q1- */
+  .q1-cols{position:absolute;left:28px;right:28px;bottom:104px;display:grid;grid-template-columns:40% 16.5% 1fr auto;align-items:start;z-index:60}
+  .q1-cols p{font-size:14.5px;line-height:1.45;max-width:430px;opacity:.82}
+  .q1-cols ul{list-style:none;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;line-height:1.75}
+  .q1-cols ul li::before{content:"";display:inline-block;width:6px;height:6px;background:var(--vif);margin-right:9px;vertical-align:1px}
+  .q1-filet{position:absolute;left:28px;right:28px;bottom:78px;height:1px;background:color-mix(in srgb,var(--sur-scene) 14%,transparent);z-index:60}
+</style>
+<body><div class="plate g1 grain" id="p" style="height:1000px"></div>
+<script>
+const A = Marque, NB = '&nbsp;', SUR = 'var(--sur-scene)';
+document.getElementById('p').innerHTML = `
+  <div class="pl-net" style="position:absolute;left:28px;bottom:350px">${A.lockup('#F3F6F4', 'style="width:1344px;display:block"')}</div>
+  <div class="q1-cols">
+    <div><div class="pl-lbl doux" style="margin-bottom:12px">Présentation</div>
+      <p>Payout aide les freelances en SASU à garder jusqu'à 85${NB}% de leur TJM après impôts, au lieu de 54${NB}%. KLYRA a créé son identité, son site et le front de sa web app en 2025, en six semaines. Cette proposition pousse la marque plus loin${NB}: un noir, un vert électrique, et une seule image, la part qui vous revient.</p></div>
+    <div><div class="pl-lbl doux" style="margin-bottom:12px">Ce que nous avons fait</div>
+      <ul><li>Idée et symbole</li><li>Logotype</li><li>Couleur, dégradés</li><li>Typographie</li><li>La jauge</li><li>Icônes</li></ul></div>
+    <div><div class="pl-lbl doux" style="margin-bottom:12px;visibility:hidden">Suite</div>
+      <ul><li>Site vitrine et simulateur</li><li>Cockpit financier (web app)</li><li>Motion design</li><li>Scènes 3D</li><li>Guide de marque</li></ul></div>
+    <div class="pl-lbl" style="text-align:right;opacity:.6">Proposition KLYRA<br>Pas l'identité<br>officielle de Payout</div>
+  </div>
+  <div class="q1-filet"></div>
+  ${A.entete(A.ENTETE, '#F3F6F4', 'top:auto;bottom:34px')}`;
+</script></body>

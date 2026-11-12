@@ -1,0 +1,22 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates-b.css"><script src="../brand/marque.js"></script>
+<body><div class="plate g6 grain" id="p" style="height:1330px"></div>
+<script>
+const A = Marque, NB = ' ', SUR = '#F3F6F4', K = 1232 / 1440;
+const leg = [
+  ['01', 'La part qui vous revient', `85${NB}% en chiffre de scène, 100 segments, le repère 54 en Prélevé.`],
+  ['02', 'Trésorerie', `La seule carte en aplat Net${NB}: le solde des deux comptes Qonto.`],
+  ['03', 'Facturé par mois', `Chaque colonne est une jauge${NB}: ce qui part est hachuré.`],
+  ['04', 'Obligations et factures', `Les statuts en pastilles${NB}: payée, à venir, à déclarer, en retard.`],
+];
+document.getElementById('p').innerHTML = `
+  ${A.entete(A.ENTETE, SUR)}
+  <div class="pb-abs pb-z" style="left:84px;top:104px;width:640px">
+    <div class="pb-lbl doux">La web app · thème sombre, la version phare</div>
+    <div class="pb-t" style="margin-top:16px">Le cockpit.</div>
+  </div>
+  <div class="pb-abs pb-z" style="left:774px;top:122px;width:542px">${A.bicolore(`Un seul écran pour <b>la part qui vous revient,</b> la trésorerie, les factures et les échéances. <b>Au centime.</b>`, 'font-size:23px;line-height:1.3')}</div>
+  <div class="pb-abs pb-z" style="left:84px;top:276px">${A.browser(A.desk.bord(), K, { url: 'app.payout.fr/tableau-de-bord' })}</div>
+  <div class="pb-abs pb-z" style="left:84px;right:84px;top:1150px;display:grid;grid-template-columns:repeat(4,1fr);gap:28px;border-top:1px solid var(--filet);padding-top:20px">
+    ${leg.map(([n, t, d]) => `<div class="pb-leg"><span>${n}</span><b>${t}</b><p>${d}</p></div>`).join('')}
+  </div>`;
+</script></body>

@@ -1,0 +1,28 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates.css"><script src="../brand/marque.js"></script>
+<style>
+  .pl-band{position:relative;height:820px;flex:none;padding:34px 18px}
+  .pl-band .nm{font-size:26px;font-weight:500;letter-spacing:-.025em;line-height:1.05}
+  .pl-band .bas{position:absolute;left:18px;right:12px;top:676px;font-family:var(--mono);font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;line-height:1.75}
+  .pl-band .bas span{display:block;opacity:.72}
+  .pl-band .bas b{font-weight:500;font-size:13px}
+</style>
+<body>
+<div class="plate" id="p" style="height:820px;display:flex"></div>
+<script>
+/* Huit couleurs, dans l'ordre du mûrissement (de la feuille au fruit), puis les deux encres. Largeur selon la part dans la marque. */
+const C = Marque.COULEURS;
+const bandes = [
+  ['Feuille', C.feuille, 150, C.fleur, 'Fond dense', 'Texte d’accent'],
+  ['Café vert', C.vert, 160, C.feuille, 'Aplat doux', 'Le grain avant le feu'],
+  ['Parche', C.parche, 282, C.grain, 'Fond de marque', 'La peau du grain'],
+  ['Fleur', C.fleur, 250, C.grain, 'Papier, cartes', 'La fleur du caféier'],
+  ['Pulpe', C.pulpe, 178, C.grain, 'Lumière', 'La chair du fruit'],
+  ['Cerise', C.cerise, 124, C.fleur, 'Vive, rare', 'Le fruit mûr'],
+  ['Grain', C.grain, 140, C.parche, 'Encre', 'Le café torréfié'],
+  ['Marc', C.marc, 116, C.parche, 'Scène', '3D, vidéo'],
+];
+document.getElementById('p').innerHTML = bandes.map(([n, h, w, t, role, sens]) =>
+  `<div class="pl-band" style="width:${w}px;background:${h};color:${t}"><div class="nm">${n}</div>
+     <div class="bas"><b>${h}</b><br>${role}<span>${sens}</span></div></div>`).join('');
+</script>
+</body>

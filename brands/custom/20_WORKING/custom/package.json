@@ -1,0 +1,12 @@
+{
+  "name": "identite-de-marque",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@fontsource-variable/archivo": "^5.2.0",
+    "@fontsource-variable/inter": "^5.2.0",
+    "@fontsource-variable/jetbrains-mono": "^5.2.0",
+    "@fontsource/bebas-neue": "^5.2.0",
+    "playwright-core": "^1.56.0"
+  }
+}

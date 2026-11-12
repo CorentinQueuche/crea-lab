@@ -1,0 +1,33 @@
+<!doctype html><meta charset="utf-8"><title>Custom — 18 · Section · L’atelier</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates-c.css"><script src="../brand/marque.js"></script>
+<style>
+  /* Idée : le Cran devient l'écran de sérigraphie. Hors du Cran, la photo ; dans le Cran, la même photo passée à la trame fluo. */
+  .p18-plein{position:absolute;inset:0}
+  .p18-cran{position:absolute;inset:0;-webkit-mask-image:var(--m-cran);mask-image:var(--m-cran);-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
+</style>
+<body><div class="plate" id="p" style="height:900px"></div>
+<script>
+const A = Marque, C = A.COULEURS;
+const K = { x: 548, y: 104, w: 780 }; K.h = K.w * 110 / 191.05;   // le Cran géant
+const pos = '42% 58%';
+const codes = A.DONNEES.techniques;
+document.getElementById('p').innerHTML =
+  `<div class="p18-plein">${A.photo('serigraphie', { mode: 'sombre', pos, style: 'position:absolute;inset:0' })}</div>` +
+  `<div class="p18-plein" style="background:rgba(16,16,18,.38)"></div>` +
+  // la même photo, tramée en fluo, seulement dans le Cran
+  `<div class="p18-cran" style="-webkit-mask-size:${K.w}px ${K.h}px;mask-size:${K.w}px ${K.h}px;-webkit-mask-position:${K.x}px ${K.y}px;mask-position:${K.x}px ${K.y}px">
+     ${A.photo('serigraphie', { mode: 'points', c: 'fluo', tp: 7, ta: 22, ct: 1.25, lu: 1.15, pos, style: 'position:absolute;inset:0' })}</div>` +
+  `<div class="pc-abs" style="left:${K.x}px;top:${K.y}px;width:${K.w}px">${A.symbol(C.fluo, 'style="width:100%;height:auto;overflow:visible"', { contour: 1.2 })}</div>` +
+
+  `<div class="pc-abs pc-z" style="left:84px;top:48px">${A.onglets(A.SECTIONS, 1)}</div>` +
+  `<div class="pc-abs pc-z pc-lbl" style="left:84px;top:96px;opacity:.7">Section 02 · pièces 18 à 23</div>` +
+  // les cinq codes de technique, en colonne, comme des repères de cadre
+  `<div class="pc-abs pc-z" style="left:84px;top:200px;display:flex;flex-direction:column;gap:8px">${codes.map((t, i) => `<div style="display:flex;align-items:center;gap:12px"><span class="pc-code${i === 0 ? ' on' : ''}" style="color:${i === 0 ? C.encre : '#fff'}">${t.code}</span><span class="pc-lbl" style="opacity:.75">${t.nom}</span></div>`).join('')}</div>` +
+  `<div class="pc-abs pc-z t-large" style="left:78px;top:556px;font-size:150px;color:#fff">Tout est<br>fait ${A.surl('ici.')}</div>` +
+  // le chemin court : de l'atelier à vous
+  `<div class="pc-abs pc-z" style="left:956px;top:612px;color:${C.fluo}">${A.chemin({ w: 360, h: 190, ep: 2.6, taille: 14 })}</div>` +
+  `<div class="pc-abs pc-z" style="left:${K.x + K.w}px;top:${K.y}px;color:#fff">${A.croix('left:-11px;top:-11px;opacity:.8', 22)}</div>` +
+  `<div class="pc-abs pc-z" style="left:${K.x}px;top:${K.y + K.h}px;color:#fff">${A.croix('left:-11px;top:-11px;opacity:.8', 22)}</div>` +
+  `<div class="pc-abs pc-z" style="right:28px;top:240px">${A.barre({ v: true, style: 'height:220px;width:10px' })}</div>` +
+  A.foot('18 · Section · L’atelier', 'Custom · direction artistique');
+</script></body>

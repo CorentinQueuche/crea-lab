@@ -1,0 +1,41 @@
+<!doctype html><meta charset="utf-8"><title>Custom · 05 · Section · La marque</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates.css"><script src="../brand/marque.js"></script>
+<style>
+  /* 05 · Ouverture de section « La marque ». Préfixe q05-. Le triptyque monte les trois marches du Cran, une photo par bloc. */
+  .q05-titre{position:absolute;left:78px;top:150px;z-index:40;font-size:330px;line-height:.84;white-space:nowrap}
+  .q05-titre .surl{padding:.04em .1em 0}
+  .q05-bloc{position:absolute;z-index:20}
+  .q05-bloc .ph{position:absolute;inset:0}
+  .q05-in{position:absolute;inset:0;z-index:30;padding:22px 0 24px;display:flex;flex-direction:column;justify-content:space-between}
+  .q05-in .t-titre{font-size:52px;line-height:.9}
+  .q05-filet{position:absolute;z-index:25;height:1px;background:rgba(255,255,255,.35)}
+</style>
+<body><div class="plate grain leger" id="p" style="height:1080px"></div>
+<script>
+const A = Marque, C = A.COULEURS, K = A.CONSTRUCTION, NB = A.NB;
+/* Les trois marches : le bloc du Cran (117,8 × 62,4, pente 13,3°), décalé d'un pas (62,5 ; 47,6), à l'échelle s */
+const s = 3.6, OX = 506, OY = 446, l = K.bloc.l * s, h = K.bloc.h * s, sl = h * K.tan;
+const marches = [
+  { ph: 'hoodie', pos: '50% 30%', t: 'Imaginé<br>chez vous.', k: '01 · Votre idée' },
+  { ph: 'serigraphie', pos: '58% 55%', t: `Fabriqué<br>chez ${A.surl('nous.')}`, k: '02 · Notre atelier' },
+  { ph: 'trail', pos: '72% 45%', t: 'Porté<br>partout.', k: '03 · Sur le terrain' } ];
+const bloc = (m, i) => { const x = OX + i * K.decalage.x * s, y = OY + (2 - i) * K.decalage.y * s;
+  /* le texte reste dans le parallélogramme : marge gauche qui suit la pente */
+  return `<div class="q05-bloc dans-bloc" style="left:${x}px;top:${y}px;width:${l + sl}px;height:${h}px">
+    ${A.photo(m.ph, { mode: 'sombre', pos: m.pos })}
+    <div class="q05-in" style="padding-left:${sl + 30}px"><span class="t-mono" style="color:#fff">${m.k}</span><div class="t-titre" style="color:#fff;margin-left:${-sl * 0.62}px">${m.t}</div></div></div>`; };
+document.getElementById('p').innerHTML = `
+  ${A.coulure({ w: 900, h: 520, c: 'violet', seed: 33, cx: 0.62, cy: 0.42, rx: 0.5, ry: 0.42, attrs: 'style="position:absolute;z-index:5;left:760px;top:250px;width:900px;height:520px"' })}
+  ${A.entete()}
+  <div class="pl-abs pl-z" style="left:84px;top:96px;display:flex;gap:24px;align-items:center">${A.onglets(A.SECTIONS, 0)}<span class="pl-lbl doux">Section 01 / 04</span></div>
+  <div class="q05-titre t-titre">La ${A.surl('marque')}</div>
+  <div class="pl-abs pl-z" style="left:84px;top:470px;width:400px">
+    <div class="t-large" style="font-size:52px;line-height:.98">Tout est<br>fait ici.</div>
+    <p class="pl-chapo" style="margin-top:26px;max-width:380px">Le symbole dit déjà tout : deux blocs identiques, décalés d’un pas. L’atelier et vous, à une marche l’un de l’autre. Pas d’intermédiaire.</p>
+    <div class="pl-lbl doux" style="margin-top:34px">Nous l’appelons le Cran.</div>
+    <div style="margin-top:12px;display:flex;align-items:center;gap:14px">${A.symbol(C.fluo, 'style="height:30px"')}<span class="pl-cote" style="opacity:.6">13,3° · 2 blocs · 1 pas</span></div>
+  </div>
+  ${marches.map(bloc).join('')}
+  <div class="pl-abs pl-z pl-lbl doux" style="right:84px;top:760px;text-align:right">Le triptyque<br>trois blocs, trois pas</div>
+  ${A.foot('05 · La marque', 'Custom · direction artistique')}`;
+</script></body>

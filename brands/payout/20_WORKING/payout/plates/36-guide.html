@@ -1,0 +1,30 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates.css"><script src="../brand/marque.js"></script><script src="../deck/pages.js"></script>
+<style>
+  /* 36 · Guide de marque. Préfixe q36-. Les pages viennent de deck/pages.js (source unique avec le PDF et la visionneuse),
+     réduites par le bloc « Mini-pages du guide » (.mp) de plates.css. */
+  .q36-hd{position:absolute;left:40px;right:40px;top:92px;display:grid;grid-template-columns:1fr 560px;align-items:end;gap:40px}
+  .q36-rang{position:absolute;left:0;right:0;height:214px}
+</style>
+<body><div class="plate" id="p" style="height:1830px;background:var(--scene)"></div>
+<script>
+const A = Marque, NB = ' ', SUR = '#F3F6F4';
+const P = window.GuidePages, ORDER = window.GuideOrder;
+/* Rangées décalées qui débordent du cadre : A (4 pages, la dernière coupée par le bord droit), B (5 pages, coupées des deux côtés).
+   Les pages se suivent dans l'ordre du guide, en boucle ; la couverture tombe en pleine vue, en haut.
+   La dernière rangée est coupée par le bas du cadre. */
+const XA = [-105, 305, 715, 1125], XB = [-310, 100, 510, 920, 1330];
+const RANGS = ['A', 'B', 'A', 'B', 'A', 'B', 'A'];
+let i = 0, html = '';
+RANGS.forEach((t, r) => {
+  const y = 250 + r * 244, xs = t === 'A' ? XA : XB;
+  xs.forEach((x) => { const k = ORDER[(i++ - 1 + ORDER.length) % ORDER.length];
+    html += `<div class="mp" style="left:${x}px;top:${y}px"><div class="in">${P[k]}</div></div>`; });
+});
+document.getElementById('p').innerHTML = `
+  ${A.entete(A.ENTETE, SUR)}
+  <div class="q36-hd">
+    <div><div class="mp-k" style="margin-bottom:22px">36 · Guide de marque</div><div class="h-l">Le guide, page${NB}à${NB}page.</div></div>
+    ${A.bicolore(`${ORDER.length}${NB}pages en 16:9, et leur PDF. <b>Une page, une règle</b>, avec les chiffres qu’on applique partout${NB}: <b class="vif">zone de protection, tailles, proportions, contrastes, durées.</b>`, 'font-size:21px;line-height:1.3;padding-bottom:6px')}
+  </div>
+  ${html}`;
+</script></body>

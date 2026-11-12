@@ -1,0 +1,8 @@
+/* Styles communs des vidéos (en plus du socle brand/marque.css). Aucune animation ni transition CSS : tout est posé par seek(t).
+   Classes préfixées m- pour ne rien heurter dans le socle. Les styles propres à une vidéo vont dans sa page. */
+.m-stage{position:relative;overflow:hidden;background:var(--scene);color:var(--sur-scene)}
+.m-abs{position:absolute}
+.m-fill{position:absolute;inset:0}
+.m-stage svg{display:block}
+/* contenu à garder net au-dessus du grain (.grain::after est en z-index 50) */
+.m-net{z-index:60}

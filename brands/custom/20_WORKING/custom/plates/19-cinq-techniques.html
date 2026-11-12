@@ -1,0 +1,40 @@
+<!doctype html><meta charset="utf-8"><title>Custom — 19 · Cinq techniques, un même logo</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates-c.css"><script src="../brand/marque.js"></script><script src="../brand/techniques.js"></script>
+<style>
+  /* Idée : le banc d'essai de l'atelier. Le même Cran, cinq marquages, à la même lumière ; chaque épreuve porte ses repères. */
+  .p19-g{position:absolute;left:84px;top:270px;width:1232px;display:grid;grid-template-columns:repeat(3,400px);column-gap:16px;row-gap:34px}
+  .p19-v{position:relative;width:400px;height:300px;color:#fff}
+  .p19-v>canvas{display:block;width:400px;height:300px;border-radius:4px}
+  .p19-c{display:grid;grid-template-columns:auto 1fr;column-gap:14px;align-items:baseline;margin-top:18px}
+  .p19-c .t-titre{font-size:44px;line-height:.9}
+  .p19-c p{grid-column:1 / 3;margin:10px 0 0;font-size:14.5px;line-height:1.4}
+  .p19-c .pc-lbl{grid-column:1 / 3;margin-top:8px;opacity:.5}
+</style>
+<body><div class="plate" id="p" style="height:1260px"></div>
+<script>
+const A = Marque, C = A.COULEURS, NB = A.NB, T = A.DONNEES.techniques;
+// réglage de chaque épreuve : couleur de l'encre ou du fil, tissu, couleur du tissu
+const R = {
+  serigraphie: { c: C.fluo, fond: 'coton', cf: C.noir, tissu: 'Coton jersey noir' },
+  dtf: { c: C.fluo, c2: C.violet, fond: 'maille', cf: C.noir, tissu: 'Maille sport noire' },
+  broderie: { c: C.fluo, fond: 'molleton', cf: C.noir, tissu: 'Molleton noir' },
+  flocage: { c: '#FFFFFF', fond: 'serge', cf: C.noir, tissu: 'Sergé noir' },
+  sublimation: { c: C.encre, fond: 'maille', cf: C.fluo, tissu: 'Maille sport fluo' } };
+const cv = (t) => { const r = R[t.cle]; return `<div class="p19-v cadre-r">${A.reperes({ t: 18, cadre: false })}
+    <canvas data-tech="${t.cle}" data-forme="cran" data-c="${r.c}" ${r.c2 ? `data-c2="${r.c2}"` : ''} data-fond="${r.fond}" data-cf="${r.cf}" data-marge=".2" data-seed="3" width="800" height="600"></canvas></div>
+  <div class="p19-c"><span class="pc-code on">${t.code}</span><span class="t-titre">${t.nom}</span><p>${t.pour}</p><div class="pc-lbl">${r.tissu}</div></div>`; };
+document.getElementById('p').innerHTML =
+  A.entete() +
+  `<div class="pc-abs pc-z" style="left:84px;top:100px"><div class="pc-lbl doux" style="margin-bottom:16px">19 · Cinq techniques, un même logo</div><div class="t-titre h-84">Chaque objet, sa ${A.surl('technique')}</div></div>` +
+  `<div class="pc-abs pc-z" style="left:916px;top:136px;width:400px"><p class="t-txt" style="margin:0;opacity:.75">Le même Cran, marqué cinq fois. Même lumière rasante, même cadrage : seule la matière change. C’est l’argument de Custom, montré plutôt que dit.</p>
+     <div style="margin-top:18px">${A.barre({ style: 'width:400px;height:10px' })}</div></div>` +
+  `<div class="p19-g pc-z">${T.map((t) => `<div>${cv(t)}</div>`).join('')}
+     <div><div class="p19-v" style="background:${C.fluo};color:${C.encre};border-radius:4px;overflow:hidden">
+        <div class="pc-abs" style="left:28px;top:30px">${A.pix('5', { attrs: 'style="height:150px"' })}</div>
+        <div class="pc-abs" style="left:150px;top:36px;right:24px"><div style="font-weight:700;font-size:24px;line-height:1.1;letter-spacing:-.02em">techniques opérées en interne</div></div>
+        <div class="pc-abs" style="left:28px;right:28px;bottom:26px;display:flex;justify-content:space-between;align-items:flex-end">
+          <div class="pc-lbl">100${NB}% dans nos ateliers</div>${A.symbol(C.encre, 'style="height:26px"')}</div></div>
+      <div class="p19-c"><span class="pc-code">CST</span><span class="t-titre">Un seul atelier</span><p>Les concurrents sous-traitent ; Custom fabrique. Les cinq techniques sont sous le même toit.</p><div class="pc-lbl">Épreuves calculées · même lumière</div></div></div></div>` +
+  A.foot('19 · Cinq techniques', 'Custom · direction artistique');
+MarqueTech.tous();
+</script></body>

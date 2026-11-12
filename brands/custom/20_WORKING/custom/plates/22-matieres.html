@@ -1,0 +1,39 @@
+<!doctype html><meta charset="utf-8"><title>Custom — 22 · Matières</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates-c.css"><script src="../brand/marque.js"></script><script src="../brand/techniques.js"></script>
+<style>
+  /* Idée : le nuancier de l'atelier. En haut, quatre échantillons coupés aux ciseaux à cranter ; en bas, les gestes, pris dans les blocs du motif. */
+  .p22-ech{position:absolute;width:290px;height:236px}
+  .p22-ech canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .p22-tag{position:absolute;left:16px;top:16px;z-index:5;background:#fff;color:var(--encre);padding:6px 9px 5px;border-radius:3px;box-shadow:0 2px 6px rgba(0,0,0,.4)}
+  .p22-tag::before,.p22-tag::after{content:"";position:absolute;top:50%;width:4px;height:4px;margin-top:-2px;border-radius:50%;background:var(--acier)}
+  .p22-tag::before{left:-9px}.p22-tag::after{right:-9px}
+  .p22-g{position:absolute;width:380px;height:179px}
+  .p22-g .ph{position:absolute;inset:0}
+  .p22-k{position:absolute;left:40px;bottom:14px;z-index:5;color:#fff;background:var(--noir);padding:5px 9px 4px;border-radius:5px}
+</style>
+<body><div class="plate grain leger" id="p" style="height:1110px"></div>
+<script>
+const A = Marque, C = A.COULEURS;
+// échantillons : le bas est coupé aux ciseaux à cranter
+const dents = (w, h, n = 22, d = 9) => { const pts = ['0 0', `${w}px 0`, `${w}px ${h - d}px`];
+  for (let i = n; i >= 0; i--) pts.push(`${(w * i / n).toFixed(1)}px ${i % 2 ? h : h - d}px`); return `polygon(${pts.join(',')})`; };
+const tissus = [['maille', C.noir, 'Maille sport', 'Maillots, chasubles'], ['serge', C.fluo, 'Sergé', 'Vestes, casquettes'], ['coton', '#FFFFFF', 'Coton jersey', 'Tee-shirts, polos'], ['molleton', C.violet, 'Molleton', 'Sweats']];
+const gestes = [['broderie', 'BRO · L’aiguille', '50% 60%'], ['presse', 'DTF · La presse à chaud', '50% 50%'], ['fils', 'Les cônes de fil', '50% 50%'], ['traceur', 'Le traceur grand format', '40% 62%'], ['pliage', 'Plier, emballer, expédier', '50% 62%']];
+const G = [[84, 600], [492, 600], [900, 600], [288, 803], [696, 803]];
+document.getElementById('p').innerHTML =
+  A.entete() +
+  `<div class="pc-abs pc-z" style="left:84px;top:100px"><div class="pc-lbl doux" style="margin-bottom:16px">22 · Matières</div><div class="t-titre h-84">La matière, puis ${A.surl('le geste', 'violet')}</div></div>` +
+  `<div class="pc-abs pc-z t-txt" style="left:916px;top:146px;width:400px;opacity:.75">Quatre tissus, les mêmes que ceux du moteur de rendu des techniques. Puis les gestes de l’atelier, en macro : on doit sentir la main.</div>` +
+  tissus.map(([t, c, n, u], i) => `<div class="p22-ech pc-z" style="left:${84 + i * 314}px;top:262px;clip-path:${dents(290, 236)}">
+      <canvas data-tissu="${t}" data-c="${c}" data-echelle="1.5" data-seed="${i + 2}" width="580" height="472"></canvas>
+      <div class="p22-tag pc-lbl">${n}</div></div>
+    <div class="pc-abs pc-z" style="left:${84 + i * 314}px;top:514px;width:290px;display:flex;justify-content:space-between"><span class="pc-lbl" style="opacity:.55">0${i + 1}</span><span class="t-petit" style="opacity:.7">${u}</span></div>`).join('') +
+  // la coulure violette sous les gestes, qui déborde à gauche
+  `<div class="pc-abs" style="left:-160px;top:660px;width:820px;height:380px">${A.coulure({ w: 820, h: 380, c: "violet", seed: 31, cx: .42, cy: .5, rx: .44, ry: .36, attrs: 'style="width:100%;height:100%"' })}</div>` +
+  gestes.map(([p, k, ps], i) => `<div class="p22-g dans-bloc pc-z" style="left:${G[i][0]}px;top:${G[i][1]}px">${A.photo(p, { pos: ps })}<div class="p22-k pc-lbl">${k}</div></div>`).join('') +
+  // le sixième bloc, en fluo : la ligne de conduite
+  `<div class="p22-g dans-bloc pc-z" style="left:1104px;top:803px;background:${C.fluo};color:${C.encre}"><div class="pc-abs" style="left:50px;top:30px;width:170px;font-weight:700;font-size:20px;line-height:1.15;letter-spacing:-.02em">100${A.NB}% dans nos ateliers</div></div>` +
+  `<div class="pc-abs pc-z" style="left:84px;top:1030px;display:flex;gap:18px;align-items:center">${A.mire(22)}<span class="pc-lbl" style="opacity:.6">Rendus de tissu calculés · photos de marque générées pour le projet</span></div>` +
+  A.foot('22 · Matières', 'Custom · direction artistique');
+MarqueTech.tous();
+</script></body>

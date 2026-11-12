@@ -1,0 +1,10 @@
+# Périmètre et limites
+
+- Relais : deux bases de skill inachevées, brief encore « À REMPLIR », aucun rendu final de marque retrouvé ; exclu. Escale : bases, références de la marque existante et essais préparatoires, pas de nouvelle série finale retrouvée ; exclu.
+- Projet du soir : apps et tableaux de bord déjà dans un dépôt dédié ; aucun import d’app étrangère au branding. Portfolio PRJ-2026-068 : contient le monde interactif, pas une nouvelle étude d’identité autonome. Bibliothèque Behance et exemples du skill : références ou doublons, exclus.
+- Inventaire effectué sur l’index projets, les capsules marketing, les inbox Claude pertinentes et le workspace du skill désigné par ces notes. Ce n’est pas un audit exhaustif des archives clients ou de tout le disque.
+- Exclus : node_modules, caches, configurations locales d’agents, .git/.vercel, fichiers .env, journaux, rendus intermédiaires, variantes anciennes et références tierces inutiles. Détail par chemin dans inventory/excluded.json. Les fichiers `out/final`, `out/plates` et `out/motion` sont conservés lorsqu’ils alimentent l’assemblage final.
+- Les sources de photos déjà générées sont conservées ; aucune génération payante lancée. Les scripts Sunra de production ne sont pas ajoutés aux vitrines.
+- Vérification technique : empreintes des copies, syntaxe Python et JavaScript, liens HTML locaux, signatures de secrets courantes, tailles Git. Les gabarits d’assemblage ont des liens qui ne deviennent valides qu’après build. Les appels de médias construits dynamiquement ne sont pas tous couverts par le contrôle statique.
+- Pas de rendu Blender complet, pas de nouveau rendu vidéo/PDF, pas de jugement créatif ni d’écoute des bandes-son. Aucun déploiement ni changement des sites existants.
+- La régénération suppose Python/Pillow, Node/npm, Chrome, ffmpeg et Blender pour la 3D. Les outils de vérification ne les installent pas. Les environnements complets de génération n’ont pas été réinstallés et les commandes lourdes n’ont pas été rejouées.

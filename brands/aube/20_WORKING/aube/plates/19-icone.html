@@ -1,0 +1,64 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../brand/aube.css"><link rel="stylesheet" href="plates.css"><script src="../brand/aube.js"></script>
+<style>
+  .lg2{font-size:14.5px;line-height:1.45}
+  .lg2 b{font-weight:500;display:block}
+  .lg2 span{color:#6F6470}
+  .home-i{position:absolute;display:grid;justify-items:center;gap:14px;width:170px}
+  .home-i .appi{box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.14),0 10px 24px -12px rgba(10,6,9,.6)}
+  .home-i em{font-style:normal;color:#fff;font-size:24px;font-weight:400;letter-spacing:.005em}
+</style>
+<body>
+<div class="plate" id="p" style="height:780px;background:#fff"></div>
+<script>
+const A = Aube, NU = '#1C1122', AU = '#FF632B';
+const icon = (size, bg, sym) => `<div class="appi ${bg.startsWith('.') ? bg.slice(1) + ' grain' : ''}" style="width:${size}px;height:${size}px;${bg.startsWith('.') ? '' : 'background:' + bg}">${A.symbol(sym)}</div>`;
+
+/* Icônes d'autres applications : carrés arrondis abstraits, dessinés pour l'occasion */
+const other = (bg, svg) => `<div class="appi" style="width:150px;height:150px;background:${bg}"><svg viewBox="0 0 100 100" style="width:100%;height:100%;margin:0">${svg}</svg></div>`;
+const others = [
+  ['Agenda', other('#FFFFFF', `<rect x="22" y="26" width="56" height="50" rx="8" fill="none" stroke="${NU}" stroke-width="4"/><path d="M22 40H78" stroke="${AU}" stroke-width="4"/><circle cx="40" cy="56" r="4" fill="${NU}"/><circle cx="56" cy="56" r="4" fill="${NU}"/>`)],
+  ['Photos', other('#E9E3DE', `<circle cx="40" cy="44" r="16" fill="#FFC46B"/><circle cx="60" cy="44" r="16" fill="#C4391A" fill-opacity=".85"/><circle cx="50" cy="60" r="16" fill="#4B1838" fill-opacity=".8"/>`)],
+  ['Notes', other('#FFC46B', `<path d="M28 34H72M28 48H72M28 62H56" stroke="${NU}" stroke-width="5" stroke-linecap="round"/>`)],
+  ['Météo', other('#4B1838', `<circle cx="44" cy="46" r="14" fill="#FFC46B"/><path d="M36 66H72" stroke="#fff" stroke-width="5" stroke-linecap="round"/><path d="M50 58H66" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".6"/>`)],
+  ['Plans', other('#E9E3DE', `<path d="M24 74L44 30L58 56L76 40" fill="none" stroke="${NU}" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="76" cy="40" r="6" fill="${AU}"/>`)],
+  ['Musique', other('#0A0609', `<rect x="28" y="44" width="8" height="24" rx="4" fill="#E9E3DE"/><rect x="42" y="30" width="8" height="38" rx="4" fill="#E9E3DE"/><rect x="56" y="38" width="8" height="30" rx="4" fill="#E9E3DE"/><rect x="70" y="50" width="8" height="18" rx="4" fill="${AU}"/>`)],
+  ['Réglages', other('#FFFFFF', `<circle cx="50" cy="50" r="22" fill="none" stroke="${NU}" stroke-width="5"/><circle cx="50" cy="50" r="7" fill="${NU}"/>`)],
+  ['Horloge', other(NU, `<circle cx="50" cy="50" r="26" fill="none" stroke="#fff" stroke-width="4"/><path d="M50 34V50L61 57" fill="none" stroke="#FFC46B" stroke-width="4" stroke-linecap="round"/>`)],
+  ['Fichiers', other('#E9E3DE', `<rect x="26" y="34" width="48" height="36" rx="6" fill="${NU}"/><rect x="32" y="28" width="36" height="8" rx="3" fill="${NU}" opacity=".45"/>`)],
+  ['Lecture', other('#4B1838', `<path d="M24 34C34 30 44 32 50 38C56 32 66 30 76 34V68C66 64 56 66 50 72C44 66 34 64 24 68Z" fill="none" stroke="#FFC46B" stroke-width="4" stroke-linejoin="round"/>`)],
+  ['Caméra', other('#0A0609', `<circle cx="50" cy="50" r="22" fill="none" stroke="#E9E3DE" stroke-width="5"/><circle cx="50" cy="50" r="9" fill="${AU}"/>`)],
+  ['Contacts', other('#FFFFFF', `<circle cx="50" cy="40" r="12" fill="${NU}"/><path d="M28 74C30 60 40 56 50 56C60 56 70 60 72 74Z" fill="${NU}"/>`)],
+  ['Podcasts', other('#FFC46B', `<path d="M32 62A22 22 0 1 1 68 62" fill="none" stroke="${NU}" stroke-width="5" stroke-linecap="round"/><circle cx="50" cy="50" r="7" fill="${NU}"/>`)],
+  ['Calculs', other('#C4391A', `<path d="M30 38H46M38 30V46M56 38H72M30 64H46M56 60H72M56 68H72" stroke="#fff" stroke-width="5" stroke-linecap="round"/>`)],
+  ['Messages', other('#E9E3DE', `<path d="M26 32H74V62H46L34 72V62H26Z" fill="none" stroke="${NU}" stroke-width="5" stroke-linejoin="round"/>`)],
+];
+const aubeIcon = `<div class="appi g3 grain" style="width:150px;height:150px">${A.symbol('#fff')}</div>`;
+const grid = [['Aube', aubeIcon], ...others];
+const pos = (i) => [50 + (i % 4) * 230, 170 + Math.floor(i / 4) * 250];
+
+document.getElementById('p').innerHTML = `
+  <!-- Gauche : l'icône et ses variantes -->
+  <div class="abs" style="left:84px;top:84px">${icon(280, '.g3', '#fff')}
+    <div class="abs" style="right:-30px;top:-30px;width:78px;height:78px;border-radius:50%;background:var(--braise);color:#fff;display:grid;place-items:center;font-size:40px;font-weight:400;box-shadow:0 0 0 6px #fff">3</div></div>
+  <div class="abs lg2" style="left:420px;top:96px;width:230px"><b>Icône principale</b><span>Fond&nbsp;: dégradé du lever<br>Symbole&nbsp;: Blanc #FFFFFF<br>Pastille&nbsp;: Braise #C4391A</span></div>
+  <div class="abs" style="left:84px;top:470px;width:600px;display:grid;grid-template-columns:1fr 1fr;row-gap:44px">
+    ${[[AU, NU, 'Aurore #FF632B', 'Nuit #1C1122'], [NU, AU, 'Nuit #1C1122', 'Aurore #FF632B'], ['#C4391A', '#fff', 'Braise #C4391A', 'Blanc #FFFFFF'], ['#0A0609', '#FFC46B', 'Noir #0A0609', 'Miel #FFC46B']].map(([b, s, l1, l2], i) =>
+      `<div style="display:flex;gap:20px;align-items:center">${icon(96, b, s)}<div class="lg2"><b>Icône ${i + 1}</b><span>Fond&nbsp;: ${l1}<br>Symbole&nbsp;: ${l2}</span></div></div>`).join('')}
+  </div>
+  <!-- Droite : gros plan sur l'écran d'accueil -->
+  <div class="abs" style="left:700px;top:0;width:700px;height:780px;background:var(--nuit);overflow:hidden">
+    <div style="position:absolute;left:90px;top:80px;zoom:.72"><div style="position:absolute;left:0;top:0;width:1000px;height:2000px;border-radius:150px;padding:20px;transform:rotate(-4deg);transform-origin:0 0;
+      background:linear-gradient(150deg,#b9b4b6 0%,#4a4649 6%,#2a272a 16%,#77727a 30%,#252326 50%);box-shadow:0 0 0 1px rgba(0,0,0,.4),0 60px 120px -30px rgba(0,0,0,.7)">
+      <i style="position:absolute;left:-6px;top:300px;width:8px;height:80px;border-radius:4px;background:#3a373a"></i>
+      <i style="position:absolute;left:-6px;top:430px;width:8px;height:150px;border-radius:4px;background:#3a373a"></i>
+      <div style="position:absolute;inset:8px;border-radius:142px;background:#050305"></div>
+      <div class="g9" style="position:relative;width:960px;height:1960px;border-radius:130px;overflow:hidden">
+        <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,6,9,.15),rgba(10,6,9,.45))"></div>
+        <div style="position:absolute;left:84px;top:46px;color:#fff;font-size:36px;font-weight:500">9:41</div>
+        <div style="position:absolute;left:355px;top:26px;width:250px;height:74px;border-radius:40px;background:#000"></div>
+        ${grid.map(([l, ic], i) => { const [x, y] = pos(i); return `<div class="home-i" style="left:${x}px;top:${y}px">${ic}<em>${l}</em></div>`; }).join('')}
+      </div>
+    </div></div>
+  </div>`;
+</script>
+</body>

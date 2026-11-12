@@ -1,0 +1,46 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates.css"><script src="../brand/marque.js"></script>
+<style>
+  /* 13 · Recette de dégradé. Préfixe q13- */
+  .q13-hd{position:absolute;left:40px;right:40px;top:96px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end}
+  .q13-rows{position:absolute;left:40px;right:40px;top:356px;display:grid;gap:16px}
+  .q13-row{display:grid;grid-template-columns:400px 1fr 1fr 1fr;gap:16px;height:380px}
+  .q13-res{position:relative;border-radius:36px;overflow:hidden}
+  .q13-res{background:var(--scene);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--sur-scene) 10%,transparent)}
+  .q13-res .q13-t{position:absolute;left:28px;right:28px;top:26px;z-index:60}
+  .q13-c{position:relative;border-radius:20px;background:var(--sombre);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--sur-scene) 10%,transparent);padding:18px 18px 18px;display:flex;flex-direction:column}
+  .q13-c .q13-p{font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;line-height:1.6;margin-top:6px}
+  .q13-c .q13-p span{opacity:.55}
+  .q13-v{position:relative;flex:1;margin-top:14px;border-radius:10px;overflow:hidden}
+  .q13-lad{position:relative;flex:none;width:104px;padding:2px 0;display:flex;flex-direction:column;justify-content:space-between;font-family:var(--mono);font-size:9.5px;letter-spacing:.04em}
+  .q13-lad div{display:flex;align-items:center;gap:7px;line-height:1.3}
+  .q13-lad i{flex:none}
+  .q13-lad i{width:12px;height:12px;box-shadow:0 0 0 1px rgba(255,255,255,.25)}
+</style>
+<body><div class="plate" id="p" style="height:1580px;background:var(--scene)"></div>
+<script>
+const A = Marque, C = A.COULEURS, NB = '&nbsp;', SUR = '#F3F6F4';
+const RAMPE = [['#FFFFFF', 0], ['#C9D1CD', 12], ['#B4BDB8', 32], ['#59645F', 58], ['#232B27', 80], ['#060A08', 100]];
+const ladder = `<div class="q13-lad">${RAMPE.map(([h, p]) => `<div><i style="background:${h}"></i><span>${h}<br><span style="opacity:.55">${p}${NB}%</span></span></div>`).join('')}</div>`;
+const ETAPES = [['base', '01 · Base', [['Forme', null], ['Rampe', 'du blanc au noir'], ['Opacité', '100' + NB + '%'], ['Fusion', 'normale']]],
+  ['grain', '02 · Grain', [['Bruit', 'fractal, fin'], ['Opacité', '50' + NB + '%'], ['Fusion', 'incrustation'], ['Seuil', 'surface > 300 px']]],
+  ['teinte', '03 · Teinte', [['Couleur', 'Net 500 · #36FF72'], ['Opacité', '100' + NB + '%'], ['Fusion', 'couleur'], ['Résultat', 'la rampe du socle']]]];
+const MOTIFS = [
+  ['01', 'Les bandes', 'Un histogramme qui monte${NB}: les données deviennent le motif.', 'bandes', { n: 22, seed: 5 }, `<div class="grain" style="position:absolute;left:0;right:0;top:150px;bottom:0">${A.bandes({ n: 30, seed: 5 })}</div>`, 'Histogramme, profil qui monte'],
+  ['02', 'Le damier', 'Des blocs en dégradé sur une grille, comme des lignes de relevé.', 'damier', { cols: 6, rows: 6, seed: 4 }, `<div class="grain" style="position:absolute;left:0;right:0;top:150px;bottom:0">${A.damier({ cols: 7, rows: 5, seed: 4 })}</div>`, 'Blocs sur grille de 6 × 6'],
+  ['03', 'Le halo', 'Un arc de lumière qui entre par un bord. Fond de couverture.', 'halo', { halo: 'bas' }, `<div class="g2 grain" style="position:absolute;left:0;right:0;top:110px;bottom:0"></div>`, 'Arc, entre par le bas'],
+];
+const visu = (etape, motif, o) => A.recette(etape, motif, o || {});
+document.getElementById('p').innerHTML = `
+  ${A.entete(A.ENTETE, SUR)}
+  <div class="q13-hd">
+    <div><div class="pl-lbl doux" style="margin-bottom:20px">13 · Recette de dégradé</div><div class="h-xl">Une recette,<br>trois calques.</div></div>
+    ${A.bicolore(`Chaque dégradé part d'une <b>forme en niveaux de gris</b>, reçoit un <b>grain</b>, puis <b class="vif">une seule teinte.</b> Toujours dans cet ordre, toujours sur Coffre. Le Prélevé n'entre jamais dans un dégradé.`, 'font-size:23px;line-height:1.24;padding-bottom:8px')}
+  </div>
+  <div class="q13-rows">${MOTIFS.map(([n, t, d, m, o, res, f]) => `<div class="q13-row">
+      <div class="q13-res">${res}<div class="q13-t"><div class="pl-lbl" style="opacity:.7">Dégradé ${n}</div><div style="display:flex;gap:20px;align-items:baseline;margin-top:8px"><span style="font-size:34px;font-weight:500;letter-spacing:-.04em;white-space:nowrap">${t}</span><span style="font-size:13.5px;line-height:1.35;opacity:.7">${d.replace('${NB}', NB)}</span></div></div>
+        </div>
+      ${ETAPES.map(([e, et, ps]) => `<div class="q13-c"><div class="pl-lbl">${et}</div>
+          <div class="q13-p">${ps.map(([k, v]) => `<span>${k}</span> ${v || f}`).join('<br>')}</div>
+          ${e === 'base' ? `<div style="display:flex;gap:10px;flex:1;margin-top:14px">${ladder}<div class="q13-v" style="margin:0">${visu(e, m, o)}</div></div>` : `<div class="q13-v">${visu(e, m, o)}</div>`}</div>`).join('')}
+    </div>`).join('')}</div>`;
+</script></body>

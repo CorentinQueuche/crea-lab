@@ -1,0 +1,114 @@
+<!doctype html><meta charset="utf-8"><title>Custom — 13 · Le bloc</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates.css"><script src="../brand/marque.js"></script>
+<style>
+  /* 13 · Le bloc : le pixel arrondi. Préfixe q13- */
+  .q13-geant{position:absolute;right:84px;top:100px;width:680px;height:770px;z-index:30}
+  .q13-geant svg text{font-family:var(--mono);font-weight:500;letter-spacing:.04em}
+  .q13-regle{position:absolute;left:84px;top:470px;width:470px;z-index:40}
+  .q13-cas{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
+  .q13-cas>div{border-radius:20px;background:var(--graphite);padding:16px 14px 14px;height:204px;display:flex;flex-direction:column;justify-content:space-between}
+  .q13-cas svg text{font-family:var(--mono);font-weight:500}
+  .q13-bande{position:absolute;left:84px;right:84px;top:930px;height:470px;color:#fff;z-index:30}
+  .q13-row{position:absolute;left:34px;right:34px;display:flex;align-items:flex-end}
+  .q13-fr{display:flex;flex-direction:column;align-items:center;gap:10px}
+  .q13-t{position:absolute;left:34px;right:34px;height:1px;background:rgba(255,255,255,.14)}
+  .q13-chiffres{position:absolute;left:84px;right:84px;top:1460px;display:grid;grid-template-columns:1.25fr 1.45fr 1.25fr 1fr 1.05fr;gap:0;z-index:30}
+  .q13-chiffres>div{padding:0 22px 0 0;border-left:1px solid var(--filet);padding-left:18px}
+  .q13-chiffres>div:first-child{border-left:0;padding-left:0}
+  .q13-pictos{position:absolute;left:84px;right:84px;top:1730px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;z-index:30}
+  .q13-pictos>div{border-radius:20px;background:var(--graphite);height:200px;padding:18px;display:flex;flex-direction:column;justify-content:space-between}
+</style>
+<body><div class="plate grain leger" id="p" style="height:2030px"></div>
+<script>
+const A = Marque, C = A.COULEURS, NB = A.NB;
+const fr = (n) => String(n).replace('.', ',');
+
+/* ---------- Le sprite géant sur sa grille (course, image 1) ---------- */
+const rows = A.spriteRows('course', 1), cell = 10, H = rows.length, W = Math.max(...rows.map((r) => r.length));
+const m = 1; /* une cellule de marge autour */
+let grid = '';
+for (let i = -m; i <= W + m; i++) grid += `M${i * cell},${-m * cell}V${(H + m) * cell}`;
+for (let j = -m; j <= H + m; j++) grid += `M${-m * cell},${j * cell}H${(W + m) * cell}`;
+let idx = '';
+for (let i = 0; i < W; i++) idx += `<text x="${i * cell + cell / 2}" y="${-m * cell - 3}" font-size="2.6" text-anchor="middle" fill="#fff" opacity="${i % 4 === 0 ? .7 : .3}">${String(i + 1).padStart(2, '0')}</text>`;
+for (let j = 0; j < H; j++) idx += `<text x="${-m * cell - 3}" y="${j * cell + cell / 2 + 1}" font-size="2.6" text-anchor="end" fill="#fff" opacity="${j % 4 === 0 ? .7 : .3}">${String(j + 1).padStart(2, '0')}</text>`;
+/* cellules vides : un point au centre (la trame de construction) */
+let pts = '';
+for (let j = 0; j < H; j++) for (let i = 0; i < W; i++) if (rows[j][i] !== '#') pts += `<circle cx="${i * cell + 5}" cy="${j * cell + 5}" r=".45"/>`;
+/* repère sur un coin libre (la tête, en haut à gauche) et sur une jonction (le bras) */
+const geant = `<svg viewBox="${-m * cell - 14} ${-m * cell - 9} ${(W + 2 * m) * cell + 18} ${(H + 2 * m) * cell + 22}" style="width:100%;height:100%;overflow:visible">
+  <path d="${grid}" stroke="#fff" stroke-opacity=".13" stroke-width=".18" fill="none"/>
+  <g fill="#fff" opacity=".35">${pts}</g>
+  <path d="${A.grillePath(rows, { cell })}" fill="${C.fluo}"/>
+  ${idx}
+  <g fill="none" stroke="#fff" stroke-width=".35">
+    <circle cx="80" cy="0" r="6.5" stroke-dasharray="1 .8"/>
+    <path d="M85.5,-3.5 L118,-3.5"/>
+  </g>
+  <text x="119.5" y="-2.4" font-size="3" fill="#fff">coin libre · r = 0,3</text>
+  <g fill="none" stroke="#fff" stroke-width=".35">
+    <circle cx="120" cy="150" r="6.5" stroke-dasharray="1 .8"/>
+    <path d="M126.5,150 L134,150"/>
+  </g>
+  <text x="135.5" y="151.1" font-size="3" fill="#fff">voisins : fusion</text>
+  <g stroke="#fff" stroke-width=".3" fill="none"><path d="M0,${H * cell + 6}V${H * cell + 10}M${cell},${H * cell + 6}V${H * cell + 10}M0,${H * cell + 8}H${cell}"/></g>
+  <text x="${cell + 2.5}" y="${H * cell + 9.1}" font-size="3" fill="#fff">1 cellule = 1 bloc</text>
+  <text x="${W * cell}" y="${H * cell + 9.1}" font-size="3" fill="#fff" text-anchor="end" opacity=".6">course · image 1/4 · ${W} × ${H}</text>
+</svg>`;
+
+/* ---------- La règle du coin libre, en trois cas cotés ---------- */
+const cas = (r, w, h, legende, cotes) => { const c = 40, b = A.grilleBox(r, c), pad = 14;
+  let g = ''; for (let i = 0; i <= b[0] / c; i++) g += `M${i * c},0V${b[1]}`; for (let j = 0; j <= b[1] / c; j++) g += `M0,${j * c}H${b[0]}`;
+  return `<div><svg viewBox="${-pad} ${-pad} ${b[0] + 2 * pad} ${b[1] + 2 * pad}" style="width:100%;height:150px">
+    <path d="${g}" stroke="#fff" stroke-opacity=".22" stroke-width="1" fill="none" stroke-dasharray="3 3"/>
+    <path d="${A.grillePath(r, { cell: c })}" fill="${C.fluo}"/>${cotes}</svg>
+    <div class="pl-lbl" style="font-size:9.5px">${legende}</div></div>`; };
+const cote = `<g stroke="${C.encre}" stroke-width="1.4" fill="none"><path d="M0,12 H12 M12,0 V12" stroke-dasharray="2 2"/></g>`;
+const regle = `<div class="pl-lbl doux">La règle du coin libre</div>
+  <p class="pl-txt" style="margin-top:10px;max-width:440px">Chaque bloc est un carré à coins arrondis de 30${NB}% de la cellule. Un coin ne s’arrondit que s’il est libre des deux côtés : deux blocs voisins fusionnent sans couture.</p>
+  <div class="q13-cas">
+    ${cas(['#'], 1, 1, 'Seul · 4 coins arrondis', cote)}
+    ${cas(['##'], 2, 1, 'Côte à côte · fusion', `<path d="M40,-6V46" stroke="${C.orange}" stroke-width="1.6" stroke-dasharray="3 3"/>`)}
+    ${cas(['##', '#.'], 2, 2, 'Angle · coin rentrant net', `<circle cx="40" cy="40" r="7" fill="none" stroke="${C.orange}" stroke-width="1.6"/>`)}
+  </div>`;
+
+/* ---------- La frise : chronophotographie des trois séquences ---------- */
+const frise = (nom, n, hgt, gap, cfg = {}) => Array.from({ length: n }, (_, k) => `<div class="q13-fr">
+  ${A.sprite(nom, k + 1, Object.assign({ attrs: `style="height:${hgt}px;width:auto"` }, cfg))}
+  <span class="pl-cote" style="opacity:.75">${String(k + 1).padStart(2, '0')}${NB}/${NB}${String(n).padStart(2, '0')}</span></div>`).join(`<div style="width:${gap}px"></div>`);
+const bande = `<div class="q13-bande tx-toile cadre-r">${A.reperes()}
+  <span class="pl-tag" style="left:34px;top:24px">Les trois séquences · 8 images par seconde, en crans, sans fondu</span>
+  <span class="pl-tag" style="right:34px;top:24px;opacity:.6">1 image = 125 ms</span>
+  <div class="q13-row" style="top:74px;color:${C.fluo};justify-content:flex-start">${frise('moto', 5, 92, 26)}</div>
+  <div class="q13-row" style="top:74px;color:${C.fluo};justify-content:flex-end">${frise('course', 4, 92, 30)}</div>
+  <span class="pl-tag" style="left:34px;top:206px;opacity:.6">Moto · 5 images · 625 ms</span>
+  <span class="pl-tag" style="right:34px;top:206px;opacity:.6;text-align:right">Course · 4 images · 500 ms</span>
+  <div class="q13-t" style="top:236px"></div>
+  <div class="q13-row" style="top:252px;justify-content:space-between;color:#fff">${frise('dunk', 8, 170, 0, { c: '#fff' })}</div>
+  <span class="pl-tag" style="left:34px;top:256px;opacity:.6">Dunk · 8 images · 1 s · le ballon en orange</span>
+</div>`;
+
+/* ---------- Les chiffres du site, en blocs ---------- */
+const ch = [['+500', 'Projets', 'réalisés depuis la création'], ['7-10j', 'Jours', 'délai moyen de livraison'], ['100%', 'Dans nos ateliers', 'production intégrée'], ['24h', 'Devis', 'détaillé, sans engagement'], ['<5s', 'Pour s’y retrouver', 'identifier son univers sur le site']];
+const chiffres = `<div class="q13-chiffres">${ch.map(([t, a, b], k) => `<div>
+  <div style="color:${k === 3 ? C.fluo : '#fff'};height:84px;display:flex;align-items:flex-end">${A.pix(t, { attrs: 'style="height:72px;width:auto;max-width:100%"' })}</div>
+  <div style="margin-top:18px;font-weight:600;font-size:15px">${a}</div><div class="pl-txt doux" style="margin-top:3px;font-size:13px">${b}</div></div>`).join('')}</div>`;
+
+/* ---------- Les pictos d'univers ---------- */
+const pictos = `<div class="q13-pictos">${A.DONNEES.univers.map((u, k) => `<div>
+  <div style="display:flex;justify-content:space-between"><span class="pl-lbl">${u.nom}</span><span class="pl-num">0${k + 1}</span></div>
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;color:${C.fluo}">${A.picto(u.cle, { attrs: 'style="height:96px"' })}
+  <div style="color:${C.acier}">${A.picto(u.cle, { attrs: 'style="height:28px"' })}</div></div></div>`).join('')}</div>`;
+
+document.getElementById('p').innerHTML = A.entete() + `
+  <div class="pl-intro"><div class="pl-lbl doux">13 · La marque · le bloc</div>
+    <div class="t-titre h-120">Le pixel<br>${A.surl('arrondi')}</div>
+    <p class="pl-chapo">Les sprites, les chiffres et les pictos de Custom sont faits d’un seul élément : un bloc. On le pose sur une grille, cellule par cellule, comme un point de broderie.</p></div>
+  <div class="q13-geant">${geant}</div>
+  <div class="q13-regle">${regle}</div>
+  ${bande}
+  <div class="pl-lbl doux pl-abs pl-z" style="left:84px;top:1430px">Les chiffres du site · 5 × 7 blocs par signe</div>
+  ${chiffres}
+  <div class="pl-lbl doux pl-abs pl-z" style="left:84px;top:1700px">Les quatre univers · pictos de 9 × 9 blocs · extension</div>
+  ${pictos}` + A.foot('13 · Le bloc', 'Custom · direction artistique');
+</script></body>

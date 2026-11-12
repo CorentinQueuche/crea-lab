@@ -1,0 +1,35 @@
+<!doctype html><meta charset="utf-8"><title>Custom — 48 · Clôture</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates-b.css"><script src="../brand/marque.js"></script>
+<style>
+  /* Idée : on finit sur la couleur de Custom. Fond fluo au motif de blocs, la phrase de la marque en grand, la parole du fondateur,
+     le dunk en blocs qui marque le panier (le ballon orange), puis les crédits en colonnes comme le pied d'une feuille d'atelier. */
+  .p48-cr{position:absolute;left:84px;right:84px;top:808px;display:grid;grid-template-columns:1.35fr 1fr 1fr 1fr;gap:34px;border-top:1px solid rgba(3,1,14,.28);padding-top:20px}
+  .p48-cr .pb-lbl{opacity:.6;margin-bottom:9px}
+  .p48-cr p{margin:0;font-size:13.5px;line-height:1.45;font-weight:500;letter-spacing:-.005em}
+</style>
+<body><div class="plate fluo" id="p" style="height:1000px"></div>
+<script>
+const A = Marque, C = A.COULEURS, D = A.DONNEES, NB = A.NB, q = D.citation;
+document.getElementById('p').innerHTML =
+  `<div class="pb-fond tx-motif" style="--tm:120px;color:rgba(3,1,14,.06)"></div>` +
+  A.entete(undefined, C.encre) +
+  `<div class="pb-abs pb-z" style="left:84px;top:100px">${A.logo(C.encre, 'style="height:44px;width:auto"')}</div>` +
+  `<div class="pb-abs pb-z pb-lbl" style="left:84px;top:162px;opacity:.65">${A.DESCRIPTEUR}${NB}·${NB}custom.fr</div>` +
+  `<div class="pb-abs pb-z t-large" style="left:76px;top:222px;font-size:160px;line-height:.98;color:${C.encre};white-space:nowrap">Tout est fait<br>${A.surl('ici.', 'noir')}</div>` +
+  // le dunk, dernière image : le ballon orange au panier, juste après « ici. »
+  `<div class="pb-abs pb-z" style="left:470px;top:376px;display:flex;align-items:flex-end;gap:26px">${[3, 4, 5, 6, 7, 8].map((i, n) => `<div style="opacity:${[0.14, 0.2, 0.28, 0.4, 0.6, 1][n]}">${A.dunk(i, { c: C.encre, c2: i === 8 ? C.orange : C.encre, attrs: 'style="height:196px;width:auto;display:block"' })}</div>`).join('')}</div>` +
+  `<div class="pb-abs pb-z" style="right:28px;top:240px">${A.barre({ v: true, style: 'height:220px;width:10px' })}</div>` +
+  // la parole du fondateur, mot pour mot
+  `<div class="pb-abs pb-z" style="left:84px;top:592px;width:860px;color:${C.encre}">
+     <p style="margin:0;font-size:27px;line-height:1.28;font-weight:500;letter-spacing:-.02em">«${NB}${q.texte}${NB}»</p>
+     <div style="display:flex;gap:16px;align-items:baseline;margin-top:18px"><b style="font-size:15px">${q.auteur}</b><span class="pb-lbl" style="opacity:.65">${q.role}</span></div></div>` +
+  `<div class="pb-abs pb-z" style="left:1010px;top:612px;width:306px;color:${C.encre}"><div class="t-titre" style="font-size:40px;line-height:.96">${A.TRIPTYQUE.join('<br>')}</div></div>` +
+  // crédits
+  `<div class="p48-cr pb-abs pb-z" style="color:${C.encre}">
+     <div><div class="pb-lbl">Crédits</div><p>Identité et site : KLYRA pour Custom, 2025.<br>Système et supports : proposition de KLYRA, 2026.</p></div>
+     <div><div class="pb-lbl">Polices</div><p>Archivo, Bebas Neue, Inter, JetBrains Mono. Licence OFL.</p></div>
+     <div><div class="pb-lbl">Images</div><p>Photos de marque générées pour le projet. Matières 3D : Poly Haven (CC0).</p></div>
+     <div><div class="pb-lbl">Mention</div><p>Proposition de KLYRA, non validée par Custom.</p></div></div>` +
+  A.foot('48 · Clôture', 'Custom · direction artistique', C.encre);
+{ const P = document.getElementById('p'); P.innerHTML = P.innerHTML.replace(/ ([:;?])(?=[ <])/g, NB + '$1'); }   // espace insécable avant : ; ?
+</script></body>

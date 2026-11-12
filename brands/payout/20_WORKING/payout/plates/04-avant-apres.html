@@ -1,0 +1,68 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates.css"><script src="../brand/marque.js"></script>
+<style>
+  /* 04 · Avant / après. Préfixe q4- */
+  .q4-hd{position:absolute;left:40px;right:40px;top:92px;display:grid;grid-template-columns:1fr 560px;align-items:end;gap:40px}
+  .q4-cmp{position:absolute;left:40px;right:40px;top:300px;height:540px;display:grid;grid-template-columns:5fr 7fr;gap:16px}
+  .q4-av{position:relative;border-radius:36px;background:var(--sombre);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--sur-scene) 10%,transparent);overflow:hidden}
+  .q4-ap{position:relative;border-radius:36px;overflow:hidden}
+  .q4-arch{position:absolute;left:28px;right:28px;top:70px;bottom:28px;display:grid;grid-template-rows:1fr auto;gap:14px}
+  .q4-old{border-radius:20px;background:var(--doux);display:grid;place-items:center;filter:grayscale(1);opacity:.7;position:relative}
+  .q4-old img.l{width:300px}
+  .q4-old img.i{position:absolute;right:18px;bottom:18px;width:54px;border-radius:12px}
+  .q4-sw{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;filter:grayscale(1);opacity:.7}
+  .q4-sw div{height:62px;border-radius:8px;padding:7px 8px;font-family:var(--mono);font-size:9px;letter-spacing:.04em;display:flex;align-items:flex-end}
+  .q4-tab{position:absolute;left:40px;right:40px;top:880px}
+  .q4-row{display:grid;grid-template-columns:170px 1fr 1.25fr 1.15fr;gap:28px;padding:17px 0;border-top:1px solid color-mix(in srgb,var(--sur-scene) 10%,transparent);align-items:baseline}
+  .q4-row.th{padding:12px 0}
+  .q4-row .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;opacity:.6}
+  .q4-row .a{font-size:14.5px;line-height:1.4;opacity:.42}
+  .q4-row .b{font-size:17px;line-height:1.3;font-weight:500;letter-spacing:-.015em}
+  .q4-row .w{font-size:14.5px;line-height:1.4;opacity:.62}
+  .q4-row .b i{font-style:normal;display:inline-block;width:8px;height:8px;background:var(--vif);margin-right:10px;vertical-align:1px}
+</style>
+<body><div class="plate" id="p" style="height:1600px;background:var(--scene)"></div>
+<script>
+const A = Marque, C = A.COULEURS, NB = '&nbsp;', SUR = '#F3F6F4', SRC = '../../../10_INPUTS/klyra-realisation-payout/';
+/* Palette de 2025 (relevée dans img4.svg) : montrée désaturée, à titre d'archive */
+const VIEUX = [['#16A34A', 'PRIMARY 500'], ['#15803D', '700'], ['#14532D', '900'], ['#6EE7B7', '300'], ['#22605B', 'SECONDARY'], ['#DCFCE7', 'ACCENT']];
+const ROWS = [
+  ['On garde', 'Le nom, le vert, le P, la promesse 54 → 85', 'Les mêmes', 'Évolution, pas rupture : la marque reste reconnaissable'],
+  ['Idée', 'Aucune image centrale', 'La part qui vous revient : une proportion', 'Sans idée, rien ne distingue Payout d\'un autre SaaS vert'],
+  ['Symbole', 'P en verre brillant, queue qui s\'échappe, dégradé', 'P-jauge à plat : un anneau gardé à 85 %, ouvert de 15 %, et son fût', 'Le symbole dit la promesse et tient à 16 px en un seul aplat'],
+  ['Logotype', '« Payout » dans une grotesque du commerce, précédé du pictogramme (deux P)', '« Payout » dessiné avec le même anneau ; son P est le symbole', 'Un logotype à soi, une règle de construction en une ligne'],
+  ['Couleur', 'Gamme de verts Tailwind sur blanc, sarcelle, rouge', 'Noir Coffre, un seul vert électrique (Net) et son échelle, gris froid', 'Une palette propre ; le vert devient lumière'],
+  ['Chiffres', 'Dans la police de texte', 'Chivo Mono, tabulaires, en très grand', 'Les chiffres sont la voix de la marque'],
+  ['Motif', 'Illustrations isométriques, deux photos', 'La jauge (segments, blocs, escalier), les bandes, le halo', 'Un motif reconnaissable sans le logo, fait avec les données'],
+  ['Interface', 'Blanche, cartes arrondies, vert en accent', 'Cockpit sombre (phare) et variante claire, mêmes intitulés', 'Le produit devient le héros ; même structure, autre tenue'],
+];
+/* Typographie française : espace insécable avant « : » et « ; », dans « 85 % », et à l'intérieur des guillemets ; la flèche du socle remplace → */
+const fr = (s) => s.replace(/ ([:;])/g, NB + '$1').replace(/(\d) %/g, '$1' + NB + '%').replace(/« /g, '«' + NB).replace(/ »/g, NB + '»')
+  .replace(' → ', ' ' + A.fleche('currentColor', 'vertical-align:.05em') + ' ');
+document.getElementById('p').innerHTML = `
+  ${A.entete(A.ENTETE, SUR)}
+  <div class="q4-hd">
+    <div><div class="pl-lbl doux" style="margin-bottom:22px">04 · Avant / après</div>
+      <div class="h-xl" style="display:flex;align-items:center;gap:28px">2025 ${A.fleche(C.net, 'width:.8em;height:.5em')} 2026</div></div>
+    ${A.bicolore(`Évolution, pas rupture. <b>Le nom, le vert, le P et la promesse restent.</b> Le reste se range derrière une seule idée${NB}: <b class="vif">la part qui vous revient.</b>`, 'font-size:24px;line-height:1.22;padding-bottom:6px')}
+  </div>
+  <div class="q4-cmp">
+    <div class="q4-av"><span class="t-lbl" style="position:absolute;left:28px;top:26px;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;opacity:.6">Avant · identité 2025 · archive désaturée</span>
+      <div class="q4-arch">
+        <div class="q4-old"><img class="l" src="${SRC}logo-payout.svg" alt=""><img class="i" src="${SRC}logo-payout-icon.png" alt=""></div>
+        <div class="q4-sw">${VIEUX.map(([h, n], i) => `<div style="background:${h};color:${i === 2 || i === 4 ? '#fff' : '#000'}">${n}<br>${h}</div>`).join('')}</div>
+      </div></div>
+    <div class="q4-ap g6 grain"><span class="pl-tag" style="left:30px;top:26px">Après · proposition 2026</span>
+      <div class="pl-net" style="position:absolute;left:44px;top:96px">${A.lockup(C.net, 'style="width:640px;display:block"')}</div>
+      <div class="pl-net" style="position:absolute;right:44px;bottom:158px;display:flex;gap:12px">${A.icone(64, 'net')}${A.icone(64, 'coffre')}${A.icone(64, 'releve')}</div>
+      <div class="pl-net" style="position:absolute;left:44px;bottom:150px">${A.passage({ taille: 76 })}</div>
+      <div class="pl-net" style="position:absolute;left:44px;right:44px;bottom:40px;display:grid;grid-template-columns:2.2fr 1.2fr 1fr .9fr .6fr;height:76px">
+        ${/* Le Prélevé n'apparaît qu'une fois sur la planche : dans le « 54 % » au-dessus, pas dans cette bande */ ''}
+        ${[[C.coffre, 'Coffre', SUR, 1], [C.ardoise, 'Ardoise', SUR, 1], [C.net, 'Net', '#04140A'], [C.releve, 'Relevé', '#04140A'], [C.acier, 'Acier', '#04140A']].map(([h, n, f, b]) => `<div style="background:${h};color:${f};padding:9px 10px;font-family:var(--mono);font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;display:flex;flex-direction:column;justify-content:space-between;${b ? 'box-shadow:inset 0 0 0 1px rgba(255,255,255,.12)' : ''}"><span>${n}</span><span>${n ? h : ''}</span></div>`).join('')}
+      </div>
+    </div>
+  </div>
+  <div class="q4-tab">
+    <div class="q4-row th"><span class="k">Ce qui change</span><span class="k">Avant · 2025</span><span class="k" style="opacity:1;color:${C.net}">Après · 2026</span><span class="k">Pourquoi</span></div>
+    ${ROWS.map(([k, a, b, w]) => `<div class="q4-row"><span class="k">${k}</span><span class="a">${fr(a)}</span><span class="b"><i></i>${fr(b)}</span><span class="w">${fr(w)}</span></div>`).join('')}
+  </div>`;
+</script></body>

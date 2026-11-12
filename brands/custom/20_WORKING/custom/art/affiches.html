@@ -1,0 +1,53 @@
+<!doctype html><meta charset="utf-8"><title>Custom — trois affiches (5:7)</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="../plates/plates-c.css"><script src="../brand/marque.js"></script>
+<style>
+  /* Trois affiches verticales de 1000 × 1400 (rapport 5:7), chacune rendue seule :
+     node tools/shot.mjs art/affiches.html out/art/affiche-1.png --sel "#a1" --scale 2   (idem a2, a3) */
+  html,body{background:#101012}
+  body{display:flex;flex-direction:column;gap:40px;align-items:flex-start}
+  .af{position:relative;width:1000px;height:1400px;overflow:hidden;flex:none}
+  .af .marge{position:absolute;left:56px;right:56px;bottom:46px;display:flex;justify-content:space-between;align-items:flex-end;z-index:60}
+  .af .haut{position:absolute;left:56px;right:56px;top:46px;display:flex;justify-content:space-between;align-items:flex-start;z-index:60}
+  .af .cr{position:absolute;z-index:61}
+</style>
+<body>
+<div class="af grain leger" id="a1"></div>
+<div class="af grain" id="a2"></div>
+<div class="af grain leger" id="a3"></div>
+<script>
+const A = Marque, C = A.COULEURS, NB = A.NB;
+// croix de repérage aux quatre coins (à 30 px du bord)
+const croix = (c) => [[30, 30], [970, 30], [30, 1370], [970, 1370]].map(([x, y]) => `<div class="cr" style="left:${x}px;top:${y}px;color:${c}">${A.croix('left:-14px;top:-14px;opacity:.75', 28)}</div>`).join('');
+
+/* A1 — la photo de sport dans un Cran géant, sur fluo */
+document.getElementById('a1').style.background = C.fluo;
+document.getElementById('a1').style.color = C.encre;
+document.getElementById('a1').innerHTML =
+  `<div class="haut net"><div class="pc-lbl gd">Atelier de personnalisation</div><div class="pc-lbl gd" style="text-align:right">Série 01 · 2026</div></div>` +
+  `<div class="pc-abs net" style="left:56px;top:118px;width:888px">${A.wordmark(C.encre, 'style="width:100%;height:auto"')}</div>` +
+  `<div class="pc-abs dans-cran net" style="left:-40px;top:372px;width:1080px">${A.photo('dunk', { mode: 'nb', pos: '52% 24%', style: 'position:absolute;inset:0' })}</div>` +
+  `<div class="pc-abs net t-titre" style="left:52px;top:1038px;font-size:150px;line-height:.86">On fait plus<br>${A.surl('qu’un maillot', 'noir')}</div>` +
+  `<div class="marge net"><div>${A.barre({ couleurs: ['encre', 'graphite', 'acier', 'blanc', 'violet', 'orange'], style: 'width:300px;height:12px' })}</div><div class="pc-lbl gd">custom.fr</div></div>` +
+  croix(C.encre);
+
+/* A2 — un sprite géant sur une coulure orange, sur noir */
+document.getElementById('a2').style.background = C.noir;
+document.getElementById('a2').innerHTML =
+  `<div class="pc-abs" style="left:-140px;top:330px;width:1280px;height:900px">${A.coulure({ w: 1280, h: 900, c: 'orange', seed: 7, cx: .52, cy: .5, rx: .4, ry: .42, frange: .14, pas: 5, attrs: 'style="width:100%;height:100%"' })}</div>` +
+  `<div class="pc-abs net" style="left:215px;top:430px;color:#fff">${A.sprite("course", 1, { attrs: "style=\"height:740px;width:auto\"" })}</div>` +
+  `<div class="haut net"><div class="pc-lbl gd">Imaginé chez vous.<br>Fabriqué chez nous.</div><div class="pc-lbl gd" style="text-align:right">Série 02 · 2026</div></div>` +
+  `<div class="pc-abs net t-large" style="left:52px;top:150px;font-size:132px;color:#fff">Porté<br>${A.surl('partout.', 'orange monte')}</div>` +
+  `<div class="marge net" style="color:#fff"><div>${A.logo('#fff', 'style="height:48px"', { sym: C.fluo })}</div><div class="pc-lbl gd" style="text-align:right">${A.code('CST', 'SER', '2026')}</div></div>` +
+  croix('#fff');
+
+/* A3 — typographique sur piquage, sur blanc */
+document.getElementById('a3').style.background = '#fff';
+document.getElementById('a3').style.color = C.encre;
+document.getElementById('a3').innerHTML =
+  `<div class="pc-abs" style="inset:0;-webkit-mask-image:linear-gradient(#000 52%,transparent 74%);mask-image:linear-gradient(#000 52%,transparent 74%)">${A.piquage({ w: 1000, h: 1400, px: 13, py: 26, seed: 5, angle: 70, courbe: .7, ondes: 6, attrs: 'style="width:100%;height:100%"' })}</div>` +
+  `<div class="haut net"><div class="pc-lbl gd">Textile · Print · Goodies · Signalétique</div><div class="pc-lbl gd" style="text-align:right">Série 03 · 2026</div></div>` +
+  `<div class="pc-abs net t-large" style="left:50px;top:300px;font-size:214px;line-height:.86">Tout<br>est fait<br>${A.surl('ici.', 'noir')}</div>` +
+  `<div class="pc-abs net" style="left:56px;top:1090px;width:560px"><div class="pc-filet" style="background:${C.encre};opacity:.9;margin-bottom:18px"></div><div class="t-chapo" style="font-size:26px">Sérigraphie, DTF, broderie, flocage, sublimation : cinq techniques, un seul atelier.</div></div>` +
+  `<div class="marge net"><div>${A.logo(C.encre, 'style="height:48px"')}</div><div style="display:flex;gap:14px;align-items:center">${A.mire(28)}<span class="pc-lbl gd">custom.fr</span></div></div>` +
+  croix(C.encre);
+</script></body>

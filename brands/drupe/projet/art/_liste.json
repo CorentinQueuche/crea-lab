@@ -1,0 +1,128 @@
+[
+ {
+  "nom": "sachet-guji",
+  "w": 525,
+  "h": 950,
+  "transparent": false
+ },
+ {
+  "nom": "sachet-huila",
+  "w": 525,
+  "h": 950,
+  "transparent": false
+ },
+ {
+  "nom": "sachet-nyeri",
+  "w": 525,
+  "h": 950,
+  "transparent": false
+ },
+ {
+  "nom": "pastille-guji",
+  "w": 400,
+  "h": 400,
+  "transparent": false
+ },
+ {
+  "nom": "pastille-huila",
+  "w": 400,
+  "h": 400,
+  "transparent": false
+ },
+ {
+  "nom": "pastille-nyeri",
+  "w": 400,
+  "h": 400,
+  "transparent": false
+ },
+ {
+  "nom": "couvercle",
+  "w": 945,
+  "h": 700,
+  "transparent": false
+ },
+ {
+  "nom": "soie",
+  "w": 800,
+  "h": 800,
+  "transparent": false
+ },
+ {
+  "nom": "carte-mardi",
+  "w": 525,
+  "h": 740,
+  "transparent": false
+ },
+ {
+  "nom": "gobelet",
+  "w": 1398,
+  "h": 555,
+  "transparent": false
+ },
+ {
+  "nom": "affiche",
+  "w": 800,
+  "h": 1200,
+  "transparent": false
+ },
+ {
+  "nom": "chevalet",
+  "w": 600,
+  "h": 900,
+  "transparent": false
+ },
+ {
+  "nom": "vitro",
+  "w": 1300,
+  "h": 900,
+  "transparent": true
+ },
+ {
+  "nom": "porte",
+  "w": 450,
+  "h": 1050,
+  "transparent": true
+ },
+ {
+  "nom": "gobo",
+  "w": 1120,
+  "h": 800,
+  "transparent": true
+ },
+ {
+  "nom": "carte-recto",
+  "w": 850,
+  "h": 550,
+  "transparent": false
+ },
+ {
+  "nom": "carte-verso",
+  "w": 850,
+  "h": 550,
+  "transparent": false
+ },
+ {
+  "nom": "carte-fidelite",
+  "w": 850,
+  "h": 550,
+  "transparent": false
+ },
+ {
+  "nom": "sac",
+  "w": 720,
+  "h": 960,
+  "transparent": false
+ },
+ {
+  "nom": "ecran",
+  "w": 390,
+  "h": 844,
+  "transparent": true
+ },
+ {
+  "nom": "ardoise",
+  "w": 1280,
+  "h": 720,
+  "transparent": false
+ }
+]

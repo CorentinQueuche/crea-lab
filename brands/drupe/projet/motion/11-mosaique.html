@@ -1,0 +1,39 @@
+<!doctype html><meta charset="utf-8"><title>Drupe — 11 mosaïque</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="motion.css">
+<script src="../brand/marque.js"></script><script src="lib.js"></script><script src="scenes.js"></script>
+<body style="background:var(--fleur)"><div class="mosaic" id="m" style="width:1400px;height:944px"></div>
+<script>
+// 1400 × 944, 7 s : node tools/record.mjs motion/11-mosaique.html out/motion/11-mosaique.mp4 --w 1400 --h 944 --fps 30 --dur 7
+// Chaque tuile appelle une scène de motion/scenes.js à la taille de la tuile et garde son propre seek.
+const C = Marque.COULEURS;
+const W = 1400, H = 944, P = 44, G = 16;
+const cw = (W - 2 * P - 2 * G) / 3, rh = (H - 2 * P - G) / 2, sh = (rh - G) / 2;
+const x = (c) => P + c * (cw + G), y = (r) => P + r * (rh + G);
+const tiles = [
+  // le minuteur d'infusion sur la montre
+  { X: x(0), Y: y(0), w: cw, h: rh, f: 'minuteur', o: { cls: 'g4 grain', debut: 0.4, duree: 3.6 }, d: 0 },
+  // le semis ton sur ton sur Cerise, logotype Fleur
+  { X: x(1), Y: y(0), w: 2 * cw + G, h: rh, f: 'semis', o: { pas: 110, taille: 58, cls: 'g-vif grain', bg: null, tons: [C.pulpe], opacite: 0.34, murir: false, seed: 2, logo: { c: C.fleur, w: 330, t: 0.5 } }, d: 0 },
+  // le tampon sur l'étiquette
+  { X: x(0), Y: y(1), w: cw, h: sh, f: 'tampon', o: { debut: 1.3 }, d: 0 },
+  // 48 h
+  { X: x(0), Y: y(1) + sh + G, w: cw, h: sh, f: 'compteur', o: { debut: 0.5 }, d: 0 },
+  // une pastille qui se pose
+  { X: x(1), Y: y(1), w: cw, h: rh, f: 'pose', o: { cafe: 'guji', debut: 0.7 }, d: 0 },
+  // un sachet qui se remplit
+  { X: x(2), Y: y(1), w: cw, h: rh, f: 'sachet', o: { cafe: 'nyeri' }, d: 0.2 },
+];
+const m = document.getElementById('m');
+const seeks = tiles.map((tl) => {
+  const t = document.createElement('div');
+  t.className = 'tile';
+  Object.assign(t.style, { left: tl.X + 'px', top: tl.Y + 'px', width: tl.w + 'px', height: tl.h + 'px' });
+  const inner = document.createElement('div');
+  t.appendChild(inner);
+  m.appendChild(t);
+  const sk = Scenes[tl.f](inner, Object.assign({ w: Math.round(tl.w), h: Math.round(tl.h) }, tl.o));
+  return (time) => sk(Math.max(0, time - tl.d));
+});
+window.seek = (t) => seeks.forEach((s) => s(t));
+seek(0);
+</script></body>

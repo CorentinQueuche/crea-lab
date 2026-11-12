@@ -1,0 +1,65 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates-b.css"><script src="../brand/marque.js"></script>
+<style>
+  /* Carte de publication générique et inventée (aucun réseau réel) */
+  .s34-post{position:absolute;width:380px;border-radius:24px;background:var(--coffre);box-shadow:inset 0 0 0 1px rgba(255,255,255,.12),0 50px 90px -40px rgba(0,0,0,.9);overflow:hidden;z-index:60}
+  .s34-hd{display:flex;align-items:center;gap:11px;height:62px;padding:0 16px}
+  .s34-hd b{font-weight:600;font-size:14.5px;letter-spacing:-.01em;display:block}
+  .s34-hd small{font-family:var(--mono);font-size:10.5px;opacity:.55}
+  .s34-v{position:relative;width:380px;height:475px;overflow:hidden}
+  .s34-act{display:flex;gap:16px;align-items:center;height:50px;padding:0 16px}
+  .s34-cap{padding:0 16px 20px;font-size:13.5px;line-height:1.45;opacity:.85}
+  .s34-cap b{font-weight:600}
+  /* Grille du CRA sans numéros sur fond blanc : les week-ends reçoivent un aplat Relevé, sinon ils disparaissent */
+  .s34-cra .cra .c-j.we{opacity:1;background:var(--releve)}
+</style>
+<body><div class="plate g7 grain" id="p" style="height:1110px"></div>
+<script>
+const A = Marque, C = A.COULEURS, D = A.DONNEES, NB = ' ', SUR = '#F3F6F4', NOIR = '#04140A';
+const sv = (d, s = 22) => `<svg viewBox="0 0 24 24" width="${s}" height="${s}" fill="none" stroke="${SUR}" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
+const actions = `<div class="s34-act">${sv('<path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/>')}${sv('<path d="M4 5h16v11H10l-5 4v-4H4Z"/>')}${sv('<path d="M4 12h15M14 6.5 19.5 12 14 17.5"/>')}<span style="flex:1"></span>${sv('<path d="M7 4h10v16l-5-3.5L7 20Z"/>')}</div>`;
+const post = (x, visuel, legende) => `<div class="s34-post" style="left:${x}px;top:330px">
+  <div class="s34-hd">${A.icone(36, 'net')}<div><b>Payout</b><small>payout.fr</small></div><span style="flex:1"></span>${sv('<circle cx="5" cy="12" r="1.2" fill="#F3F6F4"/><circle cx="12" cy="12" r="1.2" fill="#F3F6F4"/><circle cx="19" cy="12" r="1.2" fill="#F3F6F4"/>', 20)}</div>
+  <div class="s34-v">${visuel}</div>${actions}<p class="s34-cap"><b>Payout</b> ${legende}</p></div>`;
+
+/* 1. Le chiffre */
+const v1 = `<div class="grain" style="position:absolute;inset:0">${A.halo('bas', 'top:40%')}
+  <div style="position:absolute;left:28px;right:28px;top:30px;z-index:60">
+    <div class="pb-lbl" style="opacity:.6">Freelances en SASU · après impôts</div>
+    <div style="margin-top:44px">${A.passage({ taille: 66 })}</div>
+    <div style="margin-top:28px">${A.jauge({ forme: 'segments', n: 50, p: 85, avant: 54, h: 46, g: 2 })}</div>
+    <div style="font-size:23px;font-weight:500;letter-spacing:-.03em;line-height:1.12;margin-top:22px">Sur 100${NB}€ facturés,<br>jusqu'à 85${NB}€ pour vous.</div>
+  </div></div>`;
+/* 2. Le produit : la grille du CRA, puis la facture */
+const v2 = `<div class="theme clair" style="position:absolute;inset:0;background:${C.releve};color:${C.coffre}">
+  <div style="position:absolute;left:28px;right:28px;top:30px">
+    <div style="font-size:34px;font-weight:500;letter-spacing:-.045em;line-height:.98">Votre CRA devient<br>une facture.</div>
+    <div style="display:flex;align-items:center;gap:16px;margin-top:26px">
+      <div class="s34-cra" style="background:#fff;border-radius:18px;padding:12px">${A.cra({ cell: 24, gap: 4, entete: false, nums: false })}</div>
+      <div style="display:grid;gap:6px"><span class="pb-lbl" style="opacity:.6">Octobre</span><span class="mt" style="font-size:15px;font-weight:500">${D.cra.factures} jours</span><span class="pb-lbl" style="opacity:.6;margin-top:6px">TJM</span><span class="mt" style="font-size:15px;font-weight:500">${A.eurH(D.cra.tjm, 0)}</span></div>
+    </div>
+    <div style="display:flex;margin:14px 0 14px 98px;transform:rotate(90deg);width:22px;font-size:24px">${A.fleche(C.coffre)}</div>
+    <div style="background:${C.coffre};color:${SUR};border-radius:18px;padding:14px 18px;display:flex;justify-content:space-between;align-items:center">
+      <div><div class="pb-lbl" style="opacity:.6;font-size:9.5px">Facture · HT</div><div class="mt" style="font-size:13px;margin-top:5px;letter-spacing:-.04em">${D.cra.facture}</div></div>
+      <div class="mt" style="font-size:24px;font-weight:500;color:${C.net};letter-spacing:-.05em">${A.eurH(D.cra.ht)}</div></div>
+  </div>
+  <div style="position:absolute;left:28px;right:28px;bottom:26px;display:flex;justify-content:space-between;align-items:flex-end">
+    <span class="pb-lbl" style="opacity:.6">Zéro ressaisie.</span>${A.wordmark(C.coffre, 'style="height:22px;width:auto;display:block"')}</div></div>`;
+/* 3. Le triptyque */
+const v3 = `<div class="grain" style="position:absolute;inset:0">${A.bandes({ n: 26, seed: 21, style: 'top:44%;bottom:76px' })}
+  <div style="position:absolute;left:28px;top:34px;z-index:60;font-size:58px;font-weight:500;letter-spacing:-.055em;line-height:.95">
+    <div style="opacity:.4">Facturer.</div><div style="opacity:.4">Déclarer.</div><div style="color:${C.net}">Garder.</div></div>
+  <div style="position:absolute;left:28px;bottom:26px;z-index:60">${A.wordmark(SUR, 'style="height:22px;width:auto;display:block"')}</div></div>`;
+
+document.getElementById('p').innerHTML = `
+  ${A.entete(A.ENTETE, SUR)}
+  <div class="pb-abs pb-z" style="left:84px;top:104px;width:700px">
+    <div class="pb-lbl" style="opacity:.6">La marque en usage · réseaux sociaux</div>
+    <div class="pb-t" style="margin-top:16px">Trois publications.</div>
+  </div>
+  <div class="pb-abs pb-z" style="left:816px;top:122px;width:500px">${A.bicolore(`Un chiffre, un écran, trois mots. <b>Chaque publication dit une seule chose,</b> avec les pièces du socle.`, 'font-size:23px;line-height:1.28')}</div>
+  ${['Le chiffre', 'Le produit', 'Le triptyque'].map((t, i) => `<div class="pb-abs pb-z pb-lbl" style="left:${84 + i * 426}px;top:296px;opacity:.6">${i + 1}/3 · ${t}</div>`).join('')}
+  ${post(84, v1, `Sur 100${NB}€ facturés, un freelance en SASU en garde 54 aujourd'hui. Avec Payout, jusqu'à 85. Faites le calcul sur payout.fr.`)}
+  ${post(510, v2, `Vous cochez vos jours, la facture part de là${NB}: TVA calculée, PDF prêt. Zéro ressaisie.`)}
+  ${post(936, v3, `Facturer. Déclarer. Garder. Trois gestes, un seul cockpit.`)}
+  <div class="pb-abs pb-z pb-lbl" style="left:84px;bottom:44px;opacity:.45">Interface de publication générique, dessinée pour la planche</div>`;
+</script></body>

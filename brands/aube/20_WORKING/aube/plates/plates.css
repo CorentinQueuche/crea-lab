@@ -1,0 +1,41 @@
+/* Planches de présentation Aube : styles communs (complète brand/aube.css, ne le remplace pas).
+   Grille : 84 px de marge, colonnes à 84 / 396 / 708 / 1020 (alignées sur le pied de planche). */
+
+.abs{position:absolute}
+.lbl{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.cred{position:absolute;left:84px;right:84px;display:grid;grid-template-columns:312px 312px 312px 1fr;font-size:15px;line-height:1.45;font-weight:300}
+.cred b{display:block;font-weight:500}
+
+/* ---------- Mini-pages du guide (dessinées à 1280 × 720, réduites par zoom) ---------- */
+.mp{position:absolute;width:380px;height:214px;overflow:hidden;border-radius:2px;box-shadow:0 1px 2px rgba(35,26,38,.06),0 14px 30px -18px rgba(35,26,38,.28)}
+.mp>.in{position:relative;width:1280px;height:720px;zoom:.296875;overflow:hidden;background:#fff;color:var(--encre);font-family:var(--font);font-weight:300}
+.mp .t{position:absolute;left:64px;top:56px;font-size:46px;line-height:1.06;font-weight:400;letter-spacing:-.012em}
+.mp .tx{position:absolute;left:64px;top:190px;width:330px;font-size:17px;line-height:1.42}
+.mp .mf{position:absolute;left:64px;right:64px;bottom:40px;display:grid;grid-template-columns:330px 300px 300px 1fr auto;align-items:end;font-size:13px;font-weight:400}
+.mp .mf svg{height:26px;width:auto}
+.mp .big{position:absolute;left:64px;top:44px;font-size:132px;line-height:1;font-weight:300;letter-spacing:-.025em;color:#fff}
+.mp .cap2{font-family:var(--mono);font-size:13px;letter-spacing:.06em;text-transform:uppercase}
+
+/* Curseurs de personnalité */
+.sl{display:grid;grid-template-columns:150px 1fr 150px;align-items:center;font-size:16px;height:44px}
+.sl .tr{position:relative;height:1px;background:#D8CFC8}
+.sl .tr i{position:absolute;top:-6px;width:13px;height:13px;margin-left:-6.5px;border-radius:50%;background:var(--aurore)}
+.sl span:last-child{text-align:right}
+
+/* Icône d'app */
+.appi{position:relative;display:grid;place-items:center;border-radius:22.5%;overflow:hidden;flex:none}
+.appi svg{width:52%;height:auto;margin-top:2%}
+
+/* Carte de publication (réseau social générique) */
+.post{position:absolute;width:366px;background:#fff;border-radius:22px;overflow:hidden;box-shadow:0 1px 2px rgba(35,26,38,.05),0 30px 50px -34px rgba(35,26,38,.35)}
+.post .hd{height:76px;display:flex;align-items:center;gap:13px;padding:0 20px}
+.post .av{width:44px;height:44px;border-radius:50%;background:var(--nuit);display:grid;place-items:center}
+.post .av svg{width:22px;height:auto;margin-top:1px}
+.post .nm{font-size:16px;font-weight:500;line-height:1.15}
+.post .lc{font-size:12.5px;color:#8B8088;font-weight:400}
+.post .dots{margin-left:auto;display:flex;gap:4px}.post .dots i{width:4px;height:4px;border-radius:50%;background:var(--encre)}
+.post .img{position:relative;width:366px;height:366px;overflow:hidden}
+.post .ac{display:flex;align-items:center;gap:16px;padding:16px 20px 0}
+.post .ac svg{width:22px;height:22px}
+.post .lg{padding:12px 20px 22px;font-size:13.5px;line-height:1.4}
+.post .lg b{font-weight:500;margin-right:6px}

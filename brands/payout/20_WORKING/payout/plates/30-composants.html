@@ -1,0 +1,68 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates-b.css"><script src="../brand/marque.js"></script>
+<style>
+  .s30-moitie{padding:52px 56px 72px;background:var(--t-fond);color:var(--t-tx);font-family:var(--font)}
+  .s30-r{padding-top:20px;margin-top:30px;border-top:1px solid var(--t-filet)}
+  .s30-r>.pb-lbl{display:block;margin-bottom:16px;opacity:.55}
+  .s30-l{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+  .s30-etat{display:grid;justify-items:center;gap:10px}
+  .s30-etat small{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;opacity:.55}
+  .s30-sl{display:grid;grid-template-columns:1fr auto;align-items:baseline;font-size:14px;font-weight:500}
+</style>
+<body><div class="plate" id="p" style="background:var(--coffre)"></div>
+<script>
+const A = Marque, D = A.DONNEES, C = A.COULEURS, N = A.ECHELLE, NB = ' ', SUR = '#F3F6F4', E = (n, d = 2) => A.eurH(n, d);
+const ic = A.icon;
+const moitie = (clair) => {
+  const anneau = clair ? N[800] : N[200];
+  const etats = [
+    ['Défaut', ''],
+    ['Survol', `background:${N[400]}`],
+    ['Focus', `box-shadow:0 0 0 2px var(--t-fond),0 0 0 4px ${anneau}`],
+    ['Désactivé', 'background:var(--t-carte2);color:var(--t-tx2);box-shadow:inset 0 0 0 1px var(--t-filet)'],
+  ];
+  const f10 = D.factures[1], tva = D.obligations[0];
+  return `<div class="theme${clair ? ' clair' : ''} s30-moitie">
+    <div style="display:flex;justify-content:space-between;align-items:baseline"><div class="pb-t2">${clair ? 'Thème clair' : 'Thème sombre'}</div><span class="pb-lbl" style="opacity:.55">${clair ? 'Relevé · Blanc · Net 800' : 'Coffre · Ardoise · Net'}</span></div>
+
+    <div class="s30-r"><span class="pb-lbl">01 · Boutons</span><div class="s30-l">
+      <span class="d-btn">${ic('plus', 'currentColor', 15, 2)}Nouveau Cash-Out</span>
+      <span class="d-btn ghost">${ic('telecharger', 'currentColor', 15)}Exporter</span>
+      <span class="d-btn grand">Tester mon éligibilité${ic('fleche', 'currentColor', 17, 2)}</span></div></div>
+
+    <div class="s30-r"><span class="pb-lbl">02 · États d'un bouton</span><div class="s30-l" style="gap:22px">
+      ${etats.map(([n, s]) => `<div class="s30-etat"><span class="d-btn" style="${s}">${ic('check', 'currentColor', 15, 2)}Valider</span><small>${n}</small></div>`).join('')}</div></div>
+
+    <div class="s30-r"><span class="pb-lbl">03 · Pastilles d'état</span><div class="s30-l" style="gap:8px">
+      <span class="d-pill ok">Payée</span><span class="d-pill att">À venir</span><span class="d-pill cours">En cours</span><span class="d-pill att">Programmée</span><span class="d-pill neutre">À déclarer</span><span class="d-pill due">En retard</span></div></div>
+
+    <div class="s30-r"><span class="pb-lbl">04 · Champs et filtres</span>
+      <div class="u-field">${ic('recherche', 'currentColor', 17)}Rechercher une transaction…</div>
+      <div class="s30-l" style="margin-top:12px"><span class="u-chip on">Tous les comptes</span><span class="u-chip">${ic('filtres', 'currentColor', 15)}Filtres</span><span class="u-chip">${ic('colonnes', 'currentColor', 15)}Gérer les colonnes</span></div>
+      <div style="margin-top:14px"><div class="s30-sl"><span style="color:var(--t-tx2)">TJM</span><span class="mt" style="font-size:16px">${E(D.simulateur.tjm, 0)}</span></div><div class="u-range"><b style="width:50%"></b><i style="left:50%"></i></div></div></div>
+
+    <div class="s30-r"><span class="pb-lbl">05 · Lignes</span>
+      <div class="d-row"><div><b class="mono" style="font-weight:500;font-size:12.5px">${f10.ref}</b><small>${f10.client} · ${f10.objet}</small></div><div style="display:grid;justify-items:end;gap:5px">${A.eurH(f10.ht).replace(/^/, '<span class="mt" style="font-size:13px;font-weight:500">') + '</span>'}<span class="d-pill ok">Payée</span></div></div>
+      <div class="d-row"><div><b>${tva.nom}</b><small>${tva.detail}</small></div><div style="display:grid;justify-items:end;gap:5px"><span class="mt" style="font-size:13px;font-weight:500">${E(tva.montant)}</span><span class="d-pill neutre">À déclarer</span></div></div></div>
+
+    <div class="s30-r"><span class="pb-lbl">06 · Carte de solde</span>
+      <div class="d-card dense" style="padding:22px 24px">
+        <div style="display:flex;justify-content:space-between;align-items:center"><h2>Trésorerie</h2><span class="d-k" style="opacity:.8;display:flex;align-items:center;gap:6px">${ic('lien', 'currentColor', 12, 1.8)}Qonto connecté</span></div>
+        <div class="d-k" style="margin-top:20px;opacity:.75">Solde disponible · tous les comptes</div>
+        <div class="d-v" style="font-size:42px;letter-spacing:-.06em;margin-top:10px">${E(D.solde)}</div>
+        ${A.jauge({ h: 10, p: Math.round((D.comptes[0].solde / D.solde) * 10000) / 100, pas: 5, style: 'margin-top:18px' })}
+        <div style="margin-top:14px">${D.comptes.map((c) => `<div class="d-row"><span>${c.nom}</span><span class="mt" style="font-weight:500">${E(c.solde)}</span></div>`).join('')}</div></div></div>
+
+    <div class="s30-r"><span class="pb-lbl">07 · La jauge dans l'interface</span>
+      ${A.jauge({ forme: 'segments', p: 85, repere: 54, h: 38, g: 3 })}
+      <div class="d-k" style="position:relative;height:14px;margin-top:10px;white-space:nowrap"><span style="position:absolute;left:0">0</span><span style="position:absolute;left:54%;transform:translateX(-50%)">54${NB}%</span><span style="position:absolute;left:85%;transform:translateX(-50%);color:var(--t-acc);opacity:1">jusqu'à 85${NB}%</span><span style="position:absolute;right:0">100</span></div>
+      <div style="margin-top:22px">${A.jauge({ p: 85, h: 14, repere: 54 })}</div></div>
+  </div>`;
+};
+document.getElementById('p').innerHTML = `
+  <div class="grain" style="position:relative;height:260px;background:var(--coffre)">
+    ${A.entete(A.ENTETE, SUR)}
+    <div class="pb-abs pb-z" style="left:84px;top:104px;width:700px"><div class="pb-lbl" style="opacity:.6">La web app · système d'interface</div><div class="pb-t" style="margin-top:16px">Feuille de composants.</div></div>
+    <div class="pb-abs pb-z" style="left:816px;top:122px;width:500px">${A.bicolore(`Les mêmes pièces dans les deux thèmes. <b>Le vert pour l'action,</b> le Prélevé <b>pour ce qui part.</b>`, 'font-size:23px;line-height:1.28')}</div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr">${moitie(false)}${moitie(true)}</div>`;
+</script></body>

@@ -1,0 +1,154 @@
+{
+  "monde": [
+    2000,
+    1300
+  ],
+  "page": "index.html",
+  "theme": "clair",
+  "visuels": {
+    "format": [
+      3200,
+      2400
+    ],
+    "liste": [
+      {
+        "nom": "le-trou-du-samedi",
+        "cible": [
+          1350,
+          880
+        ],
+        "largeur": 500,
+        "tilt": 32,
+        "yaw": -16,
+        "roll": -8,
+        "flou": 0.8
+      },
+      {
+        "nom": "qui-peut-venir",
+        "cible": [
+          175,
+          500
+        ],
+        "largeur": 600,
+        "tilt": 28,
+        "yaw": 20,
+        "roll": 6,
+        "flou": 0.9
+      },
+      {
+        "nom": "affluence-et-semaine",
+        "cible": [
+          1180,
+          300
+        ],
+        "largeur": 760,
+        "tilt": 28,
+        "yaw": -20,
+        "roll": 7,
+        "flou": 0.6
+      },
+      {
+        "nom": "ardoise-et-planning",
+        "cible": [
+          1690,
+          205
+        ],
+        "largeur": 720,
+        "tilt": 30,
+        "yaw": 18,
+        "roll": -6,
+        "flou": 0.6
+      },
+      {
+        "nom": "les-trois-brasseries",
+        "cible": [
+          470,
+          80
+        ],
+        "largeur": 600,
+        "tilt": 36,
+        "yaw": -24,
+        "roll": 8,
+        "flou": 0.6
+      },
+      {
+        "nom": "cout-par-jour",
+        "cible": [
+          1790,
+          800
+        ],
+        "largeur": 700,
+        "tilt": 24,
+        "yaw": 14,
+        "roll": 0,
+        "flou": 0.5
+      },
+      {
+        "nom": "vue-d-ensemble",
+        "cible": [
+          900,
+          660
+        ],
+        "largeur": 2150,
+        "tilt": 18,
+        "yaw": -14,
+        "roll": 2,
+        "flou": 0.12,
+        "focale": 3.0
+      }
+    ]
+  },
+  "pages_directes": [
+    {
+      "nom": "identite",
+      "page": "identite.html",
+      "taille": [
+        1600,
+        1200
+      ],
+      "echelle": 2
+    }
+  ],
+  "film": {
+    "format": [
+      1920,
+      1080
+    ],
+    "ips": 60
+  },
+  "ambiance": {
+    "fond": [
+      15,
+      24,
+      21
+    ],
+    "vignette": 0.3,
+    "grain": 2.0,
+    "halo": 0.12,
+    "lueurs": [
+      {
+        "x": 0.1,
+        "y": 0.04,
+        "rx": 0.12,
+        "ry": 0.1,
+        "rvb": [
+          0.1,
+          0.07,
+          0.02
+        ]
+      },
+      {
+        "x": 0.96,
+        "y": 1.0,
+        "rx": 0.1,
+        "ry": 0.1,
+        "rvb": [
+          0.01,
+          0.05,
+          0.04
+        ]
+      }
+    ],
+    "seuil_halo": 0.93
+  }
+}

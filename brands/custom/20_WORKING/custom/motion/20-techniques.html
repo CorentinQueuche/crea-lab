@@ -1,0 +1,104 @@
+<!doctype html><meta charset="utf-8"><title>Custom — V · Cinq techniques en fabrication</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="motion.css">
+<script src="../brand/marque.js"></script><script src="../brand/techniques.js"></script><script src="lib.js"></script>
+<style>
+  .k-macro{position:absolute;inset:0;width:1920px;height:1080px}
+  .k-nom{font-family:var(--mono);font-weight:700;font-size:112px;letter-spacing:-.02em;line-height:.9;text-transform:uppercase;white-space:nowrap}
+  .k-code{font-family:var(--mono);font-weight:700;font-size:30px;letter-spacing:.06em;line-height:1}
+  .k-pour{font-family:var(--font);font-weight:500;font-size:26px;letter-spacing:-.012em;line-height:1.25}
+  /* plaque : le texte posé sur un aplat (noir sur les tissus sombres, blanc sur le tissu clair), lisible même sur le détail */
+  .k-plaque{display:inline-block;background:var(--noir);color:#fff;padding:.14em .22em .08em;border-radius:.07em}
+  .k-p{display:inline-flex;align-items:center;gap:18px;background:var(--noir);color:#fff;padding:9px 14px 8px;border-radius:8px}
+  .k-clair .k-plaque,.k-clair .k-p{background:#fff;color:var(--encre)}
+  .k-jauge{display:flex;gap:7px}
+  .k-jauge i{display:block;width:30px;height:15px;transform:skewX(-13.3deg);border-radius:3px}
+  .k-col{position:absolute;top:268px;width:328px;height:540px;overflow:hidden;border-radius:14px}
+  .k-col canvas{width:328px;height:540px}
+</style>
+<body><div class="m-stage" id="s" style="width:1920px;height:1080px"></div>
+<script>
+/* 20 · Cinq techniques en fabrication · 1920 × 1080 · 12 s
+   node tools/record.mjs motion/20-techniques.html out/motion/20-techniques.mp4 --w 1920 --h 1080 --fps 30 --dur 12 --planche --fixe 11.4
+   Le moteur brand/techniques.js (MarqueTech.rendre) rend le Cran en macro de vrai marquage ; p (0 → 1) fait avancer la fabrication.
+   Pour chaque technique (1,9 s) : coupe franche, le code et le nom en chasse fixe glissent le long de la pente ; la fabrication
+   avance en crans (8 i/s : la raclette passe, le film se décolle, l'aiguille coud, la presse descend, la teinte monte) ;
+   le marquage fini ; coupe sur un détail en macro (zoom × 2,6, rendu natif). Fin : les cinq côte à côte, « Chaque objet, sa technique ».
+   Rendu : canvas de 1600 × 900 affiché en 1920 × 1080 (≈ 0,4 s par rendu) ; on ne rend qu'aux changements de cran.
+   Enregistrement complet : 3 min. Le MP4 sort à 17,9 Mo en CRF 14 : le réencoder en CRF 25 (7,5 Mo) :
+   ffmpeg -i 20-techniques.mp4 -c:v libx264 -crf 25 -preset slow -pix_fmt yuv420p -movflags +faststart sortie.mp4 */
+const A = Marque, C = A.COULEURS, NB = A.NB, W = 1920, H = 1080;
+const TECH = [
+  { cle: 'serigraphie', o: { c: C.fluo, c2: C.violet, fond: 'coton', cf: C.noir } },
+  { cle: 'dtf', o: { c: C.fluo, fond: 'serge', cf: C.noir } },
+  { cle: 'broderie', o: { c: C.fluo, fond: 'maille', cf: C.noir } },
+  { cle: 'flocage', o: { c: C.orange, fond: 'molleton', cf: C.noir } },
+  /* une seule teinte : le logo ne passe jamais en dégradé (MARQUE.md) */
+  { cle: 'sublimation', o: { c: C.violet, fond: 'maille', cf: C.craie }, clair: true } ].map((x) => Object.assign(x, A.DONNEES.techniques.find((d) => d.cle === x.cle)));
+const SEG = 1.9, FAB = [0.12, 1.12], FINI = 1.5, FIN = 5 * SEG;   // fabrication de 0,12 à 1,12 s, détail à 1,5 s ; finale à 9,5 s
+const CW = 1600, CH = 900, ZOOM = 2.6, IPS_FAB = 8;
+
+const s = document.getElementById('s');
+s.innerHTML = `
+  <canvas id="macro" class="k-macro" width="${CW}" height="${CH}"></canvas>
+  <div id="habillage" class="m-fill">
+    <div class="m-abs" style="left:96px;top:72px"><span class="k-p"><span id="hCode" class="k-code"></span></span></div>
+    <div class="m-abs" style="right:96px;top:72px"><span id="hIdx" class="k-p m-cap"></span></div>
+    <div class="m-abs" style="left:96px;bottom:160px"><span class="m-ligne"><span id="hNom" class="k-nom k-plaque"></span></span></div>
+    <div class="m-abs" style="left:96px;bottom:92px"><span class="m-ligne"><span id="hPour" class="k-pour k-plaque"></span></span></div>
+    <div class="m-abs" style="right:96px;bottom:92px"><span class="k-p"><span id="hEtat" class="m-cap"></span><span id="hJauge" class="k-jauge">${'<i></i>'.repeat(10)}</span></span></div>
+    ${[[60, 60], [W - 60, 60], [60, H - 60], [W - 60, H - 60]].map(([x, y]) => `<i class="m-croix" style="left:${x}px;top:${y}px"></i>`).join('')}
+  </div>
+  <div id="finale" class="m-fill" style="display:none;background:${C.noir}">
+    <div class="m-abs t-titre" style="left:96px;top:96px;font-size:132px;white-space:nowrap"><span class="m-ligne"><span id="fTitre">Chaque objet, sa${NB}<span class="surl m-sl" data-c="violet" style="color:#fff"><i style="background:${C.violet}"></i>technique</span></span></span></div>
+    ${TECH.map((x, i) => `<div class="k-col" style="left:${96 + i * 350}px"><canvas width="656" height="1080"></canvas></div>
+      <div class="m-abs m-cap k-lab" style="left:${96 + i * 350}px;top:832px">${x.code}${NB}·${NB}${x.nom}</div>`).join('')}
+    <div class="m-abs m-cap" style="left:96px;bottom:60px;opacity:.6">5 techniques${NB}·${NB}100${NB}% dans nos ateliers</div>
+    <div class="m-abs" style="right:96px;bottom:64px">${A.logo(C.fluo, 'style="height:34px"')}</div>
+  </div>
+  <i class="m-grain" style="opacity:.18"></i>`;
+const $ = (q) => s.querySelector(q);
+const macro = $('#macro'), hab = $('#habillage'), fin = $('#finale');
+const hCode = $('#hCode'), hIdx = $('#hIdx'), hNom = $('#hNom'), hPour = $('#hPour'), hEtat = $('#hEtat'), jauge = [...s.querySelectorAll('#hJauge i')];
+const cols = [...s.querySelectorAll('.k-col')], colCanvas = cols.map((c) => c.querySelector('canvas')), labs = [...s.querySelectorAll('.k-lab')];
+
+/* Rendu à la demande : on ne recalcule le canvas que si la clé (technique, p, zoom) change */
+let cle = '', rendus = 0, msTotal = 0;
+const rendre = (x, p, zoom) => { const k = `${x.cle}|${p.toFixed(4)}|${zoom}`; if (k === cle) return; cle = k;
+  msTotal += MarqueTech.rendre(macro, Object.assign({ tech: x.cle, forme: 'cran', p, zoom, seed: 3, marge: zoom > 1 ? 0.16 : 0.27 }, x.o)); rendus++; };
+/* Les cinq vignettes de la finale : rendues une fois, à la première demande (portrait, le Cran au centre) */
+let finalePrete = false;
+const preparerFinale = () => { if (finalePrete) return; finalePrete = true;
+  TECH.forEach((x, i) => (msTotal += MarqueTech.rendre(colCanvas[i], Object.assign({ tech: x.cle, forme: 'cran', p: 1, seed: 3, marge: 0.1, zoom: 1.15 }, x.o)))); };
+window.statsRendu = () => ({ rendus, msTotal: Math.round(msTotal) });
+
+window.seek = (t) => {
+  const fini = t >= FIN;
+  hab.style.display = fini ? 'none' : ''; macro.style.display = fini ? 'none' : ''; fin.style.display = fini ? '' : 'none';
+  if (!fini) {
+    const i = Math.min(4, Math.floor(t / SEG + 1e-6)), x = TECH[i], tl = t - i * SEG;
+    /* fabrication en crans de 8 i/s, puis le marquage fini, puis le détail (coupe) */
+    const pFab = M.marches((tl - FAB[0]) / (FAB[1] - FAB[0]), Math.round((FAB[1] - FAB[0]) * IPS_FAB));
+    const detail = tl >= FINI;
+    rendre(x, detail ? 1 : pFab, detail ? ZOOM : 1);
+    /* habillage */
+    const enc = x.clair ? C.encre : '#FFFFFF'; hab.style.color = enc; hab.classList.toggle('k-clair', !!x.clair);
+    hCode.textContent = `${x.code}${NB}·${NB}${String(i + 1).padStart(2, '0')}${NB}/${NB}05`;
+    hIdx.innerHTML = detail ? `Détail${NB}·${NB}×${NB}${String(ZOOM).replace('.', ',')}` : 'Cinq techniques, un même logo';
+    hNom.textContent = x.nom; hPour.textContent = x.pour;
+    M.glisse(hNom, tl, 0, { montee: 120 }); M.glisse(hPour, tl, M.DECALAGE * 2, { montee: 40 });
+    const n = Math.round((detail ? 1 : pFab) * 10);
+    jauge.forEach((el, k) => (el.style.background = k < n ? (x.clair ? C.encre : C.fluo) : x.clair ? 'rgba(3,1,14,.18)' : 'rgba(255,255,255,.2)'));
+    hEtat.textContent = pFab >= 1 ? 'Fini' : tl < FAB[0] ? 'Prêt' : 'En fabrication';
+    return;
+  }
+  /* Finale : les cinq arrivent une par cran en glissant le long de la pente, puis le titre, puis le surligneur */
+  preparerFinale();
+  const tf = t - FIN;
+  cols.forEach((c, i) => { M.glisse(c, tf, i * M.CRAN, { montee: 90 }); labs[i].style.visibility = tf >= i * M.CRAN + 0.25 ? 'visible' : 'hidden'; });
+  const fT = $('#fTitre'), d0 = 5 * M.CRAN;
+  M.glisse(fT, tf, d0, { montee: 150 });
+  const sl = s.querySelector('#finale .m-sl'), k = M.tw(tf, d0 + 0.35, M.SURL, M.cubicOut);
+  sl.style.setProperty('--k', k.toFixed(4));
+};
+seek(0);
+</script></body>

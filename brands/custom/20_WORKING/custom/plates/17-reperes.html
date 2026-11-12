@@ -1,0 +1,79 @@
+<!doctype html><meta charset="utf-8"><title>Custom — 17 · Repères d’impression</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates.css"><script src="../brand/marque.js"></script>
+<style>
+  /* 17 · Repères d'impression : une feuille d'atelier posée sur le noir, le système expliqué en marge. Préfixe q17- */
+  .q17-fond{position:absolute;left:560px;right:0;top:0;bottom:0;z-index:1;opacity:.32;-webkit-mask-image:linear-gradient(90deg,transparent,#000 40%);mask-image:linear-gradient(90deg,transparent,#000 40%)}
+  .q17-fond .ph{position:absolute;inset:0}
+  .q17-af{position:absolute;overflow:hidden;background:var(--noir);color:#fff}
+  .q17-legs{position:absolute;left:84px;width:420px;z-index:60}
+  .q17-leg{position:absolute;left:84px;width:400px;z-index:60}
+  .q17-leg b{display:block;font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;line-height:1.5}
+  .q17-leg span{display:block;font-size:13px;line-height:1.4;opacity:.62;margin-top:3px}
+  .q17-svg{position:absolute;inset:0;z-index:65;pointer-events:none}
+  .q17-vert{position:absolute;transform-origin:0 0;transform:rotate(-90deg);white-space:nowrap}
+</style>
+<body><div class="plate grain leger" id="p" style="height:1160px"></div>
+<script>
+const A = Marque, C = A.COULEURS, NB = A.NB;
+/* Feuille, coupe (format fini) et fond perdu, en coordonnées de planche */
+const F = { x: 676, y: 96, w: 640, h: 905 }, M = 64, BL = 9;
+const T = { x: F.x + M, y: F.y + M, w: F.w - 2 * M, h: F.h - 2 * M };
+const B = { x: T.x - BL, y: T.y - BL, w: T.w + 2 * BL, h: T.h + 2 * BL };
+
+/* Traits de coupe : deux traits par angle, hors du fond perdu */
+const coupe = () => { let s = ''; const g = 14, L = 24;
+  [[T.x, T.y, -1, -1], [T.x + T.w, T.y, 1, -1], [T.x, T.y + T.h, -1, 1], [T.x + T.w, T.y + T.h, 1, 1]].forEach(([x, y, sx, sy]) => {
+    s += `<i class="pl-coupe h" style="left:${sx < 0 ? x - g - L : x + g}px;top:${y}px;width:${L}px;color:${C.encre};z-index:30"></i>`;
+    s += `<i class="pl-coupe v" style="left:${x}px;top:${sy < 0 ? y - g - L : y + g}px;height:${L}px;color:${C.encre};z-index:30"></i>`; });
+  return s; };
+/* Croix aux quatre angles de la feuille */
+const croix = [[F.x + 22, F.y + 22], [F.x + F.w - 22, F.y + 22], [F.x + 22, F.y + F.h - 22], [F.x + F.w - 22, F.y + F.h - 22]].map(([x, y]) => A.croix(`left:${x - 11}px;top:${y - 11}px;opacity:.9;color:${C.encre};z-index:30`)).join('');
+/* Mires au milieu des marges gauche et droite */
+const mireG = [F.x + 32, F.y + F.h / 2], mireD = [F.x + F.w - 32, F.y + F.h / 2];
+const mires = [mireG, mireD].map(([x, y]) => A.mire(24, `position:absolute;left:${x - 12}px;top:${y - 12}px;color:${C.encre};z-index:30`)).join('');
+/* Barre de contrôle dans la marge du bas */
+const barre = { x: T.x + 36, y: F.y + F.h - 40, w: 300 };
+/* Codes en chasse fixe, à la verticale dans la marge de gauche */
+const codeV = { x: F.x + 26, y: T.y + T.h - 20 };
+
+/* L'affiche imprimée (zone utile + fond perdu) */
+const af = `<div class="q17-af" style="left:${B.x}px;top:${B.y}px;width:${B.w}px;height:${B.h}px;z-index:20">
+  ${A.coulure({ w: B.w, h: 420, c: 'orange', seed: 3, cx: 0.9, cy: 0.12, rx: 0.52, ry: 0.5, frange: 0.08, attrs: `style="position:absolute;left:0;top:0;width:${B.w}px;height:420px"` })}
+  <div style="position:absolute;left:${BL + 28}px;top:${BL + 28}px">${A.logo(C.fluo, 'style="height:22px"')}</div>
+  <div style="position:absolute;right:${BL + 34}px;bottom:${BL + 200}px">${A.dunk(5, { c: '#fff', c2: C.fluo, attrs: 'style="height:380px;width:auto"' })}</div>
+  <div class="t-titre h-84" style="position:absolute;left:${BL + 28}px;bottom:${BL + 72}px">Donnez vie<br>à vos ${A.surl('idées')}</div>
+  <div style="position:absolute;left:${BL + 28}px;right:${BL + 28}px;bottom:${BL + 28}px;display:flex;justify-content:space-between">${A.code('CUSTOM.FR')}${A.code('SER', '2026')}</div>
+</div>
+<div style="position:absolute;left:${B.x}px;top:${B.y}px;width:${B.w}px;height:${B.h}px;z-index:25;box-shadow:inset 0 0 0 1px rgba(255,255,255,.0);outline:1px dashed ${C.acier};outline-offset:0"></div>
+<div style="position:absolute;left:${T.x}px;top:${T.y}px;width:${T.w}px;height:${T.h}px;z-index:26;box-shadow:0 0 0 1px rgba(255,255,255,.55)"></div>`;
+
+const feuille = `<div class="pl-feuille" style="left:${F.x}px;top:${F.y}px;width:${F.w}px;height:${F.h}px;z-index:10"></div>
+  ${af}${coupe()}${croix}${mires}
+  <div style="position:absolute;left:${barre.x}px;top:${barre.y}px;width:${barre.w}px;z-index:30">${A.barre({ n: 2, couleurs: ['encre', 'graphite', 'fonte', 'acier', 'craie', 'fluo', 'violet', 'orange'], style: 'height:12px' })}</div>
+  
+  <div class="t-mono" style="position:absolute;right:${1400 - (T.x + T.w) + 18}px;top:${barre.y - 1}px;z-index:30;color:${C.encre};font-size:9.5px">Feuille 01${NB}/${NB}04</div>
+  <div class="t-mono" style="position:absolute;left:${T.x + 18}px;top:${F.y + 24}px;z-index:30;color:${C.encre};font-size:9.5px">Affiche · Donnez vie à vos idées</div>
+  <div class="q17-vert t-mono" style="left:${codeV.x}px;top:${codeV.y}px;z-index:30;color:${C.encre};font-size:9.5px">CST${NB}·${NB}SER${NB}·${NB}2026</div>`;
+
+/* Légendes reliées par des filets */
+const legs = [
+  [440, 'Croix de repérage', 'Aux quatre angles de la feuille. Les couches se calent dessus.', [F.x + 22, F.y + 22]],
+  [520, 'Traits de coupe', 'Ils marquent le format fini, hors du fond perdu.', [T.x - 14 - 12, T.y]],
+  [600, 'Mire', 'Au milieu des marges : le centre de calage.', [mireG[0] - 13, mireG[1]]],
+  [680, 'Fond perdu · 9 px ici, 3 mm à l’impression', 'L’image dépasse la coupe : pas de filet blanc au massicot.', [B.x, T.y + 520]],
+  [770, 'Zone utile', 'Le visuel, à 28 px au moins de la coupe.', [T.x + 26, T.y + 380]],
+  [850, 'Codes', 'Marque, technique, année : CST, puis SER, DTF, BRO, FLO ou SUB.', [codeV.x + 6, codeV.y - 70]],
+  [930, 'Barre de contrôle', 'La gamme de la marque, comme en marge d’un tirage d’imprimeur.', [barre.x - 2, barre.y + 6]]];
+const legHTML = legs.map(([y, t, d]) => `<div class="q17-leg" style="top:${y}px"><b>${t}</b><span>${d}</span></div>`).join('');
+const lines = legs.map(([y, , , [tx, ty]]) => `<path d="M${84 + 420},${y + 8} L${tx},${ty}" /><circle cx="${tx}" cy="${ty}" r="2.6" fill="${C.fluo}" stroke="none"/><circle cx="${84 + 420}" cy="${y + 8}" r="1.6" fill="#fff" stroke="none"/>`).join('');
+
+document.getElementById('p').innerHTML = A.entete() + `
+  <div class="q17-fond">${A.photo('traceur', { mode: 'nb', pos: '40% 60%' })}</div>
+  <div class="pl-intro" style="width:470px"><div class="pl-lbl doux">17 · La marque · repères d’impression</div>
+    <div class="t-titre h-84">Les marges de ${A.surl('l’atelier')}</div>
+    <p class="pl-chapo" style="max-width:440px">Custom emprunte ses repères à la feuille d’imprimeur : croix, mire, traits de coupe, barre de contrôle et codes en chasse fixe. Ils signent chaque support comme une pièce sortie de l’atelier.</p></div>
+  ${feuille}
+  ${legHTML}
+  <svg class="q17-svg" viewBox="0 0 1400 1160"><defs><clipPath id="q17c"><path clip-rule="evenodd" d="M${F.x},${F.y}h${F.w}v${F.h}h-${F.w}z M${B.x},${B.y}h${B.w}v${B.h}h-${B.w}z"/></clipPath></defs><g fill="none" stroke="#fff" stroke-width="1" stroke-opacity=".55">${lines}</g><g fill="none" stroke="${C.encre}" stroke-width="1" clip-path="url(#q17c)">${lines}</g></svg>
+  ` + A.foot('17 · Repères d’impression', 'Custom · direction artistique');
+</script></body>

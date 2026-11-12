@@ -1,0 +1,50 @@
+<!doctype html><meta charset="utf-8"><title>Custom — 30 · Le parcours de devis</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="../brand/ecrans.css"><link rel="stylesheet" href="plates-b.css">
+<script src="../brand/marque.js"></script><script src="../brand/ecrans.js"></script>
+<style>
+  /* Idée : le devis monte d'un pas à chaque réponse. Fond Craie au motif de blocs ; les quatre questions en marches,
+     l'écran du devis incliné avec la suggestion de technique agrandie, le mobile à côté, les trois promesses en bas. */
+  .p30-ecran{position:absolute;left:84px;top:360px;transform-origin:0 0;transform:perspective(2600px) rotateY(9deg) rotateX(3deg)}
+  .p30-marche{position:absolute;width:112px}
+  .p30-marche .t-titre{position:absolute;left:18px;top:9px;font-size:36px;line-height:1;color:var(--fluo)}
+  .p30-marche .pb-lbl{position:absolute;left:2px;top:58px;white-space:nowrap}
+</style>
+<body><div class="plate craie" id="p" style="height:1650px"></div>
+<script>
+const A = Marque, C = A.COULEURS, S = A.site, SM = A.mobile, B = S.blocs, D = A.DONNEES, NB = A.NB;
+const k = 0.5, BAR = 44 * k;
+const crop = (sec, H, k, x, y, w, h) => `<div class="cadre-r" style="width:${w * k + 28}px;height:${h * k + 28}px;color:${C.encre}">${A.reperes({ t: 18 })}
+  <div class="pb-crop clair" style="position:absolute;inset:14px"><div class="pb-in" style="zoom:${k}"><div class="s-page" style="height:${H}px;margin:-${y}px 0 0 -${x}px">${sec}</div></div></div></div>`;
+const leg = (n, t, p) => `<div class="pb-leg"><span class="pb-num encre">0${n}</span><b>${t}</b><p>${p}</p></div>`;
+const mk = (n, y) => `<div class="pb-abs" style="left:-17px;top:${BAR + y * k - 17}px;z-index:20"><span class="pb-num encre">0${n}</span></div>`;
+const yF = S.Y.devis.formulaire;
+// les quatre questions, en marches (le bloc du socle)
+const marches = D.devis.etapes.map((t, i) => `<div class="p30-marche" style="left:${880 + i * 112}px;top:${196 - i * 38}px">
+  ${A.bloc(C.encre, 'style="width:104px;height:52px" preserveAspectRatio="none"', { l: 104, h: 52, r: 7 })}<span class="t-titre">0${i + 1}</span><span class="pb-lbl">${t}</span></div>`).join('');
+
+document.getElementById('p').innerHTML =
+  `<div class="pb-fond tx-motif" style="--tm:120px;color:rgba(3,1,14,.045)"></div>` +
+  A.entete(undefined, C.encre) +
+  `<div class="pb-abs pb-z pb-lbl doux" style="left:84px;top:104px">30${NB}·${NB}Le parcours de devis${NB}·${NB}1440${NB}×${NB}${S.H.devis}${NB}·${NB}390${NB}×${NB}${SM.H.devis}</div>` +
+  `<div class="pb-abs pb-z t-titre" style="left:84px;top:140px;font-size:92px">Le devis, ${A.surl('pas à pas')}</div>` +
+  `<p class="pb-abs pb-z pb-txt" style="left:86px;top:252px;width:600px;opacity:.75">Quatre questions et la demande arrive qualifiée à l’atelier. Le site suggère la technique selon le produit ; le devis part sous 24${NB}h.</p>` +
+  marches +
+
+  // l'écran de devis, incliné
+  `<div class="p30-ecran pb-ombre" style="z-index:3">${A.browser(S.devis(), k, { h: 1500, url: 'custom.fr/devis' })}</div>` +
+  // la suggestion de technique, agrandie
+  `<div class="pb-abs pb-z" style="left:492px;top:880px;transform:rotate(-1.6deg)">${crop(B.formDevis(), 1560, 0.52, 52, 364, 860, 376)}</div>` +
+  `<div class="pb-abs pb-z" style="left:506px;top:1124px;width:470px">${leg(2, 'La suggestion de technique', 'Pour des polos, le site propose la broderie ; les autres techniques restent au choix.')}</div>` +
+
+  // le mobile
+  `<div class="pb-abs" style="left:900px;top:330px;width:560px;height:760px">${A.coulure({ w: 560, h: 760, c: C.violet, seed: 30, cx: 0.55, cy: 0.5, rx: 0.4, ry: 0.42, frange: 0.22, pas: 4, attrs: 'style="width:100%;height:100%"' })}</div>` +
+  `<div class="pb-abs pb-z" style="left:1006px;top:372px;transform:rotate(3deg);filter:drop-shadow(0 50px 50px rgba(3,1,14,.35))">${A.phone(SM.devis(), 0.74)}</div>` +
+  `<div class="pb-abs pb-z" style="left:996px;top:1060px;width:320px">${leg(3, 'Sur mobile', 'Les mêmes étapes en une colonne, la progression en haut, le bouton collé en bas de l’écran.')}</div>` +
+  `<div class="pb-abs pb-z" style="left:880px;top:300px;width:440px">${leg(1, 'Quatre questions', 'Univers, technique, volume, échéance, puis les coordonnées.')}</div>` +
+
+  // les trois promesses
+  `<div class="pb-abs pb-z" style="left:70px;top:1258px">${crop(B.serenite(), 740, 0.56, 40, 250, 1360, 456)}</div>` +
+  `<div class="pb-abs pb-z" style="left:916px;top:1300px;width:400px">${leg(4, 'Trois promesses', `Paiement sécurisé, devis sous 24${NB}h, sans engagement : trois cartes, juste avant le formulaire de l’accueil.`)}</div>` +
+  A.foot('30 · Le parcours de devis', 'Custom · direction artistique', C.encre);
+{ const P = document.getElementById('p'); P.innerHTML = P.innerHTML.replace(/ ([:;?])(?=[ <])/g, NB + '$1'); }   // espace insécable avant : ; ?
+</script></body>

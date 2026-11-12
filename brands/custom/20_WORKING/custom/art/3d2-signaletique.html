@@ -1,0 +1,72 @@
+<!doctype html><meta charset="utf-8"><title>Custom — visuels de la scène 41 (signalétique)</title>
+<link rel="stylesheet" href="../brand/marque.css"><script src="../brand/marque.js"></script>
+<link rel="stylesheet" href="3d2-art.css">
+<style>
+  /* Panneau d'univers du totem : 0,80 × 1,00 m, 1 px = 1 mm. Coins arrondis de 30 mm, découpés par la transparence. */
+  #plan{width:800px;height:1000px;border-radius:30px;padding:42px 46px 0}
+  .a2-rang{display:grid;grid-template-columns:104px 1fr 96px;align-items:center;height:160px;border-top:3px solid var(--encre)}
+  .a2-rang:last-of-type{border-bottom:3px solid var(--encre)}
+  .a2-rang .t-titre{font-size:104px;line-height:.8;padding-top:10px}
+  .a2-rang .a2-mono{font-size:13px;margin-top:6px;opacity:.8}
+  .a2-fl{width:92px;height:auto;display:block}
+  /* Drapeaux : 0,75 × 2,60 m, 1 px = 2 mm */
+  .a2-drap{width:375px;height:1300px}
+  /* Marquage au sol : 5,0 × 2,5 m, 1 px = 2,5 mm (fond transparent) */
+  #sol{width:2000px;height:1000px}
+</style>
+<body>
+<div id="plan" class="a2-v a2-fluo"></div>
+<div id="drapeau-a" class="a2-v a2-drap a2-fluo"></div>
+<div id="drapeau-b" class="a2-v a2-drap a2-noir"></div>
+<div id="drapeau-c" class="a2-v a2-drap a2-fluo"></div>
+<div id="sol" class="a2-v a2-vide"></div>
+<script>
+if (location.search.indexOf('t') > -1) document.documentElement.classList.add('a2-t');
+const A = Marque, C = A.COULEURS, $ = (id) => document.getElementById(id);
+const fl = (sens) => `<svg class="a2-fl" viewBox="0 0 92 56" fill="none" stroke="${C.encre}" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" style="transform:rotate(${sens}deg)"><path d="M6,28 H84 M60,6 L84,28 L60,50"/></svg>`;
+const U = A.DONNEES.univers, SENS = [0, 0, -90, 180], CODE = ['TEX', 'PRI', 'GOO', 'SIG'];
+
+/* ---------- Panneau d'univers ---------- */
+$('plan').innerHTML = `
+  <div style="display:flex;justify-content:space-between;align-items:flex-end">
+    ${A.wordmark(C.encre, 'style="height:66px"')}
+    <div class="a2-mono" style="font-size:13px;text-align:right">Atelier de<br>personnalisation</div>
+  </div>
+  <div class="t-titre" style="font-size:118px;margin:34px 0 24px;white-space:nowrap">Tout est fait ${A.surl('ici', 'noir')}</div>
+  ${U.map((u, i) => `<div class="a2-rang">
+      ${A.picto(u.cle, { c: C.encre, attrs: 'style="height:90px"' })}
+      <div><div class="t-titre">${u.nom}</div><div class="a2-mono">0${i + 1} / ${CODE[i]} · ${u.produits.slice(0, 3).join(' · ')}</div></div>
+      ${fl(SENS[i])}</div>`).join('')}
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-top:26px">
+    ${A.barre({ couleurs: ['encre', 'fonte', 'acier', 'blanc', 'violet', 'orange'], style: 'width:210px;height:16px' })}
+    <div class="a2-mono" style="font-size:13px">CST · SIG · 2026 — custom.fr</div>
+  </div>`;
+
+/* ---------- Drapeau A : « ATELIER » en lettres empilées ---------- */
+$('drapeau-a').innerHTML = `
+  <div class="a2-col" style="padding-top:64px">${A.symbol(C.encre, 'style="height:112px"')}</div>
+  <div class="t-titre a2-col" style="font-size:150px;line-height:.845;margin-top:50px">${'ATELIER'.split('').map((l) => `<span>${l}</span>`).join('')}</div>
+  <div class="a2-abs a2-col" style="left:0;right:0;bottom:50px;gap:16px">
+    <svg viewBox="0 0 56 92" style="width:38px" fill="none" stroke="${C.encre}" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"><path d="M28,6 V84 M6,60 L28,84 L50,60"/></svg>
+    <div class="a2-mono" style="font-size:15px">custom.fr</div></div>`;
+
+/* ---------- Drapeau B : la course, image par image ---------- */
+$('drapeau-b').innerHTML = `
+  <div class="a2-abs tx-motif" style="inset:0;--tm:150px;color:${C.graphite};opacity:.9"></div>
+  <div class="a2-abs a2-col" style="left:0;right:0;top:64px">${A.symbol(C.fluo, 'style="height:112px"')}</div>
+  <div class="a2-abs a2-col" style="left:0;right:0;top:262px;gap:54px">${[1, 2, 3].map((i) => A.sprite('course', i, { c: i === 2 ? '#fff' : C.fluo, attrs: 'style="height:232px"' })).join('')}</div>
+  <div class="a2-abs a2-col" style="left:0;right:0;bottom:60px">${A.wordmark('#fff', 'style="width:250px"')}</div>`;
+
+/* ---------- Drapeau C : le motif de blocs ---------- */
+$('drapeau-c').innerHTML = `
+  <div class="a2-abs" style="left:0;right:0;top:300px;bottom:0">${A.motif({ w: 375, h: 1000, c: 'encre', l: 78, seed: 5, trou: 0.2, attrs: 'style="width:100%;height:100%"' })}</div>
+  <div class="a2-abs" style="left:0;right:0;top:0;height:330px;background:${C.fluo}"></div>
+  <div class="a2-abs a2-col" style="left:0;right:0;top:64px">${A.logoV(C.encre, 'style="width:262px"')}</div>
+  <div class="a2-abs a2-mono" style="left:0;right:0;top:232px;text-align:center;font-size:14px">Textile · Print<br>Goodies · Signalétique</div>`;
+
+/* ---------- Marquage au sol : le chemin court, de la rue à l'atelier ---------- */
+(() => { const w = 2000, h = 1000, e = 88, y0 = 840, y1 = 500, y2 = 160, k = A.CONSTRUCTION.tan * (y0 - y1);
+  const x = [60, 640, 640 + k, 1280, 1280 + k, 1880];
+  $('sol').innerHTML = `<svg viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" fill="none" stroke="${C.fluo}" stroke-width="${e}" stroke-linejoin="round" stroke-linecap="round">
+      <path d="M${x[0]},${y0} H${x[1]} L${x[2]},${y1} H${x[3]} L${x[4]},${y2} H${x[5]}"/><path d="M${x[5] - 120},${y2 - 110} L${x[5]},${y2} L${x[5] - 120},${y2 + 110}"/></svg>`; })();
+</script></body>

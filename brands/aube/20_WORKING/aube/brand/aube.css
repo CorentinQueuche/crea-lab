@@ -1,0 +1,128 @@
+/* AUBE — socle de marque : couleurs, typographie, dégradés, orbe, appareils, interface.
+   Toute planche ou vidéo charge ce fichier puis aube.js. */
+
+@font-face{font-family:"Outfit";src:url("../node_modules/@fontsource-variable/outfit/files/outfit-latin-wght-normal.woff2") format("woff2");font-weight:100 900;font-display:block}
+@font-face{font-family:"DM Mono";src:url("../node_modules/@fontsource/dm-mono/files/dm-mono-latin-400-normal.woff2") format("woff2");font-weight:400;font-display:block}
+@font-face{font-family:"DM Mono";src:url("../node_modules/@fontsource/dm-mono/files/dm-mono-latin-500-normal.woff2") format("woff2");font-weight:500;font-display:block}
+
+:root{
+  --noir:#0A0609;      /* Noir */
+  --nuit:#1C1122;      /* Nuit — aubergine profond, fond de marque */
+  --prune:#4B1838;     /* Prune — ombre chaude des dégradés */
+  --braise:#C4391A;    /* Braise — ton moyen */
+  --aurore:#FF632B;    /* Aurore — couleur vive de la marque */
+  --miel:#FFC46B;      /* Miel — lumière, accent */
+  --creme:#FFF1DC;
+  --brume:#E9E3DE;     /* Brume — gris chaud */
+  --blanc:#FFFFFF;
+  --encre:#231A26;     /* texte sur fond clair */
+  --font:"Outfit",system-ui,sans-serif;
+  --mono:"DM Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--blanc);color:var(--encre);font-family:var(--font);font-weight:300;-webkit-font-smoothing:antialiased;text-rendering:geometricPrecision}
+body{overflow:hidden}
+.mono{font-family:var(--mono);font-weight:400;letter-spacing:.01em}
+
+/* ---------- Dégradés de marque (9 préréglages) ---------- */
+.g1{background:radial-gradient(95% 130% at 0% 0%,#FFC46B 0%,#FF632B 20%,#C4391A 40%,rgba(75,24,56,.92) 62%,rgba(28,17,34,0) 88%),radial-gradient(70% 90% at 100% 100%,#3A1430 0%,rgba(28,17,34,0) 70%),#0A0609}
+.g2{background:radial-gradient(80% 110% at 100% 100%,#FFC46B 0%,#FF632B 22%,#C4391A 44%,rgba(75,24,56,.9) 66%,rgba(28,17,34,0) 90%),radial-gradient(60% 80% at 0% 0%,#4B1838 0%,rgba(28,17,34,0) 75%),#0A0609}
+.g3{background:radial-gradient(120% 90% at 50% 115%,#FFE2B0 0%,#FFC46B 12%,#FF632B 32%,#C4391A 50%,rgba(75,24,56,.9) 70%,rgba(10,6,9,0) 92%),#0A0609}
+.g4{background:radial-gradient(60% 120% at 0% 50%,#FF632B 0%,#C4391A 30%,rgba(75,24,56,.9) 58%,rgba(28,17,34,0) 85%),radial-gradient(50% 70% at 100% 0%,#2C1530 0%,rgba(28,17,34,0) 80%),#0A0609}
+.g5{background:radial-gradient(70% 70% at 30% 20%,#FF8A3D 0%,#FF632B 18%,#C4391A 38%,rgba(75,24,56,.85) 62%,rgba(28,17,34,0) 86%),radial-gradient(60% 60% at 95% 95%,#FFC46B 0%,rgba(255,99,43,.55) 30%,rgba(75,24,56,0) 70%),#150C1A}
+.g6{background:radial-gradient(90% 60% at 50% -10%,#FF632B 0%,#C4391A 35%,rgba(75,24,56,.9) 62%,rgba(10,6,9,0) 90%),#0A0609}
+.g7{background:radial-gradient(55% 75% at 50% 110%,#FFFFFF 0%,#FFE2B0 14%,#FFC46B 26%,#FF632B 46%,rgba(196,57,26,.8) 62%,rgba(75,24,56,0) 88%),radial-gradient(80% 60% at 0% 0%,#2C1530,rgba(10,6,9,0) 80%),#0A0609}
+.g8{background:linear-gradient(105deg,#0A0609 0%,#2C1530 22%,#C4391A 52%,#FF632B 70%,#FFC46B 92%)}
+.g9{background:radial-gradient(75% 95% at 85% 10%,#FFC46B 0%,#FF632B 24%,#C4391A 46%,rgba(75,24,56,.9) 68%,rgba(28,17,34,0) 92%),radial-gradient(60% 70% at 0% 100%,#4B1838,rgba(28,17,34,0) 75%),#0A0609}
+/* Aplat lumineux : fond de couverture */
+.g-vif{background:radial-gradient(100% 140% at 0% 100%,#FFC46B 0%,#FF8A3D 22%,#FF632B 48%,#E04A20 78%,#C4391A 100%)}
+
+/* Grain : casse les bandes des dégradés, donne de la matière */
+.grain{position:relative;isolation:isolate}
+.grain::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:50;opacity:.16;mix-blend-mode:overlay;border-radius:inherit;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='320'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .5  0 0 0 0 .5  0 0 0 0 .5  0 0 0 .9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");background-size:320px 320px}
+
+/* ---------- L'horizon : disque levant à liseré lumineux ---------- */
+.horizon{position:absolute;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(10,6,9,0) 0%,rgba(10,6,9,0) 78%,rgba(196,57,26,.35) 92%,rgba(255,99,43,.75) 98%,rgba(255,196,107,.95) 100%);
+  box-shadow:0 0 0 2px rgba(255,214,150,.95),0 0 26px 4px rgba(255,120,60,.9),0 0 110px 26px rgba(255,99,43,.5),0 0 260px 80px rgba(196,57,26,.35),inset 0 0 90px 10px rgba(255,99,43,.35)}
+
+/* ---------- L'orbe (« l'astre ») ---------- */
+.orb{--s:400px;position:relative;width:var(--s);height:var(--s);flex:none}
+.orb .glow{position:absolute;inset:-42%;border-radius:50%;background:radial-gradient(circle,rgba(255,99,43,.42) 0%,rgba(255,99,43,.16) 38%,rgba(255,99,43,0) 66%)}
+.orb .ring{position:absolute;border-radius:50%;border:1px solid rgba(255,220,190,.16)}
+.orb .ring.r1{inset:-3.2%}.orb .ring.r2{inset:-6.4%;border-color:rgba(255,220,190,.1)}.orb .ring.r3{inset:-9.6%;border-color:rgba(255,220,190,.05)}
+.orb .body{position:absolute;inset:0;border-radius:50%;overflow:hidden;background:radial-gradient(circle at 50% 58%,#FF6A30 0%,#E04A20 46%,#8E2433 100%)}
+.orb .blob{position:absolute;border-radius:50%;filter:blur(calc(var(--s)*.11));will-change:transform}
+.orb .b1{width:74%;height:74%;left:var(--x1,-16%);top:var(--y1,-12%);background:#FFC46B}
+.orb .b2{width:66%;height:66%;left:var(--x2,52%);top:var(--y2,44%);background:#4B1838}
+.orb .b3{width:50%;height:50%;left:var(--x3,6%);top:var(--y3,62%);background:#FF8A3D}
+.orb .b4{width:34%;height:24%;left:var(--x4,10%);top:var(--y4,10%);background:#fff;opacity:.9;filter:blur(calc(var(--s)*.065))}
+.orb .b5{width:40%;height:40%;left:var(--x5,58%);top:var(--y5,-8%);background:#FF632B}
+.orb .spec{position:absolute;width:30%;height:13%;left:17%;top:9%;border-radius:50%;background:#fff;opacity:.62;transform:rotate(-27deg);filter:blur(calc(var(--s)*.028))}
+.orb .shade{position:absolute;inset:0;border-radius:50%;
+  box-shadow:inset 0 0 calc(var(--s)*.1) rgba(10,6,9,.5),inset 0 calc(var(--s)*-.05) calc(var(--s)*.09) rgba(255,214,150,.45),inset 0 0 0 max(1px,calc(var(--s)*.004)) rgba(255,235,210,.35)}
+.orb .mark{position:absolute;inset:0;display:grid;place-items:center}
+.orb .mark svg{width:46%;height:auto;margin-top:-4%}
+
+/* ---------- Téléphone (dessiné à 414 × 868, mis à l'échelle par --k) ---------- */
+.phone{--k:1;zoom:var(--k);position:relative;width:414px;height:868px;border-radius:66px;padding:12px;flex:none;
+  background:linear-gradient(150deg,#b9b4b6 0%,#4a4649 14%,#2a272a 38%,#77727a 62%,#252326 82%,#8a858a 100%);
+  box-shadow:0 0 0 1px rgba(0,0,0,.35),0 50px 80px -30px rgba(20,8,14,.45),0 18px 30px -18px rgba(20,8,14,.35)}
+.phone::before{content:"";position:absolute;inset:3px;border-radius:63px;background:#050305}
+.phone .screen{position:relative;width:390px;height:844px;border-radius:54px;overflow:hidden;background:var(--noir)}
+.phone .island{position:absolute;top:11px;left:50%;margin-left:-62px;width:124px;height:36px;border-radius:20px;background:#000;z-index:20}
+.phone .island::after{content:"";position:absolute;right:13px;top:12px;width:12px;height:12px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#2a3550,#07080d 70%)}
+.phone .btn{position:absolute;width:4px;background:#3a373a;border-radius:2px}
+.phone .btn.l1{left:-3px;top:170px;height:34px}.phone .btn.l2{left:-3px;top:230px;height:62px}.phone .btn.l3{left:-3px;top:306px;height:62px}.phone .btn.r1{right:-3px;top:260px;height:100px}
+
+/* ---------- Interface (390 × 844) ---------- */
+.ui{position:absolute;inset:0;color:#fff;font-family:var(--font);font-weight:300;overflow:hidden}
+.ui .status{position:absolute;top:0;left:0;right:0;height:58px;display:flex;justify-content:space-between;align-items:center;padding:6px 34px 0 40px;font-weight:500;font-size:16px;z-index:10}
+.ui .status svg{height:12px;width:auto}
+.ui .home{position:absolute;bottom:9px;left:50%;margin-left:-70px;width:140px;height:5px;border-radius:3px;background:#fff;opacity:.95;z-index:10}
+.ui-bg-a{background:radial-gradient(120% 60% at 50% 108%,#FF632B 0%,#C4391A 26%,rgba(75,24,56,.92) 54%,rgba(10,6,9,0) 84%),radial-gradient(80% 40% at 100% 0%,#2C1530,rgba(10,6,9,0) 80%),#0A0609}
+.ui-bg-b{background:radial-gradient(130% 44% at 30% -6%,#FF8A3D 0%,#FF632B 22%,#C4391A 44%,rgba(75,24,56,.9) 70%,rgba(28,17,34,0) 100%),linear-gradient(#150C1A,#0A0609)}
+.ui-bg-c{background:radial-gradient(120% 50% at 50% 112%,#FFC46B 0%,#FF632B 22%,#C4391A 44%,rgba(75,24,56,.9) 68%,rgba(10,6,9,0) 96%),#0A0609}
+.glass{background:linear-gradient(160deg,rgba(255,255,255,.17),rgba(255,255,255,.07));border:1px solid rgba(255,255,255,.2);border-radius:18px;backdrop-filter:blur(18px)}
+.glass.dark{background:rgba(22,13,22,.62);border-color:rgba(255,255,255,.1)}
+.chip-mic{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 35% 30%,#FFC46B,#FF632B 45%,#8E2433 100%);box-shadow:inset 0 0 0 1px rgba(255,235,210,.4),0 0 18px rgba(255,99,43,.55)}
+.chip-mic svg{width:15px;height:auto}
+.chip-mic.ghost{background:rgba(255,255,255,.1);box-shadow:inset 0 0 0 1px rgba(255,255,255,.28)}
+.cap{font-family:var(--mono);font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;opacity:.75}
+.ck{display:flex;gap:8px;align-items:flex-start;font-size:12.5px;line-height:1.35;opacity:.92;margin-top:5px}
+.ck i{flex:none;width:11px;height:11px;margin-top:2.5px;border-radius:50%;border:1px solid rgba(255,255,255,.7)}
+.ck.on i{background:var(--aurore);border-color:var(--aurore);box-shadow:0 0 8px rgba(255,99,43,.8)}
+.bars{display:flex;align-items:flex-end;gap:5px;height:58px}
+.bars b{flex:1;border-radius:4px 4px 2px 2px;background:linear-gradient(#FFC46B,#FF632B 55%,#C4391A)}
+.sbars{display:flex;align-items:flex-end;gap:6px;height:74px}
+.sbars b{width:5px;border-radius:2px;background:linear-gradient(#FFC46B,#FF632B)}
+
+/* ---------- Montre (dessinée à 300 × 480) ---------- */
+.watch{--k:1;zoom:var(--k);position:relative;width:300px;height:480px;flex:none}
+.watch .band{position:absolute;left:54px;width:192px;height:150px;background:linear-gradient(90deg,#060406,#1d191d 22%,#0b090b 50%,#1d191d 78%,#060406);}
+.watch .band.t{top:0;border-radius:26px 26px 0 0}.watch .band.b{bottom:0;border-radius:0 0 26px 26px}
+.watch .band::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.05) 0 2px,transparent 2px 14px)}
+.watch .case{position:absolute;left:24px;top:104px;width:252px;height:272px;border-radius:70px;padding:15px;
+  background:linear-gradient(145deg,#d8d2cc,#8c867f 22%,#5d5852 50%,#a39c94 78%,#6b665f);box-shadow:0 30px 50px -20px rgba(0,0,0,.6),inset 0 0 0 1px rgba(255,255,255,.3)}
+.watch .case::before{content:"";position:absolute;inset:7px;border-radius:63px;background:#060406}
+.watch .crown{position:absolute;right:8px;top:176px;width:18px;height:52px;border-radius:7px;background:linear-gradient(90deg,#77716a,#c9c2ba 45%,#6b665f)}
+.watch .side{position:absolute;right:13px;top:244px;width:10px;height:58px;border-radius:5px;background:linear-gradient(90deg,#6b665f,#a39c94)}
+.watch .wscreen{position:relative;width:222px;height:242px;border-radius:55px;overflow:hidden;color:#fff;
+  background:radial-gradient(120% 80% at 50% 118%,#FFC46B 0%,#FF632B 24%,#C4391A 46%,rgba(75,24,56,.92) 70%,#0A0609 100%)}
+
+/* ---------- Carte de message (notification) ---------- */
+.ncard{width:340px;border-radius:40px;padding:22px 24px 20px;color:#fff;font-weight:300;
+  background:linear-gradient(160deg,rgba(255,255,255,.3),rgba(255,255,255,.14));border:1px solid rgba(255,255,255,.34)}
+.ncard .hd{display:flex;align-items:center;gap:14px;font-weight:500;font-size:17px}
+.ncard .tx{font-size:15px;line-height:1.38;margin:16px 0 18px;min-height:62px}
+.ncard .in{display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.3);padding-top:14px;font-size:14px;color:rgba(255,255,255,.6)}
+
+/* ---------- Planches de présentation (1400 px de large, rendu ×2) ---------- */
+.plate{position:relative;width:1400px;overflow:hidden}
+.plate.pad{padding:84px}
+.pfoot{position:absolute;left:84px;right:84px;bottom:56px;display:grid;grid-template-columns:312px 312px 1fr auto;align-items:end;font-size:12px;font-weight:400}
+.pfoot svg{height:38px;width:auto}
+.h-xl{font-weight:300;font-size:56px;line-height:1.08;letter-spacing:-.012em}
+.h-l{font-weight:400;font-size:44px;line-height:1.1;letter-spacing:-.01em}
+.body-l{font-size:19px;line-height:1.36}

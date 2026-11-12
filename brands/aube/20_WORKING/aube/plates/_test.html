@@ -1,0 +1,21 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../brand/aube.css"><script src="../brand/aube.js"></script>
+<body><div class="plate" id="p" style="background:#EDEAE8"></div>
+<script>
+const A = Aube;
+document.getElementById('p').innerHTML = `
+<div style="display:grid;grid-template-columns:1fr 1fr;">
+  <div style="background:#fff;padding:70px;display:grid;place-items:center;height:330px">${A.lockup('#1C1122','style="width:520px"')}</div>
+  <div class="g1 grain" style="padding:70px;display:grid;place-items:center;height:330px">${A.lockup('#fff','style="width:520px"')}</div>
+</div>
+<div class="grain" style="background:#0A0609;height:520px;display:flex;align-items:center;justify-content:space-around;position:relative;overflow:hidden">
+  <div class="g6" style="position:absolute;inset:0;opacity:.5"></div>
+  ${A.orb(330)} ${A.orb(120,{mark:false})}
+  <div style="position:relative;width:420px;height:420px;overflow:hidden;border-radius:20px;background:#0A0609"><div class="horizon" style="width:900px;height:900px;left:-240px;top:230px"></div></div>
+</div>
+<div style="display:flex;gap:40px;padding:60px;align-items:center;justify-content:center">
+  ${A.phone(A.screens.voix(), .62)} ${A.phone(A.screens.jour(), .62)} ${A.phone(A.screens.bord(), .62)} ${A.phone(A.screens.chat(), .62)}
+  ${A.watch(A.watchScreen(), .8)}
+</div>
+<div class="g-vif" style="padding:50px;display:flex;gap:30px;justify-content:center">${A.ncard('Déjeuner :','Midi approche ! Tu as prévu quelque chose, ou veux-tu deux idées rapides et légères près du bureau ?')}${A.ncard('Réunion :','Point d\'équipe dans 15 minutes. L\'ordre du jour est prêt.')}
+<div style="display:grid;gap:10px">${A.symbol('#1C1122','style="width:90px"')}${A.symbol('#fff','style="width:90px"')}</div></div>`;
+</script></body>

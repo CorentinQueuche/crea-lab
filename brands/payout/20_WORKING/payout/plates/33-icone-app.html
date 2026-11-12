@@ -1,0 +1,68 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates-b.css"><script src="../brand/marque.js"></script>
+<style>
+  .s33-ton{display:grid;grid-template-columns:auto 1fr;gap:4px 18px;align-items:center}
+  .s33-ton b{font-weight:500;font-size:16px;letter-spacing:-.02em;align-self:end}
+  .s33-ton span{font-size:13.5px;opacity:.6;align-self:start}
+  .s33-taille{display:grid;justify-items:center;gap:14px}
+  /* Écran d'accueil générique et inventé : tuiles neutres, seul Payout est allumé */
+  .s33-acc{position:absolute;inset:0;background:linear-gradient(180deg,#151D18 0%,#101713 46%,#0B100D 100%);font-family:var(--font);color:#F3F6F4}
+  .s33-app{position:absolute;width:64px;display:grid;justify-items:center;gap:7px}
+  .s33-app em{font-style:normal;font-size:11.5px;font-weight:500;letter-spacing:-.005em;white-space:nowrap}
+  .s33-app .t{width:64px;height:64px;border-radius:22.5%;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+  .s33-dock{position:absolute;left:14px;right:14px;bottom:26px;height:94px;border-radius:34px;background:rgba(243,246,244,.08);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+</style>
+<body><div class="plate" id="p" style="height:1060px;background:var(--coffre)"></div>
+<script>
+const A = Marque, C = A.COULEURS, NB = ' ', SUR = '#F3F6F4', KT = 0.9;
+const G1 = '#171F1A', G2 = '#0B100D', L = C.releve, M = C.acier;
+const t = (bg, svg) => `<div class="t" style="background:${bg}"><svg viewBox="0 0 64 64" width="64" height="64" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">${svg}</svg></div>`;
+const apps = [
+  ['Agenda', t(L, `<rect x="16" y="18" width="32" height="30" rx="5" stroke="${C.coffre}"/><path d="M16 27h32" stroke="${C.coffre}"/><circle cx="26" cy="37" r="2.4" fill="${C.coffre}" stroke="none"/><circle cx="36" cy="37" r="2.4" fill="${M}" stroke="none"/>`)],
+  ['Photos', t(G1, `<circle cx="27" cy="27" r="10" fill="${L}" fill-opacity=".85" stroke="none"/><circle cx="38" cy="29" r="10" fill="${M}" fill-opacity=".8" stroke="none"/><circle cx="32" cy="39" r="10" fill="${L}" fill-opacity=".35" stroke="none"/>`)],
+  ['Notes', t(M, `<path d="M19 22h26M19 32h26M19 42h16" stroke="${C.coffre}"/>`)],
+  ['Météo', t(G2, `<circle cx="28" cy="28" r="9" stroke="${L}"/><path d="M22 44h22M30 50h10" stroke="${M}"/>`)],
+  ['Plans', t(L, `<path d="M16 46 27 20l9 17 12-11" stroke="${C.coffre}"/><circle cx="48" cy="26" r="3.6" fill="${M}" stroke="none"/>`)],
+  ['Musique', t(G1, `<path d="M20 40v6M28 30v16M36 24v22M44 34v12" stroke="${L}"/>`)],
+  ['Réglages', t(M, `<circle cx="32" cy="32" r="13" stroke="${C.coffre}"/><circle cx="32" cy="32" r="4" fill="${C.coffre}" stroke="none"/>`)],
+  ['Horloge', t(G2, `<circle cx="32" cy="32" r="15" stroke="${L}"/><path d="M32 23v9l6 4" stroke="${M}"/>`)],
+  ['Fichiers', t(L, `<path d="M16 22h11l4 4h17v20H16Z" stroke="${C.coffre}"/>`)],
+  ['Payout', A.icone(64, 'net')],
+  ['Caméra', t(G1, `<rect x="15" y="22" width="34" height="24" rx="6" stroke="${L}"/><circle cx="32" cy="34" r="6" stroke="${M}"/>`)],
+  ['Contacts', t(M, `<circle cx="32" cy="26" r="7" stroke="${C.coffre}"/><path d="M19 46c2-8 7-11 13-11s11 3 13 11" stroke="${C.coffre}"/>`)],
+  ['Calculs', t(G2, `<path d="M21 24h10M26 19v10M36 24h8M21 40h10M36 37h8M36 43h8" stroke="${L}"/>`)],
+  ['Lecture', t(L, `<path d="M15 22c6-2 12-1 17 3 5-4 11-5 17-3v22c-6-2-12-1-17 3-5-4-11-5-17-3Z" stroke="${C.coffre}"/>`)],
+  ['Bourse', t(G1, `<path d="M17 42 26 32l7 6 14-15" stroke="${M}"/>`)],
+  ['Podcasts', t(M, `<path d="M23 41a13 13 0 1 1 18 0" stroke="${C.coffre}"/><circle cx="32" cy="31" r="4" fill="${C.coffre}" stroke="none"/>`)],
+];
+const dock = [
+  t(L, `<rect x="23" y="16" width="18" height="32" rx="5" stroke="${C.coffre}"/>`),
+  t(G1, `<path d="M17 21h30v18H31l-8 7v-7h-6Z" stroke="${L}"/>`),
+  t(M, `<circle cx="32" cy="32" r="14" stroke="${C.coffre}"/><path d="M18 32h28M32 18c5 5 5 23 0 28M32 18c-5 5-5 23 0 28" stroke="${C.coffre}"/>`),
+  t(G2, `<rect x="16" y="21" width="32" height="22" rx="4" stroke="${L}"/><path d="m17 23 15 11 15-11" stroke="${M}"/>`),
+];
+const X = (i) => 27 + (i % 4) * ((390 - 54 - 4 * 64) / 3 + 64), Y = (i) => 82 + Math.floor(i / 4) * 100;
+const accueil = `<div class="ui" style="background:none"><div class="s33-acc">
+  ${A.icons.status()}
+  ${apps.map(([n, ic], i) => `<div class="s33-app" style="left:${X(i)}px;top:${Y(i)}px">${ic}<em>${n}</em></div>`).join('')}
+  <div class="s33-dock">${dock.map((ic, i) => `<div class="s33-app" style="left:${X(i) - 14}px;top:15px">${ic}</div>`).join('')}</div>
+</div><div class="home"></div></div>`;
+
+const tons = [['net', 'Coffre sur Net', 'Par défaut'], ['coffre', 'Net sur Coffre', 'Sur fond sombre'], ['releve', 'Coffre sur Relevé', 'Sur fond clair']];
+const tailles = [96, 64, 48, 32, 16];
+document.getElementById('p').innerHTML = `
+  ${A.entete(A.ENTETE, SUR)}
+  <div class="pb-abs" style="left:84px;top:104px;width:720px">
+    <div class="pb-lbl doux">La web app · icône d'application</div>
+    <div class="pb-t" style="margin-top:16px">Le seul carré allumé.</div>
+    ${A.bicolore(`Un carré à coins de 22,5${NB}%, <b>le P-jauge à 62${NB}% de la hauteur.</b> Sur un écran d'accueil, <b>c'est lui qu'on voit.</b>`, 'font-size:21px;line-height:1.3;margin-top:22px;width:600px')}
+  </div>
+  <div class="pb-abs" style="left:84px;top:350px">${A.icone(300, 'net')}</div>
+  <div class="pb-abs" style="left:424px;top:350px;display:grid;gap:22px">${tons.map(([k, a, b]) => `<div class="s33-ton">${A.icone(84, k)}<div style="display:grid;gap:4px"><b>${a}</b><span>${b}</span></div></div>`).join('')}</div>
+  <div class="pb-abs" style="left:84px;top:740px;width:720px;border-top:1px solid var(--filet);padding-top:22px">
+    <div class="pb-lbl doux" style="margin-bottom:22px">Tailles · lisible jusqu'à 16${NB}px</div>
+    <div style="display:flex;gap:46px;align-items:flex-end">${tailles.map((s) => `<div class="s33-taille">${A.icone(s, 'net')}<span class="pb-lbl doux">${s}${NB}px</span></div>`).join('')}</div>
+  </div>
+  <div class="pb-abs" style="left:${1316 - 414 * KT}px;top:180px">${A.phone(accueil, KT)}</div>
+  <div class="pb-abs pb-lbl doux" style="left:${1316 - 414 * KT}px;top:${180 + 868 * KT + 18}px">Écran d'accueil générique · applications inventées</div>
+`;
+</script></body>

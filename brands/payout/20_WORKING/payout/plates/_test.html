@@ -1,0 +1,120 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../brand/marque.css"><script src="../brand/marque.js"></script>
+<style>
+  /* Styles propres à cette page de test (préfixe z- pour ne rien heurter dans le socle) */
+  .z-lbl{position:absolute;left:24px;top:18px;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;opacity:.6;z-index:60}
+  .z-cell{position:relative;display:grid;place-items:center;overflow:hidden}
+  .z-sw{position:relative;height:150px;padding:16px;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;display:flex;flex-direction:column;justify-content:flex-end;gap:3px}
+  .z-sw b{font-family:var(--font);font-size:21px;font-weight:500;letter-spacing:-.03em;text-transform:none}
+  .z-gr{position:relative;height:150px;padding:12px 14px;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em}
+  .z-zone{position:relative;padding:74px 40px 60px;display:flex;gap:30px;align-items:center;justify-content:center;border-top:1px solid var(--filet)}
+</style>
+<body><div class="plate" id="p" style="background:var(--coffre)"></div>
+<script>
+const A = Marque, C = A.COULEURS, N = A.ECHELLE, NB = ' ', SUR = '#F3F6F4', NOIR = '#04140A';
+const sw = (nom, hex, role, fg, bord) => `<div class="z-sw" style="background:${hex};color:${fg};${bord ? 'box-shadow:inset 0 0 0 1px var(--filet)' : ''}"><b>${nom}</b><span>${hex}</span><span style="opacity:.7">${role}</span></div>`;
+const gr = (cls, fg) => `<div class="z-gr ${cls} grain" style="color:${fg}">.${cls}</div>`;
+document.getElementById('p').innerHTML = `
+<!-- 1. Couverture : bandeau d'en-tête, halo, logo complet -->
+<div class="g1 grain" style="position:relative;height:560px">${A.entete(A.ENTETE, SUR, 'top:auto;bottom:40px')}
+  <span class="z-lbl" style="top:auto;bottom:16px;left:28px">Couverture · logo complet Blanc sur .g1 (halo en arc) · bandeau d'en-tête (Marque.entete)</span><div style="position:absolute;left:56px;bottom:130px">${A.lockup(SUR, 'style="width:620px;display:block"')}</div>
+</div>
+<!-- 2. Logo : couleurs et tailles -->
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr 260px;border-top:1px solid var(--filet)">
+  <div class="z-cell" style="height:230px;background:${C.coffre}"><span class="z-lbl">Net sur Coffre</span>${A.wordmark(C.net, 'style="width:320px"')}</div>
+  <div class="z-cell g-vif grain" style="height:230px;color:${NOIR}"><span class="z-lbl">Coffre sur .g-vif</span>${A.wordmark(C.coffre, 'style="width:320px"')}</div>
+  <div class="z-cell" style="height:230px;background:${C.releve};color:${C.coffre}"><span class="z-lbl">Coffre sur Relevé</span>${A.lockup(C.coffre, 'style="width:340px"')}</div>
+  <div class="z-cell" style="height:230px;background:${C.ardoise}"><span class="z-lbl">64 px · 32 · 16 · icônes</span><div style="display:grid;gap:16px;justify-items:center;margin-top:14px">${A.wordmark(SUR, 'style="width:64px"')}
+    <div style="display:flex;gap:13px;align-items:flex-end">${A.symbol(C.net, 'style="height:32px"')}${A.symbol(SUR, 'style="height:16px"')}${A.icone(48, 'net')}${A.icone(32, 'coffre')}${A.icone(16, 'net')}</div></div></div>
+</div>
+<!-- 3. Le symbole, ses états, version empilée, icônes -->
+<div style="display:grid;grid-template-columns:400px 1fr 380px;height:400px;border-top:1px solid var(--filet)">
+  <div class="z-cell" style="background:${C.net};color:${NOIR}"><span class="z-lbl">Le symbole en grand, coupé par deux bords</span><div style="position:absolute;left:-150px;top:36px">${A.symbol(C.coffre, 'style="width:520px;display:block"')}</div></div>
+  <div class="z-cell" style="background:${C.coffre}"><span class="z-lbl">Le P-jauge · de 54 à 85 (symbolPath(pct)) · la part qui manque</span>
+    <div style="display:flex;gap:30px;align-items:flex-end;margin-top:20px">${[54, 65, 75, 85].map((p) => `<div style="display:grid;justify-items:center;gap:12px">${A.symbol(p === 85 ? C.net : SUR, 'style="height:128px"', p)}<span class="mt" style="font-size:12px;opacity:.7">${A.pc(p)}</span></div>`).join('')}
+      <div style="display:grid;justify-items:center;gap:12px"><svg viewBox="0 0 100 140" style="height:128px"><path fill="${C.net}" d="${A.symbolParts().anneau}"/><path fill="${C.net}" d="${A.symbolParts().fut}"/><path fill="${C.preleve}" d="${A.symbolParts().part}"/></svg><span class="mt" style="font-size:12px;opacity:.7">85 + 15</span></div></div></div>
+  <div class="z-cell g6 grain"><span class="z-lbl">Version empilée · icônes d'app</span><div style="display:grid;gap:34px;justify-items:center">${A.lockupV(SUR, 'style="width:250px"')}<div style="display:flex;gap:14px">${A.icone(84, 'net')}${A.icone(84, 'coffre')}${A.icone(84, 'releve')}</div></div></div>
+</div>
+
+<!-- 4. La jauge : très grands chiffres, segments, blocs, escalier -->
+<div style="position:relative;padding:70px 56px 56px;border-top:1px solid var(--filet)"><span class="z-lbl">La jauge · 54 puis 85 sur 100 · segments (100 traits), blocs (10 × 10), escalier</span>
+  <div style="display:grid;grid-template-columns:1fr 430px;gap:60px;align-items:end">
+    <div><div style="display:flex;align-items:flex-end;justify-content:space-between"><div class="chiffre" style="font-size:320px;color:${C.net};margin-left:-14px">${A.pcH(85)}</div>
+        <div style="text-align:right;padding-bottom:18px"><div class="cap">Aujourd'hui</div><div class="chiffre" style="font-size:96px;color:${C.preleve};margin-top:8px">${A.pcH(54)}</div></div></div>
+      <div style="margin-top:26px">${A.jauge({ forme: 'segments', p: 85, avant: 54, h: 96, g: 3 })}</div>
+      <div class="cap" style="display:flex;justify-content:space-between;margin-top:12px"><span>0</span><span style="margin-left:42%">54 · ce qu'on garde aujourd'hui</span><span style="color:${C.net};opacity:1">+31 · jusqu'à 85</span><span>100</span></div></div>
+    <div style="display:grid;gap:12px;justify-items:end"><div class="cap">Sur 100${NB}€ facturés, jusqu'à 85${NB}€ pour vous</div>${A.jauge({ forme: 'blocs', p: 85, avant: 54, l: 430, g: 6 })}</div>
+  </div>
+  <div style="display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:24px;margin-top:44px;align-items:end">
+    <div class="grain" style="position:relative;height:250px">${A.jauge({ forme: 'escalier', p: 85, n: 10, h: 250, degrade: true })}<span class="cap" style="position:absolute;left:8px;bottom:8px;color:#04140A;opacity:1;z-index:60">54</span><span class="cap" style="position:absolute;right:8px;bottom:8px;color:#04140A;opacity:1;z-index:60">85</span></div>
+    <div style="display:grid;gap:16px">${A.jauge({ forme: 'segments', n: 20, p: 54, h: 40, g: 4, c: C.acier })}${A.jauge({ forme: 'segments', n: 20, p: 85, h: 40, g: 4 })}${A.jauge({ p: 85, h: 40, repere: 54 })}${A.jauge({ p: 85, h: 14, part: 'plein', c2: C.preleve })}<div class="cap">segments (n : 20) · barre, repère 54 · part : plein (Prélevé, rare)</div></div>
+    <div style="display:flex;gap:22px;align-items:center;justify-content:flex-end"><div style="position:relative">${A.jauge({ forme: 'anneau', taille: 210, repere: 54, c3: '#FFFFFF' })}<div class="chiffre" style="position:absolute;inset:0;display:grid;place-items:center;font-size:40px;color:${C.net}"><span>${A.pcH(85)}</span></div></div>
+      <div style="display:grid;gap:14px">${A.jauge({ forme: 'blocs', p: 54, l: 110, g: 2, c: C.acier, part: 'vide' })}${A.passage({ taille: 30 })}</div></div>
+  </div>
+</div>
+
+<!-- 5. Les motifs et la recette en calques -->
+<div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;height:420px;border-top:1px solid var(--filet)">
+  <div class="grain" style="position:relative;overflow:hidden"><span class="z-lbl">Les bandes · profil « monte » · les données deviennent le motif</span>${A.bandes({ n: 34, seed: 5 })}</div>
+  <div class="grain" style="position:relative;overflow:hidden;border-left:1px solid var(--filet)"><span class="z-lbl">Le damier</span>${A.damier({ cols: 7, rows: 7, seed: 4 })}</div>
+  <div class="grain" style="position:relative;overflow:hidden;border-left:1px solid var(--filet)"><span class="z-lbl">Les stries · le halo</span>${A.bandes({ forme: 'stries', n: 22, seed: 9, style: 'bottom:50%' })}${A.halo('bas', 'top:50%')}</div>
+</div>
+<div style="position:relative;padding:64px 56px 50px;border-top:1px solid var(--filet);display:grid;grid-template-columns:repeat(3,1fr);gap:16px"><span class="z-lbl">La recette en trois calques (Marque.recette) · base, grain, teinte</span>
+  ${[['base', '01 · Base', 'Rampe du blanc au noir · opacité 100 %'], ['grain', '02 · Grain', 'Bruit fractal · incrustation · 50 %'], ['teinte', '03 · Teinte', 'Net 500 #36FF72 · mode couleur · 100 %']].map(([e, t, d]) => `<div class="carte" style="padding:16px 16px 18px"><div class="cap" style="opacity:1">${t}</div><div class="cap" style="margin-top:5px">${d}</div><div style="position:relative;height:190px;margin-top:14px;overflow:hidden">${A.recette(e, 'bandes', { n: 22, seed: 5 })}</div><div style="position:relative;height:120px;margin-top:10px;overflow:hidden">${A.recette(e, 'halo')}</div></div>`).join('')}
+</div>
+
+<!-- 6. Palette, échelle 50–900, dégradés -->
+<div style="display:grid;grid-template-columns:repeat(7,1fr);border-top:1px solid var(--filet)">
+  ${sw('Coffre', C.coffre, 'Fond de marque', SUR, 1)}${sw('Ardoise', C.ardoise, 'Panneaux sombres', SUR, 1)}${sw('Acier', C.acier, 'Texte secondaire', NOIR)}${sw('Relevé', C.releve, 'Panneaux clairs', NOIR)}${sw('Blanc', C.blanc, 'Cœur des halos', NOIR)}${sw('Net', C.net, 'Vert électrique', NOIR)}${sw('Prélevé', C.preleve, 'Ce qui part, rare', NOIR)}
+</div>
+<div style="display:grid;grid-template-columns:repeat(10,1fr)">${Object.keys(N).map((k) => `<div class="z-sw" style="height:84px;background:${N[k]};color:${+k >= 700 ? SUR : NOIR}"><span>Net/${k}</span><span>${N[k]}</span></div>`).join('')}</div>
+<div style="display:grid;grid-template-columns:repeat(5,1fr)">
+  ${gr('g1', SUR)}${gr('g2', SUR)}${gr('g3', SUR)}${gr('g4', SUR)}${gr('g5', SUR)}${gr('g6', SUR)}${gr('g7', SUR)}${gr('g8', NOIR)}${gr('g9', NOIR)}${gr('g-vif', NOIR)}
+</div>
+
+<!-- 7. Gabarits de planche : bandeau de section, bento, pilules, phrase bicolore -->
+<div style="position:relative;padding:70px 40px 0;border-top:1px solid var(--filet)"><span class="z-lbl">Gabarits · Marque.section (bandeau à onglets) · Marque.tuile (bento) · Marque.pilule · Marque.bicolore</span>
+  ${A.section({ titre: 'La web app', num: '03', actif: 2, phrase: 'Un cockpit financier qui réunit <b>comptes, frais pro, CRA, TVA et déclarations</b>. Il calcule, et il déclenche <b>à votre place</b>.' })}
+  <div style="background:${C.releve};padding:0 16px 16px;display:grid;grid-template-columns:1.25fr 1fr 1fr;grid-template-rows:230px 230px;gap:16px">
+    ${A.tuile(`<div class="grain" style="position:absolute;inset:0">${A.bandes({ n: 18, seed: 3 })}</div><div style="position:absolute;left:28px;bottom:26px;z-index:60">${A.wordmark(SUR, 'style="width:230px;display:block"')}</div>`, { ton: 'noire', lbl: 'Tuile noire', style: 'grid-row:1/3' })}
+    ${A.tuile(`<div style="position:absolute;left:26px;bottom:8px;font-size:190px;font-weight:500;letter-spacing:-.07em;line-height:.8">Aa</div><div style="position:absolute;right:26px;top:22px;text-align:right"><div style="font-size:22px;font-weight:500;letter-spacing:-.03em">Instrument Sans</div><div class="cap" style="margin-top:8px;line-height:1.6">Regular · Medium<br>0123456789</div></div>`, { ton: 'blanche', lbl: 'Tuile blanche' })}
+    ${A.tuile(`<div style="position:absolute;inset:0;display:grid;place-items:center">${A.symbol(NOIR, 'style="height:130px"')}</div>`, { ton: 'vive', lbl: 'Tuile vive' })}
+    ${A.tuile(`<div style="position:absolute;left:26px;right:26px;bottom:24px">${A.bicolore('Votre CRA <b>devient une facture.</b> Zéro ressaisie.', 'font-size:27px;line-height:1.08;letter-spacing:-.035em')}</div>`, { lbl: 'Tuile Ardoise · phrase bicolore' })}
+    ${A.tuile(`<div style="position:absolute;left:26px;right:26px;bottom:24px;display:flex;flex-wrap:wrap;gap:6px">${A.pilule('Facturer', true)}${A.pilule('Déclarer')}${A.pilule('Garder')}${A.pilule('À venir', false, 'mono')}${A.pilule('Payé', false, 'mono filet')}</div>`, { ton: 'claire', lbl: 'Tuile claire · pilules', style: 'box-shadow:inset 0 0 0 1px rgba(6,10,8,.12)' })}
+  </div>
+</div>
+
+<!-- 8. Le décompte, la grille du CRA, les cartes de message -->
+<div class="z-zone" style="align-items:flex-start;gap:18px;padding-left:30px;padding-right:30px"><span class="z-lbl">Le décompte (Marque.decompte) · la grille du CRA (Marque.cra) · cartes de message</span>
+  ${A.decompte({ titre: 'Sur 100 € facturés, aujourd\'hui', lignes: [['Facturé', 100], ['Ce qui part', -46, 'part']], total: ['Ce qui vous reste', 54], p: 54, k: .74 })}
+  ${A.decompte({ k: .74 })}
+  ${A.decompte({ clair: true, titre: 'Votre mois d\'octobre', lignes: [['20 jours à 600 €', 12000], ['Ce qui part', -1800, 'part']], total: ['Pour vous, jusqu\'à', 10200], dec: 0, k: .74 })}
+  <div style="display:grid;gap:14px"><div class="carte" style="padding:16px">${A.cra({ cell: 32, gap: 5 })}</div><div class="theme clair" style="background:${C.releve};padding:14px;border-radius:20px;display:flex;gap:14px">${A.cra({ cell: 14, gap: 3, entete: false, nums: false })}${A.cra({ cell: 14, gap: 3, entete: false, nums: false, jusqu: 14 })}</div></div>
+  <div style="display:grid;gap:14px;zoom:.62">${A.ncard('Facture générée', `Votre CRA d'octobre est validé. La facture <span style="white-space:nowrap">F-2026-010</span> de 12${NB}000${NB}€ HT est prête, avec son PDF.`, { action: 'Voir la facture' })}${A.ncard('TVA à déclarer', `CA3 d'octobre${NB}: 2${NB}213,60${NB}€ à reverser avant le 24 novembre. Tout est déjà calculé.`, { heure: '8:30', action: 'Ouvrir la déclaration' })}</div>
+</div>
+
+<!-- 9. Écrans de téléphone -->
+<div class="z-zone g6" style="gap:26px"><span class="z-lbl">Téléphone · solde, cra, cashouts, simulateur (sombre) · solde (clair)</span>
+  ${A.phone(A.screens.solde(), .56)} ${A.phone(A.screens.cra(), .56)} ${A.phone(A.screens.cashouts(), .56)} ${A.phone(A.screens.simulateur(), .56)} ${A.phone(A.screens.solde({ clair: true }), .56)}
+</div>
+<div class="z-zone" style="gap:26px;padding-top:60px"><span class="z-lbl">Téléphone · cra en saisie (valide : false, jusqu : 21) · facture · bord (sombre) · bord et facture (clair) · Marque.icons.top</span>
+  ${A.phone(A.screens.cra({ jusqu: 21, valide: false }), .56)} ${A.phone(A.screens.facture(), .56)} ${A.phone(A.screens.bord(), .56)} ${A.phone(A.screens.bord({ clair: true }), .56)} ${A.phone(A.screens.facture({ clair: true }), .56)}
+</div>
+
+<!-- 10. Écrans d'ordinateur -->
+<div class="z-zone g6 grain" style="padding-bottom:40px"><span class="z-lbl">Ordinateur portable (Marque.laptop) · desk.bord, thème sombre</span>${A.laptop(A.desk.bord(), .74, { url: 'app.payout.fr/tableau-de-bord' })}</div>
+<div class="z-zone" style="gap:22px;padding-top:60px;flex-wrap:wrap"><span class="z-lbl">Navigateur (Marque.browser) · desk.cashouts (sombre) · desk.cra (clair) · desk.cra en saisie (valide : false) · desk.cashouts (clair)</span>
+  ${A.browser(A.desk.cashouts(), .455, { url: 'app.payout.fr/cash-out' })}${A.browser(A.desk.cra({ clair: true }), .455, { url: 'app.payout.fr/planning', clair: true })}
+  ${A.browser(A.desk.cra({ jusqu: 21, valide: false }), .455, { url: 'app.payout.fr/planning' })}${A.browser(A.desk.cashouts({ clair: true }), .455, { url: 'app.payout.fr/cash-out', clair: true })}</div>
+<div class="z-zone" style="gap:22px;padding-top:60px;align-items:flex-start;background:${C.ardoise}"><span class="z-lbl">Site vitrine · desk.site (1440 × 900) · desk.sitePage (1440 × ${A.desk.SITE_H}), ici à 30 % · desk.bord (clair)</span>
+  <div style="display:grid;gap:22px">${A.browser(A.desk.site(), .62, { url: 'payout.fr' })}${A.browser(A.desk.bord({ clair: true }), .62, { url: 'app.payout.fr/tableau-de-bord', clair: true })}</div>${A.browser(A.desk.sitePage(), .3, { url: 'payout.fr', h: A.desk.SITE_H })}</div>
+
+<!-- 11. Typographie -->
+<div style="padding:64px 84px 120px;position:relative;display:grid;grid-template-columns:780px 1fr;gap:56px;align-items:end;border-top:1px solid var(--filet)">
+  <div><div class="cap" style="margin-bottom:16px">Instrument Sans · Medium 500 · interlettrage −0,055 em</div><div class="h-xl">Gardez la part<br>qui vous revient.</div>
+    <div class="h-l" style="margin-top:22px;opacity:.45">Facturer. Déclarer. Garder.</div></div>
+  <div><div class="body-l" style="opacity:.8">Payout aide les freelances en SASU à garder jusqu'à 85${NB}% de leur TJM après impôts, au lieu de 54${NB}%. Un seul cockpit pour facturer, déclarer et se verser sa part, sans ressaisie.</div>
+    <div class="chiffre" style="font-size:56px;margin-top:22px;color:${C.net}">${A.eurH(12000)}</div>
+    <div class="mono" style="font-size:11px;letter-spacing:.06em;margin-top:14px;opacity:.65;text-transform:uppercase">Chivo Mono · F-2026-010 · 0123456789 · 24 nov.</div></div>
+  ${A.foot('Socle de marque', 'Page de test')}
+</div>`;
+</script></body>

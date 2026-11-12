@@ -1,0 +1,40 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../brand/aube.css"><link rel="stylesheet" href="plates.css"><script src="../brand/aube.js"></script>
+<body>
+<div class="plate" id="p" style="height:800px;background:var(--brume)"></div>
+<script>
+const A = Aube, EN = '#231A26';
+/* Boutons génériques en traits simples (pas ceux d'une plateforme existante) */
+const ic = {
+  sun: `<svg viewBox="0 0 24 24" fill="none" stroke="${EN}" stroke-width="1.5" stroke-linecap="round"><path d="M3 16H21"/><path d="M6.5 16A5.5 5.5 0 0 1 17.5 16"/><path d="M12 5V7.5M5.2 8.2L6.9 9.9M18.8 8.2L17.1 9.9"/></svg>`,
+  talk: `<svg viewBox="0 0 24 24" fill="none" stroke="${EN}" stroke-width="1.5" stroke-linejoin="round"><rect x="3.5" y="4.5" width="17" height="12" rx="4"/><path d="M8 16.5V20L12 16.5"/></svg>`,
+  share: `<svg viewBox="0 0 24 24" fill="none" stroke="${EN}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3.5M7.5 8L12 3.5L16.5 8"/><path d="M5 12.5V19.5H19V12.5"/></svg>`,
+  keep: `<svg viewBox="0 0 24 24" fill="none" stroke="${EN}" stroke-width="1.5" stroke-linejoin="round"><path d="M6.5 3.5H17.5V20.5L12 16.5L6.5 20.5Z"/></svg>`,
+};
+const card = (x, img, legend) => `<div class="post" style="left:${x}px;top:133px">
+  <div class="hd"><div class="av">${A.symbol('#FF632B')}</div><div><div class="nm">Aube</div><div class="lc">Lyon, France</div></div><div class="dots"><i></i><i></i><i></i></div></div>
+  <div class="img">${img}</div>
+  <div class="ac">${ic.sun}${ic.talk}${ic.share}<span style="margin-left:auto">${ic.keep}</span></div>
+  <div class="lg"><b>Aube</b>${legend}</div></div>`;
+
+/* 1. Signature sur dégradé */
+const p1 = `<div class="g1 grain" style="position:absolute;inset:0"></div>
+  <div style="position:absolute;left:24px;top:22px;color:#fff;font-size:30px;line-height:1.12;letter-spacing:-.01em">Le jour se lève.<br>Tout est prêt.</div>
+  <p style="position:absolute;left:186px;right:22px;top:196px;color:#fff;font-size:9.5px;line-height:1.45;font-weight:400;opacity:.92">Voici Aube, ton assistant personnel. Pendant la nuit, il trie, prépare et anticipe. Au réveil, ta journée est en ordre&nbsp;: tâches, rendez-vous, conseils sur mesure.</p>
+  <div style="position:absolute;left:24px;bottom:22px">${A.symbol('#fff', 'style="width:38px"')}</div>`;
+
+/* 2. L'astre et le logo sur fond sombre */
+const p2 = `<div style="position:absolute;inset:0;background:#0A0609"></div><div class="g6" style="position:absolute;inset:0;opacity:.55"></div>
+  <div style="position:absolute;inset:0;display:grid;place-items:center">${A.orb(178)}</div>`;
+
+/* 3. Triptyque et horizon */
+const p3 = `<div style="position:absolute;inset:0;background:#0A0609"></div>
+  <div class="horizon" style="width:900px;height:900px;left:-267px;top:150px"></div>
+  <div style="position:absolute;right:22px;top:20px;color:#fff;font-size:30px;line-height:1.08;letter-spacing:-.01em;text-align:right">Clair.<br>Calme.<br>Prêt.</div>
+  <div style="position:absolute;left:24px;bottom:22px">${A.lockup('#fff', 'style="width:120px"')}</div>`;
+
+document.getElementById('p').innerHTML =
+  card(84, p1, 'Chaque matin commence clair.') +
+  card(517, p2, 'Il écoute, il prépare. Bonjour.') +
+  card(950, p3, 'Trois mots pour une journée.');
+</script>
+</body>

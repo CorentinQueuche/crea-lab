@@ -1,0 +1,10 @@
+<!doctype html><meta charset="utf-8"><title>Drupe — 23 montre et messages</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="motion.css">
+<script src="../brand/marque.js"></script><script src="lib.js"></script><script src="scenes.js"></script>
+<body style="background:var(--vert)"><div id="s"></div>
+<script>
+// 1920 × 1080, 8 s : node tools/record.mjs motion/23-montre.html out/motion/23-montre.mp4 --w 1920 --h 1080 --fps 30 --dur 8
+// Le minuteur d'infusion tourne jusqu'à 2:30, puis deux cartes de message se succèdent.
+window.seek = Scenes.montre(document.getElementById('s'), { w: 1920, h: 1080 });
+seek(0);
+</script></body>

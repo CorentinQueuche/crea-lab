@@ -1,0 +1,28 @@
+/* Planches 20 à 39 (le site, la web app, la clôture) : styles communs.
+   Complète brand/marque.css (lecture seule) ; ne dépend pas de plates/plates.css.
+   Préfixe pb- pour ne heurter aucune classe du socle. Grille : marges de 84 px. */
+
+.pb-abs{position:absolute}
+.pb-z{z-index:60}
+.pb-z:not(.pb-abs){position:relative}
+/* Étiquette en chasse fixe, capitales espacées (ne pas y mettre d'adresse ni de nom de classe) */
+.pb-lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;line-height:1.5}
+.pb-lbl.doux{opacity:.6}
+/* Titre de planche (Titre 200) et sous-titre */
+.pb-t{font-weight:500;font-size:52px;line-height:.98;letter-spacing:-.045em}
+.pb-t2{font-weight:500;font-size:28px;line-height:1.05;letter-spacing:-.035em}
+.pb-txt{font-size:14.5px;line-height:1.42;letter-spacing:0}
+.pb-txt.doux{opacity:.62}
+/* Numéro d'étape : pastille en chasse fixe (1/4…) */
+.pb-pas{display:inline-flex;align-items:center;justify-content:center;height:30px;padding:0 13px;border-radius:15px;font-family:var(--mono);font-size:11.5px;font-weight:500;letter-spacing:.04em;background:var(--net);color:#04140A;white-space:nowrap}
+.pb-pas.filet{background:var(--coffre);color:var(--sur-scene);box-shadow:inset 0 0 0 1px rgba(255,255,255,.28)}
+/* Filet fin */
+.pb-filet{height:1px;background:var(--filet)}
+/* Cadre d'écran à plat (sans appareil) : un écran 1440 × 900 mis à l'échelle par --k */
+.pb-ecran{--k:1;zoom:var(--k);position:relative;width:1440px;height:900px;border-radius:18px;overflow:hidden;flex:none;
+  box-shadow:0 0 0 1px rgba(255,255,255,.14),0 60px 100px -40px rgba(0,0,0,.85)}
+/* Légende numérotée sous un écran */
+.pb-leg{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;align-items:baseline}
+.pb-leg>span:first-child{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;opacity:.55}
+.pb-leg b{font-weight:500;font-size:16px;letter-spacing:-.02em}
+.pb-leg p{grid-column:2;font-size:13.5px;line-height:1.4;opacity:.62}

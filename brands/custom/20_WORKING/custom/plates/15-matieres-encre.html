@@ -1,0 +1,62 @@
+<!doctype html><meta charset="utf-8"><title>Custom — 15 · Matières d’encre</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates.css"><script src="../brand/marque.js"></script>
+<style>
+  /* 15 · Coulures, piquage, trames : une affiche de matières. Préfixe q15- */
+  .q15-bande{position:absolute;left:-140px;right:-140px;top:388px;height:300px;z-index:10}
+  .q15-bande svg{width:100%;height:100%}
+  .q15-mot{position:absolute;left:84px;top:430px;z-index:30;color:var(--encre);mix-blend-mode:multiply}
+  .q15-masque{position:absolute;right:40px;top:150px;width:700px;height:470px;z-index:20}
+  .q15-masque .ph{position:absolute;inset:0}
+  .q15-grille{position:absolute;left:84px;right:84px;top:750px;height:600px;display:grid;grid-template-columns:600px 1fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:14px;z-index:30}
+  .q15-grille .pl-tuile{border-radius:24px}
+  .q15-grille .pl-tag{left:18px;top:16px}
+  .q15-grille .q15-bas{position:absolute;left:18px;right:18px;bottom:16px;z-index:61;font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;line-height:1.45}
+  .q15-regles{position:absolute;left:84px;right:84px;top:1380px;display:grid;grid-template-columns:repeat(4,1fr);gap:28px;z-index:30}
+  .q15-regles>div{border-top:1px solid var(--filet);padding-top:12px}
+  .q15-regles b{display:block;font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;margin-bottom:8px}
+</style>
+<body><div class="plate grain leger" id="p" style="height:1560px"></div>
+<script>
+const A = Marque, C = A.COULEURS, NB = A.NB;
+const mq = A.coulureURL({ w: 700, h: 470, seed: 12, cx: 0.52, cy: 0.5, rx: 0.46, ry: 0.46, frange: 0.1 });
+
+document.getElementById('p').innerHTML = A.entete() + `
+  <div class="pl-intro"><div class="pl-lbl doux">15 · La marque · matières d’encre</div>
+    <div class="t-titre h-120">Encre, fil, ${A.surl('trame')}</div>
+    <p class="pl-chapo" style="max-width:430px">Les fonds de Custom ne sont jamais plats : de l’encre balayée, des points de fil, des blocs en quinconce. La matière dit l’atelier avant le texte.</p></div>
+
+  <div class="q15-masque" style="-webkit-mask-image:${mq};mask-image:${mq};-webkit-mask-size:100% 100%;mask-size:100% 100%">${A.photo('serigraphie', { pos: '55% 45%' })}</div>
+  <span class="pl-tag" style="right:84px;top:132px;opacity:.75">La coulure · en masque d’une photo</span>
+
+  <div class="q15-bande">${A.coulure({ w: 1680, h: 300, c: 'orange', seed: 5, cx: 0.5, cy: 0.5, rx: 0.6, ry: 0.47, frange: 0.05, pas: 4 })}</div>
+  <div class="q15-mot t-titre h-220">La coulure</div>
+  <span class="pl-tag" style="left:84px;top:618px;color:${C.encre};z-index:40">En bande · elle déborde des deux bords</span>
+  <span class="pl-tag" style="right:84px;top:618px;color:${C.encre};z-index:40">Orange #FE3600 · une seule couleur d’atelier domine</span>
+
+  <div class="q15-grille">
+    <div class="pl-tuile noir" style="grid-row:span 2">${A.piquage({ w: 600, h: 600, c: 'fluo', seed: 7, px: 11, py: 22, angle: 70, courbe: 0.7, attrs: 'style="position:absolute;inset:0;width:100%;height:100%"' })}
+      <span class="pl-tag" style="background:var(--noir);padding:3px 7px;border-radius:5px;left:14px;top:12px">Le piquage</span>
+      <div class="q15-bas" style="display:flex;justify-content:space-between;color:#fff"><span style="background:var(--noir);padding:3px 7px;border-radius:5px">Points de fil le long d’une courbe</span><span style="background:var(--noir);padding:3px 7px;border-radius:5px">Fluo sur noir</span></div></div>
+
+    <div class="pl-tuile blanc">${A.coulure({ w: 300, h: 290, c: 'violet', seed: 9, cx: 1.02, cy: 0, rx: 0.9, ry: 0.8, attrs: 'style="position:absolute;inset:0;width:100%;height:100%"' })}
+      <span class="pl-tag" style="left:auto;right:auto;top:auto;bottom:16px;left:18px">La coulure · en coin<br><span style="opacity:.6">Violet, en détail</span></span></div>
+    <div class="pl-tuile">${A.coulure({ w: 300, h: 290, c: 'fluo', seed: 4, cx: 0.5, cy: 0.52, rx: 0.36, ry: 0.3, frange: 0.14, attrs: 'style="position:absolute;inset:0;width:100%;height:100%"' })}
+      <span class="pl-tag">La coulure · en tache</span><div class="q15-bas" style="opacity:.6">Fluo sur graphite</div></div>
+    <div class="pl-tuile fluo">${A.motif({ w: 300, h: 290, c: 'encre', l: 40, seed: 3, attrs: 'style="position:absolute;inset:0;width:100%;height:100%"' })}
+      <span class="pl-tag" style="background:var(--fluo);padding:3px 7px;border-radius:5px;left:12px;top:11px">Le motif de blocs</span></div>
+
+    <div class="pl-tuile noir"><div class="tx-trame fine" style="position:absolute;left:0;right:50%;top:0;bottom:0;color:${C.fluo}"></div><div class="tx-trame grosse tx-fondu-b" style="position:absolute;left:50%;right:0;top:0;bottom:0;color:#fff"></div>
+      <span class="pl-tag" style="background:var(--noir);padding:3px 7px;border-radius:5px;left:12px;top:11px">La trame · fine, grosse</span><div class="q15-bas" style="text-align:right"><span style="background:var(--noir);padding:3px 7px;border-radius:5px">Pas de 6 et 18${NB}px</span></div></div>
+    <div class="pl-tuile noir"><div class="tx-hachures" style="position:absolute;inset:0;color:${C.fluo};--th:14px"></div>
+      <span class="pl-tag" style="background:var(--noir);padding:3px 7px;border-radius:5px;left:12px;top:11px">Les hachures</span><div class="q15-bas"><span style="background:var(--noir);padding:3px 7px;border-radius:5px">Pente du Cran · 13,3°</span></div></div>
+    <div class="pl-tuile noir"><div class="tx-toile" style="position:absolute;inset:0"></div><div class="tx-lignes tx-fondu-h" style="position:absolute;left:0;right:0;bottom:0;height:45%;color:${C.acier}"></div>
+      <span class="pl-tag">La toile, les lignes</span><div class="q15-bas" style="opacity:.75">Toile · balayage</div></div>
+  </div>
+
+  <div class="q15-regles">
+    <div><b>La coulure</b><p class="pl-txt doux">Orange, violet ou fluo. Une ou deux par planche, jamais en dégradé. Elle sort volontiers du cadre.</p></div>
+    <div><b>Le piquage</b><p class="pl-txt doux">Des points de fil qui suivent une courbe, comme une broderie vue de près. Fluo sur noir ou sur blanc.</p></div>
+    <div><b>Le motif de blocs</b><p class="pl-txt doux">Les blocs du Cran en quinconce, rangs incomplets. Celui des cartes de visite de Custom.</p></div>
+    <div><b>Les trames</b><p class="pl-txt doux">Points de sérigraphie, lignes, hachures à 13,3°, toile. Toujours sous le texte, jamais dessus.</p></div>
+  </div>` + A.foot('15 · Matières d’encre', 'Custom · direction artistique');
+</script></body>

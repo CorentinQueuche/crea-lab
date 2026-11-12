@@ -1,0 +1,84 @@
+<!doctype html><meta charset="utf-8"><title>Sillon · page de test du socle</title><meta name="robots" content="noindex">
+<link rel="stylesheet" href="../brand/marque.css"><script src="../brand/marque.js"></script><script src="../brand/matiere.js"></script><script src="../brand/verse.js"></script>
+<style>
+  /* Page de test : tout le socle d'un coup, une légende par zone. Préfixe ts- (rien ici ne sert ailleurs).
+     À tenir à jour : chaque fonction ajoutée au socle y gagne une zone. C'est le premier fichier qu'on montre à un agent. */
+  .ts-z{padding:44px 84px;position:relative}
+  .ts-z>*{position:relative;z-index:2}
+  .ts-k{margin-bottom:22px;opacity:.78}
+  .ts-r{display:flex;gap:28px;align-items:center;flex-wrap:wrap}
+  .ts-g{display:grid;gap:14px}
+  .ts-sw{height:104px;padding:10px;display:flex;flex-direction:column;justify-content:flex-end;gap:2px}
+  .ts-sw i{font-style:normal;opacity:.78;text-transform:none;letter-spacing:0;font-family:var(--font);font-size:10.5px;line-height:1.25;font-weight:400}
+  .ts-ech{display:grid;grid-template-columns:repeat(5,1fr);height:54px}
+  .ts-ech>div{padding:6px 8px;display:flex;align-items:flex-end;font-size:10px}
+  .ts-kit{position:relative;min-height:260px;padding:16px 16px 50px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+  .ts-kit .ts-n{position:absolute;left:14px;bottom:11px;right:14px;display:flex;justify-content:space-between;gap:10px;z-index:9}
+  .ts-fond{height:150px;position:relative;display:grid;place-items:center}
+  .ts-fond span{position:absolute;left:12px;bottom:9px}
+  .ts-ph{position:relative}
+  .ts-ph span{position:absolute;left:8px;bottom:6px;z-index:8;color:var(--tuffeau);text-shadow:0 0 6px rgba(5,9,40,.8)}
+  .ts-l{display:flex;align-items:flex-end;gap:30px;flex-wrap:wrap}
+  .ts-l>div{display:flex;flex-direction:column;gap:9px}
+</style>
+<body><div class="plate" id="p"></div>
+<script>
+const A = Marque, C = A.COULEURS, NB = A.NB, cv = A.cvs;
+const z = (k, html, cls = '', st = '') => `<div class="ts-z ${cls} lumiere" style="${st}"><div class="ts-k t-etq">${k}</div>${html}</div>`;
+const clair = (h) => A.contraste(h, C.cave) > A.contraste(h, C.tuffeau), enc = (h) => (clair(h) ? C.cave : C.tuffeau);
+const sw = Object.keys(C).map((k) => `<div class="ts-sw t-etq" style="background:${C[k]};color:${enc(C[k])}"><b>${A.NOMS[k]}</b>${C[k]}<i>${A.ROLES[k]}</i></div>`).join('');
+const ech = (k, nom) => `<div><div class="t-etq" style="margin-bottom:6px">${nom}</div><div class="ts-ech">${A.ECHELLES[k].map((h, i) => `<div class="t-etq" style="background:${h};color:${enc(h)}">${['maceration', 'glou', 'paille'].includes(k) ? A.TONS[i] : h}</div>`).join('')}</div></div>`;
+const DEMOS = {
+  'Le creux rempli': { cls: 'fond-bleu', html: `<canvas id="k-verres"></canvas>`, note: 'Marque.verre · Verse.verres' },
+  'Les trois jus': { cls: 'fond-cave', html: cv('[U][U][U]', { taille: 48, jus: 'maceration,glou,paille', p: 0.84, inter: 0.05, fond: 'cave' }), note: 'ECHELLES · MATIERES' },
+  'La voix à verres': { cls: 'fond-bleu', html: `<div style="display:flex;flex-direction:column;gap:14px;align-items:flex-start">${cv('JE[U]DI,', { taille: 38 })}${cv('ON GO[Û]TE.', { taille: 38, jus: 'glou' })}</div>`, note: 'Marque.titre · Verse.rendre' },
+  'Douze degrés': { cls: 'fond-bleu', html: `<div style="display:flex;gap:10px;align-items:center">${cv('GLO[U].', { taille: 30, angle: -12 })}${cv('GLO[U].', { taille: 30, angle: 12, jus: 'paille' })}</div>`, note: 'Marque.DEGRE = 12' },
+  'La contre-étiquette': { cls: 'fond-bleu', html: A.contre({ lot: '00', sujet: 'Page de test', lignes: [['Jus', 'Macération']], grands: [`12,5${NB}cl`, A.deg(12)], voix: A.VOIX.dos, sanitaire: true }), note: 'Marque.contre' },
+  'L’image à niveau': { cls: 'fond-cave', html: `<div style="display:flex;gap:10px;align-items:center">${A.photo('comptoir', { mode: 'niveau', niveau: 0.5, cote: true, style: 'width:190px;height:180px' })}${A.cadre('caviste', { l: 120, h: 160, mode: 'niveau', jus: 'glou', niveau: 0.45 })}</div>`, note: 'Marque.photo · Marque.cadre' },
+  'L’abécédaire à ras bord': { cls: 'fond-blanc', html: `<div style="display:flex;flex-direction:column;gap:10px;align-items:center">${cv('HJKLMN', { taille: 40, tout: '', serre: 'normal', jus: 'maceration,glou,paille', mode: 'imprime', c: 'bleu', inter: 0.06 })}${cv('UVWXYZ', { taille: 40, tout: '', serre: 'normal', jus: 'glou,paille,maceration', mode: 'imprime', c: 'bleu', inter: 0.06 })}</div>`, note: 'Verse.rendre({ tout })' },
+};
+const B = A.DONNEES.bouteilles;
+
+document.getElementById('p').innerHTML =
+  z('01 · Logo : logotype, symbole, version complète, version penchée ; le grand format a son disque, sa lie, ses trois bulles', `<div class="ts-r" style="gap:64px;align-items:flex-end">
+      ${A.wordmark(C.tuffeau, 'style="height:92px"', 'maceration', { detail: true })} ${A.symbol(C.tuffeau, 'style="height:120px"', 'maceration', { detail: true })} ${A.penche(C.tuffeau, { jus: 'maceration', detail: true, attrs: 'style="height:150px"' })}</div>
+    <div class="ts-r" style="gap:38px;margin-top:34px;align-items:flex-end">${A.lockup(C.tuffeau, 'style="height:52px"', 'maceration')} ${A.wordmark(C.tuffeau, 'style="width:160px"', 'maceration')} ${A.wordmark(C.tuffeau, 'style="width:64px"', 'maceration')} ${A.wordmark(C.tuffeau, 'style="width:64px"')}
+      ${A.symbol(C.tuffeau, 'style="height:32px"', 'maceration')} ${A.symbol(C.tuffeau, 'style="height:16px"')} ${A.icone(64)} ${A.icone(64, C.tuffeau, C.bleu)} ${A.icone(64, C.cave, C.tuffeau, 'glou')}
+      <span class="t-etq t-doux" style="max-width:230px">160 et 64 px de large ; symbole à 32 et 16 px ; avatars</span></div>`, '', 'padding-top:64px') +
+  z('02 · Le logo en matière : pierre sur le sergé, brodé, encre sur papier, une photo dans le creux, tampon, sur un jus', `<div class="ts-g" style="grid-template-columns:repeat(3,1fr)">
+      <div class="ts-fond fond-bleu"><canvas data-logo data-taille="46"></canvas><span class="t-etq">Verse.logo</span></div>
+      <div class="ts-fond fond-bleu">${A.brode({ l: 300 })}<span class="t-etq">Marque.brode</span></div>
+      <div class="ts-fond fond-blanc"><canvas data-logo data-taille="46" data-mode="imprime" data-c="bleu"></canvas><span class="t-etq">mode imprime</span></div>
+      <div class="ts-fond fond-tuffeau">${A.wordmark(C.bleu, 'style="width:340px;height:auto"', 'maceration', { photo: 'depot' })}<span class="t-etq">{ photo: 'depot' }</span></div>
+      <div class="ts-fond fond-craie"><div class="usure">${A.wordmark(C.cave, 'style="width:340px;height:auto"')}</div><span class="t-etq">.usure · un aplat</span></div>
+      <div class="ts-fond jus-maceration">${A.wordmark(C.cave, 'style="width:340px;height:auto"')}<span class="t-etq">.jus-maceration</span></div></div>`, 'fond-tuffeau') +
+  z('03 · Couleurs : huit noms, cinq échelles (du disque à la lie, de la nuit au lavé), trois croisements ; contrastes vérifiés', `<div class="ts-g" style="grid-template-columns:repeat(8,1fr);gap:0">${sw}</div>
+      <div class="ts-g" style="grid-template-columns:repeat(5,1fr);margin-top:18px">${ech('maceration', 'Macération')}${ech('glou', 'Glou')}${ech('paille', 'Paille')}${ech('bleu', 'Bleu')}${ech('tuffeau', 'Tuffeau')}</div>
+      <div class="ts-r" style="margin-top:18px;gap:22px">${A.CROISEMENTS.map((x) => `<span style="display:inline-flex;align-items:center;gap:9px"><i style="width:90px;height:30px;background:linear-gradient(90deg,${x.tons[0]} 0 33%,${x.hex} 33% 67%,${x.tons[1]} 67%)"></i><span class="t-etq">${x.nom} · ${x.hex}</span></span>`).join('')}
+        <span class="t-etq" style="opacity:.8">tuffeau sur bleu ${A.contraste('tuffeau', 'bleu')} · cave sur tuffeau ${A.contraste('cave', 'tuffeau')} · cave sur macération ${A.contraste('cave', 'maceration')} · macération sur bleu ${A.contraste('maceration', 'bleu')} (jamais en texte)</span></div>`, 'fond-cave') +
+  z('04 · Les fonds en matière (brand/matiere.js) : sergé, papier, papier blanc, craie, mur de cave ; .lumiere', `<div class="ts-g" style="grid-template-columns:repeat(5,1fr)">${[['fond-bleu', 'Sergé de coton'], ['fond-tuffeau', 'Papier de coton'], ['fond-blanc', 'Papier blanc'], ['fond-craie', 'Craie'], ['fond-cave', 'Mur de cave']].map(([f, n]) => `<div class="ts-fond ${f} lumiere" style="height:170px"><span class="t-etq">${n} · .${f}</span></div>`).join('')}</div>`, 'fond-tuffeau') +
+  z('05 · Typographie : la voix des titres (serrée, verres larges), sous-titre, chapô, texte, mention ; une photo dans les lettres', `
+      <div>${A.titre(A.PHRASES.jeudi, { taille: 128 })}</div>
+      <div style="margin-top:8px;display:flex;gap:40px;align-items:flex-end">${A.titre(A.PHRASES.abonnement, { taille: 62 })}<span class="t-titre image" style="--photo:url('../photos/depot.jpg');font-size:62px">D<b>U</b> J<b>U</b>S.</span></div>
+      <div class="t-sous" style="margin-top:24px">${A.SIGNATURE} ${A.VOIX.dos} ${A.VOIX.nappe}</div>
+      <p class="t-chapo" style="max-width:760px;margin:14px 0 0">${A.IDEE} Sillon est une cave à vins nature du quartier des Olivettes, à Nantes.</p>
+      <p class="t-txt t-doux" style="max-width:640px;margin:10px 0 0">Texte courant, en Hanken Grotesk. À vérifier ici : « guillemets », l’apostrophe, 12${NB}%${NB}vol., 75${NB}cl, 12,5${NB}cl, 6${NB}×${NB}12,5${NB}=${NB}75, ${A.deg(12)}, −${NB}… · œ É È Ê Ç À Û, et la flèche en tracé ${A.fleche()}.</p>
+      <div class="t-etq" style="margin-top:12px">Mention 0123456789 · Contenance 75${NB}cl · 12${NB}%${NB}vol. · Non filtré · Lot${NB}00 · œ É È Ç Û · ©2026</div>`, 'fond-blanc', `color:${C.bleu}`) +
+  z('06 · Le kit de la marque : ce qui la fait reconnaître sans son logo', `<div class="ts-g" style="grid-template-columns:repeat(4,1fr)">
+      ${A.KIT.map((k) => `<div class="ts-kit ${DEMOS[k.nom].cls}" ${k.nom === 'L’abécédaire à ras bord' ? 'style="grid-column:span 2"' : ''}>${DEMOS[k.nom].html}<div class="ts-n t-etq"><span>${k.nom}</span><span style="opacity:.6;text-transform:none;letter-spacing:.02em">${DEMOS[k.nom].note}</span></div></div>`).join('')}</div>`, 'fond-tuffeau') +
+  z('07 · Le remplisseur (brand/verse.js) : la matière du vin, de la pierre, de l’ombre ; la contenance est mesurée', `<div class="ts-l" style="align-items:center;gap:44px">
+      ${[['TROIS BO[U]TEILLES', { taille: 80, angle: -12, id: 'a' }], ['[V]IN NAT[U]RE', { taille: 80, angle: 12, jus: 'glou,paille', id: 'b' }]].map(([t, o]) => `<div>${cv(t, o)}<span class="t-etq">${A.sansCrochets(t)} · ${A.deg(o.angle)} · contenance <span data-cl-de="${o.id}">…</span></span></div>`).join('')}</div>
+    <div class="ts-l" style="margin-top:34px">${[0, 0.25, 0.5, 0.75, 1].map((p, i) => `<div>${cv('[U]', { taille: 92, p, id: 'p' + i, jus: A.JUS[i % 3] })}<span class="t-etq">p = ${String(p).replace('.', ',')} · <span data-cl-de="p${i}">…</span></span></div>`).join('')}
+      <div style="max-width:300px" class="t-petit t-doux">Le paramètre p verse le vin (0 à 1) : c’est lui que les vidéos font avancer. Un U large, droit et plein fait un verre, 12,5${NB}cl. Chaque jus a sa matière : trouble avec son dépôt, limpide, ou perlant.</div></div>`) +
+  z('08 · Les photos de la marque (photos/*.jpg) et ce que Sillon leur fait : brut, à niveau, la robe, dans un cadre qui penche', `<div class="ts-g" style="grid-template-columns:repeat(8,1fr);gap:8px">${Object.keys(A.PHOTOS).map((n) => `<div class="ts-ph">${A.photo(n, { style: 'height:150px' })}<span class="t-etq" style="font-size:9.5px">${n}</span></div>`).join('')}</div>
+      <div class="ts-r" style="margin-top:14px;gap:12px;align-items:flex-start">${A.photo('comptoir', { mode: 'niveau', niveau: 0.55, cote: true, style: 'width:300px;height:220px' })}${A.photo('trois-jus', { mode: 'niveau', jus: 'glou', niveau: 0.35, style: 'width:300px;height:220px' })}${A.photo('jeudi', { mode: 'niveau', jus: 'paille', niveau: 0.45, style: 'width:300px;height:220px' })}${A.photo('sillons', { mode: 'robe', style: 'width:160px;height:220px' })}<div style="margin:16px 0 0 22px">${A.cadre('verre-penche', { l: 130, h: 180, mode: 'niveau', niveau: 0.5 })}</div></div>`, 'fond-cave') +
+  z('09 · Les imprimés : étiquette de face, contre-étiquette, affiche, carte du jeudi, sous-verre, mot du colis', `<div class="ts-r" style="align-items:flex-start;gap:18px">
+      ${B.map((b) => `<div style="width:132px">${A.etiquette({ jus: b.jus, degre: b.degre, l: 132 })}</div>`).join('')}${A.affiche({ l: 190 })}${A.affiche({ l: 190, lignes: ['D[U]', 'J[U]S.'], jus: ['maceration', 'paille'], voix: A.VOIX.dos, fond: 'blanc', taille: 116 })}
+      <div style="display:flex;flex-direction:column;gap:14px">${A.carte({ l: 300 })}<div style="display:flex;gap:14px">${A.sousVerre({ l: 110 })}${A.mot({ l: 176 })}</div></div></div>`, 'fond-craie') +
+  z('10 · Mécanique : le verre seul à tous les angles ; Marque.scene, Marque.surVerre et Marque.pose habillent une photo', `<div class="ts-r" style="gap:26px;align-items:flex-end">
+      ${[-36, -12, 0, 12, 36, 60].map((a) => `<div style="text-align:center">${A.verre({ taille: 70, angle: a, c: C.tuffeau })}<div class="t-etq" style="margin-top:8px">${A.deg(a)}</div></div>`).join('')}
+      ${A.scene('trois-jus', A.surVerre('trois-jus', A.etiquette({ jus: 'glou', degre: 11, l: 212 }), { x: 1203, y: 954, l: 212, h: 284, clarte: 2.6, creux: 0.1 }), { l: 300, cadre: [900, 560, 620, 520] })}
+      ${A.scene('jeudi', A.pose(`<div class="usure" style="display:grid;place-items:center;height:100%">${A.wordmark('#16298A', 'style="width:560px;height:auto"', 'maceration')}</div>`, { l: 700, h: 470, quad: [[1412, 50], [1765, 85], [1768, 315], [1412, 298]], fusion: 'multiply' }), { l: 250, cadre: [1340, 0, 500, 420] })}</div>`, '', 'padding-bottom:110px') +
+  A.foot('Page de test du socle', `${A.DESCRIPTEUR} · ${A.LIEU}`);
+window.pret = Verse.tout().then(() => Verse.verres(document.getElementById('k-verres'), { w: 270, h: 170, cols: 3, rangs: 2, taille: 44, marge: 6, angle: (i, j, u) => (u - 0.5) * 60 + (j ? 10 : -10), jus: (i, j) => A.JUS[(i + j) % 3] }));
+</script></body>

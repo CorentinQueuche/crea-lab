@@ -1,0 +1,40 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates.css"><script src="../brand/marque.js"></script>
+<body>
+<div class="plate grain" id="p" style="height:820px;background:var(--vert)"></div>
+<script>
+const A = Marque, C = A.COULEURS, EN = C.grain;
+/* Boutons génériques en traits simples, inventés (pas ceux d'une plateforme existante) */
+const ic = {
+  fruit: `<svg viewBox="0 0 24 24" fill="none" stroke="${EN}" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="13.5" r="7.5"/><path d="M14 6.5C14.3 4.8 15.4 3.6 17 3"/></svg>`,
+  talk: `<svg viewBox="0 0 24 24" fill="none" stroke="${EN}" stroke-width="1.5" stroke-linejoin="round"><rect x="3.5" y="4.5" width="17" height="12" rx="4"/><path d="M8 16.5V20L12 16.5"/></svg>`,
+  share: `<svg viewBox="0 0 24 24" fill="none" stroke="${EN}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3.5M7.5 8L12 3.5L16.5 8"/><path d="M5 12.5V19.5H19V12.5"/></svg>`,
+  keep: `<svg viewBox="0 0 24 24" fill="none" stroke="${EN}" stroke-width="1.5" stroke-linejoin="round"><path d="M6.5 3.5H17.5V20.5L12 16.5L6.5 20.5Z"/></svg>`,
+};
+const card = (x, img, legend) => `<div class="post" style="left:${x}px;top:110px">
+  <div class="hd"><div class="av">${A.symbol(C.fleur)}</div><div><div class="nm">drupe.cafe</div><div class="lc">Torréfacteur de quartier</div></div><div class="dots"><i></i><i></i><i></i></div></div>
+  <div class="img">${img}</div>
+  <div class="ac">${ic.fruit}${ic.talk}${ic.share}<span style="margin-left:auto">${ic.keep}</span></div>
+  <div class="lg"><b>drupe.cafe</b>${legend}</div></div>`;
+
+/* 1. Le triptyque, sur l'aplat vif */
+const p1 = `<div class="g-vif grain" style="position:absolute;inset:0"></div>
+  <div style="position:absolute;left:26px;top:24px;color:${C.fleur};font-size:38px;font-weight:500;line-height:1.04;letter-spacing:-.03em">Cueilli mûr.<br>Torréfié clair.<br>Servi frais.</div>
+  <div style="position:absolute;left:26px;bottom:24px">${A.symbol(C.fleur, 'style="width:40px;display:block"')}</div>
+  <div class="mono" style="position:absolute;right:24px;bottom:30px;color:${C.fleur};font-size:10.5px;letter-spacing:.1em">SEMAINE 47</div>`;
+
+/* 2. Une pastille en gros plan, coupée par le cadre */
+const p2 = `<div style="position:absolute;inset:0;background:${C.pulpe}">${A.semis({ cols: 4, rows: 4, pas: 92, taille: 40, tons: [C.fleur], opacite: .45, seed: 4 })}</div>
+  <div style="position:absolute;left:-40px;top:-30px">${A.pastille('guji', 470, { angle: -8, pose: true })}</div>`;
+
+/* 3. « Torréfié mardi. », le symbole en grand entre par le coin */
+const p3 = `<div style="position:absolute;inset:0;background:${C.parche}"></div>
+  <div style="position:absolute;left:-40px;top:112px">${A.symbol(C.cerise, 'style="width:470px;display:block"')}</div>
+  <div style="position:absolute;left:26px;top:24px;color:${C.grain};font-size:38px;font-weight:500;line-height:1.04;letter-spacing:-.03em">Torréfié<br>mardi.</div>
+  <div class="mono" style="position:absolute;left:26px;top:116px;color:${C.grain};font-size:10.5px;letter-spacing:.1em;opacity:.75">FOURNÉES DE 12&nbsp;KG</div>`;
+
+document.getElementById('p').innerHTML =
+  card(84, p1, 'Cueilli mûr, torréfié clair, servi frais. La carte de la semaine ferme lundi à 20&nbsp;h.') +
+  card(517, p2, 'Le Guji est revenu. Éthiopie, 2&nbsp;050&nbsp;m, nature. Fraise, jasmin, une fin de cacao.') +
+  card(950, p3, 'Torréfié mardi, livré jeudi à vélo. On vous met un sachet de côté&#8239;?');
+</script>
+</body>

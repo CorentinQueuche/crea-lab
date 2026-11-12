@@ -1,0 +1,21 @@
+/* Styles communs des planches de Sillon. Uniquement les rôles et les classes du socle ; préfixe pl-.
+   Marges de 84 px. Pas de bandeau en tête : la marge de chaque planche est sa contre-étiquette (Marque.contre).
+   Une pièce « dans le monde » est une scène (Marque.scene) plein cadre, puis une bande de papier qui la regarde de près. */
+.pl-abs{position:absolute}
+.pl-ce{position:absolute;right:84px;bottom:84px;z-index:65}
+.pl-lbl{position:absolute;left:84px;top:56px;z-index:65}
+.pl-lbl-d{position:absolute;right:84px;top:56px;z-index:65;text-align:right}
+/* sur une photo, les mentions gardent une ombre légère pour rester lisibles */
+.pl-sur-photo{color:var(--tuffeau);text-shadow:0 0 10px rgba(5,9,40,.55)}
+.pl-num{font-family:var(--titre);font-weight:900;font-stretch:150%;font-size:13px;letter-spacing:.04em}
+/* la bande sous une scène : du papier, une lumière, le détail */
+.pl-bande{position:relative;padding:64px 84px 96px}
+.pl-bande>.net{display:grid;gap:56px;align-items:end}
+/* la voix : une phrase de comptoir, en grand */
+.pl-voix{font-family:var(--titre);font-weight:800;font-stretch:100%;font-size:46px;line-height:1;letter-spacing:-.018em}
+.pl-legende{display:grid;grid-template-columns:30px 1fr;align-items:baseline}
+.pl-legende p{margin:5px 0 0}
+/* un gros plan : une seconde scène, cadrée serré, avec son filet */
+.pl-plan{position:relative;box-shadow:0 0 0 1px rgba(14,22,56,.2),0 18px 40px -18px rgba(14,22,56,.6)}
+.pl-plan>span{position:absolute;left:12px;bottom:10px;z-index:8;color:var(--tuffeau);text-shadow:0 0 8px rgba(5,9,40,.7)}
+.pl-pied{position:absolute;left:84px;right:84px;bottom:34px;display:flex;justify-content:space-between;z-index:65}

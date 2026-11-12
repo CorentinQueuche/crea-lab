@@ -1,0 +1,12 @@
+import { chromium } from 'playwright-core';
+import path from 'node:path';
+import { pathToFileURL } from 'node:url';
+const [page_, out] = process.argv.slice(2);
+const b = await chromium.launch({ channel: 'chrome', headless: true, args: ['--autoplay-policy=no-user-gesture-required'] });
+const p = await b.newPage({ viewport: { width: 1400, height: 900 }, deviceScaleFactor: 0.5 });
+await p.goto(pathToFileURL(path.resolve(page_)).href);
+await p.evaluate(async () => { document.querySelectorAll('img').forEach(i => i.loading = 'eager'); for (let y = 0; y < document.body.scrollHeight; y += 800) { window.scrollTo(0, y); await new Promise(r => setTimeout(r, 120)); } window.scrollTo(0, 0); await Promise.all([...document.images].map(i => i.decode().catch(() => {}))); await new Promise(r => setTimeout(r, 2500)); });
+const info = await p.evaluate(() => ({ imgs: document.images.length, broken: [...document.images].filter(i => !i.naturalWidth).map(i => i.src), vids: [...document.querySelectorAll('video')].map(v => v.readyState + (v.error ? ':err' : '') + ':' + v.videoWidth + 'x' + v.videoHeight), h: document.body.scrollHeight }));
+console.log(JSON.stringify(info));
+await p.screenshot({ path: out, fullPage: true, type: 'jpeg', quality: 80 });
+await b.close();

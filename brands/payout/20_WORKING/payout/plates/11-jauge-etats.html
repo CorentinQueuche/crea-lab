@@ -1,0 +1,69 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates.css"><script src="../brand/marque.js"></script>
+<style>
+  /* 11 · La jauge et ses états. Préfixe q11- */
+  .q11-hero{position:absolute;left:40px;right:40px;top:84px;height:560px}
+  .q11-ech{position:absolute;left:40px;right:40px;top:596px}
+  .q11-ech .pl-cote{position:absolute;top:106px;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase}
+  .q11-formes{position:absolute;left:40px;right:40px;top:760px;height:410px;display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:16px}
+  .q11-f{position:relative;border-radius:20px;background:var(--sombre);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--sur-scene) 10%,transparent);overflow:hidden}
+  .q11-f .pl-lbl{position:absolute;left:22px;top:20px;z-index:60}
+  .q11-f .q11-r{position:absolute;left:22px;right:22px;bottom:18px;font-family:var(--mono);font-size:10.5px;line-height:1.5;opacity:.6;z-index:60}
+  .q11-etats{position:absolute;left:40px;right:40px;top:1224px;height:300px;display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+  .q11-e{position:relative;border-radius:20px;background:var(--sombre);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--sur-scene) 10%,transparent);padding:20px 22px}
+  .q11-regles{position:absolute;left:40px;right:40px;top:1568px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .q11-regles div{border-top:1px solid color-mix(in srgb,var(--sur-scene) 14%,transparent);padding-top:14px;font-size:15px;line-height:1.35;font-weight:500;letter-spacing:-.01em}
+  .q11-regles span{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:400;opacity:.55;margin-bottom:8px}
+</style>
+<body><div class="plate" id="p" style="height:1730px;background:var(--scene)"></div>
+<script>
+const A = Marque, C = A.COULEURS, NB = '&nbsp;', SUR = '#F3F6F4';
+const etats = [0.4, 0.6, 0.8, 1.0, 1.75].map((t) => [t, A.pJauge(t)]);
+document.getElementById('p').innerHTML = `
+  ${A.entete(A.ENTETE, SUR)}
+  <div class="q11-hero">
+    <div class="pl-lbl doux" style="position:absolute;left:0;top:24px">11 · La jauge · ce qui vous revient, sur 100${NB}€ facturés</div>
+    <div class="chiffre" style="position:absolute;left:-22px;top:78px;font-size:470px;color:${C.net}">${A.pcH(85)}</div>
+    <div style="position:absolute;right:0;top:96px;width:330px">
+      <div class="pl-lbl doux">Aujourd'hui</div>
+      <div class="chiffre" style="font-size:132px;color:${C.preleve};margin-top:12px">${A.pcH(54)}</div>
+      ${A.bicolore(`Sur 100${NB}€ facturés, un freelance en SASU en garde 54. <b>Avec Payout, jusqu'à 85.</b> La jauge ne montre que cet écart.`, 'font-size:21px;line-height:1.25;margin-top:30px')}
+    </div>
+  </div>
+  <div class="q11-ech">${A.jauge({ forme: 'segments', p: 85, avant: 54, repere: 54, h: 92, g: 3 })}
+    <span class="pl-cote" style="left:0;opacity:.55">0</span>
+    <span class="pl-cote" style="left:calc(54% - 8px);transform:translateX(-100%);color:${C.preleve}">54 · aujourd'hui</span>
+    <span class="pl-cote" style="left:calc(54% + 8px);opacity:.75">+31 · gagnés</span>
+    <span class="pl-cote" style="left:85%;transform:translateX(-100%);color:${C.net}">jusqu'à 85</span>
+    <span class="pl-cote" style="right:0;opacity:.55">100</span></div>
+  <div class="q11-formes">
+    <div class="q11-f"><span class="pl-lbl doux">Blocs · 10 × 10</span>
+      <div style="position:absolute;left:50%;top:52px;transform:translateX(-50%)">${A.jauge({ forme: 'blocs', p: 85, avant: 54, l: 262, g: 4 })}</div>
+      <div class="q11-r">Remplis depuis le bas. Un bloc, un euro.</div></div>
+    <div class="q11-f grain"><span class="pl-lbl doux">Escalier · de 54 à 85</span>
+      <div style="position:absolute;left:22px;right:22px;bottom:62px">${A.jauge({ forme: 'escalier', p: 85, n: 10, h: 270, g: 2, degrade: true })}</div>
+      <div class="q11-r">Les marches de 54 à 85. Toujours grainé.</div></div>
+    <div class="q11-f"><span class="pl-lbl doux">Anneau · celui du symbole</span>
+      <div style="position:absolute;left:50%;top:62px;transform:translateX(-50%)">${A.jauge({ forme: 'anneau', taille: 250, repere: 54 })}
+        <div class="chiffre" style="position:absolute;inset:0;display:grid;place-items:center;font-size:58px;color:${C.net}"><span>${A.pcH(85)}</span></div></div>
+      <div class="q11-r">Depuis midi, sens horaire.</div></div>
+    <div class="q11-f"><span class="pl-lbl doux">Barre · ce qui part hachuré</span>
+      <div style="position:absolute;left:22px;right:22px;top:84px;display:grid;gap:22px">
+        ${A.jauge({ p: 85, h: 64, repere: 54 })}
+        ${A.jauge({ p: 54, h: 64, c: C.acier, c2: C.acier })}
+        ${A.jauge({ p: 85, h: 18, part: 'contour' })}
+        ${A.jauge({ p: 85, h: 18, part: 'vide', c2: C.acier })}</div>
+      <div class="q11-r">85 avec repère · 54 éteint · contour · seul.</div></div>
+  </div>
+  <div class="pl-lbl doux" style="position:absolute;left:40px;top:1196px">Les états · la jauge monte de 54 à 85 en 1${NB}350 ms, sortie douce, sans rebond</div>
+  <div class="q11-etats">${etats.map(([t, p], i) => `<div class="q11-e" style="${i === 4 ? `box-shadow:inset 0 0 0 1px ${C.net}` : ''}">
+      <div style="display:flex;justify-content:space-between"><span class="pl-cote" style="opacity:.6">t = ${String(t.toFixed(2)).replace('.', ',')} s</span><span class="pl-cote" style="opacity:.6">0${i + 1}</span></div>
+      <div style="display:flex;align-items:center;gap:16px;margin-top:22px">${A.jauge({ forme: 'anneau', taille: 92, ep: 30, p: Math.round(p), c: i === 4 ? C.net : SUR })}
+        <div class="chiffre" style="font-size:66px;color:${i === 4 ? C.net : SUR}"><span>${A.pcH(Math.round(p))}</span></div></div>
+      <div style="position:absolute;left:22px;right:22px;bottom:22px">${A.jauge({ forme: 'segments', n: 20, p: Math.round(p), avant: 54, h: 42, g: 3, c: i === 4 ? C.net : SUR })}</div></div>`).join('')}</div>
+  <div class="q11-regles">
+    <div><span>Bouts</span>Droits, jamais arrondis. La jauge est un compte, pas un bouton.</div>
+    <div><span>Ce qui part</span>Hachuré à 45°, trait de 16${NB}% du pas, ou éteint.</div>
+    <div><span>Repère 54</span>Un trait Prélevé de 2 px, la couleur de ce qui part.</div>
+    <div><span>Usage</span>Une seule proportion${NB}: gardé, parti. Jamais en petit décor.</div>
+  </div>`;
+</script></body>

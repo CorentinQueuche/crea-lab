@@ -1,0 +1,46 @@
+<!doctype html><meta charset="utf-8"><title>Custom — 34 · Section · Les supports</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates-c.css"><script src="../brand/marque.js"></script>
+<style>
+  /* Idée : le triptyque monte les marches du Cran. Trois blocs du symbole, un par phrase. */
+  .p34-b{position:absolute;width:560px;height:264px}
+  .p34-b>.in{position:absolute;inset:0}
+  .p34-t{position:absolute;left:58px;bottom:38px;z-index:5}
+  .p34-t .t-large{font-size:54px;line-height:.9}
+  .p34-t .pc-lbl{margin-bottom:14px}
+  .p34-idx{display:grid;grid-template-columns:30px 1fr;row-gap:5px;font-size:13.5px;line-height:1.35}
+  .p34-idx span{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;opacity:.5;padding-top:2px}
+</style>
+<body><div class="plate grain leger" id="p" style="height:1000px"></div>
+<script>
+const A = Marque, C = A.COULEURS;
+// Géométrie des marches : bloc de 560 × 264 (proportion du bloc du Cran), pas de 264 en x et 201 en y
+const B = [[228, 626], [492, 425], [756, 224]];
+const idx = [['35', 'Textile à plat'], ['36', 'Le sweat porté'], ['37', 'Étiquettes, écussons'], ['38', 'Affiches'], ['39', 'Papeterie'], ['40', 'Goodies'], ['41', 'Signalétique'], ['42', 'Véhicule d’atelier'], ['43', 'Réseaux sociaux'], ['44', 'Icône et favicon']];
+document.getElementById('p').innerHTML =
+  A.entete() +
+  // coulure orange qui déborde en haut à droite, derrière le troisième bloc
+  `<div class="pc-abs" style="right:-120px;top:60px;width:760px;height:420px">${A.coulure({ w: 760, h: 420, c: 'orange', seed: 21, cx: .62, cy: .46, rx: .46, ry: .4, attrs: 'style="width:100%;height:100%"' })}</div>` +
+  `<div class="pc-abs pc-z" style="left:84px;top:96px">${A.onglets(A.SECTIONS, 3)}</div>` +
+  `<div class="pc-abs pc-z pc-lbl doux" style="left:560px;top:104px">Section 04 · pièces 34 à 44</div>` +
+  `<div class="pc-abs pc-z t-titre" style="left:80px;top:150px;font-size:138px">Les<br>${A.surl('supports')}</div>` +
+  // les trois marches
+  `<div class="p34-b dans-bloc" style="left:${B[0][0]}px;top:${B[0][1]}px;background:#fff;color:${C.encre}">
+     <div class="p34-t"><div class="pc-lbl">01 · Chez vous</div><div class="t-large">Imaginé<br>chez vous.</div></div></div>` +
+  `<div class="p34-b dans-bloc" style="left:${B[1][0]}px;top:${B[1][1]}px;background:${C.fluo};color:${C.encre}">
+     <div class="in tx-trame fine tx-fondu-h" style="color:${C.encre};opacity:.13"></div>
+     <div class="p34-t"><div class="pc-lbl">02 · Chez nous</div><div class="t-large">Fabriqué<br>chez nous.</div></div></div>` +
+  `<div class="p34-b dans-bloc" style="left:${B[2][0]}px;top:${B[2][1]}px;color:#fff">
+     ${A.photo('peloton', { mode: 'sombre', pos: '40% 55%', style: 'position:absolute;inset:0' })}
+     <div class="in" style="background:linear-gradient(90deg,rgba(16,16,18,.55),rgba(16,16,18,0) 70%)"></div>
+     <div class="p34-t"><div class="pc-lbl">03 · Partout</div><div class="t-large">Porté<br>partout.</div></div></div>` +
+  // croix de repérage aux angles des marches
+  `<div class="pc-abs pc-z" style="left:${B[0][0]}px;top:${B[0][1] + 264}px">${A.croix('left:-11px;top:-11px;opacity:.6', 22)}</div>` +
+  `<div class="pc-abs pc-z" style="left:${B[2][0] + 560}px;top:${B[2][1]}px">${A.croix('left:-11px;top:-11px;opacity:.6', 22)}</div>` +
+  // sommaire de la section
+  `<div class="pc-abs pc-z" style="left:1084px;top:532px;width:232px">
+     <p class="t-txt" style="margin:0 0 22px;font-size:14px;opacity:.78">Le système quitte l’écran. Chaque support se reconnaît sans le logo : le pas, le bloc, le fluo.</p>
+     <div class="pc-filet" style="margin-bottom:12px"></div>
+     <div class="p34-idx">${idx.map(([n, t]) => `<span>${n}</span><div>${t}</div>`).join('')}</div></div>` +
+  `<div class="pc-abs pc-z" style="left:84px;top:520px;width:120px">${A.barre({ v: true, style: 'height:200px' })}</div>` +
+  A.foot('34 · Section · Les supports', 'Custom · direction artistique');
+</script></body>

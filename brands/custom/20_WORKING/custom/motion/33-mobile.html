@@ -1,0 +1,127 @@
+<!doctype html><meta charset="utf-8"><title>Custom — 33 · L'écran mobile vivant</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="../brand/ecrans.css"><link rel="stylesheet" href="motion-b.css">
+<script src="../brand/marque.js"></script><script src="../brand/ecrans.js"></script><script src="lib.js"></script>
+<body><div class="mb-stage mb-mob grain leger" id="s" style="width:1080px;height:1350px"></div>
+<script>
+/* 33 · L'écran mobile vivant · 1080 × 1350 · 8 s
+   node tools/record.mjs motion/33-mobile.html out/motion/33-mobile.mp4 --w 1080 --h 1350 --fps 30 --dur 8 --planche --fixe 7.6
+   Le site mobile dans Marque.phone, grand et centré, sur le noir atelier (toile, croix de repérage, une coulure orange qui dépasse
+   derrière le téléphone et avance d'un pas à chaque coupe). L'accueil s'installe ; un cran vers les univers ; toucher sur Textile ;
+   la page Textile, un cran vers les familles, le bouton « Devis textile » reste collé en bas ; toucher ; le devis, la suggestion de
+   technique se pose, un cran, toucher sur Broderie. 1 s tenue à la fin. */
+const A = Marque, SM = A.mobile, BM = SM.blocs, C = A.COULEURS, NB = A.NB;
+const W = 1080, H = 1350, KP = 1.38, PX = (W - 414 * KP) / 2, PY = (H - 868 * KP) / 2;
+const s = document.getElementById('s');
+
+const PAGES = [SM.accueil(), SM.univers('textile'), SM.devis()];
+s.innerHTML = `<div class="mb-abs tx-toile" style="inset:0"></div>
+  <div class="mb-abs" id="coul" style="left:150px;top:830px;width:900px;height:330px;z-index:1">${A.coulure({ w: 900, h: 330, c: C.orange, seed: 9, cx: 0.56, cy: 0.5, rx: 0.42, ry: 0.4, frange: 0.18, attrs: 'style="width:100%;height:100%"' })}</div>
+  ${[[56, 56], [W - 84, 56], [56, H - 84], [W - 84, H - 84]].map(([x, y]) => A.croix(`left:${x}px;top:${y}px;z-index:3;color:#fff`, 28)).join('')}
+  <div class="mb-meta" style="left:100px;top:62px">CST${NB}·${NB}33${NB}·${NB}custom.fr</div>
+  <div class="mb-meta" style="right:100px;top:62px">Site mobile${NB}·${NB}390${NB}×${NB}844</div>
+  <div class="mb-abs" style="left:100px;bottom:66px;width:120px;z-index:4">${A.barre({ style: 'height:7px' })}</div>
+  <div class="mb-meta" style="right:100px;bottom:62px">${A.IDEE}</div>
+  <div class="mb-abs net" style="left:${PX}px;top:${PY}px">${A.phone(PAGES.map((p, i) => `<div class="mb-mpage" data-i="${i}">${p}</div>`).join('')
+    + `<div class="mb-mnav">${BM.nav()}</div><i class="mb-touche"></i>`, KP)}</div>`;
+
+const scr = s.querySelector('.scr'), coul = s.querySelector('#coul');
+const pages = [...s.querySelectorAll('.mb-mpage')], roots = pages.map((p) => p.querySelector('.sm-page'));
+const nav = s.querySelector('.mb-mnav'), touche = s.querySelector('.mb-touche');
+const [pA, pT, pD] = pages;
+
+/* ---------- Le scénario (secondes) ---------- */
+const COUPES = [0, 2.95, 5.4];
+const DEFILE = 0.45;
+const CRANS = [[[1.6, 630]], [[4.05, 660]], [[6.3, 230]]];
+const T = { carte: 2.75, colle: 5.2, brod: 6.9, sugg: 5.95 };
+const cranCourbe = (p) => { p = M.clamp(p); return 1 - Math.pow(1 - p, 4) * (1 + 4 * p); };
+const scrollY = (i, t) => { let y = 0; CRANS[i].forEach(([d, c]) => { if (t >= d) y = M.mix(y, c, cranCourbe((t - d) / DEFILE)); }); return y; };
+
+/* Surligneur : se pose de gauche à droite en 0,25 s, puis le texte passe en Encre */
+const surls = new Map();
+const surl = (el, t, t0) => { if (!el) return; if (!surls.has(el)) surls.set(el, getComputedStyle(el).backgroundColor);
+  const k = M.tw(t, t0, M.SURL, M.cubicOut), bg = surls.get(el);
+  if (k >= 1) { el.style.background = ''; el.style.color = ''; return; }
+  el.style.background = `linear-gradient(90deg, ${bg} ${(k * 100).toFixed(2)}%, transparent ${(k * 100).toFixed(2)}%)`; el.style.color = '#FFFFFF'; };
+const doublePicto = (el, cle, h, cOn, cOff) => { const v = el.querySelector('svg');
+  const on = M.el(A.picto(cle, { c: cOn, attrs: `style="height:${h}px;width:auto"` })), off = M.el(A.picto(cle, { c: cOff, attrs: `style="height:${h}px;width:auto"` }));
+  v.replaceWith(on); on.after(off); return (etat) => { on.style.display = etat ? '' : 'none'; off.style.display = etat ? 'none' : ''; }; };
+
+/* Accueil */
+const hA = pA.querySelector('.sm-heros');
+const A_ = { tr: hA.querySelector('[style*="top:152px"]'), l2: hA.querySelector('[style*="top:206px"]'), l3: hA.querySelector('[style*="top:238px"]'), photo: hA.querySelector('.dans-cran'),
+  dunk: hA.querySelector('[style*="left:296px"]'), puces: hA.querySelector('[style*="top:536px"]'), bouton: hA.querySelector('[style*="top:660px"]'), colle: roots[0].querySelector('.sm-colle') };
+A_.surl = A_.l3.querySelector('.surl');
+A_.dunk.innerHTML = [1, 2, 3, 4, 5, 6, 7, 8].map((i) => A.dunk(i, { c: '#fff', attrs: 'style="height:96px;width:auto"' })).join('');
+const dunkImgs = [...A_.dunk.children];
+const uA = pA.querySelector('.sm-univ'), carte0 = uA.querySelector('.sm-u'), carte0Picto = doublePicto(carte0, 'textile', 50, C.encre, C.fluo);
+const surlUniv = uA.querySelector('.sm-h2 .surl');
+/* Textile */
+const hT = pT.querySelector('.sm-heros-u');
+const T_ = { acc: hT.querySelector('[style*="top:154px"]'), l2: hT.querySelector('[style*="top:260px"]'), txt: hT.querySelector('.sm-txt'), photo: hT.querySelector('.dans-bloc'),
+  puces: hT.querySelector('[style*="top:610px"]'), colle: roots[1].querySelector('.sm-colle') };
+T_.surl = T_.l2.querySelector('.surl');
+const surlFam = pT.querySelector('.sm-fams .sm-h2 .surl'), btnT = T_.colle.querySelector('.sm-btn');
+/* Devis */
+const dD = pD.querySelector('.sm-devis');
+const D_ = { h1: dD.querySelector('h1'), prog: dD.querySelector('[style*="top:282px"]'), mono: dD.querySelector('[style*="top:310px"]'), e1: dD.querySelector('[style*="top:350px"]'),
+  carte: dD.querySelector('[style*="top:428px"]'), suite: dD.querySelector('[style*="top:950px"]'), colle: roots[2].querySelector('.sm-colle') };
+D_.surl = D_.h1.querySelector('.surl');
+const sugg = D_.carte.querySelector('.s-sugg'), opts = [...D_.carte.querySelectorAll('.sm-opt')], brod = opts[2];
+
+/* ---------- Mesures, en unités de 390 ---------- */
+let pret = false, P = {};
+const mesure = () => { pret = true; pages.forEach((p) => { p.style.display = ''; p.style.transform = ''; });
+  const pos = (el, root) => { const rr = root.getBoundingClientRect(), r = el.getBoundingClientRect(), k = rr.width / 390;
+    return [(r.left - rr.left + r.width / 2) / k, (r.top - rr.top + r.height / 2) / k]; };
+  P.carte0 = pos(carte0, pA); P.colle = pos(btnT, scr); P.brod = pos(brod, pA); P.brod = pos(brod, pD); };
+/* Touchers : [instant, position dans l'écran] */
+const touchers = () => [[T.carte, [P.carte0[0] - 40, P.carte0[1] - 630]], [T.colle, [P.colle[0] + 30, P.colle[1]]], [T.brod, [P.brod[0] - 60, P.brod[1] - 230]]];
+
+window.seek = (t) => {
+  if (!pret) mesure();
+  /* 1. Page courante, défilement par crans, navigation collée, bouton collé en bas */
+  let i = 0; COUPES.forEach((c, k) => { if (t >= c) i = k; });
+  M.montre(pages, i);
+  const y = scrollY(i, t);
+  pages[i].style.transform = `translateY(${(-y).toFixed(2)}px)`;
+  roots[i].style.setProperty('--sm-bas', (764 + y).toFixed(2) + 'px');
+  nav.classList.toggle('fond', y > 1);
+  /* la coulure du décor avance d'un pas le long de la pente à chaque coupe */
+  let pas = 0; COUPES.slice(1).forEach((c) => (pas += M.tw(t, c, M.ENTRER)));
+  const [dx, dy] = M.pente(-26 * pas); coul.style.transform = `translate(${dx.toFixed(2)}px, ${dy.toFixed(2)}px)`;
+
+  /* 2. Accueil */
+  M.glisse(A_.tr, t, 0.1, { montee: 50 }); M.glisse(A_.l2, t, 0.22, { montee: 30 }); M.glisse(A_.l3, t, 0.26, { montee: 30 }); surl(A_.surl, t, 0.72);
+  M.glisse(A_.photo, t, 0.32, { montee: 50 }); M.glisse(A_.puces, t, 0.5, { montee: 26 }); M.glisse(A_.bouton, t, 0.56, { montee: 26 }); M.glisse(A_.colle, t, 0.62, { montee: 30 });
+  A_.dunk.style.visibility = t < 0.45 ? 'hidden' : 'visible';
+  const im = t < 0.45 ? 0 : M.image(t - 0.45, 8); dunkImgs.forEach((e, k) => (e.style.display = k === im ? '' : 'none'));
+  surl(surlUniv, t, 2.1);
+  const on = t >= T.carte; carte0.classList.toggle('on', on); carte0Picto(on);
+
+  /* 3. Textile */
+  const t1 = COUPES[1];
+  M.glisse(T_.acc, t, t1, { montee: 46 }); M.glisse(T_.l2, t, t1 + 0.04, { montee: 30 }); surl(T_.surl, t, t1 + 0.4);
+  M.glisse(T_.txt, t, t1 + 0.1, { montee: 26 }); M.glisse(T_.photo, t, t1 + 0.14, { montee: 40 }); M.glisse(T_.puces, t, t1 + 0.2, { montee: 26 });
+  surl(surlFam, t, 4.55);
+  const apB = M.tw(t, T.colle - 0.04, 0.06, M.cubicOut) * (1 - M.tw(t, T.colle + 0.12, 0.1, M.cubicOut));
+  btnT.style.transform = apB > 0 ? `translateY(${(2 * apB).toFixed(2)}px) scale(${(1 - 0.035 * apB).toFixed(4)})` : '';
+
+  /* 4. Devis : la suggestion de technique se pose, puis Broderie est choisie */
+  const t2 = COUPES[2];
+  M.glisse(D_.h1, t, t2, { montee: 40 }); surl(D_.surl, t, t2 + 0.36);
+  M.glisse(D_.prog, t, t2 + 0.06, { montee: 20 }); M.glisse(D_.mono, t, t2 + 0.08, { montee: 20 }); M.glisse(D_.e1, t, t2 + 0.12, { montee: 26 });
+  M.glisse(D_.carte, t, t2 + 0.16, { montee: 34 }); M.glisse(D_.suite, t, t2 + 0.2, { montee: 26 });
+  M.glisse(sugg, t, T.sugg, { montee: 24 });
+  brod.classList.toggle('on', t >= T.brod + 0.05);
+
+  /* 5. Le toucher : un rond blanc translucide qui se pose, presse, puis s'efface */
+  let vis = false;
+  touchers().forEach(([tc, p]) => { if (t < tc - 0.12 || t >= tc + 0.3) return; vis = true;
+    const kIn = M.tw(t, tc - 0.12, 0.12, M.cubicOut), kOut = M.tw(t, tc + 0.12, 0.18, M.cubicOut);
+    touche.style.transform = `translate(${p[0].toFixed(1)}px, ${p[1].toFixed(1)}px) scale(${(0.6 + 0.4 * kIn - 0.12 * M.tw(t, tc - 0.02, 0.06) * (1 - kOut) + 0.35 * kOut).toFixed(3)})`;
+    touche.style.opacity = (1 - kOut).toFixed(3); });
+  touche.style.visibility = vis ? 'visible' : 'hidden';
+};
+document.fonts.ready.then(() => { if (!pret) seek(0); });
+</script></body>

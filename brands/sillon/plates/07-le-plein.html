@@ -1,0 +1,35 @@
+<!doctype html><meta charset="utf-8"><title>Sillon · 07 · Le Plein</title><meta name="robots" content="noindex">
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates.css">
+<script src="../brand/marque.js"></script><script src="../brand/matiere.js"></script><script src="../brand/verse.js"></script>
+<style>
+  /* 07 · Le Plein. L'abonnement : trois bouteilles par mois. Le carton est imprimé en une couleur (le bleu, qui se fond
+     dans le kraft), sa contre-étiquette est collée sur un rabat, chaque bouteille porte son étiquette, et un mot est
+     glissé dans le papier de soie. Préfixe p07-. */
+  .p07-kraft{mix-blend-mode:multiply;color:#16298A;display:grid;place-items:center}
+  .p07-kraft .t-titre{font-size:58px}
+  .p07-mot{box-shadow:0 0 0 1px rgba(60,50,30,.16),3px 5px 6px rgba(3,6,30,.5),12px 20px 26px rgba(3,6,30,.42)}
+  .p07-ce .ce.papier{box-shadow:0 0 0 1px rgba(60,50,30,.2),2px 3px 4px rgba(60,40,10,.45)}
+</style>
+<body><div class="plate clair" id="p"></div>
+<script>
+const A = Marque, C = A.COULEURS, NB = A.NB, B = A.DONNEES.bouteilles;
+const etq = (b, x, y, l, rot, clarte) => A.surVerre('colis', A.etiquette({ jus: b.jus, degre: b.degre, l }), { x, y, l, h: l * 1.3, rot, clarte, creux: 0.05, ombre: 0.6 });
+const habits =
+  `<div class="p07-kraft usure" style="left:800px;top:128px;width:810px;height:290px">${A.wordmark('#16298A', 'style="width:600px;height:auto"')}</div>` +
+  `<div class="p07-kraft usure" style="left:790px;top:1200px;width:840px;height:250px">${A.titre(A.PHRASES.abonnement)}</div>` +
+  `<div class="p07-ce" style="left:1688px;top:560px;transform:rotate(1.5deg)">${A.contre({ lot: '11', sujet: 'Le Plein', lignes: [['Contenu', `3${NB}×${NB}75${NB}cl`], ['Jus', 'Les trois']], grands: [`225${NB}cl`, A.deg(12)], l: 232 })}</div>` +
+  etq(B[1], 1236, 954, 150, 0, 1.9) + etq(B[2], 1494, 954, 150, 0, 1.35) + etq(B[0], 946, 676, 132, -26, 1.6) +
+  `<div class="p07-mot" style="left:818px;top:938px;transform:rotate(-8deg)">${A.mot({ l: 262 })}</div>`;
+
+document.getElementById('p').innerHTML =
+  A.scene('colis', habits + `<div class="t-etq" style="left:1990px;top:96px;font-size:20px;color:${C.cave}">07 · Le Plein · l’abonnement</div>`) +
+  `<div class="pl-bande fond-craie lumiere"><div class="net" style="grid-template-columns:1fr 520px;align-items:center">
+     <div>
+       <div class="pl-voix" style="color:${C.bleu};font-size:40px;max-width:640px">Un orange, un rouge de soif, un blanc. Le reste, vous nous le racontez jeudi.</div>
+       <p class="t-chapo" style="max-width:520px;margin:22px 0 0">Le Plein, c’est trois bouteilles par mois. Le carton s’imprime en une couleur, le mot change à chaque lot, et la contre-étiquette fait le compte : trois fois soixante-quinze.</p>
+     </div>
+     <div style="box-shadow:0 22px 44px -22px rgba(14,22,56,.7);transform:rotate(-3deg)">${A.mot({ l: 520 })}</div>
+   </div>
+   <div class="pl-pied t-etq"><span>07 · Le Plein</span><span>${A.DESCRIPTEUR} · ${A.LIEU}</span><span>2026</span></div></div>`;
+window.pret = Verse.tout();
+</script></body>

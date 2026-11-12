@@ -1,0 +1,9 @@
+node_modules/
+.venv/
+__pycache__/
+.vercel/
+.env
+.env.*
+*.log
+*.pyc
+.DS_Store

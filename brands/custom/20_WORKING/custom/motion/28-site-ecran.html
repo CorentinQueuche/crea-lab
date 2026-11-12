@@ -1,0 +1,187 @@
+<!doctype html><meta charset="utf-8"><title>Custom — 28 · Le site défile (écran seul)</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="../brand/ecrans.css"><link rel="stylesheet" href="motion-b.css">
+<script src="../brand/marque.js"></script><script src="../brand/ecrans.js"></script><script src="lib.js"></script>
+<body><div class="mb-stage mb-site" id="s" style="width:1920px;height:1200px"></div>
+<script>
+/* 28 · Le site défile · 1920 × 1200 (16:10, l'écran du portable en 3D) · 12 s · écran seul, sans appareil ni décor
+   node tools/record.mjs motion/28-site-ecran.html out/motion/28-site-ecran.mp4 --w 1920 --h 1200 --fps 30 --dur 12 --planche --fixe 2.1
+   Le navigateur remplit l'écran (1440 × 900 unités de page, ×1,333). Parcours : l'accueil s'installe (« Transformez » glisse le long
+   de la pente, le surligneur se pose, le dunk joue ses 8 images à 8 i/s) ; un cran vers les quatre univers, Textile s'active sous
+   le curseur, clic, coupe sur la page Textile ; un cran vers les familles ; clic sur « L'atelier » : « Tout est fait ici. », un cran
+   vers la galerie ; clic sur « Devis gratuit » : les étapes se remplissent, la suggestion de technique se pose, le bouton s'enfonce.
+   Défilement par crans : accélération courte, arrêt net, puis au moins 0,8 s immobile sur chaque palier. */
+const A = Marque, S = A.site, B = S.blocs, C = A.COULEURS, NB = A.NB;
+const W = 1920, H = 1200, K = W / 1440, BAR = 44, VH = Math.round(H / K) - BAR;   // vue utile : 1440 × 856
+const s = document.getElementById('s');
+
+/* ---------- Les quatre pages, empilées dans la vue ; une seule est montrée à la fois ---------- */
+const PAGES = [
+  { cle: 'accueil', url: 'custom.fr', html: S.accueil(), actif: '' },
+  { cle: 'textile', url: 'custom.fr/textile', html: S.univers('textile'), actif: 'Textile' },
+  { cle: 'atelier', url: 'custom.fr/atelier', html: S.atelier(), actif: 'L’atelier' },
+  { cle: 'devis', url: 'custom.fr/devis', html: S.devis(), actif: '' }];
+s.innerHTML = A.browser(PAGES.map((p, i) => `<div class="mb-page" data-i="${i}">${p.html}</div>`).join('')
+  + PAGES.map((p, i) => `<div class="mb-nav" data-i="${i}">${B.nav({ actif: p.actif })}</div>`).join('')
+  + `<i class="mb-clic"></i><div class="mb-cur">${M.pointeur(30)}</div>`, K, { url: 'custom.fr', h: VH, extra: 'border-radius:0;box-shadow:none' });
+
+const vue = s.querySelector('.vue'), url = s.querySelector('.bar span');
+const pages = [...s.querySelectorAll('.mb-page')], navs = [...s.querySelectorAll('.mb-nav')];
+const cur = s.querySelector('.mb-cur'), fleche = cur.querySelector('svg'), clic = s.querySelector('.mb-clic');
+const [pA, pT, pAt, pD] = pages;
+
+/* ---------- Le scénario (secondes) ---------- */
+const COUPES = [0, 3.85, 6.45, 9.0];                       // début de chaque page (coupe franche)
+const DEFILE = 0.5;                                        // durée d'un cran de défilement
+const CRANS = [[[2.3, 780]], [[5.0, 820]], [[7.6, 770]], [[9.95, 390]]];   // [début, y visé] par page
+const CLICS = [3.7, 6.35, 8.88, 9.45, 9.8, 11.3];
+const T = { survol: 3.3, atelierSurvol: 6.2, textile: 9.5, polos: 9.85, etape2: 9.95, sugg: 10.5, brod: 10.7, appui: 11.25, relache: 11.5 };
+
+/* Crans de défilement : accélération courte (vitesse maximale au quart), arrêt net */
+const cranCourbe = (p) => { p = M.clamp(p); return 1 - Math.pow(1 - p, 4) * (1 + 4 * p); };
+const scrollY = (i, t) => { let y = 0; CRANS[i].forEach(([d, cible]) => { if (t >= d) y = M.mix(y, cible, cranCourbe((t - d) / DEFILE)); }); return y; };
+
+/* ---------- Préparation des états : ce qui change pendant le film part de son état « vide » ---------- */
+/* Le surligneur : il se pose de gauche à droite en 0,25 s, puis le texte passe en Encre */
+const surls = new Map();
+const surl = (el, t, t0) => { if (!el) return; if (!surls.has(el)) surls.set(el, getComputedStyle(el).backgroundColor);
+  const k = M.tw(t, t0, M.SURL, M.cubicOut), bg = surls.get(el);
+  if (k >= 1) { el.style.background = ''; el.style.color = ''; return; }
+  el.style.background = `linear-gradient(90deg, ${bg} ${(k * 100).toFixed(2)}%, transparent ${(k * 100).toFixed(2)}%)`;
+  el.style.color = '#FFFFFF'; };
+/* Bascule d'un picto (deux versions superposées, l'une montrée) */
+const doublePicto = (el, cle, h, cOn, cOff) => { const v = el.querySelector('svg');
+  const on = M.el(A.picto(cle, { c: cOn, attrs: `style="height:${h}px;width:auto"` })), off = M.el(A.picto(cle, { c: cOff, attrs: `style="height:${h}px;width:auto"` }));
+  v.replaceWith(on); on.after(off); return (etat) => { on.style.display = etat ? '' : 'none'; off.style.display = etat ? 'none' : ''; }; };
+
+/* Accueil */
+const hA = pA.querySelector('.s-heros'), uA = pA.querySelector('.s-univ');
+const A_ = { mega: hA.querySelector('.s-mega'), sous: [...hA.querySelectorAll('.s-sous')], contour: hA.querySelector('[style*="left:742px"]'),
+  photo: hA.querySelector('.s-heros-ph'), boutons: hA.querySelector('[style*="top:566px"]'), bandeau: hA.querySelector('.s-bandeau'), dunk: hA.querySelector('[style*="left:592px"]') };
+A_.surl = A_.sous[1].querySelector('.surl');
+A_.dunk.innerHTML = [1, 2, 3, 4, 5, 6, 7, 8].map((i) => A.dunk(i, { c: '#fff', attrs: 'style="height:200px;width:auto"' })).join('');
+const dunkImgs = [...A_.dunk.children];
+const carte0 = uA.querySelector('.s-u4'), carte0Picto = doublePicto(carte0.querySelector('.s-u4-h'), 'textile', 84, C.encre, C.fluo);
+const surlUniv = uA.querySelector('.s-h2 .surl');
+/* Textile */
+const hT = pT.querySelector('.s-heros-u');
+const T_ = { sous: [...hT.querySelectorAll('.s-sous')], chapo: hT.querySelector('.s-chapo'), boutons: hT.querySelector('[style*="display:flex;gap:12px"]'), photo: hT.querySelector('.s-heros-ph'), bandeau: hT.querySelector('.s-bandeau') };
+T_.surl = T_.sous[1].querySelector('.surl');
+const surlFam = pT.querySelector('.s-fams .s-h2 .surl');
+/* Atelier */
+const hAt = pAt.querySelector('.s-heros-a');
+const At_ = { sous: [...hAt.querySelectorAll('.s-sous')], tri: hAt.querySelector('.s-abs.t-titre'), chapo: hAt.querySelector('.s-chapo'), photo: hAt.querySelector('.dans-cran'),
+  bouton: hAt.querySelector('[style*="top:672px"]'), cent: hAt.querySelector('[style*="right:52px;top:560px"]') };
+At_.surl = At_.sous[1].querySelector('.surl');
+const surlGal = pAt.querySelector('.s-galerie .s-h2 .surl');
+/* Devis : les étapes repartent de zéro */
+const tD = pD.querySelector('.s-tete-d'), fD = pD.querySelector('.s-form-d');
+const D_ = { h1: tD.querySelector('h1'), chapo: tD.querySelector('.s-chapo'), prog: [...tD.querySelector('[style*="left:900px"]').children] };
+D_.surl = D_.h1.querySelector('.surl');
+const etapes = [...fD.querySelectorAll('.s-etape')];
+const etats = etapes.map((e) => e.querySelector('.s-etat'));
+const opts1 = [...etapes[0].querySelectorAll('.s-opt')], opt1Picto = doublePicto(opts1[0], 'textile', 44, C.encre, C.fluo);
+const polos = [...etapes[0].querySelectorAll('.s-chip')].find((c) => c.textContent === 'Polos');
+const sugg = etapes[1].querySelector('.s-sugg'), opts2 = [...etapes[1].querySelectorAll('.s-opt')], brod = opts2[2];
+[2, 3].forEach((i) => etapes[i].querySelectorAll('.s-opt.on').forEach((o) => o.classList.remove('on')));
+etapes[4].classList.remove('on'); etapes[4].querySelectorAll('.focus').forEach((o) => o.classList.remove('focus'));
+const colD = fD.querySelector('[style*="left:948px;top:40px"]');
+const recap = [...colD.querySelectorAll('.s-recap b')], RECAP = recap.map((b) => b.textContent);
+const cta = colD.querySelector('.bouton.s-g:not(.filet)');
+
+/* ---------- Mesures (après chargement des polices) : coordonnées dans la page, en unités de 1440 ---------- */
+let pret = false, P = {};
+const mesure = () => { pret = true;
+  pages.forEach((p) => { p.style.display = ''; p.style.transform = ''; });
+  const pos = (el, root) => { const rr = root.getBoundingClientRect(), r = el.getBoundingClientRect(), k = rr.width / 1440;
+    return [(r.left - rr.left + r.width / 2) / k, (r.top - rr.top + r.height / 2) / k]; };
+  P.carte0 = pos(carte0, pA); P.navAtelier = pos([...navs[1].querySelectorAll('.s-menu span')][4], vue); P.navDevis = pos(navs[2].querySelector('.bouton'), vue);
+  P.optTextile = pos(opts1[0], pD); P.polos = pos(polos, pD); P.cta = pos(cta, pD); };
+
+/* ---------- Le curseur : trajets courbes (Bézier), départ et arrivée en douceur ; positions en unités de la vue ---------- */
+const trajets = () => [
+  [1.1, 1.7, [1130, 690], 0.18],
+  [2.85, 3.35, [P.carte0[0] + 30, P.carte0[1] - 780 + 20], -0.2],
+  [4.35, 4.9, [1160, 600], 0.16],
+  [5.8, 6.25, [P.navAtelier[0], P.navAtelier[1]], -0.14],
+  [6.85, 7.35, [830, 740], 0.18],
+  [8.3, 8.8, [P.navDevis[0] - 10, P.navDevis[1] + 4], -0.16],
+  [9.02, 9.4, [P.optTextile[0] - 40, P.optTextile[1] + 10], 0.14],
+  [9.5, 9.75, [P.polos[0], P.polos[1]], -0.2],
+  [10.75, 11.2, [P.cta[0] + 60, P.cta[1] - 390 + 6], 0.16]];
+const DEPART = [1500, 960];
+const curseur = (t) => { let p = DEPART;
+  for (const [a, b, q, arc] of trajets()) { if (t < a) break; const k = M.tw(t, a, b - a, M.cubicInOut), d = Math.hypot(q[0] - p[0], q[1] - p[1]);
+    const mx = (p[0] + q[0]) / 2 - ((q[1] - p[1]) / (d || 1)) * arc * d, my = (p[1] + q[1]) / 2 + ((q[0] - p[0]) / (d || 1)) * arc * d;
+    const nx = (1 - k) * (1 - k) * p[0] + 2 * (1 - k) * k * mx + k * k * q[0], ny = (1 - k) * (1 - k) * p[1] + 2 * (1 - k) * k * my + k * k * q[1];
+    p = [nx, ny]; }
+  return p; };
+
+window.seek = (t) => {
+  if (!pret) mesure();
+  /* 1. Page courante, défilement, navigation collée, adresse */
+  let i = 0; COUPES.forEach((c, k) => { if (t >= c) i = k; });
+  M.montre(pages, i); M.montre(navs, i);
+  const y = scrollY(i, t);
+  pages[i].style.transform = `translateY(${(-y).toFixed(2)}px)`;
+  navs[i].classList.toggle('fond', y > 1);
+  url.textContent = PAGES[i].url;
+
+  /* 2. Accueil : tout glisse le long de la pente et s'arrête net */
+  M.glisse(A_.mega, t, 0.15, { montee: 90 });
+  M.glisse(A_.contour, t, 0.27, { montee: 70 }); M.glisse(A_.photo, t, 0.39, { montee: 70 });
+  M.glisse(A_.sous[0], t, 0.45, { montee: 50 }); M.glisse(A_.sous[1], t, 0.49, { montee: 50 });
+  surl(A_.surl, t, 0.98);
+  M.glisse(A_.boutons, t, 0.62, { montee: 40 }); M.glisse(A_.bandeau, t, 0.74, { montee: 40 });
+  A_.dunk.style.visibility = t < 0.6 ? 'hidden' : 'visible';
+  const im = t < 0.6 ? 0 : M.image(t - 0.6, 8); dunkImgs.forEach((e, k) => (e.style.display = k === im ? '' : 'none'));
+  surl(surlUniv, t, 2.82);
+  const survol = t >= T.survol; carte0.classList.toggle('on', survol); carte0Picto(survol);
+
+  /* 3. Textile */
+  const t1 = COUPES[1];
+  M.glisse(T_.sous[0], t, t1, { montee: 60 }); M.glisse(T_.sous[1], t, t1 + 0.04, { montee: 50 }); surl(T_.surl, t, t1 + 0.42);
+  M.glisse(T_.chapo, t, t1 + 0.1, { montee: 40 }); M.glisse(T_.boutons, t, t1 + 0.14, { montee: 40 });
+  M.glisse(T_.photo, t, t1 + 0.08, { montee: 70 }); M.glisse(T_.bandeau, t, t1 + 0.18, { montee: 40 });
+  surl(surlFam, t, 5.52);
+  [...navs[1].querySelectorAll('.s-menu span')][4].classList.toggle('survol', t >= T.atelierSurvol);
+
+  /* 4. L'atelier */
+  const t2 = COUPES[2];
+  M.glisse(At_.sous[0], t, t2, { montee: 70 }); M.glisse(At_.sous[1], t, t2 + 0.04, { montee: 70 }); surl(At_.surl, t, t2 + 0.42);
+  M.glisse(At_.photo, t, t2 + 0.08, { montee: 70 }); M.glisse(At_.tri, t, t2 + 0.14, { montee: 40 });
+  M.glisse(At_.chapo, t, t2 + 0.18, { montee: 40 }); M.glisse(At_.bouton, t, t2 + 0.22, { montee: 40 }); M.glisse(At_.cent, t, t2 + 0.2, { montee: 40 });
+  surl(surlGal, t, 8.12);
+  const navD = navs[2].querySelector('.bouton'), apN = M.tw(t, 8.84, 0.06, M.cubicOut) * (1 - M.tw(t, 8.96, 0.08, M.cubicOut));
+  navD.style.transform = apN > 0 ? `translateY(${(2 * apN).toFixed(2)}px) scale(${(1 - 0.04 * apN).toFixed(4)})` : '';
+
+  /* 5. Le devis : les étapes se remplissent */
+  const t3 = COUPES[3];
+  M.glisse(D_.h1, t, t3, { montee: 60 }); surl(D_.surl, t, t3 + 0.36); M.glisse(D_.chapo, t, t3 + 0.1, { montee: 40 });
+  const fait = t >= T.etape2 ? (t >= T.brod ? 2 : 1) : 0;    // étapes faites
+  D_.prog.forEach((d, k) => { const [num, barre] = d.children;
+    barre.style.background = k < fait ? 'var(--fluo)' : 'rgba(255,255,255,.18)';
+    barre.style.boxShadow = k === fait ? 'inset 0 0 0 2px #fff' : 'none';
+    num.style.color = k <= fait ? 'var(--fluo)' : '#fff'; });
+  etapes.forEach((e, k) => { e.classList.toggle('on', k === fait); etats[k].textContent = k < fait ? 'Fait' : k === fait ? 'En cours' : 'À faire'; });
+  const okT = t >= T.textile; opts1[0].classList.toggle('on', okT); opt1Picto(okT);
+  polos.classList.toggle('on', t >= T.polos);
+  M.glisse(sugg, t, T.sugg, { montee: 30 });
+  brod.classList.toggle('on', t >= T.brod);
+  const val = [t >= T.textile, t >= T.polos, t >= T.brod, false, false];
+  recap.forEach((b, k) => { b.textContent = val[k] ? RECAP[k] : '—'; b.style.color = val[k] ? '' : 'rgba(255,255,255,.35)'; });
+  const apC = M.tw(t, T.appui, 0.08, M.cubicOut) * (1 - M.tw(t, T.relache, 0.1, M.cubicOut));
+  cta.style.transform = apC > 0 ? `translateY(${(3 * apC).toFixed(2)}px) scale(${(1 - 0.03 * apC).toFixed(4)})` : '';
+  cta.style.filter = apC > 0 ? `brightness(${(1 - 0.1 * apC).toFixed(3)})` : '';
+
+  /* 6. Le curseur et ses clics */
+  const p = curseur(t);
+  cur.style.transform = `translate(${(p[0] - 2).toFixed(1)}px, ${(p[1] - 2).toFixed(1)}px)`;
+  let appui = 0, rond = null;
+  CLICS.forEach((c) => { appui = Math.max(appui, M.tw(t, c - 0.05, 0.06, M.cubicOut) * (1 - M.tw(t, c + 0.07, 0.1, M.cubicOut)));
+    if (t >= c && t < c + 0.32) rond = M.tw(t, c, 0.32, M.quartOut); });
+  fleche.style.transform = `scale(${(1 - 0.14 * appui).toFixed(3)})`;
+  clic.style.visibility = rond == null ? 'hidden' : 'visible';
+  if (rond != null) { clic.style.transform = `translate(${p[0].toFixed(1)}px, ${p[1].toFixed(1)}px) scale(${(0.35 + 0.75 * rond).toFixed(3)})`; clic.style.opacity = (1 - rond).toFixed(3); }
+};
+document.fonts.ready.then(() => { if (!pret) seek(0); });
+</script></body>

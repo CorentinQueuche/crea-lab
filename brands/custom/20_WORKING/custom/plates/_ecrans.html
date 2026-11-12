@@ -1,0 +1,45 @@
+<!doctype html><meta charset="utf-8"><title>Custom — contrôle des écrans du site</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="../brand/ecrans.css">
+<script src="../brand/marque.js"></script><script src="../brand/ecrans.js"></script>
+<style>
+  /* Planche de contrôle (préfixe ce-) : chaque page réduite, puis les écrans mobiles. ?p=accueil,textile,mobile… pour n'en montrer qu'une partie. */
+  .ce-z{position:relative;padding:40px 52px 30px}
+  .ce-k{font-family:var(--mono);font-size:11px;letter-spacing:.07em;text-transform:uppercase;margin-bottom:16px;display:flex;gap:18px}
+  .ce-k b{font-weight:500;color:var(--fluo)}
+  .ce-ok{color:var(--fluo)}.ce-ko{color:var(--orange)}
+  .ce-r{display:flex;gap:30px;align-items:flex-start;flex-wrap:wrap}
+  .ce-rap{font-family:var(--mono);font-size:11px;line-height:1.6;white-space:pre-wrap;color:rgba(255,255,255,.75)}
+</style>
+<body><div class="plate" id="p"></div>
+<script>
+const A = Marque, S = A.site, SM = A.mobile;
+const q = new URLSearchParams(location.search).get('p');
+const veut = (k) => !q || q.split(',').includes(k);
+/* Mesure : chaque page est rendue hors zoom, sa hauteur réelle comparée à H ; on signale les sections dont le contenu dépasse */
+const mesure = (html, H) => { const t = document.createElement('div'); t.style.cssText = 'position:absolute;left:-5000px;top:0'; t.innerHTML = html; document.body.appendChild(t);
+  const r = t.firstElementChild, h = r.offsetHeight, w = r.offsetWidth, dep = [];
+  r.querySelectorAll(':scope > section').forEach((s, i) => { const sb = s.getBoundingClientRect(); let maxB = 0, maxR = 0, qui = '';
+    s.querySelectorAll('*').forEach((e) => { if (e.closest('svg') && e.tagName !== 'svg') return; const b = e.getBoundingClientRect(); if (!b.width) return;
+      const st = getComputedStyle(e); if (st.position === 'absolute' && (st.zIndex === '0' || st.zIndex === '1')) return;
+      if (b.bottom - sb.bottom > maxB) { maxB = b.bottom - sb.bottom; qui = (e.className && e.className.baseVal == null ? e.className : e.tagName) + ''; }
+      if (b.right - sb.right > maxR) maxR = b.right - sb.right; });
+    if (maxB > 1 || maxR > 1) dep.push(`  section ${i + 1} (${s.className.replace('s-sec ', '').replace('sm-sec ', '')}) : déborde de ${Math.round(maxB)} px en bas, ${Math.round(maxR)} px à droite [${qui.slice(0, 40)}]`); });
+  const somme = [...r.querySelectorAll(':scope > section')].reduce((a, s) => a + s.offsetHeight, 0);
+  if (somme !== H) dep.unshift(`  ÉCART : somme des sections ${somme} ≠ ${H}`);
+  t.remove(); return { h, w, ok: h === H && somme === H, dep }; };
+const rap = [];
+const bloc = (titre, html, H, cadre) => { const m = mesure(html, H); rap.push(`${titre} : H déclarée ${H}, mesurée ${m.h} × ${m.w} ${m.ok ? 'OK' : 'ÉCART'}` + (m.dep.length ? '\n' + m.dep.join('\n') : ''));
+  return `<div class="ce-z"><div class="ce-k"><b>${titre}</b><span>${m.w} × ${H} px</span><span class="${m.ok ? 'ce-ok' : 'ce-ko'}">mesurée ${m.h}</span></div>${cadre(html, H)}</div>`; };
+let out = A.entete();
+const pages = [['accueil', 'Accueil', () => S.accueil(), S.H.accueil], ...['textile', 'print', 'goodies', 'signaletique'].map((c) => [c, 'Univers · ' + c, () => S.univers(c), S.H[c]]), ['atelier', 'L’atelier', () => S.atelier(), S.H.atelier], ['devis', 'Devis', () => S.devis(), S.H.devis]];
+out += '<div style="height:60px"></div>';
+pages.forEach(([k, t, f, H]) => { if (veut(k)) out += bloc(t, f(), H, (html, h) => A.browser(html, 0.9, { h, url: 'custom.fr' + (k === 'accueil' ? '' : '/' + k) })); });
+if (veut('mobile')) { const mob = [['Mobile · accueil', SM.accueil(), SM.H.accueil], ['Mobile · textile', SM.univers('textile'), SM.H.textile], ['Mobile · signalétique', SM.univers('signaletique'), SM.H.signaletique], ['Mobile · atelier', SM.atelier(), SM.H.atelier], ['Mobile · devis', SM.devis(), SM.H.devis]];
+  /* première vue (390 × 844) dans le téléphone, puis la page entière à plat */
+  out += `<div class="ce-z"><div class="ce-k"><b>Mobile · premières vues</b><span>390 × 844</span></div><div class="ce-r">${mob.map(([, h]) => A.phone(h, 0.8)).join('')}</div></div>`;
+  out += `<div class="ce-z"><div class="ce-k"><b>Mobile · pages entières</b></div><div class="ce-r" style="gap:24px">${mob.map(([t, h, H]) => { const m = mesure(h, H); rap.push(`${t} : H déclarée ${H}, mesurée ${m.h} × ${m.w} ${m.ok ? 'OK' : 'ÉCART'}` + (m.dep.length ? '\n' + m.dep.join('\n') : ''));
+    return `<div><div class="ce-k" style="font-size:9px"><b>${t.replace('Mobile · ', '')}</b><span class="${m.ok ? 'ce-ok' : 'ce-ko'}">${H}</span></div><div style="zoom:.62;border-radius:20px;overflow:hidden;width:390px">${h}</div></div>`; }).join('')}</div></div>`; }
+out += `<div class="ce-z"><div class="ce-k"><b>Contrôle des hauteurs</b></div><div class="ce-rap">${rap.join('\n')}</div></div><div style="height:70px"></div>` + A.foot('Écrans du site', 'Contrôle');
+document.getElementById('p').innerHTML = out;
+console.log(rap.join('\n'));
+</script></body>

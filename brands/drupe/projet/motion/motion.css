@@ -1,0 +1,24 @@
+/* DRUPE — styles des vidéos (en plus du socle brand/marque.css). Aucune animation ni transition CSS : tout est posé par seek(t).
+   Couleurs : uniquement les variables du socle. Préfixes sc- (scènes) et mo- (éléments) pour ne heurter aucune classe du socle. */
+.scene{position:relative;overflow:hidden;flex:none;color:var(--encre)}
+.scene .abs{position:absolute}
+.scene .fill{position:absolute;inset:0}
+.scene svg{display:block}
+
+/* Chiffres à chasse fixe (compteurs) */
+.mo-num{position:absolute;white-space:nowrap;line-height:1;letter-spacing:-.04em}
+.mo-num span{display:inline-block;text-align:center}
+
+/* Titres de marque (Bricolage Medium, serrés) */
+.mo-titre{font-weight:500;letter-spacing:-.03em;line-height:1.02}
+.mo-cap{font-family:var(--mono);font-weight:500;letter-spacing:.09em;text-transform:uppercase}
+
+/* 22 — l'application : feuille « Ma boîte » et emplacements */
+.mo-sheet{position:absolute;left:0;right:0;bottom:0;background:var(--fleur);border-radius:30px 30px 0 0;z-index:8;
+  box-shadow:0 -1px 0 rgba(42,26,20,.06),0 -18px 40px -24px rgba(42,26,20,.35)}
+.mo-slot{position:absolute;width:76px;height:76px;border-radius:50%;box-shadow:inset 0 0 0 1.5px rgba(42,26,20,.22)}
+.mo-touch{position:absolute;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;background:var(--grain);z-index:30;pointer-events:none}
+
+/* 11 — mosaïque */
+.mosaic{position:relative;background:var(--fleur)}
+.mosaic .tile{position:absolute;border-radius:22px;overflow:hidden;isolation:isolate}

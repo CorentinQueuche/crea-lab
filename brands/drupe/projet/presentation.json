@@ -1,0 +1,150 @@
+{
+ "titre": "Drupe — identité de marque",
+ "sous_titre": "Torréfacteur de café de quartier, projet vitrine. Le café est un fruit : identité, application d’abonnement, supports, mockups 3D et animations.",
+ "pied": "Drupe est une marque fictive. Direction artistique, identité de marque et motion design : KLYRA, 2026©. Polices : Bricolage Grotesque et IBM Plex Mono (licence OFL). Matières et ciels des scènes 3D : Poly Haven (CC0).",
+ "fond": "#F4ECDD",
+ "texte": "#2A1A14",
+ "police": "Bricolage Grotesque",
+ "planches": [
+  [
+   "final/01-drupe.png",
+   "01-ouverture",
+   "Ouverture : la drupe coupée"
+  ],
+  [
+   "plates/02-presentation.png",
+   "02-presentation",
+   "Présentation"
+  ],
+  [
+   "plates/03-mots-cles.png",
+   "03-mots-cles",
+   "Mots-clés"
+  ],
+  [
+   "plates/04-valeurs.png",
+   "04-valeurs",
+   "Valeurs"
+  ],
+  [
+   "motion/06-logo.mp4",
+   "06-logo-anime",
+   "Révélation du logotype"
+  ],
+  [
+   "plates/05-construction.png",
+   "05-construction",
+   "Construction du logotype"
+  ],
+  [
+   "plates/07-logo-variantes.png",
+   "07-logo-variantes",
+   "Logo et variantes"
+  ],
+  [
+   "motion/08-semis.mp4",
+   "08-semis",
+   "Le semis"
+  ],
+  [
+   "plates/09-pastilles.png",
+   "09-pastilles",
+   "Les pastilles"
+  ],
+  [
+   "plates/10-ecrans.png",
+   "10-ecrans",
+   "Écrans de l’application"
+  ],
+  [
+   "motion/11-mosaique.mp4",
+   "11-mosaique",
+   "Mosaïque"
+  ],
+  [
+   "plates/12-palette.png",
+   "12-palette",
+   "Palette"
+  ],
+  [
+   "plates/13-degrades.png",
+   "13-degrades",
+   "Dégradés"
+  ],
+  [
+   "final/14-sachets.png",
+   "14-sachets",
+   "Les sachets"
+  ],
+  [
+   "plates/15-typographie.png",
+   "15-typographie",
+   "Typographie"
+  ],
+  [
+   "final/16-boite.png",
+   "16-boite",
+   "La boîte d’abonnement"
+  ],
+  [
+   "final/17-gobelet.png",
+   "17-gobelet",
+   "Gobelet et tasse"
+  ],
+  [
+   "final/18-devanture.png",
+   "18-devanture",
+   "La devanture"
+  ],
+  [
+   "plates/19-charte.png",
+   "19-guide-de-marque",
+   "Guide de marque"
+  ],
+  [
+   "final/20-colonne.mp4",
+   "20-affiche-rue",
+   "Affiche de rue"
+  ],
+  [
+   "plates/21-icone.png",
+   "21-icone",
+   "Icône d’application"
+  ],
+  [
+   "motion/22-app.mp4",
+   "22-app",
+   "L’application"
+  ],
+  [
+   "motion/23-montre.mp4",
+   "23-montre",
+   "Montre et messages"
+  ],
+  [
+   "final/24-papeterie.png",
+   "24-papeterie",
+   "Papeterie et petite signalétique"
+  ],
+  [
+   "final/25-telephone.png",
+   "25-telephone",
+   "Le téléphone"
+  ],
+  [
+   "plates/26-reseaux.png",
+   "26-reseaux",
+   "Réseaux sociaux"
+  ],
+  [
+   "final/27-ardoise.mp4",
+   "27-ardoise",
+   "L’ardoise"
+  ],
+  [
+   "plates/28-merci.png",
+   "28-merci",
+   "Merci"
+  ]
+ ]
+}

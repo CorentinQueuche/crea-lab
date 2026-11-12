@@ -1,0 +1,19 @@
+<!doctype html><meta charset="utf-8"><title>Gabarit de vidéo</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="motion.css">
+<script src="../brand/marque.js"></script><script src="lib.js"></script>
+<body><div class="m-stage" id="s" style="width:1920px;height:1080px"><div class="m-abs" id="x" style="left:160px;top:440px"></div></div>
+<script>
+/* Gabarit de vidéo : la mécanique seulement. Le copier sous motion/NN-nom.html.
+   Contrôle : node tools/record.mjs motion/NN-nom.html out/motion/NN-nom.mp4 --dur 6 --apercu   (planche de 6 images)
+   Final :    node tools/record.mjs motion/NN-nom.html out/motion/NN-nom.mp4 --dur 6 --planche  (MP4, planche, image fixe)
+   Règle : seek(t) pose TOUT l'état pour l'instant t. Aucune animation CSS, aucune transition, aucune horloge, aucun hasard
+   sans graine. Le mouvement de la marque (MARQUE.md, « Le mouvement ») s'écrit ici en fonctions du temps. */
+const A = Marque, x = document.getElementById('x');
+x.innerHTML = A.wordmark('currentColor', 'style="height:200px"');
+window.seek = (t) => {
+  const p = M.tw ? M.tw(t, 0.3, 0.9, M.expoOut) : Math.min(1, Math.max(0, (t - 0.3) / 0.9));
+  x.style.opacity = p;
+  x.style.transform = `translateY(${(1 - p) * 40}px)`;
+};
+seek(0);
+</script></body>

@@ -1,0 +1,26 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates.css"><script src="../brand/marque.js"></script><script src="../deck/pages.js"></script>
+<body>
+<div class="plate" id="p" style="height:1574px;background:var(--doux)"></div>
+<script>
+/* Planche 19 — Guide de marque : mosaïque des pages du guide, dessinées à 1280 × 720 et réduites à 380 × 214.
+   Les pages viennent de deck/pages.js (source unique de la mosaïque, de la présentation et du PDF).
+   Rangées A (4 pages décalées, les deux du bord coupées) et B (5 pages, la première et la dernière en lisière) en alternance.
+   Les pages de règles occupent les places entières ; les intercalaires vont en lisière, où seul leur dégradé se voit. */
+const P = window.GuidePages;
+const rows = [
+  ['A', ['idee', 'cover', 'sommaire', 'd2']],
+  ['B', ['d1', 'valeurs', 'ton', 'logo', 'd3']],
+  ['A', ['zone', 'sillon', 'usages', 'emballage']],
+  ['B', ['d4', 'palette', 'contrastes', 'degrades', 'd5']],
+  ['A', ['d6', 'typo', 'pastille', 'boutique']],
+  ['B', ['d2', 'semis', 'ecrans', 'dos', 'd1']],
+];
+const XA = [-105, 305, 715, 1125], XB = [-310, 100, 510, 920, 1330];
+let html = '';
+rows.forEach(([t, keys], r) => {
+  const y = 70 + r * 244, xs = t === 'A' ? XA : XB;
+  keys.forEach((k, i) => html += `<div class="mp" style="left:${xs[i]}px;top:${y}px"><div class="in">${P[k]}</div></div>`);
+});
+document.getElementById('p').innerHTML = html;
+</script>
+</body>

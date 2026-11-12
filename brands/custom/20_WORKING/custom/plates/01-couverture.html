@@ -1,0 +1,51 @@
+<!doctype html><meta charset="utf-8"><title>Custom · 01 · Couverture</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates.css"><script src="../brand/marque.js"></script>
+<style>
+  /* 01 · Couverture. Préfixe q01-. Plein cadre : pas de bandeau, les repères d'impression tiennent les marges. */
+  .q01-cran{position:absolute;z-index:10;overflow:hidden}
+  .q01-cran img{position:absolute;max-width:none;filter:contrast(1.08) saturate(.92)}
+  .q01-ombre{position:absolute;z-index:9;opacity:.9}
+  .q01-titre{position:absolute;left:84px;z-index:30}
+  .q01-sprites{position:absolute;z-index:30;display:flex;align-items:flex-end;gap:0}
+  .q01-sprites svg{height:270px;width:auto;flex:none;margin-right:-8px}
+  .q01-k{position:absolute;z-index:40}
+  .q01-num{position:absolute;z-index:31;font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:#fff;opacity:.6}
+</style>
+<body><div class="plate grain leger" id="p" style="height:1050px"></div>
+<script>
+const A = Marque, C = A.COULEURS, NB = A.NB;
+/* Le Cran géant : repère 191,05 × 110, mis à 1240 px de large. Il sort du cadre à droite. */
+const W = 1240, H = Math.round(W * 110 / 191.05), X = 452, Y = 160, s = W / 191.05;
+/* Le dunk : le ballon et la tête dans le bloc haut, le bras tendu et le buste dans le bloc bas */
+const IW = 1620, IH = Math.round(IW * 2400 / 1792), IX = -300, IY = -610;
+/* Le Cran décalé d'un pas (62,5 ; 47,6), en filet : la marche suivante */
+const PX = X + 62.5 * s, PY = Y + 47.6 * s;
+/* Séquence du dunk (8 images) qui monte le long de la pente du Cran */
+const sprites = [1, 2, 3, 4, 5, 6, 7, 8].map((i) => A.dunk(i, { c: '#fff' })).join('');
+document.getElementById('p').innerHTML = `
+  <!-- la coulure orange, sous le Cran, qui sort par le bas -->
+  ${A.coulure({ w: 1000, h: 300, c: 'orange', seed: 21, cx: 0.36, cy: 0.62, rx: 0.5, ry: 0.42, attrs: `class="q01-ombre" style="left:-90px;top:850px;width:1000px;height:300px"` })}
+  <!-- la photo dans le Cran -->
+  <div class="q01-cran dans-cran" style="left:${X}px;top:${Y}px;width:${W}px;height:${H}px"><img src="${A.photoURL('dunk')}" alt="" style="left:${IX}px;top:${IY}px;width:${IW}px;height:${IH}px"></div>
+  <!-- le pas suivant, en filet fluo -->
+  ${A.symbol(C.fluo, `style="position:absolute;z-index:12;left:${PX}px;top:${PY}px;width:${W}px;height:auto;overflow:visible" `, { contour: 0.32 })}
+  <!-- repères d'impression : croix aux quatre angles d'une zone utile à 40 px -->
+  <div class="cadre-r q01-k" style="left:40px;top:40px;right:40px;bottom:40px;color:#fff">${A.reperes({ t: 22, cadre: false })}</div>
+  <!-- logo et repères du haut -->
+  <div class="q01-k" style="left:84px;top:78px">${A.logo(C.fluo, 'style="height:46px"', { sym: C.fluo })}</div>
+  <div class="q01-k t-mono" style="left:84px;top:150px;color:#fff;opacity:.72">Atelier de personnalisation<br>Textile · Print · Goodies · Signalétique</div>
+  <div class="q01-k" style="right:84px;top:62px;text-align:right;color:#fff">
+    <div class="t-mono" style="font-size:13px">Direction artistique</div>
+    <div class="t-mono" style="opacity:.6;margin-top:2px">Système et supports</div>
+  </div>
+  <div class="q01-k" style="right:84px;top:112px;display:flex;gap:14px;align-items:center;color:#fff">${A.code('CST', 'SER', 'DTF', 'BRO', 'FLO', 'SUB')} ${A.mire(22)}</div>
+  <!-- le titre : l'idée -->
+  <div class="q01-titre t-titre h-160" style="top:300px;color:#fff">Tout est<br>fait ${A.surl('ici.')}</div>
+  <!-- le sprite monte à côté du vrai joueur -->
+  <div class="q01-sprites" style="left:76px;top:660px">${sprites}</div>
+  <div class="q01-num" style="left:84px;top:646px">01 à 08 · Dunk · 8 images par seconde</div>
+  <!-- l'année en chasse fixe, la barre de contrôle -->
+  <div class="q01-k t-mono" style="right:84px;bottom:66px;font-size:13px;color:#fff">2026</div>
+  <div class="q01-k" style="right:150px;bottom:70px;width:280px">${A.barre({ style: 'height:12px' })}</div>
+  <div class="q01-k t-mono" style="right:84px;bottom:96px;color:#fff;opacity:.6">Imaginé chez vous · Fabriqué chez nous · Porté partout</div>`;
+</script></body>

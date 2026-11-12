@@ -1,0 +1,75 @@
+/* Pages du guide de marque Custom (1280 × 720). Lu par deck/render.html (PDF), plates/45-guide.html (mosaïque) et la visionneuse du site.
+   Complète brand/marque.css (lecture seule). Toutes les classes sont préfixées mp- et ne reprennent aucun nom du bloc .mp de
+   plates/plates.css (hérité d'une autre marque) : les deux feuilles peuvent être chargées ensemble sans se gêner.
+   Grille d'une page : bandeau à 24 px du haut, marges de 56 px, contenu de 76 à 672 px. Croix de repérage aux quatre angles. */
+
+/* ---------- Conteneur : une page à 1280 × 720, mise à l'échelle par --mp-k (visionneuse, mosaïque) ---------- */
+.mp-in{position:relative;width:1280px;height:720px;overflow:hidden;zoom:var(--mp-k,1);background:var(--noir)}
+
+/* ---------- La page et ses quatre fonds : noir, fluo, blanc, Craie ---------- */
+.mp-page{position:absolute;inset:0;overflow:hidden;isolation:isolate;background:var(--noir);color:#fff;font-family:var(--font);font-weight:400;
+  -webkit-font-smoothing:antialiased;--filet:rgba(255,255,255,.13)}
+.mp-page.mp-fluo{background:var(--fluo);color:var(--encre);--filet:rgba(3,1,14,.2)}
+.mp-page.mp-blanc{background:#fff;color:var(--encre);--filet:var(--filet-clair)}
+.mp-page.mp-craie{background:var(--craie);color:var(--encre);--filet:rgba(3,1,14,.16)}
+.mp-page *{box-sizing:border-box}
+
+/* ---------- Bandeau en chasse fixe : marque, chapitre, titre de page, numéro ---------- */
+.mp-bande{position:absolute;left:56px;right:56px;top:24px;z-index:70;display:grid;grid-template-columns:30% 22% 1fr auto;
+  font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;line-height:1.5}
+.mp-bande span{padding-right:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mp-bande span:last-child{padding-right:0;font-variant-numeric:tabular-nums}
+.mp-bande .mp-pt{opacity:.62}
+.mp-coin{--t:14px;z-index:71;opacity:.45}
+
+/* ---------- Texte ---------- */
+.mp-abs{position:absolute}
+.mp-z{position:relative;z-index:60}
+.mp-lbl{font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;line-height:1.5}
+.mp-doux{opacity:.6}
+.mp-chapo{font-size:16px;line-height:1.42;font-weight:500;letter-spacing:-.012em;margin:0}
+.mp-txt{font-size:13.5px;line-height:1.45;margin:0}
+.mp-txt b,.mp-chapo b{font-weight:650}
+.mp-leg{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;line-height:1.45}
+.mp-cote{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.03em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.mp-nom{font-family:var(--titre);text-transform:uppercase;line-height:.9;font-weight:400;letter-spacing:.004em}
+.mp-tete .t-titre{margin-top:12px}
+.mp-tete .mp-chapo{margin-top:18px}
+
+/* ---------- Règles numérotées : filet, numéro en chasse fixe, phrase courte ---------- */
+.mp-rg>div{display:grid;grid-template-columns:28px 1fr;column-gap:6px;padding:8px 0 9px;border-top:1px solid var(--filet);font-size:13px;line-height:1.4}
+.mp-rg>div>i{font-style:normal;font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.06em;line-height:1.85;opacity:.55}
+.mp-rg b{font-weight:650}
+.mp-filet{height:1px;background:var(--filet)}
+
+/* ---------- Tuiles, cadres d'image ---------- */
+.mp-tuile{position:absolute;overflow:hidden;border-radius:16px;background:var(--graphite);isolation:isolate}
+.mp-tuile.mp-t-noir{background:var(--noir);box-shadow:inset 0 0 0 1px var(--filet)}
+.mp-tuile.mp-t-fluo{background:var(--fluo);color:var(--encre)}
+.mp-tuile.mp-t-blanc{background:#fff;color:var(--encre)}
+.mp-tuile.mp-t-craie{background:var(--craie);color:var(--encre)}
+.mp-tuile.mp-t-encre{background:var(--encre);color:#fff}
+.mp-tuile.mp-t-filet{background:transparent;box-shadow:inset 0 0 0 1.5px currentColor}
+.mp-tuile>.mp-lbl.mp-haut{position:absolute;left:16px;top:13px;z-index:62}
+/* Cadre d'image : le repli dessiné en HTML (z 60) sous l'image (z 61). L'image absente se retire et laisse voir le repli. */
+.mp-cadre{position:absolute;overflow:hidden;border-radius:14px;background:var(--graphite);isolation:isolate}
+.mp-repli{position:absolute;inset:0;z-index:60;overflow:hidden}
+.mp-cadre>img.mp-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:61}
+.mp-centre{position:absolute;inset:0;display:grid;place-items:center}
+
+/* ---------- Tirage épinglé (l'existant) ---------- */
+.mp-tirage{position:absolute;background:#fff;color:var(--encre);padding:8px 8px 0;box-shadow:0 1px 0 rgba(0,0,0,.25),0 18px 32px -16px rgba(0,0,0,.8);z-index:20}
+.mp-tirage>div{position:relative;overflow:hidden}
+.mp-tirage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.mp-tirage>span{display:flex;justify-content:space-between;padding:6px 1px 7px;font-family:var(--mono);font-size:8.5px;font-weight:500;letter-spacing:.07em;text-transform:uppercase}
+
+/* ---------- À ne pas faire : deux traits orange en croix sur la vignette ---------- */
+.mp-non::before,.mp-non::after{content:"";position:absolute;left:50%;top:50%;width:120%;height:1.5px;background:var(--orange);z-index:63}
+.mp-non::before{transform:translate(-50%,-50%) rotate(24deg)}
+.mp-non::after{transform:translate(-50%,-50%) rotate(-24deg)}
+
+/* ---------- Éléments courts ---------- */
+.mp-puce{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;line-height:1.3;white-space:nowrap}
+.mp-puce::before{content:"";width:13px;height:7px;flex:none;background:currentColor;border-radius:2px;transform:skewX(-13.3deg)}
+.mp-badge{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:6px;background:var(--fluo);color:var(--encre);font-family:var(--mono);font-size:10px;font-weight:600}
+.mp-code{display:inline-flex;align-items:center;height:22px;padding:0 7px;border-radius:5px;background:var(--fluo);color:var(--encre);font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.06em}

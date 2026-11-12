@@ -1,0 +1,31 @@
+<!doctype html><meta charset="utf-8"><title>Custom — écran du téléphone (scène 32)</title>
+<!-- Texture d'écran du téléphone : 390 × 844, coins de 47 px découpés par la transparence, sans cadre ni îlot (écran nu).
+     Si brand/ecrans.js existe : Marque.mobile.accueil(), décalé de ?y= pixels. Sinon, un accueil composé avec le socle.
+     Rendu : node tools/shot.mjs "art/3d2-ecran-mobile.html?t" out/art/3d2-ecran-mobile.png --w 800 --h 900 --scale 4 --transparent --sel "#ecran" -->
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="../brand/ecrans.css">
+<script src="../brand/marque.js"></script><script src="../brand/ecrans.js" onerror="window.a2SansEcrans = 1"></script>
+<link rel="stylesheet" href="3d2-art.css">
+<style>
+  #ecran{width:390px;height:844px;border-radius:47px;background:var(--noir);color:#fff}
+  #ecran>.a2-defile{position:absolute;left:0;top:0;width:390px}
+  .a2-ilot{position:absolute;left:50%;top:12px;width:112px;height:32px;margin-left:-56px;border-radius:16px;background:#000;z-index:90}
+</style>
+<body><div id="ecran" class="a2-v"></div>
+<script>
+if (location.search.indexOf('t') > -1) document.documentElement.classList.add('a2-t');
+const A = Marque, C = A.COULEURS, y = +(new URLSearchParams(location.search).get('y') || 0);
+const E = document.getElementById('ecran');
+if (A.mobile && A.mobile.accueil) {
+  E.innerHTML = `<div class="a2-defile" style="transform:translateY(${-y}px)">${A.mobile.accueil()}</div><i class="a2-ilot"></i>`;
+} else {
+  E.innerHTML = `
+    <div class="a2-abs" style="left:0;right:0;top:250px;height:330px">${A.photo('dunk', { mode: 'nb', style: 'position:absolute;inset:0' })}</div>
+    <div class="a2-abs" style="left:22px;top:62px">${A.logo('#fff', 'style="height:22px"')}</div>
+    <div class="a2-abs t-large" style="left:20px;top:120px;font-size:56px;color:${C.fluo}">Transformez</div>
+    <div class="a2-abs t-large" style="left:22px;top:184px;font-size:22px">vos idées en</div>
+    <div class="a2-abs t-large" style="left:16px;top:590px;font-size:21px">${A.surl('produits personnalisés')}</div>
+    <div class="a2-abs t-large" style="left:16px;top:626px;font-size:21px">${A.surl('premium')}</div>
+    <div class="a2-abs" style="left:20px;right:20px;top:700px"><span class="bouton" style="width:100%">Demander mon devis gratuit</span></div>
+    <i class="a2-ilot"></i>`;
+}
+</script></body>

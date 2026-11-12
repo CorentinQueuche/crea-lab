@@ -1,0 +1,50 @@
+<!doctype html><meta charset="utf-8"><title>Custom — 29 · La page Atelier et les chiffres</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="../brand/ecrans.css"><link rel="stylesheet" href="plates-b.css">
+<script src="../brand/marque.js"></script><script src="../brand/ecrans.js"></script>
+<style>
+  /* Idée : la page Atelier entière, inclinée, descend le long de la planche à gauche ; à droite, le chiffre « 800 » en blocs,
+     rempli de la photo de sérigraphie, et trois zones agrandies (galerie, parcours en marches, « Tout est fait ici. »). */
+  .p29-bande{position:absolute;left:84px;top:118px;transform-origin:0 50%;transform:perspective(2600px) rotateY(17deg)}
+  .p29-mk{position:absolute;z-index:20}
+  .p29-col{position:absolute;left:604px;width:720px}
+  .p29-tc{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+  .p29-tc b{font-size:16px;font-weight:600;letter-spacing:-.02em}
+  .p29-tc span.pb-lbl{margin-left:auto;opacity:.55}
+  /* Planche seulement : on masque le texte d'accompagnement du parcours, que l'étape 05 recouvre dans l'écran (défaut signalé) */
+  .p29-sansp .s-parcours>p.s-txt{display:none}
+</style>
+<body><div class="plate" id="p" style="height:1790px"></div>
+<script>
+const A = Marque, C = A.COULEURS, S = A.site, B = S.blocs, NB = A.NB, Y = S.Y.atelier;
+const k = 0.32, BAR = 44 * k;
+const crop = (sec, H, k, x, y, w, h, cls = '') => `<div class="cadre-r" style="width:${w * k + 28}px;height:${h * k + 28}px;color:#fff">${A.reperes({ t: 18 })}
+  <div class="pb-crop ${cls}" style="position:absolute;inset:14px"><div class="pb-in" style="zoom:${k}"><div class="s-page" style="height:${H}px;margin:-${y}px 0 0 -${x}px">${sec}</div></div></div></div>`;
+const tc = (n, t, d) => `<div class="p29-tc"><span class="pb-num">0${n}</span><b>${t}</b><span class="pb-lbl">${d}</span></div>`;
+const mk = (n, y) => `<div class="p29-mk" style="left:${1440 * k - 17}px;top:${BAR + y * k - 17}px"><span class="pb-num">0${n}</span></div>`;
+/* le chiffre en blocs sert de masque à la photo */
+const u = A.dataSVG(A.pix('800', { c: '#000' }));
+const masque = `-webkit-mask-image:${u};mask-image:${u};-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:left center;mask-position:left center`;
+
+document.getElementById('p').innerHTML =
+  A.entete() +
+  `<div class="pb-abs" style="left:-260px;top:260px;width:900px;height:1200px">${A.coulure({ w: 900, h: 1200, c: C.fluo, seed: 29, cx: 0.5, cy: 0.5, rx: 0.36, ry: 0.42, frange: 0.22, pas: 4, attrs: 'style="width:100%;height:100%"' })}</div>` +
+  // la page Atelier entière
+  `<div class="p29-bande pb-ombre p29-sansp" style="z-index:3">${A.browser(S.atelier(), k, { h: S.H.atelier, url: 'custom.fr/atelier' })}
+     ${mk(1, Y.galerie + 460)}${mk(2, Y.parcours + 380)}${mk(3, Y.ici + 260)}</div>` +
+
+  `<div class="p29-col pb-abs pb-z" style="top:104px"><div class="pb-lbl doux">29${NB}·${NB}La page Atelier${NB}·${NB}1440${NB}×${NB}${S.H.atelier}</div>
+     <div class="t-titre" style="font-size:84px;margin-top:10px">L’atelier, ${A.surl('au centre')}</div>
+     <p class="pb-txt doux" style="margin-top:16px;width:640px">Les concurrents sous-traitent ; Custom fabrique. La page Atelier le montre : le geste et la matière, le parcours d’une commande en marches, puis la phrase qui conclut.</p></div>` +
+  // le chiffre publié
+  `<div class="p29-col pb-abs pb-z" style="top:330px;display:flex;align-items:flex-end;gap:30px">
+     <div style="position:relative;width:390px;height:150px;background:var(--fonte);${masque}"><div style="position:absolute;inset:0;mix-blend-mode:screen">${A.photo('serigraphie', { mode: 'points', c: 'fluo', tp: 5, ct: 1.3, pos: '55% 50%', style: 'position:absolute;inset:0' })}</div></div>
+     <div style="padding-bottom:4px"><div class="t-titre" style="font-size:40px;line-height:.92">Vues de la page Atelier<br>${A.surl('en deux mois', 'droit')}</div>
+       <div class="pb-lbl doux" style="margin-top:14px">Chiffre publié par KLYRA</div></div></div>` +
+
+  `<div class="p29-col pb-abs pb-z" style="top:540px">${tc(1, 'Le geste et la matière', 'galerie')}${crop(B.galerie(), 920, 0.48, 0, 236, 1440, 684)}</div>` +
+  `<div class="p29-col pb-abs pb-z p29-sansp" style="top:964px">${tc(2, 'Tout avance d’un pas', 'parcours')}${crop(B.parcours(), 740, 0.48, 0, 140, 1440, 590)}</div>` +
+  `<div class="p29-col pb-abs pb-z" style="top:1344px">${tc(3, 'Tout est fait ici.', 'conclusion')}${crop(B.ici(), 520, 0.48, 0, 0, 1440, 520)}</div>` +
+  `<div class="pb-abs" style="left:0;right:0;bottom:0;height:110px;z-index:5;background:linear-gradient(rgba(16,16,18,0),rgba(16,16,18,.94) 60%)"></div>` +
+  A.foot('29 · La page Atelier', 'Custom · direction artistique');
+{ const P = document.getElementById('p'); P.innerHTML = P.innerHTML.replace(/ ([:;?])(?=[ <])/g, NB + '$1'); }   // espace insécable avant : ; ?
+</script></body>

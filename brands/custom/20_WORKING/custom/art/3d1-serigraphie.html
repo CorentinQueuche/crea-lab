@@ -1,0 +1,50 @@
+<!doctype html><meta charset="utf-8"><title>Custom — visuels du cadre de sérigraphie (scène 21)</title>
+<link rel="stylesheet" href="../brand/marque.css"><script src="../brand/marque.js"></script>
+<!-- Visuels plaqués sur les objets de la scène 21 (blender/s21_serigraphie.py). Classes préfixées a1-.
+     #ecran   1776 × 2176 px   la toile du cadre, 444 × 544 mm (1 px = 0,25 mm) : émulsion violette, le Cran en réserve
+                               (24 cm de large, chargé d'encre fluo), croix de repérage, passage de raclette, ruban de bordure
+     #tee     2000 × 2000 px   le tee-shirt noir à plat, 800 × 800 mm (1 px = 0,4 mm), fond transparent : le Cran imprimé
+                               à la même taille (24 cm), le col, l'étiquette tissée
+     Rendu : bash art/3d1-rendre.sh serigraphie -->
+<style>
+  html,body{background:transparent;margin:0}
+  body{display:flex;flex-wrap:wrap;gap:40px;padding:0;align-items:flex-start}
+  .a1-v{position:relative;overflow:hidden;flex:none;font-family:var(--font)}
+  .a1-abs{position:absolute}
+  .a1-mono{font-family:var(--mono);text-transform:uppercase;letter-spacing:.07em;font-weight:500;white-space:nowrap}
+</style>
+<body>
+<div id="ecran" class="a1-v" style="width:1776px;height:2176px;background:#8E3EFF"></div>
+<div id="tee" class="a1-v" style="width:2000px;height:2000px"></div>
+<script>
+const A = Marque, C = A.COULEURS, NB = A.NB;
+const $ = (id) => document.getElementById(id);
+
+/* ---------- La toile : émulsion violette, Cran ouvert (l'encre fluo y reste), traînées du passage de raclette ---------- */
+const LC = 960, HC = LC * 110 / 191.05, X0 = (1776 - LC) / 2, Y0 = (2176 - HC) / 2;
+const croix = (x, y) => `<div class="a1-abs" style="left:${x - 26}px;top:${y - 3}px;width:52px;height:6px;background:${C.fluo}"></div><div class="a1-abs" style="left:${x - 3}px;top:${y - 26}px;width:6px;height:52px;background:${C.fluo}"></div>`;
+$('ecran').innerHTML = `
+  <div class="a1-abs" style="inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(255,255,255,.07),rgba(0,0,0,.16))"></div>
+  <div class="a1-abs" style="left:50%;top:50%;width:1900px;height:1360px;margin:-680px 0 0 -950px;transform:rotate(90deg);opacity:.42">${A.coulure({ w: 1900, h: 1360, c: 'fluo', seed: 21, rx: 0.44, ry: 0.42, pas: 5, frange: 0.1, attrs: 'style="width:100%;height:100%"' })}</div>
+  <div class="a1-abs" style="left:50%;top:50%;width:1500px;height:1180px;margin:-590px 0 0 -750px;transform:rotate(90deg);opacity:.5">${A.coulure({ w: 1500, h: 1180, c: 'fluo', seed: 8, rx: 0.4, ry: 0.4, pas: 4, frange: 0.08, attrs: 'style="width:100%;height:100%"' })}</div>
+  <div class="a1-abs" style="left:${X0}px;top:${Y0}px">${A.symbol(C.fluo, `style="width:${LC}px"`)}</div>
+  ${croix(X0 - 110, Y0 - 110)}${croix(X0 + LC + 110, Y0 - 110)}${croix(X0 - 110, Y0 + HC + 110)}${croix(X0 + LC + 110, Y0 + HC + 110)}
+  <div class="a1-abs a1-mono" style="left:${X0 - 110}px;top:${Y0 + HC + 170}px;font-size:30px;color:${C.fluo};opacity:.9">CST${NB}·${NB}SER${NB}·${NB}2026</div>
+  <div class="a1-abs" style="left:0;top:0;right:0;height:110px;background:${C.craie}"></div><div class="a1-abs" style="left:0;bottom:0;right:0;height:110px;background:${C.craie}"></div>
+  <div class="a1-abs" style="left:0;top:0;bottom:0;width:110px;background:${C.craie}"></div><div class="a1-abs" style="right:0;top:0;bottom:0;width:110px;background:${C.craie}"></div>
+  <div class="a1-abs a1-mono" style="left:150px;top:36px;font-size:34px;color:${C.encre}">Custom${NB}·${NB}Cadre 01${NB}·${NB}Fluo</div>
+  <div class="a1-abs" style="right:150px;top:44px;width:330px">${A.barre({ couleurs: ['encre', 'graphite', 'fonte', 'acier', 'fluo', 'violet', 'orange'], n: 1, style: 'height:24px' })}</div>`;
+
+/* ---------- Le tee-shirt : silhouette à plat, col côtelé, étiquette tissée, le Cran imprimé (24 cm = 600 px) ---------- */
+const LT = 600, HT = LT * 110 / 191.05;
+$('tee').innerHTML = `
+  <svg class="a1-abs" style="left:0;top:0" width="2000" height="2000" viewBox="0 0 2000 2000">
+    <path d="M770,150 Q1000,250 1230,150 L1470,205 Q1560,225 1620,290 L1960,640 L1730,850 L1610,740 L1610,1900 Q1610,1960 1550,1960 L450,1960 Q390,1960 390,1900 L390,740 L270,850 L40,640 L380,290 Q440,225 530,205 Z" fill="#0C0C0E"/>
+    <path d="M770,150 Q1000,250 1230,150 L1262,158 Q1000,330 738,158 Z" fill="#17171A"/>
+    <path d="M745,160 Q1000,322 1255,160" fill="none" stroke="#26262A" stroke-width="5" stroke-dasharray="12 9"/>
+    <path d="M390,740 L530,205 M1610,740 L1470,205" stroke="#1B1B1E" stroke-width="5" fill="none"/>
+    <path d="M390,1900 H1610" stroke="#1B1B1E" stroke-width="5" stroke-dasharray="12 9"/>
+  </svg>
+  <div class="a1-abs" style="left:932px;top:262px;width:136px;height:48px;background:${C.fluo};display:grid;place-items:center">${A.logo(C.encre, 'style="height:17px"')}</div>
+  <div class="a1-abs" style="left:${(2000 - LT) / 2}px;top:${760 - HT / 2}px">${A.symbol(C.fluo, `style="width:${LT}px"`)}</div>`;
+</script></body>

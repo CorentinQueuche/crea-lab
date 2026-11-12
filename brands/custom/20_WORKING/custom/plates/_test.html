@@ -1,0 +1,69 @@
+<!doctype html><meta charset="utf-8"><title>Custom — page de test du socle</title>
+<link rel="stylesheet" href="../brand/marque.css"><script src="../brand/marque.js"></script>
+<style>
+  /* Page de test : tout le socle d'un coup. Préfixe ts- (rien ici ne doit servir ailleurs). */
+  .ts-z{padding:46px 56px;position:relative}
+  .ts-k{font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;opacity:.55;margin-bottom:18px}
+  .ts-r{display:flex;gap:28px;align-items:center;flex-wrap:wrap}
+  .ts-g{display:grid;gap:14px}
+  .ts-sw{height:120px;border-radius:14px;padding:14px;display:flex;flex-direction:column;justify-content:flex-end;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;line-height:1.5}
+</style>
+<body><div class="plate" id="p"></div>
+<script>
+const A = Marque, C = A.COULEURS;
+const z = (k, html, st = '') => `<div class="ts-z" style="${st}"><div class="ts-k">${k}</div>${html}</div>`;
+const sw = Object.keys(C).map((k) => `<div class="ts-sw" style="background:${C[k]};color:${A.contraste(C[k], C.encre) > 5 ? C.encre : '#fff'};${k === 'noir' ? 'box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)' : ''}"><b style="font-weight:500">${A.NOMS[k]}</b>${C[k]}</div>`).join('');
+const ph = (n, o, w = 310, h = 220) => A.photo(n, Object.assign({ style: `width:${w}px;height:${h}px;border-radius:14px;flex:none` }, o));
+document.getElementById('p').innerHTML =
+  A.entete() +
+  z('01 · Logo de référence, logotype, symbole, empilé, descripteur, filaire', `<div class="ts-r" style="gap:56px;margin-top:30px">
+      ${A.logo(C.fluo, 'style="height:74px"')} ${A.wordmark('#fff', 'style="height:56px"')} ${A.symbol(C.fluo, 'style="height:74px"')} ${A.logoV('#fff', 'style="height:120px"', { sym: C.fluo })}
+    </div><div class="ts-r" style="gap:56px;margin-top:40px">${A.lockup('#fff', 'style="height:52px"')} ${A.logo(C.fluo, 'style="height:60px"', { contour: 2.2 })} ${A.logo('#fff', 'style="height:16px"')} ${A.symbol('#fff', 'style="height:16px"')} ${A.symbol('#fff', 'style="height:9px"')}
+      ${['fluo', 'noir', 'blanc', 'violet', 'orange'].map((t) => A.icone(64, t)).join('')}</div>`, 'padding-top:90px') +
+  z('02 · Logo sur fluo, blanc, violet, orange, photo', `<div class="ts-g" style="grid-template-columns:repeat(5,1fr)">
+      ${[['fluo', C.encre], ['blanc', C.encre], ['violet', '#fff'], ['orange', C.encre]].map(([f, t]) => `<div style="height:150px;border-radius:14px;background:${C[f]};display:grid;place-items:center">${A.logo(t, 'style="height:34px"')}</div>`).join('')}
+      <div style="position:relative;height:150px;border-radius:14px;overflow:hidden">${A.photo('peloton', { mode: 'sombre', style: 'position:absolute;inset:0' })}<div style="position:absolute;inset:0;display:grid;place-items:center">${A.logoV(C.fluo, 'style="height:74px"')}</div></div></div>`) +
+  z('03 · Couleurs', `<div class="ts-g" style="grid-template-columns:repeat(10,1fr)">${sw}</div><div style="display:flex;margin-top:14px;border-radius:10px;overflow:hidden">${Object.keys(A.ECHELLE).map((k) => `<div style="flex:1;height:44px;background:${A.ECHELLE[k]};color:${k > 600 ? '#fff' : C.encre};font-family:var(--mono);font-size:10px;padding:8px 10px">${k}</div>`).join('')}</div>
+      <div style="margin-top:18px">${A.barre({ n: 2, style: 'width:520px' })}</div>`) +
+  z('04 · Typographie : Archivo étirée, Bebas Neue, Inter, JetBrains Mono ; le surligneur', `
+      <div class="t-large" style="font-size:118px">Transformez</div>
+      <div class="t-large" style="font-size:44px;margin-top:10px">vos idées en ${A.surl('produits personnalisés premium')}</div>
+      <div class="t-titre h-120" style="margin-top:34px">On fait plus ${A.surl('qu’un maillot')}</div>
+      <div class="t-titre h-56" style="margin-top:16px">Chaque objet, sa ${A.surl('technique', 'violet')} · En quelques ${A.surl('chiffres', 'orange monte')} · ${A.surl('24 h', 'blanc droit')} ${A.surl('100 %', 'noir')}</div>
+      <p class="t-chapo" style="max-width:760px;margin:26px 0 0">Textile, print, goodies, signalétique : quatre univers sous un même toit. Sérigraphie, DTF, broderie, flocage, sublimation, tout est opéré dans notre atelier.</p>
+      <p class="t-txt t-doux" style="max-width:620px;margin:12px 0 0">Un devis détaillé en moins de 24 h, sans engagement. Délai moyen de livraison : 7 à 10 jours. « Prêt à donner vie à votre projet ? » — 100 % · € · → n’existe pas partout : ${A.fleche()} en tracé.</p>
+      <div class="t-mono" style="margin-top:14px">CST · SER · DTF · BRO · FLO · SUB — Repère 0123456789 · ©2026</div>`) +
+  z('05 · Le Cran : pièces, marches, blocs', `<div class="ts-r" style="gap:48px;align-items:flex-end">
+      <svg viewBox="-4 -2 200 114" style="height:150px"><path d="${A.symbolParts().haut}" fill="${C.fluo}"/><path d="${A.symbolParts().bas}" fill="${C.violet}" opacity=".85"/><path d="${A.symbolPath()}" fill="none" stroke="#fff" stroke-width=".8"/></svg>
+      ${[2, 3, 5].map((n) => { const m = A.marches(n); return `<svg viewBox="${m.box.join(' ')}" style="height:${40 + n * 28}px"><path d="${m.d}" fill="${C.fluo}"/></svg>`; }).join('')}
+      ${A.bloc(C.orange, 'style="height:60px"')} ${A.bloc('#fff', 'style="height:60px"', { l: 240 })}
+      <div style="color:${C.fluo}">${A.chemin({ w: 420, h: 200 })}</div></div>`) +
+  z('06 · Sprites (moto 5, course 4, dunk 8), chiffres en blocs, pictos d’univers', `<div class="tx-toile cadre-r" style="padding:34px 30px;color:#fff">${A.reperes()}
+      <div class="ts-r" style="gap:34px;align-items:flex-end;color:${C.fluo}">${[1, 2, 3, 4, 5].map((i) => A.sprite('moto', i, { attrs: 'style="height:86px"' })).join('')}${[1, 2, 3, 4].map((i) => A.sprite('course', i, { attrs: 'style="height:86px"' })).join('')}</div>
+      <div class="ts-r" style="gap:10px;align-items:flex-end;margin-top:30px;color:#fff">${[1, 2, 3, 4, 5, 6, 7, 8].map((i) => A.dunk(i, { attrs: 'style="height:210px"' })).join('')}
+        <div style="margin-left:40px;color:${C.fluo}">${A.pix('24h', { attrs: 'style="height:120px"' })}</div><div style="color:#fff">${A.pix('+500', { attrs: 'style="height:70px"' })}<div style="height:16px"></div>${A.pix('7-10j', { attrs: 'style="height:70px"' })}</div><div style="color:${C.acier}">${A.pix('100%', { attrs: 'style="height:70px"' })}<div style="height:16px"></div>${A.pix('<5s', { attrs: 'style="height:70px"' })}</div></div>
+      <div class="ts-r" style="gap:34px;margin-top:30px;color:${C.fluo}">${['textile', 'print', 'goodies', 'signaletique'].map((n) => A.picto(n, { attrs: 'style="height:90px"' })).join('')}<div style="color:#fff">${A.pix('0123456789', { attrs: 'style="height:44px"' })}</div></div></div>`) +
+  z('07 · Coulures (orange, violet, fluo), piquage, motif de blocs, trames, hachures', `<div class="ts-g" style="grid-template-columns:repeat(3,1fr)">
+      <div style="height:300px;background:#fff;border-radius:14px;overflow:hidden">${A.coulure({ w: 420, h: 300, c: 'orange', seed: 4, attrs: 'style="width:100%;height:100%"' })}</div>
+      <div style="height:300px;background:#fff;border-radius:14px;overflow:hidden">${A.coulure({ w: 420, h: 300, c: 'violet', seed: 9, cx: 0.1, cy: 0.1, rx: 0.8, ry: 0.75, attrs: 'style="width:100%;height:100%"' })}</div>
+      <div style="height:300px;background:${C.graphite};border-radius:14px;overflow:hidden">${A.coulure({ w: 420, h: 300, c: 'fluo', seed: 6, rx: 0.6, ry: 0.2, pas: 3, attrs: 'style="width:100%;height:100%"' })}</div>
+      <div style="height:300px;background:#fff;border-radius:14px;overflow:hidden">${A.piquage({ w: 420, h: 300, px: 9, py: 18, attrs: 'style="width:100%;height:100%"' })}</div>
+      <div style="height:300px;background:${C.fluo};border-radius:14px;overflow:hidden;position:relative">${A.motif({ w: 420, h: 300, c: 'encre', l: 44, attrs: 'style="width:100%;height:100%;opacity:.9"' })}</div>
+      <div style="height:300px;border-radius:14px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;color:${C.fluo}">
+        <div class="tx-trame"></div><div class="tx-trame grosse tx-fondu-b" style="color:#fff"></div><div class="tx-hachures"></div><div class="tx-motif" style="--tm:90px;color:${C.acier}"></div></div></div>`) +
+  z('08 · Photo : brut, sombre, noir et blanc, duo, points, lignes, seuil, inversé', `<div class="ts-r" style="gap:14px">
+      ${ph('moto')}${ph('dunk', { mode: 'nb' })}${ph('peloton', { mode: 'duo' })}${ph('trail', { mode: 'duo', c: 'violet' })}
+      ${ph('serigraphie', { mode: 'points', tp: 8 })}${ph('broderie', { mode: 'lignes', tp: 6, c: 'orange' })}${ph('equipe', { mode: 'seuil', lu: 1.6 })}${ph('fils', { mode: 'points', tp: 11, inv: true, c: 'blanc' })}</div>`) +
+  z('09 · Masques : une photo dans le Cran, dans un bloc, dans une coulure, dans les chiffres', `<div class="ts-r" style="gap:30px">
+      <div class="dans-cran" style="width:430px;position:relative">${A.photo('moto', { style: 'position:absolute;inset:0' })}</div>
+      <div class="dans-bloc" style="width:300px;height:141px;position:relative">${A.photo('fils', { style: 'position:absolute;inset:0' })}</div>
+      <div style="width:380px;height:250px;position:relative;-webkit-mask-image:${A.coulureURL({ w: 380, h: 250, seed: 12 })};mask-image:${A.coulureURL({ w: 380, h: 250, seed: 12 })};-webkit-mask-size:100% 100%;mask-size:100% 100%">${A.photo('serigraphie', { style: 'position:absolute;inset:0' })}</div>
+      <div class="dans-cran" style="width:220px;background:${C.fluo}"></div></div>`) +
+  z('10 · Interface : pastilles, boutons, cartes, cadres d’appareils', `<div class="ts-r">${A.onglets(A.SECTIONS, 1)} <span class="bouton">Demander mon devis gratuit</span> <span class="bouton filet">Vous préférez être rappelé ?</span> ${A.mire()} ${A.code('CST', 'BRO', '2026')}</div>
+      <div class="ts-r" style="margin-top:26px;align-items:flex-start">
+        ${A.browser(`<div style="padding:70px 90px"><div class="t-large" style="font-size:150px;color:${C.fluo}">Transformez</div><div class="t-large" style="font-size:54px;margin-top:14px">vos idées en ${A.surl('produits personnalisés premium')}</div></div>`, 0.42, { h: 520 })}
+        ${A.phone(`<div style="padding:90px 24px"><div class="t-titre h-84">Prêt à donner vie à ${A.surl('votre projet ?')}</div></div>`, 0.42)}
+        <div class="carte fluo" style="width:220px;height:260px;padding:18px;display:flex;flex-direction:column;justify-content:flex-end"><div style="color:${C.acier}">${A.pix('24h', { attrs: 'style="height:84px"' })}</div><b style="margin-top:14px">Devis sous 24 h</b></div>
+        <div class="carte blanc" style="width:220px;height:260px;padding:18px;display:flex;flex-direction:column;justify-content:flex-end"><div class="t-titre h-56" style="color:${C.acier}">Sans<br>engagement</div></div></div>`) +
+  `<div style="height:70px"></div>` + A.foot('Page de test du socle', 'Custom · direction artistique');
+</script></body>

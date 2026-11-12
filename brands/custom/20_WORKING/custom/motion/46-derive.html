@@ -1,0 +1,37 @@
+<!doctype html><meta charset="utf-8"><title>Custom — 46, mosaïque en dérive</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="motion.css">
+<script src="../brand/marque.js"></script><script src="lib.js"></script>
+<script>
+/* ---------- RÉGLAGES (à changer ici) ----------
+   IMAGE : la grande image sur laquelle la caméra glisse. Finale : '../out/plates/03-mosaique.png' (planche 03, à produire).
+           En attendant, test avec '../out/_test.png'. On peut aussi passer l'image dans l'adresse : 46-derive.html?img=../out/x.png
+   VUE   : part de la largeur de l'image visible au début et à la fin (0,62 → 0,50 : la caméra avance lentement).
+   DE, A : centre de la vue au début et à la fin, en fraction de la course possible (0 = bord gauche ou haut, 1 = bord droit ou bas). */
+const IMAGE = new URLSearchParams(location.search).get('img') || '../out/plates/03-mosaique-4k.png';
+const VUE = [0.62, 0.50];
+const DE = [0.12, 0.18], A_ = [0.82, 0.62];
+const DUREE = 20;
+</script>
+<body><div class="m-stage" id="s" style="width:1920px;height:1080px">
+  <img id="img" alt="" style="position:absolute;left:0;top:0;transform-origin:0 0;image-rendering:auto;will-change:transform">
+</div>
+<script>
+/* V7 · Mosaïque en dérive · 1920 × 1080 · 20 s · la caméra glisse lentement sur la mosaïque d'ouverture
+   node tools/record.mjs motion/46-derive.html out/motion/46-derive.mp4 --w 1920 --h 1080 --fps 30 --dur 20 --planche
+   (à n'enregistrer qu'avec l'image finale). L'image est posée pendant l'analyse de la page : l'enregistreur attend son chargement. */
+const W = 1920, H = 1080, img = document.getElementById('img');
+img.src = IMAGE;
+/* La dérive ne s'arrête jamais : 60 % de vitesse constante, 40 % d'entrée et de sortie douces */
+const derive = (u) => 0.6 * u + 0.4 * M.sineInOut(u);
+
+window.seek = (t) => {
+  const iw = img.naturalWidth, ih = img.naturalHeight; if (!iw) return;
+  const u = derive(M.clamp(t / DUREE));
+  let vw = iw * M.mix(VUE[0], VUE[1], u), vh = vw * H / W;
+  if (vh > ih) { vh = ih; vw = vh * W / H; }                       // image plus large que haute : la vue tient dans la hauteur
+  const fx = M.mix(DE[0], A_[0], u), fy = M.mix(DE[1], A_[1], u);
+  const x = (iw - vw) * fx, y = (ih - vh) * fy, k = W / vw;
+  img.style.transform = `translate(${(-x * k).toFixed(3)}px, ${(-y * k).toFixed(3)}px) scale(${k.toFixed(5)})`;
+};
+img.complete ? seek(0) : img.addEventListener('load', () => seek(0));
+</script></body>

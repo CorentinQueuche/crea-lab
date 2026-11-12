@@ -1,0 +1,65 @@
+<!doctype html><meta charset="utf-8"><title>Custom — 16 · Photographie</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates.css"><script src="../brand/marque.js"></script>
+<style>
+  /* 16 · Photographie : deux sujets, six traitements, cinq masques. Préfixe q16- */
+  .q16-sujets{position:absolute;left:560px;right:84px;top:96px;height:640px;display:grid;grid-template-columns:250px 1fr;grid-template-rows:1fr 1fr;gap:12px;z-index:30}
+  .q16-sujets>div{position:relative;border-radius:22px;overflow:hidden}
+  .q16-sujets .ph{position:absolute;inset:0}
+  .q16-sujets>div::after{content:"";position:absolute;left:0;right:0;bottom:0;height:90px;background:linear-gradient(transparent,rgba(16,16,18,.75));z-index:5}
+  .q16-sujets .pl-tag{z-index:6;left:16px;bottom:14px;top:auto;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+  .q16-bande{position:absolute;left:84px;right:84px;top:820px;height:430px;z-index:30}
+  .q16-tr{position:absolute;top:0;bottom:0;overflow:hidden}
+  .q16-tr>.ph{position:absolute;top:0;height:430px;width:1560px}
+  .q16-leg{position:absolute;left:84px;right:84px;top:1264px;z-index:30}
+  .q16-leg>div{position:absolute;top:0}
+  .q16-m{position:absolute;z-index:30}
+  .q16-m .ph{position:absolute;inset:0}
+  .q16-mk{-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
+</style>
+<body><div class="plate grain leger" id="p" style="height:1940px"></div>
+<script>
+const A = Marque, C = A.COULEURS, NB = A.NB;
+
+/* ---------- A. Les deux sujets ---------- */
+const sujets = `<div class="q16-sujets">
+  <div>${A.photo('dunk', { pos: '50% 28%' })}<span class="pl-tag">Sport · le saut</span></div>
+  <div>${A.photo('moto', { pos: '50% 55%' })}<span class="pl-tag">Sport · la poussière</span></div>
+  <div>${A.photo('broderie', { pos: '50% 62%' })}<span class="pl-tag">Atelier · l’aiguille</span></div>
+  <div>${A.photo('serigraphie', { pos: '55% 50%' })}<span class="pl-tag">Atelier · la raclette</span></div></div>`;
+
+/* ---------- B. Six traitements sur une même photo, en tranches ---------- */
+const T = [['brut', 'Brut', {}], ['sombre', 'Sombre', {}], ['nb', 'Noir et blanc', {}], ['duo', 'Duo · fluo', { c: 'fluo' }], ['points', 'Tramée · points', { c: 'fluo', tp: 7, lu: 1.15 }], ['lignes', 'Tramée · lignes', { c: 'orange', tp: 6, lu: 1.1 }], ['seuil', 'Seuil', { c: 'blanc', lu: 1.45, ct: 1.3 }]];
+const n = T.length, gap = 6, Wb = 1232, sw = (Wb - gap * (n - 1)) / n;
+const nums = ['01', '02', '03', '04', '05 a', '05 b', '06'];
+const bande = `<div class="q16-bande">${T.map(([mode, , o], k) => { const x = k * (sw + gap);
+  return `<div class="q16-tr" style="left:${x}px;width:${sw}px">${A.photo('moto', Object.assign({ mode, pos: '50% 58%', style: `left:${-x}px` }, o))}</div>`; }).join('')}
+  <span class="pl-tag" style="left:16px;top:14px;color:#fff">Une même photo · six traitements</span></div>`;
+const leg = `<div class="q16-leg">${T.map(([, nom], k) => `<div style="left:${k * (sw + gap)}px;width:${sw}px"><div class="pl-num" style="opacity:.55">${nums[k]}</div><div class="pl-lbl" style="margin-top:4px">${nom}</div></div>`).join('')}</div>
+  <p class="pl-txt doux pl-abs pl-z" style="left:84px;top:1318px;width:700px">Brut pour raconter, sombre sous un logo, noir et blanc pour l’éditorial, duo pour une série, tramé ou seuillé pour l’affiche et le textile. La couleur du traitement est toujours une couleur de la marque.</p>`;
+
+/* ---------- C. Les masques ---------- */
+const masque = (url) => `-webkit-mask-image:${url};mask-image:${url}`;
+const spr = A.spriteRows('course', 1), sb = A.grilleBox(spr), pxr = A.pixRows('24h'), pb = A.grilleBox(pxr);
+const mSprite = A.dataSVG(A.grille(spr, { c: '#000' })), mPix = A.dataSVG(A.grille(pxr, { c: '#000' }));
+const mCoul = A.coulureURL({ w: 330, h: 220, seed: 21, rx: 0.47, ry: 0.45, frange: 0.1 });
+const Y = 1430;
+const masques = `
+  <div class="pl-lbl doux pl-abs pl-z" style="left:84px;top:${Y}px">Les masques · la photo prend la forme de la marque</div>
+  <div class="q16-m dans-cran" style="left:84px;top:${Y + 40}px;width:500px">${A.photo('dunk', { pos: '50% 22%' })}</div>
+  <div class="pl-lbl pl-abs pl-z" style="left:84px;top:${Y + 350}px">Dans le Cran<span class="pl-doux"> · le symbole</span></div>
+  <div class="q16-m q16-mk" style="left:624px;top:${Y + 40}px;width:${Math.round(340 * sb[0] / sb[1])}px;height:340px;${masque(mSprite)}">${A.photo('peloton', { mode: 'duo', c: 'fluo', pos: '40% 55%' })}</div>
+  <div class="pl-lbl pl-abs pl-z" style="left:624px;top:${Y + 392}px">Dans un sprite<span class="pl-doux"> · course 1</span></div>
+  <div class="q16-m q16-mk" style="left:${1316 - 340}px;top:${Y + 40}px;width:340px;height:${Math.round(340 * pb[1] / pb[0])}px;${masque(mPix)}">${A.photo('fils', { pos: '50% 50%' })}</div>
+  <div class="pl-lbl pl-abs pl-z" style="left:${1316 - 340}px;top:${Y + 40 + Math.round(340 * pb[1] / pb[0]) + 12}px">Dans un chiffre en blocs</div>
+  <div class="q16-m dans-bloc" style="left:${1316 - 340}px;top:${Y + 226}px;width:160px;height:75px">${A.photo('broderie', { pos: '50% 62%' })}</div>
+  <div class="pl-lbl pl-abs pl-z" style="left:${1316 - 340}px;top:${Y + 312}px">Dans un bloc</div>
+  <div class="q16-m q16-mk" style="left:${1316 - 165}px;top:${Y + 196}px;width:165px;height:105px;${masque(mCoul)}">${A.photo('trail', { pos: '75% 50%' })}</div>
+  <div class="pl-lbl pl-abs pl-z" style="left:${1316 - 165}px;top:${Y + 312}px">Dans une coulure</div>`;
+
+document.getElementById('p').innerHTML = A.entete() + `
+  <div class="pl-intro"><div class="pl-lbl doux">16 · La marque · photographie</div>
+    <div class="t-titre h-120">Le sport,<br>${A.surl('le geste')}</div>
+    <p class="pl-chapo" style="max-width:420px">Deux sujets, pas un de plus. Le sport en mouvement : le filé, le saut, la poussière. Le geste d’atelier : la macro, la matière, la machine.</p>
+    <div class="pl-lbl doux" style="margin-top:40px;line-height:1.9">Photos de marque générées pour ce projet<br>Aucune personne réelle, aucune marque tierce</div></div>
+  ${sujets}${bande}${leg}${masques}` + A.foot('16 · Photographie', 'Custom · direction artistique');
+</script></body>

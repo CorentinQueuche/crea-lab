@@ -1,0 +1,63 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates.css"><script src="../brand/marque.js"></script>
+<style>
+  .ic-lg{font-size:15px;line-height:1.5}
+  .ic-lg b{font-weight:500;display:block}
+  .ic-lg span{opacity:.7}
+  .ic-app{position:absolute;width:76px;display:grid;justify-items:center;gap:7px;font-size:11.5px;font-weight:500;letter-spacing:-.005em;color:var(--encre)}
+  .ic-app .appi{box-shadow:0 1px 0 rgba(42,26,20,.06),0 8px 16px -10px rgba(42,26,20,.4)}
+  .ic-dock{position:absolute;left:14px;right:14px;bottom:30px;height:96px;border-radius:34px;background:rgba(255,253,248,.72)}
+</style>
+<body>
+<div class="plate" id="p" style="height:800px;background:var(--fleur)"></div>
+<script>
+const A = Marque, C = A.COULEURS;
+const icon = (size, bg, sym, cls = '') => `<div class="appi ${cls}" style="width:${size}px;height:${size}px;${bg ? 'background:' + bg + ';' : ''}${bg === C.fleur ? 'box-shadow:inset 0 0 0 1px rgba(42,26,20,.14)' : ''}">${A.symbol(sym)}</div>`;
+
+/* Icônes d'autres applications : génériques, dessinées pour l'occasion, dans les couleurs du socle */
+const other = (bg, svg) => `<div class="appi" style="width:62px;height:62px;background:${bg}"><svg viewBox="0 0 100 100" style="width:100%;height:100%;margin:0">${svg}</svg></div>`;
+const G = C.grain, F = C.fleur, V = C.vert, Fe = C.feuille, Pu = C.pulpe, Pa = C.parche, Ce = C.cerise;
+const apps = [
+  ['Agenda', other(F, `<rect x="24" y="28" width="52" height="46" rx="8" fill="none" stroke="${G}" stroke-width="5"/><path d="M24 42H76" stroke="${Ce}" stroke-width="5"/><circle cx="41" cy="58" r="4" fill="${G}"/><circle cx="59" cy="58" r="4" fill="${G}"/>`)],
+  ['Photos', other(Pa, `<circle cx="40" cy="44" r="15" fill="${V}"/><circle cx="60" cy="44" r="15" fill="${Pu}"/><circle cx="50" cy="61" r="15" fill="${Fe}" fill-opacity=".85"/>`)],
+  ['Notes', other(V, `<path d="M30 36H70M30 50H70M30 64H56" stroke="${Fe}" stroke-width="6" stroke-linecap="round"/>`)],
+  ['Météo', other(Fe, `<circle cx="44" cy="44" r="14" fill="${Pu}"/><path d="M36 66H72" stroke="${F}" stroke-width="5" stroke-linecap="round"/><path d="M52 57H68" stroke="${F}" stroke-width="5" stroke-linecap="round" opacity=".6"/>`)],
+  ['Plans', other(F, `<path d="M26 72L44 32L58 56L74 42" fill="none" stroke="${G}" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/><circle cx="74" cy="42" r="7" fill="${Ce}"/>`)],
+  ['Musique', other(G, `<rect x="28" y="46" width="8" height="22" rx="4" fill="${Pa}"/><rect x="42" y="32" width="8" height="36" rx="4" fill="${Pa}"/><rect x="56" y="40" width="8" height="28" rx="4" fill="${Pa}"/><rect x="70" y="52" width="8" height="16" rx="4" fill="${Pu}"/>`)],
+  ['Réglages', other(Pa, `<circle cx="50" cy="50" r="22" fill="none" stroke="${G}" stroke-width="6"/><circle cx="50" cy="50" r="7" fill="${G}"/>`)],
+  ['Horloge', other(Fe, `<circle cx="50" cy="50" r="26" fill="none" stroke="${F}" stroke-width="5"/><path d="M50 34V50L61 57" fill="none" stroke="${V}" stroke-width="5" stroke-linecap="round"/>`)],
+  ['Fichiers', other(Pu, `<rect x="26" y="36" width="48" height="34" rx="6" fill="${G}"/><rect x="30" y="29" width="22" height="10" rx="3" fill="${G}" opacity=".5"/>`)],
+  ['Lecture', other(F, `<path d="M24 34C34 30 44 32 50 38C56 32 66 30 76 34V68C66 64 56 66 50 72C44 66 34 64 24 68Z" fill="none" stroke="${Fe}" stroke-width="5" stroke-linejoin="round"/>`)],
+  ['Caméra', other(G, `<circle cx="50" cy="50" r="22" fill="none" stroke="${Pa}" stroke-width="6"/><circle cx="50" cy="50" r="8" fill="${Pu}"/>`)],
+  ['Contacts', other(V, `<circle cx="50" cy="40" r="12" fill="${Fe}"/><path d="M28 74C30 60 40 56 50 56C60 56 70 60 72 74Z" fill="${Fe}"/>`)],
+  ['Podcasts', other(Pu, `<path d="M32 62A22 22 0 1 1 68 62" fill="none" stroke="${G}" stroke-width="6" stroke-linecap="round"/><circle cx="50" cy="50" r="7" fill="${G}"/>`)],
+  ['Calculs', other(Fe, `<path d="M30 38H46M38 30V46M56 38H72M30 64H46M56 60H72M56 68H72" stroke="${F}" stroke-width="5" stroke-linecap="round"/>`)],
+  ['Rappels', other(F, `<circle cx="34" cy="38" r="5" fill="${Ce}"/><circle cx="34" cy="62" r="5" fill="${V}"/><path d="M46 38H72M46 62H72" stroke="${G}" stroke-width="5" stroke-linecap="round"/>`)],
+];
+const dock = [
+  other(V, `<path d="M36 28C40 28 44 38 42 42L37 46C40 54 46 60 54 63L58 58C62 56 72 60 72 64C72 70 66 74 60 72C42 68 30 56 28 40C26 34 30 28 36 28Z" fill="${Fe}"/>`),
+  other(F, `<circle cx="50" cy="50" r="24" fill="none" stroke="${G}" stroke-width="5"/><path d="M58 42L46 46L42 58L54 54Z" fill="${Ce}"/>`),
+  other(Fe, `<path d="M26 32H74V62H46L34 72V62H26Z" fill="none" stroke="${F}" stroke-width="5" stroke-linejoin="round"/>`),
+  other(Pu, `<rect x="26" y="30" width="48" height="40" rx="6" fill="none" stroke="${G}" stroke-width="5"/><path d="M26 34L50 52L74 34" fill="none" stroke="${G}" stroke-width="5" stroke-linejoin="round"/>`),
+];
+const drupe = `<div class="appi g-vif grain" style="width:62px;height:62px">${A.symbol(C.fleur)}</div>`;
+const grid = [['Drupe', drupe], ...apps];
+const cx = (i) => 18 + (i % 4) * 89, cy = (i) => 76 + Math.floor(i / 4) * 104;
+const home = `<div class="ui">${A.semis({ cols: 4, rows: 8, pas: 110, taille: 46, tons: [C.pulpe, C.vert, C.pulpe, C.cerise, C.vert], opacite: .28, seed: 1 })}
+  ${A.icons.status('9:41', C.grain)}
+  ${grid.map(([l, ic], i) => `<div class="ic-app" style="left:${cx(i)}px;top:${cy(i)}px">${ic}<span>${l}</span></div>`).join('')}
+  <div class="ic-dock"></div>${dock.map((ic, i) => `<div class="ic-app" style="left:${cx(i)}px;top:${844 - 30 - 96 + 17}px">${ic}</div>`).join('')}
+  <div class="home"></div></div>`;
+
+document.getElementById('p').innerHTML = `
+  <div class="abs" style="left:84px;top:84px">${icon(260, '', C.fleur, 'g-vif grain')}</div>
+  <div class="abs ic-lg" style="left:384px;top:92px;width:260px"><b>Icône de l’application</b><span>Fond&nbsp;: Cerise #CF2145<br>Symbole&nbsp;: Fleur #FFFDF8<br>Le fruit coupé, la queue en haut.</span></div>
+  <div class="abs" style="left:84px;top:420px;width:560px;display:grid;grid-template-columns:1fr 1fr;row-gap:40px">
+    ${[[C.fleur, C.cerise, 'Cerise sur Fleur'], [C.feuille, C.fleur, 'Fleur sur Feuille'], [C.vert, C.feuille, 'Feuille sur Café vert'], [C.pulpe, C.grain, 'Grain sur Pulpe']].map(([b, s, l], i) =>
+      `<div style="display:flex;gap:20px;align-items:center">${icon(96, b, s)}<div class="ic-lg"><b>Variante ${i + 1}</b><span>${l}</span></div></div>`).join('')}
+  </div>
+  <div class="abs lbl" style="left:84px;top:712px;opacity:.55">Écran d’accueil générique · icônes inventées pour la planche</div>
+  <div class="abs grain" style="left:700px;top:0;width:700px;height:800px;background:${C.vert};overflow:hidden">
+    <div style="position:absolute;left:150px;top:96px;transform:rotate(-5deg);transform-origin:0 0">${A.phone(home, 1.12)}</div>
+  </div>`;
+</script>
+</body>

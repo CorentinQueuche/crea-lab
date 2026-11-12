@@ -1,0 +1,40 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates.css"><script src="../brand/marque.js"></script>
+<style>
+  .ty-spec{font-size:20px;line-height:1.4}
+  .ty-spec .h{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;opacity:.62;margin-bottom:10px}
+  .ty-giant{position:absolute;left:66px;font-size:298px;line-height:1;font-weight:500;letter-spacing:-.04em;white-space:nowrap}
+  .ty-g{position:absolute;top:640px;width:290px}
+  .ty-g .aa{font-size:76px;line-height:1;letter-spacing:-.03em}
+  .ty-g .nm{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;margin-top:16px}
+  .ty-g .us{font-size:16px;line-height:1.35;margin-top:6px;opacity:.75}
+  .ty-et{left:84px;right:84px;top:900px;display:grid;grid-template-columns:repeat(4,1fr);border-top:1.5px solid var(--encre);border-bottom:1.5px solid var(--encre)}
+  .ty-et>div{padding:14px 0 13px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.08em}
+  .ty-et>div+div{padding-left:18px;border-left:1px solid rgba(42,26,20,.2)}
+  .ty-et span{display:block;font-size:11px;opacity:.62}
+  .ty-et b{display:block;font-size:19px;font-weight:500;margin-top:5px;letter-spacing:.06em}
+</style>
+<body>
+<div class="plate" id="p" style="height:1120px;background:var(--parche)">
+  <div class="abs ty-spec" style="left:84px;top:80px;font-weight:500">
+    <div class="h">Bricolage Grotesque · Medium 500 · titres</div>
+    ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>0123456789 àâçéèêëîïôùûœ €&nbsp;%
+  </div>
+  <div class="abs ty-spec" style="left:708px;top:80px;font-weight:400">
+    <div class="h">Bricolage Grotesque · Regular 400 · texte</div>
+    ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>0123456789 àâçéèêëîïôùûœ €&nbsp;%
+  </div>
+  <div class="ty-giant" style="top:268px">Bricolage</div>
+  <div class="ty-g" style="left:84px"><div class="aa" style="font-weight:300">48&nbsp;h</div><div class="nm">Light 300</div><div class="us">Les très grands chiffres.</div></div>
+  <div class="ty-g" style="left:396px"><div class="aa" style="font-weight:400">Aa</div><div class="nm">Regular 400</div><div class="us">Le texte courant.</div></div>
+  <div class="ty-g" style="left:708px"><div class="aa" style="font-weight:500">Aa</div><div class="nm">Medium 500</div><div class="us">Les titres, serrés&nbsp;: −0,03&nbsp;em.</div></div>
+  <div class="ty-g" style="left:1020px"><div class="aa" style="font-weight:600">Guji</div><div class="nm">SemiBold 600</div><div class="us">Les noms de café.</div></div>
+  <div class="abs lbl" style="left:84px;top:864px;opacity:.62">IBM Plex Mono · 400 et 500 · étiquettes, codes, dates, prix au kilo</div>
+  <div class="abs ty-et" id="et"></div>
+</div>
+<script>
+const g = Marque.cafe('guji');
+document.getElementById('et').innerHTML = [['Origine', g.pays], ['Altitude', g.alt], ['Prix au kilo', '46,00&nbsp;€'], ['Torréfié le', '17.11.26']]
+  .map(([a, b]) => `<div><span>${a}</span><b>${b}</b></div>`).join('');
+document.getElementById('p').insertAdjacentHTML('beforeend', Marque.foot('Typographie', 'Bricolage Grotesque et IBM Plex Mono'));
+</script>
+</body>

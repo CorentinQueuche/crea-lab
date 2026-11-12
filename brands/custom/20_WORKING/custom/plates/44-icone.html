@@ -1,0 +1,55 @@
+<!doctype html><meta charset="utf-8"><title>Custom — 44 · Icône et favicon</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates-c.css"><script src="../brand/marque.js"></script>
+<style>
+  /* Idée : le Cran est déjà un pixel. On le suit de 512 px jusqu'à la grille de 16 × 16, où il redevient des blocs. */
+  .p44-k{margin-bottom:16px}
+  .p44-row{display:flex;align-items:flex-end}
+  .p44-cell{display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+  .p44-pan{position:absolute;top:792px;width:394px;height:258px;border-radius:18px;background:var(--graphite);padding:22px 24px;overflow:hidden}
+  .p44-tabs{position:relative;height:44px;border-radius:10px 10px 0 0;display:flex;align-items:flex-end;padding:0 8px;gap:2px}
+  .p44-tab{display:flex;align-items:center;gap:9px;height:34px;padding:0 12px;border-radius:9px 9px 0 0;font-size:12.5px;white-space:nowrap}
+  .p44-tab .x{margin-left:8px;opacity:.5;font-size:13px}
+  .p44-url{height:36px;display:flex;align-items:center;padding:0 14px;font-family:var(--mono);font-size:11.5px}
+  .p44-url span{flex:1;height:26px;border-radius:7px;display:flex;align-items:center;padding:0 12px}
+  .p44-rond{border-radius:50%;display:grid;place-items:center;flex:none}
+</style>
+<body><div class="plate" id="p" style="height:1124px"></div>
+<script>
+const A = Marque, C = A.COULEURS, NB = A.NB;
+const tons = [['fluo', 'Fluo'], ['noir', 'Noir'], ['blanc', 'Blanc'], ['violet', 'Violet'], ['orange', 'Orange']];
+const tailles = [256, 128, 64, 48, 32, 16];
+const lbl = (t, s = '') => `<div class="pc-lbl" style="opacity:.6;${s}">${t}</div>`;
+// Le favicon : le Cran seul, 16 px de large, rastérisé pour montrer ses pixels
+function grille16() {
+  const cv = document.createElement('canvas'); cv.width = 16; cv.height = 16; const g = cv.getContext('2d');
+  g.translate(0, (16 - 110 * 16 / 191.05) / 2); g.scale(16 / 191.05, 16 / 191.05); g.fill(new Path2D(A.symbolPath()));
+  const d = g.getImageData(0, 0, 16, 16).data, c = 13; let s = '';
+  for (let j = 0; j < 16; j++) for (let i = 0; i < 16; i++) { const a = d[(j * 16 + i) * 4 + 3] / 255;
+    s += `<rect x="${i * c + .5}" y="${j * c + .5}" width="${c - 1}" height="${c - 1}" rx="2.2" fill="${a > .02 ? C.fluo : C.noir}" fill-opacity="${a > .02 ? Math.max(.18, a).toFixed(2) : 1}"/>`; }
+  return `<svg viewBox="0 0 ${16 * c} ${16 * c}" style="width:208px;height:208px">${s}</svg>`;
+}
+const fav = (c) => A.symbol(c, 'style="width:16px;height:auto;flex:none"');
+const barre = (sombre) => { const bg = sombre ? '#1B1B1D' : '#ECECEE', on = sombre ? C.noir : '#fff', tx = sombre ? '#fff' : C.encre, dim = sombre ? 'rgba(255,255,255,.5)' : 'rgba(3,1,14,.5)';
+  return `<div style="border-radius:10px;overflow:hidden;box-shadow:0 0 0 1px ${sombre ? 'rgba(255,255,255,.1)' : 'rgba(3,1,14,.1)'}">
+    <div class="p44-tabs" style="background:${bg}"><div class="p44-tab" style="background:${on};color:${tx}">${fav(sombre ? C.fluo : C.encre)}<span>Custom · Atelier de pers…</span><span class="x">×</span></div>
+      <div class="p44-tab" style="color:${dim}"><span style="font-size:17px;line-height:1">+</span></div></div>
+    <div class="p44-url" style="background:${on};color:${dim}"><span style="background:${sombre ? 'rgba(255,255,255,.07)' : 'rgba(3,1,14,.05)'}">custom.fr</span></div></div>`; };
+const rond = (t, fond, c) => `<div class="p44-rond" style="width:${t}px;height:${t}px;background:${fond}${fond === C.noir ? ';box-shadow:inset 0 0 0 1px rgba(255,255,255,.16)' : ''}">${A.symbol(c, `style="width:${Math.round(t * .58)}px;height:auto"`)}</div>`;
+document.getElementById('p').innerHTML =
+  A.entete() +
+  `<div class="pc-abs pc-z" style="left:84px;top:100px"><div class="pc-lbl doux" style="margin-bottom:16px">44 · Icône d’application et favicon</div><div class="t-titre h-84">Le Cran, de 16 à ${A.surl('512 px')}</div></div>` +
+  // icône principale
+  `<div class="pc-abs" style="left:84px;top:262px">${A.icone(420, 'fluo').replace('class="icone-app"', 'class="icone-app pc-ombre"')}</div>` +
+  `<div class="pc-abs" style="left:84px;top:698px;width:420px;display:flex;justify-content:space-between">${lbl('512 px · affichée à 420')}${lbl('Rayon 22,5 % · Cran à 64 %')}</div>` +
+  // tons
+  `<div class="pc-abs" style="left:574px;top:262px">${lbl('Cinq tons', 'margin-bottom:16px')}<div class="p44-row" style="gap:24px">${tons.map(([t, n]) => `<div class="p44-cell">${A.icone(112, t)}<div class="pc-lbl" style="opacity:.75">${n}</div></div>`).join('')}</div></div>` +
+  // tailles
+  `<div class="pc-abs" style="left:574px;top:452px">${lbl('Tailles réelles', 'margin-bottom:16px')}<div class="p44-row" style="gap:30px">${tailles.map((t) => `<div class="p44-cell">${A.icone(t, 'fluo')}<div class="pc-lbl" style="opacity:.75">${t}</div></div>`).join('')}</div></div>` +
+  // panneaux du bas
+  `<div class="p44-pan" style="left:84px">${lbl('Favicon · grille de 16 × 16', 'margin-bottom:16px')}<div style="display:flex;gap:20px;align-items:flex-start">${grille16()}<div style="padding-top:2px"><div class="t-petit" style="opacity:.8;line-height:1.5">Le Cran seul, 16${NB}px de large, sans tuile. Ses pixels refont des blocs.</div>
+     <div style="margin-top:22px;display:flex;flex-direction:column;gap:12px">${[[16, '16 px'], [32, '32 px'], [48, '48 px']].map(([t, k]) => `<div style="display:flex;gap:14px;align-items:center">${A.symbol(C.fluo, `style="width:${t}px;height:auto;flex:none"`)}${lbl(k)}</div>`).join('')}</div></div></div></div>` +
+  `<div class="p44-pan" style="left:503px;display:flex;flex-direction:column;gap:18px">${lbl('Onglet du navigateur · 1:1')}${barre(true)}${barre(false)}</div>` +
+  `<div class="p44-pan" style="left:922px">${lbl('Avatar rond des réseaux', 'margin-bottom:26px')}<div class="p44-row" style="gap:22px">${rond(132, C.fluo, C.encre)}${rond(84, C.noir, C.fluo)}${rond(44, C.fluo, C.encre)}${rond(28, C.noir, C.fluo)}</div>
+     <div style="display:flex;gap:12px;align-items:center;margin-top:28px">${rond(40, C.fluo, C.encre)}<div><div style="font-weight:600;font-size:14px">custom.fr</div><div class="t-petit" style="opacity:.6">Atelier de personnalisation</div></div></div></div>` +
+  A.foot('44 · Icône et favicon', 'Custom · direction artistique');
+</script></body>

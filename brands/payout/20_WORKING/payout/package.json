@@ -1,0 +1,10 @@
+{
+  "name": "identite-de-marque",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@fontsource-variable/chivo-mono": "^5.2.0",
+    "@fontsource-variable/instrument-sans": "^5.2.0",
+    "playwright-core": "^1.56.0"
+  }
+}

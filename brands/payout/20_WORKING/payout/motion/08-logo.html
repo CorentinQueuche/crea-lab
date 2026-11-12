@@ -1,0 +1,80 @@
+<!doctype html><meta charset="utf-8"><title>Payout — V1, révélation du logo</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="motion.css">
+<script src="../brand/marque.js"></script><script src="lib.js"></script>
+<body><div class="m-stage" id="s" style="width:1920px;height:1080px"></div>
+<script>
+/* V1 · Révélation du logo · 1920 × 1080 · 6 s
+   node tools/record.mjs motion/08-logo.html out/motion/08-logo.mp4 --w 1920 --h 1080 --fps 30 --dur 6 --planche
+   L'anneau se remplit en blanc jusqu'à 54 (le fût reste détaché), continue jusqu'à 85, rejoint le fût et passe au Net ;
+   le P se pose dans le logotype, les lettres arrivent espacées puis se resserrent, le descripteur se pose. 1,5 s immobile à la fin. */
+const A = Marque, C = A.COULEURS, SUR = '#F3F6F4';
+const W = 1920, H = 1080;
+/* Repère du logotype : le P a son anneau centré en (50, 10), son fût descend jusqu'à 100. Boîte du P : 0 → 100, −40 → 100. */
+const PC = [50, 30];                         // centre de la boîte du P (point d'ancrage du mouvement)
+const SA = 600 / 140, SB = 1.2;              // échelle du P seul (600 px de haut), puis de la version complète (hauteur d'x 120 px)
+const LX = (W - A.LOCKUP.box[2] * SB) / 2, LY = H / 2 - 50 * SB;   // version complète centrée
+const ancreA = [W / 2, H / 2], ancreB = [LX + PC[0] * SB, LY + PC[1] * SB];
+const T = { traits: 0, fut: 0.15, plein1: 0.3, d1: 1.05, plein2: 1.55, assemble: 2.95, dA: 1.0, lettres: 3.12, desc: 3.82 };
+
+const s = document.getElementById('s');
+const ln = (cls) => `<line class="${cls}" stroke="#FFFFFF" stroke-opacity=".09" stroke-width="1" vector-effect="non-scaling-stroke"/>`;
+s.innerHTML = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" style="position:absolute;inset:0">
+  <g id="logo">
+    <g id="trace">${ln('h0')}${ln('h1')}${ln('v0')}${ln('v1')}${ln('v2')}
+      <circle cx="50" cy="10" r="50" fill="none" stroke="#FFFFFF" stroke-opacity=".12" stroke-width="1" vector-effect="non-scaling-stroke" id="cExt"/>
+      <circle cx="50" cy="10" r="24" fill="none" stroke="#FFFFFF" stroke-opacity=".12" stroke-width="1" vector-effect="non-scaling-stroke" id="cInt"/></g>
+    <path id="P" fill-rule="evenodd"/>
+    ${['a', 'y', 'o', 'u', 't'].map((ch) => `<path class="lt" data-ch="${ch}" fill="${C.net}" fill-rule="evenodd"/>`).join('')}
+    ${A.LOCKUP.lines.map((t, i) => `<text class="desc" x="${A.LOCKUP.x}" y="${A.LOCKUP.baselines[i]}" fill="${C.net}" font-family="Instrument Sans" font-weight="500" font-size="${A.LOCKUP.size}" letter-spacing="${A.LOCKUP.tracking}">${t}</text>`).join('')}
+  </g></svg>
+  <div id="lbl" class="m-abs mono" style="left:0;top:0;font-size:20px;font-weight:500;letter-spacing:-.02em;color:${SUR};white-space:nowrap;font-variant-numeric:tabular-nums"></div>`;
+
+const g = s.querySelector('#logo'), P = s.querySelector('#P'), trace = s.querySelector('#trace'), lbl = s.querySelector('#lbl');
+const lettres = [...s.querySelectorAll('.lt')], desc = [...s.querySelectorAll('.desc')];
+const L = {}; ['h0', 'h1', 'v0', 'v1', 'v2'].forEach((k) => (L[k] = s.querySelector('.' + k)));
+const pose = (el, x1, y1, x2, y2) => { el.setAttribute('x1', x1); el.setAttribute('y1', y1); el.setAttribute('x2', x2); el.setAttribute('y2', y2); };
+
+/* Remplissage de l'anneau (en %) au temps t : 0 → 54 en blanc, palier, puis 54 → 85 avec la courbe de la jauge */
+const remplissage = (t) => t < T.plein2 ? 54 * M.tw(t, T.plein1, T.d1, M.quartOut) : A.pJauge(t, { debut: T.plein2, duree: M.JAUGE });
+
+window.seek = (t) => {
+  /* 1. Tracés de construction : axes de l'anneau, bords du fût, ligne de base ; ils s'étirent depuis le centre puis s'éteignent */
+  const kT = M.tw(t, T.traits, 0.9, M.quartOut), L0 = 2400 * kT, off = 1 - M.tw(t, T.assemble, 0.35, M.cubicOut);
+  pose(L.h0, 50 - L0, 10, 50 + L0, 10); pose(L.h1, 50 - L0, 100, 50 + L0, 100);
+  pose(L.v0, 50, 10 - L0, 50, 10 + L0); pose(L.v1, 0, 30 - L0, 0, 30 + L0); pose(L.v2, 26, 30 - L0, 26, 30 + L0);
+  trace.style.opacity = (Math.min(1, kT * 1.4) * off).toFixed(3);
+
+  /* 2. Le P-jauge : anneau rempli à pct, fût tangent ; blanc jusqu'à la jonction (58 %), puis Blanc → Net 200 → Net */
+  const pct = remplissage(t), kF = M.tw(t, T.fut, M.ENTRER);
+  P.setAttribute('d', pct < 0.3 ? `M0,10 H26 V100 H0 Z` : A.letterPath('P', 0, pct));
+  P.setAttribute('fill', M.rampe(M.VERS_NET, (pct - 58) / (84 - 58)));
+  P.setAttribute('transform', `translate(0 ${((1 - kF) * M.MONTEE / SA).toFixed(3)})`);
+  P.style.opacity = kF.toFixed(3);
+
+  /* 3. Le P se pose dans la version complète : échelle interpolée en logarithme, ancrage au centre de la boîte du P */
+  const kA = M.tw(t, T.assemble, T.dA, M.expoOut);
+  const sc = Math.exp(M.mix(Math.log(SA), Math.log(SB), kA));
+  const ax = M.mix(ancreA[0], ancreB[0], kA), ay = M.mix(ancreA[1], ancreB[1], kA);
+  const tx = ax - PC[0] * sc, ty = ay - PC[1] * sc;
+  g.setAttribute('transform', `translate(${tx.toFixed(2)} ${ty.toFixed(2)}) scale(${sc.toFixed(5)})`);
+
+  /* 4. Lettres : elles entrent espacées (écart supplémentaire de 34 unités entre chaque) puis se resserrent ; décalage de 80 ms */
+  const serre = 1 - M.tw(t, T.lettres, 1.15, M.expoOut);
+  lettres.forEach((el, i) => { const ch = el.dataset.ch, k = M.tw(t, T.lettres + i * M.DECALAGE, 0.32, M.cubicOut);
+    el.setAttribute('d', A.letterPath(ch, A.letterX(i + 1) + (i + 1) * 34 * serre));
+    el.style.opacity = k.toFixed(3); });
+
+  /* 5. Descripteur : deux lignes qui se posent, montée de 12 px */
+  desc.forEach((el, i) => { const k = M.tw(t, T.desc + i * M.DECALAGE, M.ENTRER);
+    el.style.opacity = k.toFixed(3); el.setAttribute('transform', `translate(0 ${((1 - k) * M.MONTEE / SB).toFixed(2)})`); });
+
+  /* 6. Le chiffre suit la pointe de l'anneau (en pixels écran), puis s'éteint quand le P se pose */
+  const ang = (Math.max(pct, 0.5) * 3.6 * Math.PI) / 180, rr = 50 + 13;
+  const px = tx + (50 + rr * Math.sin(ang)) * sc, py = ty + (10 - rr * Math.cos(ang)) * sc;
+  lbl.innerHTML = `${String(Math.round(pct)).padStart(2, ' ')}&nbsp;%`;
+  const kL = M.tw(t, T.plein1, 0.3) * (1 - M.tw(t, T.assemble - 0.1, 0.25, M.cubicOut));
+  lbl.style.opacity = kL.toFixed(3);
+  lbl.style.transform = `translate(${(px - 26).toFixed(1)}px, ${(py - 12).toFixed(1)}px)`;
+};
+seek(0);
+</script></body>

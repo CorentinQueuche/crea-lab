@@ -1,0 +1,78 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../brand/aube.css"><link rel="stylesheet" href="plates.css"><script src="../brand/aube.js"></script>
+<body>
+<div class="plate grain" id="p" style="height:820px;background:var(--nuit)"></div>
+<script>
+/* Construction du logotype : tout est calculé dans le repère du logo (viewBox 0 -42 442 142), puis placé à l'échelle K. */
+const W = 1400, HH = 820, K = 2.2;
+const OX = (W - 442 * K) / 2, OY = HH / 2 - 29 * K - 6;
+const X = (u) => +(OX + u * K).toFixed(2), Y = (v) => +(OY + v * K).toFixed(2);
+const AU = '#FF632B', MI = '#FFC46B';
+const ln = (x1, y1, x2, y2, c, o, w = 1, dash = '') => `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${c}" stroke-opacity="${o}" stroke-width="${w}" ${dash ? `stroke-dasharray="${dash}"` : ''}/>`;
+const tx = (x, y, t, anchor = 'middle', o = .85, c = MI) => `<text x="${x}" y="${y}" fill="${c}" fill-opacity="${o}" font-family="DM Mono" font-size="11" letter-spacing=".6" text-anchor="${anchor}">${t}</text>`;
+let s = `<svg class="abs" style="left:0;top:0" width="${W}" height="${HH}" viewBox="0 0 ${W} ${HH}">`;
+
+/* Grille fine (module 12,5) autour du logotype */
+for (let u = -50; u <= 500; u += 12.5) s += ln(X(u), Y(-75), X(u), Y(137.5), AU, u % 50 === 0 ? .13 : .07);
+for (let v = -75; v <= 137.5; v += 12.5) s += ln(X(-50), Y(v), X(500), Y(v), AU, v % 50 === 0 ? .13 : .07);
+
+/* Repères pleine largeur : lettres et lignes de hauteur */
+const xsEdges = [0, 100, 114, 214, 228, 328, 342, 442];
+s += `<defs><linearGradient id="vf" gradientUnits="userSpaceOnUse" x1="0" y1="130" x2="0" y2="${HH - 130}"><stop offset="0" stop-color="${AU}" stop-opacity="0"/><stop offset=".22" stop-color="${AU}" stop-opacity=".16"/><stop offset=".78" stop-color="${AU}" stop-opacity=".16"/><stop offset="1" stop-color="${AU}" stop-opacity="0"/></linearGradient></defs>`;
+xsEdges.forEach((u) => s += `<line x1="${X(u)}" y1="130" x2="${X(u)}" y2="${HH - 130}" stroke="url(#vf)" stroke-width="1"/>`);
+[-42, 0, 100].forEach((v) => s += ln(0, Y(v), W, Y(v), AU, .2));
+
+/* Disques de 100 et cercles intérieurs (rayon 26 = 50 − graisse 24) */
+for (let i = 0; i < 4; i++) {
+  const cx = 50 + i * 114;
+  s += `<circle cx="${X(cx)}" cy="${Y(50)}" r="${50 * K}" fill="none" stroke="${AU}" stroke-opacity=".55" stroke-width="1"/>`;
+  s += `<circle cx="${X(cx)}" cy="${Y(50)}" r="${26 * K}" fill="none" stroke="${MI}" stroke-opacity=".45" stroke-width="1" stroke-dasharray="3 4"/>`;
+}
+
+/* Le logotype en aplat translucide */
+s += `<g transform="translate(${OX} ${OY}) scale(${K})"><path d="${Aube.wordPath()}" fill="${AU}" fill-opacity=".2" fill-rule="evenodd" stroke="${AU}" stroke-opacity=".95" stroke-width="1" vector-effect="non-scaling-stroke"/></g>`;
+
+/* La ligne d'horizon, au-dessus de tout */
+s += `<rect x="0" y="${Y(50) - .6}" width="${W}" height="1.2" fill="${MI}" fill-opacity=".8"/>`;
+
+/* Points d'ancrage (carrés) et tangences d'arcs (ronds creux) */
+const nodes = [], tang = [];
+[0, 114, 228, 342].forEach((o, i) => {
+  const L = ['a', 'u', 'b', 'e'][i];
+  const dome = [[o + 24, 50], [o + 76, 50]];
+  if (L === 'a') { nodes.push([o + 50, 0], [o + 100, 0], [o + 100, 100], [o + 50, 100], ...dome); tang.push([o, 50], [o + 50, 24]); }
+  if (L === 'u') { nodes.push([o, 0], [o + 24, 0], [o + 24, 24], [o + 76, 24], [o + 76, 0], [o + 100, 0], [o + 100, 100], [o + 50, 100], [o, 50]); tang.push([o + 50, 50]); }
+  if (L === 'b') { nodes.push([o, -42], [o + 24, -42], [o + 24, 0], [o + 50, 0], [o + 50, 100], [o, 100], ...dome); tang.push([o + 100, 50], [o + 50, 24]); }
+  if (L === 'e') { nodes.push([o + 50, 0], [o + 97.37, 66], [o + 50, 66], [o + 50, 78], [o + 91.42, 78], [o + 50, 100], ...dome); tang.push([o, 50], [o + 50, 24]); }
+});
+nodes.forEach(([u, v]) => s += `<rect x="${X(u) - 3}" y="${Y(v) - 3}" width="6" height="6" fill="${MI}"/>`);
+tang.forEach(([u, v]) => s += `<circle cx="${X(u)}" cy="${Y(v)}" r="3.4" fill="var(--nuit)" stroke="${MI}" stroke-width="1.2"/>`);
+
+/* Cotes */
+const dimH = (u1, u2, v, label) => {
+  const y = Y(v);
+  return ln(X(u1), y, X(u2), y, MI, .6) + ln(X(u1), y - 5, X(u1), y + 5, MI, .6) + ln(X(u2), y - 5, X(u2), y + 5, MI, .6) + tx((X(u1) + X(u2)) / 2, y - 10, label);
+};
+const dimV = (v1, v2, u, label) => {
+  const x = X(u);
+  return ln(x, Y(v1), x, Y(v2), MI, .6) + ln(x - 5, Y(v1), x + 5, Y(v1), MI, .6) + ln(x - 5, Y(v2), x + 5, Y(v2), MI, .6) + tx(x - 12, (Y(v1) + Y(v2)) / 2 + 4, label, 'end');
+};
+s += dimH(0, 100, -62, '100');
+s += dimH(100, 114, -62, '14');
+s += dimH(114, 138, -22, '24');
+s += dimH(0, 442, 122, '442');
+s += dimV(-42, 0, -28, '42');
+s += dimV(0, 50, -28, '50');
+s += dimV(50, 100, -28, '50');
+/* Rayon du dôme du e */
+const a = -Math.PI / 4, ex = 392 + 26 * Math.cos(a), ey = 50 + 26 * Math.sin(a);
+s += ln(X(392), Y(50), X(ex), Y(ey), MI, .8) + `<circle cx="${X(392)}" cy="${Y(50)}" r="2.5" fill="${MI}"/>` + tx(X(ex) + 8, Y(ey) - 6, 'r 26', 'start');
+/* Étiquette de l'horizon */
+s += tx(1316, Y(50) - 10, 'HORIZON · y = 50', 'end', .9);
+s += `</svg>`;
+
+s += `<div class="abs lbl" style="left:84px;top:84px;color:${MI};opacity:.85">Construction du logotype</div>`;
+s += `<div class="abs mono" style="left:84px;right:84px;bottom:72px;display:grid;grid-template-columns:312px 312px 312px 1fr;font-size:12px;line-height:1.6;color:${MI};opacity:.72;letter-spacing:.04em">
+  <span>Quatre disques de 100</span><span>Graisse 24 · espace 14</span><span>Dômes de rayon 26<br>posés sur l’horizon</span><span style="text-align:right">Un soleil qui se lève<br>dans chaque lettre</span></div>`;
+document.getElementById('p').innerHTML = s;
+</script>
+</body>

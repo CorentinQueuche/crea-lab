@@ -1,0 +1,99 @@
+<!doctype html><meta charset="utf-8"><title>Custom — 42 · Véhicule d’atelier</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates-c.css"><script src="../brand/marque.js"></script>
+<style>
+  /* Idée : le fourgon de l'atelier est une affiche qui roule. Le Cran géant est coupé par la carrosserie, la bande de bas de caisse penche à 13,3°. */
+  .p42-n{position:absolute;z-index:65;width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;background:var(--fluo);color:var(--encre);display:grid;place-items:center;font-family:var(--mono);font-size:11px;font-weight:700;box-shadow:0 0 0 3px var(--noir)}
+  .p42-leg{display:grid;grid-template-columns:repeat(4,1fr);column-gap:28px}
+  .p42-leg>div{border-top:1px solid var(--filet);padding-top:14px}
+  .p42-leg .no{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--fluo);color:var(--encre);font-family:var(--mono);font-size:10px;font-weight:700;margin-bottom:12px}
+  .p42-leg b{display:block;font-weight:600;font-size:16px;letter-spacing:-.01em}
+  .p42-leg p{margin:6px 0 0;font-size:13.5px;line-height:1.42;opacity:.66}
+</style>
+<body><div class="plate" id="p" style="height:1050px"></div>
+<script>
+const A = Marque, C = A.COULEURS, TAN = A.CONSTRUCTION.tan;
+// Le fourgon de profil (vers la gauche). Repère 1200 × 520, sol à y = 500.
+const CAISSE = 'M90,432 L1140,432 Q1162,432 1162,410 L1162,72 Q1162,48 1138,48 L392,48 Q372,48 360,64 L262,196 Q252,208 236,211 L104,238 Q72,244 62,272 L50,330 Q46,350 46,380 L48,410 Q50,432 90,432 Z';
+const roue = (cx) => `<circle cx="${cx}" cy="432" r="66" fill="#0B0B0C"/><circle cx="${cx}" cy="432" r="58" fill="none" stroke="#1E1E20" stroke-width="3"/><circle cx="${cx}" cy="432" r="38" fill="${C.fonte}"/><circle cx="${cx}" cy="432" r="31" fill="${C.graphite}"/><circle cx="${cx}" cy="432" r="11" fill="${C.acier}"/>` +
+  [0, 72, 144, 216, 288].map((a) => `<circle cx="${(cx + 22 * Math.cos(a * Math.PI / 180)).toFixed(1)}" cy="${(432 + 22 * Math.sin(a * Math.PI / 180)).toFixed(1)}" r="3" fill="${C.acier}"/>`).join('');
+const sCran = 2.75, cranX = 680, cranY = 168;         // le Cran géant : 525 × 302, coupé à l'arrière et au bas de caisse
+const moto = [1, 2, 3, 4, 5].map((i, k) => { const r = A.spriteRows('moto', i), b = A.grilleBox(r, 2.1);
+  return `<path transform="translate(${566 + k * 62},${212 + (40 - b[1])})" fill="${C.fluo}" d="${A.grillePath(r, { cell: 2.1 })}"/>`; }).join('');
+const fourgon = `<svg viewBox="0 0 1200 520" style="width:100%;height:auto;overflow:visible">
+  <defs>
+    <clipPath id="caisse"><path d="${CAISSE}"/></clipPath>
+    <pattern id="hach" width="34" height="40" patternUnits="userSpaceOnUse" patternTransform="skewX(${-A.CONSTRUCTION.angle})"><rect width="17" height="40" fill="${C.fluo}"/></pattern>
+  </defs>
+  <ellipse cx="610" cy="500" rx="600" ry="14" fill="rgba(3,1,14,.38)"/>
+  <ellipse cx="610" cy="498" rx="540" ry="6" fill="rgba(3,1,14,.5)"/>
+  <path d="${CAISSE}" fill="${C.noir}"/>
+  <g clip-path="url(#caisse)">
+    <!-- bande de bas de caisse : hachures à la pente du Cran -->
+    <rect x="40" y="394" width="1130" height="40" fill="url(#hach)"/>
+    <!-- le Cran géant, coupé par la carrosserie -->
+    <path transform="translate(${cranX} ${cranY}) scale(${sCran})" d="${A.symbolPath()}" fill="${C.fluo}"/>
+    <!-- passages de roue -->
+    <circle cx="235" cy="432" r="80" fill="#060607"/><circle cx="985" cy="432" r="80" fill="#060607"/>
+    <!-- reflet de tôle -->
+    <rect x="40" y="60" width="1130" height="3" fill="rgba(255,255,255,.07)"/>
+  </g>
+  <!-- logotype, frise, porte de cabine -->
+  <g transform="translate(566 82) scale(${440 / 487})"><path transform="translate(0 -14)" d="${A.wordPath()}" fill="#fff" fill-rule="evenodd"/></g>
+  ${moto}
+  <path d="M380,66 L522,66 L522,192 L284,192 Z" fill="#1C1E22"/><path d="M402,66 L440,66 L330,192 L300,192 Z" fill="rgba(255,255,255,.06)"/>
+  <path d="M374,62 L274,194" stroke="rgba(255,255,255,.14)" stroke-width="2"/>
+  <path d="M534,56 V428 M278,206 V428 M820,56 V428" stroke="#000" stroke-width="2.4" opacity=".75"/>
+  <path d="M820,236 H1160" stroke="#000" stroke-width="3" opacity=".55"/>
+  <rect x="488" y="226" width="30" height="7" rx="3.5" fill="${C.fonte}"/><rect x="786" y="252" width="26" height="7" rx="3.5" fill="${C.fonte}"/>
+  <g transform="translate(300 262)"><path transform="scale(${48 / 191.05})" d="${A.symbolPath()}" fill="${C.fluo}"/>
+    <text x="0" y="56" fill="#fff" font-family="JetBrains Mono" font-weight="500" font-size="10.5" letter-spacing=".8">ATELIER DE</text>
+    <text x="0" y="71" fill="#fff" font-family="JetBrains Mono" font-weight="500" font-size="10.5" letter-spacing=".8">PERSONNALISATION</text></g>
+  <path d="M236,182 h20 a6,6 0 0 1 6,6 v26 a6,6 0 0 1 -6,6 h-20 z" fill="${C.graphite}"/>
+  <path d="M62,272 L104,262 L110,286 L56,296 Z" fill="${C.craie}"/>
+  <rect x="40" y="396" width="96" height="36" rx="8" fill="#1A1A1C"/><rect x="1128" y="398" width="40" height="34" rx="6" fill="#1A1A1C"/>
+  <rect x="1150" y="92" width="14" height="96" rx="4" fill="${C.orange}"/>
+  ${roue(235)}${roue(985)}
+</svg>`;
+// L'arrière : deux portes, le Cran posé à cheval sur la fente
+const arriere = `<svg viewBox="0 0 360 440" style="width:100%;height:auto;overflow:visible">
+  <defs><clipPath id="dos"><path d="M30,40 Q30,20 52,18 L308,18 Q330,20 330,40 L336,392 L24,392 Z"/></clipPath>
+    <pattern id="hach2" width="26" height="30" patternUnits="userSpaceOnUse" patternTransform="skewX(${-A.CONSTRUCTION.angle})"><rect width="13" height="30" fill="${C.fluo}"/></pattern></defs>
+  <ellipse cx="180" cy="426" rx="190" ry="10" fill="rgba(3,1,14,.4)"/>
+  <rect x="40" y="380" width="48" height="44" rx="8" fill="#0B0B0C"/><rect x="272" y="380" width="48" height="44" rx="8" fill="#0B0B0C"/>
+  <path d="M30,40 Q30,20 52,18 L308,18 Q330,20 330,40 L336,392 L24,392 Z" fill="${C.noir}"/>
+  <g clip-path="url(#dos)">
+    <path transform="translate(42 196) scale(${276 / 191.05})" d="${A.symbolPath()}" fill="${C.fluo}"/>
+    <rect x="0" y="360" width="360" height="32" fill="url(#hach2)"/>
+  </g>
+  <rect x="52" y="42" width="118" height="92" rx="8" fill="#1C1E22"/><rect x="190" y="42" width="118" height="92" rx="8" fill="#1C1E22"/>
+  <path d="M180,22 V392" stroke="#000" stroke-width="3"/>
+  <rect x="34" y="60" width="10" height="110" rx="4" fill="${C.orange}"/><rect x="316" y="60" width="10" height="110" rx="4" fill="${C.orange}"/>
+  <rect x="160" y="226" width="7" height="34" rx="3.5" fill="${C.fonte}"/>
+  <rect x="18" y="392" width="324" height="20" rx="6" fill="#1A1A1C"/>
+  <text x="180" y="166" text-anchor="middle" fill="#fff" font-family="Inter" font-weight="600" font-size="15">custom.fr</text>
+</svg>`;
+const V = { x: 84, y: 224, w: 1000 };                  // position du fourgon sur la planche
+const pt = (x, y) => [V.x + x * V.w / 1200, V.y + y * V.w / 1200];
+const n = (k, x, y) => { const [px, py] = pt(x, y); return `<div class="p42-n" style="left:${px}px;top:${py}px">0${k}</div>`; };
+document.getElementById('p').innerHTML =
+  // le mur de l'atelier en haut, le sol en bas
+  `<div class="pc-abs" style="left:0;right:0;top:0;height:700px">${A.photo('mur', { mode: 'nb', pos: '50% 40%', style: 'position:absolute;inset:0' })}</div>` +
+  `<div class="pc-abs" style="left:0;right:0;top:640px;height:62px;background:${C.craie}"></div>` +
+  `<div class="pc-abs" style="left:0;right:0;top:640px;height:1px;background:rgba(3,1,14,.25)"></div>` +
+  A.entete(undefined, C.encre) +
+  `<div class="pc-abs pc-z" style="left:84px;top:100px;color:${C.encre}"><div class="pc-lbl" style="margin-bottom:14px;opacity:.7">42 · Véhicule d’atelier</div><div class="t-titre h-84">Le fourgon de ${A.surl('l’atelier', 'noir')}</div></div>` +
+  `<div class="pc-abs pc-z" style="right:84px;top:118px;color:${C.encre};text-align:right"><div class="pc-lbl">${A.code('CST', 'VHL', '2026')}</div><div class="pc-lbl" style="margin-top:6px;opacity:.7">Habillage adhésif · profil et arrière</div></div>` +
+  `<div class="pc-abs pc-z" style="left:${V.x}px;top:${V.y}px;width:${V.w}px">${fourgon}</div>` +
+  `<div class="pc-abs pc-z" style="left:1112px;top:${224 + 500 * 1000 / 1200 - 204 * 440 / 360 + 4}px;width:204px">${arriere}</div>` +
+  `<div class="pc-abs pc-z pc-lbl" style="left:1112px;top:676px;color:${C.encre};opacity:.7">Arrière</div>` +
+  n(1, 1060, 300) + n(2, 300, 414) + n(3, 720, 186) + n(4, 538, 120) +
+  `<div class="pc-abs" style="left:0;right:0;top:702px;bottom:0;background:${C.noir}"></div>` +
+  `<div class="pc-abs pc-z p42-leg" style="left:84px;right:84px;top:770px;color:#fff">
+     <div><span class="no">01</span><b>Le Cran géant</b><p>Adhésif fluo, coupé par la carrosserie : le symbole déborde, comme les coulures du site.</p></div>
+     <div><span class="no">02</span><b>Hachures à 13,3°</b><p>La bande de bas de caisse penche comme le Cran. Elle fait le tour du véhicule.</p></div>
+     <div><span class="no">03</span><b>La moto en cinq images</b><p>Le sprite de la marque, décomposé en frise : il avance avec le fourgon.</p></div>
+     <div><span class="no">04</span><b>Le logotype seul</b><p>Custom.fr en blanc, le seul repère écrit. L’arrière porte l’adresse en clair.</p></div></div>` +
+  `<div class="pc-abs pc-z" style="left:84px;top:944px;color:#fff;width:1232px;display:flex;justify-content:space-between;align-items:center">
+     ${A.barre({ style: 'width:420px;height:12px' })}<div class="t-petit" style="opacity:.6">Noir atelier, fluo, blanc ; l’orange seulement aux feux.</div></div>` +
+  A.foot('42 · Véhicule d’atelier', 'Custom · direction artistique');
+</script></body>

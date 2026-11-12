@@ -1,0 +1,250 @@
+{
+ "titre": "Custom — direction artistique",
+ "sous_titre": "Custom est un atelier de personnalisation qui produit tout en interne : textile, print, goodies, signalétique. KLYRA a livré son identité et son site en 2025. Ici, rien n’est redessiné : le logo, les couleurs et les polices de Custom sont mis en système, puis poussés sur tous les supports. Une idée : tout est fait ici.",
+ "pied": "Proposition de KLYRA, non validée par Custom. Client : Custom, personnalisation et impression, France (custom.fr). Identité et site : KLYRA pour Custom, 2025. Système, supports, 3D et motion design : proposition de KLYRA, 2026. Polices : Archivo, Bebas Neue, Inter, JetBrains Mono (licence OFL). Photos de marque générées pour le projet. Matières des scènes 3D : Poly Haven (CC0). Références de présentation : Sui, Suno, Rentio (Behance).",
+ "fond": "#101012",
+ "texte": "#FFFFFF",
+ "police": "Inter",
+ "planches": [
+  [
+   "plates/01-couverture.png",
+   "01-couverture",
+   "Couverture"
+  ],
+  [
+   "final/02-ecusson.png",
+   "02-ecusson",
+   "L’écusson : le Cran brodé, en très gros plan"
+  ],
+  [
+   "plates/03-mosaique.png",
+   "03-mosaique",
+   "Mosaïque d’ouverture"
+  ],
+  [
+   "plates/04-existant.png",
+   "04-existant",
+   "L’existant : ce qu’on garde, ce qu’on met en système, ce qu’on ajoute"
+  ],
+  [
+   "plates/05-section-marque.png",
+   "05-section-marque",
+   "La marque"
+  ],
+  [
+   "plates/06-bento.png",
+   "06-bento",
+   "Dix pièces, une marque"
+  ],
+  [
+   "plates/07-construction.png",
+   "07-construction",
+   "La construction du Cran"
+  ],
+  [
+   "motion/08-logo.mp4",
+   "08-logo",
+   "Révélation du logo"
+  ],
+  [
+   "plates/09-logo-variantes.png",
+   "09-logo-variantes",
+   "Le logo et ses six versions"
+  ],
+  [
+   "plates/10-couleurs.png",
+   "10-couleurs",
+   "Les couleurs"
+  ],
+  [
+   "plates/11-typographie.png",
+   "11-typographie",
+   "La typographie et le surligneur"
+  ],
+  [
+   "motion/12-surligneur.mp4",
+   "12-surligneur",
+   "Le surligneur en mouvement"
+  ],
+  [
+   "plates/13-bloc.png",
+   "13-bloc",
+   "Le bloc : sprites, chiffres, pictos"
+  ],
+  [
+   "motion/14-sprites.mp4",
+   "14-sprites",
+   "Les sprites en mouvement"
+  ],
+  [
+   "plates/15-matieres-encre.png",
+   "15-matieres-encre",
+   "Encre, fil, trame"
+  ],
+  [
+   "plates/16-photographie.png",
+   "16-photographie",
+   "La photographie : traitements et masques"
+  ],
+  [
+   "plates/17-reperes.png",
+   "17-reperes",
+   "Les repères d’impression"
+  ],
+  [
+   "plates/18-section-atelier.png",
+   "18-section-atelier",
+   "L’atelier"
+  ],
+  [
+   "plates/19-cinq-techniques.png",
+   "19-cinq-techniques",
+   "Cinq techniques, un même logo"
+  ],
+  [
+   "motion/20-techniques.mp4",
+   "20-techniques",
+   "Les cinq techniques en fabrication"
+  ],
+  [
+   "final/21-serigraphie.png",
+   "21-serigraphie",
+   "Le cadre de sérigraphie"
+  ],
+  [
+   "plates/22-matieres.png",
+   "22-matieres",
+   "La matière, puis le geste"
+  ],
+  [
+   "plates/23-quatre-univers.png",
+   "23-quatre-univers",
+   "Quatre univers sous un même toit"
+  ],
+  [
+   "plates/24-section-site.png",
+   "24-section-site",
+   "Le site"
+  ],
+  [
+   "plates/25-accueil.png",
+   "25-accueil",
+   "L’accueil du site"
+  ],
+  [
+   "final/26-portable.mp4",
+   "26-portable",
+   "Le site, tenu par les sangles orange"
+  ],
+  [
+   "plates/27-pages-univers.png",
+   "27-pages-univers",
+   "Quatre pages d’univers, une même grille"
+  ],
+  [
+   "motion/28-site-ecran.mp4",
+   "28-site-ecran",
+   "Le site défile"
+  ],
+  [
+   "plates/29-atelier.png",
+   "29-atelier",
+   "La page Atelier"
+  ],
+  [
+   "plates/30-devis.png",
+   "30-devis",
+   "Le parcours de devis"
+  ],
+  [
+   "plates/31-composants.png",
+   "31-composants",
+   "Les composants d’interface"
+  ],
+  [
+   "final/32-telephone.png",
+   "32-telephone",
+   "Le téléphone"
+  ],
+  [
+   "motion/33-mobile.mp4",
+   "33-mobile",
+   "Le site mobile"
+  ],
+  [
+   "plates/34-section-supports.png",
+   "34-section-supports",
+   "Les supports"
+  ],
+  [
+   "plates/35-textile-a-plat.png",
+   "35-textile-a-plat",
+   "On fait plus qu’un maillot"
+  ],
+  [
+   "plates/36-sweat-porte.png",
+   "36-sweat-porte",
+   "Brodé dans le dos"
+  ],
+  [
+   "final/37-etiquettes.png",
+   "37-etiquettes",
+   "Étiquettes et emballage"
+  ],
+  [
+   "plates/38-affiches.png",
+   "38-affiches",
+   "Les affiches"
+  ],
+  [
+   "final/39-papeterie.png",
+   "39-papeterie",
+   "La papeterie"
+  ],
+  [
+   "final/40-goodies.png",
+   "40-goodies",
+   "Les goodies"
+  ],
+  [
+   "final/41-signaletique.png",
+   "41-signaletique",
+   "La signalétique"
+  ],
+  [
+   "plates/42-vehicule.png",
+   "42-vehicule",
+   "Le fourgon de l’atelier"
+  ],
+  [
+   "plates/43-reseaux.png",
+   "43-reseaux",
+   "Les réseaux sociaux"
+  ],
+  [
+   "plates/44-icone.png",
+   "44-icone",
+   "L’icône et le favicon"
+  ],
+  [
+   "plates/45-guide.png",
+   "45-guide",
+   "Le guide de marque, page à page"
+  ],
+  [
+   "motion/46-derive.mp4",
+   "46-derive",
+   "La mosaïque en dérive"
+  ],
+  [
+   "plates/47-contact.png",
+   "47-contact",
+   "Planche-contact"
+  ],
+  [
+   "plates/48-cloture.png",
+   "48-cloture",
+   "Clôture"
+  ]
+ ]
+}

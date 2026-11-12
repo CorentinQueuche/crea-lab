@@ -1,0 +1,29 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates-b.css"><script src="../brand/marque.js"></script>
+<style>
+  .s39-cr{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;border-top:1px solid var(--filet);padding-top:18px}
+  .s39-cr p{font-size:14.5px;line-height:1.45;opacity:.78;margin-top:10px}
+  .s39-url{font-family:var(--mono);letter-spacing:0;text-transform:none}
+</style>
+<body><div class="plate" id="p" style="height:1130px;background:var(--coffre)"></div>
+<script>
+const A = Marque, NB = ' ', SUR = '#F3F6F4';
+const cr = [
+  ['Client', `Payout, FinTech, France.<br>Le copilote des freelances en SASU.`],
+  ['2025 · réalisé', `Identité, site vitrine et front de la web app${NB}: KLYRA, en six semaines.`],
+  ['2026 · proposé', `Évolution de l'identité, direction artistique et motion design${NB}: KLYRA.`],
+  ['Crédits', `Références de présentation${NB}: Sui (Holographik), Suno (Nea Studio), Rentio. Polices${NB}: Instrument Sans et Chivo Mono (OFL). Écrans${NB}: personnes et montants fictifs.`],
+];
+document.getElementById('p').innerHTML = `
+  <div class="g2 grain pb-abs" style="left:0;right:0;bottom:0;height:440px"></div>
+  ${A.entete(A.ENTETE, SUR)}
+  <div class="pb-abs pb-z" style="left:84px;top:150px">
+    <div class="pb-lbl" style="opacity:.6">Clôture</div>
+    <div class="h-xl" style="font-size:112px;margin-top:22px">Gardez la part<br>qui vous revient.</div>
+  </div>
+  <div class="pb-abs pb-z" style="left:84px;top:470px">${A.lockup(SUR, 'style="width:470px;display:block"')}</div>
+  <div class="pb-abs pb-z" style="left:84px;right:84px;top:470px;display:flex;justify-content:flex-end;align-items:flex-start;gap:10px">
+    ${A.pilule('Proposition KLYRA', true)}${A.pilule('payout.fr', false, 'filet')}</div>
+  <div class="pb-abs pb-z" style="left:84px;right:84px;top:640px"><div class="s39-cr">${cr.map(([t, d]) => `<div><span class="pb-lbl" style="opacity:.6">${t}</span><p>${d}</p></div>`).join('')}</div>
+    <div class="pb-lbl" style="font-size:13px;letter-spacing:.06em;opacity:.85;margin-top:34px">Proposition d'évolution faite par KLYRA. Ce n'est pas l'identité officielle de Payout.</div></div>
+`;
+</script></body>

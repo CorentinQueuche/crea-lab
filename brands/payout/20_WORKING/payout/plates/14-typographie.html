@@ -1,0 +1,60 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates.css"><script src="../brand/marque.js"></script>
+<style>
+  /* 14 · Échelle typographique. Préfixe q14- */
+  .q14-hd{position:absolute;left:40px;right:40px;top:92px;display:grid;grid-template-columns:300px 1fr;gap:0}
+  .q14-t{font-size:52px;font-weight:500;letter-spacing:-.045em;line-height:.98}
+  .q14-gl{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .q14-g{position:relative;height:300px;border-radius:20px;overflow:hidden;padding:20px 22px}
+  .q14-tab{position:absolute;left:40px;right:40px;top:440px;display:grid;grid-template-columns:300px 1fr}
+  .q14-desc{padding-right:40px;font-size:14.5px;line-height:1.45;opacity:.75}
+  .q14-desc p+p{margin-top:12px}
+  .q14-sec{grid-column:2;height:26px;margin:22px 0 0;padding:0 10px;display:flex;align-items:center;background:var(--sombre);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--sur-scene) 8%,transparent);font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;opacity:.8}
+  .q14-row{grid-column:2;display:grid;grid-template-columns:250px 1fr;align-items:center;padding:16px 0;border-bottom:1px solid color-mix(in srgb,var(--sur-scene) 10%,transparent)}
+  .q14-set{font-family:var(--mono);font-size:10.5px;line-height:1.55;letter-spacing:.02em;opacity:.62}
+  .q14-set b{font-weight:500;opacity:1;color:var(--sur-scene);display:block;letter-spacing:.06em;text-transform:uppercase}
+  .q14-r{min-width:0;white-space:nowrap;overflow:hidden}
+</style>
+<body><div class="plate" id="p" style="height:1720px;background:var(--scene)"></div>
+<script>
+const A = Marque, C = A.COULEURS, NB = '&nbsp;', SUR = '#F3F6F4';
+const sec = (t) => `<div class="q14-sec">${t}</div>`;
+const row = (nom, set, rendu) => `<div class="q14-row"><div class="q14-set"><b>${nom}</b>${set}</div><div class="q14-r">${rendu}</div></div>`;
+const ROWS = sec('Chiffres') +
+  row('Chiffre de scène', 'Chivo Mono Medium<br>corps 136 à 320 px<br>interligne 0,86 · −0,06 em<br>classe .chiffre', `<div class="chiffre" style="font-size:210px;color:${C.net};padding:10px 0 6px">${A.pcH(85)}</div>`) +
+  sec('Titres') +
+  row('Display', 'Instrument Sans Medium<br>corps 96 px<br>interligne 0,92 · −0,055 em<br>classe .d-t1', `<div class="d-t1">Gardez la part</div>`) +
+  row('Titre 300', 'Instrument Sans Medium<br>corps 88 px<br>interligne 0,93 · −0,055 em<br>classe .h-xl', `<div class="h-xl">Zéro ressaisie.</div>`) +
+  row('Titre 200', 'Instrument Sans Medium<br>corps 52 px<br>interligne 0,98 · −0,045 em<br>classes .h-l, .d-t2', `<div class="h-l">Votre CRA devient une facture.</div>`) +
+  row('Titre 100', 'Instrument Sans Medium<br>corps 28 px<br>interligne 1,05 · −0,035 em', `<div style="font-size:28px;font-weight:500;line-height:1.05;letter-spacing:-.035em">L'impôt prend sa part. Pas la vôtre.</div>`) +
+  sec('Texte') +
+  row('Phrase bicolore', 'Instrument Sans Medium<br>corps 21 à 27 px<br>interligne 1,3 · −0,02 em<br>classe .bicolore', A.bicolore(`54${NB}% aujourd'hui. <b>Jusqu'à 85${NB}% avec Payout.</b>`, 'font-size:24px;line-height:1.3')) +
+  row('Texte 200', 'Instrument Sans Regular<br>corps 19 px<br>interligne 1,4 · −0,01 em<br>classe .body-l', `<div class="body-l" style="white-space:normal;max-width:640px">Payout aide les freelances en SASU à garder jusqu'à 85${NB}% de leur TJM après impôts, au lieu de 54${NB}%.</div>`) +
+  row('Texte 100', 'Instrument Sans Regular<br>corps 14,5 px<br>interligne 1,4 · 0', `<div style="font-size:14.5px;line-height:1.4">TVA d'octobre${NB}: 2${NB}213,60${NB}€ à reverser avant le 24${NB}novembre. Tout est déjà calculé.</div>`) +
+  sec('Montants') +
+  row('Montant 200', 'Chivo Mono Medium<br>corps 26 à 44 px<br>interligne 1,1 · −0,035 à −0,06 em<br>classe .d-v', `<div class="d-v" style="font-size:44px;letter-spacing:-.05em">${A.eurH(10200)}</div>`) +
+  row('Montant 100', 'Chivo Mono Medium<br>corps 13,5 px<br>interligne 1,3 · −0,01 em<br>classe .mt', `<div class="mt" style="font-size:13.5px;word-spacing:0">F-2026-010${NB}·${NB}${A.eurH(12000)} HT${NB}·${NB}TVA ${A.eurH(2400)}</div>`) +
+  sec('Étiquettes') +
+  row('Étiquette', 'Chivo Mono Regular, capitales<br>corps 10 à 10,5 px<br>interligne 1,5 · +0,06 à +0,08 em<br>classes .cap, .d-k', `<div class="cap" style="font-size:10.5px;opacity:1">Solde disponible · Qonto connecté · 12.11.2026</div>`);
+document.getElementById('p').innerHTML = `
+  ${A.entete(A.ENTETE, SUR)}
+  <div class="q14-hd">
+    <div><div class="pl-lbl doux" style="margin-bottom:18px">14 · Échelle typographique</div>
+      <div class="q14-t" style="display:flex;gap:12px;align-items:flex-start"><i style="width:3px;height:44px;background:${C.net};margin-top:4px"></i><span>Instrument Sans<br><span style="opacity:.42">Chivo Mono</span></span></div></div>
+    <div class="q14-gl">
+      <div class="q14-g" style="background:${C.ardoise};box-shadow:inset 0 0 0 1px rgba(255,255,255,.1)"><div class="pl-lbl doux">Instrument Sans · les mots</div>
+        <div style="position:absolute;left:22px;right:22px;bottom:16px;font-size:44px;font-weight:500;letter-spacing:-.04em;line-height:1.02">ABCDEFGHIJKLM<br>NOPQRSTUVWXYZ<br><span style="opacity:.45">abcdefghijklm éèàç</span></div></div>
+      <div class="q14-g g6 grain"><div class="pl-lbl doux pl-net">Chivo Mono · les chiffres, tabulaires</div>
+        <div class="pl-net" style="position:absolute;left:22px;right:22px;bottom:16px"><div class="chiffre" style="font-size:82px;color:${C.net}">0123456789</div>
+          <div class="chiffre" style="font-size:52px;margin-top:14px;opacity:.85">€${NB}%${NB}, . − + : /</div></div></div>
+    </div>
+  </div>
+  <div class="q14-tab">
+    <div class="q14-desc" style="grid-row:1/40"><div class="pl-lbl doux" style="margin:26px 0 14px">Description</div>
+      <p>Deux familles, deux rôles. <b style="color:${SUR};font-weight:500">Instrument Sans</b> porte les mots${NB}: titres en Medium, très grands, serrés. <b style="color:${SUR};font-weight:500">Chivo Mono</b> porte tous les chiffres, en chasse fixe, pour que les montants s'alignent au centime.</p>
+      <p>Les chiffres font les titres. Un pourcentage vaut mieux qu'un adjectif.</p>
+      <p style="margin-top:22px" class="pl-lbl doux">Licence · OFL<br>Texte clair sur Coffre · 18,3 : 1<br>Acier sur Coffre · 5,3 : 1</p></div>
+    ${ROWS}
+  </div>`;
+/* Hauteur de planche : celle du tableau, plus la marge du bas */
+const tab = document.querySelector('.q14-tab'); document.getElementById('p').style.height = (tab.offsetTop + tab.offsetHeight + 70) + 'px';
+</script></body>

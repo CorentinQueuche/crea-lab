@@ -1,0 +1,28 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../brand/aube.css"><link rel="stylesheet" href="plates.css"><script src="../brand/aube.js"></script>
+<body>
+<div class="plate g9 grain" id="p" style="height:660px"></div>
+<script>
+/* Quatre astres qui se lèvent sur une même ligne d'horizon : du quart au disque entier. */
+const H = 440, R = 150, xs = [280, 560, 840, 1120], rise = [.25, .5, .75, 1];
+const words = ['Clarté', 'Élan', 'Anticipation', 'Sérénité'];
+let s = `<svg class="abs" style="left:0;top:0" width="1400" height="660" viewBox="0 0 1400 660">
+<defs>
+  <clipPath id="up"><rect x="0" y="0" width="1400" height="${H}"/></clipPath>
+  <clipPath id="dn"><rect x="0" y="${H}" width="1400" height="300"/></clipPath>
+  <linearGradient id="hz" x1="0" x2="1"><stop offset="0" stop-color="#FFC46B" stop-opacity="0"/><stop offset=".12" stop-color="#FFC46B" stop-opacity=".9"/><stop offset=".88" stop-color="#FFC46B" stop-opacity=".9"/><stop offset="1" stop-color="#FFC46B" stop-opacity="0"/></linearGradient>
+  <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE9CC" stop-opacity=".34"/><stop offset="1" stop-color="#FFE9CC" stop-opacity="0"/></linearGradient>
+</defs>`;
+xs.forEach((x, i) => {
+  const cy = H + R - rise[i] * 2 * R;
+  s += `<circle cx="${x}" cy="${cy}" r="${R}" fill="none" stroke="#FFE9CC" stroke-opacity=".92" stroke-width="1.3" clip-path="url(#up)"/>`;
+  s += `<circle cx="${x}" cy="${cy}" r="${R}" fill="none" stroke="url(#fade)" stroke-width="1" stroke-dasharray="3 6" clip-path="url(#dn)" style="transform-box:fill-box"/>`;
+});
+s += `<rect x="0" y="${H - .75}" width="1400" height="1.5" fill="url(#hz)"/></svg>`;
+words.forEach((w, i) => {
+  s += `<div class="abs" style="left:${xs[i] - 140}px;width:280px;top:${H - 50}px;text-align:center;color:#fff;font-size:23px;font-weight:300;letter-spacing:.005em">${w}</div>`;
+  s += `<div class="abs mono" style="left:${xs[i] - 40}px;width:80px;top:${H + 22}px;text-align:center;color:#FFE9CC;opacity:.7;font-size:12px;letter-spacing:.1em">0${i + 1}</div>`;
+});
+s += `<div class="abs lbl" style="left:84px;top:84px;color:#fff;opacity:.75">Mots-clés</div>`;
+document.getElementById('p').innerHTML = s;
+</script>
+</body>

@@ -1,0 +1,150 @@
+<!doctype html><meta charset="utf-8"><title>Custom — V · Révélation du logo</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="motion.css">
+<script src="../brand/marque.js"></script><script src="lib.js"></script>
+<body><div class="m-stage" id="s" style="width:1920px;height:1080px"></div>
+<script>
+/* 08 · Révélation du logo · 1920 × 1080 · 6 s
+   node tools/record.mjs motion/08-logo.html out/motion/08-logo.mp4 --w 1920 --h 1080 --fps 30 --dur 6 --planche --fixe 5.6
+   0,00  Sur la toile, le coureur (sprite course, 8 i/s) traverse en crans, une traînée de blocs derrière lui ; il s'arrête net.
+   1,12  Il se fige : ses cases se remplissent en trois crans, le bloc plein se couche à la pente et devient le bloc du bas du Cran.
+   2,12  Le bloc du haut sort de derrière et se décale d'un pas. Tracés de construction, cotes, angle de 13,3°.
+   2,60  Le tracé officiel passe en filet par-dessus ; coupe : le Cran officiel, la caméra recule (changement d'échelle).
+   3,05  « Custom.fr » s'écrit lettre par lettre (40 ms d'écart), chaque lettre monte le long de la pente.
+   3,75  Une coulure violette balaie le cadre : derrière elle, le logotype passe au fluo.
+   4,25  Repères d'impression en crans (croix, mires, barre de contrôle, codes). 4,50 → 6,00 : image tenue. */
+const A = Marque, C = A.COULEURS, W = 1920, H = 1080, NB = A.NB;
+const SC = 4.6, SF = 1.6;                                  // échelle de la construction, puis du logo de référence
+const CX = 95.5, CY = 55;                                   // centre du Cran (repère du logo)
+const FX = (W - 714 * SF) / 2, FY = H / 2 - CY * SF;        // origine du logo de référence à l'écran
+const scr = (p) => [960 + (p[0] - CX) * SC, 540 + (p[1] - CY) * SC];   // repère du logo → écran, pendant la construction
+const K = A.CONSTRUCTION, PAS = [K.haut[0][0] - K.bas[0][0], K.haut[0][1] - K.bas[0][1]];
+const BAS = K.bas.map(scr);                                  // le bloc du bas, à l'écran
+const T = { arret: 1.0, remplir: 1.125, coucher: 1.5, haut: 2.12, guides: 1.5, filet: 2.6, coupe: 2.95, zoom: 0.7, lettres: 3.05, coulure: 3.75, dCoul: 0.55, reperes: 4.25 };
+
+/* ---------- Le coureur ---------- */
+const CELL = 16, ROWS = 18, SOL = BAS[2][1];                 // 18 rangs de 16 px : la hauteur du bloc à l'écran (287 px)
+const frames = [1, 2, 3, 4].map((i) => A.spriteRows('course', i));
+const largeur = (rows) => Math.max(...rows.map((r) => r.length));
+const X_ARRET = BAS[3][0], AVANCE = 84;
+const posX = (f) => X_ARRET - (8 - Math.min(f, 8)) * AVANCE;   // une case de plus par image, arrêt à l'image 8
+/* chaque image du coureur garde la même hauteur (comme sur la planche d'origine) : la case s'adapte au nombre de rangs */
+const spritePath = (f, x) => { const rows = frames[f % 4], cell = (ROWS * CELL) / rows.length;
+  return `<path transform="translate(${x.toFixed(1)} ${SOL - ROWS * CELL})" d="${A.grillePath(rows, { cell })}"/>`; };
+/* Ordre de remplissage des cases vides du cadre 16 × 18 (tirage à graine) */
+const R0 = frames[0], LW = largeur(R0), vides = [];
+for (let j = 0; j < ROWS; j++) for (let i = 0; i < LW; i++) if ((R0[j] || '')[i] !== '#') vides.push([i, j]);
+const rng = M.graine(8); const ordre = vides.map((v) => [rng(), v]).sort((a, b) => a[0] - b[0]).map((x) => x[1]);
+const rempli = (n) => { const g = R0.map((r) => r.padEnd(LW, '.').split('')); ordre.slice(0, n).forEach(([i, j]) => (g[j][i] = '#')); return g.map((r) => r.join('')); };
+
+/* ---------- Tracés de construction (repère du logo, filets non mis à l'échelle) ---------- */
+const lg = (x1, y1, x2, y2) => `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" pathLength="1"/>`;
+const ext = (p, q, a, b) => { const dx = q[0] - p[0], dy = q[1] - p[1]; return lg(p[0] + dx * a, p[1] + dy * a, p[0] + dx * b, p[1] + dy * b); };
+const guides = [lg(-260, 0, 450, 0), lg(-260, 47.6, 450, 47.6), lg(-260, 62.4, 450, 62.4), lg(-260, 110, 450, 110),
+  ext(K.bas[0], K.bas[3], -1.6, 2.2), ext(K.bas[1], K.bas[2], -1.6, 2.2), ext(K.haut[0], K.haut[3], -1.2, 2.6), ext(K.haut[1], K.haut[2], -1.2, 2.6)];
+const arc = (() => { const c = K.bas[3], r = 26, a0 = -Math.PI / 2, a1 = a0 + (13.3 * Math.PI) / 180; // angle entre la verticale et l'arête
+  return `<path pathLength="1" d="M${c[0] + r * Math.cos(a0)},${c[1] + r * Math.sin(a0)} A${r},${r} 0 0 1 ${c[0] + r * Math.cos(a1)},${c[1] + r * Math.sin(a1)}"/>` +
+    lg(c[0], c[1], c[0], c[1] - 40); })();
+const cote = (x, y, txt, anchor = 'start') => `<text x="${x}" y="${y}" text-anchor="${anchor}" font-family="JetBrains Mono" font-weight="500" font-size="3.4" letter-spacing=".25" fill="#FFFFFF">${txt}</text>`;
+
+const s = document.getElementById('s');
+s.innerHTML = `
+  <div id="fondToile" class="m-fill tx-toile"></div>
+  <div id="cadreToile" class="m-abs cadre-r" style="left:150px;top:170px;right:150px;bottom:170px;color:#fff">${A.reperes({ t: 34 })}</div>
+  <svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" style="position:absolute;inset:0;overflow:visible">
+    <defs>
+      <clipPath id="clipLettres"><rect x="-40" y="9" width="600" height="89"/></clipPath>
+      <clipPath id="clipFluo" clipPathUnits="userSpaceOnUse"><rect id="clipR" x="0" y="0" width="0" height="${H}"/></clipPath>
+    </defs>
+    <g id="coureur"><g id="trainee"></g><g id="vif" fill="${C.fluo}"></g><path id="morph" fill="${C.fluo}"/></g>
+    <g id="cam">
+      <g id="guides" fill="none" stroke="#FFFFFF" stroke-opacity=".3" stroke-width="1" vector-effect="non-scaling-stroke">${guides.join('')}${arc}</g>
+      <g id="cotes" opacity=".75">${cote(K.bas[3][0] + 5, K.bas[3][1] - 44, '13,3°')}${cote(K.haut[0][0] + 58.9, -6, '117,8', 'middle')}${cote(200, 33, '62,4')}${cote(-60, 45.2, 'PAS 62,5 × 47,6')}</g>
+      <g id="parts"><path id="pHaut" d="${A.symbolParts().haut}" fill="${C.fluo}"/><path id="pBas" d="${A.symbolParts().bas}" fill="${C.fluo}"/></g>
+      <path id="filet" d="${A.symbolPath()}" fill="none" stroke="#E2FF21" stroke-width=".7" pathLength="1" stroke-dasharray="1 1"/>
+      <path id="officiel" d="${A.symbolPath()}" fill="${C.fluo}"/>
+      <g transform="translate(227.05 0)" clip-path="url(#clipLettres)">${A.LETTRES.ordre.map((ch) => `<path class="lt" fill="#FFFFFF" d="${A.letterPath(ch)}"/>`).join('')}</g>
+    </g>
+    <g clip-path="url(#clipFluo)"><g id="camFluo">${A.symbol(C.fluo).replace(/<\/?svg[^>]*>/g, '')}<g transform="translate(227.05 0)"><path fill="${C.fluo}" d="${A.wordPath()}"/></g></g></g>
+    <g id="coulure">${A.coulure({ w: 1300, h: 1500, c: 'violet', seed: 21, rx: 0.4, ry: 0.5, pas: 6, frange: 0.16 }).replace('<svg ', '<svg x="0" y="-210" width="1300" height="1500" ')}</g>
+  </svg>
+  <div id="rep" class="m-fill" style="color:#fff">
+    <i class="m-croix r1" style="left:${FX - 49}px;top:${FY - 49}px"></i><i class="m-croix r1" style="left:${W - FX + 49}px;top:${FY - 49}px"></i>
+    <i class="m-croix r1" style="left:${FX - 49}px;top:${FY + 176 + 49}px"></i><i class="m-croix r1" style="left:${W - FX + 49}px;top:${FY + 176 + 49}px"></i>
+    <div class="m-abs r1" style="left:${FX - 49}px;top:${FY - 49}px;width:${W - 2 * FX + 98}px;height:${176 + 98}px;border:1px solid rgba(255,255,255,.16)"></div>
+    <div class="m-abs r2" style="display:flex;left:${FX - 150}px;top:${H / 2 - 18}px">${A.mire(36)}</div><div class="m-abs r2" style="display:flex;left:${W - FX + 114}px;top:${H / 2 - 18}px">${A.mire(36)}</div>
+    <div class="m-abs r3" style="left:${W / 2 - 300}px;top:892px;width:600px">${A.barre({ style: 'height:16px' })}</div>
+    <div class="m-abs m-cap r3" style="left:96px;top:84px;opacity:.6">CST${NB}·${NB}LOGO${NB}·${NB}2026</div>
+    <div class="m-abs m-cap r3" style="right:96px;top:84px;opacity:.6;text-align:right">FLUO #E2FF21${NB}·${NB}NOIR #101012</div>
+    <div class="m-abs m-cap r3" style="left:96px;bottom:84px;opacity:.6">Logo de référence</div>
+    <div class="m-abs m-cap r3" style="right:96px;bottom:84px;opacity:.6">custom.fr</div>
+  </div>
+  <div id="capA" class="m-abs m-cap" style="left:150px;bottom:116px;opacity:.6">COURSE${NB}·${NB}4 IMAGES${NB}·${NB}8 I/S</div>
+  <div id="capB" class="m-abs m-cap" style="left:96px;bottom:84px;opacity:.6">LE CRAN${NB}·${NB}DEUX BLOCS DÉCALÉS D’UN PAS</div>
+  <i class="m-grain"></i>`;
+
+const $ = (q) => s.querySelector(q), $$ = (q) => [...s.querySelectorAll(q)];
+const cam = $('#cam'), camFluo = $('#camFluo'), vif = $('#vif'), trainee = $('#trainee'), morph = $('#morph');
+const pHaut = $('#pHaut'), parts = $('#parts'), filet = $('#filet'), officiel = $('#officiel'), guidesG = $('#guides'), cotesG = $('#cotes');
+const lettres = $$('.lt'), coul = $('#coulure'), clipR = $('#clipR');
+const vis = (el, on) => { el.style.display = on ? '' : 'none'; };
+
+/* Caméra : de la construction (Cran centré, × 4,6) au logo de référence (× 1,6), échelle interpolée en logarithme */
+const camera = (t) => { const k = M.tw(t, T.coupe, T.zoom, M.expoOut), sc = Math.exp(M.mix(Math.log(SC), Math.log(SF), k));
+  const ax = M.mix(960, FX + CX * SF, k), ay = M.mix(540, FY + CY * SF, k);
+  return `translate(${(ax - CX * sc).toFixed(2)} ${(ay - CY * sc).toFixed(2)}) scale(${sc.toFixed(5)})`; };
+
+window.seek = (t) => {
+  /* Fond : la toile jusqu'au coucher du bloc, puis le noir (coupe sur un cran) */
+  const toile = t < T.coucher; vis($('#fondToile'), toile); vis($('#cadreToile'), toile); vis($('#capA'), toile);
+  vis($('#capB'), t >= T.coucher && t < T.coupe);
+
+  /* 1. Le coureur, en crans de 8 i/s ; la traînée garde les trois positions précédentes (acier, fonte, graphite) */
+  const f = Math.floor(t * 8 + 1e-6), courir = t < T.coucher;
+  vis($('#coureur'), t < 2.0);
+  if (courir) {
+    const nRemp = t >= T.remplir ? Math.round(ordre.length * Math.min(3, Math.floor((t - T.remplir) * 8 + 1e-6) + 1) / 3) : 0;
+    vif.innerHTML = nRemp ? `<path transform="translate(${X_ARRET} ${SOL - ROWS * CELL})" d="${A.grillePath(rempli(nRemp), { cell: CELL })}"/>` : spritePath(Math.min(f, 8), posX(f));
+    trainee.innerHTML = [1, 2, 3].map((k) => { const g = f - k; if (g < 0 || g >= 8 || nRemp) return '';
+      return `<g fill="${M.TRAINEE[k - 1]}">${spritePath(g, posX(g))}</g>`; }).join('');
+    morph.setAttribute('d', '');
+  } else {
+    /* 2. Le bloc plein se couche à la pente et s'étire jusqu'au bloc du bas (0,5 s, arrêt net) */
+    vif.innerHTML = ''; trainee.innerHTML = '';
+    const k = M.tw(t, T.coucher, M.ENTRER), x0 = X_ARRET, x1 = X_ARRET + LW * CELL, y0 = SOL - ROWS * CELL, y1 = SOL;
+    const rect = [[x0, y0], [x1, y0], [x1, y1], [x0, y1]], pts = rect.map((p, i) => [M.mix(p[0], BAS[i][0], k), M.mix(p[1], BAS[i][1], k)]);
+    morph.setAttribute('d', A.rpoly(pts, M.mix(CELL * 0.3, 7 * SC, k)));
+  }
+
+  /* 3. Le Cran en construction (repère du logo), puis la caméra recule */
+  const construit = t >= 2.0;
+  vis(cam, t >= T.guides); cam.setAttribute('transform', camera(t));
+  const officielOn = t >= T.coupe;
+  /* les pièces cèdent la place au filet du tracé officiel (coupe), puis au tracé plein (coupe) */
+  vis(parts, construit && t < T.filet); vis(officiel, officielOn);
+  const kh = M.tw(t, T.haut, M.ENTRER);
+  pHaut.setAttribute('transform', `translate(${(-PAS[0] * (1 - kh)).toFixed(2)} ${(-PAS[1] * (1 - kh)).toFixed(2)})`);
+  /* le bloc du haut passe derrière celui du bas tant qu'il glisse */
+  if (kh < 1 && parts.firstElementChild !== pHaut) parts.insertBefore(pHaut, parts.firstElementChild);
+
+  /* Tracés : ils s'étirent depuis le coucher du bloc et disparaissent à la coupe (pas de fondu) */
+  const kg = M.tw(t, T.guides, 0.9, M.quartOut);
+  vis(guidesG, t >= T.guides && !officielOn); vis(cotesG, t >= T.haut + 0.25 && !officielOn);
+  [...guidesG.children].forEach((el, i) => { el.style.strokeDasharray = '1 1'; el.style.strokeDashoffset = (1 - M.tw(t, T.guides + i * 0.04, 0.8)).toFixed(4); });
+  vis(filet, t >= T.filet && !officielOn);
+  filet.style.strokeDashoffset = (1 - M.tw(t, T.filet, 0.28, M.cubicOut)).toFixed(4);
+
+  /* 4. Les lettres montent le long de la pente, 40 ms d'écart, dans leur fenêtre (ligne de base) */
+  lettres.forEach((el, i) => { const k = M.tw(t, T.lettres + i * M.DECALAGE, M.ENTRER), [dx, dy] = M.pente((1 - k) * 92);
+    el.setAttribute('transform', `translate(${dx.toFixed(2)} ${dy.toFixed(2)})`); vis(el, t >= T.lettres + i * M.DECALAGE); });
+
+  /* 5. La coulure balaie le cadre ; à sa gauche, le logo est fluo (calque découpé) */
+  const kc = M.tw(t, T.coulure, T.dCoul, M.cubicInOut), cx = M.mix(-900, W + 900, kc);
+  vis(coul, t >= T.coulure && kc < 1); coul.setAttribute('transform', `translate(${(cx - 650).toFixed(1)} 0)`);
+  clipR.setAttribute('width', t < T.coulure ? 0 : Math.max(0, cx).toFixed(1));
+  camFluo.setAttribute('transform', camera(t)); vis(camFluo, t >= T.coulure);
+
+  /* 6. Repères d'impression, un groupe par cran */
+  ['r1', 'r2', 'r3'].forEach((c, i) => $$('.' + c).forEach((el) => vis(el, t >= T.reperes + i * M.CRAN)));
+};
+seek(0);
+</script></body>

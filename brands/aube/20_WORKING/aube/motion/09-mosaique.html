@@ -1,0 +1,33 @@
+<!doctype html><meta charset="utf-8"><title>Aube — 09 mosaïque</title>
+<link rel="stylesheet" href="../brand/aube.css"><link rel="stylesheet" href="motion.css">
+<script src="../brand/aube.js"></script><script src="lib.js"></script><script src="scenes.js"></script>
+<body style="background:#E9E3DE"><div class="mosaic" id="m" style="width:1400px;height:944px"></div>
+<script>
+// 1400 × 944, 6 s : node tools/record.mjs motion/09-mosaique.html out/motion/09-mosaique.mp4 --w 1400 --h 944 --fps 30 --dur 6
+// Chaque tuile appelle la scène correspondante (motion/scenes.js) à la taille de la tuile et garde son propre seek.
+const W = 1400, H = 944, P = 44, G = 16;
+const cw = (W - 2 * P - 2 * G) / 3, rh = (H - 2 * P - G) / 2, sh = (rh - G) / 2;
+const x = (c) => P + c * (cw + G), y = (r) => P + r * (rh + G);
+const tiles = [
+  // [colonne, ligne, largeur, hauteur, scène, options, décalage de départ]
+  { X: x(0), Y: y(0), w: cw, h: rh, f: 'montre', o: { cards: false, bg: '#1C1122' }, d: 0 },
+  { X: x(1), Y: y(0), w: 2 * cw + G, h: rh, f: 'scene', o: {}, d: 0.15 },
+  { X: x(0), Y: y(1), w: cw, h: sh, f: 'marque', o: {}, d: 0 },
+  { X: x(0), Y: y(1) + sh + G, w: cw, h: sh, f: 'palette', o: {}, d: 0.1 },
+  { X: x(1), Y: y(1), w: cw, h: rh, f: 'logo', o: { descriptor: false, bg: '#0A0609' }, d: 0.35 },
+  { X: x(2), Y: y(1), w: cw, h: rh, f: 'triptyque', o: {}, d: 0.6 },
+];
+const m = document.getElementById('m');
+const seeks = tiles.map((tl) => {
+  const t = document.createElement('div');
+  t.className = 'tile';
+  Object.assign(t.style, { left: tl.X + 'px', top: tl.Y + 'px', width: tl.w + 'px', height: tl.h + 'px' });
+  const inner = document.createElement('div');
+  t.appendChild(inner);
+  m.appendChild(t);
+  const sk = Scenes[tl.f](inner, Object.assign({ w: Math.round(tl.w), h: Math.round(tl.h) }, tl.o));
+  return (time) => sk(Math.max(0, time - tl.d));
+});
+window.seek = (t) => seeks.forEach((s) => s(t));
+seek(0);
+</script></body>

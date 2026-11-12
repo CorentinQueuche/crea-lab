@@ -1,0 +1,51 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates.css"><script src="../brand/marque.js"></script>
+<style>
+  .ps-cap{position:absolute;width:200px;text-align:center;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;line-height:1.6}
+  .ps-cap span{opacity:.62}
+  .ps-co{position:absolute;left:708px;width:608px;display:grid;grid-template-columns:52px 1fr;font-size:18px;line-height:1.35}
+  .ps-co .n{font-family:var(--mono);font-size:12px;letter-spacing:.08em;padding-top:4px;color:var(--vif);font-weight:500}
+  .ps-co b{font-weight:600;display:block}
+  .ps-co span{opacity:.75;font-size:16px}
+</style>
+<body>
+<div class="plate" id="p" style="height:1340px;background:var(--fleur)"></div>
+<script>
+const A = Marque, C = A.COULEURS;
+const MAISON = { nom: 'Maison', pays: 'Assemblage', alt: 'Espresso', notes: ['Rond', 'Tous les jours'], ton: 'fleur' };
+const tonNom = { cerise: 'Cerise', vert: 'Café vert', pulpe: 'Pulpe', grain: 'Grain', feuille: 'Feuille', fleur: 'Fleur' };
+const liste = [...A.CAFES.map((c) => [c, `${c.usage} · ${c.prix}`]), [MAISON, 'Assemblage maison']];
+const angles = [-6, 5, -3, 8, -8, 4], SZ = 184, step = (1400 - 168 - SZ) / 5, Y0 = 268;
+let h = `<h1 class="h-xl abs" style="left:84px;top:76px">Les pastilles</h1>
+  <p class="abs body-l" style="left:708px;top:86px;width:560px">L’étiquette ronde de chaque café, comme celle qu’on colle sur un fruit. Un ton par café, toujours posée un peu de travers, jamais sous 56&nbsp;px. Elle scelle les sachets, signe les gobelets, sert de vignette dans l’application.</p>`;
+liste.forEach(([c, sous], i) => {
+  const x = Math.round(84 + i * step);
+  h += `<div class="abs" style="left:${x}px;top:${Y0 + (i % 2 ? 14 : 0)}px">${A.pastille(c, SZ, { angle: angles[i], pose: true })}</div>`;
+  h += `<div class="ps-cap" style="left:${x + SZ / 2 - 100}px;top:${Y0 + SZ + 34}px">Ton ${tonNom[c.ton]}<br><span>${sous}</span></div>`;
+});
+h += `<div class="abs rule" style="left:84px;right:84px;top:600px"></div>`;
+h += `<div class="abs lbl" style="left:84px;top:636px;opacity:.6">Lire une pastille</div>`;
+
+/* La lecture : une grande pastille, cinq repères calculés dans son repère (viewBox 200 × 200) puis tournés de son angle */
+const S = 450, L = 150, T = 712, ANG = -5, k = S / 200;
+const pt = (vx, vy) => { const a = ANG * Math.PI / 180, dx = vx - 100, dy = vy - 100;
+  return [L + (100 + dx * Math.cos(a) - dy * Math.sin(a)) * k, T + (100 + dx * Math.sin(a) + dy * Math.cos(a)) * k]; };
+h += `<div class="abs" style="left:${L}px;top:${T}px">${A.pastille('guji', S, { angle: ANG, pose: true })}</div>`;
+const reperes = [
+  [[143, 26], 'Torréfacteur de quartier', 'Sur l’arc du haut, la même phrase sur toutes les pastilles.'],
+  [[106, 64], 'Le symbole', 'Dans le ton d’accent de la pastille.'],
+  [[146, 103], 'Le nom du café', 'Bricolage Grotesque SemiBold, centré.'],
+  [[166, 134], 'Origine et altitude', 'En IBM Plex Mono, capitales espacées.'],
+  [[150, 167], 'Deux notes', 'Sur l’arc du bas, celles qu’on goûte d’abord.'],
+];
+const ty = (i) => T + 20 + i * 92;
+let svg = `<svg class="abs" style="left:0;top:0" width="1400" height="1340" viewBox="0 0 1400 1340">`;
+reperes.forEach(([[vx, vy]], i) => { const [x, y] = pt(vx, vy), y2 = ty(i) + 11;
+  svg += `<path d="M${x.toFixed(1)} ${y.toFixed(1)} L${(L + S + 34).toFixed(1)} ${y.toFixed(1)} L${(L + S + 34 + Math.abs(y2 - y) * .35).toFixed(1)} ${y2} L692 ${y2}" fill="none" stroke="${C.grain}" stroke-opacity=".55" stroke-width="1"/>` +
+    `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="4" fill="${C.fleur}" stroke="${C.grain}" stroke-width="1.4"/>`; });
+svg += `</svg>`;
+h += svg;
+reperes.forEach(([, titre, txt], i) => h += `<div class="ps-co" style="top:${ty(i)}px"><span class="n">0${i + 1}</span><p><b>${titre}</b><span>${txt}</span></p></div>`);
+h += A.foot('Motifs', 'La pastille');
+document.getElementById('p').innerHTML = h;
+</script>
+</body>

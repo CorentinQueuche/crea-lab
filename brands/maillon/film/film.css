@@ -1,0 +1,38 @@
+/* Maillon — éléments propres au film (carton titre, curseur, palette, ondes) */
+.node, .plus { will-change: transform, opacity; transform-origin: 50% 60%; }
+
+#titre { position: absolute; inset: 0; z-index: 60; background: #040405; display: grid; place-items: center; }
+#titre::before { content: ""; position: absolute; inset: 0; background: radial-gradient(760px 520px at 50% 46%, rgba(255, 154, 46, .16), transparent 70%), radial-gradient(900px 600px at 82% 96%, rgba(120, 110, 255, .09), transparent 70%); }
+#titre .bloc { position: relative; display: flex; flex-direction: column; align-items: center; gap: 34px; }
+#titre .ligne { display: flex; align-items: center; gap: 30px; }
+#titre svg.logotype { overflow: visible; display: block; }
+#titre path.m2:not(.coupe) { filter: drop-shadow(0 0 16px rgba(255, 154, 46, .8)); }
+#titre .tag { font-size: 30px; color: #a9a59c; letter-spacing: -.01em; }
+#titre .tag b { color: #ffb866; font-weight: 500; }
+
+.wave { position: absolute; inset: 0; pointer-events: none; background-image: radial-gradient(circle at 1px 1px, rgba(255, 190, 110, 1) 1.5px, transparent 2.2px); background-size: 24px 24px; opacity: 0; }
+.ring { position: absolute; border-radius: 50%; border: 1.5px solid rgba(255, 170, 80, .8); pointer-events: none; opacity: 0; box-shadow: 0 0 30px rgba(255, 154, 46, .35), 0 0 30px rgba(255, 154, 46, .25) inset; }
+
+#fx { position: absolute; inset: 0; pointer-events: none; z-index: 8; }
+.onde { position: absolute; border-radius: 50%; border: 2px solid #fff; opacity: 0; }
+.onde.b { border-color: var(--accent); }
+.curseur { position: absolute; width: 34px; height: 34px; left: 0; top: 0; opacity: 0; transform-origin: 4px 3px; filter: drop-shadow(0 6px 8px rgba(0, 0, 0, .7)); }
+
+.palette { position: absolute; left: 524px; top: 806px; width: 410px; height: 78px; border-radius: 20px; border: 1px solid rgba(255, 255, 255, .16); background: linear-gradient(180deg, #232325, #171718); box-shadow: 0 1px 0 rgba(255, 255, 255, .16) inset, 0 40px 70px -20px #000, 0 0 60px rgba(255, 154, 46, .12); display: flex; align-items: center; gap: 14px; padding: 0 16px 0 20px; font-size: 21px; opacity: 0; z-index: 7; transform-origin: 0% 50%; }
+.palette .ico { width: 22px; height: 22px; color: var(--accent); }
+.palette .txt { flex: 1; white-space: nowrap; letter-spacing: -.01em; }
+.palette .txt i { display: inline-block; width: 2px; height: 26px; background: var(--accent); vertical-align: -5px; margin-left: 2px; box-shadow: 0 0 10px var(--accent); }
+.touche { height: 34px; min-width: 34px; padding: 0 11px; border-radius: 9px; background: linear-gradient(180deg, #343436, #252526); border: 1px solid rgba(255, 255, 255, .16); box-shadow: 0 3px 0 #0b0b0b, 0 1px 0 rgba(255, 255, 255, .18) inset; display: inline-grid; place-items: center; font-size: 14px; color: var(--ink-2); font-weight: 500; }
+.touches { position: absolute; left: 540px; top: 744px; display: flex; gap: 8px; opacity: 0; z-index: 7; }
+.touches .touche { height: 44px; min-width: 44px; font-size: 17px; padding: 0 14px; }
+
+.chip.okc { color: #8ff0b6; background: rgba(88, 214, 138, .14); }
+.sup .st.cmd { color: var(--accent); }
+.bar { transform-origin: 0 50%; }
+/* la demande qui arrive : ouverture du film */
+.toast { position: absolute; left: 150px; top: 86px; width: 392px; padding: 15px 17px; border-radius: 16px; display: flex; align-items: center; gap: 12px; border: 1px solid rgba(255, 255, 255, .14); background: linear-gradient(180deg, #222224, #161617); box-shadow: 0 1px 0 rgba(255, 255, 255, .16) inset, 0 30px 60px -18px #000, 0 0 50px rgba(88, 214, 138, .10); opacity: 0; z-index: 7; transform-origin: 30% 100%; }
+.toast .pastille { width: 40px; height: 40px; border-radius: 10px; background: #173a27; color: #8ff0b6; display: grid; place-items: center; flex: none; }
+.toast b { display: block; font-size: 17px; font-weight: 500; letter-spacing: -.01em; }
+.toast span { display: block; color: var(--ink-2); font-size: 13.5px; margin-top: 2px; white-space: nowrap; }
+.toast em { margin-left: auto; align-self: flex-start; font-style: normal; color: var(--ink-3); font-size: 11.5px; }
+.pulse { fill: #fff3dd; }

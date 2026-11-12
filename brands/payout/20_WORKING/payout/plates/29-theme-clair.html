@@ -1,0 +1,36 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates-b.css"><script src="../brand/marque.js"></script>
+<style>
+  .s29-sw{display:grid;grid-template-columns:34px 1fr;gap:3px 14px;align-items:center;padding:13px 0;border-top:1px solid rgba(6,10,8,.12)}
+  .s29-sw i{grid-row:1/3;width:34px;height:34px;border-radius:10px;box-shadow:inset 0 0 0 1px rgba(6,10,8,.12)}
+  .s29-sw b{font-weight:500;font-size:15px;letter-spacing:-.015em}
+  .s29-sw b span{font-family:var(--mono);font-size:10.5px;font-weight:400;letter-spacing:.04em;opacity:.55;margin-left:8px}
+  .s29-sw em{font-style:normal;font-size:13.5px;opacity:.62}
+</style>
+<body><div class="plate sur-clair" id="p" style="height:1610px;background:var(--releve)"></div>
+<script>
+const A = Marque, C = A.COULEURS, N = A.ECHELLE, NB = ' ', KB = 0.64, KT = 0.7;
+const sw = [
+  [C.releve, 'Relevé', 'Le fond de l\'app', C.releve],
+  [C.blanc, 'Blanc', 'Les cartes', C.blanc],
+  [N[800], 'Net 800', 'Le vert en texte (7,1 sur Blanc)', N[800]],
+  [C.net, 'Net 500', 'Les aplats et les boutons', C.net],
+  [C.coffre, 'Coffre', 'La carte dense, le texte', C.coffre],
+  [A.PRELEVE_CLAIR, 'Prélevé, en clair', 'Le retard (5,5 sur Relevé)', A.PRELEVE_CLAIR],
+];
+document.getElementById('p').innerHTML = `
+  ${A.entete(A.ENTETE, C.coffre)}
+  <div class="pb-abs" style="left:84px;top:104px;width:700px">
+    <div class="pb-lbl doux">La web app · thème clair</div>
+    <div class="pb-t" style="margin-top:16px">Les mêmes écrans, en clair.</div>
+  </div>
+  <div class="pb-abs" style="left:816px;top:122px;width:500px">${A.bicolore(`Même structure, mêmes intitulés. <b>Le texte vert passe en Net 800,</b> la carte dense devient <b>noire.</b>`, 'font-size:23px;line-height:1.28')}</div>
+  <div class="pb-abs" style="left:84px;top:276px">${A.browser(A.desk.cra({ clair: true }), KB, { url: 'app.payout.fr/planning', clair: true })}</div>
+  <div class="pb-abs" style="left:${1316 - 414 * KT}px;top:276px">${A.phone(A.screens.solde({ clair: true }), KT)}</div>
+  ${A.tuile(`<div style="position:absolute;left:26px;right:26px;bottom:22px">
+      <div class="pb-t2" style="font-size:26px">La tenue claire</div>
+      <p class="pb-txt doux" style="margin:8px 0 18px">Six valeurs du socle, aucune de plus.</p>
+      ${sw.map(([c, n, r]) => `<div class="s29-sw"><i style="background:${c}"></i><b>${n}<span>${c.toUpperCase()}</span></b><em>${r}</em></div>`).join('')}</div>`,
+    { ton: 'blanche', lbl: 'Thème clair', style: `position:absolute;left:84px;top:${276 + 946 * KB + 28}px;width:${1316 - 84 - 1440 * KB - 24}px;height:${946 * KB}px` })}
+  <div class="pb-abs" style="left:${1316 - 1440 * KB}px;top:${276 + 946 * KB + 28}px">${A.browser(A.desk.cashouts({ clair: true }), KB, { url: 'app.payout.fr/cash-out', clair: true })}</div>
+`;
+</script></body>

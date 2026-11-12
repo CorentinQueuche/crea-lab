@@ -1,0 +1,14 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates.css"><script src="../brand/marque.js"></script>
+<body>
+<div class="plate g2 grain" id="p" style="height:720px"></div>
+<script>
+/* Quatre écrans de l'application, en décalé : le premier sort par le haut, le troisième par le bas. */
+const A = Marque, K = .66, PW = 414 * K, gap = (1400 - 168 - 4 * PW) / 3;
+const at = (i, y, html) => `<div class="abs" style="left:${Math.round(84 + i * (PW + gap))}px;top:${y}px">${html}</div>`;
+document.getElementById('p').innerHTML =
+  at(0, -84, A.phone(A.screens.accueil(), K)) +
+  at(1, 64, A.phone(A.screens.carte(), K)) +
+  at(2, 280, A.phone(A.screens.abonnement(), K)) +
+  at(3, 30, A.phone(A.screens.fiche('guji'), K));
+</script>
+</body>

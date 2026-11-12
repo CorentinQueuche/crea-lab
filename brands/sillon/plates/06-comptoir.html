@@ -1,0 +1,31 @@
+<!doctype html><meta charset="utf-8"><title>Sillon · 06 · Le comptoir</title><meta name="robots" content="noindex">
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates.css">
+<script src="../brand/marque.js"></script><script src="../brand/matiere.js"></script><script src="../brand/verse.js"></script>
+<style>
+  /* 06 · Le comptoir. La table du jeudi vue de dessus : les trois jus à des niveaux différents, des mains, des ronds de
+     verre. On y pose la carte du jeudi, un sous-verre, et une phrase sérigraphiée dans la nappe (« Taches autorisées. »).
+     Le cadrage laisse hors champ l'ouvre-bouteille de la photo : la marque n'en montre pas. Préfixe p06-. */
+  .p06-nappe{font-family:var(--titre);font-weight:900;font-stretch:62.5%;text-transform:uppercase;white-space:nowrap;color:var(--lave);mix-blend-mode:screen;opacity:.72;line-height:.9}
+  .p06-nappe b{font-weight:inherit;font-stretch:150%}
+  .p06-carte{box-shadow:0 0 0 1px rgba(60,50,30,.16),4px 6px 6px rgba(3,6,30,.5),14px 22px 30px rgba(3,6,30,.4)}
+</style>
+<body><div class="plate clair" id="p"></div>
+<script>
+const A = Marque, C = A.COULEURS, NB = A.NB, CADRE = [866, 150, 1534, 1150];
+const habits = `<div class="p06-nappe usure" style="left:1500px;top:1196px;font-size:74px;transform:rotate(-3deg)">Taches autorisées.</div>` +
+  `<div class="p06-carte" style="left:905px;top:1062px;transform:rotate(-7deg)">${A.carte({ l: 340 })}</div>` +
+  `<div class="p06-carte" style="left:1290px;top:1070px;transform:rotate(11deg);border-radius:11px">${A.sousVerre({ l: 156 })}</div>`;
+
+document.getElementById('p').innerHTML =
+  A.scene('comptoir', habits + `<div class="t-etq pl-sur-photo" style="left:958px;top:212px;font-size:16px">06 · Le comptoir</div>`, { l: 1400, cadre: CADRE }) +
+  `<div class="pl-bande fond-bleu lumiere"><div class="net" style="grid-template-columns:560px 1fr;align-items:center">
+     <div style="box-shadow:0 26px 50px -22px rgba(3,6,30,.9)">${A.carte({ l: 560 })}</div>
+     <div>
+       <div class="pl-voix">Taches<br>autorisées.</div>
+       <p class="t-chapo" style="max-width:420px;margin:22px 0 28px">C’est sérigraphié dans la nappe. La carte du jeudi tient en trois lignes, une par jus ; la colonne des prix attend la craie.</p>
+       <div style="display:flex;gap:22px;align-items:flex-end">${A.sousVerre({ l: 150 })}${A.sousVerre({ l: 150, jus: 'glou' })}${A.sousVerre({ l: 150, jus: 'paille' })}</div>
+     </div></div>
+     <div class="pl-pied t-etq"><span>06 · Le comptoir</span><span>${A.DESCRIPTEUR} · ${A.LIEU}</span><span>2026</span></div>
+   </div>`;
+window.pret = Verse.tout();
+</script></body>

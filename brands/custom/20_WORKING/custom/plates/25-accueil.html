@@ -1,0 +1,53 @@
+<!doctype html><meta charset="utf-8"><title>Custom — 25 · L’accueil du site</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="../brand/ecrans.css"><link rel="stylesheet" href="plates-b.css">
+<script src="../brand/marque.js"></script><script src="../brand/ecrans.js"></script>
+<style>
+  /* Idée : l'écran et ses détails. La page d'accueil entière traverse la planche à droite, tenue par deux sangles orange
+     (la signature des visuels d'origine) ; à gauche, trois zones agrandies comme des épreuves, numérotées. */
+  .p25-bande{position:absolute;left:880px;top:92px}
+  .p25-mk{position:absolute;z-index:58;display:flex;align-items:center;gap:10px}
+</style>
+<body><div class="plate" id="p" style="height:1640px"></div>
+<script>
+const A = Marque, C = A.COULEURS, S = A.site, B = S.blocs, NB = A.NB;
+const k = 0.3, BX = 880, BY = 92, BAR = 44 * k;   // la page entière, réduite
+const ys = (y) => BY + BAR + y * k;                // position d'un point de la page dans la planche
+/* Une zone d'une section, agrandie, dans un cadre à croix de repérage */
+const crop = (sec, H, k, x, y, w, h) => `<div class="cadre-r" style="width:${w * k + 28}px;height:${h * k + 28}px;color:#fff">${A.reperes({ t: 18 })}
+  <div class="pb-crop" style="position:absolute;inset:14px"><div class="pb-in" style="zoom:${k}"><div class="s-page" style="height:${H}px;margin:-${y}px 0 0 -${x}px">${sec}</div></div></div></div>`;
+/* Une sangle : un trait orange tressé (fond, armure, reflet) */
+const sangle = (d, w = 9) => `<path d="${d}" stroke="${C.orange}" stroke-width="${w}" stroke-linecap="round"/><path d="${d}" stroke="${C.encre}" stroke-opacity=".32" stroke-width="${w}" stroke-dasharray="1.6 3.2"/><path d="${d}" stroke="#fff" stroke-opacity=".22" stroke-width="1.4" transform="translate(-2,0)"/>`;
+const S1 = 'M842,-20 L1000,1660', S2 = 'M1350,-20 L1300,1660';
+const leg = (n, t, p) => `<div class="pb-leg"><span class="pb-num">0${n}</span><b>${t}</b><p>${p}</p></div>`;
+const mk = (n, y) => `<div class="p25-mk" style="left:${BX - 17}px;top:${y - 17}px"><span class="pb-num">0${n}</span></div>`;
+
+document.getElementById('p').innerHTML =
+  A.entete() +
+  // coulure orange derrière la page
+  `<div class="pb-abs" style="left:700px;top:330px;width:760px;height:900px">${A.coulure({ w: 760, h: 900, c: C.orange, seed: 18, cx: 0.52, cy: 0.5, rx: 0.4, ry: 0.42, frange: 0.24, pas: 4, attrs: 'style="width:100%;height:100%"' })}</div>` +
+  // sangles, partie arrière
+  `<svg class="pb-abs" style="left:0;top:0;z-index:2" width="1400" height="1640" fill="none">${sangle(S1)}${sangle(S2)}</svg>` +
+  `<div class="p25-bande pb-ombre" style="z-index:3">${A.browser(S.accueil(), k, { h: S.H.accueil })}</div>` +
+  // sangles, partie avant : elles repassent devant la page en bas
+  `<svg class="pb-abs" style="left:0;top:0;z-index:4;filter:drop-shadow(0 10px 8px rgba(0,0,0,.55))" width="1400" height="1640" fill="none">
+     <clipPath id="av"><rect x="0" y="1060" width="1400" height="600"/></clipPath><g clip-path="url(#av)">${sangle(S1)}${sangle(S2)}</g></svg>` +
+  mk(1, ys(450)) + mk(2, ys(S.Y.accueil.univers4 + 420)) + mk(3, ys(S.Y.accueil.chiffres + 420)) +
+
+  // titre et texte
+  `<div class="pb-abs pb-z pb-lbl doux" style="left:84px;top:104px">25${NB}·${NB}L’accueil du site${NB}·${NB}1440${NB}×${NB}${S.H.accueil}</div>` +
+  `<div class="pb-abs pb-z t-titre" style="left:84px;top:140px;font-size:84px">Une page, ${A.surl('quatre portes')}</div>` +
+  `<p class="pb-abs pb-z pb-txt doux" style="left:86px;top:244px;width:640px">Le héros pose la promesse, la rangée des univers oriente, les chiffres rassurent. Puis un seul appel : le devis.</p>` +
+
+  // 01 le héros
+  `<div class="pb-abs pb-z" style="left:70px;top:316px">${crop(B.heros(), 900, 0.5, 0, 0, 1440, 900)}</div>` +
+  `<div class="pb-abs pb-z" style="left:84px;top:800px;width:640px">${leg(1, 'Le héros', 'Le mot géant, le surligneur sur « produits personnalisés premium », le dunk en blocs et trois preuves en bas de l’écran.')}</div>` +
+  // 02 les quatre univers
+  `<div class="pb-abs pb-z" style="left:70px;top:900px">${crop(B.univers4(), 640, 0.5, 0, 240, 1440, 370)}</div>` +
+  `<div class="pb-abs pb-z" style="left:84px;top:1110px;width:640px">${leg(2, 'Les quatre univers', 'Une porte par univers, avec son picto en blocs. On sait où aller en moins de 5 secondes.')}</div>` +
+  // 03 les chiffres
+  `<div class="pb-abs pb-z" style="left:70px;top:1196px">${crop(B.chiffres(), 880, 0.5, 0, 250, 1440, 600)}</div>` +
+  `<div class="pb-abs pb-z" style="left:84px;top:1512px;width:640px">${leg(3, 'En quelques chiffres', `Les quatre chiffres du site en Bebas, et une photo qui passe dans les blocs du «${NB}500${NB}».`)}</div>` +
+  `<div class="pb-abs" style="left:0;right:0;bottom:0;height:120px;z-index:5;background:linear-gradient(rgba(16,16,18,0),rgba(16,16,18,.94) 60%)"></div>` +
+  A.foot('25 · L’accueil', 'Custom · direction artistique');
+{ const P = document.getElementById('p'); P.innerHTML = P.innerHTML.replace(/ ([:;?])(?=[ <])/g, NB + '$1'); }   // espace insécable avant : ; ?
+</script></body>

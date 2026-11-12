@@ -1,0 +1,129 @@
+<!doctype html><meta charset="utf-8"><title>Custom — V · Les sprites en mouvement</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="motion.css">
+<script src="../brand/marque.js"></script><script src="lib.js"></script>
+<style>
+  .p-masque{position:absolute;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-size:100% 100%;mask-size:100% 100%}
+  .p-masque .ph{position:absolute;inset:0}
+</style>
+<body><div class="m-stage" id="s" style="width:1920px;height:1080px"></div>
+<script>
+/* 14 · Les sprites en mouvement · 1920 × 1080 · 6 s, boucle parfaite
+   node tools/record.mjs motion/14-sprites.html out/motion/14-sprites.mp4 --w 1920 --h 1080 --fps 30 --dur 6 --planche --fixe 4.3
+   Les trois séquences de Custom (moto 5 images, course 4, dunk 8) à 8 images par seconde, en crans, sans interpolation.
+   5,0 → 1,0 (à cheval sur le raccord)  La piste : moto et coureur traversent la toile, une traînée de blocs derrière eux.
+   1,0  Changement d'échelle en trois crans : le coureur minuscule, moyen, puis en plein écran (cases de 120 px).
+   2,0  La moto en plein cadre sert de masque : la photo de moto vue à travers les cases.
+   3,0  Le dunk en chronophotographie : chaque image reste, éteinte en fonte, le joueur avance d'un pas.
+   4,0  La planche : les trois séquences côte à côte, comme sur le fichier d'origine.
+   4,5  Le dunk géant sert de masque à la photo de dunk ; le ballon reste orange.
+   Boucle : la piste couvre [5 ; 7) en temps prolongé, donc seek(0) et seek(6) sont identiques et le mouvement ne saute pas. */
+const A = Marque, C = A.COULEURS, NB = A.NB, W = 1920, H = 1080, D = 6;
+const RANGS = { moto: [1, 2, 3, 4, 5].map((i) => A.spriteRows('moto', i)), course: [1, 2, 3, 4].map((i) => A.spriteRows('course', i)) };
+const larg = (rows) => Math.max(...rows.map((r) => r.length));
+/* Un sprite en grille : la moto garde sa case (sa hauteur varie d'une image à l'autre, comme sur l'original),
+   le coureur garde sa hauteur. Renvoie { d, w, h } pour un pied posé en (0, 0) : la boîte va de y = −h à 0. */
+const grille = (nom, i, taille) => { const rows = RANGS[nom][i], cell = nom === 'moto' ? taille / 20 : taille / rows.length;
+  return { d: A.grillePath(rows, { cell }), w: larg(rows) * cell, h: rows.length * cell, rows, cell }; };
+const posePath = (g, x, y) => `<path transform="translate(${x.toFixed(1)} ${(y - g.h).toFixed(1)})" d="${g.d}"/>`;
+const dunkSVG = (i, c, c2) => A.dunk(i + 1, { c, c2 }).replace(/<svg [^>]*>|<\/svg>/g, '').replace('var(--balle,#FE3600)', c2);
+
+const s = document.getElementById('s');
+s.innerHTML = `
+  <div class="m-fill tx-toile"></div>
+  <div id="cadre" class="m-abs cadre-r" style="left:96px;top:110px;right:96px;bottom:110px;color:#fff">${A.reperes({ t: 34 })}</div>
+  <svg id="v" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" style="position:absolute;inset:0"></svg>
+  <div id="masque" class="p-masque" style="display:none"><div id="photoM" class="m-fill"></div></div>
+  <svg id="vp" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" style="position:absolute;inset:0;display:none">
+    <defs><mask id="mq" maskUnits="userSpaceOnUse" x="0" y="0" width="${W}" height="${H}"><g id="mqG"></g></mask>
+      <!-- traitement « duo » fluo : la luminance va du Noir atelier au Fluo -->
+      <filter id="duo" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="
+        ${[0.8235, 0.937, 0.0588].map((k, i) => [0.2126, 0.7152, 0.0722].map((l) => (l * k * 1.7).toFixed(4)).join(' ') + ' 0 ' + [0.063, 0.063, 0.071][i]).join('\n        ')}
+        0 0 0 1 0"/></filter></defs>
+    <image href="${A.photoURL('dunk')}" x="0" y="0" width="${W}" height="${H}" preserveAspectRatio="xMidYMid slice" mask="url(#mq)" filter="url(#duo)"/></svg>
+  <svg id="v2" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" style="position:absolute;inset:0"></svg>
+  <div id="capG" class="m-abs m-cap" style="left:96px;top:56px;opacity:.65"></div>
+  <div id="capD" class="m-abs m-cap" style="right:96px;top:56px;opacity:.65;text-align:right"></div>
+  <div id="capB" class="m-abs m-cap" style="left:96px;bottom:52px;opacity:.65"></div>
+  <div class="m-abs" style="right:96px;bottom:58px;width:280px">${A.barre({ style: 'height:12px' })}</div>
+  <i class="m-grain"></i>`;
+const v = s.querySelector('#v'), v2 = s.querySelector('#v2'), vp = s.querySelector('#vp'), mqG = s.querySelector('#mqG'), masque = s.querySelector('#masque'), photoM = s.querySelector('#photoM');
+const capG = s.querySelector('#capG'), capD = s.querySelector('#capD'), capB = s.querySelector('#capB'), cadre = s.querySelector('#cadre');
+/* La photo de moto est posée une fois pour toutes (chargée avant la première image) ; le masque change à chaque cran */
+photoM.innerHTML = A.photo('moto', { style: 'position:absolute;inset:0', pos: '42% 55%' });
+const MASQ = { moto: RANGS.moto.map((rows) => A.dataSVG(A.grille(rows, { c: '#000', cell: 10 }))) };
+const metPhoto = () => {};
+const caps = (g, d, b) => { capG.innerHTML = g; capD.innerHTML = d; capB.innerHTML = b; };
+const sp = (txt) => txt.replace(/ · /g, `${NB}·${NB}`);
+
+/* ---------- Les scènes : chacune pose tout l'état pour son temps local ---------- */
+/* 1. La piste (2 s, à cheval sur le raccord) : moto en haut, coureur en bas, une case de plus par image */
+const piste = (tp) => { const f = Math.floor(tp * 8 + 1e-6);
+  const SOL1 = 520, SOL2 = 900, HM = 300, HC = 330, PAS_M = 190, PAS_C = 150;
+  const xm = (g) => -360 + g * PAS_M, xc = (g) => 1980 - 16 * PAS_C - 120 + g * PAS_C;
+  let out = '';
+  /* traînée : les trois images précédentes, sans transparence (acier, fonte, graphite), puis un rang de blocs au sol */
+  for (let k = 3; k >= 1; k--) { const g = f - k; if (g < 0) continue;
+    out += `<g fill="${M.TRAINEE[k - 1]}">${posePath(grille('moto', ((g % 5) + 5) % 5, HM), xm(g), SOL1)}${posePath(grille('course', g % 4, HC), xc(g), SOL2)}</g>`; }
+  const blocs = (x0, x1, y, h) => { let d = ''; for (let x = Math.max(x0, -200); x < x1; x += h * 2.6) d += A.blocPath(x, y, h * 1.6, h * 0.55, h * 0.12) + ' '; return d; };
+  out += `<path fill="${C.fonte}" d="${blocs(-200, xm(f) - 40, SOL1 + 26, 22)}"/><path fill="${C.fonte}" d="${blocs(-200, xc(f) - 40, SOL2 + 26, 22)}"/>`;
+  out += `<g fill="${C.fluo}">${posePath(grille('moto', f % 5, HM), xm(f), SOL1)}</g><g fill="#FFFFFF">${posePath(grille('course', f % 4, HC), xc(f), SOL2)}</g>`;
+  v.innerHTML = out;
+  caps(sp('CST · SPR · 2026'), sp(`IMAGE ${String((f % 16) + 1).padStart(2, '0')} / 16`), sp('Moto · 5 images · course · 4 images · 8 i/s')); };
+
+/* 2. L'échelle : le coureur minuscule, moyen, puis en plein écran (trois crans de 0,25 s) */
+const echelle = (tl) => { const f = Math.floor(tl * 8 + 1e-6), palier = Math.min(2, Math.floor(tl / 0.25 + 1e-6)), i = f % 4;
+  const tailles = [44, 300, 2400], hgt = tailles[palier], g = grille('course', i, hgt);
+  const x = palier < 2 ? W / 2 - g.w / 2 : W / 2 - g.w * 0.62, y = palier < 2 ? H / 2 + hgt / 2 : H + hgt * 0.36;
+  let out = `<g fill="${C.fluo}">${posePath(g, x, y)}</g>`;
+  if (palier < 2) { const c = 'stroke="#FFFFFF" stroke-opacity=".5" stroke-width="1.5"', m = 26;
+    out += `<g fill="none" ${c}><line x1="${x - m}" y1="${y - hgt}" x2="${x - m}" y2="${y}"/><line x1="${x - m - 8}" y1="${y - hgt}" x2="${x - m + 8}" y2="${y - hgt}"/><line x1="${x - m - 8}" y1="${y}" x2="${x - m + 8}" y2="${y}"/></g>
+      <text x="${x - m - 16}" y="${y - hgt / 2 + 6}" text-anchor="end" fill="#FFFFFF" fill-opacity=".7" font-family="JetBrains Mono" font-weight="500" font-size="15" letter-spacing="1.2">${Math.round(hgt)} PX</text>`; }
+  v.innerHTML = out;
+  caps(sp('CST · SPR · 2026'), sp(['× 1', '× 7', '× 55'][palier]), sp(`Course · case de ${(g.cell).toFixed(0)} px`)); };
+
+/* 3. La moto en plein cadre, masque d'une photo de moto */
+const motoMasque = (tl) => { const i = Math.floor(tl * 8 + 1e-6) % 5, rows = RANGS.moto[i], cell = 54, w = larg(rows) * cell, h = rows.length * cell;
+  metPhoto('moto'); masque.style.display = '';
+  Object.assign(masque.style, { left: (W / 2 - w / 2).toFixed(1) + 'px', top: (H - 40 - h).toFixed(1) + 'px', width: w + 'px', height: h + 'px',
+    webkitMaskImage: MASQ.moto[i], maskImage: MASQ.moto[i] });
+  /* la photo reste fixe dans le cadre pendant que le masque change : elle est recalée sur la scène */
+  Object.assign(photoM.style, { left: -(W / 2 - w / 2) + 'px', top: -(H - 40 - h) + 'px', width: W + 'px', height: H + 'px', right: 'auto', bottom: 'auto' });
+  v.innerHTML = '';
+  caps(sp('CST · SPR · 2026'), sp(`MOTO · IMAGE ${i + 1} / 5`), sp('La photo vue à travers le sprite · case de 54 px')); };
+
+/* 4. Le dunk en chronophotographie : les images s'ajoutent une par cran, le joueur avance d'un pas */
+const chrono = (tl) => { const f = Math.min(7, Math.floor(tl * 8 + 1e-6)), hh = 860, k = hh / 342, x0 = 170, pas = 205, y0 = H - 110 - hh;
+  let out = '';
+  for (let g = 0; g <= f; g++) { const cur = g === f, c = cur ? '#FFFFFF' : g === f - 1 ? C.acier : C.fonte, c2 = cur ? C.orange : c;
+    out += `<g transform="translate(${x0 + g * pas} ${y0}) scale(${k.toFixed(4)})" color="${c}">${dunkSVG(g, c, c2)}</g>`; }
+  v.innerHTML = out;
+  caps(sp('CST · SPR · 2026'), sp(`DUNK · IMAGE ${f + 1} / 8`), sp('Chronophotographie · une image par cran')); };
+
+/* 5. La planche : les trois séquences côte à côte, sur la bande à repères */
+/* 6. (photo = true) La même planche, coupe : les trois sprites deviennent des fenêtres sur la photo de dunk ; le ballon reste orange */
+const planche = (tl, photo) => { const f = Math.floor(tl * 8 + 1e-6), base = 800;
+  const gm = grille('moto', f % 5, 360), gc = grille('course', f % 4, 400), hh = 720, k = hh / 342;
+  const formes = (blanc) => `<g fill="${blanc ? '#FFFFFF' : C.fluo}">${posePath(gm, 360 - gm.w / 2, base) + posePath(gc, 880 - gc.w / 2, base)}</g>` +
+    `<g transform="translate(1330 ${base - hh}) scale(${k.toFixed(4)})" color="#FFFFFF">${dunkSVG(f % 8, '#FFFFFF', blanc ? '#FFFFFF' : C.orange)}</g>`;
+  let out = '';
+  /* la photo est un calque permanent (#vp) : seul le contenu du masque change, l'image n'est jamais rechargée */
+  vp.style.display = photo ? '' : 'none';
+  if (photo) { mqG.innerHTML = formes(true);
+    v2.innerHTML = `<g transform="translate(1330 ${base - hh}) scale(${k.toFixed(4)})" color="transparent">${dunkSVG(f % 8, 'transparent', C.orange)}</g>`; }
+  else out += formes(false);
+  out += `<g fill="#FFFFFF" fill-opacity=".7" font-family="JetBrains Mono" font-weight="500" font-size="15" letter-spacing="1.2">
+    <text x="250" y="${base + 64}">MOTO${NB}·${NB}${(f % 5) + 1}/5</text><text x="790" y="${base + 64}">COURSE${NB}·${NB}${(f % 4) + 1}/4</text><text x="1330" y="${base + 64}">DUNK${NB}·${NB}${(f % 8) + 1}/8</text></g>`;
+  v.innerHTML = out;
+  caps(sp('CST · SPR · 2026'), '8 I/S', photo ? sp('La photo vue à travers les sprites') : sp('Les trois séquences · relevées sur les fichiers de Custom')); };
+
+window.seek = (tt) => {
+  const t = M.boucle(tt, D);
+  masque.style.display = 'none'; vp.style.display = 'none'; v2.innerHTML = ''; cadre.style.display = '';
+  if (t >= 5 || t < 1) piste(t >= 5 ? t - 5 : t + 1);
+  else if (t < 2) echelle(t - 1);
+  else if (t < 3) { cadre.style.display = 'none'; motoMasque(t - 2); }
+  else if (t < 4) chrono(t - 3);
+  else planche(t - 4, t >= 4.5);
+};
+seek(0);
+</script></body>

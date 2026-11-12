@@ -1,0 +1,30 @@
+<!doctype html><meta charset="utf-8"><title>Custom — 45 · Guide de marque, page à page</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="../brand/ecrans.css"><link rel="stylesheet" href="../deck/pages.css">
+<script src="../brand/marque.js"></script><script src="../brand/techniques.js"></script><script src="../brand/ecrans.js"></script><script src="../deck/pages.js"></script>
+<style>
+  /* Idée : les pages du guide posées en rangs de six et de cinq, en quinconce, comme le motif de blocs des cartes de visite.
+     Les pages sont vivantes (deck/pages.js, la même source que le PDF), réduites par zoom. Classes pg-. */
+  .pg-m{position:absolute;overflow:hidden;border-radius:4px;box-shadow:0 0 0 1px rgba(255,255,255,.1),0 22px 40px -22px rgba(0,0,0,.9)}
+  .pg-tete{position:absolute;left:84px;top:84px;right:84px;display:flex;justify-content:space-between;align-items:flex-end;z-index:60}
+  .pg-chapo{font-size:17px;line-height:1.42;letter-spacing:-.01em;font-weight:500;max-width:430px;margin:0}
+  .pg-pied{position:absolute;left:28px;right:28px;bottom:24px;display:flex;justify-content:space-between;align-items:center;z-index:60}
+</style>
+<body><div class="plate" id="p" style="height:1120px"></div>
+<script>
+const A = Marque, NB = A.NB, O = GuideOrder, P = GuidePages;
+const W = 214, H = W * 720 / 1280, G = 10, K = W / 1280, X0 = (1400 - (6 * W + 5 * G)) / 2, Y0 = 268;
+let html = `<div class="pg-tete"><div><div class="t-mono" style="opacity:.6">45${NB}·${NB}Les supports${NB}·${NB}Guide de marque</div>
+    <div class="t-titre" style="font-size:96px;margin-top:16px">Le guide, ${A.surl('page à page.')}</div></div>
+  <p class="pg-chapo">${O.length} pages en 16:9, une seule source pour la présentation en ligne, le PDF et cette planche. Une règle par page, les chiffres de la marque.</p></div>`;
+// Rangs de 6 et de 5 en alternance ; un rang de 5 est décalé d'une demi-page, en quinconce
+let i = 0, r = 0;
+while (i < O.length) {
+  const n = r % 2 ? 5 : 6, dx = r % 2 ? (W + G) / 2 : 0;
+  for (let c = 0; c < n && i < O.length; c++, i++)
+    html += `<div class="pg-m" style="left:${X0 + dx + c * (W + G)}px;top:${Y0 + r * (H + G + 4)}px;width:${W}px;height:${H}px"><div class="mp-in" style="--mp-k:${K}">${P[O[i]]}</div></div>`;
+  r++;
+}
+html += `<div class="pg-pied">${A.code('CST', 'GUIDE', '2026')}<span class="t-mono" style="opacity:.6">Proposition de KLYRA, non validée par Custom</span><div style="width:180px">${A.barre({ style: 'height:6px' })}</div></div>`;
+const p = document.getElementById('p'); p.innerHTML = html;
+GuideApres(p);
+</script></body>

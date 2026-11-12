@@ -1,0 +1,23 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="art.css"><script src="../brand/marque.js"></script>
+<!-- Autocollants pour un capot de portable (scène G), sur fond transparent : rendre avec --transparent.
+     #st-icone   500 × 500 px  icône d'app, 50 mm
+     #st-rond    600 × 600 px  pastille « jusqu'à 85 % », 60 mm
+     #st-pilule  600 × 200 px  « Zéro ressaisie. », 60 × 20 mm
+     node tools/shot.mjs art/autocollants.html out/art/st-rond.png --w 1400 --transparent --sel "#st-rond" -->
+<style>html,body{background:transparent}</style>
+<body>
+<div id="st-icone" class="a-v" style="width:500px;height:500px"></div>
+<div id="st-rond" class="a-v" style="width:600px;height:600px;border-radius:50%;background:#060A08;box-shadow:inset 0 0 0 3px rgba(255,255,255,.16)"></div>
+<div id="st-pilule" class="a-v" style="width:600px;height:200px;border-radius:100px;background:#36FF72;color:#04140A;display:grid;place-items:center"></div>
+<script>
+const A = Marque, C = A.COULEURS;
+const $ = (id) => document.getElementById(id);
+$('st-icone').innerHTML = A.icone(500, 'net');
+$('st-rond').innerHTML = `<div style="position:absolute;inset:0;display:grid;place-items:center">${A.jauge({ forme: 'anneau', taille: 500, ep: 15 })}</div>
+<div style="position:absolute;inset:0;display:grid;place-content:center;justify-items:center">
+  <div class="a-cap" style="font-size:24px;opacity:.7;margin-bottom:10px">jusqu'à</div>
+  <div class="chiffre" style="font-size:200px;color:${C.net}"><span>${A.pcH(85)}</span></div>
+  <div class="a-cap" style="font-size:20px;opacity:.7;margin-top:22px">de votre TJM</div>
+</div>`;
+$('st-pilule').innerHTML = `<div style="font-size:70px;font-weight:500;letter-spacing:-.055em">Zéro ressaisie.</div>`;
+</script></body>

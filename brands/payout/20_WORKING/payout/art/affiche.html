@@ -1,0 +1,38 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="art.css"><script src="../brand/marque.js"></script>
+<!-- Affiche d'abribus (scène E, planche 18). Visuel utile du caisson : 1,16 × 1,71 m, soit 1160 × 1710 px (1 px = 1 mm), rendu ×2.
+     node tools/shot.mjs art/affiche.html out/art/affiche.png --w 1160 --sel "#affiche" -->
+<body><div id="affiche" class="a-v grain" style="width:1160px;height:1710px"></div>
+<script>
+const A = Marque, C = A.COULEURS, NB = ' ', SUR = '#F3F6F4';
+document.getElementById('affiche').innerHTML = `
+<div class="a-net" style="position:absolute;inset:0;padding:70px 72px 66px;display:flex;flex-direction:column">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start">
+    ${A.lockup(SUR, 'style="width:470px;display:block"')}
+    <div class="a-cap" style="font-size:17px;text-align:right;line-height:1.5;opacity:.62;padding-top:20px">Freelances<br>en SASU</div>
+  </div>
+
+  <div style="margin-top:112px;display:flex;align-items:flex-end;gap:34px">
+    <div>
+      <div class="a-cap" style="font-size:17px;opacity:.62;margin-bottom:18px">Sur 100${NB}€ facturés, aujourd'hui</div>
+      <span class="chiffre" style="font-size:236px;color:${C.preleve};display:inline-flex;align-items:center;gap:.2em;margin-left:-8px"><span>${A.pcH(54)}</span>${A.fleche(SUR, 'margin:0 .04em')}</span>
+    </div>
+  </div>
+
+  <div style="margin-top:46px">
+    <div class="a-cap" style="font-size:17px;color:${C.net};margin-bottom:10px">Avec Payout, jusqu'à</div>
+    <div class="chiffre" style="font-size:668px;color:${C.net};margin-left:-34px;line-height:.8">${A.pcH(85)}</div>
+  </div>
+
+  <div style="margin-top:58px">${A.jauge({ forme: 'segments', p: 85, avant: 54, h: 132, g: 3 })}</div>
+  <div class="a-cap" style="display:grid;grid-template-columns:54fr 31fr 15fr;font-size:15px;margin-top:16px">
+    <span style="opacity:.62">0 · ce que vous gardez aujourd'hui</span><span>ce que vous gagnez</span><span style="text-align:right;opacity:.62">ce qui part</span>
+  </div>
+
+  <div style="margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end">
+    <div class="a-t" style="font-size:96px">Gardez jusqu'à 85${NB}%<br>de votre TJM.</div>
+    <div style="text-align:right">
+      <div class="a-m" style="font-size:40px;font-weight:500;color:${C.net};letter-spacing:-.03em">payout.fr</div>
+    </div>
+  </div>
+</div>`;
+</script></body>

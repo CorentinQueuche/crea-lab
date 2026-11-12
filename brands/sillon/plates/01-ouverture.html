@@ -1,0 +1,41 @@
+<!doctype html><meta charset="utf-8"><title>Sillon · 01 · Ouverture</title><meta name="robots" content="noindex">
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates.css">
+<script src="../brand/marque.js"></script><script src="../brand/matiere.js"></script><script src="../brand/verse.js"></script>
+<style>
+  /* 01 · Ouverture. L'idée en une photo : une main penche un verre, le vin reste d'aplomb. On mesure la photo comme on
+     mesure une bouteille (le niveau, l'angle du verre, une contre-étiquette), et le logotype en pierre de tuffeau fait la
+     même chose juste dessous : il penche de 12°, son vin non. Préfixe p01-. */
+  .p01-o{position:absolute;inset:0;z-index:6}
+  .p01-o>svg{position:absolute;left:0;top:0;overflow:visible}
+  .p01-cote{position:absolute}
+  .p01-tete{position:absolute;left:84px;top:108px}
+  .p01-tete .t-sous{font-size:66px;line-height:.96;letter-spacing:-.02em}
+  .p01-tete p{max-width:300px;margin:22px 0 0}
+</style>
+<body><div class="plate" id="p"></div>
+<script>
+const A = Marque, C = A.COULEURS, NB = A.NB, CADRE = [0, 120, 1856, 1700], k = 1400 / CADRE[2], H = CADRE[3] * k;
+const X = (x) => x * k, Y = (y) => (y - CADRE[1]) * k;
+/* relevés sur la photo (pixels de la photo) : la surface du vin, le pied et le buvant du verre */
+const SURF = 905, PIED = [880, 1310], BUVANT = [1230, 610], angle = Math.round((Math.atan2(BUVANT[0] - PIED[0], PIED[1] - BUVANT[1]) * 180) / Math.PI);
+const R = 640, rad = (angle * Math.PI) / 180;
+const traits = `<svg width="1400" height="${H}" viewBox="0 0 1400 ${H}"><g fill="none" stroke="${C.tuffeau}" stroke-width="1.5">
+    <path d="M0,${Y(SURF)} H${X(640)} M${X(1420)},${Y(SURF)} H1400" opacity=".8"/>
+    <path d="M${X(PIED[0])},${Y(PIED[1]) - R + 70} V${Y(PIED[1]) - R - 40}" stroke-dasharray="3 6" opacity=".8"/>
+    <path d="M${X(PIED[0]) + (R - 70) * Math.sin(rad)},${Y(PIED[1]) - (R - 70) * Math.cos(rad)} L${X(PIED[0]) + (R + 40) * Math.sin(rad)},${Y(PIED[1]) - (R + 40) * Math.cos(rad)}" opacity=".8"/>
+    <path d="M${X(PIED[0])},${Y(PIED[1]) - R} A${R},${R} 0 0 1 ${X(PIED[0]) + R * Math.sin(rad)},${Y(PIED[1]) - R * Math.cos(rad)}"/></g></svg>`;
+
+document.getElementById('p').innerHTML =
+  A.scene('verre-penche', '', { l: 1400, cadre: CADRE }) +
+  `<div class="p01-o pl-sur-photo">${traits}
+     <div class="pl-lbl t-etq">Identité de marque · proposition · 2026</div><div class="pl-lbl-d t-etq">${A.DESCRIPTEUR} · ${A.LIEU}</div>
+     <div class="p01-tete"><div class="t-sous">On remplit<br>les creux.</div><p class="t-txt">Sillon est une cave à vins nature du quartier des Olivettes, à Nantes. Il y a un creux dans son nom, entre les deux L. On y verse le vin de la maison.</p></div>
+     <div class="p01-cote t-etq" style="left:84px;top:${Y(SURF) - 24}px">Le vin · ${A.deg(0)}</div>
+     <div class="p01-cote t-etq" style="right:84px;top:${Y(SURF) + 10}px">Niveau</div>
+     <div class="p01-cote t-etq" style="left:${X(PIED[0]) + (R + 40) * Math.sin(rad) + 14}px;top:${Y(PIED[1]) - (R + 40) * Math.cos(rad) - 6}px">Ce verre-ci, sur la photo · ${A.deg(angle)}</div>
+     <div class="pl-abs" style="left:1048px;top:${Y(SURF) + 54}px;text-shadow:none">${A.contre({ lot: '01', sujet: 'Ouverture', lignes: [['Relevé sur la photo', ''], ['Ce verre penche de', A.deg(angle)], ['Son vin, de', A.deg(0)], ['La marque, elle, penche de', A.deg(12)]], grands: [`12,5${NB}cl`, A.deg(12)], voix: 'Ça penche, ça tient.', l: 268 })}</div>
+     <div class="pl-abs" style="left:470px;top:${H - 330}px"><canvas data-logo data-taille="112" data-angle="-12"></canvas></div>
+     <div class="pl-pied t-etq"><span>01 · Ouverture</span><span>Le verre penche, le vin reste d’aplomb</span><span>2026</span></div>
+   </div>`;
+window.pret = Verse.tout();
+</script></body>

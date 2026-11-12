@@ -1,0 +1,55 @@
+<!doctype html><meta charset="utf-8"><title>Payout — V6, écran vivant du téléphone</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="motion.css">
+<script src="../brand/marque.js"></script><script src="lib.js"></script>
+<style>
+  .z-notif{position:absolute;left:25px;top:52px;z-index:30}
+  .z-b .ui{position:absolute;inset:0}
+</style>
+<body><div class="m-stage g6 grain" id="s" style="width:1080px;height:1350px"></div>
+<script>
+/* V6 · Écran vivant · 1080 × 1350 · 10 s · plan fixe, seul l'écran vit
+   node tools/record.mjs motion/28-telephone.html out/motion/28-telephone.mp4 --w 1080 --h 1350 --fps 30 --dur 10 --planche --fixe 9
+   L'écran est en saisie (valide: false) : les jours ouvrés d'octobre se cochent un à un (sur site, télétravail, absences),
+   « Jours cochés » et « Montant à ce jour · HT » (jours cochés × TJM) montent avec eux, sans facture.
+   À la validation seulement : le bouton se presse et passe à « Facture générée », la pastille à « Validé », la ligne de la facture
+   F-2026-010 apparaît (12 000,00 € HT) ; puis une carte de message descend. 1,9 s immobile à la fin.
+   Deux états du même écran sont superposés : la saisie (animée) et le CRA validé (fixe, tous les jours cochés). Au fondu, seul ce qui diffère change. */
+const A = Marque, K = A.DONNEES.cra, KP = 1.32, W = 1080, H = 1350;
+const ecranA = A.screens.cra({ jusqu: 0, valide: false }), ecranB = A.screens.cra({ valide: true });
+const notif = A.ncard('Facture générée', `Votre CRA d'octobre est validé. La facture <span style="white-space:nowrap">${K.facture}</span> de ${A.eurH(K.ht, 0)} HT est prête, avec son PDF.`, { action: 'Voir la facture' });
+const s = document.getElementById('s');
+s.innerHTML = `<div class="m-abs m-net" style="left:${(W - 414 * KP) / 2}px;top:${(H - 868 * KP) / 2}px">
+  ${A.phone(`<div class="z-a" style="position:absolute;inset:0">${ecranA}</div><div class="z-b" style="position:absolute;inset:0;opacity:0">${ecranB}</div><div class="z-notif">${notif}</div>`, KP)}</div>`;
+
+const zA = s.querySelector('.z-a'), zB = s.querySelector('.z-b'), carte = s.querySelector('.z-notif'), btnA = zA.querySelector('.u-btn');
+/* L'écran en saisie : les jours du mois dans l'ordre, et les deux valeurs qui comptent (jours cochés, montant à ce jour) */
+const jours = [...zA.querySelectorAll('.cra .c-j:not(.vide)')];
+const carteR = [...zA.querySelectorAll('.u-card')].find((c) => /Jours cochés/.test(c.textContent)), mts = [...carteR.querySelectorAll('.mt')];
+const resume = { jc: mts[1], ht: mts[3] };
+const premier = (new Date(K.an, K.m, 1).getDay() + 6) % 7;
+const ouvre = (d) => (premier + d - 1) % 7 < 5;
+const etatDe = (d) => K.absents.includes(d) ? 'absent' : K.tele.includes(d) ? 'tele' : 'site';
+const ORDRE = []; for (let d = 1; d <= 31; d++) if (ouvre(d)) ORDRE.push(d);   // 22 jours ouvrés
+const T = { cocher: 1.0, pas: 0.24, appui: 6.6, valide: 6.8, carte: 7.5 };
+const quand = {}; ORDRE.forEach((d, j) => (quand[d] = T.cocher + j * T.pas));
+
+window.seek = (t) => {
+  /* 1. Les cases : en attente, puis cochées ; chaque case se pose en 160 ms (de 82 % à 100 % de sa taille) */
+  let jusqu = 0;
+  ORDRE.forEach((d) => { const ts = quand[d], fait = t >= ts, k = M.tw(t, ts, M.ETAT, M.cubicOut);
+    if (fait) jusqu = d;
+    const c = jours[d - 1]; c.className = 'c-j ' + (fait ? etatDe(d) : 'attente');
+    c.style.transform = fait && k < 1 ? `scale(${(0.82 + 0.18 * k).toFixed(3)})` : ''; });
+  const n = A.craCompte(jusqu).factures;   // jours cochés (absences et week-ends exclus)
+  resume.jc.textContent = n + ' jours'; resume.ht.innerHTML = A.eurH(n * K.tjm);
+  /* 2. Le bouton se presse, l'écran validé apparaît (bouton « Facture générée », pastille « Validé ») */
+  const ap = M.tw(t, T.appui, M.ETAT, M.cubicOut) * (1 - M.tw(t, T.valide, M.ETAT, M.cubicOut));
+  btnA.style.transform = `scale(${(1 - 0.035 * ap).toFixed(4)})`;
+  zB.style.opacity = M.tw(t, T.valide, M.ETAT, M.cubicOut).toFixed(3);
+  /* 3. La carte de message descend depuis le haut de l'écran */
+  const kc = M.tw(t, T.carte, 0.55, M.expoOut);
+  carte.style.transform = `translateY(${((1 - kc) * -260).toFixed(1)}px)`;
+  carte.style.opacity = M.tw(t, T.carte, 0.2, M.cubicOut).toFixed(3);
+};
+seek(0);
+</script></body>

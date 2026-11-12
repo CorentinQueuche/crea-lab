@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Custom — Guide de marque, la présentation</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#101012">
+<link rel="icon" href="logo/custom-symbole-fluo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/marque.css">
+<link rel="stylesheet" href="assets/ecrans.css">
+<link rel="stylesheet" href="assets/pages.css">
+<style>
+/* Visionneuse des pages du guide (1280 × 720 chacune, mises à l'échelle). Classes préfixées vz- ;
+   Une page se pose dans .mp-in (1280 × 720, deck/pages.css), mise à l’échelle par --mp-k ; GuideApres(racine) rend ensuite ses canvas. */
+:root{--vz-ligne:var(--filet);--vz-ligne-forte:color-mix(in srgb,var(--blanc) 26%,transparent);--vz-courbe:cubic-bezier(.25,1,.5,1)}
+html,body{height:100%;background:var(--noir);color:var(--blanc);overflow:hidden}
+body{display:grid;grid-template-rows:auto 1fr auto;font-size:15px}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--fluo);outline-offset:3px;border-radius:6px}
+.vz-barre{display:flex;align-items:center;gap:14px;padding:12px 20px;border-bottom:1px solid var(--vz-ligne)}
+.vz-accueil{display:flex;align-items:center;gap:14px;text-decoration:none}
+.vz-accueil svg{height:22px;width:auto}
+.vz-accueil span{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:color-mix(in srgb,var(--blanc) 60%,var(--noir))}
+.vz-esp{flex:1}
+.vz-titre{font-family:var(--titre);font-size:24px;text-transform:uppercase;line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vz-b{font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;height:36px;display:inline-flex;align-items:center;padding:0 14px;border-radius:8px;border:0;box-shadow:inset 0 0 0 1px var(--vz-ligne-forte);background:none;color:var(--blanc);cursor:pointer;text-decoration:none;white-space:nowrap}
+.vz-b:hover{box-shadow:inset 0 0 0 1px var(--fluo)}
+.vz-b.vz-vif{background:var(--fluo);box-shadow:none;color:var(--encre)}
+.vz-scene{position:relative;display:grid;place-items:center;min-height:0;overflow:hidden}
+.vz-une{position:relative;flex:none;overflow:hidden;border-radius:4px;box-shadow:0 0 0 1px var(--vz-ligne),0 40px 90px -40px #000}
+.vz-fleche{position:absolute;top:0;bottom:0;width:14%;border:0;background:none;color:var(--blanc);cursor:pointer;opacity:0;transition:opacity .2s;z-index:5;display:flex;align-items:center;font-size:26px}
+.vz-fleche:hover,.vz-fleche:focus-visible{opacity:.9}
+.vz-fleche.vz-g{left:0;justify-content:flex-start;padding-left:22px}
+.vz-fleche.vz-d{right:0;justify-content:flex-end;padding-right:22px}
+.vz-pied{display:flex;align-items:center;gap:16px;padding:12px 20px 14px;border-top:1px solid var(--vz-ligne)}
+.vz-n{font-family:var(--mono);font-size:12px;letter-spacing:.04em;min-width:70px;font-variant-numeric:tabular-nums}
+.vz-prog{flex:1;height:4px;background:var(--vz-ligne);overflow:hidden}
+.vz-prog i{display:block;height:100%;background:var(--fluo)}
+.vz-grille{position:fixed;inset:0;z-index:20;background:var(--noir);display:none;overflow:auto;padding:24px 24px 60px}
+.vz-grille.vz-ouvert{display:block}
+.vz-grille h2{font-family:var(--titre);font-weight:400;text-transform:uppercase;font-size:44px;line-height:1;margin:4px 0 22px;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.vz-gg{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.vz-gg button{padding:0;border:0;border-radius:10px;overflow:hidden;background:var(--graphite);cursor:pointer;color:inherit;text-align:left;font-family:inherit}
+.vz-gg button.vz-cur{box-shadow:0 0 0 2px var(--fluo)}
+.vz-gg img{display:block;width:100%;height:auto;aspect-ratio:16/9;background:var(--noir)}
+.vz-gg span{display:flex;gap:10px;padding:9px 12px 11px;font-size:13px}
+.vz-gg span i{font-family:var(--mono);font-style:normal;font-size:10.5px;color:var(--fluo);padding-top:2px}
+.vz-vide{display:grid;justify-items:center;gap:18px;text-align:center;color:color-mix(in srgb,var(--blanc) 65%,var(--noir));font-size:15px;max-width:420px;padding:20px}
+.vz-vide svg{height:48px;width:auto}
+.vz-mention{font-family:var(--mono);font-size:10px;letter-spacing:.05em;text-transform:uppercase;opacity:.6;text-align:right}
+@media (max-width:760px){.vz-titre,.vz-accueil span,.vz-masque{display:none}.vz-barre{gap:8px;padding:10px 12px}.vz-b{padding:0 11px}.vz-fleche{display:none}}
+</style>
+<script>window.MarquePhotos = 'photos/'; window.GuideMedia = 'guide-media/'; /* photos de marque ; rendus allégés (1100 px) cités par les pages */</script>
+<script src="assets/marque.js"></script>
+<script src="assets/techniques.js"></script>
+<script src="assets/ecrans.js"></script>
+<script src="assets/pages.js"></script>
+</head>
+<body>
+<header class="vz-barre">
+  <a class="vz-accueil" href="index.html" id="accueil" title="Retour au guide de marque en ligne"></a>
+  <span class="vz-esp"></span>
+  <span class="vz-titre" id="ttl"></span>
+  <span class="vz-esp"></span>
+  <button class="vz-b" id="bgrille" title="Touche G" type="button">Toutes les pages</button>
+  <button class="vz-b vz-masque" id="bplein" title="Touche F" type="button">Plein écran</button>
+  <a class="vz-b vz-vif" href="deck/custom-guide-de-marque.pdf" id="bpdf" download>PDF</a>
+</header>
+<main class="vz-scene" id="scene">
+  <div class="vz-une" id="page"><div class="mp-in" id="in"></div></div>
+  <button class="vz-fleche vz-g" id="prec" aria-label="Page précédente" type="button"></button>
+  <button class="vz-fleche vz-d" id="suiv" aria-label="Page suivante" type="button"></button>
+</main>
+<footer class="vz-pied"><span class="vz-n" id="num"></span><div class="vz-prog"><i id="prog"></i></div><span class="vz-mention vz-masque">Proposition de KLYRA, non validée par Custom. Identité et site&nbsp;: KLYRA pour Custom, 2025.</span></footer>
+<div class="vz-grille" id="grid" role="dialog" aria-label="Toutes les pages"><h2>Guide de marque <button class="vz-b" id="gfermer" type="button">Fermer</button></h2><div class="vz-gg" id="gg"></div></div>
+<script>
+(function () {
+  const P = window.GuidePages, O = window.GuideOrder, T = window.GuideTitles || [], A = window.Marque, C = A.COULEURS;
+  const $ = (s) => document.querySelector(s), pad = (n) => String(n).padStart(2, '0');
+  $('#accueil').innerHTML = A.logo(C.blanc, 'aria-hidden="true"', { sym: C.fluo }) + '<span>Guide de marque</span>';
+  $('#bpdf').href = 'deck/' + A.SLUG + '-guide-de-marque.pdf';
+  $('#prec').innerHTML = A.fleche('currentColor', '', 180); $('#suiv').innerHTML = A.fleche('currentColor');
+  if (!O || !O.length || (!P && !window.show)) {
+    $('#page').style.display = 'none';
+    $('#scene').insertAdjacentHTML('beforeend', '<div class="vz-vide">' + A.symbol(C.fluo, 'aria-hidden="true"') + '<p>Les pages du guide ne sont pas encore disponibles.</p><a class="vz-b" href="index.html">Revenir au guide en ligne</a></div>');
+    $('#num').textContent = '00 / 00'; $('#ttl').textContent = ''; return;
+  }
+  const titre = (n) => T[n] || String(O[n]);
+  // Une page : le HTML de GuidePages, puis GuideApres(racine) qui rend les canvas des techniques (à défaut, window.show(k))
+  const rendre = (k) => { const el = $('#in'); if (P && P[k] != null) { el.innerHTML = P[k]; if (typeof window.GuideApres === 'function') window.GuideApres(el); } else window.show(k); };
+  let i = 0;
+  const fit = () => { const st = $('#scene'); const k = Math.max(0.1, Math.min((st.clientWidth - 32) / 1280, (st.clientHeight - 32) / 720)); const s = $('#page'); $('#in').style.setProperty('--mp-k', k); s.style.width = 1280 * k + 'px'; s.style.height = 720 * k + 'px'; };
+  const go = (n) => {
+    i = Math.max(0, Math.min(O.length - 1, n));
+    rendre(O[i]);
+    $('#num').textContent = pad(i + 1) + ' / ' + pad(O.length); $('#ttl').textContent = titre(i);
+    $('#prog').style.width = ((i + 1) / O.length) * 100 + '%';
+    document.title = titre(i) + ' — Custom, guide de marque';
+    history.replaceState(null, '', '#' + (i + 1));
+    document.querySelectorAll('#gg button').forEach((b, k) => b.classList.toggle('vz-cur', k === i));
+  };
+  $('#gg').innerHTML = O.map((k, n) => `<button type="button" data-n="${n}"><img src="deck/${pad(n + 1)}.jpg" alt="" loading="lazy"><span><i>${pad(n + 1)}</i>${titre(n)}</span></button>`).join('');
+  // Vignettes absentes (PDF pas encore rendu) : on garde le titre, sans image cassée
+  document.querySelectorAll('#gg img').forEach((im) => im.addEventListener('error', () => im.remove(), { once: true }));
+  const grille = (on) => { $('#grid').classList.toggle('vz-ouvert', on); if (on) { const b = document.querySelectorAll('#gg button')[i]; if (b) b.focus(); } };
+  document.querySelectorAll('#gg button').forEach((b) => b.addEventListener('click', () => { go(+b.dataset.n); grille(false); }));
+  $('#bgrille').addEventListener('click', () => grille(true)); $('#gfermer').addEventListener('click', () => grille(false));
+  $('#prec').addEventListener('click', () => go(i - 1)); $('#suiv').addEventListener('click', () => go(i + 1));
+  const plein = () => { if (document.fullscreenElement) document.exitFullscreen(); else if (document.documentElement.requestFullscreen) document.documentElement.requestFullscreen(); };
+  $('#bplein').addEventListener('click', plein);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') return grille(false);
+    if (e.key === 'g' || e.key === 'G') return grille(!$('#grid').classList.contains('vz-ouvert'));
+    if ($('#grid').classList.contains('vz-ouvert')) return;
+    if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); go(i + 1); }
+    if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); go(i - 1); }
+    if (e.key === 'Home') go(0); if (e.key === 'End') go(O.length - 1);
+    if (e.key === 'f' || e.key === 'F') plein();
+  });
+  let x0 = null;
+  $('#scene').addEventListener('touchstart', (e) => { x0 = e.touches[0].clientX; }, { passive: true });
+  $('#scene').addEventListener('touchend', (e) => { if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 40) go(i + (dx < 0 ? 1 : -1)); x0 = null; });
+  window.addEventListener('resize', fit);
+  window.addEventListener('hashchange', () => { const n = parseInt(location.hash.slice(1), 10); if (n && n - 1 !== i) go(n - 1); });
+  fit(); go((parseInt(location.hash.slice(1), 10) || 1) - 1);
+})();
+</script>
+</body>
+</html>

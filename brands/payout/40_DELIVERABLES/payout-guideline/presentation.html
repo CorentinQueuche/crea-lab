@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Payout — Guide de marque, la présentation</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="logo/payout-symbole-net.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/marque.css">
+<link rel="stylesheet" href="assets/plates.css">
+<style>
+/* Visionneuse : marque sombre, uniquement les rôles et les couleurs du socle. Classes préfixées vz- (le socle et plates.css sont chargés ;
+   .mp et .in sont les classes des mini-pages de plates.css, que deck/pages.js attend). */
+:root{--vz-ligne:color-mix(in srgb,var(--sur-scene) 10%,transparent);--vz-ligne-forte:color-mix(in srgb,var(--sur-scene) 22%,transparent);--vz-courbe:cubic-bezier(.16,1,.3,1)}
+html,body{height:100%;background:var(--scene);color:var(--sur-scene);overflow:hidden}
+body{display:grid;grid-template-rows:auto 1fr auto;font-size:15px}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--vif);outline-offset:3px;border-radius:6px}
+.vz-barre{display:flex;align-items:center;gap:14px;padding:14px 22px;border-bottom:1px solid var(--vz-ligne)}
+.vz-accueil{display:flex;align-items:flex-end;gap:12px;text-decoration:none}
+.vz-accueil svg{height:24px;width:auto}
+.vz-accueil span{font-family:var(--mono);font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--moyen)}
+.vz-esp{flex:1}
+.vz-titre{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:color-mix(in srgb,var(--sur-scene) 70%,var(--scene))}
+.vz-b{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;height:34px;display:inline-flex;align-items:center;padding:0 14px;border-radius:17px;border:0;box-shadow:inset 0 0 0 1px var(--vz-ligne-forte);background:none;color:var(--sur-scene);cursor:pointer;text-decoration:none;white-space:nowrap;transition:background 160ms var(--vz-courbe)}
+.vz-b:hover{background:color-mix(in srgb,var(--sur-scene) 6%,transparent)}
+.vz-b.vz-vif{background:var(--vif);box-shadow:none;color:var(--encre)}
+.vz-scene{position:relative;display:grid;place-items:center;min-height:0;overflow:hidden}
+.mp.vz-une{position:relative;flex:none;border-radius:6px;box-shadow:0 40px 80px -40px color-mix(in srgb,var(--vif) 22%,transparent),0 0 0 1px var(--vz-ligne)}
+.mp.vz-une>.in{zoom:var(--k,1)}
+.mp.vz-une.vz-entre{animation:vz-entree .42s var(--vz-courbe)}
+@keyframes vz-entree{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.mp.vz-une.vz-entre{animation:none}}
+.vz-fleche{position:absolute;top:0;bottom:0;width:16%;border:0;background:none;color:var(--sur-scene);cursor:pointer;opacity:0;transition:opacity .2s;z-index:5;display:flex;align-items:center;font-size:26px}
+.vz-fleche:hover,.vz-fleche:focus-visible{opacity:.9}
+.vz-fleche.vz-g{left:0;justify-content:flex-start;padding-left:22px;background:linear-gradient(90deg,color-mix(in srgb,var(--scene) 80%,transparent),transparent)}
+.vz-fleche.vz-d{right:0;justify-content:flex-end;padding-right:22px;background:linear-gradient(270deg,color-mix(in srgb,var(--scene) 80%,transparent),transparent)}
+.vz-pied{display:flex;align-items:center;gap:16px;padding:12px 22px 14px;border-top:1px solid var(--vz-ligne)}
+.vz-n{font-family:var(--mono);font-size:12px;letter-spacing:.04em;min-width:70px;font-variant-numeric:tabular-nums}
+.vz-prog{flex:1;height:3px;background:var(--vz-ligne);overflow:hidden}
+.vz-prog i{display:block;height:100%;background:var(--vif);transition:width .5s var(--vz-courbe)}
+.vz-grille{position:fixed;inset:0;z-index:20;background:color-mix(in srgb,var(--scene) 97%,transparent);display:none;overflow:auto;padding:26px 26px 60px}
+.vz-grille.vz-ouvert{display:block}
+.vz-grille h2{font-weight:500;font-size:32px;letter-spacing:-.045em;margin:6px 0 22px;display:flex;justify-content:space-between;align-items:center}
+.vz-gg{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.vz-gg button{padding:0;border:0;border-radius:8px;overflow:hidden;background:var(--sombre);box-shadow:inset 0 0 0 1px var(--vz-ligne);cursor:pointer;color:inherit;text-align:left;font-family:inherit}
+.vz-gg button.vz-cur{box-shadow:0 0 0 2px var(--vif)}
+.vz-gg img{display:block;width:100%;height:auto;aspect-ratio:16/9;background:var(--scene)}
+.vz-gg span{display:flex;gap:10px;padding:9px 12px 11px;font-size:13px}
+.vz-gg span i{font-family:var(--mono);font-style:normal;font-size:10.5px;color:var(--vif);padding-top:2px}
+.vz-vide{display:grid;justify-items:center;gap:18px;text-align:center;color:var(--moyen);font-size:15px;max-width:420px;padding:20px}
+.vz-vide svg{height:48px;width:auto}
+@media (max-width:760px){.vz-titre,.vz-accueil span,.vz-masque{display:none}.vz-barre{gap:8px;padding:10px 12px}.vz-b{padding:0 11px}.vz-fleche{display:none}}
+</style>
+<script src="assets/marque.js"></script>
+<script>window.GuideMedia = 'guide-media/'; /* rendus allégés (1100 px) pour les pages « En situation » */</script>
+<script src="assets/pages.js"></script>
+</head>
+<body>
+<header class="vz-barre">
+  <a class="vz-accueil" href="index.html" id="accueil" title="Retour au guide de marque"></a>
+  <span class="vz-titre" id="ttl"></span>
+  <span class="vz-esp"></span>
+  <button class="vz-b" id="bgrille" title="Touche G">Toutes les pages</button>
+  <button class="vz-b vz-masque" id="bplein" title="Touche F">Plein écran</button>
+  <a class="vz-b vz-vif" href="#" id="bpdf" download>PDF</a>
+</header>
+<main class="vz-scene" id="scene">
+  <div class="mp vz-une" id="page"><div class="in" id="in"></div></div>
+  <button class="vz-fleche vz-g" id="prec" aria-label="Page précédente"></button>
+  <button class="vz-fleche vz-d" id="suiv" aria-label="Page suivante"></button>
+</main>
+<footer class="vz-pied"><span class="vz-n" id="num"></span><div class="vz-prog"><i id="prog"></i></div><span class="vz-n vz-masque" style="text-align:right;opacity:.55;min-width:180px">Flèches du clavier pour naviguer</span></footer>
+<div class="vz-grille" id="grid" role="dialog" aria-label="Toutes les pages"><h2>Guide de marque <button class="vz-b" id="gfermer">Fermer</button></h2><div class="vz-gg" id="gg"></div></div>
+<script>
+(function () {
+  const P = window.GuidePages, O = window.GuideOrder, T = window.GuideTitles || [], A = window.Marque;
+  const $ = (s) => document.querySelector(s), pad = (n) => String(n).padStart(2, '0');
+  $('#accueil').innerHTML = A.wordmark(A.COULEURS.net, 'aria-hidden="true"') + '<span>Guide de marque</span>';
+  $('#bpdf').href = 'deck/' + A.SLUG + '-guide-de-marque.pdf';
+  $('#prec').innerHTML = A.fleche('currentColor', 'transform:rotate(180deg)'); $('#suiv').innerHTML = A.fleche('currentColor');
+  if (!P || !O || !O.length) {
+    $('#page').style.display = 'none';
+    $('#scene').insertAdjacentHTML('beforeend', '<div class="vz-vide">' + A.symbol(A.COULEURS.net, 'aria-hidden="true"') + '<p>Les pages du guide ne sont pas encore disponibles.</p><a class="vz-b" href="index.html">Revenir au guide en ligne</a></div>');
+    $('#num').textContent = '00 / 00'; $('#ttl').textContent = 'Les pages du guide ne sont pas disponibles.'; return;
+  }
+  let i = 0;
+  const fit = () => { const st = $('#scene'); const k = Math.min((st.clientWidth - 40) / 1280, (st.clientHeight - 40) / 720); const s = $('#page'); s.style.setProperty('--k', k); s.style.width = 1280 * k + 'px'; s.style.height = 720 * k + 'px'; };
+  const go = (n, anim = true) => {
+    i = Math.max(0, Math.min(O.length - 1, n));
+    $('#in').innerHTML = P[O[i]];
+    const s = $('#page'); s.classList.remove('vz-entre'); if (anim) { void s.offsetWidth; s.classList.add('vz-entre'); }
+    $('#num').textContent = pad(i + 1) + ' / ' + pad(O.length); $('#ttl').textContent = T[i] || '';
+    $('#prog').style.width = ((i + 1) / O.length) * 100 + '%';
+    document.title = (T[i] ? T[i] + ' — ' : '') + 'Payout, guide de marque';
+    history.replaceState(null, '', '#' + (i + 1));
+    document.querySelectorAll('#gg button').forEach((b, k) => b.classList.toggle('vz-cur', k === i));
+  };
+  $('#gg').innerHTML = O.map((k, n) => `<button data-n="${n}"><img src="deck/${pad(n + 1)}.jpg" alt="" loading="lazy"><span><i>${pad(n + 1)}</i>${T[n] || ''}</span></button>`).join('');
+  // Vignettes absentes (PDF pas encore rendu) : on garde le titre, sans image cassée
+  document.querySelectorAll('#gg img').forEach((im) => im.addEventListener('error', () => im.remove(), { once: true }));
+  const grille = (on) => $('#grid').classList.toggle('vz-ouvert', on);
+  document.querySelectorAll('#gg button').forEach((b) => b.addEventListener('click', () => { go(+b.dataset.n); grille(false); }));
+  $('#bgrille').addEventListener('click', () => grille(true)); $('#gfermer').addEventListener('click', () => grille(false));
+  $('#prec').addEventListener('click', () => go(i - 1)); $('#suiv').addEventListener('click', () => go(i + 1));
+  const plein = () => { if (document.fullscreenElement) document.exitFullscreen(); else if (document.documentElement.requestFullscreen) document.documentElement.requestFullscreen(); };
+  $('#bplein').addEventListener('click', plein);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') return grille(false);
+    if (e.key === 'g' || e.key === 'G') return grille(!$('#grid').classList.contains('vz-ouvert'));
+    if ($('#grid').classList.contains('vz-ouvert')) return;
+    if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); go(i + 1); }
+    if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); go(i - 1); }
+    if (e.key === 'Home') go(0); if (e.key === 'End') go(O.length - 1);
+    if (e.key === 'f' || e.key === 'F') plein();
+  });
+  let x0 = null;
+  $('#scene').addEventListener('touchstart', (e) => { x0 = e.touches[0].clientX; }, { passive: true });
+  $('#scene').addEventListener('touchend', (e) => { if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 40) go(i + (dx < 0 ? 1 : -1)); x0 = null; });
+  window.addEventListener('resize', fit);
+  window.addEventListener('hashchange', () => { const n = parseInt(location.hash.slice(1), 10); if (n && n - 1 !== i) go(n - 1); });
+  fit(); go((parseInt(location.hash.slice(1), 10) || 1) - 1, false);
+  // Les jauges animées des pages montent de 54 à 85, en boucle de 8 s, comme dans les vidéos
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) { const t0 = performance.now(); const loop = (now) => { if (!document.hidden) A.seekJauge((now - t0) / 1000, { boucle: 8, root: $('#in') }); requestAnimationFrame(loop); }; requestAnimationFrame(loop); }
+})();
+</script>
+</body>
+</html>

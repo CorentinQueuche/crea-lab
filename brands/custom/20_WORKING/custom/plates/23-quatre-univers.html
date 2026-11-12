@@ -1,0 +1,41 @@
+<!doctype html><meta charset="utf-8"><title>Custom — 23 · Quatre univers</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates-c.css"><script src="../brand/marque.js"></script>
+<style>
+  /* Idée : une seule grille, lue comme le menu du site. Une ligne par univers : picto géant, nom, produits, image dans un bloc. */
+  .p23-r{position:relative;display:grid;grid-template-columns:150px 480px 190px 1fr;column-gap:30px;align-items:center;height:196px;border-top:1px solid var(--filet)}
+  .p23-r:last-child{border-bottom:1px solid var(--filet)}
+  .p23-n{font-size:108px;line-height:.8;margin-top:6px}
+  .p23-a{font-size:21px;font-weight:500;letter-spacing:-.015em;margin-top:14px;line-height:1.25}
+  .p23-p{list-style:none;margin:0;padding:0;font-size:14px;line-height:1.62;opacity:.8}
+  .p23-i{position:relative;width:332px;height:156px;justify-self:end}
+  .p23-i .crop{position:absolute;inset:0;overflow:hidden}
+  .p23-k{position:absolute;right:0;bottom:-22px;opacity:.5}
+  .p23-no{position:absolute;left:0;top:12px;opacity:.5}
+</style>
+<body><div class="plate" id="p" style="height:1230px"></div>
+<script>
+const A = Marque, C = A.COULEURS, U = A.DONNEES.univers;
+// Image de chaque univers : photo de marque ou média d'origine (montré tel quel, seulement recadré)
+const img = {
+  textile: [`<img class="pc-img" src="${A.photoURL('origine-veste')}" style="object-position:50% 28%" alt="">`, 'Existant · 2025'],
+  print: [`<img class="pc-img" src="${A.photoURL('traceur')}" style="object-position:40% 62%" alt="">`, 'Photo de marque'],
+  // la vignette du carnet, recadrée dans la planche « goodies » publiée (source 1305 → 1718 × 136 → 330 px)
+  goodies: [`<img src="${A.photoURL('origine-goodies')}" style="position:absolute;width:${2400 * 332 / 413}px;left:${-1305 * 332 / 413}px;top:${-128 * 332 / 413}px;max-width:none" alt="">`, 'Existant · 2025'],
+  signaletique: [`<img class="pc-img" src="${A.photoURL('origine-totem')}" style="object-position:50% 20%" alt="">`, 'Existant · 2025'] };
+const ligne = (u, i) => `<div class="p23-r">
+    <div class="pc-lbl p23-no">0${i + 1}</div>
+    <div style="color:${C.fluo};padding:18px 0 0 24px">${A.picto(u.cle, { attrs: 'style="height:144px"' })}</div>
+    <div><div class="t-titre p23-n">${u.nom}</div><div class="p23-a">${u.accroche[0]} ${A.surl(u.accroche[1], 'droit')}</div></div>
+    <ul class="p23-p">${u.produits.map((p) => `<li>${p}</li>`).join('')}</ul>
+    <div class="p23-i"><div class="crop dans-bloc">${img[u.cle][0]}</div><div class="pc-lbl p23-k">${img[u.cle][1]}</div></div></div>`;
+document.getElementById('p').innerHTML =
+  A.entete() +
+  `<div class="pc-abs pc-z" style="left:84px;top:104px"><div class="pc-lbl doux" style="margin-bottom:18px">23 · Quatre univers</div>
+     <div class="t-titre h-84">Quatre univers sous ${A.surl('un même toit')}</div></div>` +
+  `<div class="pc-abs pc-z" style="right:84px;top:1086px;display:flex;align-items:flex-end;gap:22px">
+     <div style="text-align:right"><div class="pc-lbl">Moins de 5${A.NB}secondes</div><div class="t-petit t-doux" style="margin-top:4px">pour identifier son univers<br>en arrivant sur le site</div></div>
+     <div style="color:${C.fluo}">${A.pix('<5s', { attrs: 'style="height:56px"' })}</div></div>` +
+  `<div class="pc-abs pc-z" style="left:84px;right:84px;top:262px">${U.map(ligne).join('')}</div>` +
+  `<div class="pc-abs pc-z t-petit t-doux" style="left:84px;top:1100px;width:640px">Même picto en blocs, même Bebas, même bloc incliné pour l’image : on reconnaît l’univers avant de lire. Pictos d’univers : extension proposée par KLYRA.</div>` +
+  A.foot('23 · Quatre univers', 'Custom · direction artistique');
+</script></body>

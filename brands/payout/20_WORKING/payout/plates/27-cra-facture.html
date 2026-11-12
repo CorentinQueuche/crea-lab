@@ -1,0 +1,34 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates-b.css"><script src="../brand/marque.js"></script>
+<style>
+  .s27-etape{position:absolute;display:grid;justify-items:start;gap:0;z-index:60}
+  .s27-etape .pb-t2{font-size:24px;margin-top:22px}
+  .s27-etape p{font-size:14.5px;line-height:1.42;opacity:.62;margin-top:8px;width:270px}
+</style>
+<body><div class="plate g6 grain" id="p" style="height:1140px"></div>
+<script>
+const A = Marque, D = A.DONNEES, NB = A.NB, SUR = '#F3F6F4', K = 0.67;
+const W = 414 * K, GAP = (1232 - 4 * W) / 3, YT = 346;
+const K_ = D.cra, saisis = A.craCompte(21).factures;
+
+/* Les quatre écrans viennent du socle : CRA en saisie (montant à ce jour, pas encore de facture), CRA validé, facture, cash-out */
+const etapes = [
+  [A.screens.cra({ jusqu: 21, valide: false }), 'Le CRA en saisie', `Vous cochez vos jours${NB}: ${saisis} jours, ${A.eur(saisis * K_.tjm, 0)} à ce jour. Le montant suit, la facture attend.`],
+  [A.screens.cra(), 'Le CRA validé', `${K_.factures} jours facturés à ${A.eur(K_.tjm, 0)}${NB}: la validation génère la facture.`],
+  [A.screens.facture(), 'La facture', `${K_.facture} part de ces ${K_.factures} jours, avec sa TVA et son PDF. Zéro ressaisie.`],
+  [A.screens.cashouts(), 'Le cash-out', `Kilomètres, repas, abonnements${NB}: calculés depuis le même CRA.`],
+];
+const cx = (i) => 84 + i * (W + GAP) + W / 2;
+document.getElementById('p').innerHTML = `
+  ${A.entete(A.ENTETE, SUR)}
+  <div class="pb-abs pb-z" style="left:84px;top:104px;width:700px">
+    <div class="pb-lbl doux">La web app · un parcours en quatre écrans</div>
+    <div class="pb-t" style="margin-top:16px">Du CRA à la facture.</div>
+  </div>
+  <div class="pb-abs pb-z" style="left:816px;top:122px;width:500px">${A.bicolore(`Vous cochez vos jours. <b>Votre CRA devient une facture,</b> puis vos frais pro. <b>Zéro ressaisie.</b>`, 'font-size:23px;line-height:1.28')}</div>
+  <div class="pb-abs pb-z" style="left:${cx(0)}px;top:${YT - 46}px;width:${cx(3) - cx(0)}px;height:1px;background:rgba(54,255,114,.45)"></div>
+  ${etapes.map(([s, t, d], i) => `
+    <span class="pb-abs pb-z pb-pas" style="left:${cx(i)}px;top:${YT - 61}px;transform:translateX(-50%)">${i + 1}/4</span>
+    <div class="pb-abs pb-z" style="left:${84 + i * (W + GAP)}px;top:${YT}px">${A.phone(s, K)}</div>
+    <div class="s27-etape" style="left:${84 + i * (W + GAP)}px;top:${YT + 868 * K + 10}px"><div class="pb-t2">${t}</div><p>${d}</p></div>`).join('')}
+`;
+</script></body>

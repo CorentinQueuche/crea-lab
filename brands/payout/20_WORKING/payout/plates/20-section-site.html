@@ -1,0 +1,29 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates-b.css"><script src="../brand/marque.js"></script>
+<style>
+  .s20-temps{display:grid;grid-template-columns:repeat(5,1fr);margin-top:52px;border-top:1px solid var(--filet)}
+  .s20-temps>div{padding:16px 22px 0 0}
+  .s20-temps b{display:block;font-weight:500;font-size:17px;letter-spacing:-.02em;margin-top:8px}
+  .s20-temps p{font-size:13.5px;line-height:1.4;opacity:.6;margin-top:5px;max-width:200px}
+</style>
+<body><div class="plate" id="p" style="background:var(--coffre)"></div>
+<script>
+const A = Marque, NB = ' ', SUR = '#F3F6F4', W = 1232, K = W / 1440;
+const temps = [
+  ['Lancement', 'La promesse en chiffre de scène, le simulateur à côté.'],
+  ['01' + NB + '· Le modèle', `Sur 100${NB}€ facturés, 54 aujourd'hui, jusqu'à 85 avec Payout.`],
+  ['02' + NB + '· Trois gestes', 'Facturer, déclarer, garder : chaque geste montre son écran.'],
+  ['03' + NB + '· La web app', 'Le cockpit, tel qu\'il est dans l\'app.'],
+  ['Appel final', 'Gardez la part qui vous revient.'],
+];
+document.getElementById('p').innerHTML = `
+  <div class="grain" style="position:relative;height:300px;overflow:hidden">
+    ${A.bandes({ n: 44, seed: 11, style: 'top:34%' })}
+    ${A.entete(A.ENTETE, SUR)}
+  </div>
+  ${A.section({ titre: 'Le site', num: '02', actif: 1, style: 'margin-top:-44px;padding-bottom:0;z-index:2',
+    phrase: `Une page, une promesse${NB}: <b>gardez jusqu'à 85${NB}% de votre TJM.</b> Le simulateur <b>la chiffre en trois curseurs.</b>` })}
+  <div style="position:relative;background:var(--releve);color:var(--coffre);padding:0 56px;height:980px;display:flow-root;--filet:rgba(6,10,8,.12)">
+    <div class="s20-temps">${temps.map(([t, d], i) => `<div><span class="pb-lbl doux">${i + 1}/5</span><b>${t}</b><p>${d}</p></div>`).join('')}</div>
+    <div style="position:absolute;left:84px;top:236px">${A.browser(A.desk.site(), K, { url: 'payout.fr' })}</div>
+  </div>`;
+</script></body>

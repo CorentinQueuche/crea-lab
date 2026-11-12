@@ -1,0 +1,70 @@
+<!doctype html><meta charset="utf-8"><title>Payout — V2, la jauge de 54 à 85</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="motion.css">
+<script src="../brand/marque.js"></script><script src="lib.js"></script>
+<style>
+  .z-lb{position:absolute;top:0;font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;line-height:1.5}
+</style>
+<body><div class="m-stage g6 grain" id="s" style="width:1920px;height:1080px"></div>
+<script>
+/* V2 · La jauge, de 54 à 85 · 1920 × 1080 · 6 s, boucle
+   node tools/record.mjs motion/10-jauge.html out/motion/10-jauge.mp4 --w 1920 --h 1080 --fps 30 --dur 6 --planche --fixe 4.4
+   1,4 s sur 54, puis le grand chiffre compte de 54 à 85 (Prélevé → Blanc → Net 200 → Net), les 100 segments puis les 100 blocs s'allument avec lui,
+   le montant suit (6 480 € → 10 200 €). Le gain, d'abord blanc, passe au Net de gauche à droite. Environ 2 s sur 85, puis la jauge redescend
+   sur la dernière seconde. « En plus » ne s'affiche que lorsqu'il vaut plus de 0. */
+const A = Marque, C = A.COULEURS, D = A.DONNEES.simulateur, NB = ' ', SUR = '#F3F6F4';
+const BOUCLE = 6, DEBUT = 1.4, RETARD_BLOCS = 0.22, BALAYAGE = DEBUT + 1.45;
+const s = document.getElementById('s');
+s.innerHTML = `
+<div class="m-abs m-net" style="left:96px;right:96px;top:72px;display:flex;justify-content:space-between" >
+  <span class="m-cap" style="opacity:.55">La part qui vous revient</span>
+  <span class="m-cap" style="opacity:.55">Sur 100${NB}€ facturés, jusqu'à 85${NB}€ pour vous</span></div>
+
+<div class="m-abs m-net" style="left:84px;top:150px">
+  <div class="chiffre" id="big" style="font-size:420px"><span data-j="val">54</span><span class="pct">%</span></div></div>
+
+<div class="m-abs m-net" style="left:96px;top:606px;display:flex;gap:72px;align-items:flex-end">
+  <div><div class="m-cap" style="opacity:.55">Ce qui vous revient · par mois</div>
+    <div class="mt" style="font-size:68px;font-weight:500;letter-spacing:-.06em;line-height:1;color:${C.net};margin-top:16px;width:380px"><span data-j="eur" data-base="${D.facture}">${A.eurH(D.avant, 0)}</span></div></div>
+  <div id="plus" style="opacity:0"><div class="m-cap" style="opacity:.55">En plus</div>
+    <div class="mt" style="font-size:34px;font-weight:500;letter-spacing:-.04em;line-height:1;margin-top:16px;width:230px">+<span data-j="ecart" data-base="${D.facture}">${A.eurH(0, 0)}</span></div></div>
+  <div><div class="m-cap" style="opacity:.55">Sans Payout · 54${NB}%</div>
+    <div class="mt" style="font-size:34px;font-weight:500;letter-spacing:-.04em;line-height:1;margin-top:16px;color:${C.acier}">${A.eurH(D.avant, 0)}</div></div>
+</div>
+
+<div class="m-abs m-net" style="right:96px;top:150px;display:grid;justify-items:end;gap:14px">
+  ${A.jauge({ forme: 'blocs', p: 54, avant: 54, l: 500, g: 7, anim: true, retard: RETARD_BLOCS, cls: 'z-blocs' })}
+  <span class="m-cap" style="opacity:.55">100 blocs · un par euro facturé</span></div>
+
+<div class="m-abs m-net" style="left:96px;right:96px;top:812px">
+  ${A.jauge({ forme: 'segments', p: 54, avant: 54, h: 96, g: 3, anim: true, cls: 'z-seg' })}
+  <div style="position:relative;height:20px;margin-top:16px">
+    <span class="z-lb" style="left:0;opacity:.55">0</span>
+    <span class="z-lb" style="left:54%;transform:translateX(-50%);opacity:.55">54 · aujourd'hui</span>
+    <span class="z-lb" id="l85" style="left:85%;transform:translateX(-50%);color:${C.net}">85 · avec Payout</span>
+    <span class="z-lb" style="right:0;opacity:.55">100</span></div></div>`;
+
+const big = s.querySelector('#big'), l85 = s.querySelector('#l85'), plus = s.querySelector('#plus');
+const seg = [...s.querySelectorAll('.z-seg i')], blocs = s.querySelector('.z-blocs'), bl = [...blocs.children];
+/* rang (0 à 99) de chaque bloc : rempli depuis le bas, comme dans le socle */
+const rang = (i) => (9 - Math.floor(i / 10)) * 10 + (i % 10);
+
+/* Le gain (entre 54 et 85) arrive en blanc, puis passe au Net de gauche à droite, un trait toutes les 20 ms */
+const teinteGain = (els, rg, tl, debut) => els.forEach((x, i) => {
+  if (!x.classList.contains('gain')) { x.style.background = ''; return; }
+  const j = rg(i) - 54, k = M.tw(tl, debut + j * 0.02, 0.32, M.cubicOut);
+  x.style.background = M.rampe(M.VERS_NET, k); });
+
+window.seek = (t) => {
+  const tl = ((t % BOUCLE) + BOUCLE) % BOUCLE;
+  const p = A.seekJauge(t, { boucle: BOUCLE, debut: DEBUT });
+  big.style.color = M.passage((p - 54) / 31);
+  /* « En plus » : masqué tant que l'écart arrondi vaut 0 €, puis s'allume avec lui (et s'éteint quand il y revient) */
+  const ecart = Math.round(D.facture * (p - 54) / 100);
+  plus.style.opacity = M.clamp((ecart - 1) / 60).toFixed(3);
+  /* chaque jauge suit son propre temps (les blocs ont 0,22 s de retard), ramené dans la boucle : au raccord, le gain qui redescend reste Net */
+  teinteGain(seg, (i) => i, tl, BALAYAGE);
+  teinteGain(bl, rang, (((tl - RETARD_BLOCS) % BOUCLE) + BOUCLE) % BOUCLE, BALAYAGE);
+  l85.style.opacity = (0.55 + 0.45 * M.clamp((p - 54) / 31)).toFixed(3);
+};
+seek(0);
+</script></body>

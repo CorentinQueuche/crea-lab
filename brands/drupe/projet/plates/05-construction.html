@@ -1,0 +1,113 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates.css"><script src="../brand/marque.js"></script>
+<body>
+<div class="plate grain" id="p" style="height:780px;background:var(--feuille)"></div>
+<script>
+/* Construction du logotype et du symbole. Tout est calculé dans le repère du logo (capitales de 100, ligne de base y = 100),
+   à partir des tracés et des cotes du socle (Marque.letterPath, Marque.LETTRES, Marque.SYM), puis placé à l'échelle K. */
+const A = Marque, C = A.COULEURS, LT = A.LETTRES, SY = A.SYM;
+const W = 1400, HH = 780, K = 1.7, GAPSYM = 74;
+const SX = A.WORD_W + GAPSYM;                         // origine du symbole dans le repère
+const OX = Math.round((W - (SX + 100) * K) / 2), OY = 286;
+const X = (u) => +(OX + u * K).toFixed(2), Y = (v) => +(OY + v * K).toFixed(2);
+const V = C.vert, F = C.feuille;
+const ln = (x1, y1, x2, y2, o, w = 1, dash = '') => `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${V}" stroke-opacity="${o}" stroke-width="${w}" ${dash ? `stroke-dasharray="${dash}"` : ''}/>`;
+const tx = (x, y, t, anchor = 'middle', o = .9) => `<text x="${x}" y="${y}" fill="${V}" fill-opacity="${o}" font-family="IBM Plex Mono" font-size="11" font-weight="500" letter-spacing=".8" text-anchor="${anchor}">${t}</text>`;
+const circ = (cx, cy, r, o, dash = '3 4') => `<circle cx="${X(cx)}" cy="${Y(cy)}" r="${r * K}" fill="none" stroke="${V}" stroke-opacity="${o}" stroke-width="1" ${dash ? `stroke-dasharray="${dash}"` : ''}/>`;
+const dimH = (u1, u2, v, label, o = .75) => { const y = Y(v);
+  return ln(X(u1), y, X(u2), y, o) + ln(X(u1), y - 5, X(u1), y + 5, o) + ln(X(u2), y - 5, X(u2), y + 5, o) + tx((X(u1) + X(u2)) / 2, y - 9, label); };
+const dimV = (v1, v2, u, label) => { const x = X(u);
+  return ln(x, Y(v1), x, Y(v2), .75) + ln(x - 5, Y(v1), x + 5, Y(v1), .75) + ln(x - 5, Y(v2), x + 5, Y(v2), .75) + tx(x - 10, (Y(v1) + Y(v2)) / 2 + 4, label, 'end'); };
+
+/* Points d'ancrage : fins de segment et d'arc, lus dans le tracé lui-même */
+const anchors = (d) => {
+  const tk = d.match(/[MLHVAZ]|-?\d*\.?\d+/g), pts = []; let i = 0, cx = 0, cy = 0, cmd = '';
+  while (i < tk.length) {
+    if (/[MLHVAZ]/.test(tk[i])) { cmd = tk[i++]; if (cmd === 'Z') continue; }
+    if (cmd === 'M' || cmd === 'L') { cx = +tk[i++]; cy = +tk[i++]; }
+    else if (cmd === 'H') cx = +tk[i++];
+    else if (cmd === 'V') cy = +tk[i++];
+    else if (cmd === 'A') { i += 5; cx = +tk[i++]; cy = +tk[i++]; }
+    else { i++; continue; }
+    if (!pts.some(([a, b]) => Math.abs(a - cx) < .01 && Math.abs(b - cy) < .01)) pts.push([cx, cy]);
+  }
+  return pts;
+};
+
+let s = `<svg class="abs" style="left:0;top:0" width="${W}" height="${HH}" viewBox="0 0 ${W} ${HH}">
+<defs><pattern id="hach" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="${V}" stroke-opacity=".55" stroke-width="1.2"/></pattern></defs>`;
+
+/* Grille : module 10 */
+for (let u = -40; u <= SX + 130; u += 10) s += ln(X(u), Y(-70), X(u), Y(170), u % 50 === 0 ? .12 : .05);
+for (let v = -70; v <= 170; v += 10) s += ln(X(-40), Y(v), X(SX + 130), Y(v), v % 50 === 0 ? .12 : .05);
+
+/* Hauteurs : capitale et ligne de base pleine largeur, barres de 20 en 20 */
+[0, 100].forEach((v) => s += ln(0, Y(v), W, Y(v), .42));
+[20, 40, 60, 80].forEach((v) => s += ln(X(-40), Y(v), X(A.WORD_W + 20), Y(v), .2, 1, '2 4'));
+
+/* Cercles de construction : D (50 et 30), R et P (30 et 10), U (48 et 28) */
+const xs = LT.ordre.map((c, i) => A.letterX(i));
+const [xD, xR, xU, xP] = xs;
+s += circ(xD + 46, 50, 50, .4) + circ(xD + 46, 50, 30, .4);
+[xR, xP].forEach((o) => s += circ(o + 56, 30, 30, .4) + circ(o + 56, 30, 10, .4));
+s += circ(xU + 48, 52, 48, .3) + circ(xU + 48, 52, 28, .3);
+
+/* Sillons hachurés : 8 de large, juste après chaque fût de 20 */
+xs.forEach((o, i) => { const v0 = LT.ordre[i] === 'U' ? 52 : 0; /* le U n'a de matière à fendre que dans sa panse */
+  s += `<rect x="${X(o + LT.graisse)}" y="${Y(v0)}" width="${LT.sillon * K}" height="${(100 - v0) * K}" fill="url(#hach)"/>`; });
+
+/* Les lettres en aplat léger et contour */
+const lettres = LT.ordre.map((c, i) => A.letterPath(c, xs[i])).join(' ');
+s += `<g transform="translate(${OX} ${OY}) scale(${K})"><path d="${lettres}" fill="${V}" fill-opacity=".16" fill-rule="evenodd" stroke="${V}" stroke-opacity=".95" stroke-width="1.2" vector-effect="non-scaling-stroke"/></g>`;
+
+/* Centres des cercles */
+[[xD + 46, 50], [xR + 56, 30], [xP + 56, 30], [xU + 48, 52]].forEach(([u, v]) => s += ln(X(u) - 5, Y(v), X(u) + 5, Y(v), .9) + ln(X(u), Y(v) - 5, X(u), Y(v) + 5, .9));
+
+/* Points d'ancrage */
+anchors(lettres).forEach(([u, v]) => s += `<rect x="${X(u) - 2.6}" y="${Y(v) - 2.6}" width="5.2" height="5.2" fill="${F}" stroke="${V}" stroke-width="1.2"/>`);
+
+/* Rayons */
+const ray = (cx, cy, r, deg, label, side = 'start') => { const a = deg * Math.PI / 180, ex = cx + r * Math.cos(a), ey = cy + r * Math.sin(a);
+  return ln(X(cx), Y(cy), X(ex), Y(ey), .85) + tx(X(ex) + (side === 'start' ? 7 : -7), Y(ey) + (Math.sin(a) > 0 ? 14 : -6), label, side); };
+s += ray(xD + 46, 50, 50, 38, 'r 50') + ray(xD + 46, 50, 30, -32, 'r 30');
+s += ray(xR + 56, 30, 30, -58, 'r 30');
+s += ln(X(xR + 56), Y(30), X(xR + 56), Y(20), .85) + ln(X(xR + 56), Y(20), X(xR + 56), Y(-12), .5, 1, '2 3') + tx(X(xR + 56), Y(-12) - 6, 'r 10');
+
+/* Cotes du logotype */
+s += dimV(0, 100, -16, '100');
+s += dimH(xD, xD + LT.graisse, -16, '20') + dimH(xD + LT.graisse, xD + LT.graisse + LT.sillon, -38, '8');
+s += dimH(xD + 96, xR, -16, '18');
+s += dimH(0, A.WORD_W, 130, String(A.WORD_W));
+
+/* ---------- Le symbole : disque de 39, sillon de 8 incliné de 24°, queue détachée de 7 ---------- */
+const scx = SX + SY.cx, scy = SY.cy, f = SY.tilt * Math.PI / 180, U = [Math.sin(f), -Math.cos(f)], Vv = [Math.cos(f), Math.sin(f)];
+const P = (a, b) => [scx + a * U[0] + b * Vv[0], scy + a * U[1] + b * Vv[1]];
+s += circ(scx, scy, SY.r, .4);
+s += `<g transform="translate(${X(SX)} ${Y(0)}) scale(${K})"><path d="${A.symbolPath()}" fill="${V}" fill-opacity=".16" fill-rule="evenodd" stroke="${V}" stroke-opacity=".95" stroke-width="1.2" vector-effect="non-scaling-stroke"/></g>`;
+/* Axe du sillon et verticale */
+const a1 = P(-62, 0), a2 = P(76, 0);
+s += ln(X(a1[0]), Y(a1[1]), X(a2[0]), Y(a2[1]), .7, 1, '5 4');
+s += ln(X(scx), Y(scy + 58), X(scx), Y(scy - 80), .45, 1, '2 4');
+/* Angle de 24° */
+const R0 = 70, pa = (deg) => { const a = (deg - 90) * Math.PI / 180; return [X(scx) + R0 * K * Math.cos(a), Y(scy) + R0 * K * Math.sin(a)]; };
+const [ax0, ay0] = pa(0), [ax1, ay1] = pa(SY.tilt);
+s += `<path d="M${ax0} ${ay0} A${R0 * K} ${R0 * K} 0 0 1 ${ax1} ${ay1}" fill="none" stroke="${V}" stroke-opacity=".9" stroke-width="1"/>`;
+const [lx, ly] = pa(SY.tilt / 2);
+s += tx(lx + 4, ly - 8, `${SY.tilt}°`, 'middle', 1);
+/* Rayon 39 */
+s += ray(scx, scy, SY.r, 150, 'r 39', 'end');
+/* Sillon de 8, mesuré perpendiculairement à l'axe */
+const g1 = P(-26, -4), g2 = P(-26, 4);
+s += ln(X(g1[0]), Y(g1[1]), X(g2[0]), Y(g2[1]), .95, 1.2) + tx(X(g2[0]) + 10, Y(g2[1]) + 16, '8', 'start', 1);
+/* Queue : détachée de 7 */
+const q1 = P(SY.r, 0), q2 = P(SY.r + SY.queue.ecart, 0);
+[q1, q2].forEach(([u, v]) => s += `<circle cx="${X(u)}" cy="${Y(v)}" r="2.6" fill="${F}" stroke="${V}" stroke-width="1.2"/>`);
+s += tx(X(q2[0]) - 12, Y(q2[1]) - 2, '7', 'end', 1);
+s += `</svg>`;
+
+s += `<div class="abs lbl" style="left:84px;top:84px;color:${V}">Construction du logotype</div>`;
+s += `<div class="abs lbl" style="left:${X(SX) - 6}px;top:84px;color:${V}">Le symbole</div>`;
+s += `<div class="abs mono" style="left:84px;right:84px;bottom:66px;display:grid;grid-template-columns:312px 312px 312px 1fr;font-size:12px;line-height:1.6;color:${V};letter-spacing:.04em">
+  <span>Capitales de 100<br>graisse 20 · espace 18</span><span>Un sillon de 8<br>juste après chaque fût</span><span>Droites et arcs<br>de rayon 50, 30 et 10</span><span style="text-align:right">Le symbole&nbsp;: un disque de 39<br>fendu du même sillon, incliné de 24°</span></div>`;
+document.getElementById('p').innerHTML = s;
+</script>
+</body>

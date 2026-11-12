@@ -1,0 +1,180 @@
+/* SOCLE DE MARQUE — Sillon, cave à vins nature, Nantes (feuille de style).
+   Ordre : 1 polices · 2 couleurs · 3 rôles · 4 typographie · 5 le kit de la marque · 6 les photos · 7 mécanique commune.
+   Tout le projet lit ce fichier ; personne ne le modifie hors du socle.
+   Les fonds en matière (--m-tissu, --m-papier, --m-blanc, --m-craie, --m-cave) sont posés par brand/matiere.js. */
+
+/* ---------- 1. Polices ----------
+   Anybody : la voix des titres et des étiquettes. Deux axes : la graisse (100 à 900) et la largeur (50 à 150 %).
+   C'est la largeur qui fait la marque : les lettres-verres à 150 %, le reste à 62,5 %.
+   Hanken Grotesk : le texte courant et le descripteur du logo. Aucune police à chasse fixe chez Sillon. */
+@font-face{font-family:"Anybody";src:url("../node_modules/@fontsource-variable/anybody/files/anybody-latin-wdth-normal.woff2") format("woff2");font-weight:100 900;font-stretch:50% 150%;font-display:block}
+@font-face{font-family:"Hanken Grotesk";src:url("../node_modules/@fontsource-variable/hanken-grotesk/files/hanken-grotesk-latin-wght-normal.woff2") format("woff2");font-weight:100 900;font-display:block}
+
+:root{
+  /* ---------- 2. Couleurs : huit, nommées avec les mots de la cave ---------- */
+  --bleu:#2146D0;        /* Bleu de travail : la veste du caviste. Le fond de marque, et l'encre sur le tuffeau */
+  --cave:#0E1638;        /* Fond de cave : le texte courant, le fond du jeudi soir */
+  --tuffeau:#F2EFE4;     /* Tuffeau : la pierre des caves de Loire. Le papier, et les lettres sur le bleu */
+  --craie:#E2DDCC;       /* Craie : le fond neutre, les cartons */
+  --lave:#8EA5F0;        /* Bleu lavé : le ton sur ton du bleu */
+  --maceration:#FF9B21;  /* Macération : le vin orange. LE jus de la maison, celui du logo */
+  --glou:#FF4F7B;        /* Glou : rouge de soif, rosé */
+  --paille:#F7C52B;      /* Paille : le blanc */
+  /* Les échelles (Marque.ECHELLES) : chaque jus du disque à la lie, le bleu de la nuit au lavé, la pierre de la taille à l'ombre */
+  --maceration-1:#FFE1B0;--maceration-2:#FFBF60;--maceration-3:#FF9B21;--maceration-4:#D5670D;--maceration-5:#8A3A09;
+  --glou-1:#FFD3DC;--glou-2:#FF90AA;--glou-3:#FF4F7B;--glou-4:#CD2250;--glou-5:#7A0F31;
+  --paille-1:#FFF4C2;--paille-2:#FBDF72;--paille-3:#F7C52B;--paille-4:#D09810;--paille-5:#866308;
+  --bleu-1:#0E1638;--bleu-2:#16298A;--bleu-3:#2146D0;--bleu-4:#5B7BE6;--bleu-5:#8EA5F0;
+  --tuffeau-1:#FBF9F2;--tuffeau-2:#F2EFE4;--tuffeau-3:#E2DDCC;--tuffeau-4:#C4BCA4;--tuffeau-5:#8D866F;
+
+  /* ---------- 3. Rôles : la mécanique partagée (planches, vidéos, guide) n'utilise que ceux-ci ---------- */
+  --vif:var(--maceration);      /* la couleur vive : rare, elle n'apparaît que dans un creux */
+  --clair:var(--paille);        /* accent secondaire */
+  --moyen:var(--lave);          /* le ton moyen */
+  --sombre:var(--cave);         /* le fond dense de marque */
+  --scene:var(--bleu);          /* le fond des scènes */
+  --sur-scene:var(--tuffeau);   /* le texte posé sur --scene */
+  --papier:var(--tuffeau);      /* le fond des pages de charte */
+  --doux:var(--craie);          /* le fond neutre teinté */
+  --encre:var(--cave);          /* le texte sur fond clair */
+  --filet:rgba(242,239,228,.28);
+  --filet-clair:rgba(14,22,56,.2);
+  --m-cote:640px;
+
+  --font:"Hanken Grotesk",system-ui,sans-serif;   /* texte courant */
+  --titre:"Anybody",system-ui,sans-serif;         /* la voix des titres */
+  --mono:"Anybody",system-ui,sans-serif;          /* étiquettes, cotes, mentions : Anybody étroite en capitales (pas de chasse fixe) */
+}
+
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--scene);color:var(--sur-scene);font-family:var(--font);font-weight:400;-webkit-font-smoothing:antialiased;text-rendering:geometricPrecision}
+img,svg,canvas{display:block}
+
+/* ---------- 4. Typographie ----------
+   La voix des titres : Anybody 900 en capitales, serrée à 62,5 %. Les lettres qui tiennent du vin (entre <b>) passent à
+   150 % : ce sont les verres du mot. Un ou deux verres par mot, pas plus. Toujours un point à la fin d'une phrase. */
+.t-titre{font-family:var(--titre);font-weight:900;font-stretch:62.5%;text-transform:uppercase;line-height:.86;letter-spacing:.012em;font-size:120px;display:inline-block;white-space:nowrap}
+.t-titre b{font-weight:inherit;font-stretch:150%}
+/* Un titre rempli d'une photo : la photo passe dans les lettres (poser --photo: url(…) sur l'élément) */
+.t-titre.image{background:var(--photo) center/cover;-webkit-background-clip:text;background-clip:text;color:transparent}
+/* Le sous-titre : Anybody à sa largeur normale, bas de casse */
+.t-sous{font-family:var(--titre);font-weight:800;font-stretch:100%;font-size:30px;line-height:1.02;letter-spacing:-.012em}
+.t-chapo{font-size:22px;line-height:1.34;letter-spacing:-.012em;font-weight:500}
+.t-txt{font-size:15px;line-height:1.48}
+.t-petit{font-size:12.5px;line-height:1.45}
+.t-doux{opacity:.66}
+/* La mention : petites capitales étroites, comme au dos d'une bouteille */
+.t-mono,.t-etq{font-family:var(--mono);font-stretch:75%;font-size:11.5px;letter-spacing:.075em;text-transform:uppercase;line-height:1.45;font-weight:600}
+/* Le signe degré, dessiné : un anneau à hauteur de capitale (Marque.deg) */
+.deg{display:inline-block;width:.3em;height:.3em;border:.085em solid currentColor;border-radius:50%;vertical-align:.38em;margin-left:.06em;font-style:normal}
+
+/* ---------- 5. Le kit de la marque ---------- */
+/* Les fonds en matière. Le bleu est un sergé de coton ; le tuffeau, un papier ; le fond de cave, un mur peint. */
+.fond-bleu{background:var(--bleu) var(--m-tissu) 0 0/var(--m-cote);color:var(--tuffeau)}
+.fond-tuffeau{background:var(--tuffeau) var(--m-papier) 0 0/var(--m-cote);color:var(--cave)}
+.fond-blanc{background:var(--tuffeau-1) var(--m-blanc) 0 0/var(--m-cote);color:var(--cave)}
+.fond-craie{background:var(--craie) var(--m-craie) 0 0/var(--m-cote);color:var(--cave)}
+.fond-cave{background:var(--cave) var(--m-cave) 0 0/var(--m-cote);color:var(--tuffeau)}
+/* La lumière d'un fond : elle vient d'en haut à gauche, comme sur les lettres. À poser sur un élément en position relative. */
+.lumiere::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(110% 80% at 14% 0%,rgba(255,255,255,.13),rgba(255,255,255,0) 60%),radial-gradient(90% 80% at 100% 100%,rgba(5,9,40,.34),rgba(5,9,40,0) 62%)}
+.fond-tuffeau.lumiere::before,.fond-blanc.lumiere::before,.fond-craie.lumiere::before,.plate.clair.lumiere::before{background:radial-gradient(110% 80% at 14% 0%,rgba(255,255,255,.5),rgba(255,255,255,0) 60%),radial-gradient(90% 80% at 100% 100%,rgba(120,104,70,.1),rgba(120,104,70,0) 62%)}
+/* Les trois jus, en aplat dégradé (une pastille, un fond de carte) : du bord au cœur. Le texte posé dessus est en fond de cave. */
+.jus-maceration{background:linear-gradient(180deg,var(--maceration-2),var(--maceration-3) 34%,var(--maceration-4));color:var(--cave)}
+.jus-glou{background:linear-gradient(180deg,var(--glou-2),var(--glou-3) 34%,var(--glou-4));color:var(--cave)}
+.jus-paille{background:linear-gradient(180deg,var(--paille-2),var(--paille-3) 34%,var(--paille-4));color:var(--cave)}
+
+/* La contre-étiquette (Marque.contre) : le petit papier au dos d'une bouteille. Toujours droite, jamais penchée.
+   Avec son papier (.papier) : une feuille de coton, son filet intérieur, une ombre courte. */
+.ce{font-family:var(--mono);font-stretch:75%;font-weight:600;font-size:10.5px;line-height:1.3;letter-spacing:.08em;text-transform:uppercase}
+.ce .ce-in{border:1.5px solid currentColor}
+.ce.papier{background:var(--tuffeau-1) var(--m-blanc) 0 0/var(--m-cote);padding:7px;border-radius:2px;box-shadow:0 1px 0 rgba(255,255,255,.6) inset,0 0 0 .5px rgba(60,50,30,.18),0 1px 1.5px rgba(5,9,40,.35),0 9px 18px -8px rgba(5,9,40,.5)}
+.ce.papier .ce-in{border-width:1.2px}
+.ce .ce-in>div{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:6px 9px 5px;border-top:1px solid currentColor}
+.ce .ce-in>div:first-child{border-top:0}
+.ce .ce-in>div>span:last-child{text-align:right;white-space:nowrap}
+.ce .ce-t{padding:8px 9px 7px}
+.ce .ce-t b{font-weight:900;font-stretch:150%;font-size:12.5px;letter-spacing:.04em}
+.ce .ce-in>.ce-g{align-items:flex-end;padding:9px 9px 8px;border-top-width:1.5px}
+.ce .ce-g b{font-weight:900;font-stretch:100%;font-size:25px;line-height:.8;letter-spacing:0;text-transform:none}
+.ce .ce-g svg{margin-left:auto;flex:none}
+.ce .ce-in>.ce-m,.ce .ce-in>.ce-v{display:block;text-transform:none;letter-spacing:.015em;font-stretch:87.5%;font-weight:500;line-height:1.28}
+.ce .ce-in>.ce-v{font-family:var(--titre);font-weight:800;font-stretch:100%;font-size:13px;letter-spacing:-.01em;line-height:1.1;padding:8px 9px 7px}
+
+/* L'étiquette de face (Marque.etiquette) : le logotype, le nom du jus qui penche de son degré, le papier rempli au tiers */
+.etq{position:relative;container-type:inline-size;aspect-ratio:1/1.24;color:var(--bleu);padding:9% 8% 6%;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;
+  background:linear-gradient(180deg,rgba(255,255,255,0) 0 63%,var(--j1) 63% calc(63% + 1.6px),color-mix(in srgb,var(--j0) 82%,transparent) calc(63% + 1.6px)),var(--tuffeau-1) var(--m-blanc) 0 0/var(--m-cote)}
+.etq-logo svg{width:100%;height:auto}
+.etq-nom{font-family:var(--titre);font-weight:900;font-stretch:62.5%;text-transform:uppercase;line-height:.8;white-space:nowrap;align-self:flex-start;transform-origin:0 100%;margin:0 0 9% 1%}
+.etq-bas{display:flex;justify-content:space-between;font-family:var(--mono);font-stretch:75%;font-weight:600;font-size:4.2cqw;letter-spacing:.07em;text-transform:uppercase;border-top:1.2px solid currentColor;padding-top:3%}
+
+/* Les imprimés (Marque.affiche, carte, sousVerre, mot) : dessinés à taille fixe, mis à l'échelle par zoom */
+.imp{position:relative;overflow:hidden;flex:none}
+.imp-in{position:relative;overflow:hidden}
+
+/* ---------- 6. Les photos et ce que Sillon leur fait (Marque.photo, Marque.cadre) ---------- */
+.ph{position:relative;overflow:hidden;background:var(--cave);isolation:isolate;flex:none}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+/* le grain : une photo de Sillon n'est jamais filtrée */
+.ph>s,.grain::after{content:"";position:absolute;inset:0;z-index:5;pointer-events:none;opacity:.34;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)'/%3E%3C/svg%3E")}
+.grain{position:relative;isolation:isolate}
+/* l'image à niveau : sous la ligne, on la voit à travers un jus. Trois couches, posées par Marque.photo : la teinte
+   (color), la densité du bord à la lie (soft-light), une lueur (screen). La surface a son éclat et son liseré. */
+.ph.niv .nj{position:absolute;left:0;right:0;bottom:0}
+.ph.niv .nj.a{mix-blend-mode:color}
+.ph.niv .nj.b{mix-blend-mode:soft-light}
+.ph.niv .nj.c{mix-blend-mode:screen}
+.ph.niv .nl{position:absolute;left:0;right:0;height:6px;margin-top:-1px;background:linear-gradient(180deg,rgba(255,255,255,.95) 0 1.5px,rgba(60,20,0,.42) 1.5px 4px,rgba(60,20,0,0))}
+.ph .ph-cote{position:absolute;right:14px;z-index:6;margin-top:-22px;color:var(--tuffeau);text-shadow:0 0 6px rgba(5,9,40,.5)}
+/* la robe : deux tons, du bleu de travail au tuffeau */
+.ph.robe img{filter:grayscale(1) contrast(1.15)}
+.ph.robe::before{content:"";position:absolute;inset:0;z-index:2;background:var(--bleu);mix-blend-mode:lighten}
+.ph.robe::after{content:"";position:absolute;inset:0;z-index:3;background:var(--tuffeau);mix-blend-mode:multiply}
+/* un cadre penché, son image d'aplomb */
+.cadre{position:relative;overflow:hidden;flex:none}
+/* un visuel posé sur une photo (Marque.pose) : l'origine est son coin haut gauche */
+.pose{position:absolute;left:0;top:0;transform-origin:0 0}
+/* une scène (Marque.scene) : la photo, et ce qu'on y pose dans ses propres pixels */
+.scene{position:relative;overflow:hidden;background:var(--cave);isolation:isolate;flex:none}
+.scene-in{position:absolute;left:0;top:0;transform-origin:0 0}
+.scene-in>img{position:absolute;left:0;top:0}
+.scene-in>*{position:absolute}
+.scene>s{position:absolute;inset:0;z-index:5;pointer-events:none;opacity:.3;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)'/%3E%3C/svg%3E")}
+/* le reflet juste (Marque.reflet) : les hautes lumières de la photo, remises par-dessus ce qu'on a posé sur du verre */
+.reflet{position:absolute;overflow:hidden;mix-blend-mode:screen;pointer-events:none}
+.reflet>div{filter:grayscale(1) brightness(.53) contrast(9)}
+/* un papier posé (carte, sous-verre, étiquette) : son grain, et une ombre courte, celle d'un flash */
+.pose-papier{background:var(--tuffeau-1) var(--m-blanc) 0 0/var(--m-cote);color:var(--bleu);box-shadow:0 0 0 1px rgba(60,50,30,.14),3px 5px 5px rgba(3,6,30,.5),10px 18px 26px rgba(3,6,30,.38)}
+/* une encre usée : imprimée sur du carton, peinte sur du bois, sérigraphiée sur une nappe */
+.usure{-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='u'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.55' numOctaves='3' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 3.2 0 0 0 -.62'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23u)'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='u'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.55' numOctaves='3' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 3.2 0 0 0 -.62'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23u)'/%3E%3C/svg%3E")}
+/* un papier collé sur du verre (Marque.surVerre) : il tourne dans l'ombre des deux côtés, reprend les ombres et les
+   éclats de la photo, et son encre a la netteté de la photo, pas celle d'un écran */
+.cyl{position:absolute;transform-origin:50% 50%;overflow:hidden;isolation:isolate}
+.cyl-in{filter:blur(.45px)}
+.cyl>i{position:absolute;left:0;top:0;transform-origin:0 0;pointer-events:none}
+.cyl>i.cyl-ombre{mix-blend-mode:multiply}
+.cyl>i.cyl-eclat{mix-blend-mode:screen;filter:grayscale(1) brightness(.56) contrast(8)}
+.cyl>b{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(30,14,0,.5),rgba(30,14,0,.1) 16%,rgba(255,255,255,.12) 34%,rgba(255,255,255,0) 50%,rgba(30,14,0,.12) 80%,rgba(30,14,0,.55))}
+
+/* ---------- 7. Mécanique commune ---------- */
+/* .net : au-dessus du grain et de la lumière. Position relative posée sans poids (:where). */
+.net{z-index:60}
+:where(.net){position:relative}
+
+/* Masque : une image ou un aplat dans la forme du verre (--m-symbole est posé par marque.js au chargement). */
+.dans-symbole{-webkit-mask-image:var(--m-symbole);mask-image:var(--m-symbole);-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;aspect-ratio:var(--r-symbole,1)}
+
+/* Pied de planche */
+.pfoot{position:absolute;left:84px;right:84px;bottom:40px;z-index:70;display:grid;grid-template-columns:40% 16.5% 1fr auto;align-items:end;font-family:var(--mono);font-stretch:75%;font-size:11.5px;font-weight:600;letter-spacing:.075em;text-transform:uppercase;line-height:1.45}
+.pfoot svg{height:20px;width:auto}
+.pfoot span{padding-right:16px}
+
+/* Planche : 1400 px de large, hauteur libre. Par défaut sur le sergé bleu ; .clair sur le papier ; .soir sur le mur de cave. */
+.plate{position:relative;width:1400px;overflow:hidden;background:var(--bleu) var(--m-tissu) 0 0/var(--m-cote);color:var(--sur-scene)}
+.plate.clair{background:var(--tuffeau) var(--m-papier) 0 0/var(--m-cote);color:var(--encre);--filet:var(--filet-clair)}
+.plate.soir{background:var(--cave) var(--m-cave) 0 0/var(--m-cote);color:var(--tuffeau)}
+
+/* Icône (avatar des réseaux, favicon) */
+.icone-app{display:grid;place-items:center;border-radius:22.5%;overflow:hidden;flex:none}
+.icone-app svg{width:62%;height:auto}

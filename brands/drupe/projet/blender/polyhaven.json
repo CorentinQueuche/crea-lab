@@ -1,0 +1,5 @@
+{
+  "textures": ["wood_table_001", "plywood", "oak_veneer_01", "white_plaster_02", "beige_wall_001", "concrete_pavement", "hessian_230"],
+  "hdris": ["qwantani_morning_puresky", "autumn_field_puresky"],
+  "resolution_hdri": "2k"
+}

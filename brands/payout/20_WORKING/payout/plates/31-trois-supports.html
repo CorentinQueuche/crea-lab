@@ -1,0 +1,25 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates-b.css"><script src="../brand/marque.js"></script>
+<body><div class="plate grain" id="p" style="background:var(--coffre)"></div>
+<script>
+const A = Marque, SUR = '#F3F6F4';
+const KE = 0.62, KT = 900 * KE / 868, KL = 1232 / 1700, Y1 = 276;
+
+/* Le tableau de bord sur téléphone vient du socle (Marque.screens.bord), mêmes données que desk.bord */
+const leg = (x, y, t, d) => `<div class="pb-abs pb-z" style="left:${x}px;top:${y}px;display:flex;gap:14px;align-items:baseline"><span class="pb-lbl">${t}</span><span class="pb-lbl doux">${d}</span></div>`;
+const Y2 = Y1 + 900 * KE + 96;
+document.getElementById('p').innerHTML = `
+  ${A.entete(A.ENTETE, SUR)}
+  <div class="pb-abs pb-z" style="left:84px;top:104px;width:700px">
+    <div class="pb-lbl doux">La web app · trois supports</div>
+    <div class="pb-t" style="margin-top:16px">Même écran, trois supports.</div>
+  </div>
+  <div class="pb-abs pb-z" style="left:816px;top:122px;width:500px">${A.bicolore(`Un seul tableau de bord, <b>du bureau à la poche.</b> Les mêmes chiffres, <b>au centime près.</b>`, 'font-size:23px;line-height:1.28')}</div>
+  <div class="pb-abs pb-z" style="left:84px;top:${Y1}px"><div class="pb-ecran" style="--k:${KE}">${A.desk.bord()}</div></div>
+  <div class="pb-abs pb-z" style="left:${1316 - 414 * KT}px;top:${Y1}px">${A.phone(A.screens.bord(), KT)}</div>
+  ${leg(84, Y1 + 900 * KE + 22, 'À plat', '1440 × 900')}
+  ${leg(1316 - 414 * KT, Y1 + 900 * KE + 22, 'Téléphone', '390 × 844')}
+  <div class="pb-abs pb-z" style="left:84px;top:${Y2}px">${A.laptop(A.desk.bord(), KL, { url: 'app.payout.fr/tableau-de-bord' })}</div>
+  ${leg(84, Y2 + 1026 * KL + 26, 'Portable', '14 pouces · 16:10')}
+`;
+document.getElementById('p').style.height = Math.ceil(Y2 + 1026 * KL + 26 + 72) + 'px';
+</script></body>

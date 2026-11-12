@@ -1,0 +1,50 @@
+<!doctype html><meta charset="utf-8"><title>Payout — 37, planche-contact</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates-b.css"><script src="../brand/marque.js"></script>
+<style>
+  /* Planche 37 · toutes les planches, numérotées, en sept colonnes (procédé pris à Sui).
+     node tools/shot.mjs plates/37-contact.html out/plates/37-contact.png        (?d3=blender pour un aperçu avant finition) */
+  .ct-g{column-count:7;column-gap:10px}
+  .ct-c{break-inside:avoid;margin-bottom:14px}
+  .ct-c .im{position:relative;border-radius:6px;overflow:hidden;background:var(--ardoise);box-shadow:inset 0 0 0 1px rgba(243,246,244,.07)}
+  .ct-c img{display:block;width:100%;height:auto}
+  .ct-c .lg{display:flex;gap:8px;margin-top:6px;font-family:var(--mono);font-size:8.5px;letter-spacing:.06em;text-transform:uppercase;line-height:1.35}
+  .ct-c .lg b{font-weight:400;color:var(--net)}
+  .ct-c .lg span{opacity:.6}
+  .ct-v{position:absolute;right:6px;top:6px;font-family:var(--mono);font-size:7.5px;letter-spacing:.06em;text-transform:uppercase;padding:2px 5px;border-radius:99px;background:rgba(6,10,8,.72);color:#F3F6F4}
+</style>
+<body><div class="plate" id="p" style="background:var(--coffre);padding-bottom:70px"></div>
+<script>
+const A = Marque, SUR = '#F3F6F4';
+const D3 = new URLSearchParams(location.search).get('d3') || 'final';
+const P = (n) => `../out/plates/${n}.png`, T = (n) => `../out/${D3}/${n}.png`, V = (n) => `../out/motion/${n}.png`;
+/* [numéro, image, titre, genre] — même ordre que presentation.json */
+const L = [
+  ['01', P('01-couverture'), 'Couverture'], ['02', T('02-monument'), 'Le monument', '3D'], ['03', P('03-mosaique'), 'Mosaïque'],
+  ['04', P('04-avant-apres'), 'Avant / après'], ['05', P('05-section-marque'), 'Section · la marque'], ['06', P('06-bento'), 'Bento'],
+  ['07', P('07-construction'), 'Construction'], ['08', V('08-logo'), 'Révélation du logo', 'Vidéo'], ['09', P('09-logo-variantes'), 'Logo et variantes'],
+  ['10', V('10-jauge'), 'La jauge, de 54 à 85', 'Vidéo'], ['10', T('10-jauge'), 'La jauge en volume', '3D'], ['11', P('11-jauge-etats'), 'La jauge et ses états'],
+  ['12', P('12-couleur'), 'Couleur'], ['18', T('18-abribus'), 'Affichage urbain', '3D'], ['13', P('13-degrades'), 'Recette de dégradé'],
+  ['14', P('14-typographie'), 'Typographie'], ['19', T('19-papeterie'), 'Papeterie', '3D'], ['15', P('15-icones'), 'Icônes'],
+  ['16', V('16-detail'), 'Un détail s’allume', 'Vidéo'], ['17', P('17-archive'), 'Archive du système'], ['20', P('20-section-site'), 'Section · le site'],
+  ['21', T('21-portable'), 'Le site sur un portable', '3D · vidéo'], ['22', P('22-pages-site'), 'Pages du site'], ['23', V('23-mur'), 'Mur de pages', 'Vidéo'],
+  ['24', P('24-section-web-app'), 'Section · la web app'], ['25', P('25-cockpit'), 'Le cockpit'], ['26', P('26-ecran-detail'), 'Écran et détail'],
+  ['28', T('28-telephone'), 'Le téléphone', '3D'], ['27', P('27-cra-facture'), 'Du CRA à la facture'], ['28', V('28-telephone'), 'L’écran vivant', 'Vidéo'],
+  ['29', P('29-theme-clair'), 'Thème clair'], ['30', P('30-composants'), 'Composants'], ['32', T('32-stand'), 'Stand de salon', '3D'],
+  ['31', P('31-trois-supports'), 'Trois supports'], ['33', P('33-icone-app'), 'Icône d’application'], ['35', T('35-enseigne'), 'Enseigne', '3D'],
+  ['34', P('34-reseaux'), 'Réseaux sociaux'], ['36', P('36-guide'), 'Guide de marque'], ['38', V('38-derive'), 'Mosaïque en dérive', 'Vidéo'],
+  ['39', P('39-cloture'), 'Clôture'],
+];
+const nv = L.filter((l) => /Vidéo|vidéo/.test(l[3] || '')).length, n3 = L.filter((l) => /3D/.test(l[3] || '')).length;
+document.getElementById('p').innerHTML = `
+  ${A.entete(A.ENTETE, SUR)}
+  <div style="position:relative;z-index:60;padding:150px 84px 0;display:flex;justify-content:space-between;align-items:flex-end">
+    <div><div class="pb-lbl" style="opacity:.6">Planche-contact</div>
+      <div class="h-xl" style="font-size:84px;margin-top:18px">Tout le système,<br>d’un seul regard.</div></div>
+    <div style="display:flex;gap:44px;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;line-height:1.5;text-align:right">
+      ${[[L.length + 1, 'planches'], [nv, 'vidéos'], [n3, 'scènes 3D']].map(([n, t]) => `<div><div style="font-size:44px;letter-spacing:-.04em;color:var(--net);line-height:1">${n}</div><div style="opacity:.6;margin-top:8px">${t}</div></div>`).join('')}
+    </div>
+  </div>
+  <div class="ct-g" style="position:relative;z-index:60;margin:70px 28px 0">${L.map(([n, src, t, g]) =>
+    `<div class="ct-c"><div class="im"><img src="${src}" alt="">${g ? `<span class="ct-v">${g}</span>` : ''}</div><div class="lg"><b>${n}</b><span>${t}</span></div></div>`).join('')}</div>
+`;
+</script></body>

@@ -1,0 +1,51 @@
+<!doctype html><meta charset="utf-8"><title>Custom · 04 · L’existant</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates.css"><script src="../brand/marque.js"></script>
+<style>
+  /* 04 · L'existant. Préfixe q04-. Le mur d'atelier (photo « mur », noir et blanc, assombrie) et les tirages d'origine épinglés, tels quels. */
+  .q04-mur{position:absolute;left:0;right:0;top:0;height:1140px;overflow:hidden;z-index:1}
+  .q04-mur img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) brightness(.34) contrast(1.15)}
+  .q04-mur::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,16,18,.55),rgba(16,16,18,0) 30%,rgba(16,16,18,0) 70%,var(--noir))}
+  .q04-cols{position:absolute;left:84px;right:84px;top:1190px;display:grid;grid-template-columns:repeat(3,1fr);gap:44px;z-index:60}
+  .q04-col h3{margin:14px 0 18px;font-weight:400}
+  .q04-l{display:grid;grid-template-columns:30px 1fr;gap:8px;border-top:1px solid var(--filet);padding:8px 0 9px;font-size:14px;line-height:1.38}
+  .q04-l b{font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.06em;opacity:.5;padding-top:2px}
+  .q04-l em{font-style:normal;font-weight:600}
+  .q04-pied{margin-top:16px;padding-top:12px;border-top:1px solid var(--filet)}
+</style>
+<body><div class="plate grain leger" id="p" style="height:1860px"></div>
+<script>
+const A = Marque, C = A.COULEURS, NB = A.NB;
+/* Un tirage : la photo d'origine telle quelle, un bord de papier, une légende, un bout d'adhésif */
+const T = (nom, leg, x, y, w, rot, sc = 0) => `<div class="pl-tirage" style="left:${x}px;top:${y}px;width:${w}px;transform:rotate(${rot}deg)">
+  <img src="${A.photoURL('origine-' + nom)}" alt=""><div class="pl-leg"><span>${leg}</span><span>2025</span></div>
+  <i class="pl-scotch" style="left:${w / 2 - 37 + sc}px;top:-11px;transform:rotate(${-rot * 2 + (sc ? 4 : -3)}deg)"></i></div>`;
+const L = (items, cls = '') => items.map((t, i) => `<div class="q04-l"><b>${String(i + 1).padStart(2, '0')}</b><span>${t}</span></div>`).join('');
+const garde = ['Le symbole : deux blocs inclinés, décalés', 'Le logotype « Custom.fr »', 'Les couleurs : noir, fluo, blanc, violet, orange', 'Bebas Neue en capitales, un mot surligné', 'La grotesque étirée des grands titres', 'Les sprites en pixels arrondis : moto, course, dunk', 'Les chiffres en blocs (« 24' + NB + 'h »)', 'Les taches d’encre balayées', 'Les croix de repérage', 'Le motif de blocs des cartes de visite', 'Les sangles orange autour des écrans', 'La photo de sport en mouvement', 'La macro d’atelier'];
+const systeme = ['<em>Le Cran</em> : 13,3°, deux blocs, un pas', '<em>Le bloc</em> : rayon de 30' + NB + '%, coin libre', '<em>La coulure</em> : une ou deux par support', '<em>Le piquage</em> : des points de fil sur une courbe', 'Le surligneur : un par titre, −1,6°, une ligne', 'Les proportions : noir 60, fluo 25, blanc 10, atelier 5', 'Les sprites : 8 images par seconde, sans fondu', 'Les repères : croix, mire, codes d’atelier'];
+const ajoute = ['Six traitements photo', 'Les masques : une photo dans le Cran, un bloc, une coulure', 'Les cinq techniques rendues en matière', 'La barre de contrôle aux couleurs de la marque', 'Quatre pictos d’univers en blocs', 'Le gris Craie', 'L’échelle de fluo, de 100 à 900', 'Les supports nouveaux : affiches, véhicule, réseaux'];
+document.getElementById('p').innerHTML = `
+  <div class="q04-mur"><img src="${A.photoURL('mur')}" alt=""></div>
+  ${A.entete()}
+  <div class="pl-intro">
+    <div class="pl-lbl doux">04 · Ouverture · L’existant</div>
+    <div class="t-titre h-120">Ce qui existe,<br>on le ${A.surl('garde.')}</div>
+    <p class="pl-chapo">KLYRA a livré l’identité et le site de Custom en 2025, en quatre semaines. Rien n’est redessiné : on nomme ce qui existe, on le règle, puis on le pousse sur tous les supports.</p>
+  </div>
+  ${T('site-ecrans', 'Le site · écrans', 640, 104, 450, -1.6)}
+  ${T('vignette', 'Vignette du projet', 1116, 86, 228, 2.4, 10)}
+  ${T('affiche-cartes', 'Affiche et cartes', 84, 540, 340, 1.8)}
+  ${T('ski', 'Campagne · ski', 470, 474, 360, -2.2, -14)}
+  ${T('totem', 'Totem', 876, 452, 232, 1.4)}
+  ${T('goodies', 'Goodies', 1132, 404, 240, -1.2)}
+  ${T('sprites', 'Les sprites', 300, 868, 820, 0.7)}
+  <div class="pl-abs pl-z pl-lbl" style="left:1152px;top:612px;width:180px;opacity:.6">Médias d’origine publiés par KLYRA, montrés sans retouche.</div>
+  <div class="pl-abs pl-z" style="left:84px;top:900px;display:flex;flex-direction:column;align-items:flex-start;gap:10px">${A.croix('position:relative;opacity:.6', 18)}<span class="pl-lbl doux">Mur d’atelier<br>7 tirages · 2025</span></div>
+  <div class="q04-cols">
+    <div class="q04-col"><span class="pastille" style="color:#fff">On garde</span><h3 class="t-titre h-56">Tel ${A.surl('quel', 'blanc')}</h3>${L(garde)}</div>
+    <div class="q04-col"><span class="pastille on">On met en système</span><h3 class="t-titre h-56">Nommé et ${A.surl('réglé')}</h3>${L(systeme)}
+      <div class="q04-pied pl-lbl doux">Les noms et les règles chiffrées : proposition de KLYRA, 2026</div></div>
+    <div class="q04-col"><span class="pastille" style="background:${C.violet};color:#fff;box-shadow:none">On ajoute</span><h3 class="t-titre h-56">Poussé plus ${A.surl('loin', 'violet')}</h3>${L(ajoute)}
+      <div class="q04-pied pl-lbl doux">Chaque ajout est signalé comme une extension</div></div>
+  </div>
+  ${A.foot('04 · L’existant', 'Custom · direction artistique')}`;
+</script></body>

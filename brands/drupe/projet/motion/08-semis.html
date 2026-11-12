@@ -1,0 +1,10 @@
+<!doctype html><meta charset="utf-8"><title>Drupe — 08 le semis</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="motion.css">
+<script src="../brand/marque.js"></script><script src="lib.js"></script><script src="scenes.js"></script>
+<body style="background:var(--parche)"><div id="s"></div>
+<script>
+// 1920 × 1080, 8 s, boucle parfaite : node tools/record.mjs motion/08-semis.html out/motion/08-semis.mp4 --w 1920 --h 1080 --fps 30 --dur 8
+// Le semis plein cadre se balance ; une drupe sur six mûrit du Café vert à la Cerise.
+window.seek = Scenes.semis(document.getElementById('s'), { w: 1920, h: 1080, loop: 8 });
+seek(0);
+</script></body>

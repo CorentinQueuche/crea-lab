@@ -1,0 +1,21 @@
+{
+  "projet": "131fb584-70a6-4979-bd5f-0b91ca6c5531",
+  "sons": [
+    {"nom": "musique", "model": "elevenlabs-music", "music_length_ms": 23000, "force_instrumental": true,
+     "prompt": "Instrumental soundtrack for a 23-second premium SaaS product film. Dark, elegant, modern electronic: warm analog pad, soft sub bass, delicate plucked synth arpeggio, tight minimal percussion, glassy bell accents. D minor resolving to F major, 86 BPM. Structure: 0 to 3 seconds, quiet atmospheric intro with one warm bell-like chord swell at second 1, no drums. 3 to 9 seconds, a soft pulsing arpeggio enters with a light kick heartbeat, building gently. 9 to 12.5 seconds, tension, drums thin out, filter rising. At 12.5 seconds, a satisfying deep impact with a bright shimmering chord and the track opens up. 12.5 to 20 seconds, fuller confident uplifting groove, widest from 17 to 20 seconds. 20 to 23 seconds, everything resolves into one long warm final chord that fades out with a clean ending. No vocals. Cinematic, polished, tech product launch mood, never aggressive."},
+    {"nom": "clic", "model": "elevenlabs-sound-effects", "duration_seconds": 0.5, "prompt": "Single crisp soft computer mouse click, close mic, clean, dry, no reverb"},
+    {"nom": "touche", "model": "elevenlabs-sound-effects", "duration_seconds": 0.5, "prompt": "Single soft mechanical keyboard key press, gentle thock, close mic, dry, no reverb"},
+    {"nom": "entree", "model": "elevenlabs-sound-effects", "duration_seconds": 0.5, "prompt": "Single firm keyboard enter key press, deeper thock, close mic, dry, no reverb"},
+    {"nom": "bulle", "model": "elevenlabs-sound-effects", "duration_seconds": 0.5, "prompt": "Short soft pleasant digital interface pop, round bubble blip, clean, modern app notification style"},
+    {"nom": "souffle-entree", "model": "elevenlabs-sound-effects", "duration_seconds": 1.5, "prompt": "Soft airy cinematic whoosh swelling in and rising smoothly, clean, elegant, no impact, no distortion"},
+    {"nom": "souffle-coupe", "model": "elevenlabs-sound-effects", "duration_seconds": 1, "prompt": "Fast smooth transition whoosh passing by, airy and subtle, clean, modern motion design"},
+    {"nom": "souffle-recul", "model": "elevenlabs-sound-effects", "duration_seconds": 2.5, "prompt": "Long deep downward whoosh, camera pulling back into a wide space, spacious soft reverb tail, clean"},
+    {"nom": "montee", "model": "elevenlabs-sound-effects", "duration_seconds": 1, "prompt": "Short tense airy riser building up quickly then cutting off abruptly, clean, modern trailer style, subtle"},
+    {"nom": "impact", "model": "elevenlabs-sound-effects", "duration_seconds": 3, "prompt": "Deep soft cinematic sub boom impact followed by a shimmering airy sparkle tail, clean, elegant, not distorted"},
+    {"nom": "carillon", "model": "elevenlabs-sound-effects", "duration_seconds": 2, "prompt": "Bright elegant interface success chime, three glassy bell notes rising, shimmering reverb tail, positive confirmation"},
+    {"nom": "trace", "model": "elevenlabs-sound-effects", "duration_seconds": 1, "prompt": "Smooth futuristic energy line being drawn, soft rising synth glide with airy sparkle, subtle, clean user interface sound"},
+    {"nom": "crayon", "model": "elevenlabs-sound-effects", "duration_seconds": 1.5, "prompt": "Fine technical pen drawing quick precise lines on paper, light fast sketch strokes, close mic, dry"},
+    {"nom": "compteur", "model": "elevenlabs-sound-effects", "duration_seconds": 1.5, "prompt": "Rapid soft digital counter ticking upward, tiny light clicks starting fast and slowing down to a stop, clean interface sound"},
+    {"nom": "logo", "model": "elevenlabs-sound-effects", "duration_seconds": 3, "prompt": "Warm deep bell chord with soft sub bass, elegant logo reveal sting, two metal rings softly locking together, long smooth reverb tail"}
+  ]
+}

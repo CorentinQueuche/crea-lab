@@ -1,0 +1,10 @@
+{
+  "name": "identite-de-marque",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@fontsource-variable/anybody": "^5.3.0",
+    "@fontsource-variable/hanken-grotesk": "^5.3.0",
+    "playwright-core": "^1.56.0"
+  }
+}

@@ -1,0 +1,38 @@
+<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="art.css"><script src="../brand/marque.js"></script>
+<!-- Stand de salon (scène F, planche 32).
+     #kakemono  850 × 2000 px  kakémono rétroéclairé de 0,85 × 2,0 m
+     #cloison  1500 × 1250 px  cloison latérale imprimée de 3,0 × 2,5 m (1 px = 2 mm)
+     node tools/shot.mjs art/stand.html out/art/kakemono.png --w 1600 --sel "#kakemono"
+     node tools/shot.mjs art/stand.html out/art/cloison.png --w 1600 --sel "#cloison" -->
+<body>
+<div id="kakemono" class="a-v grain" style="width:850px;height:2000px"></div>
+<div id="cloison" class="a-v grain" style="width:1500px;height:1250px"></div>
+<script>
+const A = Marque, C = A.COULEURS, NB = ' ', SUR = '#F3F6F4';
+const $ = (id) => document.getElementById(id);
+
+// Kakémono : la signature, le chiffre de scène, et les bandes qui montent (un seul motif)
+$('kakemono').innerHTML = `
+<div style="position:absolute;left:0;right:0;bottom:0;height:900px">${A.bandes({ n: 13, seed: 4, profil: 'monte' })}</div>
+<div class="a-net" style="position:absolute;inset:0;padding:84px 64px 0">
+  ${A.wordmark(SUR, 'style="width:330px;display:block"')}
+  <div class="a-cap" style="font-size:14px;margin-top:20px;opacity:.62">Le copilote des freelances</div>
+  <div class="a-t" style="font-size:104px;margin-top:150px">Gardez<br>jusqu'à</div>
+  <div class="chiffre" style="font-size:470px;color:${C.net};margin:26px 0 0 -24px;line-height:.82">${A.pcH(85)}</div>
+  <div class="a-t" style="font-size:104px;margin-top:34px">de votre<br>TJM.</div>
+  <div style="display:flex;gap:8px;margin-top:64px;zoom:1.5">${A.pilule('Facturer', true)}${A.pilule('Déclarer')}${A.pilule('Garder')}</div>
+  <div class="a-m" style="font-size:34px;font-weight:500;letter-spacing:-.03em;margin-top:44px;color:${C.net}">payout.fr</div>
+</div>`;
+
+// Cloison : le damier (motif), une phrase bicolore, la signature courte.
+// Le damier est à gauche (côté allée, derrière le comptoir), le texte à droite (côté angle, près du mur d'écran) : rien n'est caché.
+$('cloison').innerHTML = `
+<div style="position:absolute;left:0;width:740px;top:0;bottom:0">${A.damier({ cols: 6, rows: 7, seed: 11, densite: .6 })}</div>
+<div style="position:absolute;right:0;top:0;bottom:0;width:960px;background:linear-gradient(270deg,#060A08 0%,#060A08 80%,rgba(6,10,8,0) 100%)"></div>
+<div class="a-net" style="position:absolute;left:800px;top:0;bottom:0;padding:96px 0 90px 0;display:flex;flex-direction:column;width:640px">
+  <div class="a-cap" style="font-size:15px;opacity:.62">La web app · un cockpit financier</div>
+  <div class="a-t" style="font-size:124px;margin-top:44px">Un cockpit<br>à la place<br>de trois<br>outils.</div>
+  ${A.bicolore('Comptes, CRA, TVA et déclarations au même endroit. <b>Votre CRA devient une facture.</b> <b class="vif">Zéro ressaisie.</b>', 'font-size:34px;line-height:1.18;letter-spacing:-.03em;margin-top:60px;width:560px')}
+  <div style="margin-top:auto;display:flex;align-items:flex-end;gap:36px">${A.wordmark(C.net, 'style="width:300px;display:block"')}<span class="a-m" style="font-size:24px;opacity:.7;padding-bottom:20px">payout.fr</span></div>
+</div>`;
+</script></body>

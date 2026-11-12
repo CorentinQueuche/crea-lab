@@ -1,0 +1,64 @@
+/* PAGES DU GUIDE — gabarit neutre (deck/pages.css).
+   Lu par deck/render.html (PDF), la visionneuse du site (site/presentation.html) et la planche mosaïque (plates/NN-charte.html).
+   Se charge APRÈS brand/marque.css et ne s'écrit qu'avec ses rôles (--scene, --sur-scene, --papier, --encre, --moyen,
+   --sombre, --filet, --font, --titre, --mono) : tant que le socle est gris, les pages sont grises.
+
+   CE QUE LES OUTILS ATTENDENT (à garder) :
+   - .mp-in : le conteneur d'une page, 1280 × 720, overflow hidden, mis à l'échelle par zoom:var(--mp-k). La visionneuse
+     règle --mp-k ; render.html le laisse à 1 (deck.mjs capture 1280 × 720 en ×2).
+   - .mp-page : la page elle-même, en position absolue sur tout le conteneur.
+   - Cadre d'image : .mp-cadre > .mp-repli (z-index 1) puis img.mp-img (z-index 2). L'image passe AU-DESSUS du repli ;
+     si le fichier manque, l'image se retire (onerror dans pages.js) et le repli se voit. Ne pas inverser.
+   - Toutes les classes commencent par mp- : le socle et les planches ont les leurs, les feuilles se chargent ensemble.
+
+   CE QUI EST À RÉÉCRIRE : tout le reste. La grille ci-dessous (marges, colonne de 400 px, bandeau) n'est qu'un repère
+   lisible, pas une mise en page : la composition des pages se décide pour la marque. Les boîtes en pointillés (.mp-vide)
+   marquent ce qui n'est pas encore écrit ; une page livrée n'en contient plus. */
+
+/* ---------- Conteneur et page (mécanique) ---------- */
+.mp-in{position:relative;width:1280px;height:720px;overflow:hidden;zoom:var(--mp-k,1);background:var(--scene);color:var(--sur-scene)}
+.mp-page{--mp-marge:56px;--mp-haut:24px;--mp-ligne:var(--filet);
+  position:absolute;inset:0;overflow:hidden;isolation:isolate;display:flex;flex-direction:column;
+  padding:calc(var(--mp-haut) + 40px) var(--mp-marge) 40px;background:var(--scene);color:var(--sur-scene);
+  font-family:var(--font);font-weight:400;-webkit-font-smoothing:antialiased}
+.mp-page.mp-clair{background:var(--papier);color:var(--encre);--mp-ligne:var(--filet-clair)}
+.mp-page *{box-sizing:border-box}
+
+/* ---------- Bandeau : marque, chapitre, titre, numéro (calculés depuis GuideOrder) ---------- */
+.mp-bande{position:absolute;left:var(--mp-marge);right:var(--mp-marge);top:var(--mp-haut);display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:16px;
+  font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;line-height:1.5;opacity:.7}
+.mp-bande span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mp-bande span:last-child{font-variant-numeric:tabular-nums}
+
+/* ---------- Texte ---------- */
+.mp-lbl{font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;line-height:1.5;opacity:.62;margin:0}
+.mp-titre{font-family:var(--titre);font-weight:600;line-height:1;letter-spacing:-.02em;margin:10px 0 0}
+.mp-chapo{font-size:16px;line-height:1.45;margin:16px 0 0}
+.mp-txt{font-size:13.5px;line-height:1.45;margin:0}
+
+/* ---------- Règles numérotées (numéro calculé) ---------- */
+.mp-regles{margin:24px 0 0;padding:0;list-style:none}
+.mp-regles li{display:grid;grid-template-columns:28px 1fr;padding:8px 0;border-top:1px solid var(--mp-ligne);font-size:13px;line-height:1.4}
+.mp-regles i{font-style:normal;font-family:var(--mono);font-size:10px;line-height:1.9;opacity:.55}
+
+/* ---------- Page type : colonne de texte et zone de démonstration (repère à réécrire) ---------- */
+.mp-corps{flex:1;min-height:0;display:grid;grid-template-columns:400px 1fr;gap:48px}
+.mp-colonne{min-width:0}
+.mp-demo{position:relative;min-width:0;min-height:0;display:grid;grid-template-rows:1fr auto;gap:12px}
+.mp-demo-bas{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center}
+
+/* ---------- Cadre d'image (mécanique : le repli SOUS l'image) ---------- */
+.mp-cadre{position:relative;overflow:hidden;border-radius:6px;background:var(--sombre);isolation:isolate;min-height:0;box-shadow:0 0 0 1px var(--mp-ligne)}
+.mp-repli{position:absolute;inset:0;z-index:1;display:grid;place-items:center;padding:24px;text-align:center}
+.mp-cadre>img.mp-img{position:absolute;inset:0;z-index:2;width:100%;height:100%;object-fit:cover;display:block}
+.mp-leg{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;line-height:1.45;opacity:.62;margin:0}
+
+/* ---------- Canvas rendu par GuideApres (exemple de crochet) ---------- */
+.mp-canvas{display:block;width:120px;height:68px;border-radius:4px;background:var(--sombre)}
+
+/* ---------- Ce qui reste à écrire : pointillés, gris, sans décor ---------- */
+.mp-vide{border:1px dashed currentColor;border-radius:6px;padding:16px 18px;opacity:.6;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;line-height:1.6}
+
+/* ---------- Couverture et dos (repère à réécrire) ---------- */
+.mp-pile{flex:1;display:flex;flex-direction:column;justify-content:space-between;min-height:0}
+.mp-logo svg{display:block;height:36px;width:auto}
