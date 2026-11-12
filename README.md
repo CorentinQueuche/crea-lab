@@ -10,7 +10,7 @@ Les cinq études complètes sont Aube, Drupe, Payout, Custom et Sillon ; Rouleme
 | [Payout](brands/payout/LAB.md) | étude complète | [Guide ou planche](brands/payout/40_DELIVERABLES/payout-guideline/index.html) | 524 | 445.3 |
 | [Custom](brands/custom/LAB.md) | étude complète | [Guide ou planche](brands/custom/40_DELIVERABLES/custom-guideline/index.html) | 704 | 882.0 |
 | [Drupe](brands/drupe/LAB.md) | étude complète | [Guide ou planche](brands/drupe/projet/livrables/site/index.html) | 407 | 303.3 |
-| [Sillon](brands/sillon/LAB.md) | étude complète | [Étude de cas](brands/sillon/40_DELIVERABLES/sillon-presentation/index.html) | 424 | 1310.9 |
+| [Sillon](brands/sillon/LAB.md) | étude complète | [Étude de cas](brands/sillon/40_DELIVERABLES/sillon-presentation/index.html) | 469 | 1352.0 |
 | [Roulement](brands/roulement/LAB.md) | identité et vitrine | [Guide ou planche](brands/roulement/identite.html) | 86 | 167.3 |
 | [Maillon](brands/maillon/LAB.md) | identité et vitrine | [Guide ou planche](brands/maillon/identite.html) | 103 | 170.1 |
 
