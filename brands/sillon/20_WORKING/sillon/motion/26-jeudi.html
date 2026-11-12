@@ -1,0 +1,68 @@
+<!doctype html><meta charset="utf-8"><title>Sillon · 26 · Jeudi</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="motion.css"><link rel="stylesheet" href="sillon.css">
+<script src="../brand/marque.js"></script><script src="../brand/matiere.js"></script><script src="../brand/verse.js"></script><script src="lib.js"></script><script src="sillon.js"></script>
+<style>
+  /* 26 · Jeudi. 9:16, 1080 × 1920, boucle de 6 s (une story). Préfixe v26-.
+     Découpage :
+       0 à 1,2 s     L'affiche du jeudi telle qu'on la connaît : « JEUDI, / ON GOÛTE. », les deux lignes penchées de −12°,
+                     deux verres pleins aux deux tiers (macération, glou). Deux lignes de niveau traversent l'image à la
+                     hauteur exacte de chaque vin.
+       1,2 à 2,6     Les deux mots basculent de −12° à +12° (24° en 1,2 s : le pas de la marque, 12° en 0,6 s), le second
+                     0,18 s après le premier, comme deux verres qu'on lève l'un après l'autre. Le vin reste horizontal,
+                     les lignes de niveau ne penchent jamais : elles montent ou descendent avec le vin, c'est tout.
+       2,6 à 3,9     Tenue.
+       3,9 à 5,3     Retour à −12°, dans le même ordre.
+       5,3 à 6,0     Tenue ; la dernière image raccorde avec la première.
+     La contre-étiquette, droite, est l'instrument de mesure : elle donne la pente du mot et ce que tiennent ses deux verres,
+     à chaque image ; elle porte la mention sanitaire.
+     Idée : tout bouge sauf le vin. Les deux traits horizontaux sont les seules lignes calmes de l'image. */
+  .v26-s{width:1080px;height:1920px}
+  .v26-tete{position:absolute;left:72px;right:72px;top:72px;display:flex;justify-content:space-between;font-size:19px;z-index:30}
+  .v26-voix{position:absolute;left:72px;top:330px;font-size:64px;line-height:1;width:900px;z-index:30}
+  .v26-ce{position:absolute;left:72px;bottom:72px;z-index:30;zoom:1.62}
+  .v26-logo{position:absolute;right:72px;bottom:84px;width:300px;z-index:30}
+  .v26-logo svg{width:100%;height:auto}
+</style>
+<body><div class="vs-scene v26-s fond-bleu lumiere" id="s">
+  <div class="v26-tete t-etq net"><span>Tous les jeudis soir</span><span>Nantes · Olivettes</span></div>
+  <div class="vs-niv" id="n1" style="color:var(--tuffeau);z-index:4"></div><div class="vs-niv" id="n2" style="color:var(--tuffeau);z-index:4"></div>
+  <div class="v26-voix t-sous net">Venez comme<br>vous êtes.</div>
+  <div class="vs-cv" id="l1" style="z-index:10"><canvas></canvas></div>
+  <div class="vs-cv" id="l2" style="z-index:11"><canvas></canvas></div>
+  <div class="v26-ce" id="ce"></div>
+  <div class="v26-logo" id="logo"></div>
+</div>
+<script>
+const A = Marque, NB = A.NB, W = 1080, P0 = A.NIVEAU;
+const LIGNES = [{ texte: 'JE[U]DI,', jus: 'maceration', cy: 850, el: 'l1', n: 'n1' }, { texte: 'ON GO[Û]TE.', jus: 'glou', cy: 1150, el: 'l2', n: 'n2' }];
+let T = 180;
+document.getElementById('logo').innerHTML = A.wordmark(A.COULEURS.tuffeau, '', 'maceration', { detail: true });
+const ce = document.getElementById('ce');
+
+/* la bascule : −12° → +12° → −12°, chaque ligne avec son retard ; une fonction pure du temps, périodique sur 6 s */
+const angle = (t, retard) => { const u = ((t % 6) + 6) % 6 - retard; return -12 + 24 * S.part(u, 1.2, 1.2, S.penche) - 24 * S.part(u, 3.9, 1.2, S.penche); };
+
+window.pret = S.pret().then(() => {
+  /* la taille : la ligne la plus longue tient dans 930 px à plat */
+  const l = Math.max(...LIGNES.map((L) => Verse.mesurer({ texte: L.texte, taille: 100 }).l));
+  T = Math.floor((100 * 930) / l);
+  LIGNES.forEach((L) => { L.o = { texte: L.texte, taille: T, jus: L.jus }; L.box = document.getElementById(L.el); L.cv = L.box.querySelector('canvas'); L.niv = document.getElementById(L.n); L.cl0 = 0; });
+  seek(0);
+});
+
+window.seek = (t) => {
+  let cl = 0, a1 = 0;
+  LIGNES.forEach((L, i) => {
+    const a = angle(t, i * 0.18), P = S.garde(L.o, a, P0);
+    const r = S.vin(L.cv, 'titre', { ...L.o, angle: a, pDe: (q) => P[q.li] ?? 0, cle: JSON.stringify(P) });
+    S.centrer(L.box, r, W / 2, L.cy);
+    const pc = r.poches[0], y = L.cy - r.h / 2 + pc.y;
+    S.niveau(L.niv, y, 0, W, 1);
+    if (!L.cl0) L.cl0 = Verse.mesurer({ ...L.o, p: P0 }).cl; cl += L.cl0; if (!i) a1 = a;
+  });
+  /* la contre-étiquette : la pente du premier mot, mesurée à cette image ; ce que les deux verres tiennent ne change pas (le vin garde son volume) */
+  const pente = Math.round(Math.abs(a1));
+  ce.innerHTML = A.contre({ lot: '26', sujet: 'Le jeudi', lignes: [['Dégustation', 'Le jeudi soir'], ['Le mot penche, le vin', A.deg(0)]], grands: [Verse.cl(cl), A.deg(pente)], voix: A.VOIX.sousVerre, sanitaire: true, l: 300 });
+  A.typo(ce);
+};
+</script></body>

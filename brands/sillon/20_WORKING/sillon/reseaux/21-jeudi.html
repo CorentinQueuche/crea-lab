@@ -1,0 +1,35 @@
+<!doctype html><meta charset="utf-8"><title>Sillon · modèle 21 · le jeudi</title><meta name="robots" content="noindex">
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="reseaux.css">
+<script src="../brand/marque.js"></script><script src="../brand/matiere.js"></script><script src="../brand/verse.js"></script><script src="reseaux.js"></script>
+<style>
+  /* Modèle 21 · le jeudi. L'annonce de la dégustation, chaque semaine : la phrase change, le verre reste.
+     La phrase monte de 12° en pierre de tuffeau ; le grand verre penche de 12° dans l'autre sens, coupé par le bas du
+     cadre, son vin d'aplomb ; la contre-étiquette dit le jus du soir et porte la mention sanitaire. Préfixe r21-. */
+</style>
+<body><div id="p"></div>
+<script>
+/* L'adresse :
+     texte   la phrase de la semaine, verres entre crochets, « / » pour couper   (défaut : JE[U]DI, ON GO[Û]TE.)
+     jus     le jus du verre (maceration, glou, paille) ; une liste « a|b » donne un jus par verre de la phrase
+     niveau  le vin dans le grand verre, de 0 à 1 (défaut 0,7)       photo   une photo de la marque dans le verre (jeudi, depot…)
+     fond    bleu ou cave (défaut bleu)       voix   la phrase de la contre-étiquette       format   4x5 ou 9x16
+   Exemple : reseaux/21-jeudi.html?texte=À JE[U]DI.&jus=paille&format=9x16 */
+const A = Marque, R = Reseaux, NB = A.NB;
+const P = R.params({ texte: A.PHRASES.jeudi, jus: 'maceration', niveau: '0.7', fond: 'bleu', voix: A.VOIX.carte, tete: 'Tous les jeudis soir', format: '4x5' });
+const el = document.getElementById('p'), F = R.cadre(el, P.format, (P.fond === 'cave' ? 'soir' : '') + ' lumiere'), H = F.nom === '9x16';
+const JUS = R.liste(P.jus, ['maceration']).filter((j) => A.ECHELLES[j]), J0 = JUS[0] || 'maceration', fond = P.fond === 'cave' ? 'cave' : 'bleu';
+const S = F.sure;
+
+/* les places, dans le cadre : le titre en haut, le grand verre en bas à droite, la contre-étiquette en bas à gauche */
+const G = H ? { titre: { x: S.x, y: S.y + 70, l: S.l, h: 640 }, verre: { cx: 700, cy: 1468, ech: 560 }, ce: `left:${S.x}px;bottom:${F.h - S.y - S.h}px` }
+            : { titre: { x: S.x, y: S.y + 64, l: S.l, h: 520 }, verre: { cx: 712, cy: 1112, ech: 470 }, ce: `left:${S.x}px;bottom:${F.h - S.y - S.h}px` };
+
+el.innerHTML = R.tete(F, P.tete, A.LIEU) +
+  R.contre({ lot: '', sujet: 'Dégustation au verre', lignes: [['Le jus du soir', A.NOMS[J0]]], grands: [`12,5${NB}cl`, A.deg(12)], jus: J0, voix: P.voix, sanitaire: true, l: 224 }, 2.15, G.ce) +
+  (P.guides ? R.guides(el, F) : '');
+
+window.pret = Verse.pret().then(() => {
+  R.titre(el, { texte: P.texte, boite: G.titre, jus: JUS, fond, maxL: H ? 4 : 3, vertical: 'centre' });
+  return R.verre(el, { ...G.verre, angle: A.DEGRE, jus: J0, p: R.nombre(P.niveau, 0.7), image: P.photo, fond });
+}).then(() => A.typo(el));
+</script></body>

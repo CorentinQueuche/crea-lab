@@ -1,0 +1,33 @@
+<!doctype html><meta charset="utf-8"><title>Sillon · 21 · Le jeudi, en story</title><meta name="robots" content="noindex">
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates.css"><link rel="stylesheet" href="reseaux.css">
+<script src="../brand/marque.js"></script><script src="../brand/matiere.js"></script><script src="../brand/verse.js"></script>
+<style>
+  /* 21 · Le jeudi. Une frise : les stories de six jeudis à la suite, sur le mur de cave, coupées aux deux bords (la
+     série continue). Une barre de story inventée et générique : des segments, l'avatar, le nom. La quatrième montre sa
+     zone sûre. Dessous, un fil : à chaque jeudi, le même verre, un autre jus. Préfixe r21-. */
+  #p{height:1010px}
+</style>
+<body><div class="plate soir lumiere" id="p"></div>
+<script>
+const A = Marque, C = A.COULEURS, el = document.getElementById('p');
+const IMG = '../out/reseaux/';
+/* les six jeudis : l'image rendue par le modèle, et le jus du grand verre */
+const S = [
+  { f: '21-jeudi-9x16-c.png', jus: 'glou' }, { f: '21-jeudi-9x16-a.png', jus: 'maceration' }, { f: '21-jeudi-9x16-b.png', jus: 'paille', note: 'une photo dans le verre' },
+  { f: '_planche/21-jeudi-9x16-d.png', jus: 'maceration', note: 'fond de cave' }, { f: '_planche/21-jeudi-9x16-f.png', jus: 'glou', note: 'zone sûre', guides: true }, { f: '_planche/21-jeudi-9x16-e.png', jus: 'paille' } ];
+const L = 290, Hs = Math.round((L * 1920) / 1080), X0 = 84 - L - 24, Y0 = 138;
+const barre = (n) => `<div class="rs-barre">${S.map((_, i) => `<i class="${i <= n ? 'v' : ''}"></i>`).join('')}</div><div class="rs-qui">${A.icone(24, C.bleu, C.tuffeau)}Sillon <span>jeudi</span></div>`;
+const xs = S.map((_, i) => X0 + i * (L + 24));
+el.innerHTML = `<div class="net" style="position:absolute;inset:0">
+    <div class="pl-lbl t-etq">21 · Le jeudi</div><div class="pl-lbl-d t-etq">Modèle · story 1080 × 1920 · une par semaine</div>
+    ${S.map((s, i) => `<div class="rs-ecran" style="left:${xs[i]}px;top:${Y0}px;width:${L}px;height:${Hs}px"${i === 0 || i === S.length - 1 ? ' data-voulu' : ''}><img src="${IMG + s.f}" alt="">${barre(i)}</div>
+      ${i > 0 && i < S.length - 1 ? `<div class="rs-leg t-etq" style="left:${xs[i]}px;top:${Y0 + Hs + 20}px">Jeudi ${i + 1}${s.note ? ` · <span style="color:${C.paille}">${s.note}</span>` : ''}</div>` : ''}`).join('')}
+    <div class="r21-cote" style="left:${xs[4] + L - 58}px;top:${Y0 + Math.round((250 * Hs) / 1920) - 19}px" data-voulu>250 px</div>
+    <div class="r21-cote" style="left:${xs[4] + L - 58}px;top:${Y0 + Math.round((1580 * Hs) / 1920) + 5}px" data-voulu>340 px</div>
+    <div class="r21-fil" style="top:${Y0 + Hs + 104}px"></div>
+    ${S.map((s, i) => `<div class="r21-cran" style="left:${xs[i] + L / 2}px;top:${Y0 + Hs + 80}px">${A.verre({ taille: 40, c: C.tuffeau, jus: s.jus, angle: A.DEGRE })}</div>`).join('')}
+    <div class="pl-voix" style="position:absolute;left:84px;top:${Y0 + Hs + 160}px;color:${C.tuffeau}">La phrase change. Le verre reste.</div>
+    <div class="pl-pied t-etq"><span>21 · Le jeudi</span><span>Une story chaque jeudi : la phrase change, le verre reste, la mention a sa place</span><span>2026</span></div>
+  </div>`;
+window.pret = Promise.all([...el.querySelectorAll('img')].map((i) => i.decode().catch(() => 0)));
+</script></body>

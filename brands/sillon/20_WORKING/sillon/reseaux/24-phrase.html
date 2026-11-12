@@ -1,0 +1,69 @@
+<!doctype html><meta charset="utf-8"><title>Sillon · modèle 24 · une phrase</title><meta name="robots" content="noindex">
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="reseaux.css">
+<script src="../brand/marque.js"></script><script src="../brand/matiere.js"></script><script src="../brand/verse.js"></script><script src="reseaux.js"></script>
+<style>
+  /* Modèle 24 · une phrase. Une phrase de comptoir seule, aussi grande que le cadre le permet, penchée de 12°. Pas de
+     verre : la trace qu'il a laissée, un rond de vin sur le papier (ou sur la nappe), dans le jus choisi. La
+     contre-étiquette dit où la phrase est écrite chez Sillon. Préfixe r24-. */
+  .r24-bloc{position:absolute;z-index:40;transform-origin:50% 50%}
+  .r24-bloc .rs-voix{white-space:normal}
+  .r24-rond{position:absolute;z-index:45;mix-blend-mode:multiply;pointer-events:none}
+  .r24-rond svg{width:100%;height:100%;overflow:visible}
+  .plate.r24-craie{background:var(--craie) var(--m-craie) 0 0/var(--m-cote);color:var(--cave)}
+</style>
+<body><div id="p"></div>
+<script>
+/* L'adresse :
+     voix    une phrase de la marque par son nom : dos, vitrine, nappe, colis, sousVerre, carte (défaut : dos)
+     texte   ou une phrase libre (elle remplace voix)        ou   où elle est écrite, pour la contre-étiquette
+     fond    tuffeau, bleu ou craie (défaut : tuffeau)      jus   la couleur du rond (maceration, glou, paille)
+     format  4x5 ou 9x16
+   Exemple : reseaux/24-phrase.html?voix=nappe&fond=bleu&jus=glou&format=9x16 */
+const A = Marque, R = Reseaux, C = A.COULEURS;
+const OU = { dos: 'Au dos de la bouteille', vitrine: 'Sur l’affiche, en vitrine', nappe: 'Dans la nappe', colis: 'Dans le colis du mois', sousVerre: 'Sur le sous-verre', carte: 'Sur la carte du jeudi' };
+const P = R.params({ voix: 'dos', fond: 'tuffeau', jus: 'maceration', format: '4x5' });
+const fond = ['tuffeau', 'bleu', 'craie'].includes(P.fond) ? P.fond : 'tuffeau', clair = fond !== 'bleu', J = A.ECHELLES[P.jus] ? P.jus : 'maceration', E = A.ECHELLES[J];
+const el = document.getElementById('p'), F = R.cadre(el, P.format, `${{ tuffeau: 'clair', craie: 'r24-craie', bleu: '' }[fond]} lumiere`), H = F.nom === '9x16', S = F.sure;
+const TEXTE = P.texte || A.VOIX[P.voix] || A.VOIX.dos, ou = P.ou || OU[P.voix] || 'Au comptoir';
+const encre = clair ? C.bleu : C.tuffeau;
+
+/* le rond : un verre posé puis relevé. Un anneau irrégulier (le bord du pied, plus foncé où le vin a séché), un voile
+   à l'intérieur, et un second anneau à moitié, là où on l'a reposé. Fondu en « multiply » : il teinte le papier. */
+const rond = (d, x, y, rot, id) => `<div class="r24-rond" style="left:${x - d / 2}px;top:${y - d / 2}px;width:${d}px;height:${d}px"><svg viewBox="-110 -110 220 220">
+  <defs>
+    <filter id="${id}" x="-25%" y="-25%" width="150%" height="150%"><feTurbulence type="fractalNoise" baseFrequency=".03" numOctaves="3" seed="11" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="11" xChannelSelector="R" yChannelSelector="G"/><feGaussianBlur stdDeviation=".2"/></filter>
+    <filter id="${id}b" x="-25%" y="-25%" width="150%" height="150%"><feTurbulence type="fractalNoise" baseFrequency=".03" numOctaves="3" seed="11" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="11" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feTurbulence type="fractalNoise" baseFrequency=".05" numOctaves="2" seed="5" result="m"/><feColorMatrix in="m" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3.4 -1.15" result="ma"/>
+      <feComposite in="d" in2="ma" operator="in" result="v"/><feGaussianBlur in="v" stdDeviation=".3"/></filter>
+    <radialGradient id="${id}v"><stop offset="0" stop-color="${E[1]}" stop-opacity=".05"/><stop offset=".78" stop-color="${E[1]}" stop-opacity=".13"/><stop offset=".95" stop-color="${E[2]}" stop-opacity=".3"/><stop offset="1" stop-color="${E[2]}" stop-opacity="0"/></radialGradient></defs>
+  <g filter="url(#${id})"><circle r="93" fill="url(#${id}v)"/><circle r="92.5" fill="none" stroke="${E[3]}" stroke-width="2.6" stroke-opacity=".5"/></g>
+  <g filter="url(#${id}b)"><circle r="92" fill="none" stroke="${E[3]}" stroke-width="7" stroke-opacity=".85"/><circle r="94.5" fill="none" stroke="${E[4]}" stroke-width="2" stroke-opacity=".7"/>
+    <path d="M 92 0 A 92 92 0 0 1 -40 83" transform="translate(30 -16)" fill="none" stroke="${E[3]}" stroke-width="5" stroke-opacity=".75"/></g></svg></div>`;
+
+const G = H ? { boite: { x: S.x, y: S.y + 80, l: S.l, h: 900 }, rond: [640, 790, 1130, -20], ce: `left:${S.x}px;bottom:${F.h - S.y - S.h}px` }
+            : { boite: { x: S.x, y: S.y + 70, l: S.l, h: 760 }, rond: [520, 800, 860, -20], ce: `left:${S.x}px;bottom:${F.h - S.y - S.h}px` };
+el.innerHTML = R.tete(F, 'Phrase de comptoir', A.LIEU) + rond(G.rond[0], G.rond[1], G.rond[2], G.rond[3], 'r24a') +
+  `<div class="r24-bloc" id="bloc"><div class="rs-voix" id="voix" style="color:${encre}">${TEXTE.replace(/([.!?]) (?=\S)/g, '$1<br>')}</div></div>` +
+  R.contre({ nom: true, lot: '', lignes: [['Écrit', ou]], sanitaire: true, l: 236, c: 'bleu' }, 2.15, G.ce) + (P.guides ? R.guides(el, F) : '');
+el.style.color = encre;
+
+/* La phrase prend la plus grande taille qui tient dans sa boîte une fois penchée. On essaie plusieurs largeurs de
+   bloc (la césure équilibrée fait le reste) ; aucun mot ne doit dépasser son bloc. */
+window.pret = document.fonts.ready.then(() => document.fonts.load('800 100px Anybody')).then(() => {
+  const b = document.getElementById('bloc'), v = document.getElementById('voix'), a = (A.DEGRE * Math.PI) / 180, B = G.boite;
+  const essai = (W, f) => { v.style.width = W + 'px'; v.style.fontSize = f + 'px'; const w = v.offsetWidth, h = v.offsetHeight; return { ok: v.scrollWidth <= W + 1 && w * Math.cos(a) + h * Math.sin(a) <= B.l && w * Math.sin(a) + h * Math.cos(a) <= B.h, w, h }; };
+  let best = null;
+  for (let r = 0.55; r <= 1.0001; r += 0.05) { const W = Math.round((B.l / Math.cos(a)) * r * 0.98); let lo = 30, hi = 260;
+    for (let i = 0; i < 16; i++) { const m = (lo + hi) / 2; if (essai(W, m).ok) lo = m; else hi = m; }
+    if (!best || lo > best.f) best = { W, f: Math.floor(lo) }; }
+  const e = essai(best.W, best.f);
+  b.style.left = B.x + B.l / 2 - e.w / 2 + 'px'; b.style.top = B.y + B.h / 2 - e.h / 2 + 'px'; b.style.transform = `rotate(${-A.DEGRE}deg)`;
+  R.controle.push({ quoi: 'phrase', texte: TEXTE, corps: best.f, tient: true });
+  /* le rond se pose au bout de la phrase, à cheval sur son dernier mot (le verre posé après l'avoir écrite), sans
+     toucher la contre-étiquette : la mention reste nette */
+  const rg = document.createRange(); rg.selectNodeContents(v); const rs = [...rg.getClientRects()].filter((r) => r.width > 2), Q = el.getBoundingClientRect();
+  const der = rs.reduce((m, r) => (r.bottom > m.bottom ? r : m)), d = G.rond[0], ce = el.querySelector('.rs-ce').getBoundingClientRect(), rd = el.querySelector('.r24-rond');
+  const cx = Math.min(der.right - Q.left - d * 0.2, F.l - d * 0.3), cy = Math.min(der.bottom - Q.top + d * 0.04, ce.top - Q.top - d * 0.5 - 16);
+  rd.style.left = cx - d / 2 + 'px'; rd.style.top = cy - d / 2 + 'px';
+}).then(() => A.typo(el));
+</script></body>

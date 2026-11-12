@@ -1,0 +1,32 @@
+<!doctype html><meta charset="utf-8"><title>Sillon · 04 · Le bleu de travail</title><meta name="robots" content="noindex">
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates.css">
+<script src="../brand/marque.js"></script><script src="../brand/matiere.js"></script><script src="../brand/verse.js"></script>
+<style>
+  /* 04 · Le bleu de travail. La couleur de la marque est une veste : on la montre portée. Le logotype y est brodé en deux
+     fils (tuffeau pour les lettres, macération pour le vin), et les deux bouteilles reçoivent leur étiquette, posée dans
+     l'axe de chacune ; les éclats du verre repassent par-dessus. Préfixe p04-. */
+  .p04-tons{display:grid;grid-template-columns:repeat(5,1fr);height:92px}
+  .p04-tons>div{display:flex;flex-direction:column;justify-content:flex-end;padding:8px 9px}
+</style>
+<body><div class="plate clair" id="p"></div>
+<script>
+const A = Marque, C = A.COULEURS, NB = A.NB, E = A.ECHELLES.bleu, NOMS_BLEU = ['Nuit de cave', 'Veste neuve', 'Bleu de travail', 'Veste portée', 'Bleu lavé'];
+const clair = (h) => A.contraste(h, C.cave) > A.contraste(h, C.tuffeau);
+/* une étiquette collée sur chaque bouteille, dans son axe (relevé sur la photo) */
+const etq = (x, y, l, rot) => A.surVerre('caviste', A.etiquette({ jus: 'maceration', degre: 12, l }), { x, y, l, h: l * 1.3, rot, clarte: 1.8, ombre: 0.65, creux: 0.09 });
+const habits = `<div style="left:92px;top:585px;transform:rotate(-5deg);transform-origin:0 0">${A.brode({ l: 262 })}</div>` + etq(932, 1262, 212, -2) + etq(1236, 1134, 190, -30.7);
+
+document.getElementById('p').innerHTML =
+  A.scene('caviste', habits + `<div class="t-etq pl-sur-photo" style="left:111px;top:1830px;font-size:15px">04 · Le bleu de travail</div>`, { l: 1400, cadre: [0, 140, 1856, 1760] }) +
+  `<div class="pl-bande fond-tuffeau lumiere"><div class="net" style="grid-template-columns:520px 1fr">
+     <div class="pl-plan">${A.scene('caviste', habits, { l: 520, cadre: [50, 500, 400, 263] })}<span class="t-etq">Gros plan · brodé en deux fils</span></div>
+     <div>
+       <div class="pl-voix" style="color:${C.bleu}">Le bleu vient<br>de la veste.</div>
+       <p class="t-chapo" style="max-width:560px;margin:22px 0 30px">Pas un bleu d’écran : celui d’une veste de travail, neuve puis lavée cent fois. Le logotype y est brodé en deux fils, tuffeau pour les lettres, macération pour le vin.</p>
+       <div class="p04-tons">${E.map((h, i) => `<div class="t-etq" style="background:${h};color:${clair(h) ? C.cave : C.tuffeau}"><span>${NOMS_BLEU[i]}</span><span style="opacity:.75">${h}</span></div>`).join('')}</div>
+     </div></div>
+     <div class="pl-pied t-etq"><span>04 · Le bleu de travail</span><span>${A.DESCRIPTEUR} · ${A.LIEU}</span><span>2026</span></div>
+   </div>`;
+/* Plan large : les petites mentions des étiquettes se lisent à peine, comme sur une vraie photo. Le gros plan est la scène 34. */
+document.querySelectorAll('#p .cyl').forEach((e) => e.setAttribute('data-voulu', ''));
+</script></body>

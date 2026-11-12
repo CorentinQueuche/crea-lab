@@ -274,46 +274,14 @@
     {
       "file": "brands/drupe/projet/site/presentation.html",
       "target": "deck/drupe-guide-de-marque.pdf"
-    },
-    {
-      "file": "brands/sillon/site/index.html",
-      "target": "assets/marque.css"
-    },
-    {
-      "file": "brands/sillon/site/index.html",
-      "target": "assets/marque.js"
-    },
-    {
-      "file": "brands/sillon/site/index.html",
-      "target": "assets/pages.js"
-    },
-    {
-      "file": "brands/sillon/site/index.html",
-      "target": "etude-de-cas.html"
-    },
-    {
-      "file": "brands/sillon/site/presentation.html",
-      "target": "assets/marque.css"
-    },
-    {
-      "file": "brands/sillon/site/presentation.html",
-      "target": "assets/pages.css"
-    },
-    {
-      "file": "brands/sillon/site/presentation.html",
-      "target": "assets/marque.js"
-    },
-    {
-      "file": "brands/sillon/site/presentation.html",
-      "target": "assets/pages.js"
     }
   ],
   "missing_presentation_inputs": [],
   "syntax_errors": [],
-  "checked_links": 1221,
-  "html_files": 212,
-  "python_files": 109,
-  "js_files": 96,
+  "checked_links": 1433,
+  "html_files": 241,
+  "python_files": 113,
+  "js_files": 99,
   "large_files": [],
   "secret_files": []
 }

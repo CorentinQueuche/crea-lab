@@ -1,0 +1,40 @@
+<!doctype html><meta charset="utf-8"><title>Sillon · 12 · La vitrine à niveau</title><meta name="robots" content="noindex">
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates.css"><link rel="stylesheet" href="monde.css">
+<script src="../brand/marque.js"></script><script src="../brand/matiere.js"></script><script src="../brand/verse.js"></script>
+<style>
+  /* 12 · La vitrine à niveau. Plein cadre, sans un mot. La vitre est remplie aux deux tiers d'un film orange
+     translucide : l'image à niveau, posée pour de vrai. Sa surface est une seule horizontale qui traverse la vitre et
+     la porte ; elle remonte en ménisque contre chaque montant. L'enseigne est peinte à même le bois.
+     Tout est placé dans les pixels de la photo (vitrine.jpg, 2400 × 1610), relevés sur une grille à taille réelle :
+     vitre 583-1445 × 365-1105, porte 1530-1788 × 555-1108, enseigne 795-1605 × 138-290. Préfixe m12-. */
+  .m12-film{left:0;top:0;width:2400px;height:1610px;overflow:visible}
+  .m12-mult{mix-blend-mode:multiply}
+  .m12-peint{mix-blend-mode:multiply;display:grid;place-items:center;height:100%}
+  .m12-num{position:absolute;right:28px;bottom:22px;z-index:70;color:var(--tuffeau);opacity:.9}
+</style>
+<body><div class="plate" id="p"></div>
+<script>
+const A = Marque, C = A.COULEURS, E = A.ECHELLES.maceration;
+/* Le niveau : deux tiers de la vitre (365 à 1105) depuis le bas → y = 612. La porte prend la même horizontale. */
+const NIV = 612, MEN = [26, 13];
+/* le film est coupé à quelques millimètres du cadre : un liseré de verre clair reste visible sur trois côtés */
+const vitres = [[583, 365, 1445, 1105], [1530, 555, 1788, 1108]].map(([a, b, c, d]) => [a + 6, b, c - 6, d - 6]);
+/* quelques bulles d'air restées sous le film, à la raclette près */
+const bulles = [[702, 655, 7], [716, 668, 4], [1188, 980, 6], [1291, 702, 5], [1611, 842, 6], [1622, 851, 3.5], [948, 1050, 4.5]];
+const forme = ([x0, , x1, y1]) => `M${x0},${NIV - MEN[1]} Q${x0},${NIV} ${x0 + MEN[0]},${NIV} L${x1 - MEN[0]},${NIV} Q${x1},${NIV} ${x1},${NIV - MEN[1]} L${x1},${y1} L${x0},${y1} Z`;
+const surface = ([x0, , x1]) => `M${x0 + 2},${NIV - MEN[1] + 3} Q${x0 + 2},${NIV} ${x0 + MEN[0]},${NIV} L${x1 - MEN[0]},${NIV} Q${x1 - 2},${NIV} ${x1 - 2},${NIV - MEN[1] + 3}`;
+const sv = (cls, corps) => `<svg class="m12-film ${cls}" viewBox="0 0 2400 1610" xmlns="http://www.w3.org/2000/svg">${corps}</svg>`;
+const grad = (id, stops) => `<defs><linearGradient id="${id}" x1="0" y1="${NIV}" x2="0" y2="1108" gradientUnits="userSpaceOnUse">${stops.map(([o, c]) => `<stop offset="${o}" stop-color="${c}"/>`).join('')}</linearGradient></defs>`;
+/* trois couches : la teinte du film (multiply, il colore ce qu'on voit à travers), sa propre lumière (le film renvoie
+   un peu du jour, sinon il serait noir devant une boutique sombre), puis le bord du film, net, avec son liseré */
+const film = sv('m12-mult', grad('g', [[0, E[0]], [0.07, E[1]], [0.42, E[2]], [1, E[3]]]) + vitres.map((v) => `<path d="${forme(v)}" fill="url(#g)"/>`).join('')) +
+  sv('', grad('h', [[0, E[1]], [0.5, E[2]], [1, E[2]]]) + `<g opacity=".24">${vitres.map((v) => `<path d="${forme(v)}" fill="url(#h)"/>`).join('')}</g>` +
+    bulles.map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${r}" fill="#FFE9C8" opacity=".32"/><circle cx="${x - r * 0.35}" cy="${y - r * 0.35}" r="${r * 0.32}" fill="#fff" opacity=".85"/><circle cx="${x}" cy="${y}" r="${r}" fill="none" stroke="#8A3A09" stroke-width="1" opacity=".35"/>`).join('') +
+    vitres.map((v) => `<path d="${surface(v)}" fill="none" stroke="#FFF6E4" stroke-width="3.2" opacity=".9"/><path d="${surface(v)}" transform="translate(0 5)" fill="none" stroke="${E[3]}" stroke-width="4" opacity=".35"/>`).join(''));
+/* les reflets de la rue passent par-dessus le film (il est collé à l'intérieur de la vitre) */
+const reflets = vitres.map(([x0, y0, x1, y1]) => A.reflet('vitrine', x0, y0, x1 - x0, y1 - y0, { force: 0.85 })).join('');
+/* l'enseigne : le logotype peint au bleu de nuit, le creux au jus de la maison ; la peinture prend le bois (multiply, usure) */
+const enseigne = A.pose(`<div class="m12-peint usure">${A.wordmark('#16298A', 'style="width:600px;height:auto"', 'maceration', { detail: true })}</div>`, { l: 760, h: 140, quad: [[820, 146], [1580, 146], [1580, 284], [820, 284]], fusion: 'multiply' });
+document.getElementById('p').innerHTML = A.scene('vitrine', film + reflets + enseigne) + `<div class="m12-num mo-num" data-voulu>12</div>`;
+window.pret = Verse.tout();
+</script></body>

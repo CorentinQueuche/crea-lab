@@ -6875,41 +6875,6 @@
     "reason": "rendu intermédiaire régénérable"
   },
   {
-    "brand": "sillon",
-    "path": "node_modules",
-    "reason": "cache, outil local ou rendu intermédiaire"
-  },
-  {
-    "brand": "sillon",
-    "path": "_prep",
-    "reason": "cache, outil local ou rendu intermédiaire"
-  },
-  {
-    "brand": "sillon",
-    "path": "out/_avant-apres.jpg",
-    "reason": "rendu intermédiaire régénérable"
-  },
-  {
-    "brand": "sillon",
-    "path": "out/_ecart.jpg",
-    "reason": "rendu intermédiaire régénérable"
-  },
-  {
-    "brand": "sillon",
-    "path": "out/_mesure-pieces.jpg",
-    "reason": "rendu intermédiaire régénérable"
-  },
-  {
-    "brand": "sillon",
-    "path": "out/_mesure.jpg",
-    "reason": "rendu intermédiaire régénérable"
-  },
-  {
-    "brand": "sillon",
-    "path": "out/_test.png",
-    "reason": "rendu intermédiaire régénérable"
-  },
-  {
     "brand": "roulement",
     "path": "rendu",
     "reason": "cache, outil local ou rendu intermédiaire"
@@ -6958,5 +6923,70 @@
     "brand": "maillon",
     "path": "presentation/maillon-film-v3-ancienne-ouverture.mp4",
     "reason": "ancienne variante ou aperçu"
+  },
+  {
+    "brand": "sillon",
+    "path": "node_modules",
+    "reason": "cache, outil local ou rendu intermédiaire"
+  },
+  {
+    "brand": "sillon",
+    "path": ".claude",
+    "reason": "configuration locale d’agents"
+  },
+  {
+    "brand": "sillon",
+    "path": "_prep",
+    "reason": "cache, outil local ou rendu intermédiaire"
+  },
+  {
+    "brand": "sillon",
+    "path": "out/_apercus",
+    "reason": "rendu intermédiaire régénérable"
+  },
+  {
+    "brand": "sillon",
+    "path": "out/_zones",
+    "reason": "rendu intermédiaire régénérable"
+  },
+  {
+    "brand": "sillon",
+    "path": "out/outil",
+    "reason": "rendu intermédiaire régénérable"
+  },
+  {
+    "brand": "sillon",
+    "path": "out/blender",
+    "reason": "rendu intermédiaire régénérable"
+  },
+  {
+    "brand": "sillon",
+    "path": "out/guide",
+    "reason": "rendu intermédiaire régénérable"
+  },
+  {
+    "brand": "sillon",
+    "path": "out/_test.png",
+    "reason": "rendu intermédiaire régénérable"
+  },
+  {
+    "brand": "sillon",
+    "path": "out/_avant-apres.jpg",
+    "reason": "rendu intermédiaire régénérable"
+  },
+  {
+    "brand": "sillon",
+    "path": "out/_ecart.jpg",
+    "reason": "rendu intermédiaire régénérable"
+  },
+  {
+    "brand": "sillon",
+    "path": "out/_mesure.jpg",
+    "reason": "référence tierce, non nécessaire aux rendus"
+  },
+  {
+    "brand": "sillon",
+    "path": "out/_mesure-pieces.jpg",
+    "reason": "référence tierce, non nécessaire aux rendus"
   }
 ]

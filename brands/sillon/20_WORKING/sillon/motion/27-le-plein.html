@@ -1,0 +1,83 @@
+<!doctype html><meta charset="utf-8"><title>Sillon · 27 · Le Plein</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="motion.css"><link rel="stylesheet" href="sillon.css">
+<script src="../brand/marque.js"></script><script src="../brand/matiere.js"></script><script src="../brand/verse.js"></script><script src="lib.js"></script><script src="sillon.js"></script>
+<style>
+  /* 27 · Le Plein (l'abonnement). 9:16, 1080 × 1920, 7,5 s. Préfixe v27-.
+     Découpage :
+       0 à 0,3 s     Trois verres de pierre, vides, sur le mur de cave. En bas, la contre-étiquette du colis.
+       0,3 à 1,5     Premier versement : la macération (trouble, son dépôt tombe au fond). Son nom s'écrit dessous.
+       1,45 à 2,65   Deuxième : le glou (limpide). Le filet part du même haut, une colonne plus loin : le geste du service.
+       2,6 à 3,8     Troisième : la paille (elle perle, un cordon de bulles se forme contre les parois).
+       3,85 à 4,35   Le titre se pose en haut, de gauche à droite : « LE PLEIN DU MOIS. », son verre vide.
+       4,3 à 5,3     Le quatrième versement remplit le verre du titre : le plein est fait.
+       5,3 à 7,5     Tenue. La contre-étiquette du colis (3 × 75 cl, 225 cl, la mention sanitaire) est là du début à la fin.
+     Idée : l'abonnement se raconte comme un service au comptoir, un verre après l'autre, et le titre est le dernier creux. */
+  .v27-s{width:1080px;height:1920px}
+  .v27-tete{position:absolute;left:72px;right:72px;top:72px;display:flex;justify-content:space-between;font-size:19px;z-index:30}
+  .v27-lab{position:absolute;width:300px;text-align:center;z-index:30}
+  .v27-lab .n{font-size:46px}
+  .v27-lab .d{font-size:21px;line-height:1.25;margin-top:10px;opacity:.82}
+  .v27-lab .g{font-size:17px;margin-top:8px;opacity:.9}
+  .v27-ce{position:absolute;left:72px;bottom:72px;z-index:30;zoom:1.62}
+  .v27-logo{position:absolute;right:72px;bottom:84px;width:300px;z-index:30}
+  .v27-logo svg{width:100%;height:auto}
+  .v27-titre{position:absolute;z-index:10}
+</style>
+<body><div class="vs-scene v27-s fond-cave lumiere" id="s">
+  <div class="vs-cv v27-titre" id="ti"><canvas></canvas></div>
+  <div id="verres"></div>
+  <div class="v27-ce" id="ce"></div>
+  <div class="v27-logo" id="logo"></div>
+</div>
+<script>
+const A = Marque, NB = A.NB, W = 1080, P0 = 0.8, CYV = 1010, TV = 186;
+const s = document.getElementById('s'), ce = document.getElementById('ce'), logo = document.getElementById('logo');
+const B = A.DONNEES.bouteilles;
+const VERRES = B.map((b, i) => ({ ...b, cx: 540 + (i - 1) * 330, t0: 0.3 + i * 1.15 }));
+const TITRE = { texte: A.PHRASES.plein, jus: 'maceration', cy: 470, t0: 4.3 };
+let creux = [], tcreux = null, Tt = 100;
+
+ce.innerHTML = A.contre({ lot: '27', sujet: 'Le Plein', lignes: [['Le colis du mois', `3${NB}bouteilles`], ['Contenu', `3${NB}×${NB}75${NB}cl`]], grands: [`225${NB}cl`, A.deg(11)], jus: 'glou', sanitaire: true, l: 300 });
+logo.innerHTML = A.wordmark(A.COULEURS.tuffeau, '', 'maceration', { detail: true });
+A.typo(ce);
+
+VERRES.forEach((v) => {
+  v.box = document.createElement('div'); v.box.className = 'vs-cv'; v.box.style.zIndex = 10; v.cv = document.createElement('canvas'); v.box.appendChild(v.cv); s.appendChild(v.box);
+  v.lab = document.createElement('div'); v.lab.className = 'v27-lab'; v.lab.style.left = v.cx - 150 + 'px'; v.lab.style.top = CYV + 160 + 'px';
+  v.lab.innerHTML = `<div class="n t-sous">${A.NOMS[v.jus]}</div><div class="d">${v.dit}</div><div class="g t-etq">${String(v.degre).replace('.', ',')}${NB}%${NB}vol.</div>`;
+  s.appendChild(v.lab); A.typo(v.lab); v.ecrit = [...v.lab.children].map((e) => M.typer(e, { soft: 4 }));
+  v.filet = S.filet(s);
+});
+const tbox = document.getElementById('ti'), tcv = tbox.querySelector('canvas'), tfilet = S.filet(s);
+
+window.pret = S.pret().then(() => {
+  Tt = Math.floor((100 * 900) / Verse.mesurer({ texte: TITRE.texte, taille: 100 }).l);
+  VERRES.forEach((v) => { const r = Verse.rendre(document.createElement('canvas'), { texte: '[U]', taille: TV, p: 0, jus: v.jus }); v.fond = CYV - r.h / 2 + r.poches[0].y; v.x = v.cx - r.l / 2 + r.poches[0].x; });
+  const r = Verse.rendre(document.createElement('canvas'), { texte: TITRE.texte, taille: Tt, p: 0 }); TITRE.fond = TITRE.cy - r.h / 2 + r.poches[0].y; TITRE.x = W / 2 - r.l / 2 + r.poches[0].x;
+  seek(0);
+});
+
+window.seek = (t) => {
+  VERRES.forEach((v) => {
+    const vs = S.versement(t, { t0: v.t0, ys: -40, yt: v.fond });
+    const r = S.vin(v.cv, 'titre', { texte: '[U]', taille: TV, p: P0 * vs.p, jus: v.jus, fond: 'cave' });
+    S.centrer(v.box, r, v.cx, CYV);
+    const surf = CYV - r.h / 2 + r.poches[0].y;
+    v.filet.set(v.x, S.jet(vs, surf), v.jus, 26, t);
+    v.ecrit.forEach((e, i) => e(S.part(t, vs.debut + 0.25 + i * 0.22, 0.75, M.lin)));
+  });
+  /* le titre se pose de gauche à droite (sa pierre seulement), puis son verre se remplit */
+  const vt = S.versement(t, { t0: TITRE.t0, ys: -40, yt: TITRE.fond });
+  const r = S.vin(tcv, 'titre', { texte: TITRE.texte, taille: Tt, p: P0 * vt.p, jus: TITRE.jus, fond: 'cave' });
+  S.centrer(tbox, r, W / 2, TITRE.cy);
+  const u = S.part(t, 3.85, 0.5, S.pose);
+  tbox.style.clipPath = `inset(-40px ${((1 - u) * 104).toFixed(2)}% -80px -40px)`; tbox.style.display = u > 0 ? '' : 'none';
+  tfilet.set(TITRE.x, S.jet(vt, TITRE.cy - r.h / 2 + r.poches[0].y), TITRE.jus, 22, t);
+  /* la contre-étiquette et le logotype montent à leur place */
+  /* la contre-étiquette (avec la mention sanitaire) est là dès la première image : elle ne bouge pas */
+  const c = 1;
+  ce.style.opacity = c.toFixed(3); ce.style.transform = `translateY(${((1 - c) * 14).toFixed(2)}px)`;
+  const l = 1;
+  logo.style.opacity = l.toFixed(3); logo.style.transform = `translateY(${((1 - l) * 14).toFixed(2)}px)`;
+};
+</script></body>

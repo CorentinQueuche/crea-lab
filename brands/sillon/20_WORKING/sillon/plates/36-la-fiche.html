@@ -1,0 +1,35 @@
+<!doctype html><meta charset="utf-8"><title>Sillon · 36 · La fiche de marque</title><meta name="robots" content="noindex">
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates.css">
+<script src="../brand/marque.js"></script><script src="../brand/matiere.js"></script>
+<style>
+  /* 36 · La fiche de marque. Les huit pages posées sur le mur de la cave, la première en grand, les sept autres en
+     deux rangs. Les pages sont les rendus de deck/ (out/deck/*.png) : rien n'est redessiné ici. Préfixe p36-. */
+  #p{height:1236px}
+  .p36-g{position:absolute;left:84px;right:84px;top:118px}
+  .p36-g img{display:block;width:100%;height:auto}
+  .p36-une{position:relative;width:812px;box-shadow:0 0 0 1px rgba(0,0,0,.35),10px 16px 34px rgba(0,0,0,.55)}
+  .p36-cote{position:absolute;left:852px;right:0;top:0;display:grid;grid-template-columns:1fr;gap:26px}
+  .p36-cote>div,.p36-rang>div{position:relative;box-shadow:0 0 0 1px rgba(0,0,0,.35),7px 11px 24px rgba(0,0,0,.5)}
+  .p36-cote>div{width:380px}
+  .p36-rang{margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  .p36-rang+.p36-rang{margin-top:26px}
+  .p36-n{position:absolute;left:0;top:-22px;color:var(--tuffeau);opacity:.7}
+  .p36-t{position:absolute;left:84px;top:56px;color:var(--tuffeau)}
+  .p36-d{position:absolute;right:84px;top:56px;color:var(--tuffeau);text-align:right}
+</style>
+<body><div class="plate soir lumiere" id="p"></div>
+<script>
+const PAGES = [['01-idee', 'L’idée'], ['02-logo', 'Le logo'], ['03-interdits', 'Ce qu’on ne fait pas'], ['04-couleurs', 'Les couleurs'],
+  ['05-ecrire', 'Écrire'], ['06-kit', 'Le kit'], ['07-annonce', 'Faire une annonce'], ['08-fichiers', 'Les fichiers et les limites']];
+const page = (i) => `<div><span class="p36-n t-etq">${i + 1} · ${PAGES[i][1]}</span><img src="../out/deck/${PAGES[i][0]}.png" alt=""></div>`;
+document.getElementById('p').innerHTML = `
+  <div class="p36-t t-etq">36 · La fiche de marque</div>
+  <div class="p36-d t-etq">Huit pages, pour deux personnes</div>
+  <div class="p36-g net">
+    <div class="p36-une">${page(0).replace(/^<div>|<\/div>$/g, '')}</div>
+    <div class="p36-cote">${page(1)}${page(2)}</div>
+    <div class="p36-rang">${page(3)}${page(4)}${page(5)}</div>
+    <div class="p36-rang" style="grid-template-columns:repeat(3,1fr)">${page(6)}${page(7)}<div style="box-shadow:none;display:flex;align-items:flex-end"><p class="pl-voix" style="color:var(--tuffeau);font-size:38px;margin:0">On la lit en dix minutes. On la garde ouverte.</p></div></div>
+  </div>
+  <div class="pl-pied t-etq"><span>36 · La fiche de marque</span><span>L’idée, le logo, les interdits, les couleurs, écrire, le kit, faire une annonce, les fichiers</span><span>2026</span></div>`;
+</script></body>

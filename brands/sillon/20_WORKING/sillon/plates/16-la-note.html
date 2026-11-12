@@ -1,0 +1,61 @@
+<!doctype html><meta charset="utf-8"><title>Sillon · 16 · La note du jeudi</title><meta name="robots" content="noindex">
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates.css"><link rel="stylesheet" href="monde.css">
+<script src="../brand/marque.js"></script><script src="../brand/matiere.js"></script><script src="../brand/verse.js"></script>
+<style>
+  /* 16 · La note du jeudi. Un à-plat seul : le sergé bleu, et une note de caisse thermique qui traverse la planche de
+     haut en bas. Elle ne compte pas en euros (on n'en connaît aucun) mais en centilitres : quatre verres, 50 cl, les
+     deux tiers d'une bouteille, autant que le creux du logo. Impression thermique : une encre presque noire, des
+     lettres serrées, les images en points (le logo est tramé à la résolution de l'imprimante), et la tête qui fatigue
+     en laissant deux traînées plus pâles. Le papier frise sur sa longueur. Préfixe m16-. */
+  .m16-p{height:1560px}
+  .m16-tk{position:absolute;left:312px;top:-30px;width:500px;height:1640px;transform:rotate(-1.4deg);transform-origin:50% 0}
+  .m16-pap{position:absolute;inset:0;background:#F9F8F4;clip-path:polygon(0 1.6%,2% 1.2%,4% 1.6%,6% 1.1%,8% 1.5%,10% 1.2%,12% 1.6%,14% 1.1%,16% 1.5%,18% 1.2%,20% 1.6%,22% 1.1%,24% 1.5%,26% 1.2%,28% 1.6%,30% 1.1%,32% 1.5%,34% 1.2%,36% 1.6%,38% 1.1%,40% 1.5%,42% 1.2%,44% 1.6%,46% 1.1%,48% 1.5%,50% 1.2%,52% 1.6%,54% 1.1%,56% 1.5%,58% 1.2%,60% 1.6%,62% 1.1%,64% 1.5%,66% 1.2%,68% 1.6%,70% 1.1%,72% 1.5%,74% 1.2%,76% 1.6%,78% 1.1%,80% 1.5%,82% 1.2%,84% 1.6%,86% 1.1%,88% 1.5%,90% 1.2%,92% 1.6%,94% 1.1%,96% 1.5%,98% 1.2%,100% 1.6%,100% 100%,0 100%)}
+  /* la frisure : le papier tourne sur ses deux bords longs, plus clair au sommet de la courbe */
+  .m16-fris{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(30,34,60,.22),rgba(30,34,60,0) 9%,rgba(255,255,255,.35) 22%,rgba(255,255,255,0) 40%,rgba(30,34,60,0) 74%,rgba(30,34,60,.16) 92%,rgba(30,34,60,.3))}
+  .m16-ombre{position:absolute;inset:0;background:rgba(4,8,40,.55);filter:blur(10px);transform:translate(14px,18px)}
+  .m16-ombre2{position:absolute;inset:0;background:rgba(4,8,40,.5);filter:blur(2px);transform:translate(5px,6px)}
+  .m16-txt{position:absolute;left:40px;right:40px;top:96px;color:#22232B;font-family:var(--mono);font-stretch:75%;font-weight:600;text-transform:uppercase;letter-spacing:.07em;font-size:19px;line-height:1.5}
+  .m16-txt .r{display:flex;justify-content:space-between;gap:12px}
+  .m16-txt .c{text-align:center}
+  .m16-txt .l{display:grid;grid-template-columns:1fr 112px 96px;gap:8px}
+  .m16-txt .l span:nth-child(2){opacity:.75}
+  .m16-txt .l span:last-child{text-align:right}
+  .m16-txt .g{font-weight:800;font-size:23px}
+  .m16-txt hr{border:0;border-top:2px dashed #22232B;margin:14px 0;opacity:.85}
+  .m16-txt .v{text-transform:none;letter-spacing:.02em;font-stretch:87.5%;font-weight:600;font-size:19px}
+  .m16-pix{image-rendering:pixelated;display:block;margin:0 auto}
+  /* la tête d'impression fatiguée : deux traînées verticales plus pâles */
+  .m16-tete{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,transparent 0 31%,rgba(249,248,244,.42) 31% 32.4%,transparent 32.4% 71%,rgba(249,248,244,.3) 71% 71.8%,transparent 71.8%)}
+  .m16-leg{right:84px;bottom:70px;flex-direction:column;align-items:flex-end;gap:4px}
+  .m16-g{position:absolute;right:84px;top:470px;z-index:60;display:flex;flex-direction:column;align-items:flex-end}
+</style>
+<body><div class="plate fond-bleu lumiere m16-p" id="p"></div>
+<script>
+const A = Marque, C = A.COULEURS, NB = A.NB;
+/* une image tramée à la résolution d'une imprimante thermique (8 points par mm) : on la dessine petite, sans lissage,
+   puis on l'agrandit en gardant les points */
+const trame = (svg, l, h, ech) => { const c = document.createElement('canvas'); c.width = l; c.height = h; c.className = 'm16-pix'; c.style.width = l * ech + 'px'; c.style.height = h * ech + 'px';
+  const im = new Image(); const p = new Promise((ok) => { im.onload = () => { const x = c.getContext('2d'); x.imageSmoothingEnabled = false; x.drawImage(im, 0, 0, l, h); ok(); }; });
+  im.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg); return { c, p }; };
+const LIGNES = [['1', 'Macération', 'au verre', '12,5'], ['1', 'Glou', 'au verre', '12,5'], ['1', 'Paille', 'au verre', '12,5'], ['1', 'Macération', 'au verre', '12,5']];
+const r = (a, b, cls = '') => `<div class="r ${cls}"><span>${a}</span><span>${b}</span></div>`;
+document.getElementById('p').innerHTML = `
+  <div class="m16-tk"><div class="m16-ombre m16-pap"></div><div class="m16-ombre2 m16-pap"></div><div class="m16-pap"></div>
+    <div class="m16-txt" id="txt">
+      <div id="logo" style="margin:30px 0 18px"></div>
+      <div class="c">Cave à vins nature</div><div class="c">Nantes${NB}· Olivettes</div>
+      <hr>${r('Note du jeudi', 'Dégustation')}${r('Au comptoir', 'Le soir')}<hr>
+      ${LIGNES.map(([n, j, a, cl]) => `<div class="l"><span>${n}${NB}${NB}${j}</span><span>${a}</span><span>${cl}${NB}cl</span></div>`).join('')}
+      <hr>${r('Total', `50,0${NB}cl`, 'g')}${r('Soit', 'les deux tiers')}${r('', 'd’une bouteille')}<hr>
+      <div id="verre" style="margin:22px 0 14px"></div>
+      <div class="c v">Quatre creux remplis.</div><div class="c v">On compte en centilitres.</div><div class="c v" style="margin-top:12px">À jeudi.</div>
+      <hr><div class="v" style="font-size:15.5px;text-align:center;line-height:1.35">${A.MENTION_SANITAIRE}</div><hr>
+      <div class="c" style="opacity:.8">Merci.</div>
+    </div><div class="m16-tete"></div><div class="m16-fris"></div></div>
+  <div class="m16-g" data-voulu><canvas id="grand"></canvas><div class="t-etq" style="margin-top:18px">Les deux tiers, comme le creux du logo</div></div>
+  <div class="mo-leg m16-leg t-etq" data-voulu><span><span class="mo-num">16</span>${NB}${NB}La note du jeudi</span><span style="opacity:.75">Elle compte en centilitres</span></div>`;
+const L = trame(A.wordmark('#000', 'width="190" height="27"'), 190, 27, 1.6), V = trame(A.symbol('#000', 'width="44" height="40"'), 44, 40, 1.9);
+document.getElementById('logo').appendChild(L.c); document.getElementById('verre').appendChild(V.c);
+/* à droite, le compte en matière : un verre de la marque, penché de 12°, rempli aux deux tiers (le niveau du logo) */
+window.pret = Promise.all([document.fonts.ready, L.p, V.p, Verse.pret()]).then(() => Verse.verres(document.getElementById('grand'), { w: 460, h: 420, cols: 1, rangs: 1, taille: 220, angle: () => 12, niveau: () => A.NIVEAU, jus: () => 'maceration' }));
+</script></body>

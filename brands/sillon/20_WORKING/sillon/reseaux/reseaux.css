@@ -1,0 +1,20 @@
+/* Le kit réseaux de Sillon : le cadre d'une publication (1080 × 1350 en 4:5, 1080 × 1920 en 9:16). Préfixe rs-.
+   Le socle (brand/marque.css) fait foi pour les couleurs, les fonds et la typographie ; ici seulement l'échelle d'un
+   écran de téléphone : une publication de 1080 px s'y affiche sur environ 390 points, tout est donc plus grand qu'en planche. */
+html,body{background:#060a1e}
+.plate.rs-cadre{width:1080px;overflow:hidden;isolation:isolate}
+.rs-ligne,.rs-verre{position:absolute;z-index:40}
+.rs-ligne canvas,.rs-verre canvas{display:block}
+.rs-abs{position:absolute}
+/* les mentions de tête : la mention du socle (Anybody étroite, capitales), à la taille d'un écran */
+.rs-tete{position:absolute;z-index:62;font-size:23px;letter-spacing:.09em;line-height:1.25}
+/* la contre-étiquette, agrandie : Marque.contre dans un zoom */
+.rs-ce{position:absolute;z-index:63}
+.rs-ce .ce-g b{white-space:nowrap}
+/* le papier de la contre-étiquette sous un flash : une ombre dure et courte, puis une ombre douce */
+.rs-ce .ce.papier{box-shadow:0 1px 0 rgba(255,255,255,.6) inset,0 0 0 .5px rgba(60,50,30,.2),2px 3px 0 rgba(5,9,40,.28),6px 12px 22px -6px rgba(5,9,40,.55)}
+/* les guides de la zone sûre (guides=1) */
+.rs-guides{position:absolute;inset:0;z-index:95;pointer-events:none}
+.rs-guides i{position:absolute;outline:3px dashed rgba(255,79,123,.95);outline-offset:-3px}
+/* la phrase de comptoir (modèle 24) : la voix, en très grand */
+.rs-voix{font-family:var(--titre);font-weight:800;font-stretch:100%;letter-spacing:-.02em;line-height:.98;text-wrap:balance}

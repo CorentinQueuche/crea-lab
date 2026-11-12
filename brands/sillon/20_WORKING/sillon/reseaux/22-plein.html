@@ -1,0 +1,73 @@
+<!doctype html><meta charset="utf-8"><title>Sillon · modèle 22 · le Plein du mois</title><meta name="robots" content="noindex">
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="reseaux.css">
+<script src="../brand/marque.js"></script><script src="../brand/matiere.js"></script><script src="../brand/verse.js"></script><script src="reseaux.js"></script>
+<style>
+  /* Modèle 22 · le Plein du mois. La contre-étiquette du colis, à la taille de la publication : le carton du mois en
+     photo (deux tons, il ne dit aucun jus), puis une ligne par bouteille, chacune avec son verre imprimé à ras bord.
+     Seuls les jus, les mots et le mois changent. La mention sanitaire a sa ligne, comme sur la bouteille. Préfixe r22-. */
+  .r22-carte{position:absolute;left:44px;right:44px;padding:14px;color:var(--bleu);z-index:30;
+    background:var(--tuffeau-1) var(--m-blanc) 0 0/var(--m-cote);
+    box-shadow:0 1px 0 rgba(255,255,255,.7) inset,0 0 0 1px rgba(60,50,30,.18),4px 6px 0 rgba(5,9,40,.32),18px 34px 50px -14px rgba(5,9,40,.62)}
+  .r22-in{border:3px solid currentColor;height:100%;display:flex;flex-direction:column}
+  .r22-r{flex:none;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:0 26px;border-top:2px solid currentColor;position:relative}
+  .r22-r:first-child{border-top:0}
+  .r22-r .t-etq{font-size:23px;letter-spacing:.08em}
+  .r22-ph{flex:none;position:relative;border-top:2px solid currentColor;overflow:hidden}
+  .r22-ph .ph{position:absolute;inset:0}
+  .r22-ph .t-etq{position:absolute;right:0;bottom:0;z-index:9;font-size:21px;color:var(--tuffeau-1);background:var(--bleu);padding:9px 16px 7px 18px}
+  .r22-titre{justify-content:flex-start}
+  .r22-b{display:grid;grid-template-columns:150px 1fr auto 150px;gap:0 22px;justify-content:stretch}
+  .r22-b .t-sous{font-size:50px;line-height:1}
+  .r22-b .r22-dit{margin-top:8px}
+  .r22-deg{font-family:var(--titre);font-weight:900;font-stretch:100%;font-size:58px;line-height:1;letter-spacing:-.01em}
+  .r22-cl{text-align:right}
+  .r22-grand{font-family:var(--titre);font-weight:900;font-stretch:100%;font-size:76px;line-height:.9;letter-spacing:-.02em;white-space:nowrap}
+  .r22-voix{font-size:27px;line-height:1.08;max-width:560px;text-align:right}
+  .r22-m{font-family:var(--mono);font-stretch:87.5%;font-weight:500;font-size:27px;line-height:1.25;letter-spacing:.01em;justify-content:flex-start}
+  .r22-mois{font-size:58px}
+</style>
+<body><div id="p"></div>
+<script>
+/* L'adresse :
+     mois    le mois du Plein (défaut : novembre)          lot   ce qu'écrit la tête de l'étiquette (défaut : le mois)
+     jus     les trois jus, séparés par « | » (défaut : maceration|glou|paille)
+     noms    les trois noms affichés (défaut : le nom du jus)      dit   trois descriptions      degre   trois degrés (12|11|10,5)
+     voix    la phrase du bas (défaut : écrite d'après les jus, « Un orange, un rouge de soif, un blanc. Le reste… »)
+     format  4x5 ou 9x16
+   Exemple : reseaux/22-plein.html?mois=décembre&jus=maceration|maceration|paille&format=4x5 */
+const A = Marque, R = Reseaux, NB = A.NB, C = A.COULEURS;
+const P = R.params({ mois: 'novembre', jus: 'maceration|glou|paille', format: '4x5' });
+const el = document.getElementById('p'), F = R.cadre(el, P.format, 'lumiere'), H = F.nom === '9x16';
+const DEF = Object.fromEntries(A.DONNEES.bouteilles.map((b) => [b.jus, b]));
+const JUS = R.liste(P.jus, A.JUS).filter((j) => A.ECHELLES[j]).slice(0, 3); while (JUS.length < 3) JUS.push(A.JUS[JUS.length]);
+const NOMS = R.liste(P.noms, JUS.map((j) => A.NOMS[j])), DIT = R.liste(P.dit, JUS.map((j) => DEF[j].dit)), DEG = R.liste(P.degre, JUS.map((j) => String(DEF[j].degre)));
+const maj = (s) => s.charAt(0).toUpperCase() + s.slice(1), mois = maj(P.mois);
+/* la phrase du colis, écrite d'après les jus : « un orange, un rouge de soif, un blanc » ; deux du même : « deux oranges » */
+const MOT = { maceration: ['orange', 'oranges'], glou: ['rouge de soif', 'rouges de soif'], paille: ['blanc', 'blancs'] }, CHIFFRE = ['', 'un', 'deux', 'trois'];
+const compte = []; JUS.forEach((j) => { const c = compte.find((x) => x.j === j); if (c) c.n++; else compte.push({ j, n: 1 }); });
+const VOIX = P.voix || maj(compte.map(({ j, n }) => `${CHIFFRE[n]} ${MOT[j][n > 1 ? 1 : 0]}`).join(', ')) + '. Le reste, vous nous le racontez jeudi.';
+
+/* les hauteurs des lignes de l'étiquette, par format */
+const L = H ? { top: 236, bas: 1596, t: 104, ph: 316, titre: 170, mois: 92, b: 128, g: 150, m: 100 }
+            : { top: 44, bas: 1306, t: 96, ph: 286, titre: 152, mois: 84, b: 124, g: 134, m: 90 };
+const verre = (j, i) => `<div class="r22-v" data-i="${i}"></div>`;
+el.innerHTML = `<div class="r22-carte" style="top:${L.top}px;height:${L.bas - L.top}px"><div class="r22-in">
+    <div class="r22-r" style="height:${L.t}px">${A.wordmark(C.bleu, 'style="width:250px;height:auto"', JUS[0], { detail: true })}<span class="t-etq">Le Plein · lot ${P.lot || mois}</span></div>
+    <div class="r22-ph" style="height:${L.ph}px">${A.photo('colis', { mode: 'robe', pos: '50% 48%' })}<span class="t-etq">Le colis du mois · 3${NB}bouteilles de 75${NB}cl</span></div>
+    <div class="r22-r r22-titre" style="height:${L.titre}px" id="titre"></div>
+    <div class="r22-r" style="height:${L.mois}px"><span class="t-etq">Trois bouteilles par mois</span><span class="t-sous r22-mois">${mois}</span></div>
+    ${JUS.map((j, i) => `<div class="r22-r r22-b" style="height:${L.b}px">${verre(j, i)}<div><div class="t-sous">${NOMS[i]}</div><div class="t-etq r22-dit">${DIT[i]}</div></div><div class="r22-deg">${String(DEG[i]).replace('.', ',')}${NB}%</div><div class="t-etq r22-cl">75${NB}cl</div></div>`).join('')}
+    <div class="r22-r" style="height:${L.g}px"><span class="r22-grand">225${NB}cl</span><span class="t-sous r22-voix">${VOIX}</span></div>
+    <div class="r22-r r22-m" style="height:${L.m}px;flex:1">${A.MENTION_SANITAIRE}</div>
+  </div></div>` + (P.guides ? R.guides(el, F) : '');
+
+window.pret = Verse.pret().then(() => {
+  const k = Math.max(2, Math.min(5, window.devicePixelRatio || 1));
+  /* le titre : droit, comme sur un papier imprimé, à la largeur de sa ligne ; son verre à ras bord, au premier jus */
+  const t = document.getElementById('titre'), lw = t.clientWidth - 52, texte = A.PHRASES.plein, m = R.mesure(texte, 100), T = Math.floor(Math.min((100 * lw) / m.W, (L.titre - 30) / (m.asc + m.desc) * 100));
+  const cv = document.createElement('canvas'); t.appendChild(cv); Verse.rendre(cv, { texte, taille: T, angle: 0, mode: 'imprime', c: 'bleu', jus: [JUS[0]], p: 1, k });
+  R.controle.push({ quoi: 'titre', texte, taille: T, tient: m.W * T / 100 <= lw });
+  /* un verre par bouteille, plein à ras bord : c'est le Plein */
+  document.querySelectorAll('.r22-v').forEach((d) => { const c = document.createElement('canvas'); d.appendChild(c); Verse.rendre(c, { texte: '[U]', taille: H ? 84 : 78, angle: 0, mode: 'imprime', c: 'bleu', jus: [JUS[+d.dataset.i]], p: 1, k }); });
+}).then(() => A.typo(el));
+</script></body>

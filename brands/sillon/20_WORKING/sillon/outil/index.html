@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Sillon · le remplisseur</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="../brand/marque.css">
+<link rel="stylesheet" href="outil.css">
+<script src="../brand/marque.js"></script>
+<script src="../brand/matiere.js"></script>
+</head>
+<body class="outil">
+<main class="o-grille">
+  <form class="o-reglages" id="reglages" autocomplete="off" novalidate>
+    <header class="o-tete">
+      <div class="o-marque" id="marque" aria-label="Sillon"></div>
+      <h1 class="o-titre" aria-label="Le remplisseur">Le remplisse<b>u</b>r</h1>
+      <p class="o-chapo">Une phrase, un jus, un format. Le fichier sort prêt à publier.</p>
+    </header>
+
+    <fieldset class="o-bloc">
+      <legend class="t-etq">Le modèle</legend>
+      <div class="o-modeles" id="modeles"></div>
+    </fieldset>
+
+    <fieldset class="o-bloc" data-pour="21-jeudi 23-arrivage">
+      <legend class="t-etq">La phrase</legend>
+      <label class="o-lbl" for="phrase">Tapez la phrase, comme elle vient</label>
+      <input class="o-champ" id="phrase" type="text" maxlength="80" spellcheck="true" aria-describedby="phrase-aide phrase-etat">
+      <p class="o-aide" id="phrase-aide">Les lettres en couleur deviennent des verres. Cliquez un U ou un V pour en ajouter ou en retirer un (deux par mot au plus). Une barre « / » force un retour à la ligne.</p>
+      <div class="o-lettres" id="lettres" role="group" aria-label="Les verres de la phrase"></div>
+      <p class="o-etat" id="phrase-etat" role="status"></p>
+      <details class="o-pretes">
+        <summary>Phrases de la marque</summary>
+        <div class="o-puces" id="pretes-titre"></div>
+      </details>
+    </fieldset>
+
+    <fieldset class="o-bloc" data-pour="24-phrase">
+      <legend class="t-etq">La phrase de comptoir</legend>
+      <div class="o-puces o-puces-voix" id="pretes-voix"></div>
+      <label class="o-lbl" for="phrase24">Ou une phrase à vous</label>
+      <input class="o-champ o-champ-voix" id="phrase24" type="text" maxlength="110" spellcheck="true" aria-describedby="phrase24-etat">
+      <label class="o-lbl" for="ou24">Où on l’écrit (pour la contre-étiquette)</label>
+      <input class="o-champ o-champ-petit" id="ou24" type="text" maxlength="40" placeholder="Au comptoir">
+      <p class="o-etat" id="phrase24-etat" role="status"></p>
+    </fieldset>
+
+    <fieldset class="o-bloc" data-pour="22-plein">
+      <legend class="t-etq">Le mois</legend>
+      <label class="o-lbl" for="mois">Le Plein de</label>
+      <select class="o-champ o-champ-petit" id="mois"></select>
+    </fieldset>
+
+    <fieldset class="o-bloc" data-pour="21-jeudi 23-arrivage 24-phrase">
+      <legend class="t-etq" id="jus-titre">Le jus</legend>
+      <div class="o-jus" id="jus" role="radiogroup" aria-labelledby="jus-titre"></div>
+      <div id="jus-verres"></div>
+    </fieldset>
+
+    <fieldset class="o-bloc" data-pour="22-plein">
+      <legend class="t-etq">Les trois bouteilles</legend>
+      <div id="jus-plein"></div>
+    </fieldset>
+
+    <fieldset class="o-bloc" data-pour="21-jeudi 23-arrivage">
+      <legend class="t-etq" id="photo-titre">La photo</legend>
+      <div class="o-photos" id="photos" role="radiogroup" aria-labelledby="photo-titre"></div>
+    </fieldset>
+
+    <fieldset class="o-bloc" data-pour="21-jeudi 23-arrivage">
+      <legend class="t-etq">Le niveau</legend>
+      <div class="o-niveau">
+        <input id="niveau" type="range" min="0" max="1" step="0.05" aria-describedby="niveau-dit">
+        <output id="niveau-dit" for="niveau"></output>
+      </div>
+      <label class="o-coche" data-pour="23-arrivage"><input type="checkbox" id="niveau-auto" checked> Niveau automatique</label>
+    </fieldset>
+
+    <fieldset class="o-bloc" data-pour="21-jeudi 24-phrase">
+      <legend class="t-etq" id="fond-titre">Le fond</legend>
+      <div class="o-puces" id="fonds" role="radiogroup" aria-labelledby="fond-titre"></div>
+    </fieldset>
+
+    <fieldset class="o-bloc" data-pour="21-jeudi">
+      <legend class="t-etq">La contre-étiquette</legend>
+      <label class="o-lbl" for="ce21">Sa phrase</label>
+      <select class="o-champ o-champ-petit" id="ce21"></select>
+    </fieldset>
+
+    <fieldset class="o-bloc">
+      <legend class="t-etq" id="format-titre">Le format</legend>
+      <div class="o-formats" id="formats" role="radiogroup" aria-labelledby="format-titre"></div>
+      <label class="o-coche"><input type="checkbox" id="guides"> Montrer la zone sûre (l’interface du réseau couvre le reste)</label>
+    </fieldset>
+
+    <div class="o-sortie">
+      <div class="o-mention" aria-label="Mention sanitaire">
+        <span class="t-etq">Mention sanitaire · toujours présente</span>
+        <p id="mention"></p>
+      </div>
+      <p class="o-relire" id="relire"></p>
+      <div class="o-barre">
+        <p class="o-alerte" id="alerte" role="alert" hidden></p>
+        <button class="o-exporter" id="exporter" type="button">Exporter le PNG</button>
+        <p class="o-statut" id="statut" role="status" aria-live="polite"></p>
+      </div>
+    </div>
+  </form>
+
+  <section class="o-apercu" aria-label="Aperçu">
+    <div class="o-apercu-tete">
+      <span class="t-etq" id="apercu-dit"></span>
+      <span class="t-etq o-rendu" id="rendu" aria-live="polite"></span>
+    </div>
+    <div class="o-scene" id="scene">
+      <div class="o-cadre" id="cadre"></div>
+    </div>
+  </section>
+</main>
+<script src="outil.js"></script>
+</body>
+</html>

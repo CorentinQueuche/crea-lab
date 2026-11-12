@@ -1,0 +1,40 @@
+<!doctype html><meta charset="utf-8"><title>Sillon · modèle 23 · un arrivage</title><meta name="robots" content="noindex">
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="reseaux.css">
+<script src="../brand/marque.js"></script><script src="../brand/matiere.js"></script><script src="../brand/verse.js"></script><script src="reseaux.js"></script>
+<style>
+  /* Modèle 23 · un arrivage. Une photo de la marque à niveau : le jus qui vient d'arriver la remplit jusqu'à une ligne
+     horizontale, que rien ne fait pencher. La contre-étiquette est posée à cheval sur la ligne et dit le jus.
+     Préfixe r23-. */
+  .r23-ph{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+  .r23-ph .ph-cote{font-size:22px;letter-spacing:.09em;margin-top:-42px;right:64px;text-shadow:0 0 10px rgba(5,9,40,.7)}
+  .r23-ph .nl{height:9px;margin-top:-2px;background:linear-gradient(180deg,rgba(255,255,255,.95) 0 2.5px,rgba(60,20,0,.42) 2.5px 6px,rgba(60,20,0,0))}
+  .r23-voile{position:absolute;left:0;right:0;top:0;z-index:2;pointer-events:none;background:linear-gradient(180deg,rgba(8,14,60,.5),rgba(8,14,60,0))}
+  .rs-tete{text-shadow:0 0 10px rgba(5,9,40,.6)}
+</style>
+<body><div id="p"></div>
+<script>
+/* L'adresse :
+     texte   le titre (défaut : D[U] NO[U]VEAU.)              photo   une photo de la marque (trois-jus, verre-penche, caviste, depot, colis…)
+     jus     le jus arrivé : la couleur sous la ligne (maceration, glou, paille)      niveau  la hauteur de la ligne, de 0 à 1
+     nom     le nom écrit sur l'étiquette (défaut : le nom du jus)   dit   sa description   degre   son degré   pos   le cadrage de la photo (« 50% 40% »)
+     format  4x5 ou 9x16
+   Exemple : reseaux/23-arrivage.html?photo=trois-jus&jus=glou&niveau=0.4&format=9x16 */
+const A = Marque, R = Reseaux, NB = A.NB;
+const P = R.params({ texte: 'D[U] NO[U]VEAU.', photo: 'trois-jus', jus: 'maceration', format: '4x5' });
+const el = document.getElementById('p'), F = R.cadre(el, P.format, 'soir'), H = F.nom === '9x16', S = F.sure;
+const J = A.ECHELLES[P.jus] ? P.jus : 'maceration', D = A.DONNEES.bouteilles.find((b) => b.jus === J), photo = A.PHOTOS[P.photo] ? P.photo : 'trois-jus';
+/* Une photo qui montre déjà une surface de vin (verre-penche) : sans niveau donné, la ligne se pose exactement sur elle,
+   calculée d'après le cadrage (object-fit: cover, cadrage vertical de la photo). */
+const PH = A.PHOTOS[photo], sc = Math.max(F.l / PH.px[0], F.h / PH.px[1]), posY = parseFloat(String(P.pos || PH.pos || '50% 50%').split(' ')[1]) / 100;
+const auto = PH.surface ? 1 - (PH.surface * PH.px[1] * sc - (PH.px[1] * sc - F.h) * posY) / F.h : 0.42;
+const niveau = Math.max(0.12, Math.min(0.75, R.nombre(P.niveau, auto))), deg = R.nombre(P.degre, D.degre);
+const G = H ? { titre: { x: S.x, y: S.y + 70, l: S.l, h: 480 }, ce: `left:${S.x}px;bottom:${F.h - S.y - S.h}px` }
+            : { titre: { x: S.x, y: S.y + 60, l: S.l, h: 380 }, ce: `left:${S.x}px;bottom:${F.h - S.y - S.h}px` };
+
+el.innerHTML = A.photo(photo, { mode: 'niveau', jus: J, niveau, cote: true, pos: P.pos, cls: 'r23-ph' }) +
+  `<div class="r23-voile" style="height:${H ? 900 : 620}px"></div>` + R.tete(F, 'Arrivage', A.LIEU) +
+  R.contre({ lot: P.lot || '', sujet: 'Vient d’arriver', lignes: [['Le jus', P.nom || A.NOMS[J]], ['Dans le verre', P.dit || D.dit]], grands: [`75${NB}cl`, `${String(deg).replace('.', ',')}${NB}%`], jus: J, voix: A.VOIX.dos, sanitaire: true, l: 246 }, 2.15, G.ce) +
+  (P.guides ? R.guides(el, F) : '');
+
+window.pret = Verse.pret().then(() => { R.titre(el, { texte: P.texte, boite: G.titre, jus: [J], fond: 'bleu', maxL: H ? 3 : 2, vertical: 'centre' }); }).then(() => A.typo(el));
+</script></body>

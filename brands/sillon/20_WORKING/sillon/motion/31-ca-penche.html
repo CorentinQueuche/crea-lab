@@ -1,0 +1,85 @@
+<!doctype html><meta charset="utf-8"><title>Sillon · 31 · Ça penche</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="motion.css"><link rel="stylesheet" href="sillon.css">
+<script src="../brand/marque.js"></script><script src="../brand/matiere.js"></script><script src="../brand/verse.js"></script><script src="lib.js"></script><script src="sillon.js"></script>
+<style>
+  /* 31 · Ça penche. 1:1, 1080 × 1080, boucle de 6 s. Préfixe v31-.
+     Découpage :
+       0 à 0,6 s     Le verre de la marque (le creux du double L, en pierre), droit, plein aux 85 centièmes de macération.
+       0,6 à 1,2     Il penche de 12° en 0,6 s. Le vin reste horizontal, rien ne sort : ça tient.
+       1,5 à 2,1     24°. Le bord le plus bas passe sous le niveau : le vin se vide par là, en un filet qui tombe hors champ.
+       2,4 à 3,0     36°. Encore.
+       3,3 à 3,9     48°. Ce qui reste tient.
+       4,15 à 4,75   Le verre se redresse avec ce qui lui reste.
+       4,45 à 5,75   On le remplit par le haut, jusqu'au niveau du début. La dernière image raccorde avec la première.
+     La contre-étiquette, droite, mesure à chaque image : la pente du verre, celle du vin (0°), et ce qu'il tient (le moteur
+     mesure la surface du vin ; un U large et plein, à hauteur égale, vaut 12,5 cl). Une ligne de niveau, derrière le verre,
+     suit la surface : elle descend, elle ne penche jamais.
+     Idée : la règle de la marque, démontrée. Plus le verre penche, moins il tient ; le vin, lui, ne bouge pas d'axe. */
+  .v31-s{width:1080px;height:1080px}
+  .v31-tete{position:absolute;left:56px;right:56px;top:52px;display:flex;justify-content:space-between;align-items:flex-start;z-index:30}
+  .v31-tete .t-sous{font-size:46px}
+  .v31-tete .t-etq{font-size:16px;margin-top:8px}
+  .v31-ce{position:absolute;left:56px;bottom:56px;z-index:30;zoom:1.3}
+  .v31-verse{position:absolute;left:0;top:0;z-index:18;overflow:visible;pointer-events:none}
+</style>
+<body><div class="vs-scene v31-s fond-bleu lumiere" id="s">
+  <div class="v31-tete net"><div class="t-sous">Ça penche,<br>ça tient.</div><div class="t-etq">Douze degrés · la règle</div></div>
+  <div class="vs-niv" id="niv" style="color:var(--tuffeau);z-index:4;opacity:.55"></div>
+  <div class="vs-cv" id="v" style="z-index:10"><canvas></canvas></div>
+  <svg class="v31-verse" id="sp" width="1080" height="1080"><defs><linearGradient id="g31" x1="0" x2="1"><stop offset="0"/><stop offset=".35"/><stop offset="1"/></linearGradient></defs><path class="c" fill="none" stroke="url(#g31)" stroke-linecap="round"/><path class="e" fill="none" stroke="rgba(255,255,255,.5)" stroke-linecap="round"/></svg>
+  <div class="v31-ce" id="ce"></div>
+</div>
+<script>
+const A = Marque, NB = A.NB, E = A.ECHELLES.maceration, CAV = A.VERRE.creux;
+const W = 760, H = 760, ECH = 400, CX = 520, CY = 500, V0 = 0.85, PER = 6;
+const box = document.getElementById('v'), cv = box.querySelector('canvas'), niv = document.getElementById('niv'), ce = document.getElementById('ce');
+const sp = document.getElementById('sp'), spC = sp.querySelector('.c'), spE = sp.querySelector('.e');
+[E[3], E[1], E[3]].forEach((c, i) => sp.querySelectorAll('stop')[i].setAttribute('stop-color', c));
+box.style.left = CX - W / 2 + 'px'; box.style.top = CY - H / 2 + 'px';
+const filet = S.filet(document.getElementById('s'));
+
+/* la pente : quatre pas de 12°, chacun en 0,6 s, puis le retour */
+const PAS = [[0.6, 0], [1.5, 12], [2.4, 24], [3.3, 36]];
+const angle = (t) => { let a = 0; PAS.forEach(([t0, a0]) => { a += 12 * S.part(t, t0, S.BASCULE, S.penche); }); return a - 48 * S.part(t, 4.15, S.BASCULE, S.penche); };
+/* ce que le creux peut tenir à l'angle a (part de son rectangle) ; ce qu'il tient : jamais plus qu'avant (le vin versé ne revient pas) */
+const cap = (a) => A.liquide(CAV, a, [0, 0], 1).plein;
+const VMIN = Math.min(V0, cap(48));
+const remp = { t0: 4.45 };
+const volume = (t) => { if (t < 4.15) return Math.min(V0, cap(angle(t))); return VMIN + (V0 - VMIN) * (remp.v ? S.versement(t, remp.v).p : 0); };
+/* le bord le plus bas du creux (la lèvre droite quand le verre penche à droite), en pixels d'écran */
+const piv = [A.VERRE.l / 2, 50], k = ECH / 100;
+const levre = (a) => { const p = A.rot([CAV.x + CAV.l + 2, 0], a, piv); return [CX + (p[0] - piv[0]) * k, CY + (p[1] - piv[1]) * k]; };
+
+window.pret = S.pret().then(() => {
+  /* le fond du creux, droit et vide, pour régler la chute du filet de remplissage */
+  const r = Verse.formes(document.createElement('canvas'), { l: W, h: H, ech: ECH, p: 0, tracer: (c) => c.fill(new Path2D(A.verreTraces(W / 2, H / 2, ECH, 0, 0).mur)) });
+  remp.fond = CY - H / 2 + r.poches[0].y; remp.x = CX - W / 2 + r.poches[0].x;
+  remp.v = { t0: remp.t0, ys: -40, yt: remp.fond };
+  /* ce que le creux tient plein, à plat, mesuré par le moteur : la contenance affichée en découle (elle ne bouge pas tant que rien ne sort) */
+  const plein = Verse.formes(document.createElement('canvas'), { l: W, h: H, ech: ECH, p: 1, tracer: (c) => c.fill(new Path2D(A.verreTraces(W / 2, H / 2, ECH, 0, 0).mur)) });
+  remp.clPlein = Verse.enCl(plein.poches[0].aire, ECH);
+  seek(0);
+});
+
+window.seek = (t) => {
+  t = ((t % PER) + PER) % PER;
+  const a = angle(t), V = volume(t), c = cap(a), p = c > 0 ? Math.min(1, V / c) : 0;
+  const r = S.vin(cv, 'formes', { l: W, h: H, ech: ECH, p, jus: 'maceration', cle: a.toFixed(3), tracer: (ctx) => ctx.fill(new Path2D(A.verreTraces(W / 2, H / 2, ECH, a, 0).mur)) });
+  const pc = r.poches[0], surf = pc ? CY - H / 2 + pc.y : CY;
+  S.niveau(niv, surf, 0, 1080, 1);
+  /* ce qui sort : le débit est la baisse du volume ; le filet part de la lèvre basse et tombe hors champ, en parabole */
+  const dt = 1 / 60, debit = Math.max(0, V - volume(t + dt)) / dt, debitAvant = Math.max(0, volume(t - 0.18) - volume(t - 0.18 + dt)) / dt;
+  if ((debit > 0.002 || debitAvant > 0.002) && t < 4.15) {
+    const [lx, ly] = levre(a), w = Math.min(36, 46 * Math.sqrt(debit)), vx = 90 + 2.2 * a, pts = [];
+    /* la tête du filet tombe depuis le début du débordement ; on la borne à l'image */
+    for (let i = 0; i <= 30; i++) { const tau = (i / 30) * 0.5, x = lx + vx * tau, y = ly + 0.5 * 5200 * tau * tau; pts.push(`${x.toFixed(1)},${y.toFixed(1)}`); if (y > 1120) break; }
+    spC.setAttribute('d', 'M' + pts.join(' L')); spC.setAttribute('stroke-width', w.toFixed(2)); spE.setAttribute('d', 'M' + pts.join(' L')); spE.setAttribute('stroke-width', (w * 0.18).toFixed(2));
+    sp.style.display = w > 1.2 ? '' : 'none';
+  } else sp.style.display = 'none';
+  /* le remplissage */
+  if (remp.v) filet.set(remp.x, S.jet(S.versement(t, remp.v), surf), 'maceration', 30, t);
+  /* la contre-étiquette : l'instrument */
+  const cl = remp.clPlein * V;
+  ce.innerHTML = A.contre({ lot: '31', sujet: 'Ça penche', lignes: [['Ce verre penche de', A.deg(Math.round(a))], ['Son vin, de', A.deg(0)]], grands: [Verse.cl(cl), A.deg(Math.round(a))], voix: A.VOIX.sousVerre, l: 300 });
+};
+</script></body>

@@ -1,0 +1,28 @@
+/* Lot Monde (pièces 11 à 18) : la marque sur un objet ou dans un lieu. Préfixe mo- pour le commun, m11- à m18- par pièce.
+   Huit constructions, toutes différentes : frise, plein cadre sans un mot, cadre penché, diptyque, objet seul, à-plat seul,
+   grille, très gros plan. Pas de bande « titre et paragraphe » sous une photo : une légende courte suffit.
+
+   Les matières photographiques (Poly Haven, CC0) sont dans plates/tex/<id>/ : <id>_lit.jpg (la lumière d'en haut à gauche
+   cuite depuis la carte de normales), <id>_encre.jpg (où l'encre accroche : les reliefs). Une page locale ne peut pas
+   servir d'une image comme masque CSS (règle d'origine en file://) : les imprimés sur matière passent par un canvas
+   (fonction encre() de chaque pièce), qui compose sans relire les pixels. */
+
+/* une matière en fond : la tuile cuite, posée à la taille donnée par --t (côté de la tuile en px) */
+.mo-mat{position:relative;background-repeat:repeat;background-size:var(--t,900px) var(--t,900px);background-position:var(--tx,0) var(--ty,0)}
+/* le flash : une lumière forte au centre, qui tombe vite vers les bords. À poser par-dessus une matière. */
+.mo-flash{position:absolute;inset:0;pointer-events:none;z-index:20;
+  background:radial-gradient(70% 62% at var(--fx,46%) var(--fy,42%),rgba(255,250,240,.16),rgba(255,250,240,0) 55%),radial-gradient(120% 95% at var(--fx,46%) var(--fy,42%),rgba(4,6,20,0) 38%,rgba(4,6,20,.58) 100%)}
+/* un objet posé : l'ombre courte et dure d'un flash décalé en haut à gauche, puis sa pénombre */
+.mo-ombre{filter:drop-shadow(5px 7px 0 rgba(6,8,26,.34)) drop-shadow(14px 20px 18px rgba(6,8,26,.42))}
+.mo-ombre-forte{filter:drop-shadow(8px 11px 1px rgba(4,5,18,.55)) drop-shadow(22px 30px 26px rgba(4,5,18,.5))}
+/* un canvas d'encre posé sur sa matière */
+.mo-encre{position:absolute;left:0;top:0;pointer-events:none}
+.mo-mult{mix-blend-mode:multiply}
+/* la légende : courte, en chasse serrée, toujours dans la marge */
+.mo-leg{position:absolute;z-index:70;display:flex;gap:18px;align-items:baseline}
+.mo-leg b{font-weight:900;font-stretch:150%;letter-spacing:.04em}
+.mo-num{font-family:var(--titre);font-weight:900;font-stretch:150%;font-size:12px;letter-spacing:.04em}
+/* un texte posé sur une photo garde une ombre légère */
+.mo-sur{color:var(--tuffeau);text-shadow:0 0 10px rgba(5,9,40,.6)}
+/* le grain du film, par-dessus tout (celui du socle) */
+.mo-grain{position:absolute;inset:0;z-index:30;pointer-events:none}

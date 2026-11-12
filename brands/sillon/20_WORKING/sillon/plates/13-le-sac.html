@@ -1,0 +1,50 @@
+<!doctype html><meta charset="utf-8"><title>Sillon · 13 · Le sac</title><meta name="robots" content="noindex">
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates.css"><link rel="stylesheet" href="monde.css">
+<script src="../brand/marque.js"></script><script src="../brand/matiere.js"></script><script src="../brand/verse.js"></script>
+<style>
+  /* 13 · Le sac. Une seule photo, dans un cadre qui penche de 12° ; la photo, elle, reste d'aplomb (la fenêtre tourne,
+     pas l'image : le comportement de la marque). Sur le sac en toile, la phrase de la vitrine, sérigraphiée en une
+     encre tuffeau, et le verre du U au jus de la maison : « Venez comme vous êtes. Repartez à pied. » On l'emporte avec
+     la bouteille qui dépasse.
+     Placement dans les pixels de sac.jpg (1856 × 2304), relevé sur une grille à taille réelle : le sac est un
+     quadrilatère (405, 915), (1425, 1000), (1265, 2245), (245, 2180) ; le bras le cache au-dessus de la diagonale
+     (1000, 1000) → (1255, 1650) : l'imprimé reste à sa gauche. Préfixe m13-. */
+  .m13-cadre{position:absolute;overflow:hidden;box-shadow:0 0 0 1px rgba(14,22,56,.25),18px 30px 50px -18px rgba(14,22,56,.55)}
+  .m13-cadre>div{position:absolute;left:50%;top:50%}
+  .m13-imp{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:0;padding:0}
+  .m13-imp canvas{mix-blend-mode:normal!important}
+  /* la toile repasse par-dessus l'encre : ses plis (lumière basse) et sa trame (contraste fort), en multiply */
+  .m13-toile{position:absolute;overflow:hidden;mix-blend-mode:multiply;pointer-events:none}
+  .m13-toile img{position:absolute}
+  .m13-leg{left:84px;bottom:64px;flex-direction:column;gap:6px;align-items:flex-start}
+  .m13-ce{position:absolute;right:84px;bottom:84px;z-index:65}
+</style>
+<body><div class="plate clair fond-craie lumiere" id="p" style="height:1500px"></div>
+<script>
+const A = Marque, C = A.COULEURS, NB = A.NB;
+/* le sac, ses quatre coins ; un point du sac en (u, v) de 0 à 1 */
+const S = [[405, 915], [1425, 1000], [1265, 2245], [245, 2180]];
+const bil = (u, v) => [0, 1].map((k) => (1 - v) * ((1 - u) * S[0][k] + u * S[1][k]) + v * ((1 - u) * S[3][k] + u * S[2][k]));
+const Z = { u0: 0.12, u1: 0.6, v0: 0.22, v1: 0.9 }, quad = [bil(Z.u0, Z.v0), bil(Z.u1, Z.v0), bil(Z.u1, Z.v1), bil(Z.u0, Z.v1)];
+/* l'imprimé à plat : 560 × 860, six lignes ; mis en perspective sur le quadrilatère */
+const IMP = { l: 560, h: 860 };
+const LIGNES = ['VENEZ', 'COMME', 'VO[U]S', 'ÊTES.', 'REPARTEZ', 'À PIED.'];
+const imprime = `<div class="m13-imp" style="width:${IMP.l}px;height:${IMP.h}px">${LIGNES.map((t, i) => `<canvas data-l="${i}" style="margin-top:${i ? -6 : 0}px"></canvas>`).join('')}</div>`;
+/* la silhouette du sac, sans la manche : la couche des plis s'arrête à ses bords, elle n'a donc aucun bord visible */
+const poly = [[405, 915], [690, 945], [1000, 1000], [1255, 1650], [1265, 2245], [245, 2180]].map((p) => `${p[0]}px ${p[1]}px`).join(',');
+const toile = (filtre, op) => `<div class="m13-toile" style="left:0;top:0;width:1856px;height:2304px;clip-path:polygon(${poly});opacity:${op}"><img src="${A.photoURL('sac')}" style="left:0;top:0;width:1856px;height:2304px;filter:${filtre}" alt=""></div>`;
+const habits = A.pose(imprime, { ...IMP, quad }) + toile('grayscale(1) blur(4px) brightness(3.3) contrast(1.4)', 0.8);
+
+/* le cadre penché de 12°, la photo d'aplomb dedans */
+const F = { l: 760, h: 980, a: 12, x: 330, y: 150 }, ra = (F.a * Math.PI) / 180, L = F.l * Math.cos(ra) + F.h * Math.sin(ra), H = F.l * Math.sin(ra) + F.h * Math.cos(ra);
+const cad = [60, 330, 1700, 1700 * (H / L)], sc = A.scene('sac', habits, { l: Math.ceil(L), cadre: cad });
+document.getElementById('p').innerHTML =
+  `<div class="m13-cadre" style="left:${F.x}px;top:${F.y}px;width:${F.l}px;height:${F.h}px;transform:rotate(${F.a}deg)"><div style="width:${L}px;height:${H}px;margin:${-H / 2}px 0 0 ${-L / 2}px;transform:rotate(${-F.a}deg)">${sc}</div></div>
+   <div class="mo-leg m13-leg t-etq" data-voulu><span><span class="mo-num">13</span>${NB}${NB}Le sac · sérigraphie, une encre et un jus</span><span style="opacity:.7">Le cadre penche de 12°, la photo reste d’aplomb</span></div>
+   <div class="m13-ce">${A.contre({ lot: '13', sujet: 'Le sac en toile', lignes: [['Encre', 'Tuffeau'], ['Le verre', 'Macération']], voix: A.VOIX.vitrine, sanitaire: true, l: 250 })}</div>`;
+/* les lignes : le remplisseur en encre claire (mode imprimé, sans fondu) ; seul le U tient du vin */
+/* la taille : la ligne la plus large tient dans les 560 px de l'imprimé, marge comprise */
+window.pret = Verse.pret().then(() => { const large = Math.max(...LIGNES.map((t) => Verse.mesurer({ texte: t, taille: 100, marge: 0 }).l)), taille = Math.min(150, Math.floor((100 * (IMP.l - 8)) / large));
+  document.querySelectorAll('.m13-imp canvas').forEach((cv) => { const t = LIGNES[+cv.dataset.l];
+  Verse.rendre(cv, { texte: t, taille, angle: 0, jus: 'maceration', p: 0.67, mode: 'imprime', c: '#F3EEDF', texture: false, marge: 0 }); cv.style.mixBlendMode = 'normal'; cv.style.opacity = '.94'; cv.style.filter = 'blur(.35px)'; }); });
+</script></body>

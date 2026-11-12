@@ -11599,657 +11599,2547 @@
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/MARQUE.md",
-    "bytes": 20567,
-    "sha256": "3ec1e934783ed9f4fd889cb0579e7f09e393aed0841215f2bf378e80b8c56ecf"
+    "path": "brands/sillon/20_WORKING/sillon/MARQUE.md",
+    "bytes": 25265,
+    "sha256": "290ce328ee26e5ae06cd479a7476f0c7e7a11a6eb318594438dadf256a43c033"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/package-lock.json",
-    "bytes": 1587,
-    "sha256": "6da1ffeec28919e6e5f449ccd37ee2889e9a1155b10c1304dc29df87b149d6a0"
+    "path": "brands/sillon/20_WORKING/sillon/art/34-etiquette.html",
+    "bytes": 2313,
+    "sha256": "171f34cb6bea5355e856d60db5cad135aece3a31405bd132329e768747770040"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/package.json",
-    "bytes": 231,
-    "sha256": "a16560b809073cb7220ae395c589261c1cfdafd04e712ebc2c46896de9caacd2"
-  },
-  {
-    "brand": "sillon",
-    "path": "brands/sillon/presentation.json",
-    "bytes": 332,
-    "sha256": "112a88cfd1e7fc95733896aad32d11a5c4047ff7b51ba7e9e7f5687fcb32e1ea"
-  },
-  {
-    "brand": "sillon",
-    "path": "brands/sillon/blender/lib.py",
+    "path": "brands/sillon/20_WORKING/sillon/blender/lib.py",
     "bytes": 26067,
     "sha256": "505b2f57462447464a4cf9a9ced7e43d3f338b94b2389dc5a6dadbe0f1218a5f"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/blender/objets.py",
+    "path": "brands/sillon/20_WORKING/sillon/blender/objets.py",
     "bytes": 21856,
     "sha256": "e537761821090e4b6b4d6ae0dee9c540c355dc7a653b79ec3f35d678542ac49b"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/blender/polyhaven.json",
+    "path": "brands/sillon/20_WORKING/sillon/blender/polyhaven.json",
     "bytes": 63,
     "sha256": "fe00a40be7e2e92ba96c59594bbbe973b3cde4afa509251428fb106b0601ac79"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/blender/s00_test_logo.py",
+    "path": "brands/sillon/20_WORKING/sillon/blender/s00_test_logo.py",
     "bytes": 1111,
     "sha256": "d1cbdae2f40a25b664e0ff4e3609e08cc979d925b5ad0ec16fc9ec59890ef1be"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/brand/marque.css",
-    "bytes": 16826,
-    "sha256": "43a7aebd37d042ee665d0fd2bfc63a431c7667c32f143f35b8f25168374f2df0"
+    "path": "brands/sillon/20_WORKING/sillon/blender/s33_pierre.py",
+    "bytes": 7536,
+    "sha256": "00a2e9325e51599d3db5bd1ab4d9473ba176414b5e052032b1ffa0c930586a51"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/brand/marque.js",
-    "bytes": 51134,
-    "sha256": "b032b1f818ac0895d20f561738d0c8fc9bf2e1488fd4e3c59d9915b48cb66310"
+    "path": "brands/sillon/20_WORKING/sillon/blender/s34_bouteille.py",
+    "bytes": 5799,
+    "sha256": "175f6124c29ac9d611251fa16918ef4a3d7aca290546803caee5c5b9f3ca86c5"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/brand/matiere.js",
-    "bytes": 5158,
-    "sha256": "2771a2e60346f01e181dd322541b1267c4936057cb3355e02401401424cec415"
+    "path": "brands/sillon/20_WORKING/sillon/blender/s35_verres.py",
+    "bytes": 6793,
+    "sha256": "d00f6126d6514908d043bc192652fb9e7852fd994f8b0af474c502021d2c77ca"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/brand/verse.js",
-    "bytes": 30241,
-    "sha256": "c62aa1c3930d7d191ff009241d403d2534814f697034e729f8070a6234e9be04"
+    "path": "brands/sillon/20_WORKING/sillon/blender/sillon_objets.py",
+    "bytes": 42900,
+    "sha256": "b29d955da4c2d6ce45a6b505275919c0adb7f964bca80912829552033311ecc5"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/brand/fonts/Anybody-Verre.ttf",
+    "path": "brands/sillon/20_WORKING/sillon/blender/tex/denim_fabric_03/denim_fabric_03_diff_2k.jpg",
+    "bytes": 4357564,
+    "sha256": "f7456ece0e77f29ac3594e6965ee61f69998f17311bd5f0e0774092c573ef520"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/blender/tex/denim_fabric_03/denim_fabric_03_disp_2k.jpg",
+    "bytes": 3192033,
+    "sha256": "795db695ed96bc3a9e13c9d99b3636124dbcbbe1f03923cb2fa6b1c09bc0dd72"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/blender/tex/denim_fabric_03/denim_fabric_03_nor_gl_2k.jpg",
+    "bytes": 4224438,
+    "sha256": "7776b94f745e38b4d9c030f2d166b1f6bc6bc475a95bba1396c7b46f425e8278"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/blender/tex/denim_fabric_03/denim_fabric_03_rough_2k.jpg",
+    "bytes": 3767058,
+    "sha256": "1ff180388c6ed76cfe5897798bae4d91b01f39145083ca26a94a8e1a6e2be4ae"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/blender/tex/hdri/studio_small_09_2k.hdr",
+    "bytes": 6312947,
+    "sha256": "36724313c0fc66dab126ff90f081b85a0b1ef47be65eda1417bd20b033f0573f"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/brand/fonts/Anybody-Verre.ttf",
     "bytes": 28052,
     "sha256": "1a3f1c8e1e66acba7d0440c5f4d9091136dfdb9fe1e0c8da80d37968271aa5eb"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/brand/fonts/HankenGrotesk-Bold.ttf",
+    "path": "brands/sillon/20_WORKING/sillon/brand/fonts/HankenGrotesk-Bold.ttf",
     "bytes": 33024,
     "sha256": "53add8cb690969e4c2547205eef0b2523fc5c65d60ad3b68640d1596a26d6d70"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/brand/fonts/HankenGrotesk-Medium.ttf",
+    "path": "brands/sillon/20_WORKING/sillon/brand/fonts/HankenGrotesk-Medium.ttf",
     "bytes": 33188,
     "sha256": "776ded54cc40913f9964e4ac4d819a0845653470a4f277f96f27b15a809b53d0"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/brand/fonts/HankenGrotesk-Regular.ttf",
+    "path": "brands/sillon/20_WORKING/sillon/brand/fonts/HankenGrotesk-Regular.ttf",
     "bytes": 33124,
     "sha256": "394b18a34fe765bb225ef44f4197c6db35b292f24b2cd92b81cddbe8c6e2074a"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/brand/fonts/HankenGrotesk-SemiBold.ttf",
+    "path": "brands/sillon/20_WORKING/sillon/brand/fonts/HankenGrotesk-SemiBold.ttf",
     "bytes": 33088,
     "sha256": "2f3c1fcbd6cd63c5e2d0d12277284987a9b575ea58b91399947d391e8e3ff0fa"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/brand/logo/logo.json",
+    "path": "brands/sillon/20_WORKING/sillon/brand/logo/logo.json",
     "bytes": 21007,
     "sha256": "8c1ebbb6d263c1fd0ddf973f6c7a989e9c97ce0766797195fe5c2a0154a5132a"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/brand/logo/sillon-complet-bleu.svg",
+    "path": "brands/sillon/20_WORKING/sillon/brand/logo/sillon-complet-bleu.svg",
     "bytes": 20352,
     "sha256": "8f944482c10a8e5f9c4cb51001b437c5498297d0c75fcfdf2c5460d69c6175ac"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/brand/logo/sillon-complet-cave.svg",
+    "path": "brands/sillon/20_WORKING/sillon/brand/logo/sillon-complet-cave.svg",
     "bytes": 20352,
     "sha256": "3deacee93f75682afa4109d6994e9e201b59fec3f95fc60a0015abeff7fe341e"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/brand/logo/sillon-complet-tuffeau.svg",
+    "path": "brands/sillon/20_WORKING/sillon/brand/logo/sillon-complet-tuffeau.svg",
     "bytes": 20352,
     "sha256": "c0575c5f1b9ea072afaf322d514e55b063637e9c3d6525167f1ea4d0a373c826"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/brand/logo/sillon-logotype-bleu.svg",
+    "path": "brands/sillon/20_WORKING/sillon/brand/logo/sillon-logotype-bleu.svg",
     "bytes": 1498,
     "sha256": "8d0f8de5211a6e8306ff9ff8c2cb02fd88990ee8cd73a90c1ed0cfe4d6b9d5a0"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/brand/logo/sillon-logotype-cave.svg",
+    "path": "brands/sillon/20_WORKING/sillon/brand/logo/sillon-logotype-cave.svg",
     "bytes": 1498,
     "sha256": "f00c2dfeafbd769053863c604b5c5b9f28c8be4a80d80ae89b5fe712cc4fd79c"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/brand/logo/sillon-logotype-grand-bleu.svg",
+    "path": "brands/sillon/20_WORKING/sillon/brand/logo/sillon-logotype-grand-bleu.svg",
     "bytes": 2003,
     "sha256": "ddd77c8627a3758aca091da3e5b3bcc957e27fd083a01c493f83b6263c646b0a"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/brand/logo/sillon-logotype-grand-cave.svg",
+    "path": "brands/sillon/20_WORKING/sillon/brand/logo/sillon-logotype-grand-cave.svg",
     "bytes": 2003,
     "sha256": "ed343cea4460b5d180c946d44ca199e3dc523cb1e65c96f95c0eb594b858275e"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/brand/logo/sillon-logotype-grand-tuffeau.svg",
+    "path": "brands/sillon/20_WORKING/sillon/brand/logo/sillon-logotype-grand-tuffeau.svg",
     "bytes": 2003,
     "sha256": "e15fede02c2119a5b078b4a6b029a72016342ce995f05c0f942285ed9b498af1"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/brand/logo/sillon-logotype-jus-bleu.svg",
+    "path": "brands/sillon/20_WORKING/sillon/brand/logo/sillon-logotype-jus-bleu.svg",
     "bytes": 1675,
     "sha256": "875e971adecf5166fce76f8da8106a07297252e194e5ee033d646617d7362f55"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/brand/logo/sillon-logotype-jus-cave.svg",
+    "path": "brands/sillon/20_WORKING/sillon/brand/logo/sillon-logotype-jus-cave.svg",
     "bytes": 1675,
     "sha256": "226e3f91d9cad7ea3b8046a93075eea1388a570031ac44c8e6e78725521f6336"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/brand/logo/sillon-logotype-jus-tuffeau.svg",
+    "path": "brands/sillon/20_WORKING/sillon/brand/logo/sillon-logotype-jus-tuffeau.svg",
     "bytes": 1675,
     "sha256": "6c5e0d8365013a510dcae104d146aa5fd574a4109bdc6b23fcbf6dfc8e2d314c"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/brand/logo/sillon-logotype-tuffeau.svg",
+    "path": "brands/sillon/20_WORKING/sillon/brand/logo/sillon-logotype-tuffeau.svg",
     "bytes": 1498,
     "sha256": "f7f3fd6a4dc4fefaa53d7f23661bc0d3e519f25905ce619472c23b393c6f34d0"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/brand/logo/sillon-penche-jus-bleu.svg",
+    "path": "brands/sillon/20_WORKING/sillon/brand/logo/sillon-penche-jus-bleu.svg",
     "bytes": 1752,
     "sha256": "ba6f2aee284b21187d8cc9c87eb21bd9526ea05abd334cbd8480df8d2a4d1af1"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/brand/logo/sillon-penche-jus-cave.svg",
+    "path": "brands/sillon/20_WORKING/sillon/brand/logo/sillon-penche-jus-cave.svg",
     "bytes": 1752,
     "sha256": "82edd709a4cfd28f94344e368925a947d33369ff5dd0b55a9d5be83752bcabb0"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/brand/logo/sillon-penche-jus-tuffeau.svg",
+    "path": "brands/sillon/20_WORKING/sillon/brand/logo/sillon-penche-jus-tuffeau.svg",
     "bytes": 1752,
     "sha256": "42d8d24623cb44ea084aa0f7a6c5d9d5383d4cab12802c6c87cc03368658015d"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/brand/logo/sillon-symbole-bleu.svg",
+    "path": "brands/sillon/20_WORKING/sillon/brand/logo/sillon-symbole-bleu.svg",
     "bytes": 592,
     "sha256": "f345658a429fe294a62f5f3a14b07c3fd45b5eec4ce7c27b8a696aa194947121"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/brand/logo/sillon-symbole-cave.svg",
+    "path": "brands/sillon/20_WORKING/sillon/brand/logo/sillon-symbole-cave.svg",
     "bytes": 592,
     "sha256": "f6ef2a9bd6441513bd3713509024f8b3feb9ca3bf1d6e9b67e3634cb159d5fca"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/brand/logo/sillon-symbole-grand-bleu.svg",
+    "path": "brands/sillon/20_WORKING/sillon/brand/logo/sillon-symbole-grand-bleu.svg",
     "bytes": 1086,
     "sha256": "ffa46293e34eb060628e3faf9ff8f325976875cbe8c6dbc6c32895b4d5601a60"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/brand/logo/sillon-symbole-grand-cave.svg",
+    "path": "brands/sillon/20_WORKING/sillon/brand/logo/sillon-symbole-grand-cave.svg",
     "bytes": 1086,
     "sha256": "6607aa5e74bdfc1ed679bab78a1aed04c5a19e9edfd987bd6d26d4f57c8bece5"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/brand/logo/sillon-symbole-grand-tuffeau.svg",
+    "path": "brands/sillon/20_WORKING/sillon/brand/logo/sillon-symbole-grand-tuffeau.svg",
     "bytes": 1086,
     "sha256": "bb9bc4d4fa4b2743d728a4e2f2ee56a662c5198a06b06aebeef1f9f4ec2fca4e"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/brand/logo/sillon-symbole-jus-bleu.svg",
+    "path": "brands/sillon/20_WORKING/sillon/brand/logo/sillon-symbole-jus-bleu.svg",
     "bytes": 772,
     "sha256": "b5da5293b1624a70d00bbe9da67c6585f58284c94c5cb2bcbddcea75bf3f1b66"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/brand/logo/sillon-symbole-jus-cave.svg",
+    "path": "brands/sillon/20_WORKING/sillon/brand/logo/sillon-symbole-jus-cave.svg",
     "bytes": 772,
     "sha256": "ddf1321cd50b5fcc6ffed905cba9f617a34a605b99c99a20bd1f2494d1db2875"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/brand/logo/sillon-symbole-jus-tuffeau.svg",
+    "path": "brands/sillon/20_WORKING/sillon/brand/logo/sillon-symbole-jus-tuffeau.svg",
     "bytes": 772,
     "sha256": "5f84b60c8f5caad6ce7af2261db2ac2280708108e30abe5f5a82bdff6b01f563"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/brand/logo/sillon-symbole-tuffeau.svg",
+    "path": "brands/sillon/20_WORKING/sillon/brand/logo/sillon-symbole-tuffeau.svg",
     "bytes": 592,
     "sha256": "15ec3c77ec45561122051fce40541bce5ccf1f4a6586cfb1cc6c0f0dbb8e766c"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/deck/pages.css",
-    "bytes": 5053,
-    "sha256": "0afb14fac09d4184505a809cc55e89259d514f9f1e2afe1768b2cf24524aa34a"
+    "path": "brands/sillon/20_WORKING/sillon/brand/marque.css",
+    "bytes": 16826,
+    "sha256": "43a7aebd37d042ee665d0fd2bfc63a431c7667c32f143f35b8f25168374f2df0"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/deck/pages.js",
-    "bytes": 8488,
-    "sha256": "bc4821c19a731bfe8850d11a71817fa806b3281bb68c308bdf0e741a0859e144"
+    "path": "brands/sillon/20_WORKING/sillon/brand/marque.js",
+    "bytes": 52411,
+    "sha256": "26d160ee93d2a86a5047a6f7416d11ed4994bda082852ffd34514085825111e6"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/deck/render.html",
-    "bytes": 1374,
-    "sha256": "7823dd6b537f4cf4fcba1b05b9292a4fce42232fb321c17144721b962451d0d6"
+    "path": "brands/sillon/20_WORKING/sillon/brand/matiere.js",
+    "bytes": 5158,
+    "sha256": "2771a2e60346f01e181dd322541b1267c4936057cb3355e02401401424cec415"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/motion/lib.js",
-    "bytes": 4299,
-    "sha256": "53b8865936974a561d059fa580f3a846f136e5c872e7fc842d4842cea69624ee"
+    "path": "brands/sillon/20_WORKING/sillon/brand/verse.js",
+    "bytes": 30241,
+    "sha256": "c62aa1c3930d7d191ff009241d403d2534814f697034e729f8070a6234e9be04"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/motion/motion.css",
-    "bytes": 529,
-    "sha256": "77aacfbbe307b44d6e89fa37363c40b8e044bac2ce8f9017781f26c3c1737c72"
+    "path": "brands/sillon/20_WORKING/sillon/deck/pages.css",
+    "bytes": 13478,
+    "sha256": "a20063e6ab00f8347faa9f2194c5e26f82492a4b628d9ae4f58ecab20fa2dd69"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/motion/_gabarit.html",
+    "path": "brands/sillon/20_WORKING/sillon/deck/pages.js",
+    "bytes": 33891,
+    "sha256": "ef988f5386abc4ce5cbf7e8d6af25b5baec4d3eb81967f2ffa05a32c0891380d"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/deck/render.html",
+    "bytes": 1363,
+    "sha256": "c2f258810d959fedbe7a3842b90b51334e99617f44e63be5e73d5cd3ce42af4d"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/motion/25-logo.html",
+    "bytes": 7588,
+    "sha256": "561d367c56ac888ac6c49853d125ae428b80752f8dfb059a3dcf654a9db10e79"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/motion/26-jeudi.html",
+    "bytes": 4773,
+    "sha256": "488f0607f873dca896e2954d18aa07ece4320bf481a460c7e0310b46f19f041e"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/motion/27-le-plein.html",
+    "bytes": 5831,
+    "sha256": "c6fa065803474a8755596e4cb5be8343e1d72ccf40e0ff36af7efedb758b67a0"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/motion/28-arrivage.html",
+    "bytes": 5679,
+    "sha256": "31d35d5216fddef476641840b8da69f0bcaf1e74e2ee8a832dcbd8b689c05421"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/motion/29-phrase.html",
+    "bytes": 6725,
+    "sha256": "9d4c0da261797a7398d602023b72e32de7b9f0216a14b7ec6261a8f284ebf82c"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/motion/30-abecedaire.html",
+    "bytes": 8385,
+    "sha256": "fa00ced80a7182b7b6e86da45bd42575bb5dd3355c6b3b72f770cddad0b0c4a0"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/motion/31-ca-penche.html",
+    "bytes": 7032,
+    "sha256": "e71da69ed318a049a2967ec8df7596ceaceaced01f079a70019729edf9d1c3c1"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/motion/32-film.html",
+    "bytes": 17317,
+    "sha256": "d5b07888af64141a0bfe00f74e3f51656ef61b886cd0059205007a138bc888d4"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/motion/_gabarit.html",
     "bytes": 1286,
     "sha256": "d8cc0b45a49158cbbbd42859eaf76ede1a5f8080d872ae8ccb488e7f8216a069"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/out/plates/01-ouverture.png",
-    "bytes": 11693642,
-    "sha256": "5ffb3d4a697614a37ed929d714a1d626c9aafe7f21d3e4130efbd229aefb116c"
+    "path": "brands/sillon/20_WORKING/sillon/motion/lib.js",
+    "bytes": 4299,
+    "sha256": "53b8865936974a561d059fa580f3a846f136e5c872e7fc842d4842cea69624ee"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/out/plates/02-logo.png",
-    "bytes": 16399327,
-    "sha256": "5144df737a32e1961bd14273b2193d2c02a5d3a6288f8aa5e16a26bd93903be2"
+    "path": "brands/sillon/20_WORKING/sillon/motion/motion.css",
+    "bytes": 529,
+    "sha256": "77aacfbbe307b44d6e89fa37363c40b8e044bac2ce8f9017781f26c3c1737c72"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/out/plates/03-trois-jus.png",
-    "bytes": 10805753,
-    "sha256": "6a86b141b4497f65e281c02c1c2668f3735381753dde5e9b7a1931b6a712ed0c"
+    "path": "brands/sillon/20_WORKING/sillon/motion/sillon.css",
+    "bytes": 1617,
+    "sha256": "d4170d74d0d230f83e3878d9efe44b6811da720eda63b8ac549f136bf07b8c4a"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/out/plates/04-caviste.png",
-    "bytes": 13483062,
-    "sha256": "5bd7b9814184ad85055e01dc1bdda07b216b0ef73a224dcfaff95abc411bd202"
+    "path": "brands/sillon/20_WORKING/sillon/motion/sillon.js",
+    "bytes": 10076,
+    "sha256": "09710dfb1f7702fbcaca54d51fcbee63360d62d6702a3dda7014446a90beb8e5"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/out/plates/05-jeudi.png",
+    "path": "brands/sillon/20_WORKING/sillon/out/art/34-contre.png",
+    "bytes": 1633494,
+    "sha256": "e5bf51655b5c9081f5e860551c3d47561f19ebc729664ab275e9ea8fea57b25b"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/art/34-etiquette-masque.png",
+    "bytes": 42566,
+    "sha256": "f70e925faca2464cb3a8337fff474cb885dd28aef2cefc5c1451b9eacbc50261"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/art/34-etiquette.png",
+    "bytes": 3198387,
+    "sha256": "24bbcb4f8c79e062bd2e97350723c334e89e90d359d6cc58cbeecd10ae32f44b"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/art/34-sous-verre.png",
+    "bytes": 1735988,
+    "sha256": "9f3b68eb0e55d9ea74fdfa9a3ab9ddbb9161565592711199e481e1103bcc9984"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/deck/01-idee.png",
+    "bytes": 12416425,
+    "sha256": "bfc388ce7fe0050143052ad8f1fb5e665b8267a14fd83f5e6303e4fc0cffe2ea"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/deck/02-logo.png",
+    "bytes": 7876087,
+    "sha256": "f96cbe6b5c8fe81b037ca37de60038a159f47896e387c6a68ab661fe257af3cc"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/deck/03-interdits.png",
+    "bytes": 7541357,
+    "sha256": "b13b8d90a7543187231d507f3f33073e7ff5555415eb976f9b654bfd2d72e6aa"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/deck/04-couleurs.png",
+    "bytes": 3186171,
+    "sha256": "73996da00a4662a548f5897e84d194133213becdf13280c34f7f903f95706a4b"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/deck/05-ecrire.png",
+    "bytes": 8529550,
+    "sha256": "37308277be21293caa74e6dcdfc72ebeb43c4625cadc97a1fe5c6126dabc8635"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/deck/06-kit.png",
+    "bytes": 9159813,
+    "sha256": "5c6aa821be583c7b0d14dc3b1b8fe155f58471877e02dd6ae101af8459c3eaef"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/deck/07-annonce.png",
+    "bytes": 4789206,
+    "sha256": "2c073b3b2881d35f6694a95b61255c41fb9cb705497933db82ddf9697010c351"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/deck/08-fichiers.png",
+    "bytes": 8603622,
+    "sha256": "cce7087cd8bb7ab37fe1358e35be0e75ee6a1f07044262b865e4e12d0ad9c681"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/deck/_contact.jpg",
+    "bytes": 882435,
+    "sha256": "75d6069b933d9fff1dde0bebc621118b1ffdc580b3b3021db45ed54f496daf56"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/deck/sillon-fiche-de-marque.pdf",
+    "bytes": 11507324,
+    "sha256": "061461ec0aa47fac038f02d4bb99ade3760e10cf8868b0b130cf67286b961d4a"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/final/33-pierre.png",
+    "bytes": 7684973,
+    "sha256": "9583bc21d861d4f351aecc320a15fb575e55c4ed356b125b6a8534214f004b3b"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/final/34-bouteille.png",
+    "bytes": 5947127,
+    "sha256": "36f3756f5481efbeff401a2190c4f001f4e66fc034ac2b959346bb055daec9aa"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/final/35-verres.png",
+    "bytes": 6052741,
+    "sha256": "5ddd69315415d79df1f24235bd725eb8bf23787053bac2ea7fa5512040790bf7"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/motion/25-logo.mp4",
+    "bytes": 1443713,
+    "sha256": "16f059a59ea72e6d3b62dfdd7f618434dab8c2151390fabc0aa91247a4d7e294"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/motion/26-jeudi.mp4",
+    "bytes": 1434006,
+    "sha256": "ced33b4d5e8339e64fb695caba5e3c05bd240791ea842cd85d876757889fddfe"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/motion/27-le-plein.mp4",
+    "bytes": 444743,
+    "sha256": "98282a6b817ef96e981b8d35249f571f845a0ab9e43b632c11610e140fda899d"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/motion/28-arrivage.mp4",
+    "bytes": 1157567,
+    "sha256": "71efb56b352cfbbf0057db721cfd6e0e8d8c1812d8d93e79840fd774737c568f"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/motion/29-phrase.mp4",
+    "bytes": 925631,
+    "sha256": "541058be3ffc00a83530b7aba61954529186184ff8e188fa165df6000d085680"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/motion/30-abecedaire.mp4",
+    "bytes": 3134251,
+    "sha256": "9b706da7138e4bf1fa90850be05e2e78f6c121a5891f6bf46a3ccd151595e380"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/motion/31-ca-penche.mp4",
+    "bytes": 1074058,
+    "sha256": "a034fb5f6654823f6edbcbf6035e862b39dd0763ab5f8fc5e9c69e3c3abf0f17"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/motion/32-film.mp4",
+    "bytes": 4495401,
+    "sha256": "0373343082d982d4f416d420249606459fc3e70d8dd67ef28a5e24014c3bde27"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/motion/_contact-25.jpg",
+    "bytes": 98946,
+    "sha256": "b3f628b4cfbc9edc58aca394c943509f2a79d1fe0b79c8224966d49aeedd225a"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/motion/_contact-26.jpg",
+    "bytes": 588411,
+    "sha256": "0b1bd9c67e4788473ddef0780164e28b11703fe3cd33db630224c50e50aab9fd"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/motion/_contact-27.jpg",
+    "bytes": 433039,
+    "sha256": "1480e48654645ab82b3cfb84b8d3b9201ae0d28328487d98ad9e72eba621edbe"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/motion/_contact-28.jpg",
+    "bytes": 744296,
+    "sha256": "997573f7d37ad8adf14029d0805c014fed5984e9d384a6b453a76e01538c019b"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/motion/_contact-29.jpg",
+    "bytes": 482263,
+    "sha256": "fe87df014465267049e58bda85020d3f926e2c92ec10d46a9d408cf020c76150"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/motion/_contact-30.jpg",
+    "bytes": 147828,
+    "sha256": "89bd13e4302bed8fa9e8603555f4daa1d10021665143990f739c2fe4826d71b9"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/motion/_contact-31.jpg",
+    "bytes": 292656,
+    "sha256": "f1b62d6c9072cd07120f908b48a08e28501110418dde0c4a236451efafb3e61a"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/motion/_contact-32.jpg",
+    "bytes": 225356,
+    "sha256": "31488f9f254ddb0e01f62dd063abee0aa4f5e344a15a06b6809d422e1bb5de05"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/plates/01-ouverture.png",
+    "bytes": 11692205,
+    "sha256": "8cce712f1212dd041d274e18cb78e9d8311d7b4920b4e061bcfeb6ed7e7c929e"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/plates/02-logo.png",
+    "bytes": 16399325,
+    "sha256": "06304f6f451fe95b2c690fdaa548aa1f5b916e614a6a2e6e5db985295c9dea2e"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/plates/03-trois-jus.png",
+    "bytes": 10810062,
+    "sha256": "f36ee3df631cdae4ffd21e6fc5b8aec5009960936e7ab98ebb1bdf2a36192b7b"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/plates/04-caviste.png",
+    "bytes": 13473214,
+    "sha256": "154ff100ab5d2dba527432b643220b5c372496a76feb8d75f9abbfd19b4db1b8"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/plates/05-jeudi.png",
     "bytes": 9760002,
     "sha256": "77c1e6e5a4d302355e4d298bc428e987223862289e01178668e8d895a6e82a4b"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/out/plates/06-comptoir.png",
-    "bytes": 11163012,
-    "sha256": "1824b0118fa32cb388388a709555dfd5953abfb9089ecc5cc70e66d4e6b5b38b"
+    "path": "brands/sillon/20_WORKING/sillon/out/plates/06-comptoir.png",
+    "bytes": 11163057,
+    "sha256": "c93c7ab6630a942e74cd2b739e797cd2e9fd5f6c5338bf8551e283b8ade196f7"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/out/plates/07-le-plein.png",
-    "bytes": 10421684,
-    "sha256": "6999c68bafd7b01f17d186093e81870ccbcd914c78b24ba42c2a2edd2128c2f1"
+    "path": "brands/sillon/20_WORKING/sillon/out/plates/07-le-plein.png",
+    "bytes": 10424155,
+    "sha256": "6167914b35674c39e7711c1f81e391ed5f9cc8ea93ec6156c75ab4f593ef058a"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/out/plates/08-sans-le-logo.png",
-    "bytes": 16956506,
-    "sha256": "729344f5e27745c074f3ef25312a7422ef162fe1988ffb9263773f2f237d7523"
+    "path": "brands/sillon/20_WORKING/sillon/out/plates/08-sans-le-logo.png",
+    "bytes": 16956833,
+    "sha256": "75597ff7da3a123197264928c4f43146e521679454c24530571aec318fd9083f"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/out/plates/09-le-creux.png",
+    "path": "brands/sillon/20_WORKING/sillon/out/plates/09-le-creux.png",
     "bytes": 5122449,
     "sha256": "89517105c8cbdd74bdb5a5f5640a50dda8d32ff4bcfd0433956c9c84ec1b466a"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/out/plates/10-les-jeudis.png",
+    "path": "brands/sillon/20_WORKING/sillon/out/plates/10-les-jeudis.png",
     "bytes": 2968102,
     "sha256": "d6e6a243644c75a13ea891c16bffce1eb10b5ae64e8d9130d6d5ffe3d3fdeff1"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/photos/caviste.jpg",
-    "bytes": 1018963,
-    "sha256": "0da40c75375ac1e517e6539da4069205ce7cbc1e880f16fbb411906819e9e32c"
+    "path": "brands/sillon/20_WORKING/sillon/out/plates/11-le-mur.png",
+    "bytes": 5059531,
+    "sha256": "cc7f36f856094d1e2ba6c610fc4220678c39c4e0135684d653217c01f62af9f7"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/photos/colis.jpg",
-    "bytes": 994858,
-    "sha256": "cdeb56cfc03bad88182a860118732a833898b60e3293dd96611a7dbeccd87adf"
+    "path": "brands/sillon/20_WORKING/sillon/out/plates/12-la-vitrine.png",
+    "bytes": 7294627,
+    "sha256": "c816a1adcbd69b1061558586d0ee481665a2e3c75b1b578ea769ff56f8e9d4bc"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/photos/comptoir.jpg",
-    "bytes": 952694,
-    "sha256": "00f34124ffa78c2fe1ff8e911fdacab60f55ae01ad4ff5a18e41265f57b1cd28"
+    "path": "brands/sillon/20_WORKING/sillon/out/plates/13-le-sac.png",
+    "bytes": 9984161,
+    "sha256": "ec9ab505287d1e44a9576b1e69586bb718ce5c9d7e86879387034bec88e2318a"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/photos/depot.jpg",
-    "bytes": 622972,
-    "sha256": "f82f282cb80b0f687b486e050fd4a906fea8549e4b61b81c214fdacdd0342152"
+    "path": "brands/sillon/20_WORKING/sillon/out/plates/14-le-dos.png",
+    "bytes": 7950470,
+    "sha256": "c7be03e0e33d3e2343e3344c2beef551c6d9b33e97a14ff6960cd26974860e25"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/photos/jeudi.jpg",
-    "bytes": 871076,
-    "sha256": "2d736e0a0bcd47c89d6675d052c383af2fa1de9b4c84b1a1c5b813fc2f36c570"
+    "path": "brands/sillon/20_WORKING/sillon/out/plates/15-la-carte.png",
+    "bytes": 9966397,
+    "sha256": "f87b216f1694ef05a7bee92bbe6bc91d00234f553d1ef7ee561ffb6ed17b553d"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/photos/sillons.jpg",
-    "bytes": 1918952,
-    "sha256": "8bf6e80f47f4099ba0128b3928dae229de6b62a76c719ca04923befad643ea2f"
+    "path": "brands/sillon/20_WORKING/sillon/out/plates/16-la-note.png",
+    "bytes": 8440422,
+    "sha256": "2178b22a7dc9d5d5e93e06d6af5e822d33e1d1f1ed3e9a84d73ac2e0672e22e8"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/photos/trois-jus.jpg",
-    "bytes": 395246,
-    "sha256": "6665a7719e366e3746dc80a829e2d4b2e4e158c02b408f6f1b1ede4bacaba311"
+    "path": "brands/sillon/20_WORKING/sillon/out/plates/17-le-tampon.png",
+    "bytes": 11702888,
+    "sha256": "5da5b5e5d43df100544d350037e941981b987a2c1dc5d609de1be3a45cc30e41"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/photos/verre-penche.jpg",
-    "bytes": 1441307,
-    "sha256": "61f50b829c118b9417d0a9b924735247fb0bded13d252090824ad0017910df5e"
+    "path": "brands/sillon/20_WORKING/sillon/out/plates/18-le-torchon.png",
+    "bytes": 12218117,
+    "sha256": "0ca906147586a0b3d5c8fa1af6ab6830b5864faa2b0a98f9aa0d50af4f80925f"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/photos/_planche.jpg",
+    "path": "brands/sillon/20_WORKING/sillon/out/plates/19-la-couleur.png",
+    "bytes": 12802211,
+    "sha256": "f7b5268e9481e07b7f7a5fec8a6dc67c66e8c4065f2e15dd92761b50d1e84845"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/plates/20-une-grille.png",
+    "bytes": 10616441,
+    "sha256": "7c80bd6a9f59704d9f7378a291a79fe473cabd03282237b46177e6ec24c13755"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/plates/21-le-jeudi.png",
+    "bytes": 2686580,
+    "sha256": "77bc1826465fb4fb3daa7c90e99669f72065ca91bd19517d18dc0ad4f16fae65"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/plates/22-le-plein.png",
+    "bytes": 14655501,
+    "sha256": "7059a01b9fefa21e18f572a708d078e83530fec10e79949490f6de10b9b98aa9"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/plates/23-un-arrivage.png",
+    "bytes": 6604802,
+    "sha256": "1d2f7468caeaee5bbe2303c5d9420b9e21a7802bd863198e91a807a61fdb32d9"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/plates/24-une-phrase.png",
+    "bytes": 9326866,
+    "sha256": "9d9086b43298b0c426d5d44b19ebcb4dae8cffe410b6cd34b4fd7fd300fd1ddf"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/plates/36-la-fiche.png",
+    "bytes": 6232802,
+    "sha256": "179116a12320792d25e9e7c780521834f4f6c55e2be93fe5fffdc50159ca3131"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/plates/37-le-remplisseur-detail-2.png",
+    "bytes": 3584824,
+    "sha256": "49d1bd6d8cde73d0b40852ae494633387e997cc82ee8c5ed9407e40984fb7ec9"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/plates/37-le-remplisseur-detail.png",
+    "bytes": 1365272,
+    "sha256": "80357c80bd6d2afb4a96224da5cef9b2ecc3f0b7d80f431225cd63ccebd05901"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/plates/37-le-remplisseur.png",
+    "bytes": 11629078,
+    "sha256": "b19bf8b07233b5d796630cde85e5d2e14d7a2f867d5b8ac05033d998a3d54f11"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/plates/_contact-monde.jpg",
+    "bytes": 573595,
+    "sha256": "835c80ec527cfec2ba90c68148e51f2fc2362f0650fb1a47df412f48b117a414"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/plates/_contact-reseaux.jpg",
+    "bytes": 491745,
+    "sha256": "77371038a20f04ae3e9be8272b4d2942682b9c5776a505400238e8d888fa69c4"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/plates/_contact.jpg",
+    "bytes": 978821,
+    "sha256": "d3d809b8e7ec282fcf3a5b5c7ce604d6ca140f843dc72f8e2ef95ec4b1c1405c"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/reseaux/21-jeudi-4x5-a.png",
+    "bytes": 1944650,
+    "sha256": "25832a46a980bb6c66ff28e1c775a3bdfd13d0288080984ca53afba648fae113"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/reseaux/21-jeudi-4x5-b.png",
+    "bytes": 1014339,
+    "sha256": "e6446913aba32c014fa32c5df22eb171ad239db39e34ce3cd897cae595f39858"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/reseaux/21-jeudi-4x5-c.png",
+    "bytes": 1943803,
+    "sha256": "6d241095861a64abf9799536046304c5f4b65b67acbc543ec65c22767b189078"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/reseaux/21-jeudi-9x16-a.png",
+    "bytes": 2812587,
+    "sha256": "bfe42dc6843a2d5f9d981092d63a71856792f78320c9b604c53774f81b37143f"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/reseaux/21-jeudi-9x16-b.png",
+    "bytes": 1275086,
+    "sha256": "719ba72e62811ffcc5897c9ae983deeb8f63843aae47fd64a8d1b745342221b8"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/reseaux/21-jeudi-9x16-c.png",
+    "bytes": 2784283,
+    "sha256": "e7661570de4e05e88979d079594fecf6b4d9176f7bab524c4a2e1de0287deebb"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/reseaux/22-plein-4x5-a.png",
+    "bytes": 1582042,
+    "sha256": "bb6248acad528154764c0645188be11efea6e2925b757f7dac509f59eeedc973"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/reseaux/22-plein-4x5-b.png",
+    "bytes": 1582785,
+    "sha256": "674907209a905e53fcfe3ed785f589a5b2762dba98278010363971f22f405d85"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/reseaux/22-plein-4x5-c.png",
+    "bytes": 1578768,
+    "sha256": "06e15946c64a7daba1d723aa7db29e1c14ab5fb52b30b6a69f4c2d8fdd4e18c4"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/reseaux/22-plein-9x16-a.png",
+    "bytes": 2430080,
+    "sha256": "4d82734ceec2c84aa75a902a1074bc59e95101c400c135ba843d09a2b6d11311"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/reseaux/22-plein-9x16-b.png",
+    "bytes": 2430938,
+    "sha256": "a4113ef2baf183aded8af68a9a54bef902d1072cb42674d35baa8605e2a0adf8"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/reseaux/22-plein-9x16-c.png",
+    "bytes": 2427841,
+    "sha256": "9c3b680ce28cb7440fdde78422a35b518da884dadd1f1c8278dd84d46812292d"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/reseaux/23-arrivage-4x5-a.png",
+    "bytes": 1814799,
+    "sha256": "7d1d4f2854062e0141191ef196f6d3394683004cc65d3d05e5e2f505ae608671"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/reseaux/23-arrivage-4x5-b.png",
+    "bytes": 2321771,
+    "sha256": "7ed7999e7ca0fa5dc60dd962e00e8b13d2fef78648d3a6f4b7146a0fba78de0b"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/reseaux/23-arrivage-4x5-c.png",
+    "bytes": 2134367,
+    "sha256": "e01087b50322651f4930200bcd20f2374592829a1ae1a331055c48b688e38afe"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/reseaux/23-arrivage-9x16-a.png",
+    "bytes": 2535515,
+    "sha256": "15ae75e60530a09db095a627b48b96ac41a4c34e7499c628f8362371965a3a5b"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/reseaux/23-arrivage-9x16-b.png",
+    "bytes": 3178276,
+    "sha256": "2da16003078e478aaabab4b6d0095f3771d83c0e313b5cc25afeac575b79abbb"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/reseaux/23-arrivage-9x16-c.png",
+    "bytes": 3007183,
+    "sha256": "b9b17ed66c593d1b7c98ac37e8a782d57dbb0ec47c859c96220dc742498a54bc"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/reseaux/24-phrase-4x5-a.png",
+    "bytes": 1535106,
+    "sha256": "4b3e5201e8205daa592485fbb9e98be2bacb0a5fa4abe8d0aade370b5cd6428d"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/reseaux/24-phrase-4x5-b.png",
+    "bytes": 2001775,
+    "sha256": "c4d07c8d26c2da7966b0aba5140fd1b51bd29812a132fb6cfca78fdbaa8709ad"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/reseaux/24-phrase-4x5-c.png",
+    "bytes": 1423121,
+    "sha256": "267181058c09443ecdba8290e23cfd9153d0b1021b91c432644cec2cc758efd4"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/reseaux/24-phrase-9x16-a.png",
+    "bytes": 2156535,
+    "sha256": "efd92eec97bd957182bb6d4308dad0cc3c04bb98e19c8ae21cfa0778867119df"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/reseaux/24-phrase-9x16-b.png",
+    "bytes": 2878469,
+    "sha256": "7b5e95f401018873f22db3b06f1c3c709011a64b86c4405e72f9129e6cad3aa7"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/reseaux/24-phrase-9x16-c.png",
+    "bytes": 1990095,
+    "sha256": "b6abfbea8e1fc0250067ee9eb8df4a5ea1374c1bed0b0b252c6f461954d7df48"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/reseaux/_planche/21-jeudi-9x16-d.png",
+    "bytes": 1364200,
+    "sha256": "3a8d224656b32c395da20936c5a29c28c06c6840314ce86a6df19c54c394243c"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/reseaux/_planche/21-jeudi-9x16-e.png",
+    "bytes": 2742856,
+    "sha256": "62797dc1403e4920e6e94f4e8c02f4216fde6538a0c3320a903186c2053716f3"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/reseaux/_planche/21-jeudi-9x16-f.png",
+    "bytes": 2808184,
+    "sha256": "96f7d5defb26a721182fc7d0ff2ca8a676fe4748abbbfce5006810cc7c3dea06"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/reseaux/_planche/23-gros-plan.png",
+    "bytes": 4317691,
+    "sha256": "6d97d5d0fc9b58a71d20b2a28a41beae40235e4b2153913ad2b2858654761d13"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/out/reseaux/_planche/24-plein-cadre.png",
+    "bytes": 9234707,
+    "sha256": "3b977ee7f69fd6bf23fe8a98bfad6f04472e9a83440ce6e4634d45a36c199aa2"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/outil/LISEZMOI.md",
+    "bytes": 1372,
+    "sha256": "bc57ae58d633b8557e9fbb33091118604a2bb6309c13d6d49e72bee14b4e5054"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/outil/index.html",
+    "bytes": 5602,
+    "sha256": "63419b6f14c60821e323c217b1508cb890b7f22d7f5383418d4af2e8bcf43e6c"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/outil/outil.css",
+    "bytes": 10576,
+    "sha256": "7ef3948021d962c819eef5cb58133101654f681c2be9aff62615e8c0c5b447ee"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/outil/outil.js",
+    "bytes": 23760,
+    "sha256": "75540273aa14fe02236872b27c0c729a87fd1e5442c64f4fcac370661978b432"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/outil/ouvrir.bat",
+    "bytes": 613,
+    "sha256": "26e60499b484811bf0a8e3a2c6f090f0214ee63a055b8bffe4347996264eb60d"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/outil/regles.json",
+    "bytes": 1905,
+    "sha256": "d394ef6849aec787cfc53e5f29856aba4e916d85b8b36ce2a79a48c37f5922f3"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/outil/serveur.mjs",
+    "bytes": 11208,
+    "sha256": "c6ed7e022389177a2bd3b03ec37a92fceb7b88ee96f4e10299a6a512248e263b"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/package-lock.json",
+    "bytes": 1587,
+    "sha256": "6da1ffeec28919e6e5f449ccd37ee2889e9a1155b10c1304dc29df87b149d6a0"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/package.json",
+    "bytes": 231,
+    "sha256": "a16560b809073cb7220ae395c589261c1cfdafd04e712ebc2c46896de9caacd2"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/photos/_planche-2.jpg",
+    "bytes": 295625,
+    "sha256": "ef005ddf89c23443ee5b3a986a6c6ef9f2d4657b0eb9bc6ce3274143d32aa41f"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/photos/_planche.jpg",
     "bytes": 286808,
     "sha256": "99825f702b77e1be37b3921f496fd269f594e458a5bdb4773c2b6785b87b1e88"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/photos/src/caviste.png",
+    "path": "brands/sillon/20_WORKING/sillon/photos/caviste.jpg",
+    "bytes": 1018963,
+    "sha256": "0da40c75375ac1e517e6539da4069205ce7cbc1e880f16fbb411906819e9e32c"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/photos/colis.jpg",
+    "bytes": 994858,
+    "sha256": "cdeb56cfc03bad88182a860118732a833898b60e3293dd96611a7dbeccd87adf"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/photos/comptoir.jpg",
+    "bytes": 952694,
+    "sha256": "00f34124ffa78c2fe1ff8e911fdacab60f55ae01ad4ff5a18e41265f57b1cd28"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/photos/depot.jpg",
+    "bytes": 622972,
+    "sha256": "f82f282cb80b0f687b486e050fd4a906fea8549e4b61b81c214fdacdd0342152"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/photos/dos-veste.jpg",
+    "bytes": 1150614,
+    "sha256": "2a6ffadbbe7e41dc439df714f6276b043fec798513b17903d250550f1b2caaca"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/photos/jeudi.jpg",
+    "bytes": 871076,
+    "sha256": "2d736e0a0bcd47c89d6675d052c383af2fa1de9b4c84b1a1c5b813fc2f36c570"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/photos/mur.jpg",
+    "bytes": 695720,
+    "sha256": "33cfe48025cbf9d2611949495687784785484e489fc89eda9f8bcf7ac6927a85"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/photos/sac.jpg",
+    "bytes": 843452,
+    "sha256": "9b4d105a0403635d4cd25ea65c8e867756348ff278004fd427612a184aac3715"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/photos/sillons.jpg",
+    "bytes": 1918952,
+    "sha256": "8bf6e80f47f4099ba0128b3928dae229de6b62a76c719ca04923befad643ea2f"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/photos/src/caviste.png",
     "bytes": 7519458,
     "sha256": "29e45fb1d7d8bd5cf2cd00a77351f4dc2088d8744f4c6dc13c17690daae85d31"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/photos/src/colis.png",
+    "path": "brands/sillon/20_WORKING/sillon/photos/src/colis.png",
     "bytes": 7507911,
     "sha256": "d159ec7f7bed56452fe57ffb379695eb8b7ec4016c2a248b528282e3d8e1e830"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/photos/src/comptoir.png",
+    "path": "brands/sillon/20_WORKING/sillon/photos/src/comptoir.png",
     "bytes": 7525386,
     "sha256": "ec65c65193a5a63bc074b4b3b6c4a6a5754d6f456c714d1236fb7a1bc4bd02c4"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/photos/src/depot.png",
+    "path": "brands/sillon/20_WORKING/sillon/photos/src/depot.png",
     "bytes": 5561428,
     "sha256": "babba1d552ebc8658d3df8af1338bbc90ef5d4ce8733a23d4a660058710e3c8d"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/photos/src/jeudi.png",
+    "path": "brands/sillon/20_WORKING/sillon/photos/src/dos-veste.png",
+    "bytes": 7940850,
+    "sha256": "2dcd91fe68163ea78a7ec42bf47a4584ba4c61fcdee6d3d9900f47e762a12773"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/photos/src/jeudi.png",
     "bytes": 7910419,
     "sha256": "747544ab4e053f41262ebbb0b9d0667e7ddc732fe3336ebe63f6541661632f0a"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/photos/src/sillons.png",
+    "path": "brands/sillon/20_WORKING/sillon/photos/src/mur.png",
+    "bytes": 8295780,
+    "sha256": "fcc65df93467e1aa9d0b2ec6972a304fcffd0fe44f57506bbe62a086a941f8ec"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/photos/src/sac.png",
+    "bytes": 6877348,
+    "sha256": "9b4bad6372bfc635a6f0ab5b7e4295cbd87ddc3f7d13f33310c6762e70036f95"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/photos/src/sillons.png",
     "bytes": 11043338,
     "sha256": "17b7df7368cdb715afa499b6af671a1fa0f138d5966bbad3c7570e6f545928f4"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/photos/src/trois-jus.png",
+    "path": "brands/sillon/20_WORKING/sillon/photos/src/trois-jus.png",
     "bytes": 5389370,
     "sha256": "5450582a6ed868cafbc2946ab12289ad6fe831d825fa08191ef962cc67b22830"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/photos/src/verre-penche.png",
+    "path": "brands/sillon/20_WORKING/sillon/photos/src/verre-penche.png",
     "bytes": 8475249,
     "sha256": "94dc13e4e78374f7d95730ad16a7b3c87bdc39f341dd06c1bdf25f3ce6551916"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/plates/01-ouverture.html",
+    "path": "brands/sillon/20_WORKING/sillon/photos/src/vitrine.png",
+    "bytes": 7424757,
+    "sha256": "ac40d9d909b6a7c410ab61ab3fd8b4c33b6446f012f1d7b4b43a7bb1598f8532"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/photos/trois-jus.jpg",
+    "bytes": 395246,
+    "sha256": "6665a7719e366e3746dc80a829e2d4b2e4e158c02b408f6f1b1ede4bacaba311"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/photos/verre-penche.jpg",
+    "bytes": 1441307,
+    "sha256": "61f50b829c118b9417d0a9b924735247fb0bded13d252090824ad0017910df5e"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/photos/vitrine.jpg",
+    "bytes": 904413,
+    "sha256": "201220b909dadc77a0d232893f5d2e5d99831bb345c9a7891cc8bcb8db2ff72e"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/01-ouverture.html",
     "bytes": 3830,
     "sha256": "65c8f773194464f80db6f3984e5d21800a380c1a1e8e276cf3a2cbb1d3dfb2c7"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/plates/02-logo.html",
-    "bytes": 12254,
-    "sha256": "faf571c615df30026f451d8122be40659d99b3351306a64aecc03d70672209b6"
+    "path": "brands/sillon/20_WORKING/sillon/plates/02-logo.html",
+    "bytes": 12213,
+    "sha256": "8ffce8d5f01a262135817dfe0375c93aff80f60c6e804a8ab84a98603d912752"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/plates/03-trois-jus.html",
-    "bytes": 3267,
-    "sha256": "46068c99a3a3c60c9986107d86b6fc8c8cb5925bdcb28d1462b3063677654088"
+    "path": "brands/sillon/20_WORKING/sillon/plates/03-trois-jus.html",
+    "bytes": 3587,
+    "sha256": "3081fc4456c132dae72e89eb6f67fa4d26ad2b0ae2f1474a5b82733abae43591"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/plates/04-caviste.html",
-    "bytes": 2865,
-    "sha256": "38510167f508a4d9c6eb515b2919581469f5994eb2bf64a4e157832a6b1ca3c2"
+    "path": "brands/sillon/20_WORKING/sillon/plates/04-caviste.html",
+    "bytes": 3056,
+    "sha256": "e8b37a8af23cc846ba341d5159402ac7012f7986f62865f7d4e027376068c261"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/plates/05-jeudi.html",
+    "path": "brands/sillon/20_WORKING/sillon/plates/05-jeudi.html",
     "bytes": 2977,
     "sha256": "24ac49bfb124c866e834f67bdca17d91c06af9ea5ef3c8f58611a38685e26ccd"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/plates/06-comptoir.html",
+    "path": "brands/sillon/20_WORKING/sillon/plates/06-comptoir.html",
     "bytes": 2657,
     "sha256": "bcbc68bd4afafd34e0b0225070ef626d2386e857374cacaf30efa373e8fcb325"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/plates/07-le-plein.html",
-    "bytes": 3130,
-    "sha256": "f63cf595bf00cbb4dd97487af1ae464ff5c97eaa11b273bc8fa7f5e581eafd00"
+    "path": "brands/sillon/20_WORKING/sillon/plates/07-le-plein.html",
+    "bytes": 3318,
+    "sha256": "74b8b34cbc801bbd81579267a2d1f468d5cea5085fbde0318edbe14a9219c9a3"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/plates/08-sans-le-logo.html",
-    "bytes": 9647,
-    "sha256": "85d08bc56a9a765709c691325ecf2333b5400f8c2c5379f11a43203bf613d0c6"
+    "path": "brands/sillon/20_WORKING/sillon/plates/08-sans-le-logo.html",
+    "bytes": 9581,
+    "sha256": "855b16074952ae23635984dc9f228501a840f839517d972bbde8b6d1cb6c2314"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/plates/09-le-creux.html",
+    "path": "brands/sillon/20_WORKING/sillon/plates/09-le-creux.html",
     "bytes": 1383,
     "sha256": "d928eaebf70fea87830921ce8c2fd12b18069e744c6fb588521083e905ed03f3"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/plates/10-les-jeudis.html",
-    "bytes": 2073,
-    "sha256": "720d6138ca9a2bf0b9fd0baa930891d0c8eab7ab12430f5337f101bff8013b38"
+    "path": "brands/sillon/20_WORKING/sillon/plates/10-les-jeudis.html",
+    "bytes": 2059,
+    "sha256": "74643285267b4d4c8c37a44f85a07ab2080242810a175305c38ea36573b2a827"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/plates/plates.css",
-    "bytes": 1695,
-    "sha256": "ecedf3c08e5ba46790d639e18d07804f22cc1f5382a7ec4c9329accae3068a6e"
+    "path": "brands/sillon/20_WORKING/sillon/plates/11-le-mur.html",
+    "bytes": 8389,
+    "sha256": "b664ab6a752a4ed02d364332e12d34849cabbccdf120f58dabb1288c395b7911"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/plates/_gabarit.html",
+    "path": "brands/sillon/20_WORKING/sillon/plates/12-la-vitrine.html",
+    "bytes": 4563,
+    "sha256": "9108f0f01c9dc0624f76086820bb387eae68b917aa4bc8332bcae8aa9fa5e1ff"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/13-le-sac.html",
+    "bytes": 5243,
+    "sha256": "572c73c6a351be2407ba2106656346ee6b64c1dbbf31034d8e8bd8d226d2ac7f"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/14-le-dos.html",
+    "bytes": 6546,
+    "sha256": "7b72ceb9f582b470156e046dbffe5d583cc2369534ee84e2e97bd74fe0cf05a2"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/15-la-carte.html",
+    "bytes": 6374,
+    "sha256": "7ad44365f642d05babd76299d7b8247c58e841580121bdcdd98dbb96de19e356"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/16-la-note.html",
+    "bytes": 6658,
+    "sha256": "a9f6e663d8939e7b8d4be65e3869da1b03e84db962ca27e17558bae11cdb23a7"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/17-le-tampon.html",
+    "bytes": 9603,
+    "sha256": "f5686b97faa5b2eb128592af94934833a6691a83eb4bdee4599ea56ee7cd698e"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/18-le-torchon.html",
+    "bytes": 11900,
+    "sha256": "a132f2ac9331f2ba7ea66b193338b9a1eba9c2e0873f01c848c1edb00282f814"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/19-la-couleur.html",
+    "bytes": 11178,
+    "sha256": "eb40473b25be34dba2f615a3b1c01f480c7e11cf1e91bd93e07b9ba1c3f1362a"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/20-une-grille.html",
+    "bytes": 1615,
+    "sha256": "c90819c11b587fc4384e07ccc270c24bea797fe4c2792c8668dcd1b076f61aaa"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/21-le-jeudi.html",
+    "bytes": 3335,
+    "sha256": "e792189a13d4651ccbb71ea0739a32e71de6880d05ad00a110c41dca98d7806f"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/22-le-plein.html",
+    "bytes": 2605,
+    "sha256": "2d6df6e371dbd27a6c060cffe2cd87836a3039e993235f300aaa964eb21ecd36"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/23-un-arrivage.html",
+    "bytes": 2681,
+    "sha256": "958e87f737acad1a5e197042e96af4ad52f31e436b2b4723012beed761a8e8ef"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/24-une-phrase.html",
+    "bytes": 1859,
+    "sha256": "4ef529f4486de8d0fc25a4dfedf7b8b789ea714e51e8f0f53e7ea76cf5c39289"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/36-la-fiche.html",
+    "bytes": 2780,
+    "sha256": "affd759382776c145788f6fba67afd5900098a6c13a680896c7f77773f515f34"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/37-le-remplisseur.html",
+    "bytes": 4450,
+    "sha256": "c898e6ca9fb41c2ff5e028a4e7bee6102260ca4f3b5fdf60333646faedd9b6b0"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/_gabarit.html",
     "bytes": 863,
     "sha256": "c9e8e7e8b0549980c39c56ad9f7c04e7d4fc2166d0c41106fbdcdc11f79a4f2b"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/plates/_test.html",
+    "path": "brands/sillon/20_WORKING/sillon/plates/_test.html",
     "bytes": 14217,
     "sha256": "597d3dbf64647877f1f5798d0c68b5b98f1123000ffb3db65e923e23e538b83b"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/site/index.html",
-    "bytes": 8475,
-    "sha256": "ca6b812bc48848267566bfedef21bf9e93ef2cb4ea261bacfe23abaa8be4f5a7"
+    "path": "brands/sillon/20_WORKING/sillon/plates/monde.css",
+    "bytes": 2491,
+    "sha256": "ed0032b2f0a98f4a43c6748b16ecf7bb4f9037a8a1d7e1349cc09a6159a9ae33"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/site/presentation.html",
-    "bytes": 6723,
-    "sha256": "4af25ac2cbbb8afc57c3b84bf747f71d2cbbdfe7a682ec175a0322bf2b4e8739"
+    "path": "brands/sillon/20_WORKING/sillon/plates/plates.css",
+    "bytes": 1695,
+    "sha256": "ecedf3c08e5ba46790d639e18d07804f22cc1f5382a7ec4c9329accae3068a6e"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/site/assets/galerie.js",
-    "bytes": 1058,
-    "sha256": "5afc7fcb2fa68903b6c43ed3994ead353390b3fb0fbfbe6b62c8439cff930dc3"
+    "path": "brands/sillon/20_WORKING/sillon/plates/reseaux.css",
+    "bytes": 6455,
+    "sha256": "f4c14797cced2d6dcca64a83904bced640021454353d7ecac9168480b84630c2"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/site/assets/guide.css",
-    "bytes": 14995,
-    "sha256": "d93a328d888cff3c45c240f8d4577ba7be2cfc448754169e57c72dc5765349ae"
+    "path": "brands/sillon/20_WORKING/sillon/plates/tex/asphalt_02/asphalt_02_diff_2k.jpg",
+    "bytes": 3075676,
+    "sha256": "28f5ba8690553f192c0e5e1a5ff40f34765b4b93f4cc7059b1a3e9c795b6c28c"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/site/assets/guide.js",
-    "bytes": 14320,
-    "sha256": "e26736f7b68f49881e224e1b4946263b6268cab0fdf9419e086adff7daf0d166"
+    "path": "brands/sillon/20_WORKING/sillon/plates/tex/asphalt_02/asphalt_02_encre.jpg",
+    "bytes": 3405449,
+    "sha256": "ec83013d0681a8e8c84ec8921801061c2f3fe5e087453341977882b1fa269abc"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/tools/build_presentation.py",
-    "bytes": 3684,
-    "sha256": "853cc3d30021d3272dce1c7590c91abf343b2b8d8a2fd655aa5c2e0b1ecd679d"
+    "path": "brands/sillon/20_WORKING/sillon/plates/tex/asphalt_02/asphalt_02_lit.jpg",
+    "bytes": 2198090,
+    "sha256": "9a67f2c2786cde4441754d9792527bfd956b5d6405653c1a107f74d6c5fd0565"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/tools/build_site.py",
+    "path": "brands/sillon/20_WORKING/sillon/plates/tex/asphalt_02/asphalt_02_nor_gl_2k.jpg",
+    "bytes": 4943950,
+    "sha256": "ffe49db71a0fd34c1e259625df66a302a237597d6ef655307987ec4e45bc6f21"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/tex/concrete_floor_02/concrete_floor_02_diff_2k.jpg",
+    "bytes": 3310792,
+    "sha256": "b08a20dcb306d08ee7f4a05ec216b19b7fd37e95745998ec5f81ecedaac1f0e9"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/tex/concrete_floor_02/concrete_floor_02_encre.jpg",
+    "bytes": 3408166,
+    "sha256": "76366e383ff9cc18a131e2a42403fead9eab2d2e4653b460888616c6936282fe"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/tex/concrete_floor_02/concrete_floor_02_lit.jpg",
+    "bytes": 2228242,
+    "sha256": "6296bac4194bafff12248f6559893048d0831c3f7971f9407e1fc76cccae6ea6"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/tex/concrete_floor_02/concrete_floor_02_nor_gl_2k.jpg",
+    "bytes": 935810,
+    "sha256": "ce12d18f283f884f4be6f6c110f81582376049caada1e226958659d3d5fbaae1"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/tex/denim_fabric/denim_fabric_diff_4k.jpg",
+    "bytes": 13827238,
+    "sha256": "da72d23ac2f02335f631d48f93aefd2a11238155822160a61a00ceda24ad306a"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/tex/denim_fabric/denim_fabric_encre.jpg",
+    "bytes": 7636656,
+    "sha256": "a49e5fe737290c656e3d3b89cdf73bb3c55abd4ee283695517ac374155a66564"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/tex/denim_fabric/denim_fabric_lit.jpg",
+    "bytes": 5169931,
+    "sha256": "deff236e7f9c7d3c102bf0363d1f41b64cbdc7d51806dce6bfdc63f34eb63708"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/tex/denim_fabric/denim_fabric_nor_gl_4k.jpg",
+    "bytes": 7594220,
+    "sha256": "4e2e3ddc9e2ef764a7e8d449ea71d65d40bc723373c17b74da2c95119693b06c"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/tex/hessian_230/hessian_230_diff_2k.jpg",
+    "bytes": 3828573,
+    "sha256": "1c1d66e3764dded1cfafa5147ea56a28ef7648e3c5cae6892b8dada92d408685"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/tex/hessian_230/hessian_230_encre.jpg",
+    "bytes": 2721039,
+    "sha256": "702c6c13a7336b3d5e1865d1e9eb76d84b58caae0f3276f5362bf58660b4295b"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/tex/hessian_230/hessian_230_lit.jpg",
+    "bytes": 1594802,
+    "sha256": "e34bacf21f8c10b47692e78ff1c629f69265f2af26461a8eaf20fe65dddafcf2"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/tex/hessian_230/hessian_230_nor_gl_2k.jpg",
+    "bytes": 3759284,
+    "sha256": "a285b3716eed4e7c8eddbe9412d35049c2e05e85d9dc78d6052ab74db5041204"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/tex/oak_veneer_01/oak_veneer_01_diff_2k.jpg",
+    "bytes": 2831117,
+    "sha256": "0718c2e1a209afe6138ccb41d70e1a18cd825d1e73db33ad7cf80806fa9ce5a4"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/tex/oak_veneer_01/oak_veneer_01_encre.jpg",
+    "bytes": 2361425,
+    "sha256": "fec52200cd93ae5deb43724e3f07294409510a53d4e16402eefffb8ea3a7d241"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/tex/oak_veneer_01/oak_veneer_01_lit.jpg",
+    "bytes": 1065642,
+    "sha256": "afaf79355f357bfd3e2dc38b581b8ccddfd162f6d5e5600b0371c6c08436a001"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/tex/oak_veneer_01/oak_veneer_01_nor_gl_2k.jpg",
+    "bytes": 2429019,
+    "sha256": "e74a9d3ddcd86473a21815a28464f4dac4ceb8f86e7f170226dede8ed70d8eb9"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/tex/plywood/plywood_diff_4k.jpg",
+    "bytes": 16467261,
+    "sha256": "0d628704affb5fa38ef4c886ad9a70f6ddfffe9c22ed5c84b03e27ef5505cfd9"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/tex/plywood/plywood_encre.jpg",
+    "bytes": 6737758,
+    "sha256": "ea48728d8f839740a7b1404ad1521b4aafb35e983fd18b2b8d4cc06a4b78b0e2"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/tex/plywood/plywood_lit.jpg",
+    "bytes": 3939851,
+    "sha256": "d9cf5f9c8389822d5e6f21fd31ddb704d5fc027ef5f04345a82982a10a2ae4e8"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/tex/plywood/plywood_nor_gl_4k.jpg",
+    "bytes": 10240705,
+    "sha256": "17d62671c2e49b6f75549983ebbb187d320beb2d7d199d21f8229ce3ac371f39"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/tex/rough_linen/rough_linen_diff_4k.jpg",
+    "bytes": 13064750,
+    "sha256": "dca61aacd6cf3194681070cede3c16a3b61a32cb3eef5bf4c52db698b2286d3d"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/tex/rough_linen/rough_linen_encre.jpg",
+    "bytes": 10603758,
+    "sha256": "d7cf49bbfedeafb5807859bcc84096fd5ff70afbb5327f7ad630215cb9ef4632"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/tex/rough_linen/rough_linen_lit.jpg",
+    "bytes": 5350063,
+    "sha256": "569988af11046be04ee0f236b6050723df6f4c9c5b3b6ea0413a332db86e9da3"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/tex/rough_linen/rough_linen_nor_gl_4k.jpg",
+    "bytes": 13435511,
+    "sha256": "1a591b2acd7e61f3511e483a731c5f18847cce36ec501d669b853b30c203d422"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/tex/rough_linen/rough_linen_seri.jpg",
+    "bytes": 6515849,
+    "sha256": "ba2c26fbea9772209d76dbf189e4974e7120352229991fd5092dcef9eecdc3b3"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/tex/sandstone_blocks_08/sandstone_blocks_08_diff_4k.jpg",
+    "bytes": 5803405,
+    "sha256": "d1a39585a84abe779ca252fe269b880837e6dd3805298d5b470f75c90afe5293"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/tex/sandstone_blocks_08/sandstone_blocks_08_encre.jpg",
+    "bytes": 4561136,
+    "sha256": "2b66b57efb875e8bf079371ecec0fe9ca1b017ce4c7bffa61d803d9f3811087c"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/tex/sandstone_blocks_08/sandstone_blocks_08_lit.jpg",
+    "bytes": 1743495,
+    "sha256": "cf8e0003322af69a2c34f62b626abb5725f7df25271698b9b8bda8875312bd16"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/tex/sandstone_blocks_08/sandstone_blocks_08_nor_gl_4k.jpg",
+    "bytes": 4094349,
+    "sha256": "fb6a578c2268243ba446d6b68bec33a0ec05a6b06152df8a764db5bd12650b5e"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/tex/white_plaster_02/white_plaster_02_diff_4k.jpg",
+    "bytes": 10554018,
+    "sha256": "a0c48b2de0d4e4c5ad51cda7110dbeb31698fa41b87bce3b28caa608b6e64745"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/tex/white_plaster_02/white_plaster_02_encre.jpg",
+    "bytes": 7228631,
+    "sha256": "89ea77c893120a35a4e94b0bd4c7d705e58fb69862552d8b3ce366efab6af562"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/tex/white_plaster_02/white_plaster_02_lit.jpg",
+    "bytes": 4308307,
+    "sha256": "9e550f4802024df389baf1a0f71902c961e8728431380e87053bcb3faf02afdc"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/tex/white_plaster_02/white_plaster_02_nor_gl_4k.jpg",
+    "bytes": 13443163,
+    "sha256": "addfca7ccb03ce152f1dedc388d7c8bfe323229fca44b5414f069e7c3c0365a6"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/tex/wood_table_worn/wood_table_worn_diff_4k.jpg",
+    "bytes": 12097188,
+    "sha256": "1261fb3ab3fad39259528ea3db8b401fbfa2e09fc833e0913ca489938985cb9d"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/tex/wood_table_worn/wood_table_worn_encre.jpg",
+    "bytes": 4968936,
+    "sha256": "93dfb21e31c13c829603081d5594f6c7cec0a7d77b4f01b56d4638c61f1ed565"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/tex/wood_table_worn/wood_table_worn_lit.jpg",
+    "bytes": 2351652,
+    "sha256": "f70f8aab44391988568a2866b261a827c46da659916fa23d8e63c5a1ec6edda6"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/plates/tex/wood_table_worn/wood_table_worn_nor_gl_4k.jpg",
+    "bytes": 11350528,
+    "sha256": "8cec3d34bbea6de2699796826b6632a6962e24f17a6456734d570e0e51325ba9"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/presentation.json",
+    "bytes": 5367,
+    "sha256": "994666ca9237e6b03bb4442e4647213cea24e6f88126560f8e4cba514403d683"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/reseaux/21-jeudi.html",
+    "bytes": 2871,
+    "sha256": "8aad212ad7d31af527f107714dbeb60f42c86bbe95c135e60b7deae067fa5e08"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/reseaux/22-plein.html",
+    "bytes": 7135,
+    "sha256": "bccb101789c50deb6f677f3ad31f0d64d000b9fad509e1a0c9b405735b38db30"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/reseaux/23-arrivage.html",
+    "bytes": 3723,
+    "sha256": "dde197cc9b79e62ee60046bc3ddad86ff09e7f5f16b2af1fee5b7c3a2a24e5ee"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/reseaux/24-phrase.html",
+    "bytes": 7258,
+    "sha256": "3e130667d3765bc51f6052fca481b1d2dc2f437a91a8042017db185aa66db7ca"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/reseaux/reseaux.css",
+    "bytes": 1583,
+    "sha256": "f3d09e5e1d5e81cc0958bbb864ec008dc46836eb3cc8a096297536812d17608c"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/reseaux/reseaux.js",
+    "bytes": 11403,
+    "sha256": "11eac796a36cd1bde5d02a1f9547cc19b23cb0e6bbe85ca9aa3e2ae7ce0455cb"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/reseaux/variantes.sh",
+    "bytes": 1496,
+    "sha256": "033e9b83f54fa22cc9bfb792cd902d3f93bc8cb1f6098096d5930039ce65d170"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/tools/build_presentation.py",
+    "bytes": 5026,
+    "sha256": "bc5f54e39af1e7c1b0f15b47cf8900235e2fba1662b50faccbddd7f0069ba56b"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/tools/build_site.py",
     "bytes": 8612,
     "sha256": "8380d5ab9e7b480ffe044521bb1b34cc964e3c70cec650661f0cf979a1c84139"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/tools/check_deck.mjs",
+    "path": "brands/sillon/20_WORKING/sillon/tools/check_deck.mjs",
     "bytes": 2273,
     "sha256": "258b790d374398266123a688bee16591625f19c5607abe1aae6d7dda069e0497"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/tools/check_guide.mjs",
+    "path": "brands/sillon/20_WORKING/sillon/tools/check_guide.mjs",
     "bytes": 1763,
     "sha256": "134aefddf3aba80a258c427e929fbecd2fcce697f6377ca13734e34c6b078b37"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/tools/check_inter.mjs",
+    "path": "brands/sillon/20_WORKING/sillon/tools/check_inter.mjs",
     "bytes": 11472,
     "sha256": "3cbc54dae7c69644ff43765b86eae8aa31b90fbbf9869e652547e3210abc8c8b"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/tools/check_live.mjs",
+    "path": "brands/sillon/20_WORKING/sillon/tools/check_live.mjs",
     "bytes": 1504,
     "sha256": "890c3fa44740650389b9b08225e8dfc608f46550e81030afe0234983a80d0af8"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/tools/check_page.mjs",
+    "path": "brands/sillon/20_WORKING/sillon/tools/check_page.mjs",
     "bytes": 1262,
     "sha256": "e980c4db187c54302758ddd40c9314a2958c69879eb5994875b334d991e077b7"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/tools/deck.mjs",
-    "bytes": 3109,
-    "sha256": "05c962aebf0c65c3376007b8026b2a5d7aa1e7d95f7428559a96fe1044d01c4c"
+    "path": "brands/sillon/20_WORKING/sillon/tools/check_planche.mjs",
+    "bytes": 12825,
+    "sha256": "f8b503763a309fbdebc6136c1a9d1d939c2a488a2e52811a39a54fa44f77aed9"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/tools/deck_pdf.py",
-    "bytes": 1707,
-    "sha256": "c70a58e2b03f07337045cd397167274b298fb9b672c83c93d4b16916ebdd87b5"
+    "path": "brands/sillon/20_WORKING/sillon/tools/contact.py",
+    "bytes": 3350,
+    "sha256": "5f31ff5fa7233576c68195512d641fe361903fee2f7540a3a432a6edd4ce3120"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/tools/export_logo.py",
+    "path": "brands/sillon/20_WORKING/sillon/tools/deck.mjs",
+    "bytes": 2864,
+    "sha256": "4cce870be79869e574a52011dab87ae9273f13ff48105287518b18d5cd5b9eb3"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/tools/deck_pdf.py",
+    "bytes": 1464,
+    "sha256": "a737b133a94b3bba0e47ca1eb3a5cdfc72259bd410bf8341498ed68a0dd6edff"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/20_WORKING/sillon/tools/export_logo.py",
     "bytes": 7127,
     "sha256": "da7f308cb4a512b9baf1fd6bfd13dd95eaaa2c4ae46e81a934a4df585c6defc4"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/tools/incruster.py",
+    "path": "brands/sillon/20_WORKING/sillon/tools/incruster.py",
     "bytes": 1894,
     "sha256": "ae6df77f7fe58ed0751442801bc9de9e8c22abcdedf225a0058f81311d24c87e"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/tools/polyhaven.py",
+    "path": "brands/sillon/20_WORKING/sillon/tools/polyhaven.py",
     "bytes": 2166,
     "sha256": "d84ec8f196d4788631e0f707c2f82ada2541c6877463dc0f0a1b95eb79fafe7d"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/tools/post.py",
+    "path": "brands/sillon/20_WORKING/sillon/tools/post.py",
     "bytes": 1825,
     "sha256": "830ddf870ffe1698e8d7bf3309a320d001cd15fd9e47d17d3f90d6c7b2db1ac2"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/tools/record.mjs",
-    "bytes": 4503,
-    "sha256": "bd89dcbe191bfc98292c97955448acf4979783c55c49aba7b624b8adc73c75cf"
+    "path": "brands/sillon/20_WORKING/sillon/tools/record.mjs",
+    "bytes": 7070,
+    "sha256": "2029387cbe0be7d3d63285c7a4498403813e8d037201adb0dd36f262288ba26e"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/tools/shot.mjs",
+    "path": "brands/sillon/20_WORKING/sillon/tools/shot.mjs",
     "bytes": 3118,
     "sha256": "ed52a980739fd5b4b84a9ef0c0da9b6dbfa5a19239763806208a8be9f0f7864d"
   },
   {
     "brand": "sillon",
-    "path": "brands/sillon/tools/verifier_restes.py",
-    "bytes": 4011,
-    "sha256": "6fe97c855b1826a8aacacad8cdcaf8a5fdaacd5d1b13f16a21d97cda890f5c8e"
+    "path": "brands/sillon/20_WORKING/sillon/tools/verifier_restes.py",
+    "bytes": 4017,
+    "sha256": "eccb001798faf1144147ead3e1ce27a94e0af3c2c32aecff9d08bd484f58e245"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-fiche-de-marque/01-idee.png",
+    "bytes": 12416425,
+    "sha256": "bfc388ce7fe0050143052ad8f1fb5e665b8267a14fd83f5e6303e4fc0cffe2ea"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-fiche-de-marque/02-logo.png",
+    "bytes": 7876087,
+    "sha256": "f96cbe6b5c8fe81b037ca37de60038a159f47896e387c6a68ab661fe257af3cc"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-fiche-de-marque/03-interdits.png",
+    "bytes": 7541357,
+    "sha256": "b13b8d90a7543187231d507f3f33073e7ff5555415eb976f9b654bfd2d72e6aa"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-fiche-de-marque/04-couleurs.png",
+    "bytes": 3186171,
+    "sha256": "73996da00a4662a548f5897e84d194133213becdf13280c34f7f903f95706a4b"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-fiche-de-marque/05-ecrire.png",
+    "bytes": 8529550,
+    "sha256": "37308277be21293caa74e6dcdfc72ebeb43c4625cadc97a1fe5c6126dabc8635"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-fiche-de-marque/06-kit.png",
+    "bytes": 9159813,
+    "sha256": "5c6aa821be583c7b0d14dc3b1b8fe155f58471877e02dd6ae101af8459c3eaef"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-fiche-de-marque/07-annonce.png",
+    "bytes": 4789206,
+    "sha256": "2c073b3b2881d35f6694a95b61255c41fb9cb705497933db82ddf9697010c351"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-fiche-de-marque/08-fichiers.png",
+    "bytes": 8603622,
+    "sha256": "cce7087cd8bb7ab37fe1358e35be0e75ee6a1f07044262b865e4e12d0ad9c681"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-fiche-de-marque/sillon-fiche-de-marque.pdf",
+    "bytes": 11507324,
+    "sha256": "061461ec0aa47fac038f02d4bb99ade3760e10cf8868b0b130cf67286b961d4a"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-logo/sillon-complet-bleu.svg",
+    "bytes": 20352,
+    "sha256": "8f944482c10a8e5f9c4cb51001b437c5498297d0c75fcfdf2c5460d69c6175ac"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-logo/sillon-complet-cave.svg",
+    "bytes": 20352,
+    "sha256": "3deacee93f75682afa4109d6994e9e201b59fec3f95fc60a0015abeff7fe341e"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-logo/sillon-complet-tuffeau.svg",
+    "bytes": 20352,
+    "sha256": "c0575c5f1b9ea072afaf322d514e55b063637e9c3d6525167f1ea4d0a373c826"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-logo/sillon-logotype-bleu.svg",
+    "bytes": 1498,
+    "sha256": "8d0f8de5211a6e8306ff9ff8c2cb02fd88990ee8cd73a90c1ed0cfe4d6b9d5a0"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-logo/sillon-logotype-cave.svg",
+    "bytes": 1498,
+    "sha256": "f00c2dfeafbd769053863c604b5c5b9f28c8be4a80d80ae89b5fe712cc4fd79c"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-logo/sillon-logotype-grand-bleu.svg",
+    "bytes": 2003,
+    "sha256": "ddd77c8627a3758aca091da3e5b3bcc957e27fd083a01c493f83b6263c646b0a"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-logo/sillon-logotype-grand-cave.svg",
+    "bytes": 2003,
+    "sha256": "ed343cea4460b5d180c946d44ca199e3dc523cb1e65c96f95c0eb594b858275e"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-logo/sillon-logotype-grand-tuffeau.svg",
+    "bytes": 2003,
+    "sha256": "e15fede02c2119a5b078b4a6b029a72016342ce995f05c0f942285ed9b498af1"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-logo/sillon-logotype-jus-bleu.svg",
+    "bytes": 1675,
+    "sha256": "875e971adecf5166fce76f8da8106a07297252e194e5ee033d646617d7362f55"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-logo/sillon-logotype-jus-cave.svg",
+    "bytes": 1675,
+    "sha256": "226e3f91d9cad7ea3b8046a93075eea1388a570031ac44c8e6e78725521f6336"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-logo/sillon-logotype-jus-tuffeau.svg",
+    "bytes": 1675,
+    "sha256": "6c5e0d8365013a510dcae104d146aa5fd574a4109bdc6b23fcbf6dfc8e2d314c"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-logo/sillon-logotype-tuffeau.svg",
+    "bytes": 1498,
+    "sha256": "f7f3fd6a4dc4fefaa53d7f23661bc0d3e519f25905ce619472c23b393c6f34d0"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-logo/sillon-penche-jus-bleu.svg",
+    "bytes": 1752,
+    "sha256": "ba6f2aee284b21187d8cc9c87eb21bd9526ea05abd334cbd8480df8d2a4d1af1"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-logo/sillon-penche-jus-cave.svg",
+    "bytes": 1752,
+    "sha256": "82edd709a4cfd28f94344e368925a947d33369ff5dd0b55a9d5be83752bcabb0"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-logo/sillon-penche-jus-tuffeau.svg",
+    "bytes": 1752,
+    "sha256": "42d8d24623cb44ea084aa0f7a6c5d9d5383d4cab12802c6c87cc03368658015d"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-logo/sillon-symbole-bleu.svg",
+    "bytes": 592,
+    "sha256": "f345658a429fe294a62f5f3a14b07c3fd45b5eec4ce7c27b8a696aa194947121"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-logo/sillon-symbole-cave.svg",
+    "bytes": 592,
+    "sha256": "f6ef2a9bd6441513bd3713509024f8b3feb9ca3bf1d6e9b67e3634cb159d5fca"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-logo/sillon-symbole-grand-bleu.svg",
+    "bytes": 1086,
+    "sha256": "ffa46293e34eb060628e3faf9ff8f325976875cbe8c6dbc6c32895b4d5601a60"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-logo/sillon-symbole-grand-cave.svg",
+    "bytes": 1086,
+    "sha256": "6607aa5e74bdfc1ed679bab78a1aed04c5a19e9edfd987bd6d26d4f57c8bece5"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-logo/sillon-symbole-grand-tuffeau.svg",
+    "bytes": 1086,
+    "sha256": "bb9bc4d4fa4b2743d728a4e2f2ee56a662c5198a06b06aebeef1f9f4ec2fca4e"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-logo/sillon-symbole-jus-bleu.svg",
+    "bytes": 772,
+    "sha256": "b5da5293b1624a70d00bbe9da67c6585f58284c94c5cb2bcbddcea75bf3f1b66"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-logo/sillon-symbole-jus-cave.svg",
+    "bytes": 772,
+    "sha256": "ddf1321cd50b5fcc6ffed905cba9f617a34a605b99c99a20bd1f2494d1db2875"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-logo/sillon-symbole-jus-tuffeau.svg",
+    "bytes": 772,
+    "sha256": "5f84b60c8f5caad6ce7af2261db2ac2280708108e30abe5f5a82bdff6b01f563"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-logo/sillon-symbole-tuffeau.svg",
+    "bytes": 592,
+    "sha256": "15ec3c77ec45561122051fce40541bce5ccf1f4a6586cfb1cc6c0f0dbb8e766c"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/index.html",
+    "bytes": 7664,
+    "sha256": "e4b8aa765a56c85cdcda4476b1bee09be29c1c24a46b8d8c2f8ea221ca9ed1a6"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/media/01-la-vitrine.jpg",
+    "bytes": 1561294,
+    "sha256": "093c478a69fe1f483a69f4076d335b92aa034b227abf72c41d8f56b0d22c3d05"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/media/02-on-remplit-les-creux.jpg",
+    "bytes": 2846062,
+    "sha256": "12f978fcf25063db590e337c552fa73020207a654c9d8793c1eb913713b6772b"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/media/03-le-logo-se-remplit.mp4",
+    "bytes": 1443713,
+    "sha256": "16f059a59ea72e6d3b62dfdd7f618434dab8c2151390fabc0aa91247a4d7e294"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/media/04-le-logo.jpg",
+    "bytes": 4090402,
+    "sha256": "47a40a53479f825fef63fe647af5e84ac73014b85f60f5114749c25b5167c8ca"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/media/05-la-pierre.jpg",
+    "bytes": 1576747,
+    "sha256": "9825028eb32a51e8881b3d20bf2cb92e46830e410376e07d261fe774c1add436"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/media/06-sans-le-logo.jpg",
+    "bytes": 4405454,
+    "sha256": "d8e2e34eed1ab508164a6c4448d33b756f60f2a7c9f2db61a5ac1225299dd192"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/media/07-douze-verres.jpg",
+    "bytes": 2546486,
+    "sha256": "61e5b86dca0169dc9c1892c06ebfaec2f051d432e5a7191db836648e7d486a5a"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/media/08-la-couleur.jpg",
+    "bytes": 2987577,
+    "sha256": "129ce2bd161cb0c685a78c35a60050f834d0f462b672295b7cd959f6484496ec"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/media/09-les-trois-jus.jpg",
+    "bytes": 2094194,
+    "sha256": "590fc4b6c4a63aac9afd9d12c448ca991852bc2f3841ca1aec3aacc971a12af7"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/media/10-la-bouteille.jpg",
+    "bytes": 967779,
+    "sha256": "9db622ead06294d0942b92065c27a8d30ccfc0405510c3e468ec79a70a4949bf"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/media/11-le-bleu-de-travail.jpg",
+    "bytes": 2832585,
+    "sha256": "f9892c2c4d6f4ad49c7a3d94840d9df55365e1c35b6cb29fae9e7091f2fbe6f5"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/media/12-le-dos-de-la-veste.jpg",
+    "bytes": 1807174,
+    "sha256": "b5ddfe1207a6038dbc818a5edbfaf5c7cc27bae49808f776cc40266b8cc10989"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/media/13-le-sac.jpg",
+    "bytes": 1785112,
+    "sha256": "225c7278dd84990bb758d62335cf94ba210f33647017cf093f1f4159d80ea264"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/media/14-le-mur.jpg",
+    "bytes": 1151199,
+    "sha256": "252d3770dd5ea4730566f7b4e3d5bfab97a6d53934d8467507282a37c99e1ac5"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/media/15-le-jeudi.jpg",
+    "bytes": 2327764,
+    "sha256": "b10afb906b53b7074c6cedc83bb32c7c7eca1fde63cac7ec25bc55aa43cc1156"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/media/16-les-jeudis.jpg",
+    "bytes": 711782,
+    "sha256": "b160e0cabbfab89d0c92afe8b8469c565abd596336d6dc543de12491c684dddb"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/media/17-story-du-jeudi.mp4",
+    "bytes": 1434006,
+    "sha256": "ced33b4d5e8339e64fb695caba5e3c05bd240791ea842cd85d876757889fddfe"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/media/18-story-du-plein.mp4",
+    "bytes": 444743,
+    "sha256": "98282a6b817ef96e981b8d35249f571f845a0ab9e43b632c11610e140fda899d"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/media/19-story-arrivage.mp4",
+    "bytes": 1157567,
+    "sha256": "71efb56b352cfbbf0057db721cfd6e0e8d8c1812d8d93e79840fd774737c568f"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/media/20-le-comptoir.jpg",
+    "bytes": 2486108,
+    "sha256": "a03354bdbc6ec1a3da4b0dac2bd18ed362826411b526b0120638b8ac865da9e9"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/media/21-les-verres.jpg",
+    "bytes": 1070708,
+    "sha256": "a9b83e5af4f77519834a77f4a4e95f42fc777132de0e64eb74e2e888c460874b"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/media/22-la-carte-du-jeudi.jpg",
+    "bytes": 2131448,
+    "sha256": "d6004d1c97441d0f85432f42c64bcdd54fd55420e2f0bd5741a8aa16cc6c73ac"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/media/23-la-note.jpg",
+    "bytes": 1769951,
+    "sha256": "673c5fd0cf6e735b6f272a2994dcd0ebbef4300de71442d5ef9b0b725a5e6528"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/media/24-le-torchon.jpg",
+    "bytes": 2831680,
+    "sha256": "16f7e525d477b20389641e52914ded2620814d85b2759a80cd243281fa48cfe6"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/media/25-le-tampon.jpg",
+    "bytes": 2884506,
+    "sha256": "2738251b438bd01b37bb0c3a978528ddd6e72221c2fde67ad20f5a9562ae4b77"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/media/26-le-plein.jpg",
+    "bytes": 2491393,
+    "sha256": "05058cc5408e1b14b4e59bdb9e160cbd8d8f22ddbf21bc6f601f361a298ee537"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/media/27-le-plein-du-mois.jpg",
+    "bytes": 3229965,
+    "sha256": "c21b016b46bc500e88836ac302a331f73edc6c380d4797ee1a74a4d3d08ddec3"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/media/28-les-stories.jpg",
+    "bytes": 1140307,
+    "sha256": "199d4f0151ca33c7e3013961593ce57f190800c721ff9c1d0cd45f34081e749b"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/media/29-un-arrivage.jpg",
+    "bytes": 1395437,
+    "sha256": "9b90ba0df9c7c06836cc5f62f6dc6663eab49ce88bd3f4b8f9f7a540b22f506b"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/media/30-une-phrase.jpg",
+    "bytes": 1871886,
+    "sha256": "219c84529ba136c80596f243741f791817c58e6da178587269c3008d70d9f2a4"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/media/31-la-phrase-bascule.mp4",
+    "bytes": 925631,
+    "sha256": "541058be3ffc00a83530b7aba61954529186184ff8e188fa165df6000d085680"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/media/32-ca-penche-ca-tient.mp4",
+    "bytes": 1074058,
+    "sha256": "a034fb5f6654823f6edbcbf6035e862b39dd0763ab5f8fc5e9c69e3c3abf0f17"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/media/33-le-remplisseur.jpg",
+    "bytes": 2914860,
+    "sha256": "5fac858e9305e86e1feb64dac37d6a639b97e7d13fb12e0e798250ac13ac89cd"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/media/34-la-fiche-de-marque.jpg",
+    "bytes": 1830336,
+    "sha256": "b7b0974b2edc4624971e530a547eb672962cd1b4ec409ac07deaa3a37fea6750"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/media/35-l-abecedaire.mp4",
+    "bytes": 3134251,
+    "sha256": "9b706da7138e4bf1fa90850be05e2e78f6c121a5891f6bf46a3ccd151595e380"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/media/36-le-film.mp4",
+    "bytes": 4495401,
+    "sha256": "0373343082d982d4f416d420249606459fc3e70d8dd67ef28a5e24014c3bde27"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/planches-png/01-la-vitrine.png",
+    "bytes": 7294627,
+    "sha256": "c816a1adcbd69b1061558586d0ee481665a2e3c75b1b578ea769ff56f8e9d4bc"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/planches-png/02-on-remplit-les-creux.png",
+    "bytes": 11692205,
+    "sha256": "8cce712f1212dd041d274e18cb78e9d8311d7b4920b4e061bcfeb6ed7e7c929e"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/planches-png/04-le-logo.png",
+    "bytes": 16399325,
+    "sha256": "06304f6f451fe95b2c690fdaa548aa1f5b916e614a6a2e6e5db985295c9dea2e"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/planches-png/05-la-pierre.png",
+    "bytes": 7684973,
+    "sha256": "9583bc21d861d4f351aecc320a15fb575e55c4ed356b125b6a8534214f004b3b"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/planches-png/06-sans-le-logo.png",
+    "bytes": 16956833,
+    "sha256": "75597ff7da3a123197264928c4f43146e521679454c24530571aec318fd9083f"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/planches-png/07-douze-verres.png",
+    "bytes": 10616441,
+    "sha256": "7c80bd6a9f59704d9f7378a291a79fe473cabd03282237b46177e6ec24c13755"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/planches-png/08-la-couleur.png",
+    "bytes": 12802211,
+    "sha256": "f7b5268e9481e07b7f7a5fec8a6dc67c66e8c4065f2e15dd92761b50d1e84845"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/planches-png/09-les-trois-jus.png",
+    "bytes": 10810062,
+    "sha256": "f36ee3df631cdae4ffd21e6fc5b8aec5009960936e7ab98ebb1bdf2a36192b7b"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/planches-png/10-la-bouteille.png",
+    "bytes": 5947127,
+    "sha256": "36f3756f5481efbeff401a2190c4f001f4e66fc034ac2b959346bb055daec9aa"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/planches-png/11-le-bleu-de-travail.png",
+    "bytes": 13473214,
+    "sha256": "154ff100ab5d2dba527432b643220b5c372496a76feb8d75f9abbfd19b4db1b8"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/planches-png/12-le-dos-de-la-veste.png",
+    "bytes": 7950470,
+    "sha256": "c7be03e0e33d3e2343e3344c2beef551c6d9b33e97a14ff6960cd26974860e25"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/planches-png/13-le-sac.png",
+    "bytes": 9984161,
+    "sha256": "ec9ab505287d1e44a9576b1e69586bb718ce5c9d7e86879387034bec88e2318a"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/planches-png/14-le-mur.png",
+    "bytes": 5059531,
+    "sha256": "cc7f36f856094d1e2ba6c610fc4220678c39c4e0135684d653217c01f62af9f7"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/planches-png/15-le-jeudi.png",
+    "bytes": 9760002,
+    "sha256": "77c1e6e5a4d302355e4d298bc428e987223862289e01178668e8d895a6e82a4b"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/planches-png/16-les-jeudis.png",
+    "bytes": 2968102,
+    "sha256": "d6e6a243644c75a13ea891c16bffce1eb10b5ae64e8d9130d6d5ffe3d3fdeff1"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/planches-png/20-le-comptoir.png",
+    "bytes": 11163057,
+    "sha256": "c93c7ab6630a942e74cd2b739e797cd2e9fd5f6c5338bf8551e283b8ade196f7"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/planches-png/21-les-verres.png",
+    "bytes": 6052741,
+    "sha256": "5ddd69315415d79df1f24235bd725eb8bf23787053bac2ea7fa5512040790bf7"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/planches-png/22-la-carte-du-jeudi.png",
+    "bytes": 9966397,
+    "sha256": "f87b216f1694ef05a7bee92bbe6bc91d00234f553d1ef7ee561ffb6ed17b553d"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/planches-png/23-la-note.png",
+    "bytes": 8440422,
+    "sha256": "2178b22a7dc9d5d5e93e06d6af5e822d33e1d1f1ed3e9a84d73ac2e0672e22e8"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/planches-png/24-le-torchon.png",
+    "bytes": 12218117,
+    "sha256": "0ca906147586a0b3d5c8fa1af6ab6830b5864faa2b0a98f9aa0d50af4f80925f"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/planches-png/25-le-tampon.png",
+    "bytes": 11702888,
+    "sha256": "5da5b5e5d43df100544d350037e941981b987a2c1dc5d609de1be3a45cc30e41"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/planches-png/26-le-plein.png",
+    "bytes": 10424155,
+    "sha256": "6167914b35674c39e7711c1f81e391ed5f9cc8ea93ec6156c75ab4f593ef058a"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/planches-png/27-le-plein-du-mois.png",
+    "bytes": 14655501,
+    "sha256": "7059a01b9fefa21e18f572a708d078e83530fec10e79949490f6de10b9b98aa9"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/planches-png/28-les-stories.png",
+    "bytes": 2686580,
+    "sha256": "77bc1826465fb4fb3daa7c90e99669f72065ca91bd19517d18dc0ad4f16fae65"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/planches-png/29-un-arrivage.png",
+    "bytes": 6604802,
+    "sha256": "1d2f7468caeaee5bbe2303c5d9420b9e21a7802bd863198e91a807a61fdb32d9"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/planches-png/30-une-phrase.png",
+    "bytes": 9326866,
+    "sha256": "9d9086b43298b0c426d5d44b19ebcb4dae8cffe410b6cd34b4fd7fd300fd1ddf"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/planches-png/33-le-remplisseur.png",
+    "bytes": 11629078,
+    "sha256": "b19bf8b07233b5d796630cde85e5d2e14d7a2f867d5b8ac05033d998a3d54f11"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-presentation/planches-png/34-la-fiche-de-marque.png",
+    "bytes": 6232802,
+    "sha256": "179116a12320792d25e9e7c780521834f4f6c55e2be93fe5fffdc50159ca3131"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-reseaux/21-jeudi-4x5-a.png",
+    "bytes": 1944650,
+    "sha256": "25832a46a980bb6c66ff28e1c775a3bdfd13d0288080984ca53afba648fae113"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-reseaux/21-jeudi-4x5-b.png",
+    "bytes": 1014339,
+    "sha256": "e6446913aba32c014fa32c5df22eb171ad239db39e34ce3cd897cae595f39858"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-reseaux/21-jeudi-4x5-c.png",
+    "bytes": 1943803,
+    "sha256": "6d241095861a64abf9799536046304c5f4b65b67acbc543ec65c22767b189078"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-reseaux/21-jeudi-9x16-a.png",
+    "bytes": 2812587,
+    "sha256": "bfe42dc6843a2d5f9d981092d63a71856792f78320c9b604c53774f81b37143f"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-reseaux/21-jeudi-9x16-b.png",
+    "bytes": 1275086,
+    "sha256": "719ba72e62811ffcc5897c9ae983deeb8f63843aae47fd64a8d1b745342221b8"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-reseaux/21-jeudi-9x16-c.png",
+    "bytes": 2784283,
+    "sha256": "e7661570de4e05e88979d079594fecf6b4d9176f7bab524c4a2e1de0287deebb"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-reseaux/22-plein-4x5-a.png",
+    "bytes": 1582042,
+    "sha256": "bb6248acad528154764c0645188be11efea6e2925b757f7dac509f59eeedc973"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-reseaux/22-plein-4x5-b.png",
+    "bytes": 1582785,
+    "sha256": "674907209a905e53fcfe3ed785f589a5b2762dba98278010363971f22f405d85"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-reseaux/22-plein-4x5-c.png",
+    "bytes": 1578768,
+    "sha256": "06e15946c64a7daba1d723aa7db29e1c14ab5fb52b30b6a69f4c2d8fdd4e18c4"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-reseaux/22-plein-9x16-a.png",
+    "bytes": 2430080,
+    "sha256": "4d82734ceec2c84aa75a902a1074bc59e95101c400c135ba843d09a2b6d11311"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-reseaux/22-plein-9x16-b.png",
+    "bytes": 2430938,
+    "sha256": "a4113ef2baf183aded8af68a9a54bef902d1072cb42674d35baa8605e2a0adf8"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-reseaux/22-plein-9x16-c.png",
+    "bytes": 2427841,
+    "sha256": "9c3b680ce28cb7440fdde78422a35b518da884dadd1f1c8278dd84d46812292d"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-reseaux/23-arrivage-4x5-a.png",
+    "bytes": 1814799,
+    "sha256": "7d1d4f2854062e0141191ef196f6d3394683004cc65d3d05e5e2f505ae608671"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-reseaux/23-arrivage-4x5-b.png",
+    "bytes": 2321771,
+    "sha256": "7ed7999e7ca0fa5dc60dd962e00e8b13d2fef78648d3a6f4b7146a0fba78de0b"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-reseaux/23-arrivage-4x5-c.png",
+    "bytes": 2134367,
+    "sha256": "e01087b50322651f4930200bcd20f2374592829a1ae1a331055c48b688e38afe"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-reseaux/23-arrivage-9x16-a.png",
+    "bytes": 2535515,
+    "sha256": "15ae75e60530a09db095a627b48b96ac41a4c34e7499c628f8362371965a3a5b"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-reseaux/23-arrivage-9x16-b.png",
+    "bytes": 3178276,
+    "sha256": "2da16003078e478aaabab4b6d0095f3771d83c0e313b5cc25afeac575b79abbb"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-reseaux/23-arrivage-9x16-c.png",
+    "bytes": 3007183,
+    "sha256": "b9b17ed66c593d1b7c98ac37e8a782d57dbb0ec47c859c96220dc742498a54bc"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-reseaux/24-phrase-4x5-a.png",
+    "bytes": 1535106,
+    "sha256": "4b3e5201e8205daa592485fbb9e98be2bacb0a5fa4abe8d0aade370b5cd6428d"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-reseaux/24-phrase-4x5-b.png",
+    "bytes": 2001775,
+    "sha256": "c4d07c8d26c2da7966b0aba5140fd1b51bd29812a132fb6cfca78fdbaa8709ad"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-reseaux/24-phrase-4x5-c.png",
+    "bytes": 1423121,
+    "sha256": "267181058c09443ecdba8290e23cfd9153d0b1021b91c432644cec2cc758efd4"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-reseaux/24-phrase-9x16-a.png",
+    "bytes": 2156535,
+    "sha256": "efd92eec97bd957182bb6d4308dad0cc3c04bb98e19c8ae21cfa0778867119df"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-reseaux/24-phrase-9x16-b.png",
+    "bytes": 2878469,
+    "sha256": "7b5e95f401018873f22db3b06f1c3c709011a64b86c4405e72f9129e6cad3aa7"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-reseaux/24-phrase-9x16-c.png",
+    "bytes": 1990095,
+    "sha256": "b6abfbea8e1fc0250067ee9eb8df4a5ea1374c1bed0b0b252c6f461954d7df48"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-videos/25-logo.mp4",
+    "bytes": 1443713,
+    "sha256": "16f059a59ea72e6d3b62dfdd7f618434dab8c2151390fabc0aa91247a4d7e294"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-videos/26-jeudi.mp4",
+    "bytes": 1434006,
+    "sha256": "ced33b4d5e8339e64fb695caba5e3c05bd240791ea842cd85d876757889fddfe"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-videos/27-le-plein.mp4",
+    "bytes": 444743,
+    "sha256": "98282a6b817ef96e981b8d35249f571f845a0ab9e43b632c11610e140fda899d"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-videos/28-arrivage.mp4",
+    "bytes": 1157567,
+    "sha256": "71efb56b352cfbbf0057db721cfd6e0e8d8c1812d8d93e79840fd774737c568f"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-videos/29-phrase.mp4",
+    "bytes": 925631,
+    "sha256": "541058be3ffc00a83530b7aba61954529186184ff8e188fa165df6000d085680"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-videos/30-abecedaire.mp4",
+    "bytes": 3134251,
+    "sha256": "9b706da7138e4bf1fa90850be05e2e78f6c121a5891f6bf46a3ccd151595e380"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-videos/31-ca-penche.mp4",
+    "bytes": 1074058,
+    "sha256": "a034fb5f6654823f6edbcbf6035e862b39dd0763ab5f8fc5e9c69e3c3abf0f17"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/40_DELIVERABLES/sillon-videos/32-film.mp4",
+    "bytes": 4495401,
+    "sha256": "0373343082d982d4f416d420249606459fc3e70d8dd67ef28a5e24014c3bde27"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/LAB.md",
+    "bytes": 1309,
+    "sha256": "8f8843986602906ec32035fbcffd2ecc4eb8fe45673fd4771ac38872bf78e51e"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/licenses/@fontsource-variable/anybody/LICENSE",
+    "bytes": 4511,
+    "sha256": "fbf4989c530207d87121e7df169c403eaf51ecf70c35a6c4f9c586379b1c8d35"
+  },
+  {
+    "brand": "sillon",
+    "path": "brands/sillon/licenses/@fontsource-variable/hanken-grotesk/LICENSE",
+    "bytes": 4530,
+    "sha256": "f45f60ca871850c58d8dc9c973bd6fcad40c137e9d037172b961e8ca68c87ef7"
   },
   {
     "brand": "roulement",
@@ -13408,18 +15298,6 @@
     "path": "brands/drupe/projet/tools/contact.py",
     "bytes": 2764,
     "sha256": "65633c5ec4651d5269cba91d179b2cf182bedec5ad10cb4a1c89b6cabeac7423"
-  },
-  {
-    "brand": "sillon",
-    "path": "brands/sillon/out/plates/_contact.jpg",
-    "bytes": 978821,
-    "sha256": "d3d809b8e7ec282fcf3a5b5c7ce604d6ca140f843dc72f8e2ef95ec4b1c1405c"
-  },
-  {
-    "brand": "sillon",
-    "path": "brands/sillon/tools/contact.py",
-    "bytes": 3350,
-    "sha256": "5f31ff5fa7233576c68195512d641fe361903fee2f7540a3a432a6edd4ce3120"
   },
   {
     "brand": "roulement",

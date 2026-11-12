@@ -1,0 +1,172 @@
+<!doctype html><meta charset="utf-8"><title>Sillon · 32 · Le film</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="motion.css"><link rel="stylesheet" href="sillon.css">
+<script src="../brand/marque.js"></script><script src="../brand/matiere.js"></script><script src="../brand/verse.js"></script><script src="lib.js"></script><script src="sillon.js"></script>
+<style>
+  /* 32 · Le film de marque. 16:9, 1920 × 1080, 25 s, sans son. Préfixe v32-.
+     Découpage (huit plans ; les coupes tombent sur un pas de 0,5 s) :
+       1   0 à 5 s      Très gros plan : le creux du logotype, en pierre, à neuf fois la taille d'un titre. Vide.
+                        « Il y a un creux dans Sillon. » À 2,5 s le texte change : « On le remplit. » Un filet tombe,
+                        le creux se remplit aux deux tiers (0,9 s). La caméra avance d'un rien pendant tout le plan.
+       2   4,5 à 8      L'image suivante monte depuis le bas de l'image, derrière une ligne d'éclat (on remplit l'image) :
+                        la main qui penche le verre. La ligne de niveau à hauteur du vin : « Le vin · 0° ».
+                        « Ça penche, ça tient. »
+       3   8 à 10,5     Coupe. Le comptoir du jeudi vu de dessus (cadré sans le tire-bouchon). « JEUDI, / ON GOÛTE. » en
+                        pierre, posé sur la nappe, bascule de 0° à −12° ; le vin reste horizontal.
+       4   10,5 à 13    Coupe. Le mur de cave : « DU JUS. », deux filets, deux verres qui se remplissent.
+       5   12,5 à 15,5  L'image monte depuis le bas : les trois bouteilles. Un filet tombe et le glou remplit la photo
+                        jusqu'à sa ligne de niveau. « Un orange, un rouge de soif, un blanc. », à gauche des bouteilles.
+       6   15,5 à 18    Coupe. Le caviste dans un cadre, l'image à niveau (macération). Le cadre penche de 12°, la ligne
+                        reste droite. « Non filtré. Nous non plus. »
+       7   18 à 20      Coupe. La rue, le jeudi soir : l'enseigne peinte sur le bois et l'affiche sur la porte (l'habillage
+                        de la pièce 05). « Venez comme vous êtes. »
+       8   19,5 à 25    L'image monte une dernière fois : le logotype en pierre sur le sergé. On verse, il penche de 12°,
+                        le vin reste d'aplomb. « On remplit les creux. » La contre-étiquette porte la mention sanitaire.
+     La mention sanitaire est en pied d'image du premier au septième plan, puis sur la contre-étiquette du dernier.
+     Idée : un film qui avance comme on remplit un verre. Chaque plan est un creux, chaque passage monte comme un niveau. */
+  .v32-s{width:1920px;height:1080px;background:var(--cave)}
+  .v32-p{position:absolute;inset:0;overflow:hidden;display:none}
+  .v32-in{position:absolute;inset:0;transform-origin:50% 50%}
+  .v32-img{position:absolute;max-width:none}
+  .v32-cap{position:absolute;left:96px;bottom:130px;font-size:62px;line-height:1.02;color:var(--tuffeau);z-index:40;text-shadow:0 1px 2px rgba(5,9,40,.45),0 6px 24px rgba(5,9,40,.45);max-width:1300px}
+  .v32-cap.haut{top:96px;bottom:auto}
+  .v32-etq{position:absolute;font-size:17px;color:var(--tuffeau);z-index:40;text-shadow:0 1px 2px rgba(5,9,40,.6)}
+  .v32-ligne{position:absolute;left:0;right:0;height:8px;margin-top:-2px;z-index:90;pointer-events:none;background:linear-gradient(180deg,rgba(255,255,255,.95) 0 2px,rgba(60,20,0,.42) 2px 5px,rgba(60,20,0,0))}
+  /* la mention sanitaire : un bandeau de pied, toujours au même endroit, lisible sur la pierre comme sur une photo */
+  .v32-sante{position:absolute;left:0;right:0;bottom:0;height:48px;display:flex;align-items:center;justify-content:center;font-size:19px;color:var(--tuffeau);z-index:95;background:rgba(14,22,56,.9)}
+  .v32-cadre{position:absolute;overflow:hidden;box-shadow:0 2px 3px rgba(3,6,30,.45),14px 30px 46px -12px rgba(3,6,30,.6)}
+  .v32-cadre .ph{position:absolute;inset:0}
+  .v32-ce{position:absolute;left:96px;bottom:72px;z-index:40;zoom:1.5}
+  .v32-dans{left:690px;top:170px;bottom:auto;font-size:60px;max-width:520px}
+  /* plan 5 : la légende à gauche des bouteilles, au-dessus du niveau, sur le fond bleu : rien ne la traverse */
+  .v32-trois{left:80px;top:430px;bottom:auto;font-size:43px;max-width:none;white-space:nowrap}
+  /* plan 7 : l'enseigne peinte sur le bois et l'affiche sur la porte, comme la pièce 05, posées dans les pixels de la photo */
+  .v32-bois{display:grid;place-items:center;mix-blend-mode:multiply}
+  .v32-bois .t-etq{color:#16298A;font-size:17px;letter-spacing:.13em;margin-top:16px}
+  .v32-aff{box-shadow:0 0 0 1px rgba(3,6,30,.35),4px 7px 16px rgba(3,6,30,.55)}
+  .v32-aff::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,rgba(255,220,150,.16),rgba(3,6,30,.3));pointer-events:none}
+  .v32-sig{position:absolute;left:0;right:0;top:770px;text-align:center;font-size:54px;color:var(--tuffeau);z-index:40}
+  .v32-desc{position:absolute;left:0;right:0;top:850px;display:flex;justify-content:center;gap:40px;font-size:17px;color:var(--tuffeau);z-index:40}
+</style>
+<body><div class="vs-scene v32-s" id="s">
+  <div class="v32-ligne" id="ligne" style="display:none"></div>
+  <div class="v32-sante t-petit" id="sante"></div>
+</div>
+<script>
+const A = Marque, NB = A.NB, C = A.COULEURS, K = A.CONSTRUCTION, W = 1920, H = 1080;
+const scene = document.getElementById('s'), ligne = document.getElementById('ligne'), sante = document.getElementById('sante');
+sante.textContent = A.MENTION_SANITAIRE;
+const el = (html) => M.el(html);
+const plan = (cls = '') => { const p = el(`<div class="v32-p ${cls}"><div class="v32-in"></div></div>`); scene.insertBefore(p, ligne); return { p, in: p.firstChild }; };
+/* une légende : écrite en 0,35 s, lettre après lettre ; elle ne bouge plus ensuite */
+const legende = (parent, texte, cls = '') => { const c = el(`<div class="v32-cap t-sous ${cls}">${texte}</div>`); parent.appendChild(c); const f = S.ecrire(c, { soft: 4, rise: 0.12 }); f.el = c; return f; };
+/* une photo cadrée : x, y, l en pixels de la photo ; la largeur affichée est celle de l'image */
+const photo = (parent, nom, [x, y, l]) => { const P = A.PHOTOS[nom], k = W / l, im = el(`<img class="v32-img" src="${A.photoURL(nom)}" alt="">`);
+  im.style.cssText += `width:${P.px[0] * k}px;height:${P.px[1] * k}px;left:${-x * k}px;top:${-y * k}px`; parent.appendChild(im); return { im, k, x, y }; };
+const pousse = (inn, u, o = '50% 50%', z = 0.05) => { inn.style.transformOrigin = o; inn.style.transform = `scale(${(1 + z * u).toFixed(5)})`; };
+
+const PLANS = [];
+/* ---------- 1 · le creux, de très près ---------- */
+{ const { p, in: inn } = plan('fond-bleu lumiere'), s9 = 9, cx = K.x[2] + K.fut + K.creux.l / 2;
+  const box = el('<div class="vs-cv"><canvas></canvas></div>'); inn.appendChild(box); const cv = box.firstChild;
+  const tracer = (c) => { c.translate(W / 2 - cx * s9, H / 2 - 50 * s9 + 40); c.scale(s9, s9); c.fill(new Path2D(A.lettersPath()), 'evenodd'); };
+  const o = { l: W, h: H, ech: 900, k: 1, tracer, garder: (q) => q.n > 50000, jus: 'maceration' };
+  const f = S.filet(inn); f.svg.setAttribute('width', W); f.svg.setAttribute('height', H);
+  /* les deux phrases sont écrites dans le creux lui-même, au-dessus du niveau que le vin atteindra */
+  const l1 = legende(p, 'Il y a un creux<br>dans Sillon.', 'v32-dans'), l2 = legende(p, 'On le remplit.', 'v32-dans');
+  let fond = 0, x = 0;
+  PLANS.push({ t0: 0, t1: 5, p, init() { const r = Verse.formes(document.createElement('canvas'), { ...o, p: 0 }); fond = r.poches[0].y; x = r.poches[0].x; },
+    seek(t) { pousse(inn, t / 5, `${W / 2}px ${H / 2}px`, 0.045);
+      const v = S.versement(t, { t0: 2.55, ys: -60, yt: fond, g: 6200, v0: 700 }), r = S.vin(cv, 'formes', { ...o, p: A.NIVEAU * v.p });
+      f.set(x + 200, S.jet(v, r.poches[0] ? r.poches[0].y : fond), 'maceration', 60, t);
+      l1(S.part(t, 0.25, 0.4, M.lin)); l1.el.style.display = t < 2.5 ? '' : 'none'; l2(S.part(t, 2.5, 0.3, M.lin)); l2.el.style.display = t >= 2.5 ? '' : 'none'; } }); }
+
+/* ---------- 2 · la main qui penche le verre ---------- */
+{ const { p, in: inn } = plan(); const P = A.PHOTOS['verre-penche'], fr = [0, 905 - 540 * (1856 / W), 1856], ph = photo(inn, 'verre-penche', fr);
+  const yS = (905 - fr[1]) * ph.k, niv = el('<div class="vs-niv" style="color:var(--tuffeau);opacity:.9"></div>'); inn.appendChild(niv);
+  const cote = el(`<div class="v32-etq t-etq">Le vin · ${A.deg(0)}</div>`); p.appendChild(cote); cote.style.left = '96px'; cote.style.top = yS - 34 + 'px';
+  const l = legende(p, 'Ça penche, ça tient.', 'haut');
+  PLANS.push({ t0: 5, t1: 8, entree: 'niveau', p, seek(t) { pousse(inn, (t + 0.5) / 3.5, `50% ${yS}px`, 0.06); S.niveau(niv, yS, 0, W, S.part(t, 0.2, 0.9, S.pose)); cote.style.opacity = S.part(t, 0.6, 0.4, M.lin);
+      l(S.part(t, 0.35, 0.45, M.lin)); } }); }
+
+/* ---------- 3 · le comptoir du jeudi ---------- */
+{ const { p, in: inn } = plan(); photo(inn, 'comptoir', [900, 120, 1500]);
+  const T = [{ texte: 'JE[U]DI,', jus: 'maceration', cx: 600, cy: 330 }, { texte: 'ON GO[Û]TE.', jus: 'glou', cx: 720, cy: 560 }];
+  T.forEach((x) => { x.box = el('<div class="vs-cv" style="z-index:5"><canvas></canvas></div>'); p.appendChild(x.box); x.cv = x.box.firstChild; x.o = { texte: x.texte, taille: 150, jus: x.jus }; });
+  PLANS.push({ t0: 8, t1: 10.5, p, seek(t) { pousse(inn, t / 2.5, '70% 40%', 0.04);
+      const a = -12 * S.part(t, 0.35, S.BASCULE, S.penche);
+      T.forEach((x) => { const P = S.garde(x.o, a, 0.72), r = S.vin(x.cv, 'titre', { ...x.o, angle: a, pDe: (q) => P[q.li] ?? 0, cle: JSON.stringify(P) }); S.centrer(x.box, r, x.cx, x.cy); }); } }); }
+
+/* ---------- 4 · du jus ---------- */
+{ const { p, in: inn } = plan('fond-cave lumiere'); const box = el('<div class="vs-cv"><canvas></canvas></div>'); inn.appendChild(box); const cv = box.firstChild;
+  const o = { texte: A.PHRASES.jus, taille: 300, jus: ['maceration', 'paille'], fond: 'cave' }, fs = [S.filet(inn), S.filet(inn)];
+  fs.forEach((f) => { f.svg.setAttribute('width', W); f.svg.setAttribute('height', H); });
+  let fonds = [];
+  PLANS.push({ t0: 10.5, t1: 13, p, init() { const r = Verse.rendre(document.createElement('canvas'), { ...o, p: 0 }); fonds = r.poches.map((q) => ({ x: W / 2 - r.l / 2 + q.x, y: H / 2 - r.h / 2 + q.y })); },
+    seek(t) { const vs = fonds.map((fd, i) => S.versement(t, { t0: 0.1 + i * 0.22, ys: -50, yt: fd.y }));
+      const r = S.vin(cv, 'titre', { ...o, pDe: (q) => 0.85 * vs[Math.min(1, q.li > 2 ? 1 : 0)].p, cle: vs.map((v) => v.p.toFixed(4)).join() }); S.centrer(box, r, W / 2, H / 2);
+      fs.forEach((f, i) => { const pc = r.poches[i]; f.set(fonds[i].x, S.jet(vs[i], pc ? H / 2 - r.h / 2 + pc.y : fonds[i].y), o.jus[i], 40, t); }); } }); }
+
+/* ---------- 5 · les trois bouteilles, l'image à niveau ---------- */
+{ const { p, in: inn } = plan(); const ph = el(A.photo('trois-jus', { mode: 'niveau', jus: 'glou', niveau: 0, pos: '50% 46%' })); ph.style.cssText += 'position:absolute;inset:0'; inn.appendChild(ph);
+  const nj = [...ph.querySelectorAll('.nj')], nl = ph.querySelector('.nl'), f = S.filet(p); f.svg.setAttribute('width', W); f.svg.setAttribute('height', H);
+  const l = legende(p, 'Un orange,<br>un rouge de soif,<br>un blanc.', 'v32-trois'), N0 = 0.34;
+  PLANS.push({ t0: 13, t1: 15.5, entree: 'niveau', p, seek(t) {
+      const v = S.versement(t, { t0: 0.0, ys: -50, yt: H }), y = H * (1 - N0 * v.p);
+      nj.forEach((b) => { b.style.top = y.toFixed(2) + 'px'; }); nl.style.top = y.toFixed(2) + 'px'; nl.style.display = v.p > 0.004 ? '' : 'none';
+      f.set(1660, S.jet(v, y), 'glou', 34, t); l(S.part(t, 0.3, 0.5, M.lin)); } }); }
+
+/* ---------- 6 · le caviste, dans un cadre qui penche ---------- */
+{ const { p, in: inn } = plan('fond-bleu lumiere'); const FL = 1060, FH = 640, FX = 1030, FY = 490, D = Math.ceil(Math.hypot(FL, FH));
+  const cadre = el('<div class="v32-cadre"><div style="position:absolute"></div></div>'); inn.appendChild(cadre); const dd = cadre.firstChild;
+  cadre.style.cssText += `left:${FX - FL / 2}px;top:${FY - FH / 2}px;width:${FL}px;height:${FH}px`; dd.style.cssText += `width:${D}px;height:${D}px;left:${FL / 2 - D / 2}px;top:${FH / 2 - D / 2}px`;
+  dd.innerHTML = A.photo('caviste', { mode: 'niveau', jus: 'maceration', niveau: 0.4, pos: '50% 58%' }); const ph = dd.firstChild, nj = [...ph.querySelectorAll('.nj')], nl = ph.querySelector('.nl');
+  const l = legende(p, 'Non filtré. Nous non plus.');
+  PLANS.push({ t0: 15.5, t1: 18, p, seek(t) { const a = 12 * S.part(t, 0.5, S.BASCULE, S.penche), L = A.liquide({ x: 0, y: 0, l: FL, h: FH }, a, [FL / 2, FH / 2], 0.4), y = D / 2 + L.ys - FH / 2;
+      cadre.style.transform = `rotate(${a.toFixed(3)}deg)`; dd.style.transform = `rotate(${(-a).toFixed(3)}deg)`; nj.forEach((b) => { b.style.top = y.toFixed(2) + 'px'; }); nl.style.top = y.toFixed(2) + 'px';
+      l(S.part(t, 0.25, 0.45, M.lin)); } }); }
+
+/* ---------- 7 · la rue, le jeudi soir ---------- */
+{ const { p, in: inn } = plan();
+  /* la devanture porte son nom : les coins relevés par la pièce 05 (plates/05-jeudi.html), dans les pixels de la photo */
+  const ENSEIGNE = [[1412, 50], [1765, 85], [1768, 315], [1412, 298]], AFFICHE = [[1703, 404], [1851, 408], [1851, 702], [1703, 708]];
+  const peint = `<div class="usure" style="display:grid;justify-items:center">${A.wordmark('#16298A', 'style="width:560px;height:auto"', 'maceration', { detail: true })}<div class="t-etq">${A.DESCRIPTEUR}</div></div>`;
+  const habits = A.pose(peint, { l: 700, h: 470, quad: ENSEIGNE, cls: 'v32-bois' }) + A.pose(A.affiche({ l: 300, voix: 'Venez comme vous êtes.' }), { l: 300, h: 424, quad: AFFICHE, cls: 'v32-aff' }); /* sans « Repartez à pied. », phrase non relue */
+  inn.appendChild(el(A.scene('jeudi', habits, { l: W, cadre: [200, 40, 2200, 2200 * H / W] })));
+  /* la nuit qui descend sur le pied de l'image : la phrase se lit au-dessus des visages */
+  inn.appendChild(el('<div style="position:absolute;left:0;right:0;bottom:0;height:520px;background:linear-gradient(180deg,rgba(14,22,56,0),rgba(14,22,56,.55) 55%,rgba(14,22,56,.82))"></div>'));
+  const e = el('<div class="v32-etq t-etq" style="left:96px;bottom:204px">Tous les jeudis soir · Nantes · Olivettes</div>'); p.appendChild(e);
+  const l = legende(p, 'Venez comme vous êtes.');
+  PLANS.push({ t0: 18, t1: 20, p, seek(t) { pousse(inn, t / 2, '62% 40%', 0.05); l(S.part(t, 0.2, 0.4, M.lin)); e.style.opacity = S.part(t, 0.1, 0.3, M.lin); } }); }
+
+/* ---------- 8 · le logotype ---------- */
+{ const { p, in: inn } = plan('fond-bleu lumiere'); const box = el('<div class="vs-cv" style="z-index:5"><canvas></canvas></div>'); inn.appendChild(box); const cv = box.firstChild;
+  const T = 170, CX = 960, CY = 450, f = S.filet(inn); f.svg.setAttribute('width', W); f.svg.setAttribute('height', H);
+  const sig = el(`<div class="v32-sig t-sous">${A.SIGNATURE}</div>`), desc = el('<div class="v32-desc t-etq"><span>Cave à vins nature</span><span>Nantes · Olivettes</span></div>');
+  const ce = el(`<div class="v32-ce">${A.contre({ lot: '32', sujet: 'Le film', lignes: [['Le mot penche de', A.deg(12)], ['Le vin, de', A.deg(0)]], sanitaire: true, l: 300 })}</div>`);
+  [sig, desc, ce].forEach((x) => p.appendChild(x)); A.typo(p);
+  let cr = null;
+  PLANS.push({ t0: 20, t1: 25, entree: 'niveau', p, init() { const r = Verse.logo(document.createElement('canvas'), { taille: T, niveau: 0 }); cr = { x: CX - r.l / 2 + r.poches[0].x, fond: CY - r.h / 2 + r.poches[0].y }; },
+    seek(t) { const v = S.versement(t, { t0: 0.25, ys: -40, yt: cr.fond }), a = -12 * S.part(t, 1.75, S.BASCULE, S.penche), n = A.NIVEAU * v.p, pp = a ? S.gardeRect(a, n) : n;
+      const r = S.vin(cv, 'logo', { taille: T, angle: a, niveau: pp }); S.centrer(box, r, CX, CY);
+      f.set(cr.x, S.jet(v, r.poches[0] ? CY - r.h / 2 + r.poches[0].y : cr.fond), 'maceration', 32, t);
+      const u = S.part(t, 2.4, 0.6, S.pose); sig.style.opacity = u; sig.style.transform = `translateY(${((1 - u) * 10).toFixed(2)}px)`;
+      desc.style.opacity = S.part(t, 2.7, 0.5, M.lin); } }); }
+
+/* ---------- le montage ---------- */
+const FONDU = 0.5;
+window.pret = S.pret(['verre-penche', 'comptoir', 'trois-jus', 'caviste', 'jeudi', 'depot']).then(() => Verse.tout(scene)).then(() => { PLANS.forEach((x) => x.init && x.init()); A.typo(scene); seek(0); });
+window.seek = (t) => {
+  let yl = null;
+  PLANS.forEach((x, i) => {
+    const debut = x.t0 - (x.entree === 'niveau' ? FONDU : 0), fin = PLANS[i + 1] ? PLANS[i + 1].t0 : 99, vis = t >= debut && t < fin;
+    x.p.style.display = vis ? 'block' : 'none'; x.p.style.zIndex = 10 + i;
+    if (!vis) return;
+    /* l'entrée « niveau » : le plan monte depuis le bas de l'image, derrière une ligne d'éclat qui reste horizontale */
+    if (x.entree === 'niveau' && t < x.t0) { const y = H * (1 - S.verse((t - debut) / FONDU)); x.p.style.clipPath = `inset(${y.toFixed(2)}px 0 0 0)`; yl = y; } else x.p.style.clipPath = '';
+    x.seek(t - x.t0);
+  });
+  ligne.style.display = yl == null ? 'none' : ''; if (yl != null) ligne.style.top = yl.toFixed(2) + 'px';
+  /* la mention sanitaire, en pied d'image, jusqu'au plan du logotype où la contre-étiquette la porte */
+  sante.style.display = t < 20 ? '' : 'none';
+};
+</script></body>

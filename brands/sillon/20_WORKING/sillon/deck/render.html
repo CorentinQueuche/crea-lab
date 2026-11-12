@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="fr">
+<meta charset="utf-8">
+<title>Sillon · fiche de marque</title>
+<!-- RENDU D'UNE PAGE DE LA FICHE DE MARQUE, 1920 × 1080.
+     tools/deck.mjs ouvre ce fichier, lit window.GuideOrder, appelle window.show(clé) pour chaque page, attend
+     window.pret (les canvas du remplisseur), puis capture 1920 × 1080 en ×2.
+     À la main ou pour tools/check_planche.mjs : deck/render.html?page=3 (numéro, de 1 à 8) ou deck/render.html#couleurs.
+     La page porte la classe .plate : check_planche la mesure comme une planche. -->
+<link rel="stylesheet" href="../brand/marque.css">
+<link rel="stylesheet" href="pages.css">
+<script src="../brand/marque.js"></script>
+<script src="../brand/matiere.js"></script>
+<script src="../brand/verse.js"></script>
+<script src="pages.js"></script>
+<body>
+<div class="mp-in" id="in"></div>
+<script>
+window.show = (k) => {
+  const el = document.getElementById('in');
+  el.innerHTML = window.GuidePages[k];
+  window.pret = Promise.resolve(typeof window.GuideApres === 'function' ? window.GuideApres(el) : 0);
+  return window.pret;
+};
+(() => {
+  const q = new URLSearchParams(location.search).get('page'), h = decodeURIComponent(location.hash.slice(1)), O = window.GuideOrder;
+  const k = q && O[+q - 1] ? O[+q - 1] : h in window.GuidePages ? h : O[0];
+  window.show(k);
+})();
+</script>
+</body>
+</html>

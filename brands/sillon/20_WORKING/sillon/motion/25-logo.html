@@ -1,0 +1,92 @@
+<!doctype html><meta charset="utf-8"><title>Sillon · 25 · Le logo</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="motion.css"><link rel="stylesheet" href="sillon.css">
+<script src="../brand/marque.js"></script><script src="../brand/matiere.js"></script><script src="../brand/verse.js"></script><script src="lib.js"></script><script src="sillon.js"></script>
+<style>
+  /* 25 · La révélation du logo. 16:9, 1920 × 1080, 7 s. Préfixe v25-.
+     Découpage :
+       0,15 à 1,35 s Les pierres se posent : S et N montent d'abord, puis I et O, puis le premier L, puis le second.
+                     Ce sont des blocs de tuffeau (le moteur, sans vin) qui arrivent d'en bas et se posent sans rebondir.
+       1,36 à 1,7    Le second L arrive contre le pied du premier : le joint s'éclaire et s'efface. Le creux est fermé.
+       1,5 à 2,7     On verse par le haut : un filet tombe dans le creux, le niveau monte aux deux tiers en 0,9 s.
+       2,95 à 3,55   Le mot penche de 12° en 0,6 s. Le vin reste horizontal (le moteur le recalcule à chaque image).
+       3,65 à 4,55   La ligne de niveau passe derrière le mot et continue dans le vin : « Le vin · 0° ». La pente,
+                     écrite le long du mot : « Le mot · 12° ».
+       4,4 à 7,0     Le descripteur, puis la tenue.
+     Idée : le logo n'est pas montré, il est construit puis rempli. Chaque geste dit « on remplit » ou « ça penche, ça tient ». */
+  .v25-s{width:1920px;height:1080px}
+  .v25-p{position:absolute;left:0;top:0;will-change:transform}
+  .v25-joint{position:absolute;width:6px;margin-left:-3px;background:linear-gradient(90deg,rgba(255,255,255,0),#FFFDF6,rgba(255,255,255,0));filter:blur(1.5px);z-index:30}
+  .v25-desc{position:absolute;left:0;right:0;bottom:92px;display:flex;justify-content:center;gap:40px;font-size:17px;z-index:30}
+  .v25-desc span{display:inline-block}
+</style>
+<body><div class="vs-scene v25-s fond-bleu lumiere" id="s">
+  <div id="pieces"></div>
+  <div class="vs-cv" id="logo" style="z-index:12"><canvas></canvas></div>
+  <div class="v25-joint" id="joint"></div>
+  <div class="vs-niv" id="niv" style="color:var(--tuffeau);z-index:5"></div>
+  <div class="vs-cote t-etq" id="c-vin" style="font-size:18px">Le vin · <span></span></div>
+  <div class="vs-cote t-etq" id="c-mot" style="font-size:18px">Le mot · <span></span></div>
+  <div class="v25-desc t-etq net" id="desc"><span>Cave à vins nature</span><span>Nantes · Olivettes</span><span>On remplit les creux.</span></div>
+</div>
+<script>
+const A = Marque, K = A.CONSTRUCTION, T = 180, s = T / 100, CX = 960, CY = 500, N0 = A.NIVEAU;
+/* le cadre du moteur pour le logotype droit (le même calcul que Verse.logo) */
+const W0 = K.largeur * s, H0 = 106 * s, L = Math.ceil(W0) + 6, H = Math.ceil(H0) + 6;
+const tracerDe = (d, clip) => (c) => { c.translate(L / 2, H / 2); c.scale(s, s); c.translate(-K.largeur / 2, -50); if (clip) { c.beginPath(); c.rect(...clip); c.clip(); } c.fill(new Path2D(d), 'evenodd'); };
+const xL = K.x[2], bL = K.largeurL;
+/* les six pierres : S, I, le premier L, le second L, O, N ; chacune rendue dans le cadre entier, pour que sa matière
+   soit exactement celle du logotype assemblé (même grain, même lumière) */
+const PIECES = [
+  { nom: 'S', d: A.letterPath('S'), dx: 0, t0: 0.15 },
+  { nom: 'I', d: A.letterPath('I'), dx: 0, t0: 0.27 },
+  { nom: 'L1', d: A.letterPath('LL'), clip: [xL - 2, -20, bL + 2, 140], dx: 0, t0: 0.4 },
+  { nom: 'L2', d: A.letterPath('LL'), clip: [xL + bL, -20, bL + 4, 140], dx: 0, t0: 0.58, du: 0.75 },
+  { nom: 'O', d: A.letterPath('O'), dx: 0, t0: 0.27 },
+  { nom: 'N', d: A.letterPath('N'), dx: 0, t0: 0.15 },
+];
+const box = document.getElementById('pieces');
+PIECES.forEach((p, i) => { p.el = document.createElement('div'); p.el.className = 'v25-p'; p.el.style.zIndex = 2 + i; p.cv = document.createElement('canvas'); p.el.appendChild(p.cv); box.appendChild(p.el); });
+const logo = document.getElementById('logo'), cvLogo = logo.querySelector('canvas'), joint = document.getElementById('joint');
+const niv = document.getElementById('niv'), cVin = document.getElementById('c-vin'), cMot = document.getElementById('c-mot');
+const desc = [...document.querySelectorAll('#desc span')];
+const filet = S.filet(document.getElementById('s'));
+let creux = null;
+
+window.pret = S.pret().then(() => {
+  PIECES.forEach((p) => { Verse.formes(p.cv, { l: L, h: H, ech: T, tracer: tracerDe(p.d, p.clip), garder: () => false }); p.el.style.left = CX - L / 2 + 'px'; p.el.style.top = CY - H / 2 + 'px'; });
+  /* où est le creux : le fond (vide) et le centre, lus sur un rendu plein */
+  const r = Verse.logo(document.createElement('canvas'), { taille: T, niveau: 0 });
+  creux = { x: CX - L / 2 + r.poches[0].x, fond: CY - H / 2 + r.poches[0].y };
+  seek(0);
+});
+
+window.seek = (t) => {
+  /* 1. les pierres se posent, puis les deux L se soudent */
+  const TS = 1.36, soude = t >= TS;
+  /* le logotype assemblé passe au-dessus des pierres posées : les pierres restent pleines dessous, aucun fond ne transparaît */
+  PIECES.forEach((p) => { const u = S.part(t, p.t0, p.du || 0.8, S.pose), y = (1 - u) * 700;
+    p.el.style.transform = `translate(0px,${y.toFixed(2)}px)`; p.el.style.display = t >= TS + 0.14 ? 'none' : ''; });
+  /* la soudure : le joint entre les deux L s'éclaire, puis s'efface ; il n'y a plus qu'une pierre */
+  const fl = S.part(t, TS, 0.32, M.lin), jx = CX + (xL + bL - K.largeur / 2) * s, j0 = K.creux.h - K.rayonFond;
+  joint.style.left = jx.toFixed(2) + 'px'; joint.style.top = (CY + (j0 - 50) * s).toFixed(2) + 'px'; joint.style.height = ((100 - j0) * s).toFixed(2) + 'px';
+  joint.style.opacity = t < TS ? 0 : (0.95 * Math.sin(Math.PI * Math.min(1, fl * 1.6 + 0.2)) * (1 - fl)).toFixed(3);
+  /* 2. on verse : le filet tombe dans le creux, le niveau monte en 0,9 s */
+  const v = S.versement(t, { t0: 1.5, ys: -40, yt: creux.fond });
+  /* 3. le mot penche de 12° ; le vin garde son volume, sa surface reste horizontale */
+  const a = -12 * S.part(t, 2.95, S.BASCULE, S.penche), niveau = N0 * v.p, p = a ? S.gardeRect(a, niveau) : niveau;
+  logo.style.display = t < TS ? 'none' : ''; logo.style.opacity = soude ? S.part(t, TS, 0.12, M.lin) : 0;
+  const r = S.vin(cvLogo, 'logo', { taille: T, angle: a, niveau: p });
+  S.centrer(logo, r, CX, CY);
+  const surf = r.poches[0] ? CY - r.h / 2 + r.poches[0].y : creux.fond;
+  filet.set(creux.x, S.jet(v, surf), 'maceration', 34, t);
+  /* 4. la ligne de niveau et les deux cotes */
+  const ln = S.part(t, 3.65, 0.8, S.pose);
+  S.niveau(niv, surf, 84, 1836, ln); niv.style.display = ln > 0 ? '' : 'none';
+  cVin.querySelector('span').innerHTML = A.deg(0); cVin.style.left = '84px'; cVin.style.top = (surf - 34).toFixed(1) + 'px'; cVin.style.opacity = S.part(t, 3.85, 0.4, M.lin);
+  /* la pente du mot, écrite le long du mot lui-même, sous le N : la seule ligne qui penche, contre « Le vin · 0° » qui ne penche pas */
+  const ux = W0 / 2 - 250, uy = 90 + 30, g = (-12 * Math.PI) / 180;
+  cMot.querySelector('span').innerHTML = A.deg(12); cMot.style.left = (CX + ux * Math.cos(g) - uy * Math.sin(g)).toFixed(1) + 'px'; cMot.style.top = (CY + ux * Math.sin(g) + uy * Math.cos(g)).toFixed(1) + 'px'; cMot.style.transformOrigin = '0 0'; cMot.style.transform = 'rotate(-12deg)'; cMot.style.opacity = S.part(t, 4.1, 0.45, M.lin);
+  /* 5. le descripteur */
+  desc.forEach((d, i) => { const u = S.part(t, 4.4 + i * 0.12, 0.5, S.pose); d.style.opacity = u.toFixed(3); d.style.transform = `translateY(${((1 - u) * 8).toFixed(2)}px)`; });
+};
+</script></body>

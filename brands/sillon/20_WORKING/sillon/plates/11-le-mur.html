@@ -1,0 +1,66 @@
+<!doctype html><meta charset="utf-8"><title>Sillon · 11 · Le mur d’affiches</title><meta name="robots" content="noindex">
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates.css"><link rel="stylesheet" href="monde.css">
+<script src="../brand/marque.js"></script><script src="../brand/matiere.js"></script><script src="../brand/verse.js"></script>
+<style>
+  /* 11 · Le mur d'affiches. Une frise. L'affichage sauvage écrit « ON OUVRE. » à raison d'une lettre par affiche, le
+     long d'un mur de pierre, la nuit, au flash. Les lettres serrées tiennent sur une affiche ; le U, large comme un verre,
+     en prend deux, et c'est la seule qui tient du vin. Une affiche entre les deux mots porte le nom et la mention.
+     Tout est placé dans les pixels de mur.jpg (2400 × 1018) : mur de x 160 à 2120, trottoir à y 890, une assise de
+     pierre fait environ 100 px (une affiche de 60 × 85 cm en fait 196 × 277). Préfixe m11-. */
+  .m11-aff{position:absolute;overflow:hidden;background:var(--bleu);color:var(--tuffeau-1);display:grid;place-items:center}
+  .m11-aff.blanc{background:var(--tuffeau-1);color:var(--bleu)}
+  .m11-aff .t-etq{position:absolute;font-size:7.5px;letter-spacing:.09em;opacity:.92}
+  .m11-colle{position:absolute;mix-blend-mode:multiply;border-radius:3px;box-shadow:0 0 6px 4px rgba(70,56,30,.22),0 0 2px 1px rgba(70,56,30,.25)}
+  .m11-lum{position:absolute;overflow:hidden;mix-blend-mode:multiply;pointer-events:none}
+  /* la lumière du flash sur le papier : la photo floutée (on garde la chute de lumière, pas les taches du mur, que le papier cache) */
+  .m11-lum img{position:absolute;filter:grayscale(1) blur(22px) brightness(1.5) contrast(1.1)}
+  /* le relief des joints sous le papier : seulement les traits sombres de la pierre, très atténués */
+  .m11-joint{position:absolute;overflow:hidden;mix-blend-mode:multiply;opacity:.2;pointer-events:none}
+  .m11-joint img{position:absolute;filter:grayscale(1) brightness(3.6) contrast(3.2)}
+  .m11-pli{position:absolute;pointer-events:none;mix-blend-mode:soft-light}
+  .m11-dechire{position:absolute;pointer-events:none}
+  .m11-leg{left:26px;bottom:18px}
+  .m11-leg-d{right:26px;bottom:18px}
+</style>
+<body><div class="plate soir" id="p"></div>
+<script>
+const A = Marque, C = A.COULEURS, NB = A.NB, r = A.rnd(11);
+const P = { l: 196, h: 277, pas: 192, x0: 178, y0: 300 }, T = 196;   /* taille de capitale des lettres, en px de photo */
+/* les dix places : neuf lettres et une affiche d'information ; le U en occupe deux */
+const places = [{ t: 'O' }, { t: 'N' }, { info: true }, { t: 'O' }, { t: '[U]', n: 2 }, { t: 'V' }, { t: 'R' }, { t: 'E', dechire: true }, { t: '.' }];
+let fente = 0;
+const affiches = places.map((p, i) => { const n = p.n || 1, x = P.x0 + fente * P.pas + Math.round((r() - 0.5) * 4), y = P.y0 + Math.round((r() - 0.5) * 6), l = P.l + (n - 1) * P.pas, rot = (r() - 0.5) * 0.9; fente += n; return { ...p, x, y, l, h: P.h, rot }; });
+
+const tete = (a) => `<div class="t-etq" style="left:9px;top:8px">Sillon</div><div class="t-etq" style="right:9px;top:8px">${A.LIEU}</div>`;
+const lettre = (a) => `${tete(a)}${A.cvs(a.t, { taille: a.t === '.' ? T : T, fond: 'bleu', jus: 'maceration', p: 0.67, graine: a.x })}<div class="t-etq" style="left:9px;bottom:7px;opacity:.7">${a.t === '[U]' ? 'Un verre, 12,5' + NB + 'cl' : ''}</div>`;
+const info = (a) => `<div style="position:absolute;left:14px;right:14px;top:22px">${A.wordmark(C.bleu, 'style="width:100%;height:auto"', 'maceration', { detail: true })}</div>
+  <div class="t-sous" style="position:absolute;left:14px;right:12px;top:76px;font-size:21px;line-height:1">Cave à vins nature.<br>Bientôt aux Olivettes.</div>
+  <div style="position:absolute;left:14px;top:176px">${A.verre({ taille: 38, c: C.bleu, jus: 'maceration' })}</div>
+  <div class="t-petit" style="position:absolute;left:14px;right:14px;bottom:12px;font-size:8.5px;line-height:1.25">${A.MENTION_SANITAIRE}</div>`;
+/* un pli de colle : un trait clair et son ombre, de biais */
+const plis = (a) => { const n = 2 + Math.floor(r() * 2); let s = ''; for (let i = 0; i < n; i++) { const x1 = r() * a.l, y1 = r() * a.h * 0.35, x2 = x1 + (r() - 0.5) * a.l * 0.6, y2 = y1 + a.h * (0.35 + r() * 0.45), cx = (x1 + x2) / 2 + (r() - 0.5) * 40, cy = (y1 + y2) / 2;
+    s += `<path d="M${x1},${y1} Q${cx},${cy} ${x2},${y2}" stroke="#fff" stroke-width="7" fill="none" opacity=".55" filter="url(#f${a.x})"/><path d="M${x1 + 4},${y1 + 3} Q${cx + 4},${cy + 3} ${x2 + 4},${y2 + 3}" stroke="#000" stroke-width="5" fill="none" opacity=".5" filter="url(#f${a.x})"/>`; }
+  /* une bulle d'air restée sous le papier */
+  const bx = 30 + r() * (a.l - 60), by = 40 + r() * (a.h - 80); s += `<ellipse cx="${bx}" cy="${by}" rx="${10 + r() * 12}" ry="${7 + r() * 8}" fill="url(#b${a.x})"/>`;
+  return `<svg class="m11-pli" style="left:${a.x}px;top:${a.y}px;width:${a.l}px;height:${a.h}px;transform:rotate(${a.rot}deg)" viewBox="0 0 ${a.l} ${a.h}"><defs><filter id="f${a.x}" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="2.6"/></filter><radialGradient id="b${a.x}" cx=".35" cy=".3"><stop offset="0" stop-color="#fff" stop-opacity=".9"/><stop offset=".6" stop-color="#fff" stop-opacity=".1"/><stop offset="1" stop-color="#000" stop-opacity=".45"/></radialGradient></defs>${s}</svg>`; };
+/* la déchirure du E : le coin bas droit est arraché ; dessous, un reste d'affiche plus ancienne, puis la pierre */
+const dech = (a) => { const cle = [[1, 0.56], [0.86, 0.6], [0.9, 0.69], [0.71, 0.75], [0.76, 0.85], [0.53, 0.92], [0.56, 1]], pts = [];
+  cle.forEach(([u, v], i) => { pts.push([u * a.l, v * a.h]); if (i < cle.length - 1) { const [u2, v2] = cle[i + 1]; for (let k = 1; k < 4; k++) { const t = k / 4; pts.push([(u + (u2 - u) * t) * a.l + (r() - 0.5) * 7, (v + (v2 - v) * t) * a.h + (r() - 0.5) * 7]); } } });
+  const bord = pts.map((p) => p.join(',')).join(' '), clip = `polygon(0 0,100% 0,${pts.map(([x, y]) => `${(x / a.l) * 100}% ${(y / a.h) * 100}%`).join(',')},0 100%)`;
+  return { clip, svg: `<svg class="m11-dechire" style="left:${a.x}px;top:${a.y}px;width:${a.l}px;height:${a.h}px;transform:rotate(${a.rot}deg)" viewBox="0 0 ${a.l} ${a.h}"><polyline points="${bord}" fill="none" stroke="#F4EFE2" stroke-width="3.4" stroke-linejoin="bevel"/><polyline points="${bord}" fill="none" stroke="rgba(0,0,0,.35)" stroke-width="1" transform="translate(1.5 2)"/></svg>` }; };
+const ancienne = (a) => `<div class="m11-aff" data-voulu style="left:${a.x + a.l * 0.46}px;top:${a.y + a.h * 0.52}px;width:${a.l * 0.5}px;height:${a.h * 0.47}px;background:${C.cave};clip-path:polygon(4% 8%,100% 0,100% 82%,62% 100%,0 96%);transform:rotate(-1.6deg)"><div style="position:absolute;left:-30px;top:-14px">${A.titre('JE[U]', { taille: 110, style: `color:${C.tuffeau}` })}</div></div>`;
+
+const joint = (a) => `<div class="m11-joint" style="left:${a.x}px;top:${a.y}px;width:${a.l}px;height:${a.h}px"><img src="${A.photoURL('mur')}" style="left:${-a.x}px;top:${-a.y}px;width:2400px;height:1018px" alt=""></div>`;
+const lum = (a) => `<div class="m11-lum" style="left:${a.x}px;top:${a.y}px;width:${a.l}px;height:${a.h}px"><img src="${A.photoURL('mur')}" style="left:${-a.x}px;top:${-a.y}px;width:2400px;height:1018px" alt=""></div>`;
+let couches = '';
+affiches.forEach((a) => { couches += `<div class="m11-colle" style="left:${a.x - 2}px;top:${a.y - 2}px;width:${a.l + 4}px;height:${a.h + 4}px"></div>`; });
+affiches.filter((a) => a.dechire).forEach((a) => { couches += ancienne(a); });
+affiches.forEach((a) => { const d = a.dechire ? dech(a) : null;
+  couches += `<div class="m11-aff ${a.info ? 'blanc' : ''}" style="left:${a.x}px;top:${a.y}px;width:${a.l}px;height:${a.h}px;transform:rotate(${a.rot}deg);${d ? `clip-path:${d.clip};` : ''}">${a.info ? info(a) : lettre(a)}<s class="grain" style="position:absolute;inset:0"></s></div>` + plis(a) + (d ? d.svg : ''); });
+affiches.forEach((a) => { couches += joint(a) + lum(a); });
+
+document.getElementById('p').innerHTML = A.scene('mur', couches, { cadre: [150, 150, 2000, 870] }) +
+  `<div class="mo-leg m11-leg t-etq mo-sur" data-voulu><span class="mo-num">11</span><span>Le mur d’affiches · une lettre par affiche, le verre en prend deux</span></div>
+   <div class="mo-leg m11-leg-d t-etq mo-sur" data-voulu><span>Nantes${NB}· Olivettes</span></div>`;
+window.pret = Verse.tout();
+</script></body>

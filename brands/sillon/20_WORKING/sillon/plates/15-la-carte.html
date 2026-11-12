@@ -1,0 +1,58 @@
+<!doctype html><meta charset="utf-8"><title>Sillon · 15 · La carte à douze creux</title><meta name="robots" content="noindex">
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates.css"><link rel="stylesheet" href="monde.css">
+<script src="../brand/marque.js"></script><script src="../brand/matiere.js"></script><script src="../brand/verse.js"></script>
+<style>
+  /* 15 · La carte à douze creux. Un objet seul, sur le bois du comptoir, au flash. La carte du jeudi imprime douze
+     verres vides, tous penchés de 12° : un seul tampon, qui a la forme du vin, les remplit tous. Chaque jeudi, un coup
+     de tampon, dans l'encre du jus qu'on a servi. Sept jeudis sont passés ; le tampon tombe rarement pile.
+     Matière : wood_table_worn (Poly Haven, CC0), sa lumière cuite depuis la carte de normales. Préfixe m15-. */
+  .m15-p{height:1180px;overflow:hidden}
+  .m15-bois{position:absolute;inset:0;background:url(tex/wood_table_worn/wood_table_worn_lit.jpg) -500px -700px/3000px 3000px}
+  .m15-carte{position:absolute;left:226px;top:250px;width:948px;height:640px;border-radius:14px;transform:rotate(-3.2deg);color:var(--bleu);overflow:hidden}
+  .m15-carte>*{position:absolute}
+  .m15-carte canvas{left:0;top:0;mix-blend-mode:multiply}
+  /* le papier : un peu de lumière en haut à gauche, un bord qui accroche le flash */
+  .m15-lum{inset:0;background:linear-gradient(160deg,rgba(255,255,255,.4),rgba(255,255,255,0) 40%,rgba(90,70,40,.06) 100%);mix-blend-mode:soft-light;pointer-events:none;z-index:5}
+  .m15-bord{inset:0;border-radius:14px;box-shadow:inset 1px 1px 0 rgba(255,255,255,.9),inset -1px -1px 0 rgba(80,60,30,.25);z-index:6;pointer-events:none}
+  .m15-ligne{border-bottom:1.6px dotted currentColor}
+  .m15-leg{left:84px;bottom:46px}
+  .m15-leg-d{right:84px;bottom:46px}
+</style>
+<body><div class="plate soir m15-p" id="p"></div>
+<script>
+const A = Marque, C = A.COULEURS, NB = A.NB, B = Verse.bruit, K = 2, CW = 948, CH = 640;
+/* la grille des verres : 6 × 2, chacun penché de 12° ; on garde leurs centres pour y poser les coups de tampon */
+const V = []; for (let j = 0; j < 2; j++) for (let i = 0; i < 6; i++) V.push({ n: j * 6 + i + 1, cx: 122 + i * 141, cy: 316 + j * 150 });
+const ECH = 70, NIV = A.NIVEAU;
+const murs = V.map((v) => A.verreTraces(v.cx, v.cy, ECH, A.DEGRE, 0, 'aplat').mur).join(' ');
+/* sept jeudis, dans l'ordre : le jus servi ce soir-là, le décalage du coup de tampon (px), sa pression */
+const SOIRS = [['maceration', 3, -2, 0.3], ['glou', -5, 4, 0.42], ['paille', 2, 7, 0.36], ['maceration', 8, -4, 0.5], ['glou', -2, 1, 0.3], ['maceration', 4, 9, 0.62], ['paille', -7, -3, 0.4]];
+const ENCRE = { maceration: '#E2620A', glou: '#DC2A5C', paille: '#E0A50C' };
+const svgCarte = `<svg style="left:0;top:0" width="${CW}" height="${CH}" viewBox="0 0 ${CW} ${CH}"><path fill="${C.bleu}" d="${murs}"/>${V.map((v) => `<text x="${v.cx}" y="${v.cy + 64}" text-anchor="middle" font-family="Anybody" font-weight="600" font-stretch="75%" font-size="13" letter-spacing="1" fill="${C.bleu}">${String(v.n).padStart(2, '0')}</text>`).join('')}</svg>`;
+const carte = `<div class="fond-blanc" style="inset:0"></div>${svgCarte}
+  <div style="left:46px;top:40px">${A.titre('LA CARTE D[U] JE[U]DI.', { taille: 66, style: `color:${C.bleu}` })}</div>
+  <div style="right:46px;top:44px;width:190px">${A.wordmark(C.bleu, 'style="width:100%;height:auto"', 'maceration')}</div>
+  <div class="t-sous" style="left:46px;top:132px;font-size:27px">Un jeudi, un coup de tampon.</div>
+  <div class="t-etq" style="left:46px;bottom:40px;display:flex;align-items:baseline;gap:10px;width:330px"><span>Nom</span><span class="m15-ligne" style="flex:1"></span></div>
+  <div class="t-petit" style="right:46px;bottom:38px;width:300px;text-align:right;font-size:11px;line-height:1.3">${A.MENTION_SANITAIRE}</div>
+  <div class="t-etq" style="right:46px;top:96px;font-size:10.5px;opacity:.85">${A.LIEU}</div>
+  <canvas id="tampons"></canvas><div class="m15-lum"></div><div class="m15-bord"></div>`;
+
+const toile = (l, h, k) => { const c = document.createElement('canvas'); c.width = Math.round(l * k); c.height = Math.round(h * k); return c; };
+/* les coups de tampon : la forme du vin d'un verre penché (en un aplat, détachée des parois de 8), une encre par
+   soir, un bruit de pression, un bord un peu plus chargé. Chaque coup est composé à part, puis posé en multiply. */
+function tamponner(cv) { const W = CW * K, H = CH * K; cv.width = W; cv.height = H; cv.style.width = CW + 'px'; cv.style.height = CH + 'px'; const x = cv.getContext('2d');
+  SOIRS.forEach(([jus, dx, dy, bruit], s) => { const v = V[s], t = A.verreTraces(v.cx + dx, v.cy + dy, ECH, A.DEGRE, NIV, 'aplat'), P = new Path2D(t.jus);
+    const T = toile(CW, CH, K), c = T.getContext('2d'); c.fillStyle = ENCRE[jus]; c.fillRect(0, 0, W, H); c.globalCompositeOperation = 'destination-in';
+    const F = toile(CW, CH, K), f = F.getContext('2d'); f.filter = `blur(${0.6 * K}px)`; f.scale(K, K); f.fill(P); f.filter = 'none'; f.lineWidth = 2.2; f.globalAlpha = 0.5; f.stroke(P); c.drawImage(F, 0, 0);
+    const g = 3, nw = Math.ceil(W / g), nh = Math.ceil(H / g), N = document.createElement('canvas'); N.width = nw; N.height = nh; const id = new ImageData(nw, nh), r = A.rnd(s + 40);
+    for (let j = 0; j < nh; j++) for (let i = 0; i < nw; i++) { const q = B.fbm(i / 16, j / 16, s * 3 + 1, 4), a = Math.max(0, Math.min(1, 1.05 - bruit * (1.1 - 1.7 * q))) * (r() < 0.012 ? 0.45 : 1); id.data[(j * nw + i) * 4 + 3] = a * 255; }
+    N.getContext('2d').putImageData(id, 0, 0); c.drawImage(N, 0, 0, W, H); c.globalCompositeOperation = 'source-over';
+    x.drawImage(T, 0, 0); }); }
+
+document.getElementById('p').innerHTML = `<div class="m15-bois"></div><div class="m15-carte mo-ombre-forte">${carte}</div>
+  <div class="mo-flash" style="--fx:50%;--fy:46%"></div><s class="grain" style="position:absolute;inset:0;z-index:25"></s>
+  <div class="mo-leg m15-leg t-etq mo-sur" data-voulu><span class="mo-num">15</span><span>La carte à douze creux · un tampon qui a la forme du vin</span></div>
+  <div class="mo-leg m15-leg-d t-etq mo-sur" data-voulu><span>Sept jeudis</span></div>`;
+window.pret = document.fonts.load('900 66px Anybody').then(() => tamponner(document.getElementById('tampons')));
+</script></body>

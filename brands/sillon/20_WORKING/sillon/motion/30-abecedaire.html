@@ -1,0 +1,93 @@
+<!doctype html><meta charset="utf-8"><title>Sillon · 30 · L'abécédaire à ras bord</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="motion.css"><link rel="stylesheet" href="sillon.css">
+<script src="../brand/marque.js"></script><script src="../brand/matiere.js"></script><script src="../brand/verse.js"></script><script src="lib.js"></script><script src="sillon.js"></script>
+<style>
+  /* 30 · L'abécédaire à ras bord. 16:9, 1920 × 1080, 12 s. Préfixe v30-.
+     Découpage :
+       0 à 0,4 s     Le début de l'alphabet, en pierre, sur le mur de cave : A, B, C… vides. En bas, le compteur à 0,0 cl.
+       0,3 à 8,6     L'alphabet défile de droite à gauche, sur une seule ligne, comme une chaîne de remplissage. Chaque
+                     lettre qui peut tenir du vin reçoit son filet quand elle passe au milieu de l'image ; elle se remplit
+                     en 0,9 s, à ras bord (c'est la seule pièce où tout est plein). Les jus se suivent : macération, glou,
+                     paille. Sous chaque lettre, sa contenance mesurée s'écrit ; le compteur monte.
+       8,7 à 10,3    On recule : la caméra s'éloigne, le second demi-alphabet glisse sous le premier ; deux rangs,
+                     A à M et N à Z, chaque lettre avec sa contenance, comme sur la pièce 08.
+       10,2 à 12,0   « L’alphabet entier tient 62,1 cl, soit 5 verres. » (la phrase de la pièce 08). Tenue.
+     Idée : la mesure, en mouvement. Les lettres ne sont pas décorées de vin : chacune reçoit ce qu'elle peut tenir, et on compte. */
+  .v30-s{width:1920px;height:1080px}
+  .v30-bande{position:absolute;left:0;top:0;height:1080px;transform-origin:0 0}
+  .v30-l{position:absolute}
+  .v30-cl{position:absolute;transform:translateX(-50%);font-size:19px;white-space:nowrap;color:var(--tuffeau)}
+  .v30-compte{position:absolute;left:96px;bottom:84px;z-index:30;color:var(--tuffeau)}
+  .v30-compte .n{font-family:var(--titre);font-weight:900;font-stretch:100%;font-size:132px;line-height:.8;letter-spacing:-.01em}
+  .v30-compte .k{font-size:18px;margin-bottom:18px}
+  .v30-fin{position:absolute;right:96px;bottom:92px;width:520px;font-size:34px;line-height:1.08;z-index:30;text-align:right}
+</style>
+<body><div class="vs-scene v30-s fond-cave lumiere" id="s">
+  <div class="v30-bande" id="bande"></div>
+  <div class="v30-compte"><div class="k t-etq">L’abécédaire à ras bord · contenance mesurée</div><div class="n" id="n"></div></div>
+  <div class="v30-fin t-sous" id="fin"></div>
+</div>
+<script>
+const A = Marque, NB = A.NB, ABC = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', CY = 430, X0 = 140, XV = 1560; let SC = 0.5, DX2 = 0, DY2 = 0, CAMX = 960;
+const bande = document.getElementById('bande'), nEl = document.getElementById('n'), fin = document.getElementById('fin');
+let T = 220, L = [], largeur = 0, total = 0;
+const opt = (ch, p, jus) => ({ texte: `[${ch}]`, taille: T, tout: true, p, jus: jus || 'maceration', fond: 'cave' });
+/* le défilement : une fonction du temps, douce au départ et à l'arrêt */
+const T0 = 0.3, T1 = 8.6, TA = 1.1; let D = 0;
+/* vitesse constante au milieu (un trapèze : 1,1 s pour lancer, 1,1 s pour arrêter) : la vitesse de pointe reste basse, l'image ne saccade pas */
+const pan = (t) => { const u = Math.min(Math.max(t - T0, 0), T1 - T0), Tp = T1 - T0, v = D / (Tp - TA); return u < TA ? (0.5 * v * u * u) / TA : u > Tp - TA ? D - (0.5 * v * (Tp - u) * (Tp - u)) / TA : v * (u - TA / 2); };
+
+window.pret = S.pret().then(() => {
+  /* la taille : on cherche, autour de 220 px de capitale, celle où la somme mesurée des 26 lettres est celle de la pièce 08 (62,1 cl) */
+  const somme = (tt) => [...ABC].reduce((a, ch) => a + Verse.mesurer({ texte: `[${ch}]`, taille: tt, tout: true, p: 1 }).cl, 0);
+  for (let tt = 220; tt >= 200; tt -= 2) { const s = somme(tt); if (Math.round(s * 10) === 621) { T = tt; break; } }
+  /* la ligne : la position de chaque lettre (le moteur compose, on reprend ses abscisses) ; la ligne de base, commune */
+  const ligne = Verse.mesurer({ texte: `[${ABC}]`, taille: T, tout: true, inter: 0.06 });
+  const ctx = document.createElement('canvas').getContext('2d'); ctx.font = `900 extra-expanded ${T / 0.675}px Anybody`;
+  const asc = (ch) => Math.ceil(Math.max(T, ctx.measureText(ch).actualBoundingBoxAscent || 0)) + 1, ascL = Math.max(...[...ABC].map(asc));
+  let k = 0;
+  L = [...ABC].map((ch, i) => { const seul = Verse.mesurer(opt(ch, 1)), el = document.createElement('div'); el.className = 'vs-cv v30-l';
+    const x = X0 + ligne.lettres[i].x - seul.lettres[0].x, y = CY - ligne.h / 2 + (ascL - asc(ch));
+    el.style.left = x.toFixed(2) + 'px'; el.style.top = y.toFixed(2) + 'px'; const cv = document.createElement('canvas'); el.appendChild(cv); bande.appendChild(el);
+    const cap = seul.poches.reduce((a, q) => a + q.capacite, 0), jus = cap > 0.05 ? A.JUS[k++ % 3] : 'maceration';
+    const lab = document.createElement('div'); lab.className = 'v30-cl t-etq'; lab.style.left = (X0 + ligne.lettres[i].x + ligne.lettres[i].l / 2).toFixed(1) + 'px'; lab.style.top = CY + ligne.h / 2 + 22 + 'px';
+    lab.textContent = cap > 0.05 ? Verse.cl(cap) : '0'; bande.appendChild(lab); A.typo(lab);
+    return { ch, x, y, cv, el, cap, jus, lab, cx: X0 + ligne.lettres[i].x + ligne.lettres[i].l / 2, poches: seul.poches.map((q, k0) => ({ ...q, k0 })).filter((q) => q.capacite > 0.3) }; });
+  largeur = X0 + ligne.l;
+  bande.style.width = largeur + 200 + 'px';
+  /* fin du défilement : le Z est passé au milieu */
+  D = L[25].cx - 760;
+  /* la fin : deux rangs, A à M et N à Z, comme sur la pièce 08 ; le second rang glisse sous le premier pendant le recul */
+  const w1 = L[13].x - X0, w2 = largeur - L[13].x; SC = 1600 / Math.max(w1, w2); DX2 = L[0].x - L[13].x; DY2 = 2.05 * T; CAMX = X0 + Math.max(w1, w2) / 2;
+  /* chaque filet part quand sa lettre passe au droit de XV : on retrouve l'instant par dichotomie */
+  L.forEach((l) => { if (!l.poches.length) return; let a = T0, b = T1; for (let i = 0; i < 40; i++) { const m = (a + b) / 2; if (l.cx - pan(m) > XV) a = m; else b = m; } l.t0 = a;
+    l.filets = l.poches.map((q) => ({ q, f: S.filet(bande) })); l.fond = l.y + Verse.mesurer(opt(l.ch, 0)).poches[l.poches[0].k0].y; });
+  bande.querySelectorAll('.vs-filet').forEach((f) => { f.setAttribute('width', largeur + 200); f.setAttribute('height', 1080); });
+  total = L.reduce((a, l) => a + l.cap, 0);
+  fin.innerHTML = `L’alphabet entier tient ${Verse.cl(total)}, soit ${String(Math.round(total / 12.5))}${NB}verres.`; A.typo(fin);
+  seek(0);
+});
+
+window.seek = (t) => {
+  /* 1. le défilement, puis le recul : l'alphabet entier tient dans 1640 px */
+  /* une caméra : le point de la bande au centre de l'image, et l'échelle (interpolée en logarithme : un recul régulier) */
+  const z = S.part(t, 8.7, 1.6, S.penche), sc = Math.exp(Math.log(SC) * z), px = pan(t);
+  const camX = (px + 960) * (1 - z) + CAMX * z, camY = 540 * (1 - z) + (CY + DY2 / 2 + 110 / SC) * z;
+  const tx = 960 - camX * sc, ty = 540 - camY * sc;
+  L.forEach((l, i) => { const d = i >= 13 ? `translate(${(DX2 * z).toFixed(2)}px,${(DY2 * z).toFixed(2)}px)` : ''; l.el.style.transform = d; l.lab.style.transform = d + ' translateX(-50%)'; l.lab.style.fontSize = (19 / sc).toFixed(2) + 'px'; });
+  bande.style.transform = `translate(${tx.toFixed(2)}px,${ty.toFixed(2)}px) scale(${sc.toFixed(5)})`;
+  /* 2. les lettres : chacune se remplit quand son filet la touche */
+  let cl = 0;
+  L.forEach((l) => {
+    if (!l.poches.length) { S.vin(l.cv, 'titre', opt(l.ch, 0, l.jus)); l.lab.style.opacity = (0.4 * Math.abs(1 - 2 * S.part(t, 8.5, 2.0, M.lin))).toFixed(3); return; }
+    const v = S.versement(t, { t0: l.t0, ys: -40, yt: l.fond });
+    const r = S.vin(l.cv, 'titre', opt(l.ch, v.p, l.jus));
+    l.filets.forEach(({ q, f }) => { const pc = r.poches[q.k0] || r.poches[0]; f.set(l.x + pc.x, S.jet(v, l.y + pc.y), l.jus, 24, t); });
+    cl += r.poches.reduce((a, q) => a + q.cl, 0);
+    l.lab.style.opacity = (S.part(t, v.fin - 0.2, 0.4, M.lin) * Math.abs(1 - 2 * S.part(t, 8.5, 2.0, M.lin))).toFixed(3);
+  });
+  /* 3. le compteur, puis la phrase de fin */
+  S.nombre(nEl, t >= 8.6 ? total : Math.min(cl, total), 1, 'cl');
+  const u = S.part(t, 10.2, 0.6, S.pose); fin.style.opacity = u.toFixed(3); fin.style.transform = `translateY(${((1 - u) * 10).toFixed(2)}px)`;
+};
+</script></body>

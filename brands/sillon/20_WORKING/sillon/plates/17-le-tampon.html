@@ -1,0 +1,75 @@
+<!doctype html><meta charset="utf-8"><title>Sillon · 17 · Le tampon</title><meta name="robots" content="noindex">
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates.css"><link rel="stylesheet" href="monde.css">
+<script src="../brand/marque.js"></script><script src="../brand/matiere.js"></script><script src="../brand/verse.js"></script>
+<style>
+  /* 17 · Le tampon. Une grille : un seul tampon de caoutchouc, une encre à la fois, sur neuf matières de la cave. Le
+     tampon est une petite contre-étiquette (la marge du métier) : le nom, le verre, « On remplit les creux. ».
+     Chaque coup est différent : la pression, l'angle, la matière qui boit ou refuse l'encre (carte d'encrage cuite
+     depuis la carte de normales de chaque matière : l'encre prend les reliefs, manque les creux).
+     Matières : le carton du Plein (rabat de colis.jpg), et Poly Haven (CC0) : jute, chêne, lin, contreplaqué, plâtre,
+     béton ; le papier du socle. Préfixe m17-. */
+  .m17-g{position:absolute;left:84px;top:84px;display:grid;grid-template-columns:repeat(3,401px);gap:14px 14px}
+  .m17-c{position:relative;width:401px;height:401px;overflow:hidden}
+  .m17-m{position:absolute;inset:0;background-repeat:repeat}
+  .m17-c canvas{position:absolute;left:0;top:0;mix-blend-mode:multiply}
+  .m17-sous{position:absolute;inset:0;pointer-events:none}
+  .m17-th{position:absolute;left:46px;right:46px;font-family:var(--mono);font-stretch:75%;font-weight:600;font-size:15px;letter-spacing:.06em;color:#2A2B33;opacity:.72;display:flex;justify-content:space-between}
+  .m17-n{display:flex;gap:10px;margin-top:9px;align-items:baseline}
+  .m17-leg{left:84px;bottom:52px}
+  .m17-leg-d{right:84px;bottom:52px}
+</style>
+<body><div class="plate clair fond-tuffeau" id="p" style="height:1560px"></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="mo-l2a" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  .5 .98 .18 0 -.42"/></filter>
+</svg>
+<script>
+const A = Marque, C = A.COULEURS, NB = A.NB, B = Verse.bruit, K = 2, CL = 401;
+const BLEU = '#1E3EC2', JUS = '#E57A12';
+/* les neuf matières : fond (CSS), carte d'encrage, taille de tuile, encre, angle, pression */
+const M = [
+  { n: 'Le carton du Plein', fond: `url(${A.photoURL('colis')}) -1490px -137px/3000px auto`, encre: JUS, a: -4, bruit: 0.55 },
+  { n: 'Le sac de jute', fond: 'url(tex/hessian_230/hessian_230_lit.jpg) 0 0/1300px', carte: 'tex/hessian_230/hessian_230_encre.jpg', tuile: 1300, encre: BLEU, a: 3, bruit: 0.22 },
+  { n: 'La caisse en chêne', fond: 'url(tex/oak_veneer_01/oak_veneer_01_lit.jpg) -200px 0/1700px', carte: 'tex/oak_veneer_01/oak_veneer_01_encre.jpg', tuile: 1700, dx: -200, encre: BLEU, a: -2, bruit: 0.45 },
+  { n: 'Le torchon de lin', fond: 'url(tex/rough_linen/rough_linen_lit.jpg) 0 0/2200px', filtre: 'grayscale(1) sepia(.32) brightness(1.24) contrast(1.06)', carte: 'tex/rough_linen/rough_linen_encre.jpg', tuile: 2200, encre: BLEU, a: 1.5, bruit: 0.3 },
+  { n: 'La carte du jeudi', cls: 'fond-blanc', dessous: 'carte', encre: JUS, a: -1, bruit: 0.4 },
+  { n: 'Le contreplaqué', fond: 'url(tex/plywood/plywood_lit.jpg) -600px -300px/2600px', carte: 'tex/plywood/plywood_encre.jpg', tuile: 2600, dx: -600, dy: -300, encre: BLEU, a: 5, bruit: 0.4 },
+  { n: 'Le mur de plâtre', fond: 'url(tex/white_plaster_02/white_plaster_02_lit.jpg) -400px -200px/2000px', carte: 'tex/white_plaster_02/white_plaster_02_encre.jpg', tuile: 2000, dx: -400, dy: -200, encre: '#1631A8', a: -6, bruit: 0.34, appuis: 2 },
+  { n: 'La note thermique', fond: 'linear-gradient(90deg,#E9E8E4,#F8F7F3 9%,#F8F7F3 91%,#E6E5E0)', dessous: 'note', encre: BLEU, a: 2, bruit: 0.25 },
+  { n: 'Le béton du trottoir', fond: 'url(tex/concrete_floor_02/concrete_floor_02_lit.jpg) 0 0/1500px', carte: 'tex/concrete_floor_02/concrete_floor_02_encre.jpg', tuile: 1500, encre: '#1631A8', a: -3, bruit: 0.36, appuis: 2 },
+];
+const charge = (src) => new Promise((ok) => { const i = new Image(); i.onload = () => ok(i); i.onerror = () => ok(null); i.src = src; });
+const toile = (l, h, k) => { const c = document.createElement('canvas'); c.width = Math.round(l * k); c.height = Math.round(h * k); return c; };
+/* encre(cv, o) : la forme (o.dessin, en noir) × la carte d'encrage de la matière × un bruit de pression ; rien n'est relu */
+async function encre(cv, o) { const { l, h, k = K, dessin, carte, tuile = 1000, dx = 0, dy = 0, couleur = BLEU, bruit = 0.4, graine = 1, flou = 0.55, appuis = 1 } = o, W = Math.round(l * k), Hh = Math.round(h * k);
+  cv.width = W; cv.height = Hh; cv.style.width = l + 'px'; cv.style.height = h + 'px';
+  const x = cv.getContext('2d'); x.fillStyle = couleur; x.fillRect(0, 0, W, Hh); x.globalCompositeOperation = 'destination-in';
+  const F = toile(l, h, k), f = F.getContext('2d'); f.filter = `blur(${flou * k}px)`; f.scale(k, k); dessin(f); x.drawImage(F, 0, 0);
+  if (carte) { const im = await charge(carte); if (im) { const Mm = toile(l, h, k), m = Mm.getContext('2d'), p = m.createPattern(im, 'repeat'); p.setTransform(new DOMMatrix().translate(dx * k, dy * k).scale((tuile * k) / im.width)); m.filter = 'url(#mo-l2a)'; m.fillStyle = p; m.fillRect(0, 0, W, Hh); x.drawImage(Mm, 0, 0); } }
+  if (bruit) { const g = 4, nw = Math.ceil(W / g), nh = Math.ceil(Hh / g), N = document.createElement('canvas'); N.width = nw; N.height = nh; const id = new ImageData(nw, nh), r = A.rnd(graine);
+    for (let j = 0; j < nh; j++) for (let i = 0; i < nw; i++) { const v = B.fbm(i / 22, j / 22, graine, 4), w = B.fbm(i / 3, j / 3, graine + 5, 1), a = Math.max(0, Math.min(1, 1 - bruit * (1.3 - 1.7 * v) - bruit * 0.5 * (w < 0.3 ? 1 : 0))); id.data[(j * nw + i) * 4 + 3] = a * 255; }
+    N.getContext('2d').putImageData(id, 0, 0); x.drawImage(N, 0, 0, W, Hh); }
+  x.globalCompositeOperation = 'source-over'; /* une matière qui boit l'encre (plâtre, béton) : le tampon est rechargé, on appuie deux fois */ for (let c = 1; c < appuis; c++) x.drawImage(cv, 0, 0); }
+
+/* ce qui est déjà imprimé sous le coup de tampon : les verres vides de la carte, les lignes de la note */
+const dessous = (m) => m.dessous === 'carte' ? `<div class="m17-sous" style="color:${C.bleu}"><div style="position:absolute;left:-30px;top:300px;display:flex;gap:34px;align-items:center">${[0, 1, 2, 3, 4].map(() => A.verre({ taille: 64, niveau: 0, jus: null, c: C.bleu })).join('')}</div><div class="t-etq" style="position:absolute;left:24px;top:24px;font-size:12px">La carte du jeudi · douze creux</div></div>`
+  : m.dessous === 'note' ? `<div class="m17-sous">${[['1 Macération', '12,5 cl'], ['1 Glou', '12,5 cl'], ['1 Paille', '12,5 cl'], ['1 Macération', '12,5 cl'], ['Total', '50,0 cl']].map(([a, b], i) => `<div class="m17-th" style="top:${34 + i * 25}px"><span>${a}</span><span>${b}</span></div>`).join('')}<div class="m17-th" style="top:332px;justify-content:center">On compte en centilitres.</div></div>` : '';
+/* le tampon : 300 × 196, dessiné autour de son centre, tourné de a degrés. Un double filet, le nom, le verre (en un
+   aplat : une seule encre), la phrase, le lieu. */
+const SYM = new Path2D(A.symbolPath()), SB = A.LOGO.symbolBox;
+const tampon = (c, cx, cy, a) => { c.save(); c.translate(cx, cy); c.rotate((a * Math.PI) / 180); c.translate(-150, -98);
+  c.lineWidth = 6; c.strokeRect(3, 3, 294, 190); c.lineWidth = 1.8; c.strokeRect(12, 12, 276, 172);
+  c.font = '900 extra-expanded 25px Anybody'; c.textBaseline = 'alphabetic'; c.fillText('SILLON', 24, 45);
+  c.font = '600 condensed 11px Anybody'; c.textAlign = 'right'; c.fillText('CAVE À VINS NATURE', 276, 43); c.textAlign = 'left';
+  c.fillRect(12, 56, 276, 1.8);
+  c.save(); c.translate(24, 70); c.scale(78 / SB[2], 78 / SB[2]); c.fill(SYM, 'evenodd'); c.restore();
+  c.font = '800 25px Anybody'; c.fillText('On remplit', 116, 106); c.fillText('les creux.', 116, 132);
+  c.fillRect(12, 152, 276, 1.8); c.font = '600 condensed 11px Anybody'; c.fillText('NANTES · OLIVETTES', 24, 172); c.textAlign = 'right'; c.fillText('LOT DU JOUR', 276, 172);
+  c.restore(); };
+
+document.getElementById('p').innerHTML = `<div class="m17-g">${M.map((m, i) => `<div><div class="m17-c"><div class="m17-m ${m.cls || ''}" style="${m.fond ? `background:${m.fond};` : ''}${m.filtre ? `filter:${m.filtre};` : ''}"></div>${dessous(m)}<canvas id="t${i}"></canvas><div class="mo-flash" style="--fx:${40 + (i % 3) * 8}%;--fy:38%;opacity:.42"></div><s class="grain" style="position:absolute;inset:0;z-index:25"></s></div>
+    <div class="m17-n t-etq"><span class="mo-num">${i + 1}</span><span>${m.n}</span><span style="margin-left:auto;opacity:.6">${m.encre === JUS ? 'Encre macération' : 'Encre bleue'}</span></div></div>`).join('')}</div>
+  <div class="mo-leg m17-leg t-etq" data-voulu><span class="mo-num">17</span><span>Le tampon · une encre à la fois, neuf matières de la cave</span></div>
+  <div class="mo-leg m17-leg-d t-etq" data-voulu><span>On remplit les creux.</span></div>`;
+window.pret = Promise.all([document.fonts.load('900 25px Anybody'), document.fonts.load('800 25px Anybody'), document.fonts.load('600 11px Anybody')]).then(() => Promise.all(M.map((m, i) => { const r = A.rnd(i + 3), cx = 200 + (r() - 0.5) * 30, cy = 200 + (r() - 0.5) * 30;
+  return encre(document.getElementById('t' + i), { l: CL, h: CL, carte: m.carte, tuile: m.tuile, dx: m.dx || 0, dy: m.dy || 0, couleur: m.encre, bruit: m.bruit, appuis: m.appuis, graine: i * 7 + 2, dessin: (c) => { c.fillStyle = c.strokeStyle = '#000'; tampon(c, cx, cy, m.a); } }); })));
+</script></body>

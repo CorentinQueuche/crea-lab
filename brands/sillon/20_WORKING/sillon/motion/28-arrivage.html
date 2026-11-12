@@ -1,0 +1,68 @@
+<!doctype html><meta charset="utf-8"><title>Sillon · 28 · Arrivage</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="motion.css"><link rel="stylesheet" href="sillon.css">
+<script src="../brand/marque.js"></script><script src="../brand/matiere.js"></script><script src="../brand/verse.js"></script><script src="lib.js"></script><script src="sillon.js"></script>
+<style>
+  /* 28 · Arrivage. 9:16, 1080 × 1920, 6 s. Préfixe v28-.
+     Découpage :
+       0 à 0,25 s    La photo du colis, brute, dans son cadre droit. En bas, la contre-étiquette : son papier, son nom, sa
+                     mention sanitaire ; ses lignes sont encore vides.
+       0,25 à 1,4    On verse dans la photo : un filet tombe par le haut du cadre, devant l'image, et le jus monte depuis le
+                     bas jusqu'au niveau (0,9 s). Sous la ligne, on voit le colis à travers la macération ; au-dessus, il est clair.
+       1,5 à 2,1     Le cadre penche de 12° en 0,6 s. La photo et sa ligne restent d'aplomb : c'est la fenêtre qui tourne.
+                     Le jus garde son volume (la ligne se recale d'un cheveu).
+       1,7 à 3,9     La contre-étiquette s'écrit, ligne après ligne : l'arrivage, les jus, le contenu, le niveau.
+       3,9 à 6,0     Tenue. Le titre « DU JUS. » (ses deux verres pleins) est posé au-dessus du cadre depuis le début ; le filet passe à côté.
+     Idée : l'image à niveau, faite devant nous. On ne pose pas un filtre sur une photo : on la remplit. */
+  .v28-s{width:1080px;height:1920px}
+  .v28-tete{position:absolute;left:72px;right:72px;top:72px;display:flex;justify-content:space-between;font-size:19px;z-index:30}
+  .v28-cadre{position:absolute;overflow:hidden;box-shadow:0 2px 3px rgba(3,6,30,.45),12px 26px 40px -10px rgba(3,6,30,.6);z-index:8}
+  .v28-in{position:absolute}
+  .v28-in .ph{position:absolute;inset:0}
+  .v28-in .ph-cote{font-size:17px;right:26px;margin-top:-32px}
+  .v28-ce{position:absolute;left:72px;bottom:72px;z-index:30;zoom:1.4}
+  .v28-ti{position:absolute;z-index:10}
+</style>
+<body><div class="vs-scene v28-s fond-bleu lumiere" id="s">
+  <div class="v28-tete t-etq net"><span>Arrivage · Nantes · Olivettes</span></div>
+  <div class="v28-cadre" id="cadre"><div class="v28-in" id="in"></div></div>
+  <div class="vs-cv v28-ti" id="ti"><canvas></canvas></div>
+  <div class="v28-ce" id="ce"></div>
+</div>
+<script>
+const A = Marque, NB = A.NB, C = A.COULEURS, JUS = 'maceration', N0 = 0.42;
+/* le cadre : 860 × 1060, son centre en (540, 760) ; l'intérieur, droit, couvre le cadre à tous les angles */
+const FL = 780, FH = 860, FX = 540, FY = 905, XF = 868, D = Math.ceil(Math.hypot(FL, FH));
+const cadre = document.getElementById('cadre'), inn = document.getElementById('in'), s = document.getElementById('s');
+cadre.style.cssText += `left:${FX - FL / 2}px;top:${FY - FH / 2}px;width:${FL}px;height:${FH}px`;
+inn.style.cssText += `width:${D}px;height:${D}px;left:${FL / 2 - D / 2}px;top:${FH / 2 - D / 2}px`;
+/* la photo est cadrée sur la boîte : elle remplit le carré intérieur */
+inn.innerHTML = A.photo('colis', { mode: 'niveau', jus: JUS, niveau: 0, cote: true, pos: '50% 50%' });
+const ph = inn.querySelector('.ph'), nj = [...ph.querySelectorAll('.nj')], nl = ph.querySelector('.nl'), cote = ph.querySelector('.ph-cote');
+cote.style.right = (D - FL) / 2 + 30 + 'px';
+const filet = S.filet(s);
+/* la contre-étiquette : le papier, le nom et la mention sont là ; les lignes s'écrivent */
+const ce = document.getElementById('ce');
+ce.innerHTML = A.contre({ lot: '28', sujet: 'Arrivage', lignes: [['Jus', 'Macération, glou, paille'], ['Contenu', `3${NB}×${NB}75${NB}cl`], ['Mention', 'Non filtré'], ['Le cadre penche de', A.deg(12)], ['Le niveau, de', A.deg(0)]], grands: [`225${NB}cl`, A.deg(12)], voix: A.VOIX.dos, sanitaire: true, l: 320 });
+const lignes = [...ce.querySelectorAll('.ce-l, .ce-g, .ce-v')].map((el) => { const f = S.ecrire(el, { soft: 5 }); f.el = el; return f; });
+const tbox = document.getElementById('ti'), tcv = tbox.querySelector('canvas');
+
+window.pret = S.pret(['colis']).then(() => { seek(0); });
+
+window.seek = (t) => {
+  /* 1. on verse dans la photo */
+  const yFond = FY + FH / 2, v = S.versement(t, { t0: 0.25, ys: -40, yt: yFond });
+  const a = 12 * S.part(t, 1.5, S.BASCULE, S.penche), n = N0 * v.p;
+  /* la surface : un rectangle penché qui garde son volume (Marque.liquide), exprimée dans le repère droit de l'intérieur */
+  const L = A.liquide({ x: 0, y: 0, l: FL, h: FH }, a, [FL / 2, FH / 2], n), yIn = D / 2 + (n > 0 ? L.ys - FH / 2 : FH / 2 + 4);
+  cadre.style.transform = `rotate(${a.toFixed(3)}deg)`; inn.style.transform = `rotate(${(-a).toFixed(3)}deg)`;
+  nj.forEach((b) => { b.style.top = yIn.toFixed(2) + 'px'; }); nl.style.top = yIn.toFixed(2) + 'px'; cote.style.top = yIn.toFixed(2) + 'px';
+  nl.style.display = n > 0.002 ? '' : 'none'; cote.style.opacity = S.part(t, v.fin - 0.1, 0.4, M.lin).toFixed(3);
+  /* le filet tombe devant la photo, jusqu'à la surface (en coordonnées d'écran : le centre du cadre + l'écart dans l'intérieur) */
+  filet.set(XF, S.jet(v, FY + (yIn - D / 2)), JUS, 30, t);
+  /* 2. la contre-étiquette s'écrit */
+  lignes.forEach((f, i) => { const u = S.part(t, 1.7 + i * 0.3, 0.7, M.lin); f(u); f.el.querySelectorAll('i.deg, svg').forEach((d) => { d.style.opacity = u > 0.9 ? 1 : 0; }); });
+  /* 3. le titre, sous le cadre : ses deux verres sont pleins depuis le début (un jus n'existe que dans un creux) */
+  const r = S.vin(tcv, 'titre', { texte: A.PHRASES.jus, taille: 104, angle: -12, p: 0.8, jus: ['maceration', 'paille'] });
+  S.centrer(tbox, r, 462, 232);
+};
+</script></body>

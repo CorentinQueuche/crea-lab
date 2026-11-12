@@ -1,0 +1,191 @@
+{
+ "titre": "Sillon — identité de marque d’une cave à vins nature",
+ "sous_titre": "Il y a un creux dans Sillon, entre ses deux L. On le remplit. Une cave à vins nature à Nantes, quartier des Olivettes : la boutique, la dégustation du jeudi soir, l’abonnement de trois bouteilles par mois.",
+ "pied": "Identité de marque : proposition de KLYRA, novembre 2026. Sillon est une marque fictive ; le nom et le domaine ne sont pas vérifiés. Photos générées pour le projet. Polices Anybody et Hanken Grotesk, licence OFL. Les phrases de la marque sont à faire relire au regard de la loi Évin avant toute diffusion. L’abus d’alcool est dangereux pour la santé. À consommer avec modération.",
+ "fond": "#0E1638",
+ "fond_rangee": "#0E1638",
+ "texte": "#F2EFE4",
+ "police": "Hanken Grotesk",
+ "planches": [
+  [
+   "plates/12-la-vitrine.png",
+   "01-la-vitrine",
+   "La devanture : la vitre remplie de vin jusqu’au niveau, l’enseigne peinte sur bois."
+  ],
+  [
+   "plates/01-ouverture.png",
+   "02-on-remplit-les-creux",
+   "L’idée : il y a un creux dans Sillon, entre ses deux L. On le remplit. Le verre penche, le vin reste d’aplomb."
+  ],
+  [
+   "motion/25-logo.mp4",
+   "03-le-logo-se-remplit",
+   "La révélation du logo : les deux L se soudent, on verse, le mot penche de 12°."
+  ],
+  [
+   "plates/02-logo.png",
+   "04-le-logo",
+   "Le logo : construction du creux, finesses, six matières, règles."
+  ],
+  [
+   "final/33-pierre.png",
+   "05-la-pierre",
+   "Le logotype taillé dans le tuffeau, le vin retenu dans le creux par le pied des deux L."
+  ],
+  [
+   "plates/08-sans-le-logo.png",
+   "06-sans-le-logo",
+   "Ce qui fait reconnaître Sillon sans son nom : les sept éléments de la marque."
+  ],
+  [
+   "plates/20-une-grille.png",
+   "07-douze-verres",
+   "Douze verres, douze niveaux."
+  ],
+  [
+   "plates/19-la-couleur.png",
+   "08-la-couleur",
+   "La couleur, du disque à la lie : trois jus, cinq bleus, la pierre, et leurs rencontres."
+  ],
+  [
+   "plates/03-trois-jus.png",
+   "09-les-trois-jus",
+   "Macération, glou, paille : les trois jus et leurs étiquettes."
+  ],
+  [
+   "final/34-bouteille.png",
+   "10-la-bouteille",
+   "La bouteille, de face et de dos : l’étiquette et la contre-étiquette en papier."
+  ],
+  [
+   "plates/04-caviste.png",
+   "11-le-bleu-de-travail",
+   "Le bleu vient de la veste : le logotype brodé, l’échelle des bleus."
+  ],
+  [
+   "plates/14-le-dos.png",
+   "12-le-dos-de-la-veste",
+   "« Non filtré. Nous non plus. » brodé dans le dos, le vin en points horizontaux."
+  ],
+  [
+   "plates/13-le-sac.png",
+   "13-le-sac",
+   "Le sac sérigraphié."
+  ],
+  [
+   "plates/11-le-mur.png",
+   "14-le-mur",
+   "Avant l’ouverture : « On ouvre. », une lettre par affiche, le verre en prend deux."
+  ],
+  [
+   "plates/05-jeudi.png",
+   "15-le-jeudi",
+   "Le jeudi soir : l’enseigne et l’affiche de la semaine."
+  ],
+  [
+   "plates/10-les-jeudis.png",
+   "16-les-jeudis",
+   "Une affiche par semaine : la phrase change, le verre reste."
+  ],
+  [
+   "motion/26-jeudi.mp4",
+   "17-story-du-jeudi",
+   "La story du jeudi : le mot bascule, le vin reste."
+  ],
+  [
+   "motion/27-le-plein.mp4",
+   "18-story-du-plein",
+   "L’abonnement : trois jus servis l’un après l’autre."
+  ],
+  [
+   "motion/28-arrivage.mp4",
+   "19-story-arrivage",
+   "Un arrivage : la photo se remplit jusqu’au niveau."
+  ],
+  [
+   "plates/06-comptoir.png",
+   "20-le-comptoir",
+   "Le comptoir : la carte du jeudi, le sous-verre, la phrase dans la nappe."
+  ],
+  [
+   "final/35-verres.png",
+   "21-les-verres",
+   "Les verres penchent, le vin reste d’aplomb."
+  ],
+  [
+   "plates/15-la-carte.png",
+   "22-la-carte-du-jeudi",
+   "La carte à douze creux : un jeudi, un coup de tampon."
+  ],
+  [
+   "plates/16-la-note.png",
+   "23-la-note",
+   "La note qui compte en centilitres."
+  ],
+  [
+   "plates/18-le-torchon.png",
+   "24-le-torchon",
+   "Le torchon : « Taches autorisées. »"
+  ],
+  [
+   "plates/17-le-tampon.png",
+   "25-le-tampon",
+   "Un tampon, une encre, neuf matières de la cave."
+  ],
+  [
+   "plates/07-le-plein.png",
+   "26-le-plein",
+   "Le Plein : le carton de l’abonnement, trois bouteilles par mois."
+  ],
+  [
+   "plates/22-le-plein.png",
+   "27-le-plein-du-mois",
+   "Le Plein du mois sur les réseaux."
+  ],
+  [
+   "plates/21-le-jeudi.png",
+   "28-les-stories",
+   "Les stories du jeudi et leur zone sûre."
+  ],
+  [
+   "plates/23-un-arrivage.png",
+   "29-un-arrivage",
+   "Un arrivage : la ligne de niveau se pose sur le vin de la photo."
+  ],
+  [
+   "plates/24-une-phrase.png",
+   "30-une-phrase",
+   "Une phrase de comptoir, seule."
+  ],
+  [
+   "motion/29-phrase.mp4",
+   "31-la-phrase-bascule",
+   "« Non filtré. Nous non plus. » dans le jus."
+  ],
+  [
+   "motion/31-ca-penche.mp4",
+   "32-ca-penche-ca-tient",
+   "Ça penche, ça tient : la règle des douze degrés."
+  ],
+  [
+   "plates/37-le-remplisseur.png",
+   "33-le-remplisseur",
+   "L’outil : taper une phrase, choisir le jus et le format, exporter l’annonce."
+  ],
+  [
+   "plates/36-la-fiche.png",
+   "34-la-fiche-de-marque",
+   "La fiche de marque, huit pages."
+  ],
+  [
+   "motion/30-abecedaire.mp4",
+   "35-l-abecedaire",
+   "L’abécédaire à ras bord : l’alphabet entier tient 62,1 cl, soit cinq verres."
+  ],
+  [
+   "motion/32-film.mp4",
+   "36-le-film",
+   "Le film de marque, 25 secondes."
+  ]
+ ]
+}

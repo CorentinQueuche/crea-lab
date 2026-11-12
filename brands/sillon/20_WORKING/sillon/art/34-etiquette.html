@@ -1,0 +1,36 @@
+<!doctype html><meta charset="utf-8"><title>Sillon · 34 · étiquettes pour la 3D</title><meta name="robots" content="noindex">
+<link rel="stylesheet" href="../brand/marque.css">
+<script src="../brand/marque.js"></script><script src="../brand/matiere.js"></script><script src="../brand/verse.js"></script>
+<style>
+  /* Les deux papiers de la bouteille 34, rendus à plat pour servir de textures dans Blender (blender/s34_bouteille.py).
+     ?quoi=etq : l'étiquette de face ; ?quoi=contre : la contre-étiquette ; ?quoi=masque : le relief de l'étiquette
+     (blanc = gaufré : les lettres du logotype, noir = papier plat) ; ?quoi=sousverre : le sous-verre posé sous les
+     verres de la scène 35 (même socle, même lot ; rendu avec --transparent pour garder ses coins arrondis). Rendu : node tools/shot.mjs "art/34-etiquette.html?quoi=etq"
+     out/art/34-etiquette.png --sel "#v" --scale 4. Préfixe v34-. */
+  html,body{margin:0;background:#888}
+  html.v34-transparent,html.v34-transparent body{background:transparent}
+  #v{display:inline-block}
+  .v34-contre .ce.papier{box-shadow:none;border-radius:0}
+  .v34-masque .etq{background:#000!important;color:#000}
+  .v34-masque .etq-logo svg path,.v34-masque .etq-logo svg circle{fill:#000!important}
+  .v34-masque .etq-logo svg path:last-of-type{fill:#fff!important}
+  .v34-masque .etq-nom{color:#000}
+  .v34-masque .etq-bas{border-color:#000}
+</style>
+<body><div id="v"></div>
+<script>
+const A = Marque, NB = A.NB, b = A.DONNEES.bouteilles.find((x) => x.jus === 'maceration');
+const quoi = new URLSearchParams(location.search).get('quoi') || 'etq', v = document.getElementById('v');
+if (quoi === 'sousverre') {
+  document.documentElement.className = 'v34-transparent';
+  v.innerHTML = A.sousVerre({ l: 300, jus: 'glou' });
+} else if (quoi === 'contre') {
+  v.className = 'v34-contre';
+  v.innerHTML = A.contre({ lot: '11', lignes: [['Jus', A.NOMS[b.jus]], ['Vin nature', 'Non filtré']], grands: [`75${NB}cl`, A.deg(b.degre)], jus: b.jus, voix: A.VOIX.dos, sanitaire: true, l: 252 });
+} else {
+  if (quoi === 'masque') v.className = 'v34-masque';
+  v.innerHTML = A.etiquette({ jus: b.jus, degre: b.degre, l: 560 });
+}
+if (A.typo) A.typo(v);
+window.pret = Verse.tout ? Verse.tout() : Promise.resolve();
+</script></body>

@@ -1,0 +1,88 @@
+<!doctype html><meta charset="utf-8"><title>Sillon · 29 · La phrase</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="motion.css"><link rel="stylesheet" href="sillon.css">
+<script src="../brand/marque.js"></script><script src="../brand/matiere.js"></script><script src="../brand/verse.js"></script><script src="lib.js"></script><script src="sillon.js"></script>
+<style>
+  /* 29 · La phrase. 4:5, 1080 × 1350, boucle de 5 s. Préfixe v29-.
+     Découpage :
+       0 à 0,65 s    « NON FILTRÉ. / NOUS NON PLUS. », penché de −12°. L'image entière est un verre de macération :
+                     sous une ligne horizontale, on lit la phrase à travers le jus, trouble, avec son dépôt au fond et
+                     ses particules en suspension ; au-dessus, elle est nette, sur le mur de cave.
+       0,65 à 1,85   La phrase bascule à +12° (24° en 1,2 s). Le jus ne bouge pas : des lettres sortent du vin, d'autres y
+                     entrent. La ligne de niveau ne penche jamais.
+       1,85 à 3,15   Tenue ; les particules dérivent.
+       3,15 à 4,35   Retour à −12°.
+       4,35 à 5,0    Tenue ; la dernière image raccorde avec la première (tout est périodique sur 5 s).
+     Idée : « non filtré » se voit. La phrase est dans le vin, pas posée dessus ; le trouble est la matière de l'image. */
+  .v29-s{width:1080px;height:1350px}
+  .v29-bloc{position:absolute;left:0;top:0;width:1080px;height:1350px;transform-origin:540px 600px;z-index:5}
+  .v29-l{position:absolute;left:0;right:0;text-align:center;color:var(--tuffeau);text-shadow:0 2px 0 rgba(5,9,40,.35),6px 14px 22px rgba(0,0,6,.45)}
+  .v29-vin{position:absolute;left:0;right:0;bottom:0;overflow:hidden}
+  .v29-vin>*{position:absolute;left:0;right:0;top:0;bottom:0;z-index:10}
+  /* le jus n'est pas un groupe isolé : ses couches se fondent dans la phrase et le mur qui sont dessous */
+  .v29-vin .flou{backdrop-filter:blur(2.2px)}
+  .v29-vin .a{mix-blend-mode:color}
+  .v29-vin .b{mix-blend-mode:soft-light}
+  .v29-vin .c{mix-blend-mode:screen}
+  .v29-vin .m{background:url('../photos/depot.jpg') center/cover;filter:grayscale(1) contrast(1.6) brightness(1.05);mix-blend-mode:overlay;opacity:.42}
+  .v29-vin .lie{top:auto;height:150px;mix-blend-mode:multiply}
+  .v29-vin svg{width:100%;height:100%}
+  .v29-surf{position:absolute;left:0;right:0;height:7px;margin-top:-1.5px;z-index:12;background:linear-gradient(180deg,rgba(255,255,255,.95) 0 2px,rgba(80,30,0,.5) 2px 4.5px,rgba(80,30,0,0))}
+  .v29-ce{position:absolute;left:56px;bottom:56px;z-index:30;zoom:1.32}
+  .v29-logo{position:absolute;right:56px;bottom:64px;width:250px;z-index:30}
+  .v29-logo svg{width:100%;height:auto}
+  .v29-tete{position:absolute;left:56px;right:56px;top:56px;display:flex;justify-content:space-between;font-size:17px;z-index:30}
+</style>
+<body><div class="vs-scene v29-s fond-cave lumiere" id="s">
+  <div class="v29-tete t-etq net"><span>Au dos de la bouteille</span><span>Nantes · Olivettes</span></div>
+  <div class="v29-bloc" id="bloc">
+    <div class="v29-l" id="l1"></div>
+    <div class="v29-l" id="l2"></div>
+    <div class="v29-l" id="l3"></div>
+  </div>
+  <div class="v29-vin" id="vin">
+    <div class="flou"></div><div class="a"></div><div class="b"></div><div class="c"></div><div class="m"></div>
+    <div><svg id="part" viewBox="0 0 1080 1350" preserveAspectRatio="none"></svg></div>
+    <div class="lie"></div>
+  </div>
+  <div class="v29-surf" id="surf"></div>
+  <div class="v29-ce" id="ce"></div>
+  <div class="v29-logo" id="logo"></div>
+</div>
+<script>
+const A = Marque, NB = A.NB, E = A.ECHELLES.maceration, PER = 5, CB = 600; let Y = 730;
+const bloc = document.getElementById('bloc'), l1 = document.getElementById('l1'), l2 = document.getElementById('l2'), l3 = document.getElementById('l3'), vin = document.getElementById('vin');
+l1.innerHTML = A.titre('NON FILTRÉ.'); l2.innerHTML = A.titre('NO[U]S NON'); l3.innerHTML = A.titre('PL[U]S.');
+document.getElementById('logo').innerHTML = A.wordmark(A.COULEURS.tuffeau, '', 'maceration', { detail: true });
+document.getElementById('ce').innerHTML = A.contre({ lot: '29', sujet: 'Au dos', lignes: [['Mention', 'Non filtré'], ['La phrase penche, le vin', A.deg(0)]], sanitaire: true, l: 300 });
+
+/* le jus : la teinte, la densité du disque à la lie, une lueur, la matière de la photo de dépôt, le dépôt au fond */
+const [, a, b, c] = vin.children;
+a.style.background = E[2];
+b.style.background = `linear-gradient(180deg,${E[0]},${E[2]} 22%,${E[3]} 70%,${E[4]})`;
+c.style.background = `linear-gradient(180deg,${E[1]}66,${E[3]}22)`;
+vin.querySelector('.lie').style.background = `linear-gradient(180deg,${E[3]}00,${E[3]}aa 45%,${E[4]})`;
+vin.style.top = Y + 'px'; document.getElementById('surf').style.top = Y + 'px';
+/* les particules en suspension : semées une fois (graine fixe), elles oscillent sur une période de 5 s ou de 2,5 s */
+const R = A.rnd(29), PART = Array.from({ length: 150 }, () => { const sombre = R() < 0.7; return { x: R() * 1080, y: Y + 30 + Math.pow(R(), 0.7) * (1350 - Y - 60), r: sombre ? 1 + R() * 2.6 : 0.8 + R() * 1.6, sombre, ax: 6 + R() * 14, ay: 4 + R() * 12, f: R() < 0.5 ? 1 : 2, ph: R() * 6.283, ph2: R() * 6.283 }; });
+const svg = document.getElementById('part'); svg.setAttribute('viewBox', `0 ${Y} 1080 ${1350 - Y}`);
+svg.innerHTML = PART.map((p) => `<circle r="${p.r.toFixed(2)}" fill="${p.sombre ? E[4] : E[0]}" fill-opacity="${p.sombre ? 0.75 : 0.6}"/>`).join('');
+const cercles = [...svg.children];
+
+window.pret = S.pret(['depot']).then(() => {
+  /* la phrase tient dans 880 px (penchée, elle garde ses marges) : on règle le corps sur la ligne la plus longue */
+  [l1, l2, l3].forEach((l) => { l.firstChild.style.fontSize = '100px'; });
+  const w = Math.max(l1.firstChild.getBoundingClientRect().width, l2.firstChild.getBoundingClientRect().width), f = Math.floor((100 * 880) / w);
+  [l1, l2, l3].forEach((l) => { l.firstChild.style.fontSize = f + 'px'; });
+  l1.style.top = Y - 2.04 * f + 'px'; l2.style.top = Y - 1.0 * f + 'px'; l3.style.top = Y + 0.1 * f + 'px'; bloc.style.transformOrigin = `540px ${(Y - 0.4 * f).toFixed(1)}px`;
+  A.typo(document.getElementById('s'));
+  seek(0);
+});
+
+const angle = (t) => { const u = ((t % PER) + PER) % PER; return -12 + 24 * S.part(u, 0.65, 1.2, S.penche) - 24 * S.part(u, 3.15, 1.2, S.penche); };
+window.seek = (t) => {
+  bloc.style.transform = `rotate(${angle(t).toFixed(3)}deg)`;
+  const w = (2 * Math.PI * t) / PER;
+  PART.forEach((p, i) => { const x = p.x + p.ax * Math.sin(w * p.f + p.ph), y = p.y + p.ay * Math.sin(w + p.ph2);
+    cercles[i].setAttribute('cx', x.toFixed(2)); cercles[i].setAttribute('cy', y.toFixed(2)); });
+};
+</script></body>

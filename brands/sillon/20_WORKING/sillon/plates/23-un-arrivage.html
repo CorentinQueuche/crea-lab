@@ -1,0 +1,28 @@
+<!doctype html><meta charset="utf-8"><title>Sillon · 23 · Un arrivage, de très près</title><meta name="robots" content="noindex">
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates.css"><link rel="stylesheet" href="reseaux.css">
+<script src="../brand/marque.js"></script><script src="../brand/matiere.js"></script><script src="../brand/verse.js"></script>
+<style>
+  /* 23 · Un arrivage. Un très gros plan (2,5 fois) d'une publication rendue par le modèle : la ligne de niveau de la
+     marque se pose exactement sur la surface du vin dans la photo (le modèle la calcule quand on ne lui donne pas de
+     niveau). À droite, sur le papier, la publication entière et sa story, le cadre du gros plan en paille. Préfixe r23-. */
+  #p{height:1000px}
+  .r23-col{position:absolute;left:1000px;top:0;bottom:0;right:0;padding:56px 44px 0 44px}
+</style>
+<body><div class="plate clair lumiere" id="p"></div>
+<script>
+const A = Marque, C = A.COULEURS, el = document.getElementById('p'), IMG = '../out/reseaux/';
+const Z = { x: 620, y: 420, l: 400, h: 400 }, V = 172, k = V / 1080;   /* la zone agrandie, dans les pixels de la publication */
+el.innerHTML = `<img class="r23-zoom" src="${IMG}_planche/23-gros-plan.png" alt="" style="width:1000px;height:1000px">
+  <div class="net r23-col" style="color:${C.bleu}">
+    <div class="t-etq">23 · Un arrivage</div><div class="t-etq" style="opacity:.75">Modèle · publication et story</div>
+    <div style="position:relative;height:270px;margin-top:40px">
+      <div class="r23-vignette" style="left:0;bottom:0;width:${V}px;height:${V * 1.25}px"><img src="${IMG}23-arrivage-4x5-b.png" alt=""><i style="left:${Z.x * k}px;top:${Z.y * k}px;width:${Z.l * k}px;height:${Z.h * k}px"></i></div>
+      <div class="r23-vignette" style="left:${V + 26}px;bottom:0;width:${(V * 1.25 * 1080) / 1920}px;height:${V * 1.25}px"><img src="${IMG}23-arrivage-9x16-b.png" alt=""></div>
+    </div>
+    <div class="t-etq" style="margin-top:22px">Agrandi 2,5 fois · le cadre en paille</div>
+    <div class="pl-voix" style="margin-top:150px;font-size:40px">La ligne<br>se pose<br>sur le vin.</div>
+    <div class="t-etq" style="margin-top:20px;max-width:300px;opacity:.8">Sans niveau donné, le modèle la cale sur la surface du vin de la photo. Elle ne penche jamais.</div>
+    <div class="t-etq" style="position:absolute;left:44px;right:44px;bottom:34px;display:flex;justify-content:space-between"><span>Un jus arrive · la photo se remplit</span><span>2026</span></div>
+  </div>`;
+window.pret = Promise.all([...el.querySelectorAll('img')].map((i) => i.decode().catch(() => 0)));
+</script></body>

@@ -1,0 +1,20 @@
+<!doctype html><meta charset="utf-8"><title>Sillon · 20 · Une grille</title><meta name="robots" content="noindex">
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates.css"><link rel="stylesheet" href="reseaux.css">
+<script src="../brand/marque.js"></script><script src="../brand/matiere.js"></script><script src="../brand/verse.js"></script><script src="../reseaux/reseaux.js"></script>
+<style>
+  /* 20 · Une grille. Plein cadre, au format d'une publication (4:5) : douze verres en pierre sur le sergé, douze niveaux,
+     du vide au ras bord, dans l'ordre de lecture. Chaque verre penche de 12°, une fois d'un côté, une fois de l'autre ;
+     tous les vins sont horizontaux, c'est ce qui fait l'image. Aucun mot, sauf le pied. Préfixe r20-. */
+  #p{height:1750px}
+</style>
+<body><div class="plate lumiere" id="p"></div>
+<script>
+const A = Marque, R = Reseaux, el = document.getElementById('p');
+el.innerHTML = `<div class="pl-pied t-etq r20-pied"><span>20 · Une grille</span><span>Douze verres, douze niveaux : de vide à ras bord</span><span>2026</span></div>`;
+const X = [289, 700, 1111], Y = [292, 672, 1052, 1432];
+const verres = [];
+Y.forEach((y, j) => X.forEach((x, i) => { const n = j * 3 + i;
+  verres.push(() => R.verre(el, { cx: x, cy: y, ech: 205, angle: (i + j) % 2 ? -A.DEGRE : A.DEGRE, jus: A.JUS[n % 3], p: n / 11, fond: 'bleu' })); }));
+/* l'un après l'autre : chaque verre est un petit rendu, la page ne charge jamais les douze ensemble */
+window.pret = Verse.pret().then(() => verres.reduce((pr, f) => pr.then(f), Promise.resolve()));
+</script></body>

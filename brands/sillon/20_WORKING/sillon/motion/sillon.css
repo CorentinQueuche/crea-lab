@@ -1,0 +1,20 @@
+/* Sillon · le mouvement : styles communs des vidéos 25 à 32 (en plus de brand/marque.css et motion/motion.css).
+   Aucune animation ni transition CSS : tout est posé par seek(t). Préfixe vs- pour le commun, v25- à v32- dans chaque page. */
+.vs-scene{position:relative;overflow:hidden}
+.vs-abs{position:absolute}
+.vs-cv{position:absolute;left:0;top:0}
+.vs-cv>canvas{display:block}
+/* le filet de vin : une couche au-dessus des lettres, qui ne capte rien */
+.vs-filet{position:absolute;left:0;top:0;overflow:visible;pointer-events:none;z-index:20}
+/* la ligne de niveau : un trait de tuffeau, son éclat au-dessus, son ombre dessous ; elle ne penche jamais */
+.vs-niv{position:absolute;height:1.5px;margin-top:-.75px;background:currentColor;opacity:.8;z-index:25}
+.vs-niv::after{content:"";position:absolute;left:0;right:0;top:1.5px;height:3px;background:linear-gradient(180deg,rgba(5,9,40,.35),rgba(5,9,40,0))}
+/* une cote : petites capitales, comme au dos d'une bouteille */
+.vs-cote{position:absolute;white-space:nowrap;z-index:26}
+/* les chiffres à chasse fixe */
+.vs-ch{display:inline-block;width:.64em;text-align:center}
+.vs-sep{display:inline-block;width:.26em;text-align:center}
+.vs-u{display:inline-block}
+/* la mention sanitaire, à sa place dessinée : un bandeau de pied, lisible, jamais sur le vin */
+.vs-sante{position:absolute;left:0;right:0;bottom:0;z-index:40;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;font-family:var(--font);font-weight:500;letter-spacing:.005em}
+/* le grain de pellicule n'est pas animé (il décuplerait le poids) : une texture fixe suffit */

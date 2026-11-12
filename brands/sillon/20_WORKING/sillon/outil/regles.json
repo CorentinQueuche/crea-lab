@@ -1,0 +1,22 @@
+{
+  "_lire": "Règles du remplisseur, lues par outil/serveur.mjs (validation de l'export) et par outil/outil.js (la page). Les seuils sont la taille des lettres sous laquelle une phrase est jugée trop longue pour le modèle : pour un titre, la hauteur de capitale en px dans le fichier de 1080 px ; pour la phrase de comptoir (24), le corps en px.",
+  "modeles": {
+    "21-jeudi": { "nom": "jeudi", "titre": "Le jeudi", "params": ["texte", "jus", "niveau", "photo", "fond", "voix"], "fonds": ["bleu", "cave"] },
+    "22-plein": { "nom": "plein", "titre": "Le Plein du mois", "params": ["mois", "jus"] },
+    "23-arrivage": { "nom": "arrivage", "titre": "Un arrivage", "params": ["texte", "photo", "jus", "niveau"] },
+    "24-phrase": { "nom": "phrase", "titre": "Une phrase", "params": ["voix", "texte", "ou", "fond", "jus"], "fonds": ["tuffeau", "bleu", "craie"] }
+  },
+  "formats": { "4x5": { "l": 1080, "h": 1350, "dit": "Publication 4:5" }, "9x16": { "l": 1080, "h": 1920, "dit": "Story 9:16" } },
+  "jus": ["maceration", "glou", "paille"],
+  "voix": ["dos", "vitrine", "nappe", "colis", "sousVerre", "carte"],
+  "mois": ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"],
+  "limites": { "motsTitre": 12, "signesTitre": 60, "signesPhrase": 110, "signesVoix": 80, "signesOu": 40, "verresParMot": 2 },
+  "_seuils": "Relevés le 12/11/2026 : « JEUDI, ON GOÛTE. » donne 140 (21, 4:5) et 111 (23, 4:5) ; huit mots, 112 et 75 ; treize mots, 68 et 52. La phrase du colis (24) donne 99.",
+  "seuils": {
+    "21-jeudi": { "4x5": 90, "9x16": 90 },
+    "23-arrivage": { "4x5": 72, "9x16": 72 },
+    "24-phrase": { "4x5": 80, "9x16": 80 }
+  },
+  "aRelire": ["Repartez à pied.", "Taches autorisées.", "À ras bord.", "Glou."],
+  "mentionSanitaire": "L’abus d’alcool est dangereux pour la santé. À consommer avec modération."
+}

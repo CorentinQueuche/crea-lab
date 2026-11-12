@@ -1,0 +1,103 @@
+<!doctype html><meta charset="utf-8"><title>Sillon · 02 · Le logo</title><meta name="robots" content="noindex">
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates.css">
+<script src="../brand/marque.js"></script><script src="../brand/matiere.js"></script><script src="../brand/verse.js"></script>
+<style>
+  /* 02 · Le logo. Quatre temps : la construction du double L et ses finesses (encre sur papier), le logotype en pierre
+     sur le bleu, ses trois échelles de détail, ses matières, puis ses règles. Les cotes viennent de Marque.CONSTRUCTION.
+     Préfixe p02-. */
+  .p02-s{position:relative}
+  .p02-c{position:absolute;overflow:visible}
+  .p02-c path.f{fill:none;stroke:var(--cave);stroke-width:1.2}
+  .p02-c path.p{stroke-dasharray:3 5}
+  .p02-c text{font-family:var(--mono);font-stretch:75%;font-weight:600;font-size:11.5px;letter-spacing:.075em;text-transform:uppercase;fill:var(--cave)}
+  .p02-notes{position:absolute;left:992px;top:300px;width:324px;display:flex;flex-direction:column;gap:17px}
+  .p02-notes>div{display:grid;grid-template-columns:30px 1fr;align-items:baseline}
+  .p02-notes p{margin:0}
+  .p02-tuile{position:relative;height:230px;display:grid;place-items:center;overflow:hidden}
+  .p02-tuile>span{position:absolute;left:16px;bottom:12px;z-index:9}
+  .p02-ech{display:flex;flex-direction:column;gap:14px;align-items:flex-start;justify-content:flex-end}
+  .p02-non{position:relative;height:100px;display:grid;place-items:center;overflow:hidden}
+  .p02-non>svg.x{position:absolute;right:9px;top:9px;width:15px;height:15px}
+  .p02-non+p{margin:8px 0 0}
+</style>
+<body><div class="plate clair" id="p"></div>
+<script>
+const A = Marque, C = A.COULEURS, NB = A.NB, K = A.CONSTRUCTION, fr = (v, d = 2) => v.toFixed(d).replace('.', ',');
+const T = (x, y, t, anc = 'middle', c = '') => `<text x="${x.toFixed(1)}" y="${y.toFixed(1)}" text-anchor="${anc}"${c ? ` style="fill:${c}"` : ''}>${t}</text>`;
+const coteH = (x1, x2, y, t, haut = true) => `<path class="f" d="M${x1},${y} H${x2} M${x1},${y - 5} V${y + 5} M${x2},${y - 5} V${y + 5}"/>` + T((x1 + x2) / 2, y + (haut ? -9 : 19), t);
+const coteV = (x, y1, y2, t, droite = true) => `<path class="f" d="M${x},${y1} V${y2} M${x - 5},${y1} H${x + 5} M${x - 5},${y2} H${x + 5}"/>` + T(x + (droite ? 11 : -11), (y1 + y2) / 2 + 4, t, droite ? 'start' : 'end');
+
+/* ---------- 1. La construction : le double L, à l'échelle 3,3, en encre ---------- */
+const e = 3.3, ox = 96, oy = 56, fut = K.fut * e, lL = K.largeurL * e, fond = K.creux.h * e, H = 100 * e, surf = K.surface * e, P = A.letterParts('LL'), E = A.ECHELLES.maceration, dx = -K.x[2];
+const detail = `<svg class="p02-c" style="left:84px;top:270px" width="840" height="470" viewBox="0 0 840 470">
+    <g transform="translate(${ox},${oy}) scale(${e}) translate(${dx},0)"><path fill="${E[2]}" d="${P.jus}"/><path fill="${E[1]}" d="${P.details.disque}"/><path fill="${E[3]}" d="${P.details.lie}"/>${P.details.bulles.map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${r}" fill="${E[0]}"/>`).join('')}<path fill="${C.bleu}" d="${P.lettres}"/></g>
+    <g transform="translate(${ox},${oy})">
+      <path class="f p" d="M-96,0 H${2 * lL + 50} M-96,${H} H${2 * lL + 50}"/>
+      ${coteH(0, fut, -22, fr(K.fut))}${coteH(fut, lL, -22, fr(K.creux.l))}${coteH(lL, lL + fut, -22, fr(K.fut))}
+      ${coteH(0, lL, H + 24, fr(K.largeurL, 1) + '0', false)}${coteH(lL, 2 * lL, H + 24, fr(K.largeurL, 1) + '0', false)}
+      ${coteV(-32, 0, H, '100', false)}${coteV(2 * lL + 28, 0, fond, fr(K.creux.h))}${coteV(2 * lL + 28, fond, H, fr(K.pied))}
+      <circle cx="${fut}" cy="${fond}" r="38" fill="none" stroke="${C.cave}" stroke-width="1.2"/><circle cx="${lL}" cy="0" r="24" fill="none" stroke="${C.cave}" stroke-width="1.2"/><circle cx="${fut}" cy="${surf}" r="24" fill="none" stroke="${C.cave}" stroke-width="1.2"/>
+      ${T(fut - 46, fond + 34, '2', 'end', C.tuffeau)}${T(lL + 34, -2, '3', 'start')}${T(fut - 32, surf - 4, '4', 'end', C.tuffeau)}
+    </g></svg>`;
+const notes = [['1', 'Deux L, un seul tracé. Le pied du premier rejoint le fût du second et ferme un creux de ' + fr(K.creux.l) + ' sur ' + fr(K.creux.h) + '.'],
+  ['2', `Le fond du creux est arrondi (rayon ${K.rayonFond}), comme le fond d’un verre : le vin n’y fait pas d’angle.`],
+  ['3', `Les deux lèvres sont adoucies (rayon ${K.rayonLevre}). Le reste des lettres garde ses angles vifs.`],
+  ['4', `Le vin fait un ménisque : il monte de ${K.menisque[1]} le long des parois. Sa surface, aux deux tiers, reste horizontale.`],
+  ['5', `L’interlettre est corrigée à l’œil : ${K.interlettres.join(', ')}. Dix contre un rond, douze entre deux droites, huit après le pied du L.`]];
+
+/* ---------- 3. Trois échelles de détail ---------- */
+const echelles = [['Petit · moins de 32 px', 'Un seul aplat : le vin est un bloc détaché des parois.', A.symbol(C.bleu, 'style="height:30px;width:auto"')],
+  ['Moyen · de 32 à 200 px', 'Deux couleurs. Le vin touche les parois et fait son ménisque.', A.symbol(C.bleu, 'style="height:92px;width:auto"', 'maceration')],
+  ['Grand · au-delà', 'Le disque clair sous la surface, la lie au fond, trois bulles : une par bouteille du mois.', A.symbol(C.bleu, 'style="height:230px;width:auto"', 'maceration', { detail: true })]];
+
+/* ---------- 5. Les règles ---------- */
+const m = K.creux.l, zone = `<svg viewBox="${-m - 6} ${-m - 6} ${K.largeur + 2 * m + 12} ${100 + 2 * m + 12}" style="width:100%;height:auto;overflow:visible">
+    <rect x="${-m}" y="${-m}" width="${K.largeur + 2 * m}" height="${100 + 2 * m}" fill="none" stroke="${C.cave}" stroke-width="1.6" stroke-dasharray="5 7"/>
+    ${[[-m, 50 - m / 2], [K.largeur, 50 - m / 2], [K.creux.x, -m], [K.creux.x, 100]].map(([x, y]) => `<path fill="none" stroke="${C.cave}" stroke-width="1.6" d="M${x},${y} h${m} v${m} h${-m} Z M${x},${y} l${m},${m} M${x + m},${y} l${-m},${m}"/>`).join('')}
+    <path fill="${C.maceration}" d="${A.jusPath()}"/><path fill="${C.bleu}" d="${A.lettersPath()}"/></svg>`;
+const croix = `<svg class="x" viewBox="0 0 16 16" fill="none" stroke="${C.cave}" stroke-width="2.2"><path d="M2,2 L14,14 M14,2 L2,14"/></svg>`;
+const lg = (corps, w = 180) => `<svg viewBox="${A.LOGO.box.join(' ')}" style="width:${w}px;height:auto;overflow:visible">${corps}</svg>`;
+const nx = K.x[4], interdits = [
+  [`<div style="transform:rotate(-12deg)">${A.wordmark(C.bleu, 'style="width:170px;height:auto"', 'maceration')}</div>`, 'Le vin qui penche avec les lettres.'],
+  [lg(`<path fill="${C.maceration}" d="${A.jusPath()} M${nx + 84.35},22 H${nx + 120} V69 Z"/><path fill="${C.bleu}" d="${A.lettersPath()}"/>`), 'Un autre creux rempli.'],
+  [lg(`<path fill="${C.bleu}" d="${A.lettersPath()}"/>`), 'Le creux vide, en couleur.'],
+  [lg(`<path fill="${C.bleu}" d="${A.jusPath()}"/><path fill="${C.maceration}" d="${A.lettersPath()}"/>`), 'Les lettres de la couleur d’un jus.']];
+
+document.getElementById('p').innerHTML =
+  `<div class="p02-s lumiere" style="height:810px"><div class="net" style="position:absolute;inset:0">
+     <div class="pl-lbl t-etq">02 · Le logo</div><div class="pl-lbl-d t-etq">Construction · matières · règles</div>
+     <div class="pl-abs t-sous" style="left:84px;top:104px;font-size:58px;color:${C.bleu}">Six capitales,<br>un creux.</div>
+     <p class="pl-abs t-chapo" style="left:700px;top:112px;width:560px;margin:0">Des capitales larges et lourdes, pour qu’un mot de six lettres tienne une vitrine. Une seule particularité : les deux L sont soudés, et ferment un creux. Tout le soin est allé dans ce creux.</p>
+     ${detail}
+     <div class="p02-notes">${notes.map(([n, t]) => `<div><span class="pl-num" style="color:${C.bleu}">${n}</span><p class="t-txt">${t}</p></div>`).join('')}</div>
+   </div></div>` +
+  `<div class="p02-s fond-bleu lumiere" style="height:560px"><div class="net" style="position:absolute;inset:0">
+     <div class="pl-abs" style="left:96px;top:128px"><canvas data-logo data-taille="158"></canvas></div>
+     <svg class="p02-c" style="left:96px;top:128px" width="1210" height="260" viewBox="0 0 1210 260"><g transform="translate(3,${3 + 3 * 1.58})">${[0, 1, 2, 3].map((i) => { const x1 = (K.x[i] + A.LETTRES.largeur[i]) * 1.58, x2 = K.x[i + 1] * 1.58; return `<path d="M${x1.toFixed(1)},178 v14 M${x2.toFixed(1)},178 v14" stroke="${C.tuffeau}" stroke-width="1.2" fill="none"/><text x="${((x1 + x2) / 2).toFixed(1)}" y="212" text-anchor="middle" style="fill:${C.tuffeau}">${K.interlettres[i]}</text>`; }).join('')}</g></svg>
+     <div class="pl-abs t-sous" style="left:96px;top:392px;font-size:32px">En pierre de tuffeau, sur le bleu.</div>
+     <p class="pl-abs t-txt" style="left:700px;top:392px;width:520px;margin:0">Le logotype n’est pas posé à plat : il a son grain, ses pores, une lumière qui vient d’en haut à gauche et une ombre courte. Le vin éclaire la pierre qui le tient. Largeur ${fr(K.largeur)} pour une capitale de 100.</p>
+   </div></div>` +
+  `<div class="p02-s lumiere" style="padding:70px 84px 60px"><div class="net">
+     <div class="t-etq" style="margin-bottom:26px">Trois échelles de détail : le symbole tient seul, du timbre à l’enseigne</div>
+     <div style="display:grid;grid-template-columns:200px 300px 1fr;gap:56px;align-items:end">${echelles.map(([a, b, s]) => `<div class="p02-ech">${s}<div><div class="t-etq">${a}</div><p class="t-petit" style="margin:5px 0 0;max-width:330px">${b}</p></div></div>`).join('')}</div>
+     <div class="t-etq" style="margin:60px 0 18px">Le logo en matière</div>
+     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
+       <div class="p02-tuile fond-bleu"><canvas data-logo data-taille="50"></canvas><span class="t-etq">Pierre, sur le sergé</span></div>
+       <div class="p02-tuile fond-bleu">${A.brode({ l: 330 })}<span class="t-etq">Brodé, deux fils</span></div>
+       <div class="p02-tuile fond-blanc"><canvas data-logo data-taille="50" data-mode="imprime" data-c="bleu"></canvas><span class="t-etq">Encre, sur le papier</span></div>
+       <div class="p02-tuile fond-tuffeau">${A.wordmark(C.bleu, 'style="width:380px;height:auto"', 'maceration', { photo: 'depot' })}<span class="t-etq">Une photo dans le creux</span></div>
+       <div class="p02-tuile fond-craie"><div class="usure">${A.wordmark(C.cave, 'style="width:380px;height:auto"')}</div><span class="t-etq">Tampon, une couleur</span></div>
+       <div class="p02-tuile jus-maceration">${A.wordmark(C.cave, 'style="width:380px;height:auto"')}<span class="t-etq">Sur un jus : un seul aplat</span></div>
+     </div></div></div>` +
+  `<div class="p02-s fond-craie lumiere" style="padding:64px 84px 130px"><div class="net" style="display:grid;grid-template-columns:400px 250px 1fr;gap:56px">
+     <div><div class="t-etq" style="margin-bottom:18px">Zone de protection</div>${zone}<p class="t-petit" style="margin:16px 0 0">La largeur du creux, tout autour : 0,66 fois la hauteur des capitales.</p></div>
+     <div><div class="t-etq" style="margin-bottom:18px">Tailles minimales</div>
+       <div style="display:flex;flex-direction:column;gap:18px;align-items:flex-start">${A.wordmark(C.bleu, 'style="width:160px;height:auto"', 'maceration')}
+         <div style="display:flex;gap:16px;align-items:center">${A.wordmark(C.bleu, 'style="width:64px;height:auto"', 'maceration')}<span class="t-etq">64 px · 17 mm</span></div>
+         <div style="display:flex;gap:16px;align-items:center">${A.symbol(C.bleu, 'style="height:32px;width:auto"', 'maceration')}${A.symbol(C.bleu, 'style="height:16px;width:auto"')}<span class="t-etq">16 px · 4 mm</span></div></div>
+       <p class="t-petit" style="margin:16px 0 0">En dessous de 64 px de large, le symbole remplace le logotype.</p></div>
+     <div><div class="t-etq" style="margin-bottom:18px">À ne pas faire</div>
+       <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px 16px">${interdits.map(([s, t]) => `<div><div class="p02-non fond-blanc">${s}${croix}</div><p class="t-petit">${t}</p></div>`).join('')}</div></div>
+   </div><div class="pl-pied t-etq"><span>02 · Le logo</span><span>${A.DESCRIPTEUR} · ${A.LIEU}</span><span>2026</span></div></div>`;
+window.pret = Verse.tout();
+</script></body>

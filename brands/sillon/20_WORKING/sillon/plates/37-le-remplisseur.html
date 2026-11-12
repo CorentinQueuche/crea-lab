@@ -1,0 +1,45 @@
+<!doctype html><meta charset="utf-8"><title>Sillon · 37 · Le remplisseur</title><meta name="robots" content="noindex">
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates.css">
+<script src="../brand/marque.js"></script><script src="../brand/matiere.js"></script>
+<style>
+  /* 37 · Le remplisseur. L'outil au travail : une vraie capture de la page (outil/index.html, servie par
+     outil/serveur.mjs), dans un cadre de navigateur sobre, puis les trois fichiers qu'il vient d'exporter, à la même
+     hauteur, avec leur nom. Une légende courte, la contre-étiquette. Préfixe p37-. */
+  #p{height:1890px}
+  /* au-dessus de la lumière du papier (.lumiere::before) : une capture et des fichiers ne se voilent pas */
+  .p37-nav,.p37-sorties,.p37-legende,.p37-ce{z-index:3}
+  .p37-nav{position:absolute;left:84px;top:112px;width:1232px;border-radius:10px;overflow:hidden;background:var(--tuffeau-3);
+    box-shadow:0 0 0 1px rgba(14,22,56,.35),3px 5px 0 rgba(5,9,40,.3),14px 34px 60px -18px rgba(5,9,40,.75)}
+  .p37-barre{height:44px;display:flex;align-items:center;gap:18px;padding:0 18px;color:var(--cave)}
+  .p37-pts{display:flex;gap:8px}
+  .p37-pts i{width:12px;height:12px;border-radius:50%;background:var(--tuffeau-4)}
+  .p37-url{flex:1;max-width:520px;margin:0 auto;height:28px;border-radius:14px;background:var(--tuffeau-1);display:flex;align-items:center;justify-content:center;font-size:12.5px;letter-spacing:.09em}
+  .p37-url b{font-weight:600;opacity:.55}
+  .p37-nav img{display:block;width:1232px;height:770px}
+  .p37-sorties{position:absolute;left:84px;top:990px;display:flex;gap:28px;align-items:flex-start}
+  .p37-sorties figure{margin:0}
+  .p37-sorties img{display:block;height:544px;box-shadow:0 0 0 1px rgba(14,22,56,.3),3px 5px 0 rgba(5,9,40,.3),10px 24px 40px -14px rgba(5,9,40,.7)}
+  .p37-sorties figcaption{margin-top:14px;display:flex;justify-content:space-between;gap:12px;color:var(--bleu);font-size:12.5px}
+  .p37-sorties figcaption span:last-child{opacity:.7}
+  .p37-legende{position:absolute;left:84px;top:1660px;width:760px;color:var(--bleu)}
+  .p37-legende .t-sous{font-size:40px;line-height:1.02}
+  .p37-legende .t-etq{margin-top:16px;font-size:12.5px;opacity:.75;line-height:1.6}
+  .p37-ce{position:absolute;right:84px;top:1626px}
+</style>
+<body><div class="plate clair lumiere" id="p"></div>
+<script>
+const A = Marque, NB = A.NB, el = document.getElementById('p');
+const sorties = [['planche-jeudi-4x5.png', 'sillon-jeudi-4x5.png', `1080${NB}×${NB}1350`, 1080 / 1350],
+                 ['planche-arrivage-9x16.png', 'sillon-arrivage-9x16.png', `1080${NB}×${NB}1920`, 1080 / 1920],
+                 ['planche-plein-4x5.png', 'sillon-plein-4x5.png', `1080${NB}×${NB}1350`, 1080 / 1350]];
+el.innerHTML = `<div class="pl-lbl t-etq" style="color:var(--bleu)">37 · Le remplisseur</div><div class="pl-lbl-d t-etq" style="color:var(--bleu)">Outil local · une page, quatre modèles, deux formats</div>
+  <div class="p37-nav"><div class="p37-barre"><div class="p37-pts"><i></i><i></i><i></i></div><div class="p37-url t-etq"><b>127.0.0.1:5417</b>&nbsp;/ outil</div><div style="width:52px"></div></div>
+    <img src="../out/outil/planche-capture.png" alt="Le remplisseur : à gauche les réglages, à droite la publication à l’échelle"></div>
+  <div class="p37-sorties">${sorties.map(([f, nom, dim, r]) => `<figure style="width:${Math.round(544 * r)}px"><img src="../out/outil/${f}" alt="" style="width:${Math.round(544 * r)}px"><figcaption class="t-etq"><span>${nom}</span><span>${dim}</span></figcaption></figure>`).join('')}</div>
+  <div class="p37-legende"><div class="t-sous">Il tape «${NB}À jeudi.${NB}». L’outil pose les verres, vérifie que ça tient et sort le fichier.</div>
+    <div class="t-etq">Trois exports de la même séance · mention sanitaire sur chacun · aucune ligne de commande</div></div>
+  <div class="p37-ce">${A.contre({ lot: '37', sujet: 'Le remplisseur', lignes: [['S’ouvre par', 'outil/ouvrir.bat'], ['Sort', `PNG 1080${NB}×${NB}1350 ou 1920`]], voix: A.VOIX.carte, sanitaire: true, l: 300 })}</div>
+  <div class="pl-pied t-etq" style="color:var(--bleu)"><span>37 · Le remplisseur</span><span>La phrase change chaque jeudi, le verre reste</span><span>2026</span></div>`;
+A.typo(el);
+window.pret = Promise.all([...el.querySelectorAll('img')].map((i) => i.decode().catch(() => 0)));
+</script></body>

@@ -1,0 +1,26 @@
+<!doctype html><meta charset="utf-8"><title>Sillon · 22 · Le Plein du mois, dans le fil</title><meta name="robots" content="noindex">
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="plates.css"><link rel="stylesheet" href="reseaux.css">
+<script src="../brand/marque.js"></script><script src="../brand/matiere.js"></script><script src="../brand/verse.js"></script>
+<style>
+  /* 22 · Le Plein du mois. Une grille de publications : trois mois du fil de Sillon (une tête de profil inventée,
+     générique : l'avatar, le nom, une ligne). Les douze publications sont les vrais fichiers des quatre modèles ; les
+     neuf autres s'éteignent, les trois Plein restent allumés : ils reviennent une fois par mois, à leur place. Préfixe r22-. */
+  #p{height:2500px}
+</style>
+<body><div class="plate clair lumiere" id="p"></div>
+<script>
+const A = Marque, C = A.COULEURS, el = document.getElementById('p'), IMG = '../out/reseaux/';
+/* le fil, le plus récent en haut à gauche */
+const FIL = ['22-plein-4x5-c', '24-phrase-4x5-a', '21-jeudi-4x5-a', '21-jeudi-4x5-c', '23-arrivage-4x5-b', '24-phrase-4x5-b', '22-plein-4x5-b', '21-jeudi-4x5-b', '23-arrivage-4x5-a', '24-phrase-4x5-c', '23-arrivage-4x5-c', '22-plein-4x5-a'];
+const MOIS = { '22-plein-4x5-a': 'novembre', '22-plein-4x5-b': 'décembre', '22-plein-4x5-c': 'janvier' };
+el.innerHTML = `<div class="net" style="position:absolute;inset:0;color:${C.bleu}">
+    <div class="pl-lbl t-etq">22 · Le Plein du mois</div><div class="pl-lbl-d t-etq">Modèle · publication 1080 × 1350 · une par mois</div>
+    <div class="r22-profil" style="left:84px;top:118px">${A.icone(132, C.bleu, C.tuffeau)}
+      <div><div class="t-sous" style="font-size:44px">Sillon</div><div class="t-etq" style="margin-top:6px">${A.DESCRIPTEUR} · ${A.LIEU}</div><div class="t-txt" style="margin-top:6px;color:${C.cave}">${A.SIGNATURE}</div></div></div>
+    <div class="pl-voix" style="position:absolute;right:84px;top:132px;text-align:right;font-size:44px">Une fois par mois,<br>le Plein.</div>
+    <div class="r22-fil" style="left:84px;right:84px;top:300px">${FIL.map((f) => `<div class="r22-case ${MOIS[f] ? '' : 'eteinte'}"><img src="${IMG + f}.png" alt=""></div>`).join('')}</div>
+    <div class="pl-pied t-etq"><span>22 · Le Plein du mois</span><span>La contre-étiquette du colis : seuls les jus, les mots et le mois changent</span><span>2026</span></div>
+  </div>`;
+/* sous chaque Plein, son mois, dans la marge du fil */
+window.pret = Promise.all([...el.querySelectorAll('img')].map((i) => i.decode().catch(() => 0)));
+</script></body>
