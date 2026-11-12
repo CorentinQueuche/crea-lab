@@ -10,7 +10,7 @@ Les cinq études complètes sont Aube, Drupe, Payout, Custom et Sillon ; Rouleme
 | [Payout](brands/payout/LAB.md) | étude complète | [Guide ou planche](brands/payout/40_DELIVERABLES/payout-guideline/index.html) | 524 | 445.3 |
 | [Custom](brands/custom/LAB.md) | étude complète | [Guide ou planche](brands/custom/40_DELIVERABLES/custom-guideline/index.html) | 704 | 882.0 |
 | [Drupe](brands/drupe/LAB.md) | étude complète | [Guide ou planche](brands/drupe/projet/livrables/site/index.html) | 407 | 303.3 |
-| [Sillon](brands/sillon/LAB.md) | étude complète | [Étude de cas](brands/sillon/40_DELIVERABLES/sillon-presentation/index.html) | 469 | 1352.0 |
+| [Sillon](brands/sillon/LAB.md) | étude complète | [Guide ou planche](brands/sillon/40_DELIVERABLES/sillon-guideline/index.html) | 651 | 1419.4 |
 | [Roulement](brands/roulement/LAB.md) | identité et vitrine | [Guide ou planche](brands/roulement/identite.html) | 86 | 167.3 |
 | [Maillon](brands/maillon/LAB.md) | identité et vitrine | [Guide ou planche](brands/maillon/identite.html) | 103 | 170.1 |
 
@@ -28,7 +28,7 @@ Ouvrir `http://127.0.0.1:8080/` puis le dossier voulu. GitHub permet de téléch
 
 Lire son `LAB.md`, son brief `BRAND.md` ou `MARQUE.md`, puis son `package.json`. Les chemins internes des capsules sont conservés pour les scripts qui remontent vers `40_DELIVERABLES`. Installer les dépendances depuis le dossier de travail, pas à la racine. Le dépôt ne lance aucun outil de génération, achat ou déploiement automatiquement.
 
-Les scripts et livrables ont été copiés sans refonte créative. Les gabarits `site/` sont des entrées d’assemblage, pas des sites déjà assemblés ; ouvrir les guides dans les livrables. Sillon n’a pas de guide en ligne : sa forme retient une étude de cas, une fiche de marque, un kit pour les réseaux et un outil pour composer une annonce.
+Les scripts et livrables ont été copiés sans refonte créative. Les gabarits `site/` sont des entrées d’assemblage, pas des sites déjà assemblés ; ouvrir les guides dans les livrables. Sillon ajoute à son guide un kit pour les réseaux et un outil pour composer une annonce.
 
 ## Provenance et crédits
 

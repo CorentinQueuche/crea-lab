@@ -124,6 +124,7 @@ Traitements (`Marque.photo`) : `brut` (avec son grain, jamais lissée), `niveau`
 - **Quand prendre la version complète.** Là où Sillon se présente à quelqu'un qui ne la connaît pas : la devanture, une carte, le colis, le pied d'une affiche posée hors du quartier. Partout ailleurs, le logotype seul.
 - **Zone de protection et tailles des autres versions.** Symbole : la moitié de sa largeur tout autour. Logotype penché : comme le logotype (64 px ou 17 mm). Version complète : 120 px ou 32 mm au moins, pour que le descripteur se lise.
 - **Le logo sur une photo.** Permis sur une zone calme (le sergé, un mur, un ciel), en lettres tuffeau. Jamais sur un visage ni sur un verre. Dans le doute, c'est la contre-étiquette qui porte le nom.
+- **Le logo sur le fond de cave.** Comme sur le bleu : lettres tuffeau, jus macération. C'est déjà l'usage des annonces du jeudi soir.
 - **Le jus du creux sur tuffeau et sur craie.** Macération par défaut ; glou ou paille seulement quand la pièce parle de ce jus-là.
 - **Les proportions des couleurs sur une pièce.** Le bleu ou le tuffeau porte la pièce (environ les deux tiers) ; l'autre fait le texte et les papiers (environ un quart) ; les jus restent sous un dixième de la surface, puisqu'un jus n'existe que dans un creux.
 - **Les cinq bleus.** Nuit de cave `#0E1638`, veste neuve `#16298A`, bleu de travail `#2146D0`, veste portée `#5B7BE6`, bleu lavé `#8EA5F0`. Et un ton de pierre de plus : pierre patinée `#C4BCA4`.

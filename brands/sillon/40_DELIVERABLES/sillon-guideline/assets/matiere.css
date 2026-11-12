@@ -1,0 +1,3 @@
+/* Les fonds en matière de Sillon, calculés une fois par tools/build_site.py avec brand/matiere.js (même code, même graine)
+   et servis en images : le site pose window.MatiereSans avant matiere.js, qui ne les recalcule donc pas au chargement. */
+:root{--m-tissu:url("matiere/tissu.webp");--m-papier:url("matiere/papier.webp");--m-blanc:url("matiere/blanc.webp");--m-craie:url("matiere/craie.webp");--m-cave:url("matiere/cave.webp");--m-cote:640px}

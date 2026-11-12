@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sillon, la fiche de marque</title>
+<meta name="description" content="La fiche de marque de Sillon, cave à vins nature, en huit pages : l’idée, le logo, ce qu’on ne fait pas, les couleurs, écrire, le kit, faire une annonce, les fichiers. Marque fictive, proposition de KLYRA.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0E1638">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/marque.css">
+<link rel="stylesheet" href="assets/matiere.css">
+<link rel="stylesheet" href="assets/pages.css">
+<link rel="stylesheet" href="assets/guide.css">
+<!-- VISIONNEUSE DE LA FICHE DE MARQUE — Sillon (site/presentation.html).
+     Les huit pages vivantes de deck/pages.js (1920 × 1080), mises à l'échelle ; GuideApres(racine) y rend le remplisseur.
+     Contrat de tools/check_deck.mjs : #num, #ttl, #in, #grid (touche G), #gg (vignettes en <button>), lien direct #<numéro>,
+     flèches, Début, Fin. Touche F : plein écran. Vignettes : deck/NN.jpg ; PDF : deck/sillon-fiche-de-marque.pdf. -->
+<script>window.MarquePhotos = 'photos/'; window.GuideMedia = 'guide-media/'; window.MatiereSans = true;</script>
+<script src="assets/marque.js"></script>
+<script src="assets/matiere.js"></script>
+<script src="assets/verse.js"></script>
+<script src="assets/pages.js"></script>
+</head>
+<body class="gd-vz fond-cave">
+<a class="gd-evite" href="#scene">Aller à la page</a>
+<header class="gd-vz-barre gd-sombre">
+  <a class="gd-vz-accueil" href="index.html" id="accueil" aria-label="Sillon, retour au guide en ligne"></a>
+  <span class="gd-vz-titre" id="ttl" aria-live="polite"></span>
+  <button class="gd-bt gd-creux gd-petit" id="bgrille" type="button" aria-controls="grid" aria-expanded="false" title="Touche G"><span class="gd-vz-masque">Toutes les pages</span><span class="gd-vz-mobile">Pages</span></button>
+  <button class="gd-bt gd-creux gd-petit gd-vz-masque" id="bplein" type="button" title="Touche F">Plein écran</button>
+  <a class="gd-bt gd-petit" id="bpdf" download>PDF</a>
+</header>
+<main class="gd-vz-scene" id="scene" tabindex="-1" aria-label="Page de la fiche de marque" aria-busy="false">
+  <div class="gd-vz-une" id="page"><div class="mp-in" id="in"></div></div>
+  <button class="gd-vz-fleche gd-vz-g" id="prec" type="button" aria-label="Page précédente"></button>
+  <button class="gd-vz-fleche gd-vz-d" id="suiv" type="button" aria-label="Page suivante"></button>
+  <span class="gd-vz-occ t-etq">On remplit…</span>
+</main>
+<footer class="gd-vz-pied gd-sombre"><span class="gd-vz-n" id="num"></span><div class="gd-vz-prog"><i id="prog"></i></div><span class="gd-vz-mention">Marque fictive · proposition de KLYRA, novembre 2026 · flèches, G pour toutes les pages, F pour le plein écran</span></footer>
+<div class="gd-vz-grille fond-cave" id="grid" role="dialog" aria-modal="true" aria-label="Toutes les pages">
+  <div class="gd-vz-grille-tete gd-sombre"><h2>La fiche de marque, huit pages</h2><button class="gd-bt gd-creux gd-petit" id="gfermer" type="button">Fermer</button></div>
+  <div class="gd-vz-gg" id="gg"></div>
+</div>
+<script>
+(function () {
+  const A = window.Marque, P = window.GuidePages, O = window.GuideOrder || [], T = window.GuideTitles || [];
+  const $ = (s) => document.querySelector(s), pad = (n) => String(n).padStart(2, '0'), PW = 1920, PH = 1080;
+  $('#accueil').innerHTML = A.wordmark('currentColor', 'aria-hidden="true"', 'maceration') + '<span class="t-etq">Fiche de marque</span>';
+  $('#bpdf').href = 'deck/' + A.SLUG + '-fiche-de-marque.pdf';
+  $('#prec').innerHTML = A.fleche('currentColor', '', 180); $('#suiv').innerHTML = A.fleche('currentColor');
+  if (!P || !O.length) { $('#ttl').textContent = 'Les pages de la fiche ne sont pas disponibles.'; $('#num').textContent = '00 / 00'; return; }
+  const titre = (n) => T[n] || String(O[n]);
+  let i = 0, tour = 0;
+  /* Une page : le HTML de GuidePages, puis GuideApres(racine), qui remplit les titres (une promesse) */
+  const rendre = (k) => { const el = $('#in'), n = ++tour; el.innerHTML = P[k]; $('#scene').setAttribute('aria-busy', 'true');
+    Promise.resolve(typeof window.GuideApres === 'function' ? window.GuideApres(el) : 0).catch(() => {}).then(() => { if (n === tour) $('#scene').setAttribute('aria-busy', 'false'); }); };
+  const fit = () => { const sc = $('#scene'), k = Math.max(0.1, Math.min((sc.clientWidth - 28) / PW, (sc.clientHeight - 28) / PH));
+    $('#in').style.setProperty('--mp-k', k); $('#page').style.width = PW * k + 'px'; $('#page').style.height = PH * k + 'px'; };
+  const go = (n) => {
+    i = Math.max(0, Math.min(O.length - 1, n));
+    rendre(O[i]);
+    $('#num').textContent = pad(i + 1) + ' / ' + pad(O.length); $('#ttl').textContent = titre(i);
+    $('#prog').style.width = ((i + 1) / O.length) * 100 + '%';
+    document.title = titre(i) + ' — ' + A.NOM + ', la fiche de marque';
+    history.replaceState(null, '', '#' + (i + 1));
+    document.querySelectorAll('#gg button').forEach((b, k) => b.setAttribute('aria-current', String(k === i)));
+  };
+  $('#gg').innerHTML = O.map((k, n) => `<button type="button" data-n="${n}"><img src="deck/${pad(n + 1)}.jpg" alt="" loading="lazy" width="960" height="540"><span><i>${pad(n + 1)}</i>${titre(n)}</span></button>`).join('');
+  document.querySelectorAll('#gg img').forEach((im) => im.addEventListener('error', () => im.remove(), { once: true }));
+  const grilleOuverte = () => $('#grid').classList.contains('gd-ouvert');
+  const grille = (on) => { $('#grid').classList.toggle('gd-ouvert', on); $('#bgrille').setAttribute('aria-expanded', String(on));
+    if (on) { const b = document.querySelectorAll('#gg button')[i]; if (b) b.focus(); } else $('#bgrille').focus(); };
+  document.querySelectorAll('#gg button').forEach((b) => b.addEventListener('click', () => { go(+b.dataset.n); grille(false); }));
+  $('#bgrille').addEventListener('click', () => grille(true)); $('#gfermer').addEventListener('click', () => grille(false));
+  $('#prec').addEventListener('click', () => go(i - 1)); $('#suiv').addEventListener('click', () => go(i + 1));
+  const plein = () => { if (document.fullscreenElement) document.exitFullscreen(); else if (document.documentElement.requestFullscreen) document.documentElement.requestFullscreen().catch(() => {}); };
+  $('#bplein').addEventListener('click', plein);
+  document.addEventListener('fullscreenchange', () => { $('#bplein').textContent = document.fullscreenElement ? 'Quitter le plein écran' : 'Plein écran'; setTimeout(fit, 60); });
+  document.addEventListener('keydown', (e) => {
+    if (e.altKey || e.ctrlKey || e.metaKey) return;
+    if (e.key === 'Escape' && grilleOuverte()) return grille(false);
+    if (e.key === 'g' || e.key === 'G') return grille(!grilleOuverte());
+    if (grilleOuverte()) {
+      if (e.key === 'Tab') { const f = [...document.querySelectorAll('#grid button')], k = f.indexOf(document.activeElement); e.preventDefault(); f[(k + (e.shiftKey ? -1 : 1) + f.length) % f.length].focus(); }
+      return;
+    }
+    if (e.key === 'ArrowRight' || e.key === 'PageDown') { e.preventDefault(); go(i + 1); }
+    if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); go(i - 1); }
+    if (e.key === 'Home') go(0);
+    if (e.key === 'End') go(O.length - 1);
+    if (e.key === 'f' || e.key === 'F') plein();
+  });
+  let x0 = null;
+  $('#scene').addEventListener('touchstart', (e) => { x0 = e.touches[0].clientX; }, { passive: true });
+  $('#scene').addEventListener('touchend', (e) => { if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 40) go(i + (dx < 0 ? 1 : -1)); x0 = null; });
+  window.addEventListener('resize', fit);
+  window.addEventListener('hashchange', () => { const n = parseInt(location.hash.slice(1), 10); if (n && n - 1 !== i) go(n - 1); });
+  fit(); go((parseInt(location.hash.slice(1), 10) || 1) - 1);
+})();
+</script>
+</body>
+</html>

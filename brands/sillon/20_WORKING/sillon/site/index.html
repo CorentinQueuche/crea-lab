@@ -1,0 +1,802 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sillon, guide de marque</title>
+<meta name="description" content="Le guide de marque de Sillon, cave à vins nature : l’idée, le logo, les couleurs, la voix à verres, le kit, l’image à niveau, le mouvement, les annonces et les fichiers. Marque fictive, proposition de KLYRA.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#2146D0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/marque.css">
+<link rel="stylesheet" href="assets/matiere.css">
+<link rel="stylesheet" href="assets/guide.css">
+<!-- GUIDE DE MARQUE EN LIGNE — Sillon (site/index.html). Onze pages affichées une à une selon l'ancre.
+     Assemblé par python tools/build_site.py. Tout ce qui est dessiné vient du socle (assets/marque.js, verse.js, matiere.js) :
+     les pages le chargent et l'appellent (assets/guide.js), elles ne redessinent rien.
+     Contrat des contrôles : .page[data-title][data-subs] dont une .page.on, #nav, #burger, #sommaire, [data-pager].pager,
+     #gal et #filters, la visionneuse #lb, #toast, window.GuideTests. -->
+<script>window.MarquePhotos = 'photos/'; window.GuideMedia = 'guide-media/'; window.MatiereSans = true;</script>
+<script src="assets/marque.js"></script>
+<script src="assets/matiere.js"></script>
+<script src="assets/verse.js"></script>
+<script src="assets/pages.js"></script>
+<script src="assets/galerie.js"></script>
+<script src="assets/fichiers.js"></script>
+</head>
+<body class="fond-tuffeau">
+<a class="gd-evite" href="#main">Aller au contenu</a>
+
+<header class="gd-haut fond-bleu lumiere">
+  <a class="gd-haut-logo" href="#accueil" data-logo aria-label="Sillon, retour à l’accueil du guide"></a>
+  <button class="gd-burger" id="burger" type="button" aria-label="Ouvrir le sommaire" aria-controls="sommaire" aria-expanded="false"><i></i><i></i></button>
+</header>
+
+<aside class="gd-som fond-bleu lumiere" id="sommaire">
+  <a class="gd-som-logo" href="#accueil" data-logo aria-label="Sillon, retour à l’accueil du guide"></a>
+  <span class="t-etq gd-som-k">Guide de marque · novembre 2026</span>
+  <nav class="gd-nav" id="nav" aria-label="Sommaire du guide"></nav>
+  <div class="gd-som-pied">
+    <a href="presentation.html">La fiche en pages <span data-fleche></span></a>
+    <a href="etude-de-cas.html">L’étude de cas <span data-fleche></span></a>
+    <a href="#ressources">Les fichiers <span data-fleche></span></a>
+    <p>Marque fictive. Proposition de KLYRA, novembre 2026.</p>
+  </div>
+</aside>
+
+<main class="gd-main" id="main" tabindex="-1">
+
+<!-- ============================================================ 00 · ACCUEIL -->
+<div class="page" id="accueil" data-title="Accueil" data-subs="trois-facons:Trois façons de le lire|chapitres:Dix chapitres|retenir:Cinq chiffres">
+  <section class="gd-hero fond-bleu lumiere" aria-labelledby="h-accueil">
+    <div class="gd-hero-txt">
+      <span class="t-etq">Guide de marque · cave à vins nature · Nantes, quartier des Olivettes</span>
+      <h1 class="gd-h1" id="h-accueil" tabindex="-1">On remplit les creux.</h1>
+      <p class="gd-lead">Il y a un creux dans Sillon, entre ses deux L. On le remplit. Ce guide dit comment : ce qui penche, ce qui reste d’aplomb, et tout ce qu’il faut pour faire une pièce de la marque sans rien redessiner.</p>
+      <div class="gd-rang"><a class="gd-bt" href="#marque">Entrer dans le guide <span data-fleche></span></a><a class="gd-bt gd-creux" href="#ressources">Les fichiers</a></div>
+    </div>
+    <figure class="gd-hero-photo" id="hero-photo" aria-label="Une main penche un verre de vin orange ; la surface du vin reste horizontale."></figure>
+    <div class="gd-hero-logo" aria-hidden="true"><canvas id="hero-logo"></canvas></div>
+    <div class="gd-hero-ce" id="hero-ce"></div>
+  </section>
+
+  <section class="gd-sec fond-tuffeau lumiere" id="trois-facons">
+    <div class="gd-in">
+      <div class="gd-sec-tete"><div class="gd-lab t-etq"><b>0.1</b>Trois façons de le lire</div>
+        <h2 class="gd-h2">Se promener, feuilleter, faire défiler.</h2>
+        <p class="gd-intro">Le même système, trois portes. Le guide en ligne montre chaque règle en vrai, réglable. La fiche de marque tient en huit pages, à projeter ou à imprimer. L’étude de cas montre toutes les pièces, l’une sous l’autre.</p></div>
+      <div class="gd-trois" id="voies"></div>
+    </div>
+  </section>
+
+  <section class="gd-sec fond-craie lumiere" id="chapitres">
+    <div class="gd-in">
+      <div class="gd-sec-tete"><div class="gd-lab t-etq"><b>0.2</b>Le sommaire</div>
+        <h2 class="gd-h2">Dix chapitres, une chose fixée par page.</h2></div>
+      <div class="gd-somm" id="somm"></div>
+    </div>
+  </section>
+
+  <section class="gd-sec fond-cave lumiere" id="retenir">
+    <div class="gd-in">
+      <div class="gd-sec-tete"><div class="gd-lab t-etq"><b>0.3</b>À retenir</div>
+        <h2 class="gd-h2">Cinq chiffres font la marque.</h2></div>
+      <div class="gd-chiffres" id="chiffres"></div>
+    </div>
+  </section>
+  <nav class="pager gd-pager" data-pager aria-label="Chapitre précédent et suivant"></nav>
+</div>
+
+<!-- ============================================================ 01 · LA MARQUE -->
+<div class="page" id="marque" data-title="La marque" data-subs="idee:L’idée|pistes:Trois pistes, une gardée|cave:La cave|voix:La voix, sur les objets|ton:Le ton|valider:À valider">
+  <header class="gd-tete fond-tuffeau lumiere">
+    <div class="gd-tete-centre">
+      <span class="t-etq gd-k">01 · La marque</span>
+      <h1 class="gd-h1" tabindex="-1">Un creux qu’on remplit.</h1>
+      <p class="gd-lead">Un sillon est un creux ouvert vers le ciel ; vu en coupe, c’est un verre. Le métier d’un caviste tient dans ce geste : remplir. Sillon ouvre à Nantes, dans le quartier des Olivettes, une cave à vins nature qui ne ressemble pas aux caves habituelles.</p>
+    </div>
+  </header>
+
+  <section class="gd-sec fond-tuffeau gd-meme" id="idee">
+    <div class="gd-in">
+      <div class="gd-sec-tete"><div class="gd-lab t-etq"><b>1.1</b>L’idée</div>
+        <p class="gd-idee">Il y a un creux dans Sillon, entre ses deux L. On le remplit.</p>
+        <p class="gd-intro">L’idée donne quatre choses à la marque. Chacune a sa page dans ce guide.</p></div>
+      <div class="gd-quatre" id="quatre"></div>
+    </div>
+  </section>
+
+  <section class="gd-sec fond-craie lumiere" id="pistes">
+    <div class="gd-in">
+      <div class="gd-sec-tete"><div class="gd-lab t-etq"><b>1.2</b>Trois pistes, une gardée</div>
+        <h2 class="gd-h2">On a cherché ailleurs, puis on est revenu au nom.</h2></div>
+      <div class="gd-pistes">
+        <div class="gd-piste gd-papier gd-ecartee"><span class="gd-tampon">Écartée · la littérale</span><h3 class="gd-h3">Le rang</h3><p>La cave rangée comme une vigne, en tons de terre. Trop calme, et dans l’imagerie attendue du terroir.</p></div>
+        <div class="gd-piste gd-papier gd-ecartee"><span class="gd-tampon">Écartée · la métaphorique</span><h3 class="gd-h3">Microsillon</h3><p>La cave comme un disquaire. Le kit viendrait d’un autre métier, et le duo vin nature et vinyle est un lieu commun.</p></div>
+        <div class="gd-piste gd-panneau fond-bleu lumiere gd-gardee"><span class="gd-tampon">Gardée · la structurelle</span><h3 class="gd-h3">Le creux se remplit</h3><p>Le double L soudé tient le vin. Une forme, une règle, un comportement et un vocabulaire sortent du nom lui-même : rien n’est emprunté.</p><div id="piste-logo" style="margin-top:auto;padding-top:18px"></div></div>
+      </div>
+      <div class="gd-sans"><span class="t-etq">Ce que la cave ne montre jamais</span><span>la grappe</span><span>le tire-bouchon</span><span>l’écriture à la plume</span></div>
+    </div>
+  </section>
+
+  <section class="gd-sec fond-tuffeau lumiere" id="cave">
+    <div class="gd-in">
+      <div class="gd-sec-tete"><div class="gd-lab t-etq"><b>1.3</b>La cave</div>
+        <h2 class="gd-h2">Trois choses à faire savoir.</h2>
+        <p class="gd-intro">C’est tout ce que le fondateur a dit, et tout ce que la marque affirme. <b>Ni adresse, ni téléphone, ni horaire, ni prix</b> : on ne les connaît pas. Une pièce qui en aurait besoin les laisse en blanc, comme la colonne des prix de la carte du jeudi.</p></div>
+      <div class="gd-cave" id="activites"></div>
+    </div>
+  </section>
+
+  <section class="gd-sec fond-bleu lumiere" id="voix">
+    <div class="gd-in">
+      <div class="gd-sec-tete"><div class="gd-lab t-etq"><b>1.4</b>La voix</div>
+        <h2 class="gd-h2">Des phrases de comptoir, écrites sur les objets.</h2>
+        <p class="gd-intro">Chaque phrase a son objet. On ne la déplace pas : « Taches autorisées. » va dans la nappe, pas sur une affiche. Les objets ci-dessous sont ceux du socle, rendus ici.</p></div>
+      <div class="gd-objets" id="objets"></div>
+    </div>
+  </section>
+
+  <section class="gd-sec fond-tuffeau lumiere" id="ton">
+    <div class="gd-in">
+      <div class="gd-sec-tete"><div class="gd-lab t-etq"><b>1.5</b>Le ton</div>
+        <h2 class="gd-h2">On parle comme au comptoir.</h2>
+        <p class="gd-intro">Avec « on », des phrases de trois mots et un point. On dit « Du jus. », pas « un nectar d’exception ».</p></div>
+      <div class="gd-ton" id="ton-table"></div>
+    </div>
+  </section>
+
+  <section class="gd-sec fond-craie lumiere" id="valider">
+    <div class="gd-in">
+      <div class="gd-sec-tete"><div class="gd-lab t-etq"><b>1.6</b>À valider</div>
+        <h2 class="gd-h2">Rien de ceci n’est diffusé tel quel.</h2>
+        <p class="gd-intro">Sillon est une marque fictive, écrite pour éprouver une méthode. Avant qu’une phrase sorte de ce guide, quatre choses sont à faire.</p></div>
+      <div class="gd-liste-ce gd-papier" style="color:var(--bleu)" id="a-valider"></div>
+    </div>
+  </section>
+  <nav class="pager gd-pager" data-pager aria-label="Chapitre précédent et suivant"></nav>
+</div>
+
+<!-- ============================================================ 02 · LE LOGO -->
+<div class="page" id="logo" data-title="Le logo" data-subs="versions:Quatre versions|penche:Douze degrés|construction:La construction|echelles:Trois échelles de détail|protection:Zone et tailles|complete:La version complète|interdits:Ce qu’on ne fait pas">
+  <header class="gd-tete fond-craie lumiere">
+    <div class="gd-tete-centre">
+      <span class="t-etq gd-k">02 · Le logo</span>
+      <h1 class="gd-h1" tabindex="-1">Quatre versions, un seul creux.</h1>
+      <p class="gd-lead">Six capitales larges et lourdes. S, I, O, N viennent d’Anybody ; les deux L sont redessinés d’un seul tenant et ferment un creux. Il est plein aux deux tiers, de macération : la seule couleur vive du logo.</p>
+      <div class="gd-logo-tete-vu" id="logo-tete" role="img" aria-label="Le logotype Sillon en grand, le creux plein de macération avec son disque, sa lie et trois bulles."></div>
+    </div>
+  </header>
+
+  <section class="gd-sec fond-tuffeau lumiere" id="versions">
+    <div class="gd-in">
+      <div class="gd-sec-tete"><div class="gd-lab t-etq"><b>2.1</b>Les versions et leurs couleurs</div>
+        <h2 class="gd-h2">Choisissez un fond, le logo prend sa couleur permise.</h2>
+        <p class="gd-intro">Sur le bleu : lettres tuffeau, vin macération. Sur le tuffeau et la craie : lettres bleues ou fond de cave. Sur un jus : un seul aplat, fond de cave. Sur une photo : une zone calme, lettres tuffeau. Chaque carte donne le fichier exact à prendre.</p></div>
+      <div class="gd-outils">
+        <div><span class="t-etq">Le fond</span><div class="gd-choix" id="stage-sw" role="group" aria-label="Le fond derrière le logo"></div></div>
+        <div id="lettres-z"><span class="t-etq">Les lettres</span><div class="gd-choix" id="lettres-sw" role="group" aria-label="La couleur des lettres"></div></div>
+      </div>
+      <div class="gd-scene-logo" id="stage"></div>
+    </div>
+  </section>
+
+  <section class="gd-sec fond-bleu lumiere" id="penche">
+    <div class="gd-in gd-pente">
+      <div class="gd-pente-vu" id="penche-vu" role="img"></div>
+      <div>
+        <div class="gd-lab t-etq"><b>2.2</b>Le logotype penché</div>
+        <h2 class="gd-h2">Le mot monte de 12<i class="deg"></i>. Le vin, non.</h2>
+        <p class="gd-intro">Pour une ouverture, une affiche, une révélation. Faites glisser : les lettres tournent, la surface du vin reste horizontale. On ne dépasse pas 12°.</p>
+        <label class="gd-curseur" style="margin-top:22px"><span class="gd-vh">Angle du logotype</span><input type="range" id="penche-a" min="0" max="12" step="0.5" value="12" aria-valuetext="12 degrés"><output id="penche-o" for="penche-a">12°</output></label>
+        <div class="gd-pente-lu"><div><span class="t-etq">Les lettres</span><b id="penche-l">12°</b></div><div><span class="t-etq">Le vin</span><b>0°</b></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gd-sec fond-tuffeau lumiere" id="construction">
+    <div class="gd-in">
+      <div class="gd-sec-tete"><div class="gd-lab t-etq"><b>2.3</b>La construction</div>
+        <h2 class="gd-h2">Un creux de 65,77 sur 73,19.</h2>
+        <p class="gd-intro">Pour une capitale de 100. Le fond du creux est arrondi comme le fond d’un verre, ses deux lèvres sont adoucies, le vin monte le long des parois. L’interlettre est corrigée à l’œil. Toutes les cotes sont lues dans <code>Marque.CONSTRUCTION</code>.</p></div>
+      <div class="gd-constr">
+        <div class="gd-constr-vu gd-papier" id="constr-vu" role="img" aria-label="Les deux L soudés, cotés : fût, pied, creux, rayons et ménisque."></div>
+        <dl class="gd-cotes" id="cotes"></dl>
+      </div>
+      <div class="gd-papier gd-constr-vu" style="margin-top:22px" id="constr-mot" role="img" aria-label="Le logotype entier et ses interlettres."></div>
+    </div>
+  </section>
+
+  <section class="gd-sec fond-craie lumiere" id="echelles">
+    <div class="gd-in">
+      <div class="gd-sec-tete"><div class="gd-lab t-etq"><b>2.4</b>Trois échelles de détail</div>
+        <h2 class="gd-h2">Plus il est grand, plus le vin a de détails.</h2>
+        <p class="gd-intro">Moins de 32 px : un aplat, le vin en bloc détaché des parois. De 32 à 200 px : deux couleurs, avec le ménisque. Au-delà : le disque clair sous la surface, la lie au fond, trois bulles. Faites glisser : le logo s’affiche à la taille exacte et dit quel fichier prendre.</p></div>
+      <div class="gd-echelle">
+        <div class="gd-echelle-vu gd-papier" id="ech-vu" role="img"></div>
+        <div>
+          <label class="gd-curseur"><span class="gd-vh">Hauteur affichée du logo, en pixels</span><input type="range" id="ech-px" min="12" max="320" step="1" value="120"><output id="ech-o" for="ech-px">120 px</output></label>
+          <div class="gd-paliers" id="paliers"></div>
+          <p class="gd-note" style="margin-top:16px">Mesure prise sur la hauteur affichée du symbole et des capitales.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gd-sec fond-tuffeau lumiere" id="protection">
+    <div class="gd-in">
+      <div class="gd-sec-tete"><div class="gd-lab t-etq"><b>2.5</b>Zone de protection et tailles minimales</div>
+        <h2 class="gd-h2">La largeur du creux, tout autour.</h2>
+        <p class="gd-intro">Logotype, penché et version complète : la largeur du creux sur les quatre côtés, soit 0,66 fois la hauteur des capitales. Symbole : la moitié de sa largeur. Rien n’y entre, ni texte, ni image, ni bord de page.</p></div>
+      <div class="gd-zone">
+        <div class="gd-papier" id="zone-mot" role="img" aria-label="Le logotype dans sa zone de protection : la largeur du creux tout autour."></div>
+        <div class="gd-papier" id="zone-sym" role="img" aria-label="Le symbole dans sa zone de protection : la moitié de sa largeur tout autour."></div>
+      </div>
+      <div class="gd-sec-tete" style="margin:clamp(36px,5vw,56px) 0 18px"><h3 class="gd-h3" style="color:var(--bleu)">Tailles minimales, montrées à la taille exacte</h3></div>
+      <div class="gd-tailles" id="tailles"></div>
+    </div>
+  </section>
+
+  <section class="gd-sec fond-bleu lumiere" id="complete">
+    <div class="gd-in gd-tete-split">
+      <div>
+        <div class="gd-lab t-etq"><b>2.6</b>La version complète</div>
+        <h2 class="gd-h2">Pour se présenter à qui ne connaît pas Sillon.</h2>
+        <p class="gd-intro">La devanture, une carte, le colis, le pied d’une affiche posée hors du quartier. Partout ailleurs, le logotype seul. Elle ne descend pas sous 120 px ou 32 mm de large, pour que le descripteur se lise.</p>
+      </div>
+      <div id="complete-vu" role="img" aria-label="La version complète : le logotype et « Cave à vins, nature, Nantes » sur trois lignes."></div>
+    </div>
+  </section>
+
+  <section class="gd-sec fond-craie lumiere" id="interdits">
+    <div class="gd-in">
+      <div class="gd-sec-tete"><div class="gd-lab t-etq"><b>2.7</b>Ce qu’on ne fait pas</div>
+        <h2 class="gd-h2">À gauche ce qu’on fait, à droite ce qu’on ne fait pas.</h2>
+        <p class="gd-intro">Quatre gestes sur le logo. Les quatre gestes sur la pente sont au chapitre du kit.</p></div>
+      <div class="gd-paires" id="paires-logo"></div>
+    </div>
+  </section>
+  <nav class="pager gd-pager" data-pager aria-label="Chapitre précédent et suivant"></nav>
+</div>
+
+<!-- ============================================================ 03 · LES COULEURS -->
+<div class="page" id="couleurs" data-title="Les couleurs" data-subs="matieres:Huit couleurs, en matière|echelles-c:Cinq tons chacune|proportions:Proportions|contraste:Contrastes|croisements:Deux jus qui se croisent|lumiere:La lumière">
+  <header class="gd-tete fond-cave lumiere">
+    <div class="gd-tete-split">
+      <div>
+        <span class="t-etq gd-k">03 · Les couleurs</span>
+        <h1 class="gd-h1" tabindex="-1">Huit couleurs, dont trois jus.</h1>
+        <p class="gd-lead">Une couleur de Sillon n’est jamais un aplat. Le bleu est un sergé, la veste du caviste. Le tuffeau est un papier ou une pierre de cave de Loire. Un jus va du disque à la lie, et n’existe que dans un creux.</p>
+      </div>
+      <div id="couleurs-tete" aria-hidden="true" style="display:flex;justify-content:center"></div>
+    </div>
+  </header>
+
+  <section class="gd-sec fond-cave gd-meme" id="matieres">
+    <div class="gd-in">
+      <div class="gd-sec-tete"><div class="gd-lab t-etq"><b>3.1</b>Huit couleurs, en matière</div>
+        <h2 class="gd-h2">Cliquez pour copier le code.</h2>
+        <p class="gd-intro">Le contraste indiqué est celui du texte qu’on pose dessus, calculé ici même selon les WCAG (<code>Marque.contraste</code>).</p></div>
+      <div class="gd-surfaces" id="surfaces"></div>
+      <div class="gd-jus3" id="jus3"></div>
+    </div>
+  </section>
+
+  <section class="gd-sec fond-tuffeau lumiere" id="echelles-c">
+    <div class="gd-in">
+      <div class="gd-sec-tete"><div class="gd-lab t-etq"><b>3.2</b>Cinq tons chacune</div>
+        <h2 class="gd-h2">Le bleu de la nuit au lavé, la pierre de la taille à l’ombre.</h2>
+        <p class="gd-intro">Les échelles servent la matière : l’ombre d’un pli, la lie d’un jus, le côté d’une pierre. Elles ne font pas de nouvelles couleurs de fond.</p></div>
+      <div class="gd-echelles" id="echelles-l"></div>
+    </div>
+  </section>
+
+  <section class="gd-sec fond-bleu lumiere" id="proportions">
+    <div class="gd-in">
+      <div class="gd-sec-tete"><div class="gd-lab t-etq"><b>3.3</b>Les proportions sur une pièce</div>
+        <h2 class="gd-h2">Deux tiers, un quart, moins d’un dixième.</h2>
+        <p class="gd-intro">Le bleu ou le tuffeau porte la pièce. L’autre fait le texte et les papiers. Les jus restent sous un dixième de la surface, puisqu’un jus n’existe que dans un creux.</p></div>
+      <div class="gd-prop" id="prop" role="img" aria-label="Le bleu, deux tiers ; le tuffeau, un quart ; les trois jus, moins d’un dixième."></div>
+      <div class="gd-prop-leg"><div><b>≈ 2/3</b>Le bleu ou le tuffeau : il porte la pièce.</div><div><b>≈ 1/4</b>L’autre : le texte, les papiers.</div><div><b>&lt; 1/10</b>Les jus.</div></div>
+    </div>
+  </section>
+
+  <section class="gd-sec fond-tuffeau lumiere" id="contraste">
+    <div class="gd-in">
+      <div class="gd-sec-tete"><div class="gd-lab t-etq"><b>3.4</b>Contrastes</div>
+        <h2 class="gd-h2">Choisissez un texte et un fond.</h2>
+        <p class="gd-intro">Le rapport est calculé selon les WCAG 2.1 : 4,5 pour le texte courant, 3 pour les grands titres. La règle de la marque s’ajoute : <b>aucun jus ne sert de couleur de texte</b>.</p></div>
+      <div class="gd-testeur gd-papier">
+        <div class="gd-reglage">
+          <label><span class="t-etq">Le texte</span><select id="ct-texte"></select></label>
+          <label><span class="t-etq">Le fond</span><select id="ct-fond"></select></label>
+          <button class="gd-bt gd-creux gd-petit" type="button" id="ct-inv">Inverser</button>
+        </div>
+        <div class="gd-testeur-vu" id="ct-vu"><span class="t-sous">Jeudi, on goûte.</span><span>Une cave à vins nature, une dégustation le jeudi soir, trois bouteilles par mois.</span></div>
+        <div aria-live="polite"><div class="gd-testeur-r" id="ct-r"></div><div class="gd-verdict" id="ct-v"></div></div>
+      </div>
+      <div class="gd-mesures" id="mesures"></div>
+    </div>
+  </section>
+
+  <section class="gd-sec fond-craie lumiere" id="croisements">
+    <div class="gd-in">
+      <div class="gd-sec-tete"><div class="gd-lab t-etq"><b>3.5</b>Deux jus qui se croisent</div>
+        <h2 class="gd-h2">Deux encres l’une sur l’autre font une robe.</h2>
+        <p class="gd-intro">Comme deux ombres de bouteille sur la nappe. Les trois croisements portent des noms de robe. Cliquez pour copier.</p></div>
+      <div class="gd-crois" id="crois"></div>
+    </div>
+  </section>
+
+  <section class="gd-sec fond-tuffeau lumiere" id="lumiere">
+    <div class="gd-in">
+      <div class="gd-sec-tete"><div class="gd-lab t-etq"><b>3.6</b>La lumière</div>
+        <h2 class="gd-h2">Elle vient d’en haut à gauche, partout.</h2>
+        <p class="gd-intro">Sur un fond, sur le bord des lettres, dans les ombres portées : une seule source. Un fond sans sa lumière paraît imprimé à plat.</p></div>
+      <div class="gd-lum" id="lum"></div>
+    </div>
+  </section>
+  <nav class="pager gd-pager" data-pager aria-label="Chapitre précédent et suivant"></nav>
+</div>
+
+<!-- ============================================================ 04 · ÉCRIRE -->
+<div class="page" id="ecrire" data-title="Écrire" data-subs="remplisseur:Le titre à verres|regles-titre:Trois règles|polices:Deux polices, quatre styles|prets:Les titres prêts|nombres:Les nombres et les signes">
+  <header class="gd-tete fond-blanc lumiere">
+    <div class="gd-tete-centre">
+      <span class="t-etq gd-k">04 · Écrire</span>
+      <h1 class="gd-h1" tabindex="-1">Le mot devient un rang de verres.</h1>
+      <p class="gd-lead">Les titres sont en capitales serrées à 62,5 %. Les lettres qui peuvent tenir du vin, le U et le V, s’élargissent à 150 % : ce sont les verres du mot, et le moteur de la marque les remplit.</p>
+    </div>
+  </header>
+
+  <section class="gd-sec fond-blanc gd-meme" id="remplisseur">
+    <div class="gd-in">
+      <div class="gd-sec-tete"><div class="gd-lab t-etq"><b>4.1</b>Le titre à verres</div>
+        <h2 class="gd-h2">Tapez une phrase, le moteur la remplit et la mesure.</h2>
+        <p class="gd-intro">Les U et les V deviennent des verres, deux par mot au plus. Pour choisir vous-même, mettez la lettre entre crochets : « JE[U]DI ». Un U large, droit et plein à ras bord fait un verre de dégustation : 12,5 cl.</p></div>
+      <div class="gd-remp">
+        <div class="gd-reglage">
+          <label class="gd-champ"><span class="t-etq">La phrase</span><input type="text" id="r-txt" maxlength="34" value="Du jus." autocomplete="off" spellcheck="false" aria-describedby="r-forme"></label>
+          <div class="gd-forme" id="r-forme"><code id="r-code"></code><button class="gd-bt gd-creux gd-petit" type="button" id="r-copier">Copier</button></div>
+          <div><span class="t-etq">Le jus</span><div class="gd-choix" id="r-jus" role="group" aria-label="Le jus"></div></div>
+          <div><span class="t-etq">Le support</span><div class="gd-choix" id="r-mode" role="group" aria-label="Le support"></div></div>
+          <label class="gd-curseur"><span class="gd-vh">La pente du mot</span><span style="display:flex;flex-direction:column;gap:6px"><span class="t-etq">La pente</span><input type="range" id="r-angle" min="-12" max="12" step="1" value="0" aria-valuetext="0 degré"></span><output id="r-angle-o" for="r-angle">0°</output></label>
+          <div class="gd-controle" id="r-controle" aria-live="polite"></div>
+        </div>
+        <div class="gd-remp-vu fond-blanc lumiere" id="r-vu" aria-busy="false">
+          <div class="gd-remp-scene"><canvas id="r-cv" role="img" aria-label=""></canvas></div>
+          <div class="gd-remp-mes" aria-live="polite"><b id="r-cl">0 cl</b><p id="r-mes"></p></div>
+          <span class="gd-remp-occ t-etq">On verse…</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gd-sec fond-tuffeau lumiere" id="regles-titre">
+    <div class="gd-in">
+      <div class="gd-sec-tete"><div class="gd-lab t-etq"><b>4.2</b>Trois règles</div>
+        <h2 class="gd-h2">Un verre, deux au plus. Un point toujours.</h2></div>
+      <div class="gd-regles3" id="regles3"></div>
+    </div>
+  </section>
+
+  <section class="gd-sec fond-blanc lumiere" id="polices">
+    <div class="gd-in">
+      <div class="gd-sec-tete"><div class="gd-lab t-etq"><b>4.3</b>Deux polices, quatre styles</div>
+        <h2 class="gd-h2">Anybody parle, Hanken Grotesk explique.</h2>
+        <p class="gd-intro">Anybody a deux axes, la graisse et la largeur : c’est la largeur qui fait la marque. Hanken Grotesk porte le texte courant et le descripteur du logo. Aucune police à chasse fixe chez Sillon.</p></div>
+      <div class="gd-styles" id="styles"></div>
+      <div class="gd-largeur">
+        <div><div class="gd-largeur-vu" id="larg-vu" aria-hidden="true">Glou</div></div>
+        <div>
+          <label class="gd-curseur"><span class="gd-vh">Largeur d’Anybody, en pour cent</span><span style="display:flex;flex-direction:column;gap:6px"><span class="t-etq">La largeur d’Anybody</span><input type="range" id="larg" min="50" max="150" step="2.5" value="62.5" aria-valuetext="62,5 pour cent"></span><output id="larg-o" for="larg">62,5 %</output></label>
+          <div class="gd-reperes"><span>50</span><span>62,5 · le mot</span><span>150 · le verre</span></div>
+          <p class="gd-note" style="margin-top:14px">Deux largeurs seulement dans un titre : 62,5 % pour les lettres, 150 % pour les verres.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gd-sec fond-craie lumiere" id="prets">
+    <div class="gd-in">
+      <div class="gd-sec-tete"><div class="gd-lab t-etq"><b>4.4</b>Les titres prêts</div>
+        <h2 class="gd-h2">Dix titres de la marque, déjà écrits.</h2>
+        <p class="gd-intro">Cliquez sur un titre pour le verser dans le remplisseur. Ils sont à faire valider par le fondateur, comme toutes les phrases.</p></div>
+      <div class="gd-prets" id="prets-l"></div>
+    </div>
+  </section>
+
+  <section class="gd-sec fond-tuffeau lumiere" id="nombres">
+    <div class="gd-in">
+      <div class="gd-sec-tete"><div class="gd-lab t-etq"><b>4.5</b>Les nombres et les signes</div>
+        <h2 class="gd-h2">Le degré s’écrit de deux façons.</h2></div>
+      <div class="gd-nombres" id="nombres-l"></div>
+    </div>
+  </section>
+  <nav class="pager gd-pager" data-pager aria-label="Chapitre précédent et suivant"></nav>
+</div>
+
+<!-- ============================================================ 05 · LE KIT -->
+<div class="page" id="kit" data-title="Le kit" data-subs="sept:Sept éléments|abecedaire:L’abécédaire à ras bord|service:Le creux rempli|pente:Douze degrés|contre:La contre-étiquette">
+  <header class="gd-tete fond-craie lumiere">
+    <div class="gd-tete-split">
+      <div>
+        <span class="t-etq gd-k">05 · Le kit</span>
+        <h1 class="gd-h1" tabindex="-1">Sans le nom, on reconnaît Sillon.</h1>
+        <p class="gd-lead">Sept éléments, tous tirés de l’idée : un creux qu’on remplit, et qui penche sans renverser. Retirez le logo d’une pièce, ils doivent suffire.</p>
+      </div>
+      <div class="gd-panneau fond-bleu lumiere" style="display:grid;place-items:center;min-height:260px" aria-hidden="true"><canvas id="kit-tete"></canvas></div>
+    </div>
+  </header>
+
+  <section class="gd-sec fond-craie gd-meme" id="sept">
+    <div class="gd-in">
+      <div class="gd-sec-tete"><div class="gd-lab t-etq"><b>5.1</b>Sept éléments</div>
+        <h2 class="gd-h2">Ce que c’est, d’où ça vient, quand s’en servir.</h2></div>
+      <div class="gd-bento" id="bento"></div>
+    </div>
+  </section>
+
+  <section class="gd-sec fond-tuffeau lumiere" id="abecedaire">
+    <div class="gd-in">
+      <div class="gd-sec-tete"><div class="gd-lab t-etq"><b>5.2</b>La pièce maîtresse</div>
+        <h2 class="gd-h2">L’abécédaire à ras bord.</h2>
+        <p class="gd-intro">Le moteur remplit chaque lettre de ce qu’elle peut physiquement tenir, et le mesure. Cliquez sur une lettre. Les contre-formes fermées (O, D, A, B, P, R) ne se remplissent jamais : une bouteille bouchée ne se remplit pas. C’est la seule pièce où tout est plein.</p></div>
+      <div class="gd-abc gd-papier">
+        <div class="gd-abc-vu" id="abc-vu"></div>
+        <div class="gd-abc-lu fond-bleu lumiere" aria-live="polite" id="abc-lu">
+          <div style="position:relative;z-index:2"><span class="t-etq">La lettre</span><div class="gd-abc-l" id="abc-l">U</div></div>
+          <div style="position:relative;z-index:2"><div class="gd-abc-cl" id="abc-cl"></div><p id="abc-dit" style="margin-top:10px;font-size:15px"></p></div>
+          <div class="gd-abc-tot" style="position:relative;z-index:2" id="abc-tot"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gd-sec fond-craie lumiere" id="service">
+    <div class="gd-in gd-service">
+      <div class="gd-service-vu fond-bleu lumiere" id="service-vu" role="img" aria-label="Un service de verres, chacun penché à sa façon, chaque surface horizontale."><canvas id="service-cv"></canvas></div>
+      <div>
+        <div class="gd-lab t-etq"><b>5.3</b>Le creux rempli</div>
+        <h2 class="gd-h2">Chaque verre penche à sa façon.</h2>
+        <p class="gd-intro">C’est l’unité de la marque : la puce, le motif, l’avatar. Toutes les surfaces sont horizontales, c’est ce qui fait le motif. Deux verres qui se touchent ferment un creux et le moteur le remplit : on garde un écart entre eux.</p>
+        <div class="gd-rang" style="margin-top:22px"><button class="gd-bt gd-creux" type="button" id="servir">Servir autrement</button><span class="gd-note" id="servi" aria-live="polite"></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gd-sec fond-bleu lumiere" id="pente">
+    <div class="gd-in">
+      <div class="gd-sec-tete"><div class="gd-lab t-etq"><b>5.4</b>Douze degrés</div>
+        <h2 class="gd-h2">Tout penche de 12<i class="deg"></i>, le vin jamais.</h2>
+        <p class="gd-intro">Le degré d’un vin de soif. Un mot, un logo, un cadre : ±12°. On tourne, on ne cisaille pas.</p></div>
+      <div class="gd-paires" id="paires-pente"></div>
+    </div>
+  </section>
+
+  <section class="gd-sec fond-tuffeau lumiere" id="contre">
+    <div class="gd-in">
+      <div class="gd-sec-tete"><div class="gd-lab t-etq"><b>5.5</b>La contre-étiquette</div>
+        <h2 class="gd-h2">Le petit papier du dos, devenu la marge de chaque pièce.</h2>
+        <p class="gd-intro">Une par pièce, toujours droite, même quand tout penche autour. Elle mesure aussi les photos, et porte la mention sanitaire.</p></div>
+      <div class="gd-ce-anat"><div id="ce-vu"></div><div class="gd-ce-l" id="ce-l"></div></div>
+    </div>
+  </section>
+  <nav class="pager gd-pager" data-pager aria-label="Chapitre précédent et suivant"></nav>
+</div>
+
+<!-- ============================================================ 06 · L'IMAGE -->
+<div class="page" id="image" data-title="L’image" data-subs="niveau:L’image à niveau|photos:Douze photos|habiller:Habiller une photo|regles-image:Ce qu’on fait, ce qu’on ne fait pas">
+  <header class="gd-tete fond-cave lumiere">
+    <div class="gd-tete-centre">
+      <span class="t-etq gd-k">06 · L’image</span>
+      <h1 class="gd-h1" tabindex="-1">Une photo se remplit jusqu’à une ligne.</h1>
+      <p class="gd-lead">Flash direct, ombres dures, du bleu partout. Les photos montrent des objets vierges : la marque y est posée par le code, dans les pixels de la photo. Et chaque photo peut se remplir d’un jus jusqu’à un niveau qui ne penche jamais.</p>
+    </div>
+  </header>
+
+  <section class="gd-sec fond-cave gd-meme" id="niveau">
+    <div class="gd-in">
+      <div class="gd-sec-tete"><div class="gd-lab t-etq"><b>6.1</b>L’image à niveau</div>
+        <h2 class="gd-h2">Sous la ligne, on voit à travers un jus.</h2>
+        <p class="gd-intro">Glissez sur la photo, ou réglez le niveau. Penchez le cadre : la fenêtre tourne, la photo et sa ligne restent d’aplomb.</p></div>
+      <div class="gd-niv">
+        <div class="gd-niv-vu fond-bleu lumiere" id="niv-vu" role="img" aria-label=""></div>
+        <div class="gd-reglage">
+          <div><span class="t-etq">La photo</span><div class="gd-photos" id="niv-photos" role="group" aria-label="Choisir une photo"></div></div>
+          <div><span class="t-etq">Le traitement</span><div class="gd-choix" id="niv-mode" role="group" aria-label="Le traitement"></div></div>
+          <div id="niv-jus-z"><span class="t-etq">Le jus</span><div class="gd-choix" id="niv-jus" role="group" aria-label="Le jus"></div></div>
+          <label class="gd-curseur" id="niv-z"><span style="display:flex;flex-direction:column;gap:6px"><span class="t-etq">Le niveau</span><input type="range" id="niv-n" min="0" max="100" step="1" value="50" aria-valuetext="50 pour cent"></span><output id="niv-o" for="niv-n">50 %</output></label>
+          <div><span class="t-etq">Le cadre</span><div class="gd-choix" id="niv-cadre" role="group" aria-label="Le cadre"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gd-sec fond-tuffeau lumiere" id="photos">
+    <div class="gd-in">
+      <div class="gd-sec-tete"><div class="gd-lab t-etq"><b>6.2</b>Douze photos</div>
+        <h2 class="gd-h2">Des objets vierges, au flash.</h2>
+        <p class="gd-intro">Générées pour le projet, sans droit de tiers. Elles ne sont jamais présentées comme des photos réelles. Aucune autre image ne se génère sans accord.</p></div>
+      <div class="gd-douze" id="douze"></div>
+    </div>
+  </section>
+
+  <section class="gd-sec fond-bleu lumiere" id="habiller">
+    <div class="gd-in">
+      <div class="gd-sec-tete"><div class="gd-lab t-etq"><b>6.3</b>Habiller une photo</div>
+        <h2 class="gd-h2">La marque est posée dans les pixels de la photo.</h2>
+        <p class="gd-intro">On ne demande jamais au générateur d’écrire. On relève les coordonnées sur la photo à sa taille réelle, puis le socle pose l’étiquette sur le verre, brode le dos de la veste, plaque l’affiche sur le mur, en reprenant les ombres et les éclats.</p></div>
+      <div class="gd-habille" id="habille"></div>
+    </div>
+  </section>
+
+  <section class="gd-sec fond-craie lumiere" id="regles-image">
+    <div class="gd-in">
+      <div class="gd-sec-tete"><div class="gd-lab t-etq"><b>6.4</b>Ce qu’on fait, ce qu’on ne fait pas</div>
+        <h2 class="gd-h2">Brut, à niveau, en robe.</h2></div>
+      <div class="gd-faire">
+        <div class="gd-papier"><span class="t-etq" style="color:var(--bleu)">On fait</span><ul>
+          <li>Garder le grain : la photo brute n’est jamais lissée.</li>
+          <li>Trois traitements seulement : brut, à niveau, en robe (deux tons, du bleu de travail au tuffeau).</li>
+          <li>Poser le logo sur une zone calme (le sergé, un mur, un ciel), en lettres tuffeau. Dans le doute, la contre-étiquette porte le nom.</li>
+          <li>Faire tenir un texte posé sur un objet dans l’objet, marge comprise.</li></ul></div>
+        <div class="gd-papier gd-pas"><span class="t-etq" style="color:var(--bleu)">On ne fait pas</span><ul>
+          <li>Pencher la ligne de niveau, même dans un cadre penché.</li>
+          <li>Poser le logo sur un visage ou sur un verre.</li>
+          <li>Montrer l’ouvre-bouteille de la photo « comptoir » : il reste hors champ.</li>
+          <li>Présenter une photo générée comme une photo réelle, ou en générer une autre sans accord.</li></ul></div>
+      </div>
+    </div>
+  </section>
+  <nav class="pager gd-pager" data-pager aria-label="Chapitre précédent et suivant"></nav>
+</div>
+
+<!-- ============================================================ 07 · LE MOUVEMENT -->
+<div class="page" id="mouvement" data-title="Le mouvement" data-subs="regle-mvt:La règle|gestes:Deux gestes, deux durées|jamais:Jamais|videos:Les huit vidéos">
+  <header class="gd-tete fond-bleu lumiere" id="regle-mvt">
+    <div class="gd-tete-centre">
+      <span class="t-etq gd-k">07 · Le mouvement</span>
+      <h1 class="gd-regle-mvt" tabindex="-1">Ça penche. Le vin reste d’aplomb.</h1>
+      <p class="gd-lead" style="color:var(--gd-doux)">On verse par le haut : le niveau monte. Un mot bascule de 12°. Au-delà, il se vide par son bord le plus bas. Tout le mouvement de la marque tient dans ces deux gestes.</p>
+    </div>
+  </header>
+
+  <section class="gd-sec fond-cave lumiere" id="gestes">
+    <div class="gd-in">
+      <div class="gd-sec-tete"><div class="gd-lab t-etq"><b>7.1</b>Deux gestes, deux durées</div>
+        <h2 class="gd-h2">On verse en 0,9 s. On bascule en 0,6 s.</h2>
+        <p class="gd-intro" id="gestes-intro">Rejouez chaque geste. La courbe utilisée ici est celle du socle, <code>Marque.ease</code> : elle part vite et se pose sans rebond.</p></div>
+      <div class="gd-gestes" id="gestes-l"></div>
+    </div>
+  </section>
+
+  <section class="gd-sec fond-bleu lumiere" id="jamais">
+    <div class="gd-in">
+      <div class="gd-sec-tete"><div class="gd-lab t-etq"><b>7.2</b>Jamais</div>
+        <h2 class="gd-h2">Trois mouvements qui trahiraient le vin.</h2></div>
+      <div class="gd-jamais">
+        <div><h3 class="gd-h3">De fondu sur le vin.</h3><p>Le vin ne s’efface pas et n’apparaît pas : il monte, il descend, il se vide.</p></div>
+        <div><h3 class="gd-h3">De vin qui tourne avec sa lettre.</h3><p>Quand le mot penche, la surface reste horizontale. Toujours.</p></div>
+        <div><h3 class="gd-h3">De rebond.</h3><p>Un liquide se pose. Il ne rebondit pas, il ne déborde pas pour l’effet.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gd-sec fond-cave lumiere" id="videos">
+    <div class="gd-in">
+      <div class="gd-sec-tete"><div class="gd-lab t-etq"><b>7.3</b>Les huit vidéos</div>
+        <h2 class="gd-h2">Le logo, les stories, l’abécédaire, le film.</h2>
+        <p class="gd-intro" id="videos-intro">Elles jouent quand elles sont à l’écran, sans le son (elles n’en ont pas).</p></div>
+      <div class="gd-films" id="films"></div>
+    </div>
+  </section>
+  <nav class="pager gd-pager" data-pager aria-label="Chapitre précédent et suivant"></nav>
+</div>
+
+<!-- ============================================================ 08 · EN SITUATION -->
+<div class="page" id="situation" data-title="En situation" data-subs="galerie:Les pièces|voir:Tout voir d’un trait">
+  <header class="gd-tete fond-tuffeau lumiere">
+    <div class="gd-tete-centre">
+      <span class="t-etq gd-k">08 · En situation</span>
+      <h1 class="gd-h1" tabindex="-1">La marque sur le trottoir, au comptoir, dans le colis.</h1>
+      <p class="gd-lead" id="situation-lead">Les pièces de l’étude de cas : photos habillées, objets, scènes en volume, planches de système, vidéos. Filtrez, cliquez pour agrandir, naviguez avec les flèches du clavier.</p>
+    </div>
+  </header>
+
+  <section class="gd-sec fond-tuffeau gd-meme" id="galerie">
+    <div class="gd-in">
+      <div class="gd-choix gd-filtres" id="filters" role="group" aria-label="Filtrer par section"></div>
+      <div class="gd-gal" id="gal"></div>
+    </div>
+  </section>
+
+  <section class="gd-sec fond-craie lumiere" id="voir">
+    <div class="gd-in">
+      <div class="gd-sec-tete"><div class="gd-lab t-etq"><b>8.2</b>Tout voir d’un trait</div>
+        <h2 class="gd-h2">L’étude de cas et la fiche de marque.</h2></div>
+      <div class="gd-voir">
+        <a class="gd-papier" href="etude-de-cas.html"><div><span class="t-etq">Défilement</span><h3>L’étude de cas <span data-fleche></span></h3><p class="gd-note" id="voir-etude"></p></div><img src="media/vignettes/12-le-dos-de-la-veste.jpg" alt="" loading="lazy"></a>
+        <a class="gd-papier" href="presentation.html"><div><span class="t-etq">Pages</span><h3>La fiche de marque <span data-fleche></span></h3><p class="gd-note" id="voir-fiche"></p></div><img src="deck/01.jpg" alt="" loading="lazy"></a>
+      </div>
+    </div>
+  </section>
+  <nav class="pager gd-pager" data-pager aria-label="Chapitre précédent et suivant"></nav>
+</div>
+
+<!-- ============================================================ 09 · FAIRE UNE ANNONCE -->
+<div class="page" id="annonce" data-title="Faire une annonce" data-subs="modeles:Quatre modèles|zone:Deux formats, une zone sûre|mention:La mention sanitaire|outil:L’outil|avant:Avant de publier">
+  <header class="gd-tete fond-cave lumiere">
+    <div class="gd-tete-centre">
+      <span class="t-etq gd-k">09 · Faire une annonce</span>
+      <h1 class="gd-h1" tabindex="-1">Chaque jeudi, une annonce.</h1>
+      <p class="gd-lead">Quatre modèles prêts. On change les mots, le jus, la photo ; la mise en page, le verre et la mention restent. C’est ce que le fondateur refera seul, chaque semaine.</p>
+    </div>
+  </header>
+
+  <section class="gd-sec fond-cave gd-meme" id="modeles">
+    <div class="gd-in">
+      <div class="gd-outils">
+        <div><span class="t-etq">Le modèle</span><div class="gd-choix" id="md-m" role="group" aria-label="Le modèle"></div></div>
+        <div><span class="t-etq">Le format</span><div class="gd-choix" id="md-f" role="group" aria-label="Le format"></div></div>
+        <div><span class="t-etq">La variante</span><div class="gd-choix" id="md-v" role="group" aria-label="La variante"></div></div>
+      </div>
+      <div class="gd-modeles">
+        <div class="gd-modele-vu fond-craie lumiere"><div class="gd-modele-cadre" id="md-cadre"><img id="md-img" alt="" width="720" height="900"><div class="gd-zone-sure" id="md-zone" aria-hidden="true"></div></div></div>
+        <div class="gd-modele-txt">
+          <div><div class="gd-lab t-etq"><b>9.1</b>Quatre modèles</div><h2 class="gd-h2" id="md-titre"></h2></div>
+          <dl id="md-dl"></dl>
+          <label class="gd-choix" style="gap:10px;align-items:center"><button type="button" id="md-zone-bt" aria-pressed="false">Montrer la zone sûre</button></label>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gd-sec fond-tuffeau lumiere" id="zone">
+    <div class="gd-in">
+      <div class="gd-sec-tete"><div class="gd-lab t-etq"><b>9.2</b>Deux formats, une zone sûre</div>
+        <h2 class="gd-h2">Rien d’important hors des pointillés.</h2>
+        <p class="gd-intro">En story, le réseau couvre le haut et le bas de l’image avec son interface. Les marges sont en pixels, pour un fichier de 1080 px de large.</p></div>
+      <div class="gd-tab"><table>
+        <thead><tr><th scope="col">Format</th><th scope="col">Fichier</th><th scope="col">En haut</th><th scope="col">En bas</th><th scope="col">Sur les côtés</th></tr></thead>
+        <tbody><tr><th scope="row">Publication 4:5</th><td>1080 × 1350 px</td><td>64 px</td><td>64 px</td><td>64 px</td></tr>
+        <tr><th scope="row">Story 9:16</th><td>1080 × 1920 px</td><td>250 px</td><td>340 px</td><td>64 px</td></tr></tbody></table></div>
+    </div>
+  </section>
+
+  <section class="gd-sec fond-craie lumiere" id="mention">
+    <div class="gd-in gd-mention">
+      <div id="mention-ce"></div>
+      <div>
+        <div class="gd-lab t-etq"><b>9.3</b>La mention sanitaire</div>
+        <h2 class="gd-h2">Une contre-étiquette par annonce.</h2>
+        <p class="gd-intro">Toujours droite. Elle dit le jus et la contenance ; sa dernière ligne porte la mention sanitaire, obligatoire en France sur toute publicité pour une boisson alcoolisée :</p>
+        <p class="gd-mention-t" id="mention-t"></p>
+        <p class="gd-note">En corps de 22 px au moins dans un fichier de 1080 px. Sur une affiche ou une carte, elle va au pied.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="gd-sec fond-bleu lumiere" id="outil">
+    <div class="gd-in gd-outil">
+      <img src="guide-media/capture-jeudi.png" alt="L’outil ouvert : à gauche les réglages (la photo, le niveau, le fond, la contre-étiquette, le format), à droite l’annonce du jeudi en 4:5." loading="lazy" width="900" height="563">
+      <div>
+        <div class="gd-lab t-etq"><b>9.4</b>L’outil</div>
+        <h2 class="gd-h2">Taper, choisir, exporter.</h2>
+        <p class="gd-intro">Le remplisseur d’annonces vit dans le dossier du projet, pas sur ce site : il a besoin de Node.js et de Chrome sur le poste.</p>
+        <ol class="gd-etapes">
+          <li>Ouvrir <code>outil/ouvrir.bat</code>.</li>
+          <li>Taper la phrase : elle reçoit ses capitales et ses verres.</li>
+          <li>Choisir le modèle, le jus, la photo et le format.</li>
+          <li>Exporter un PNG de 1080 × 1350 ou de 1080 × 1920.</li>
+        </ol>
+        <p class="gd-note" style="margin-top:14px">Mode d’emploi : <code>outil/LISEZMOI.md</code>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="gd-sec fond-tuffeau lumiere" id="avant">
+    <div class="gd-in">
+      <div class="gd-sec-tete"><div class="gd-lab t-etq"><b>9.5</b>Avant de publier</div>
+        <h2 class="gd-h2">Six cases à cocher.</h2>
+        <p class="gd-intro">Une liste pour soi : rien n’est enregistré.</p></div>
+      <div class="gd-cases" id="cases"></div>
+    </div>
+  </section>
+  <nav class="pager gd-pager" data-pager aria-label="Chapitre précédent et suivant"></nav>
+</div>
+
+<!-- ============================================================ 10 · RESSOURCES -->
+<div class="page" id="ressources" data-title="Ressources" data-subs="tout:Tout télécharger|logos:Les 24 logos|videos-dl:Les huit vidéos|polices-dl:Les polices|variables:Les couleurs en CSS|mentions:Mentions et crédits">
+  <header class="gd-tete fond-bleu lumiere">
+    <div class="gd-tete-split">
+      <div>
+        <span class="t-etq gd-k">10 · Ressources</span>
+        <h1 class="gd-h1" tabindex="-1">Tout ce qu’il faut, sans rien redessiner.</h1>
+        <p class="gd-lead">Ce qu’on transmet à un imprimeur ou à un graphiste : les logos, les polices et leur licence, la fiche de marque. Et pour les réseaux : le kit et les vidéos.</p>
+      </div>
+      <div id="ressources-ce" style="display:flex;justify-content:center"></div>
+    </div>
+  </header>
+
+  <section class="gd-sec fond-tuffeau lumiere" id="tout">
+    <div class="gd-in">
+      <div class="gd-sec-tete"><div class="gd-lab t-etq"><b>10.1</b>Tout télécharger</div>
+        <h2 class="gd-h2">Quatre paquets.</h2></div>
+      <div class="gd-dl" id="paquets"></div>
+    </div>
+  </section>
+
+  <section class="gd-sec fond-craie lumiere" id="logos">
+    <div class="gd-in">
+      <div class="gd-sec-tete"><div class="gd-lab t-etq"><b>10.2</b>Les 24 logos</div>
+        <h2 class="gd-h2">Huit versions, trois couleurs, un par un.</h2>
+        <p class="gd-intro">Le nom dit tout : <code>sillon-&lt;version&gt;-&lt;couleur&gt;.svg</code>. Sans suffixe : un aplat, sous 32 px. <b>-jus</b> : deux couleurs, de 32 à 200 px. <b>-grand</b> : au-delà. La couleur est celle des lettres : bleu ou fond de cave sur le clair, tuffeau sur le bleu.</p></div>
+      <div class="gd-tab gd-papier" style="padding:6px 10px"><table><thead><tr id="logos-tete"></tr></thead><tbody id="logos-table"></tbody></table></div>
+    </div>
+  </section>
+
+  <section class="gd-sec fond-tuffeau lumiere" id="videos-dl">
+    <div class="gd-in">
+      <div class="gd-sec-tete"><div class="gd-lab t-etq"><b>10.3</b>Les huit vidéos</div>
+        <h2 class="gd-h2">En MP4, sans le son.</h2>
+        <p class="gd-intro">La mention sanitaire n’y a pas encore sa place décidée : à régler avant de les publier comme publicités.</p></div>
+      <div class="gd-videos-dl" id="videos-l"></div>
+    </div>
+  </section>
+
+  <section class="gd-sec fond-blanc lumiere" id="polices-dl">
+    <div class="gd-in">
+      <div class="gd-sec-tete"><div class="gd-lab t-etq"><b>10.4</b>Les polices</div>
+        <h2 class="gd-h2">Deux familles libres, sous licence OFL.</h2>
+        <p class="gd-intro">Elles se transmettent avec le texte de leur licence : il est dans l’archive. Les versions web sont variables ; les versions de bureau sont des instances fixes.</p></div>
+      <div class="gd-polices" id="polices-l"></div>
+    </div>
+  </section>
+
+  <section class="gd-sec fond-tuffeau lumiere" id="variables">
+    <div class="gd-in">
+      <div class="gd-sec-tete"><div class="gd-lab t-etq"><b>10.5</b>Les couleurs en CSS</div>
+        <h2 class="gd-h2">Lues dans le socle, toujours justes.</h2></div>
+      <div class="gd-code-bloc"><pre id="css-vars"></pre><button class="gd-bt gd-petit" type="button" id="css-copier" style="--gd-encre:var(--tuffeau);--gd-sur-encre:var(--cave)">Copier</button></div>
+    </div>
+  </section>
+
+  <section class="gd-sec fond-craie lumiere" id="mentions">
+    <div class="gd-in">
+      <div class="gd-sec-tete"><div class="gd-lab t-etq"><b>10.6</b>Mentions et crédits</div>
+        <h2 class="gd-h2">Une proposition, pas une marque déposée.</h2></div>
+      <div class="gd-mentions">
+        <div><h3>Une marque fictive</h3><p>Sillon est une marque fictive : une proposition de KLYRA, novembre 2026, écrite pour éprouver une méthode de direction artistique. Aucune cave de ce nom n’est représentée.</p></div>
+        <div><h3>Le nom</h3><p>Il n’a été vérifié ni à l’INPI, ni comme nom de domaine, ni comme compte de réseau.</p></div>
+        <div><h3>La loi Évin</h3><p>Toutes les phrases sont à faire relire au regard de la loi Évin avant toute diffusion, en particulier « Repartez à pied. », « Taches autorisées. », « À ras bord. » et « Glou. ». Toute annonce porte la mention sanitaire.</p></div>
+        <div><h3>Les photos</h3><p>Les douze photos de marque ont été générées pour le projet, avec l’accord du commanditaire, sans droit de tiers. Elles ne sont jamais présentées comme des photos réelles.</p></div>
+        <div><h3>Ce qui reste à valider</h3><p>La signature, toutes les phrases, le nom d’abonnement « Le Plein », les noms des couleurs. Les degrés des trois jus (12, 11, 10,5) sont des vraisemblances.</p></div>
+        <div><h3>Crédits</h3><p>Identité de marque : proposition de KLYRA, novembre 2026. Polices Anybody et Hanken Grotesk, licence SIL Open Font License 1.1. Ce site ne fait aucune requête vers l’extérieur et n’est pas indexé.</p></div>
+      </div>
+    </div>
+  </section>
+  <nav class="pager gd-pager" data-pager aria-label="Chapitre précédent et suivant"></nav>
+</div>
+
+<footer class="gd-pied fond-cave lumiere">
+  <div data-symbole aria-hidden="true"></div>
+  <div>
+    <p><b style="color:var(--tuffeau)">Sillon est une marque fictive.</b> Proposition de KLYRA, novembre 2026. Nom non vérifié (INPI, domaine, réseaux). Photos générées pour le projet. Phrases à faire relire au regard de la loi Évin avant toute diffusion.</p>
+    <p>L’abus d’alcool est dangereux pour la santé. À consommer avec modération.</p>
+  </div>
+  <span class="t-etq">Guide de marque · 2026</span>
+</footer>
+</main>
+
+<div class="gd-lb" id="lb" role="dialog" aria-modal="true" aria-label="Agrandissement" aria-hidden="true">
+  <div class="gd-lb-media" id="lb-m"></div>
+  <div class="gd-lb-leg"><span id="lb-leg"></span><span id="lb-n"></span></div>
+  <button class="gd-lb-bt gd-lb-prec" id="lb-prec" type="button" aria-label="Précédent"></button>
+  <button class="gd-lb-bt gd-lb-suiv" id="lb-suiv" type="button" aria-label="Suivant"></button>
+  <button class="gd-lb-bt gd-lb-fermer" id="lb-fermer" type="button" aria-label="Fermer"></button>
+</div>
+<div class="gd-toast" id="toast" role="status" aria-live="polite"></div>
+<script src="assets/guide.js"></script>
+</body>
+</html>

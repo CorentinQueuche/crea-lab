@@ -274,14 +274,94 @@
     {
       "file": "brands/drupe/projet/site/presentation.html",
       "target": "deck/drupe-guide-de-marque.pdf"
+    },
+    {
+      "file": "brands/sillon/20_WORKING/sillon/site/index.html",
+      "target": "favicon.svg"
+    },
+    {
+      "file": "brands/sillon/20_WORKING/sillon/site/index.html",
+      "target": "assets/marque.css"
+    },
+    {
+      "file": "brands/sillon/20_WORKING/sillon/site/index.html",
+      "target": "assets/marque.js"
+    },
+    {
+      "file": "brands/sillon/20_WORKING/sillon/site/index.html",
+      "target": "assets/matiere.js"
+    },
+    {
+      "file": "brands/sillon/20_WORKING/sillon/site/index.html",
+      "target": "assets/verse.js"
+    },
+    {
+      "file": "brands/sillon/20_WORKING/sillon/site/index.html",
+      "target": "assets/pages.js"
+    },
+    {
+      "file": "brands/sillon/20_WORKING/sillon/site/index.html",
+      "target": "assets/galerie.js"
+    },
+    {
+      "file": "brands/sillon/20_WORKING/sillon/site/index.html",
+      "target": "assets/fichiers.js"
+    },
+    {
+      "file": "brands/sillon/20_WORKING/sillon/site/index.html",
+      "target": "etude-de-cas.html"
+    },
+    {
+      "file": "brands/sillon/20_WORKING/sillon/site/index.html",
+      "target": "etude-de-cas.html"
+    },
+    {
+      "file": "brands/sillon/20_WORKING/sillon/site/index.html",
+      "target": "media/vignettes/12-le-dos-de-la-veste.jpg"
+    },
+    {
+      "file": "brands/sillon/20_WORKING/sillon/site/index.html",
+      "target": "deck/01.jpg"
+    },
+    {
+      "file": "brands/sillon/20_WORKING/sillon/site/index.html",
+      "target": "guide-media/capture-jeudi.png"
+    },
+    {
+      "file": "brands/sillon/20_WORKING/sillon/site/presentation.html",
+      "target": "favicon.svg"
+    },
+    {
+      "file": "brands/sillon/20_WORKING/sillon/site/presentation.html",
+      "target": "assets/marque.css"
+    },
+    {
+      "file": "brands/sillon/20_WORKING/sillon/site/presentation.html",
+      "target": "assets/pages.css"
+    },
+    {
+      "file": "brands/sillon/20_WORKING/sillon/site/presentation.html",
+      "target": "assets/marque.js"
+    },
+    {
+      "file": "brands/sillon/20_WORKING/sillon/site/presentation.html",
+      "target": "assets/matiere.js"
+    },
+    {
+      "file": "brands/sillon/20_WORKING/sillon/site/presentation.html",
+      "target": "assets/verse.js"
+    },
+    {
+      "file": "brands/sillon/20_WORKING/sillon/site/presentation.html",
+      "target": "assets/pages.js"
     }
   ],
   "missing_presentation_inputs": [],
   "syntax_errors": [],
-  "checked_links": 1473,
-  "html_files": 242,
-  "python_files": 113,
-  "js_files": 99,
+  "checked_links": 1575,
+  "html_files": 247,
+  "python_files": 114,
+  "js_files": 107,
   "large_files": [],
   "secret_files": []
 }
