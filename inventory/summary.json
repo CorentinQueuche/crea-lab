@@ -17,8 +17,8 @@
       "bytes": 303272656
     },
     "sillon": {
-      "files": 651,
-      "bytes": 1419434163
+      "files": 605,
+      "bytes": 1378408913
     },
     "roulement": {
       "files": 86,
@@ -29,9 +29,9 @@
       "bytes": 170120347
     }
   },
-  "files": 2805,
-  "bytes": 3759127787,
-  "unique_bytes": 2636327037,
-  "unique_blobs": 2088,
+  "files": 2759,
+  "bytes": 3718102537,
+  "unique_bytes": 2636306911,
+  "unique_blobs": 2085,
   "blocked": []
 }
