@@ -2,7 +2,9 @@
 
 Collection de créations de marque KLYRA, préparée pour une publication publique autorisée. Chaque dossier de `brands/` est autonome : sources, médias nécessaires et livrables existants. Aucun workspace ni dépendance entre marques.
 
-Les cinq études complètes sont Aube, Drupe, Payout, Custom et Sillon ; Roulement et Maillon sont des vitrines d’app accompagnées d’une identité originale. Aucun déploiement n’est créé par ce dépôt.
+Les cinq études complètes sont Aube, Drupe, Payout, Custom et Sillon ; Roulement et Maillon sont des vitrines d’app accompagnées d’une identité originale.
+
+La visionneuse [`index.html`](index.html) rassemble les sept identités : toutes les pièces en bandes, un dossier par marque, les guides ouverts dans la page. Elle est en ligne sur https://klyra-crea-lab.vercel.app, redéployée à chaque envoi sur `main` ; le site ne sert que la visionneuse et les livrables qu’elle ouvre (`.vercelignore`), sans indexation par les moteurs (`vercel.json`).
 
 | Marque | État | Ouvrir | Fichiers importés | Mo |
 |---|---|---|---:|---:|
@@ -22,7 +24,7 @@ Depuis la racine, avec Python 3 :
 python -m http.server 8080 --bind 127.0.0.1
 ```
 
-Ouvrir `http://127.0.0.1:8080/` puis le dossier voulu. GitHub permet de télécharger les fichiers mais n’exécute pas les pages HTML. PDF et logos sont également accessibles sous les dossiers de livrables. Ce serveur écoute uniquement en local.
+Ouvrir `http://127.0.0.1:8080/` : la visionneuse s’affiche, et chaque dossier reste accessible par son chemin. Elle s’ouvre aussi par double-clic sur `index.html`. Pour la régénérer après l’ajout d’une marque : `python tools/visionneuse/build.py` (Python avec Pillow, Node.js, ffmpeg). GitHub permet de télécharger les fichiers mais n’exécute pas les pages HTML. PDF et logos sont également accessibles sous les dossiers de livrables. Ce serveur écoute uniquement en local.
 
 ## Reprendre une marque
 

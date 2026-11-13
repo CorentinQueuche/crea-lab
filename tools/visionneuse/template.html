@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Créa Lab — KLYRA</title>
+<meta name="description" content="Créa Lab, KLYRA : les identités de marque de l’atelier, pièce par pièce.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16'/%3E%3Crect x='4' y='4' width='8' height='8' fill='%23003FE4'/%3E%3C/svg%3E">
+<style>
+@font-face{font-family:"Google Sans Flex";font-weight:400 700;font-style:normal;font-display:swap;src:url(/*POLICE*/) format("woff2")}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+:root{
+  --k1:#003FE4;--k2:#01A4FF;--k3:#00DDFF;
+  --bg:#000;--ink:#fff;--accent:var(--k2);--sur:#000;
+  --line:color-mix(in srgb,var(--ink) 17%,transparent);
+  --mute:color-mix(in srgb,var(--ink) 62%,transparent);
+  --pad:clamp(16px,3vw,44px);--barre:56px;
+  --doux:cubic-bezier(.2,.7,.2,1);
+}
+html{background:var(--bg);color-scheme:dark;-webkit-text-size-adjust:100%}
+html.verrou{overflow:hidden}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 15px/1.4 "Google Sans Flex",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;letter-spacing:-.0125em;-webkit-font-smoothing:antialiased;font-feature-settings:"tnum" 1}
+a{color:inherit}
+button{font:inherit;letter-spacing:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+img,video,svg{display:block}
+:focus-visible{outline:2px solid var(--k2);outline-offset:2px}
+.px{display:inline-block;width:8px;height:8px;background:var(--c,var(--k1));flex:none}
+
+/* barre */
+.barre{position:sticky;top:0;z-index:20;height:var(--barre);display:flex;align-items:stretch;background:#000;color:#fff;border-bottom:1px solid rgba(255,255,255,.17)}
+.griffe{display:flex;align-items:center;gap:14px;padding:0 var(--pad);text-decoration:none;flex:none;border-right:1px solid rgba(255,255,255,.17)}
+.griffe svg{height:17px;width:auto}
+.griffe span{font-weight:500;font-size:15px;white-space:nowrap;padding-left:14px;border-left:1px solid rgba(255,255,255,.3);line-height:17px}
+.onglets{display:flex;align-items:stretch;overflow-x:auto;scrollbar-width:none;flex:1;min-width:0}
+.onglets::-webkit-scrollbar{display:none}
+.onglets a{display:flex;align-items:center;gap:8px;padding:0 16px;text-decoration:none;white-space:nowrap;font-size:14px;color:rgba(255,255,255,.62);position:relative;transition:color .2s}
+.onglets a .px{width:6px;height:6px;opacity:0;transform:scale(.3);transition:opacity .22s,transform .22s var(--doux)}
+.onglets a:hover{color:#fff}
+.onglets a[aria-current]{color:#fff}
+.onglets a[aria-current] .px{opacity:1;transform:none}
+.onglets a[aria-current]::after{content:"";position:absolute;left:16px;right:16px;bottom:-1px;height:1px;background:#fff}
+.compte{display:flex;align-items:center;padding:0 var(--pad);font-size:13px;color:rgba(255,255,255,.62);white-space:nowrap;border-left:1px solid rgba(255,255,255,.17);flex:none}
+.avis{background:var(--k1);color:#fff;font-size:13px;padding:9px var(--pad)}
+.avis a{text-underline-offset:3px}
+
+.vue{animation:monte .42s var(--doux) both}
+@keyframes monte{from{opacity:0;transform:translateY(8px)}}
+
+/* index */
+.tete{position:relative;overflow:hidden;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);align-items:end;gap:32px;padding:clamp(36px,5vw,76px) var(--pad) clamp(26px,3vw,44px)}
+.tete::before{content:"";position:absolute;right:-420px;top:-560px;width:1100px;height:1100px;border-radius:50%;background:radial-gradient(closest-side,rgba(0,63,228,.78),rgba(0,63,228,.22) 58%,transparent);pointer-events:none}
+.mosaique{position:absolute;right:0;top:0;pointer-events:none}
+.tete>:not(.mosaique){position:relative}
+.tete h1{margin:0;font-weight:500;font-size:clamp(42px,6.2vw,100px);line-height:.925;letter-spacing:-.05em}
+.tete h1 small{display:block;font-size:13px;font-weight:400;letter-spacing:0;line-height:1;color:var(--mute);margin-bottom:clamp(18px,2.4vw,34px)}
+.tete p{margin:0;max-width:44ch;font-size:16px;color:rgba(255,255,255,.78);justify-self:end;padding-bottom:.5em}
+.rang{display:grid;grid-template-columns:clamp(250px,25vw,380px) minmax(0,1fr);border-top:1px solid var(--line)}
+.rang:last-of-type{border-bottom:1px solid var(--line)}
+.fiche{display:flex;flex-direction:column;padding:20px 24px 20px var(--pad);text-decoration:none;border-right:1px solid var(--line);transition:background .25s;min-height:0}
+.fiche:hover{background:color-mix(in srgb,var(--c) 11%,#000)}
+.fiche .num{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--mute)}
+.fiche .logo{margin:auto 0;padding:18px 0}
+.fiche .logo svg{height:calc(var(--lh,1)*clamp(26px,2.5vw,36px));width:auto;max-width:100%;overflow:visible}
+.fiche .quoi{font-weight:500;font-size:15px;line-height:1.25}
+.fiche .meta{font-size:13px;color:var(--mute);margin-top:3px}
+.fiche .va{margin-top:12px;font-size:13px;display:flex;gap:6px}
+.fiche .va i,.fl{font-style:normal;display:inline-block;transition:transform .22s var(--doux)}
+.fiche:hover .va i{transform:translateX(4px)}
+.bande-c{position:relative;min-width:0}
+.bande{display:flex;gap:4px;height:clamp(150px,16.5vw,236px);padding:14px 0;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;overscroll-behavior-x:contain}
+.bande::-webkit-scrollbar{display:none}
+.bande a{flex:none;height:100%;position:relative;background:#101010;overflow:hidden}
+.bande a::after,.tuile::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 2px var(--c,#fff);opacity:0;transition:opacity .18s;pointer-events:none}
+.bande a:hover::after,.bande a:focus-visible::after,.tuile:hover::after,.tuile:focus-visible::after{opacity:1}
+.bande img{width:100%;height:100%;object-fit:cover}
+.vid{position:absolute;left:8px;bottom:8px;display:flex;align-items:center;gap:6px;height:22px;padding:0 8px 0 7px;border-radius:999px;background:rgba(0,0,0,.62);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:#fff;font-size:11.5px;line-height:1;letter-spacing:0;pointer-events:none}
+.vid::before{content:"";border-left:7px solid currentColor;border-top:4.5px solid transparent;border-bottom:4.5px solid transparent}
+.pas{position:absolute;top:50%;width:40px;height:40px;margin-top:-20px;display:grid;place-items:center;border-radius:50%;background:rgba(0,0,0,.72);border:1px solid rgba(255,255,255,.28);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:#fff;opacity:0;transition:opacity .2s,background .2s;z-index:2}
+.pas:hover{background:var(--k1)}
+.pas.g{left:12px}.pas.d{right:12px}
+.pas svg{width:16px;height:16px}
+@media (hover:hover){.bande-c:hover .pas:not([disabled]){opacity:1}}
+.pas[disabled]{pointer-events:none}
+.bande-c::after{content:"";position:absolute;right:0;top:0;bottom:0;width:56px;background:linear-gradient(to right,transparent,#000);pointer-events:none;transition:opacity .2s}
+.bande-c.fin::after{opacity:0}
+.pied{display:flex;flex-wrap:wrap;gap:10px 40px;justify-content:space-between;padding:26px var(--pad) 44px;font-size:13px;color:var(--mute)}
+.pied p{margin:0;max-width:92ch}
+.pied a{text-underline-offset:3px;white-space:nowrap}
+
+/* dossier */
+.dossier{background:var(--bg);color:var(--ink);min-height:calc(100dvh - var(--barre))}
+.entete{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);border-bottom:1px solid var(--line)}
+.entete-g{padding:clamp(26px,3.6vw,52px) var(--pad) clamp(28px,3.6vw,48px);display:flex;flex-direction:column;align-items:flex-start;border-right:1px solid var(--line)}
+.sur-titre{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--mute)}
+.entete .logo{margin:clamp(30px,5vw,76px) 0 clamp(26px,3.4vw,46px);color:var(--logo,var(--ink));max-width:100%}
+.entete .logo svg{height:calc(var(--lh,1)*clamp(50px,7.4vw,112px));width:auto;max-width:100%;overflow:visible}
+.entete h1{margin:0;font-weight:500;font-size:clamp(25px,3.1vw,46px);line-height:1;letter-spacing:-.0325em;max-width:20ch;text-wrap:balance}
+.entete .texte{margin:16px 0 0;max-width:56ch;font-size:16px;color:color-mix(in srgb,var(--ink) 80%,transparent)}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:clamp(24px,3vw,40px)}
+.btn{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 20px;border-radius:999px;border:1px solid color-mix(in srgb,var(--ink) 34%,transparent);text-decoration:none;font-weight:500;font-size:14.5px;white-space:nowrap;transition:background .2s,border-color .2s,color .2s,transform .12s}
+.btn:hover{border-color:var(--ink);background:color-mix(in srgb,var(--ink) 9%,transparent)}
+.btn:active{transform:scale(.98)}
+.btn.p{background:var(--accent);border-color:var(--accent);color:var(--sur)}
+.btn.p:hover{background:color-mix(in srgb,var(--accent) 86%,var(--ink));border-color:transparent}
+.btn:hover .fl{transform:translateX(3px)}
+.btn small{font-size:12px;font-weight:400;opacity:.7}
+.faits{margin:0;display:grid;grid-auto-rows:1fr}
+.faits div{display:grid;grid-template-columns:118px minmax(0,1fr);gap:14px;padding:13px var(--pad) 13px 24px;border-top:1px solid var(--line);align-items:center}
+.faits div:first-child{border-top:0}
+.faits dt{font-size:13px;color:var(--mute)}
+.faits dd{margin:0;font-size:15px}
+.nuances{display:flex;flex-wrap:wrap;gap:4px}
+.nuances i{width:26px;height:26px;background:var(--n);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--ink) 22%,transparent)}
+.tri{position:sticky;top:var(--barre);z-index:5;display:flex;align-items:center;gap:6px;padding:10px var(--pad);background:color-mix(in srgb,var(--bg) 90%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);font-size:13.5px}
+.tri button{height:32px;padding:0 13px;border-radius:999px;color:var(--mute);transition:color .2s,background .2s}
+.tri button:hover{color:var(--ink)}
+.tri button[aria-pressed=true]{background:var(--ink);color:var(--bg)}
+.tri button span{opacity:.6;margin-left:5px}
+.tri .aide{margin-left:auto;color:var(--mute);font-size:13px}
+.mur{display:flex;flex-wrap:wrap;gap:6px;padding:4px var(--pad) 0;--c:var(--accent)}
+.tuile{position:relative;display:block;overflow:hidden;background:color-mix(in srgb,var(--ink) 8%,var(--bg));flex:none}
+.tuile img,.tuile video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.tuile .leg{position:absolute;left:0;right:0;bottom:0;display:flex;gap:10px;align-items:baseline;padding:26px 12px 10px;background:linear-gradient(to top,rgba(0,0,0,.78),transparent);color:#fff;font-size:13px;line-height:1.25;opacity:0;transform:translateY(4px);transition:opacity .2s,transform .22s var(--doux);pointer-events:none}
+.tuile .leg b{font-weight:500;opacity:.7}
+.tuile .leg span{overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.tuile:hover .leg,.tuile:focus-visible .leg{opacity:1;transform:none}
+.tuile .vid{bottom:auto;top:8px}
+.suite{display:grid;grid-template-columns:1fr 1fr;margin-top:clamp(36px,5vw,72px);border-top:1px solid var(--line)}
+.suite a{display:flex;flex-direction:column;gap:6px;padding:26px var(--pad) 40px;text-decoration:none;transition:background .25s}
+.suite a:hover{background:color-mix(in srgb,var(--ink) 7%,transparent)}
+.suite a+a{border-left:1px solid var(--line);text-align:right;align-items:flex-end}
+.suite small{font-size:13px;color:var(--mute)}
+.suite b{font-weight:500;font-size:clamp(22px,2.6vw,36px);letter-spacing:-.0325em;line-height:1}
+
+/* visionneuse */
+.visio{position:fixed;inset:0;z-index:40;background:#000;color:#fff;display:grid;grid-template-rows:auto minmax(0,1fr) auto;animation:fondu .22s both}
+@keyframes fondu{from{opacity:0}}
+.visio-h{display:flex;align-items:center;gap:14px;height:56px;padding:0 8px 0 var(--pad);border-bottom:1px solid rgba(255,255,255,.17);min-width:0}
+.visio-h .nom{font-weight:500;white-space:nowrap}
+.visio-h .rang-n{color:rgba(255,255,255,.62);white-space:nowrap}
+.visio-h .titre{flex:1;min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;color:rgba(255,255,255,.86)}
+.visio-h a.orig{font-size:13px;color:rgba(255,255,255,.62);text-decoration:none;white-space:nowrap;padding:8px}
+.visio-h a.orig:hover{color:#fff}
+.ic{width:44px;height:44px;display:grid;place-items:center;border-radius:50%;flex:none;transition:background .2s}
+.ic:hover{background:rgba(255,255,255,.12)}
+.ic svg{width:18px;height:18px}
+.scene{position:relative;min-height:0;overflow:auto;display:grid;place-items:center;touch-action:pan-y pinch-zoom}
+.scene.large{place-items:start center}
+.scene img.media{cursor:zoom-in;background:#0b0b0b}
+.scene.large img.media{cursor:zoom-out}
+.scene video.media{background:#000;max-width:100%;max-height:100%}
+.visio .pas{opacity:1;position:fixed;top:50%}
+.visio .pas.g{left:14px}.visio .pas.d{right:14px}
+.film{display:flex;gap:3px;height:66px;padding:8px var(--pad);overflow-x:auto;scrollbar-width:none;border-top:1px solid rgba(255,255,255,.17)}
+.film::-webkit-scrollbar{display:none}
+.film button{flex:none;height:100%;opacity:.42;transition:opacity .2s;position:relative;background:#111}
+.film button:hover{opacity:.8}
+.film button[aria-current]{opacity:1}
+.film button[aria-current]::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 2px var(--c,#fff)}
+.film img{height:100%;width:100%;object-fit:cover}
+
+/* document */
+.doc{position:fixed;inset:0;z-index:40;background:#000;color:#fff;display:grid;grid-template-rows:auto minmax(0,1fr);animation:fondu .22s both}
+.doc-h{display:flex;align-items:stretch;height:48px;border-bottom:1px solid rgba(255,255,255,.17);font-size:14px;min-width:0}
+.doc-h a{display:flex;align-items:center;gap:8px;padding:0 16px;text-decoration:none;white-space:nowrap;color:rgba(255,255,255,.62);transition:color .2s}
+.doc-h a:hover,.doc-h a[aria-current]{color:#fff}
+.doc-h .retour{color:#fff;font-weight:500;border-right:1px solid rgba(255,255,255,.17);padding:0 20px 0 var(--pad)}
+.doc-h nav{display:flex;flex:1;min-width:0;overflow-x:auto;scrollbar-width:none}
+.doc-h a[aria-current]{box-shadow:inset 0 -1px 0 #fff}
+.doc-h .ext{border-left:1px solid rgba(255,255,255,.17);padding-right:var(--pad)}
+.doc iframe{width:100%;height:100%;border:0;background:#fff}
+
+@media (max-width:860px){
+  :root{--barre:96px}
+  .barre{flex-wrap:wrap;height:var(--barre)}
+  .griffe{height:48px;border-right:0;flex:1}
+  .compte{height:48px;border-left:0}
+  .onglets{flex:none;width:100%;height:48px;border-top:1px solid rgba(255,255,255,.17);padding:0 calc(var(--pad) - 12px)}
+  .onglets a{padding:0 12px}
+  .onglets a[aria-current]::after{left:12px;right:12px}
+  .tete{grid-template-columns:1fr;gap:20px}
+  .mosaique{height:96px;opacity:.7}
+  .tete p{justify-self:start}
+  .rang{grid-template-columns:1fr}
+  .fiche{border-right:0;padding:18px var(--pad) 4px;display:grid;grid-template-columns:auto 1fr;gap:2px 14px;align-items:center}
+  .fiche .num{grid-column:1/-1}
+  .fiche .logo{padding:10px 0 12px;grid-column:1/-1}
+  .fiche .quoi,.fiche .meta{grid-column:1/-1}
+  .fiche .va{display:none}
+  .bande{padding:12px var(--pad) 18px;height:164px}
+  .bande-c::after{display:none}
+  .entete{grid-template-columns:1fr}
+  .entete-g{border-right:0;border-bottom:1px solid var(--line)}
+  .faits div{padding-left:var(--pad)}
+  .tri .aide{display:none}
+  .visio .pas{display:none}
+  .visio-h a.orig{display:none}
+  .doc-h .ext span{display:none}
+}
+@media (max-width:480px){.compte{display:none}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="barre">
+  <a class="griffe" href="#" aria-label="Créa Lab, KLYRA : tous les projets"><!--KLYRA--><span>Créa Lab</span></a>
+  <nav class="onglets" id="onglets" aria-label="Projets"></nav>
+  <div class="compte" id="compte"></div>
+</header>
+<div class="avis" id="avis" hidden></div>
+<main id="scene"></main>
+<noscript><p style="padding:24px">Cette visionneuse a besoin de JavaScript. Les guides de marque s’ouvrent aussi directement depuis les dossiers de <code>brands/</code>.</p></noscript>
+
+<script>
+const M = /*DONNEES*/;
+const DEPOT = 'https://github.com/CorentinQueuche/crea-lab';
+const BRUT = 'https://raw.githubusercontent.com/CorentinQueuche/crea-lab/main/';
+let distant = false;          // vrai quand la page est ouverte hors du dépôt : les médias viennent alors de GitHub
+let vue = null;               // 'index' ou identifiant de la marque affichée
+let defilIndex = 0;
+
+const $ = (s, r = document) => r.querySelector(s);
+const ech = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const n2 = (n) => String(n).padStart(2, '0');
+const racine = (m) => (distant ? BRUT : '') + 'brands/' + m.base + '/';
+const adr = (m, f) => (f.startsWith('data:') ? f : racine(m) + f);
+const vids = (m) => m.pieces.filter((p) => p.k === 'v').length;
+const compte = (m) => `${m.pieces.length} pièces, dont ${vids(m)} vidéo${vids(m) > 1 ? 's' : ''}`;
+const duree = (d) => (d == null ? '' : `${Math.floor(d / 60)}:${n2(Math.round(d % 60))}`);
+const FL = '<span class="fl" aria-hidden="true">→</span>';
+const IC = {
+  g: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M10 2.5 4.5 8l5.5 5.5"/></svg>',
+  d: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 2.5 11.5 8 6 13.5"/></svg>',
+  x: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m3 3 10 10M13 3 3 13"/></svg>',
+};
+// lien d'un document : fichier du dépôt, ou site en ligne quand la page est ouverte ailleurs
+function lienDoc(m, fichier) {
+  if (!distant) return racine(m) + fichier;
+  if (m.live) return m.live + (fichier === 'index.html' ? '' : fichier);
+  return null;
+}
+const clair = (hex) => { const v = parseInt(hex.slice(1), 16), r = v >> 16, g = (v >> 8) & 255, b = v & 255; return (r * 299 + g * 587 + b * 114) / 1000 > 150; };
+
+/* ---------- barre ---------- */
+function barre() {
+  $('#onglets').innerHTML = `<a href="#" data-id="index"><i class="px" style="--c:var(--k1)"></i>Tous</a>` +
+    M.map((m) => `<a href="#${m.id}" data-id="${m.id}"><i class="px" style="--c:${m.accent}"></i>${ech(m.nom)}</a>`).join('');
+  $('#compte').textContent = `${M.length} identités · ${M.reduce((s, m) => s + m.pieces.length, 0)} pièces`;
+}
+function marquer() {
+  document.querySelectorAll('#onglets a').forEach((a) => {
+    const oui = a.dataset.id === vue;
+    a.toggleAttribute('aria-current', oui);
+    if (oui) a.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+  });
+}
+function theme(m) {
+  const s = document.documentElement.style;
+  if (!m) { ['--bg', '--ink', '--accent', '--sur'].forEach((p) => s.removeProperty(p)); document.documentElement.style.colorScheme = 'dark'; return; }
+  s.setProperty('--bg', m.fond); s.setProperty('--ink', m.encre); s.setProperty('--accent', m.accent);
+  s.setProperty('--sur', clair(m.accent) ? '#000' : '#fff');
+  s.colorScheme = clair(m.fond) ? 'light' : 'dark';
+}
+
+/* ---------- index ---------- */
+function mosaique() {
+  let g = 20261112; const al = () => (g = (g * 1664525 + 1013904223) >>> 0) / 4294967296;
+  const L = 760, H = 230, c = ['#003FE4', '#01A4FF', '#01A4FF', '#00DDFF', '#FFFFFF'];
+  let r = '';
+  for (let i = 0; i < 150; i++) {
+    const x = Math.floor(Math.pow(al(), .55) * (L / 10)) * 10, y = Math.floor(Math.pow(al(), 1.6) * (H / 10)) * 10;
+    r += `<rect x="${x}" y="${y}" width="5" height="5" fill="${c[Math.floor(al() * c.length)]}" opacity="${(.2 + al() * .6).toFixed(2)}"/>`;
+  }
+  return `<svg class="mosaique" width="${L}" height="${H}" viewBox="0 0 ${L} ${H}" preserveAspectRatio="xMaxYMin slice" aria-hidden="true">${r}</svg>`;
+}
+function index() {
+  const total = M.reduce((s, m) => s + m.pieces.length, 0);
+  const rangs = M.map((m, i) => `
+  <section class="rang" style="--c:${m.accent}">
+    <a class="fiche" href="#${m.id}">
+      <span class="num"><i class="px"></i>${n2(i + 1)}</span>
+      <span class="logo" style="--lh:${m.lh}" role="img" aria-label="${ech(m.nom)}">${m.logo}</span>
+      <span class="quoi">${ech(m.quoi)}</span>
+      <span class="meta">${ech(m.nature)} · ${compte(m)}</span>
+      <span class="va">Ouvrir le dossier <i aria-hidden="true">→</i></span>
+    </a>
+    <div class="bande-c">
+      <div class="bande" tabindex="-1">${m.pieces.map((p, j) => `<a href="#${m.id}/${j + 1}" style="aspect-ratio:${p.w}/${p.h}" title="${n2(j + 1)} · ${ech(p.t)}"><img loading="lazy" decoding="async" src="${adr(m, p.v)}" alt="${ech(p.t)}">${p.k ? `<span class="vid">${duree(p.d)}</span>` : ''}</a>`).join('')}</div>
+      <button class="pas g" aria-label="Pièces précédentes" disabled>${IC.g}</button>
+      <button class="pas d" aria-label="Pièces suivantes">${IC.d}</button>
+    </div>
+  </section>`).join('');
+  $('#scene').innerHTML = `<div class="vue">
+  <div class="tete">${mosaique()}
+    <h1><small>Créa Lab — KLYRA, novembre 2026</small>${['Zéro', 'Une', 'Deux', 'Trois', 'Quatre', 'Cinq', 'Six', 'Sept', 'Huit', 'Neuf', 'Dix'][M.length] || M.length} identités,<br>${total} pièces.</h1>
+    <p>Les études de marque et les vitrines d’app de l’atelier. Une pièce s’ouvre en grand d’un clic ; un nom ouvre le dossier, avec son guide de marque.</p>
+  </div>
+  ${rangs}
+  <footer class="pied">
+    <p>Payout et Custom sont des propositions de KLYRA, non approuvées par les marques. Aube, Drupe et Sillon sont fictives. Roulement et Maillon sont des essais.</p>
+    <a href="${DEPOT}" target="_blank" rel="noopener">Dépôt GitHub ↗</a>
+  </footer></div>`;
+  document.querySelectorAll('.bande-c').forEach((c) => {
+    const b = $('.bande', c), g = $('.pas.g', c), d = $('.pas.d', c);
+    const etat = () => { g.disabled = b.scrollLeft < 4; const fin = b.scrollLeft > b.scrollWidth - b.clientWidth - 4; d.disabled = fin; c.classList.toggle('fin', fin); };
+    b.addEventListener('scroll', etat, { passive: true });
+    g.onclick = () => b.scrollBy({ left: -b.clientWidth * .8, behavior: 'smooth' });
+    d.onclick = () => b.scrollBy({ left: b.clientWidth * .8, behavior: 'smooth' });
+    etat();
+  });
+}
+
+/* ---------- dossier ---------- */
+let muret = null;
+function dossier(m) {
+  const i = M.indexOf(m), prec = M[(i + M.length - 1) % M.length], suiv = M[(i + 1) % M.length];
+  const docs = m.docs.map(([cle, nom, f], k) => {
+    const l = lienDoc(m, f);
+    return l ? `<a class="btn${k ? '' : ' p'}" href="#${m.id}/${cle}">${k ? ech(nom) : 'Ouvrir ' + (cle === 'guide' ? 'le guide de marque' : 'la planche d’identité') + ' ' + FL}</a>` : '';
+  }).join('');
+  const fichiers = distant ? `<a class="btn" href="${DEPOT}/tree/main/brands/${m.base}" target="_blank" rel="noopener">Sources sur GitHub ↗</a>`
+    : (m.pdf ? `<a class="btn" href="${racine(m) + m.pdf}" target="_blank" rel="noopener">PDF <small>↗</small></a>` : '') +
+      (m.zip ? `<a class="btn" href="${racine(m) + m.zip}" download>Logos <small>.zip</small></a>` : '');
+  const nImg = m.pieces.length - vids(m);
+  $('#scene').innerHTML = `<article class="dossier vue">
+  <header class="entete">
+    <div class="entete-g">
+      <div class="sur-titre"><i class="px" style="--c:${m.accent}"></i>${n2(i + 1)} — ${ech(m.nature)}</div>
+      <div class="logo" style="--lh:${m.lh};${m.logoPage ? `--logo:${m.logoPage}` : ''}" role="img" aria-label="${ech(m.nom)}">${m.logoPageSvg || m.logo}</div>
+      <h1>${ech(m.signature)}</h1>
+      <p class="texte">${ech(m.texte)}</p>
+      <div class="actions">${docs}${fichiers}</div>
+    </div>
+    <dl class="faits">
+      <div><dt>Projet</dt><dd>${ech(m.quoi)}</dd></div>
+      <div><dt>Secteur</dt><dd>${ech(m.secteur)}</dd></div>
+      <div><dt>Statut</dt><dd>${ech(m.statut)}</dd></div>
+      <div><dt>Pièces</dt><dd>${compte(m)}</dd></div>
+      <div><dt>Typographie</dt><dd>${ech(m.polices)}</dd></div>
+      <div><dt>Couleurs</dt><dd class="nuances">${m.palette.map((c) => `<i style="--n:${c}" title="${c}"></i>`).join('')}</dd></div>
+      ${m.live ? `<div><dt>En ligne</dt><dd><a href="${m.live}" target="_blank" rel="noopener">${m.live.replace(/^https:\/\/|\/$/g, '')} ↗</a></dd></div>` : ''}
+    </dl>
+  </header>
+  <div class="tri" role="group" aria-label="Filtrer les pièces">
+    <button aria-pressed="true" data-f="">Tout<span>${m.pieces.length}</span></button>
+    <button aria-pressed="false" data-f="i">Images<span>${nImg}</span></button>
+    <button aria-pressed="false" data-f="v">Vidéos<span>${vids(m)}</span></button>
+    <span class="aide">Clic : ouvrir en grand · flèches : pièce suivante</span>
+  </div>
+  <div class="mur">${m.pieces.map((p, j) => `<a class="tuile" href="#${m.id}/${j + 1}" data-k="${p.k || 'i'}" data-j="${j}"><img loading="lazy" decoding="async" src="${adr(m, p.v)}" alt="${ech(p.t)}">${p.k ? `<span class="vid">${duree(p.d)}</span>` : ''}<span class="leg"><b>${n2(j + 1)}</b><span>${ech(p.t)}</span></span></a>`).join('')}</div>
+  <nav class="suite" aria-label="Autres projets">
+    <a href="#${prec.id}"><small>← Projet précédent</small><b>${ech(prec.nom)}</b></a>
+    <a href="#${suiv.id}"><small>Projet suivant →</small><b>${ech(suiv.nom)}</b></a>
+  </nav></article>`;
+
+  const mur = $('.mur');
+  const poser = () => {
+    const L = mur.clientWidth - parseFloat(getComputedStyle(mur).paddingLeft) * 2, esp = 6;
+    const cible = L < 620 ? 150 : L < 1100 ? 220 : 290;
+    const t = [...mur.children].filter((e) => !e.hidden);
+    let ligne = [], somme = 0;
+    const finir = (dernier) => {
+      if (!ligne.length) return;
+      let h = (L - esp * (ligne.length - 1)) / somme;
+      if (dernier) h = Math.min(h, cible * 1.2);
+      let reste = L - esp * (ligne.length - 1);
+      ligne.forEach((e, k) => {
+        const l = (!dernier && k === ligne.length - 1) ? reste : Math.floor(e._r * h);
+        reste -= l; e.style.width = l + 'px'; e.style.height = Math.round(h) + 'px';
+      });
+      ligne = []; somme = 0;
+    };
+    t.forEach((e) => {
+      e._r = m.pieces[+e.dataset.j].w / m.pieces[+e.dataset.j].h;
+      ligne.push(e); somme += e._r;
+      if (somme * cible + esp * (ligne.length - 1) >= L) finir(false);
+    });
+    finir(true);
+  };
+  poser();
+  if (muret) muret.disconnect();
+  muret = new ResizeObserver(poser); muret.observe(mur);
+  $('.tri').addEventListener('click', (ev) => {
+    const b = ev.target.closest('button'); if (!b) return;
+    document.querySelectorAll('.tri button').forEach((x) => x.setAttribute('aria-pressed', x === b));
+    [...mur.children].forEach((e) => { e.hidden = b.dataset.f && e.dataset.k !== b.dataset.f; });
+    poser();
+  });
+  // les vidéos se lisent au survol
+  mur.querySelectorAll('.tuile[data-k=v]').forEach((e) => {
+    e.addEventListener('pointerenter', (ev) => {
+      if (ev.pointerType !== 'mouse' || $('video', e)) return;
+      const v = document.createElement('video');
+      Object.assign(v, { src: adr(m, m.pieces[+e.dataset.j].s), muted: true, loop: true, playsInline: true, autoplay: true });
+      e.insertBefore(v, $('.vid', e));
+    });
+    e.addEventListener('pointerleave', () => { const v = $('video', e); if (v) { v.removeAttribute('src'); v.load(); v.remove(); } });
+  });
+}
+
+/* ---------- visionneuse ---------- */
+let visio = null;   // { m, i, el, retour }
+function ouvrirVisio(m, i, pousse) {
+  if (visio && visio.m !== m) fermerVisio(true);
+  if (!visio) {
+    const el = document.createElement('div');
+    el.className = 'visio'; el.setAttribute('role', 'dialog'); el.setAttribute('aria-modal', 'true'); el.style.setProperty('--c', m.accent);
+    el.innerHTML = `<div class="visio-h"><i class="px" style="--c:${m.accent}"></i><span class="nom">${ech(m.nom)}</span><span class="rang-n"></span><span class="titre"></span>
+      <a class="orig" target="_blank" rel="noopener">Fichier d’origine ↗</a><button class="ic fermer" aria-label="Fermer">${IC.x}</button></div>
+      <div class="scene"></div>
+      <div class="film">${m.pieces.map((p, j) => `<button data-j="${j}" style="aspect-ratio:${p.w}/${p.h}" aria-label="Pièce ${j + 1}"><img loading="lazy" src="${adr(m, p.v)}" alt=""></button>`).join('')}</div>
+      <button class="pas g" aria-label="Pièce précédente">${IC.g}</button><button class="pas d" aria-label="Pièce suivante">${IC.d}</button>`;
+    document.body.appendChild(el);
+    document.documentElement.classList.add('verrou');
+    visio = { m, el, pousse, focus: document.activeElement };
+    $('.fermer', el).onclick = () => fermerVisio();
+    $('.pas.g', el).onclick = () => pas(-1);
+    $('.pas.d', el).onclick = () => pas(1);
+    $('.film', el).onclick = (ev) => { const b = ev.target.closest('button'); if (b) aller(+b.dataset.j); };
+    const sc = $('.scene', el);
+    sc.addEventListener('click', (ev) => {
+      if (ev.target === sc) return fermerVisio();
+      if (ev.target.matches('img.media')) { sc.classList.toggle('large'); visio.choisi = true; cadrer(); }
+    });
+    let x0 = null, y0 = 0;
+    sc.addEventListener('pointerdown', (ev) => { if (ev.pointerType === 'touch') { x0 = ev.clientX; y0 = ev.clientY; } });
+    sc.addEventListener('pointerup', (ev) => {
+      if (x0 === null) return; const dx = ev.clientX - x0, dy = ev.clientY - y0; x0 = null;
+      if (Math.abs(dx) > 56 && Math.abs(dy) < 48) pas(dx < 0 ? 1 : -1);
+    });
+    $('.fermer', el).focus({ preventScroll: true });
+  }
+  montrer(i);
+}
+function montrer(i) {
+  const { m, el } = visio, p = m.pieces[i], sc = $('.scene', el);
+  visio.i = i; visio.choisi = false;
+  $('.rang-n', el).textContent = `${n2(i + 1)} / ${n2(m.pieces.length)}`;
+  $('.titre', el).textContent = p.t;
+  $('.orig', el).href = adr(m, p.s);
+  const anc = $('video', sc); if (anc) { anc.pause(); anc.removeAttribute('src'); anc.load(); }
+  sc.scrollTop = 0;
+  if (p.k === 'v') {
+    sc.classList.remove('large');
+    sc.innerHTML = `<video class="media" controls playsinline ${p.son ? '' : 'loop'} poster="${adr(m, p.v)}" src="${adr(m, p.s)}"></video>`;
+    const v = $('video', sc);
+    v.play().catch(() => { v.muted = true; v.play().catch(() => {}); });
+  } else {
+    // les planches très hautes s'ouvrent à la largeur, et défilent
+    sc.classList.toggle('large', p.w / p.h < .72);
+    sc.innerHTML = `<img class="media" alt="${ech(p.t)}" src="${adr(m, p.v)}">`;
+    const im = $('img', sc), grand = new Image();
+    grand.onload = () => { if (visio && visio.i === i) im.src = grand.src; };
+    grand.src = adr(m, p.s);
+    const s = m.pieces[(i + 1) % m.pieces.length]; if (!s.k) new Image().src = adr(m, s.s);
+  }
+  cadrer();
+  el.querySelectorAll('.film button').forEach((b, j) => {
+    b.toggleAttribute('aria-current', j === i);
+    if (j === i) b.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+  });
+}
+function cadrer() {
+  if (!visio) return;
+  const sc = $('.scene', visio.el), e = $('.media', sc), p = visio.m.pieces[visio.i]; if (!e) return;
+  const r = p.w / p.h, L = sc.clientWidth, H = sc.clientHeight, m = L < 700 ? 0 : 20;
+  let l;
+  if (sc.classList.contains('large') && p.k !== 'v') l = Math.min(L - m * 2, r < .72 && !visio.choisi ? 1080 : 2000);
+  else l = Math.min(L - m * 2, (H - m * 2) * r);
+  e.style.width = Math.round(l) + 'px'; e.style.height = Math.round(l / r) + 'px';
+  e.style.margin = sc.classList.contains('large') ? `${m}px 0` : '0';
+}
+function aller(i) {
+  const m = visio.m; i = (i + m.pieces.length) % m.pieces.length;
+  history.replaceState(null, '', `#${m.id}/${i + 1}`);
+  montrer(i);
+}
+const pas = (d) => aller(visio.i + d);
+function fermerVisio(sansRoute) {
+  if (!visio) return;
+  const v = visio; visio = null;
+  const vd = $('video', v.el); if (vd) { vd.pause(); vd.removeAttribute('src'); vd.load(); }
+  v.el.remove();
+  document.documentElement.classList.remove('verrou');
+  if (v.focus && v.focus.focus) v.focus.focus({ preventScroll: true });
+  if (sansRoute) return;
+  if (v.pousse) history.back();
+  else { history.replaceState(null, '', vue === 'index' ? location.pathname + location.search : '#' + v.m.id); }
+}
+
+/* ---------- document (guide, présentation, étude de cas) ---------- */
+let doc = null;
+function ouvrirDoc(m, cle, pousse) {
+  const d = m.docs.find((x) => x[0] === cle), lien = lienDoc(m, d[2]);
+  if (!lien) return;
+  if (!doc) {
+    const el = document.createElement('div'); el.className = 'doc';
+    el.innerHTML = `<div class="doc-h"><a class="retour" href="#${m.id}"><span aria-hidden="true">←</span>${ech(m.nom)}</a>
+      <nav>${m.docs.filter((x) => lienDoc(m, x[2])).map((x) => `<a href="#${m.id}/${x[0]}" data-cle="${x[0]}">${ech(x[1])}</a>`).join('')}</nav>
+      <a class="ext" target="_blank" rel="noopener"><span>Ouvrir dans un onglet</span> ↗</a></div>`;
+    document.body.appendChild(el);
+    document.documentElement.classList.add('verrou');
+    doc = { el, pousse, long: history.length };
+    $('.retour', el).onclick = (ev) => { ev.preventDefault(); fermerDoc(); };
+    $('nav', el).onclick = (ev) => { const a = ev.target.closest('a'); if (!a) return; ev.preventDefault(); history.replaceState(null, '', a.getAttribute('href')); ouvrirDoc(m, a.dataset.cle); };
+  }
+  doc.m = m;
+  doc.el.querySelectorAll('nav a').forEach((a) => a.toggleAttribute('aria-current', a.dataset.cle === cle));
+  $('.ext', doc.el).href = lien;
+  if (doc.lien === lien) return;
+  doc.lien = lien;
+  const anc = $('iframe', doc.el); if (anc) anc.remove();
+  const f = document.createElement('iframe');
+  f.title = `${m.nom} — ${d[1]}`; f.allow = 'autoplay; fullscreen'; f.src = lien;
+  doc.el.appendChild(f);
+}
+function fermerDoc(sansRoute) {
+  if (!doc) return;
+  const d = doc; doc = null; d.el.remove();
+  document.documentElement.classList.remove('verrou');
+  if (sansRoute) return;
+  if (d.pousse) history.go(-1 - Math.max(0, history.length - d.long)); else history.replaceState(null, '', '#' + d.m.id);
+}
+
+/* ---------- route ---------- */
+function route(ev) {
+  const [id, sous] = decodeURIComponent(location.hash.slice(1)).split('/');
+  const m = M.find((x) => x.id === id), pousse = !!ev;
+  if (vue === 'index') defilIndex = scrollY;
+  if (!m) {
+    fermerVisio(true); fermerDoc(true);
+    if (vue !== 'index') { vue = 'index'; theme(null); index(); scrollTo(0, defilIndex); }
+    return marquer();
+  }
+  const fond = () => { if (vue !== m.id && !(vue === 'index' && sous)) { vue = m.id; theme(m); dossier(m); scrollTo(0, 0); } else if (vue === null) { vue = m.id; theme(m); dossier(m); } };
+  if (sous === undefined || sous === '') { fermerVisio(true); fermerDoc(true); fond(); }
+  else if (/^\d+$/.test(sous) && m.pieces[+sous - 1]) { fermerDoc(true); fond(); ouvrirVisio(m, +sous - 1, pousse); }
+  else if (m.docs.some((d) => d[0] === sous) && lienDoc(m, m.docs.find((d) => d[0] === sous)[2])) { fermerVisio(true); fond(); ouvrirDoc(m, sous, pousse); }
+  else { fermerVisio(true); fermerDoc(true); fond(); }
+  marquer();
+}
+addEventListener('hashchange', route);
+addEventListener('resize', cadrer);
+addEventListener('keydown', (ev) => {
+  if (ev.key === 'Escape') { if (visio) fermerVisio(); else if (doc) fermerDoc(); return; }
+  if (!visio || ev.altKey || ev.ctrlKey || ev.metaKey) return;
+  if (ev.key === 'ArrowRight') pas(1);
+  else if (ev.key === 'ArrowLeft') pas(-1);
+  else if (ev.key === 'Home') aller(0);
+  else if (ev.key === 'End') aller(visio.m.pieces.length - 1);
+  else return;
+  ev.preventDefault();
+});
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+
+// La page est-elle à la racine du dépôt ? On le sait en chargeant une vignette.
+(function demarrer() {
+  const p = M[0].pieces.find((x) => !x.v.startsWith('data:')), t = new Image();
+  const go = (d) => {
+    distant = d;
+    if (d) { const a = $('#avis'); a.hidden = false; a.innerHTML = `Aperçu hors du dépôt : images et vidéos sont lues sur GitHub. Placé à la racine de <a href="${DEPOT}" target="_blank" rel="noopener">crea-lab</a>, ce fichier ouvre aussi les guides, les PDF et les logos de chaque marque.`; }
+    barre(); route();
+  };
+  t.onload = () => go(false); t.onerror = () => go(true);
+  t.src = 'brands/' + M[0].base + '/' + p.v;
+})();
+</script>
+</body>
+</html>

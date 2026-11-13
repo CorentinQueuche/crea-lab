@@ -1,0 +1,22 @@
+# Le site en ligne ne sert que la visionneuse et ce qu'elle ouvre :
+# les guides livrés, les planches et les films. Les sources restent sur GitHub.
+/*
+!/index.html
+!/vercel.json
+!/brands
+/brands/*/LAB.md
+/brands/*/10_INPUTS
+/brands/*/20_WORKING
+/brands/*/40_DELIVERABLES/*
+!/brands/*/40_DELIVERABLES/*-guideline
+/brands/drupe/projet/*
+!/brands/drupe/projet/livrables
+/brands/drupe/projet/livrables/*
+!/brands/drupe/projet/livrables/site
+/brands/roulement/son
+/brands/roulement/tools
+/brands/roulement/presentation/film-muet.mp4
+/brands/maillon/son
+/brands/maillon/tools
+/brands/maillon/film
+/brands/maillon/presentation/maillon-film-muet.mp4
