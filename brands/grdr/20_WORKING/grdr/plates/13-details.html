@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><title>13 · Détails du tableau de bord</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="../brand/ecrans.css"><link rel="stylesheet" href="sc.css">
+<style>
+  /* 13 · Détails : trois fragments du tableau de bord sortis de l'écran et agrandis, sur la nuit de lagune.
+     Le panneau d'aquarelle déborde à gauche, le taux se lit de loin, une ligne de projet traverse en bas. */
+  .plate{width:1400px;height:1050px;background:var(--nuit);color:var(--blanc)}
+  .de-fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.5}
+  .de-a{left:-61px;top:67px;width:742px;zoom:1.8}
+  .de-b{left:1000px;top:86px;width:351px}
+  .de-c{left:305px;top:478px;width:742px;zoom:1.22}
+  .de-a>section,.de-b>section,.de-c>section{grid-column:auto!important;width:100%}
+  .de-n{position:absolute;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;color:rgba(255,251,246,.7);display:flex;gap:10px;align-items:center}
+  .de-n b{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:var(--miel);color:var(--nuit);font-weight:600;font-size:10px}
+</style></head>
+<body>
+<div class="plate grain nuit" id="p"></div>
+<script src="../brand/marque.js"></script><script src="../brand/carte.js"></script><script src="../brand/ecrans.js"></script>
+<script>
+const M = Marque, S = M.app;
+const frag = (cls, html) => `<div class="sc-frag dj ${cls}" style="display:block;min-height:0;background:transparent;position:absolute">${html}</div>`;
+document.getElementById('p').innerHTML = `<img class="de-fond" src="${M.aqURL('nuit')}" alt="">` +
+  M.empreinte({ cernes: [1, 1, 1, 1, 1, 1, 1], c: 'rgba(255,251,246,.06)', piste: null, ep: 10, attrs: 'style="position:absolute;right:-260px;bottom:-420px;height:1300px;width:auto"' }) +
+  `<div class="net" style="position:absolute;inset:0">
+     ${frag('de-a', S.blocHero())}${frag('de-b', S.blocTaux())}${frag('de-c', S.blocProjets({ n: 3 }))}
+     
+     
+     
+   </div>` + M.entete(M.ENTETE, 'blanc', 'opacity:.7') + M.foot('13 · Détails du tableau de bord', 'GRDR · Djongoma', 'blanc');
+window.pret = Promise.all([...document.images].map((i) => (i.decode ? i.decode().catch(() => 0) : 0)));
+</script>
+</body></html>

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="fr">
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<title>Rendu d’une page du guide</title>
+<!-- RENDU D'UNE PAGE DU GUIDE à 1280 × 720 (deck/render.html) : GRDR · Djongoma.
+     CONTRAT : tools/deck.mjs ouvre ce fichier, lit window.GuideOrder, appelle window.show(clé) pour chaque page puis
+     capture la zone 1280 × 720 en ×2. show() écrit la page dans #in (.mp-in) puis appelle GuideApres(#in).
+     Feuilles et scripts du socle : les mêmes, dans le même ordre, que dans site/presentation.html
+     (marque, carte, écrans et leurs compléments b et c, livrés par d'autres lots).
+     À la main : ouvrir deck/render.html#<clé> affiche cette page (la première par défaut). -->
+<link rel="stylesheet" href="../brand/marque.css">
+<link rel="stylesheet" href="../brand/ecrans.css">
+<link rel="stylesheet" href="../brand/ecrans-b.css">
+<link rel="stylesheet" href="../brand/ecrans-c.css">
+<link rel="stylesheet" href="pages.css">
+<script src="../brand/marque.js"></script>
+<script src="../brand/carte.js"></script>
+<script src="../brand/ecrans.js"></script>
+<script src="../brand/ecrans-b.js"></script>
+<script src="../brand/ecrans-c.js"></script>
+<script src="pages.js"></script>
+<body>
+<div class="mp-in" id="in"></div>
+<script>
+window.show = (k) => {
+  const el = document.getElementById('in');
+  el.innerHTML = window.GuidePages[k];
+  if (typeof window.GuideApres === 'function') window.GuideApres(el);
+};
+window.show(decodeURIComponent(location.hash.slice(1)) in window.GuidePages ? decodeURIComponent(location.hash.slice(1)) : window.GuideOrder[0]);
+</script>
+</body>
+</html>

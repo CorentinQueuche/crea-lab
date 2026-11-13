@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><title>38 · L'affiche de lancement</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="sc.css">
+<style>
+  /* 38 · L'affiche de lancement, pour les bureaux : « Le fichier Excel prend sa retraite. Sa rigueur reste. »
+     En haut, une grille de cellules ; en descendant, les cellules s'arrondissent et s'enroulent en empreinte.
+     L'affiche (50 × 70) est montrée à plat sur un mur de sable, tenue par quatre adhésifs de papier. */
+  .plate{width:1400px;height:1320px;background:#E6CBB0}
+  .af-mur{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55}
+  .af-lum{position:absolute;inset:0;background:linear-gradient(105deg,rgba(255,244,230,.5) 0%,rgba(255,244,230,0) 40%,rgba(90,45,15,.2) 100%)}
+  .af{position:absolute;left:330px;top:92px;width:740px;height:1036px;overflow:hidden;background:var(--papier);color:var(--encre);
+    box-shadow:0 1px 1px rgba(70,35,10,.2),0 18px 26px -12px rgba(70,35,10,.35),0 50px 60px -30px rgba(70,35,10,.35);transform:rotate(-1.2deg)}
+  .af .aq-i{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .af-grille{position:absolute;left:0;top:0;width:100%;height:470px}
+  .af-emp{position:absolute;right:-150px;bottom:-250px;height:900px;width:auto}
+  .af-t{position:absolute;left:52px;right:52px;top:330px;font-family:var(--titre);font-weight:900;font-size:98px;letter-spacing:-.055em;line-height:.88}
+  .af-t em{font-style:normal;color:var(--blanc)}
+  .af-s{position:absolute;left:54px;top:742px;font-family:var(--titre);font-weight:800;font-size:34px;letter-spacing:-.035em;line-height:1;max-width:300px}
+  .af-b{position:absolute;left:54px;right:54px;bottom:44px;display:flex;justify-content:space-between;align-items:flex-end}
+  .af-b svg{height:70px;width:auto}
+  .af-i{position:absolute;left:56px;top:800px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;line-height:1.7;font-weight:500}
+  .af-ad{position:absolute;width:96px;height:30px;background:rgba(255,248,236,.82);box-shadow:0 2px 4px rgba(70,35,10,.18);z-index:5}
+  .af-leg{position:absolute;left:84px;bottom:96px;width:200px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;line-height:1.6;font-weight:500;opacity:.75}
+</style></head>
+<body>
+<div class="plate grain fort" id="p"></div>
+<script src="../brand/marque.js"></script>
+<script>
+const M = Marque, C = M.COULEURS, R = M.rnd(11);
+/* la grille du tableur : des cellules qui s'arrondissent et s'espacent en descendant */
+let g = ''; const cw = 92.5, ch = 39;
+for (let j = 0; j < 12; j++) for (let i = 0; i < 8; i++) { const u = j / 11, r = 2 + u * u * 19, m = 3 + u * 5, op = 0.6 * (1 - u * 0.75);
+  g += `<rect x="${(i * cw + m).toFixed(1)}" y="${(j * ch + m).toFixed(1)}" width="${(cw - 2 * m).toFixed(1)}" height="${(ch - 2 * m).toFixed(1)}" rx="${r.toFixed(1)}" fill="none" stroke="${C.encre}" stroke-opacity="${op.toFixed(2)}" stroke-width="1.4"/>`;
+  if (j < 7 && R() > 0.5) g += `<text x="${(i * cw + cw - 12).toFixed(1)}" y="${(j * ch + 25).toFixed(1)}" text-anchor="end" font-family="Geist Mono, monospace" font-size="11.5" fill="${C.encre}" fill-opacity="${(op * 0.95).toFixed(2)}">${j === 3 && i === 5 ? '#REF!' : M.nombre(Math.round(R() * 900000 + 4000))}</text>`; }
+document.getElementById('p').innerHTML = `<img class="af-mur" src="${M.aqURL('brume')}" alt=""><div class="af-lum"></div>
+  <div class="net" style="position:absolute;inset:0">
+   <div class="af grain"><img class="aq-i" src="${M.aqURL('aube')}" alt="">
+     <svg class="af-grille" viewBox="0 0 740 470" preserveAspectRatio="none">${g}</svg>
+     ${M.empreinte({ cernes: [1, 1, 1, 1, 0.72, 0.3], c: 'blanc', piste: 'rgba(255,251,246,.35)', actif: 5, cActif: 'vermillon', attrs: 'style="position:absolute;right:-276px;bottom:-400px;height:900px;width:auto"' })}
+     <div class="af-t">Le fichier Excel prend sa <em>retraite.</em></div>
+     <div class="af-s">Sa rigueur reste.</div>
+     <div class="af-i">${M.PRODUIT} · ${M.PRODUIT_DESC}<br>Ouverture des accès : lundi 16 juin</div>
+     <div class="af-b">${M.lockup('encre')}</div></div>
+   <i class="af-ad" style="left:300px;top:84px;transform:rotate(-38deg)"></i><i class="af-ad" style="left:1010px;top:70px;transform:rotate(36deg)"></i><i class="af-ad" style="left:318px;top:1110px;transform:rotate(40deg)"></i><i class="af-ad" style="left:1026px;top:1096px;transform:rotate(-40deg)"></i>
+   <div class="af-leg">Affiche de lancement<br>50 × 70 cm, pour les bureaux</div>
+  </div>` + M.foot('38 · L’affiche de lancement', 'GRDR · Djongoma');
+window.pret = Promise.all([...document.images].map((i) => (i.decode ? i.decode().catch(() => 0) : 0)));
+</script>
+</body></html>

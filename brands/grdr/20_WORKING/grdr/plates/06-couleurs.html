@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><title>06 · Couleurs</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="pl.css">
+<style>
+  /* 06 · Couleurs : la palette en usage. Des bandes verticales plein cadre, larges comme la place que chaque couleur
+     tient dans l'outil : beaucoup de papier, un filet de vermillon. Les noms montent le long des bandes ;
+     les couples de contraste sont écrits dans la couleur mesurée, sur le fond mesuré (Marque.contraste). */
+  .plate{height:1100px}
+  .pl-b{position:absolute;top:0;bottom:0;left:var(--x);width:var(--w);background:var(--c);color:var(--t)}
+  .pl-v{position:absolute;left:var(--g,20px);bottom:84px;writing-mode:vertical-rl;text-orientation:sideways;transform:rotate(180deg);white-space:nowrap}
+  .pl-v b{display:block;font-family:var(--titre);font-weight:800;letter-spacing:-.04em;line-height:1;font-size:var(--s,58px)}
+  .pl-v span{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;font-weight:500;line-height:1.5;margin-right:6px}
+  .pl-v b+span{margin-right:var(--e,10px);font-weight:600}
+  /* bande étroite : le nom et sa fiche sur une seule ligne montante */
+  .pl-v.pl-une{font-size:var(--s);line-height:1}
+  .pl-v.pl-une b{display:inline;vertical-align:baseline}
+  .pl-v.pl-une span{display:inline;margin:0 0 0 0;padding-top:12px;font-size:var(--fs,10px);line-height:1}
+  .pl-v.pl-une span i{font-style:normal;opacity:.78}
+  .pl-haut{position:absolute;left:var(--g,20px);top:112px}
+  .pl-dit{font-size:44px;line-height:.98;margin:0}
+  .pl-ct{display:block;font-family:var(--titre);font-weight:900;letter-spacing:-.055em;line-height:.86;font-size:var(--s,76px)}
+  .pl-cl{display:block;margin:var(--m,18px) 0 0;white-space:normal}
+  .pl-pfoot svg{height:22px;width:auto}
+</style></head>
+<body>
+<div class="plate grain" id="p"></div>
+<script src="../brand/marque.js"></script>
+<script>
+const M = Marque, C = M.COULEURS;
+const fr = (x) => x.toFixed(1).replace('.', ',');
+const ct = (a, b) => fr(M.contraste(a, b));
+/* clé, largeur, couleur du texte, corps du nom, rôle dans l'outil */
+const B = [
+  ['papier', 330, 'encre', 136, 'la scène : du papier, pas du gris'],
+  ['blanc', 205, 'encre', 62, 'les cartes, les écrans'],
+  ['sable', 155, 'encre', 72, 'les fonds neutres, la piste des jauges'],
+  ['encre', 76, 'blanc', 30, 'le texte'],
+  ['nuit', 244, 'blanc', 62, 'un seul panneau dense par écran'],
+  ['lagune', 110, 'blanc', 46, 'le texte coloré, les tracés'],
+  ['emeraude', 50, 'encre', 22, 'l’exécuté, en aplat'],
+  ['ocre', 70, 'blanc', 28, 'le symbole, la terre'],
+  ['vermillon', 36, 'encre', 18, 'vive, rare'],
+  ['corail', 22, 'encre'], ['rose', 22, 'encre'], ['peche', 22, 'encre'], ['miel', 22, 'encre'],
+  ['menthe', 18, 'encre'], ['brume', 18, 'encre'],
+];
+let x = 0, h = '';
+const haut = {
+  papier: `<div class="pl-haut net" style="--g:84px;width:240px"><p class="pl-dit t-titre">Du papier, pas du gris.</p>
+      <div style="margin-top:118px"><b class="pl-ct" style="--s:128px">${ct('encre', 'papier')}</b><span class="pl-m pl-cl" style="--m:30px">Encre sur papier<br>le texte courant</span></div></div>`,
+  blanc: `<div class="pl-haut net" style="width:170px"><b class="pl-ct" style="color:${C.lagune}">${ct('lagune', 'blanc')}</b><span class="pl-m pl-cl">Lagune sur blanc<br>le texte coloré</span>
+      <div style="margin-top:56px;display:flex;gap:18px"><b class="pl-ct" style="--s:50px;color:${C.vermillon}">${ct('vermillon', 'blanc')}</b><b class="pl-ct" style="--s:50px;color:${C.emeraude}">${ct('emeraude', 'blanc')}</b></div>
+      <span class="pl-m pl-cl" style="--m:12px">Vermillon, émeraude<br>jamais en petit texte</span></div>`,
+  nuit: `<div class="pl-haut net" style="width:200px"><b class="pl-ct">${ct('blanc', 'nuit')}</b><span class="pl-m pl-cl">Blanc sur nuit</span>
+      <div style="margin-top:56px"><b class="pl-ct" style="color:${C.miel}">${ct('miel', 'nuit')}</b><span class="pl-m pl-cl">Miel sur nuit<br>le chiffre qui compte</span></div></div>`,
+};
+for (const [k, w, t, s, role] of B) {
+  const fin = w < 30, une = w < 100;
+  const g = k === 'papier' ? 84 : w >= 200 ? 22 : w >= 150 ? 16 : w >= 100 ? 12 : fin ? (w - (w < 20 ? 9 : 10)) / 2 : (w - s) / 2;
+  const fiche = fin ? `${M.NOMS[k]} <i>${C[k]}</i>${w < 20 ? '' : ` <i>· ${M.ORIGINES[k]}</i>`}` : `${C[k]} <i>· ${M.ORIGINES[k]} · ${role}</i>`;
+  h += `<div class="pl-b" style="--x:${x}px;--w:${w}px;--c:${C[k]};--t:${C[t]}">` + (haut[k] || '') +
+    (une ? `<div class="pl-v pl-une net" style="--g:${g}px;--s:${s || (w < 20 ? 9 : 10)}px;--fs:${w < 20 ? 9 : 10}px">${fin ? '' : `<b>${M.NOMS[k]}</b>`}<span${fin ? ' style="padding:0"' : ''}>${fiche}</span></div>`
+      : `<div class="pl-v net" style="--g:${g}px;--s:${s}px;--e:${Math.round(s * 0.2)}px"><b>${M.NOMS[k]}</b><span>${C[k]} · ${M.ORIGINES[k]}</span><span>${role}</span></div>`) + `</div>`;
+  x += w;
+}
+/* le bandeau et le pied du socle, chaque mention dans la couleur que demande la bande qu'elle traverse */
+const E = M.ENTETE, cE = [C.encre, C.encre, C.blanc, C.encre];
+const tete = `<div class="entete">${E.map((t, i) => `<span style="color:${cE[i]}">${t}</span>`).join('')}</div>`;
+const pied = `<div class="pfoot pl-pfoot">${M.symbol(C.encre)}<span style="color:${C.encre}">06 · Couleurs</span><span style="color:${C.blanc}">GRDR · Djongoma</span><span style="color:${C.encre}">KLYRA × GRDR</span></div>`;
+document.getElementById('p').innerHTML = h + tete + pied;
+</script>
+</body></html>

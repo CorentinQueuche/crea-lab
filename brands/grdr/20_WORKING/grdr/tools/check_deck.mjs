@@ -1,0 +1,23 @@
+import { chromium } from 'playwright-core';
+import path from 'node:path';
+import { pathToFileURL } from 'node:url';
+const target = process.argv[2];
+const url = target.startsWith('http') ? target : pathToFileURL(path.resolve(target)).href;
+const b = await chromium.launch({ channel: 'chrome', headless: true });
+const p = await b.newPage({ viewport: { width: 1440, height: 900 } });
+const errs = []; p.on('pageerror', (e) => errs.push(e.message)); p.on('response', (r) => { if (r.status() >= 400) errs.push(r.status() + ' ' + r.url()); });
+await p.goto(url, { waitUntil: 'networkidle' }); await p.evaluate(() => document.fonts.ready); await p.waitForTimeout(700);
+await p.screenshot({ path: 'out/guide/_deck1.png' });
+for (let k = 0; k < 8; k++) await p.keyboard.press('ArrowRight');
+await p.waitForTimeout(700); console.log('après 8 flèches :', await p.textContent('#num'), '|', await p.textContent('#ttl'), '|', await p.evaluate(() => location.hash));
+await p.goto(url + '#20'); await p.reload({ waitUntil: 'networkidle' }); await p.waitForTimeout(700);
+console.log('lien direct #20 :', await p.textContent('#ttl')); await p.screenshot({ path: 'out/guide/_deck20.png' });
+await p.keyboard.press('g'); await p.waitForTimeout(900); console.log('grille :', await p.evaluate(() => document.querySelectorAll('#gg button').length + ' vignettes, cassées ' + [...document.querySelectorAll('#gg img')].filter((i) => i.complete && !i.naturalWidth).length));
+await p.screenshot({ path: 'out/guide/_deckgrid.png' });
+// La vignette cliquée est la 14e, ou la dernière si le guide a moins de 14 pages (gabarit neutre : 3 pages).
+const nv = Math.min(14, await p.locator('#gg button').count());
+await p.click(`#gg button:nth-child(${nv})`); await p.waitForTimeout(500); console.log(`clic vignette ${nv} :`, await p.textContent('#num'), await p.textContent('#ttl'));
+await p.keyboard.press('End'); await p.keyboard.press('ArrowRight'); console.log('fin :', await p.textContent('#num'));
+await p.setViewportSize({ width: 390, height: 780 }); await p.waitForTimeout(500); await p.screenshot({ path: 'out/guide/_deckmob.png' });
+console.log('largeur mobile :', await p.evaluate(() => document.documentElement.scrollWidth), '| erreurs :', errs.length ? errs : 'aucune');
+await b.close();

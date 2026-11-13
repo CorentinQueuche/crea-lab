@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><title>05 · Le mur des empreintes</title>
+<link rel="stylesheet" href="../brand/marque.css">
+<style>
+  /* 05 · Le mur des empreintes : la pièce maîtresse. Neuf projets, neuf empreintes, sur la nuit de lagune.
+     Chaque empreinte est tracée par les données du projet (une boucle par année, jusqu'à l'exécuté) : aucune n'est pareille. */
+  .plate{width:1400px;height:1480px;background:var(--nuit);color:var(--blanc)}
+  .mu-fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55}
+  .mu-g{position:absolute;left:84px;right:84px;top:118px;display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+  .mu-c{position:relative;height:392px;padding:26px 26px 0;border-right:1px solid rgba(255,251,246,.12);border-bottom:1px solid rgba(255,251,246,.12)}
+  .mu-c:nth-child(3n){border-right:0}
+  .mu-c:nth-child(n+7){border-bottom:0}
+  .mu-c svg.emp{position:absolute;left:50%;top:34px;height:262px;width:auto;transform:translateX(-50%)}
+  .mu-n{position:absolute;left:26px;top:22px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:rgba(255,251,246,.5)}
+  .mu-t{position:absolute;left:26px;right:26px;bottom:24px;display:grid;grid-template-columns:1fr auto;gap:4px 12px;align-items:end}
+  .mu-t b{font-family:var(--titre);font-weight:800;font-size:17px;letter-spacing:-.025em;line-height:1.12;grid-column:1}
+  .mu-t i{font-style:normal;font-family:var(--titre);font-weight:900;font-size:34px;letter-spacing:-.05em;line-height:.9;grid-row:1 / span 2;grid-column:2;color:var(--miel)}
+  .mu-t i small{font-size:.5em;font-weight:800;margin-left:.06em;opacity:.8}
+  .mu-t span{font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;color:rgba(255,251,246,.6);grid-column:1}
+  .mu-t .code{background:rgba(207,235,221,.14);color:var(--menthe);margin-right:8px;font-size:10.5px;height:20px}
+  .mu-pied{position:absolute;left:84px;right:84px;bottom:74px;display:flex;justify-content:space-between;align-items:flex-end}
+  .mu-pied p{margin:0;font-family:var(--titre);font-weight:800;font-size:38px;letter-spacing:-.04em;line-height:1;max-width:760px}
+  .mu-pied p em{font-style:normal;color:var(--miel)}
+  .mu-leg{display:grid;gap:8px;font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,251,246,.66)}
+  .mu-leg span{display:flex;align-items:center;gap:10px}
+  .mu-leg u{display:inline-block;width:34px;height:0;border-top:5px solid var(--lc);border-radius:3px}
+  /* ?v=large : 1600 × 900, cinq colonnes sur deux rangées ; la dixième case porte la phrase */
+  .plate.large{width:1600px;height:900px}
+  .large .mu-g{left:60px;right:60px;top:calc(54px + var(--mu-dy,0px));grid-template-columns:repeat(5,1fr)}
+  .large .mu-c{height:396px;padding:0;border-bottom:1px solid rgba(255,251,246,.12)!important;border-right:1px solid rgba(255,251,246,.12)!important}
+  .large .mu-c:nth-child(5n){border-right:0!important}
+  .large .mu-c:nth-child(n+6){border-bottom:0!important}
+  .large .mu-c svg.emp{top:44px;height:214px}
+  .large .mu-n{left:20px;top:18px}
+  .large .mu-t{left:20px;right:20px;bottom:20px}
+  .large .mu-t b{font-size:15px}
+  .large .mu-t i{font-size:28px}
+  .large .mu-t span{font-size:9.5px}
+  .large .mu-mot{display:grid;align-content:end;padding:24px!important;font-family:var(--titre);font-weight:800;font-size:27px;letter-spacing:-.035em;line-height:1.02}
+  .large .mu-mot em{font-style:normal;color:var(--miel)}
+</style></head>
+<body>
+<div class="plate grain nuit" id="p"></div>
+<script src="../brand/marque.js"></script>
+<script>
+const M = Marque, D = M.DONNEES, C = M.COULEURS;
+const LG = new URLSearchParams(location.search).get('v') === 'large';
+const cell = (p, i) => { const c = M.cernesDe(p);
+  return `<div class="mu-c"><span class="mu-n">${String(i + 1).padStart(2, '0')} / ${D.synthese.projets}</span>${M.empreinte({ cernes: c.cernes, actif: c.actif, c: 'menthe', piste: 'rgba(255,251,246,.10)', cActif: 'miel', cadre: 5 })}
+    <div class="mu-t"><b>${p.titre.length > (LG ? 24 : 34) ? p.titre.slice(0, LG ? 23 : 33).replace(/\s+\S*$/, '') + '…' : p.titre}</b><i>${Math.round(p.taux * 100)}<small>%</small></i><span>${M.code(p.code)}${c.annees[0]}–${String(c.annees[c.annees.length - 1]).slice(2)} · ${M.euro(p.total)}</span></div></div>`; };
+const large = new URLSearchParams(location.search).get('v') === 'large';
+if (large) { document.getElementById('p').classList.add('large');
+  /* &H=1200 : la même grille, centrée dans un cadre 4:3 (pour un média 4:3 que la page affiche recadré en 16:9) */
+  const HH = +(new URLSearchParams(location.search).get('H') || 900); document.getElementById('p').style.height = HH + 'px'; document.documentElement.style.setProperty('--mu-dy', (HH - 900) / 2 + 'px');
+  document.getElementById('p').innerHTML = `<img class="mu-fond" src="${M.aqURL('nuit')}" alt=""><div class="mu-g net">${D.projets.map(cell).join('')}<div class="mu-c mu-mot">Neuf projets, neuf empreintes. <em>Aucune n’est pareille.</em></div></div>`;
+} else
+document.getElementById('p').innerHTML = `<img class="mu-fond" src="${M.aqURL('nuit')}" alt="">` + M.entete(M.ENTETE, 'blanc', 'opacity:.7') +
+  `<div class="mu-g net">${D.projets.map(cell).join('')}</div>
+   <div class="mu-pied net"><p>Neuf projets, neuf empreintes.<br><em>Aucune n’est pareille.</em></p>
+     <div class="mu-leg"><span><u style="--lc:${C.menthe}"></u>Une boucle par année, tracée jusqu’à l’exécuté</span><span><u style="--lc:${C.miel}"></u>L’année en cours</span><span><u style="--lc:rgba(255,251,246,.16)"></u>Ce qui reste à exécuter</span></div></div>` +
+  M.foot('05 · Le mur des empreintes', 'GRDR · Djongoma', 'blanc');
+window.pret = Promise.all([...document.images].map((i) => (i.decode ? i.decode().catch(() => 0) : 0)));
+</script>
+</body></html>

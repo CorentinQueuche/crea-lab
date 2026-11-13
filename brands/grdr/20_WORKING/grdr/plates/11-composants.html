@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><title>11 · Composants</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="../brand/ecrans.css"><link rel="stylesheet" href="pl.css">
+<style>
+  /* 11 · Composants : la feuille à plat. (La carte « 34 % » est celle du socle, telle quelle : marquée data-voulu, le contrôle
+     prend son grand chiffre serré pour une superposition.)
+      Une grille stricte de douze colonnes, des filets fins, une case par composant,
+     son numéro et son nom en haut, ses classes en bas. Une seule case sort de l'échelle : le bouton principal, agrandi
+     trois fois et coté (les cotes sont celles de brand/ecrans.css). Les composants sont les vrais, pas des dessins. */
+  .plate{height:1500px}
+  .pl-tete{position:absolute;left:84px;right:84px;top:92px;display:flex;justify-content:space-between;align-items:flex-end}
+  .pl-tete h1{margin:14px 0 0;font-size:60px}
+  .pl-tete p{margin:0 0 6px;text-align:right;line-height:1.7}
+  /* la racine .dj donne les variables de l'interface ; sa mise en page d'écran est neutralisée ici */
+  .dj.pl-dj{position:absolute;left:84px;top:196px;width:1232px;min-height:0;display:grid;grid-template-columns:repeat(12,1fr);background:transparent;
+    border-top:1px solid rgba(42,30,23,.22);border-left:1px solid rgba(42,30,23,.22)}
+  .pl-case{position:relative;grid-column:span var(--n,4);height:var(--h,170px);padding:50px 24px 44px;border-right:1px solid rgba(42,30,23,.22);border-bottom:1px solid rgba(42,30,23,.22);display:flex;align-items:center;gap:12px;flex-wrap:wrap;align-content:center}
+  .pl-case>.pl-nom{position:absolute;left:24px;top:18px}
+  .pl-case>.pl-nom b{font-weight:600;margin-right:10px;color:var(--lagune)}
+  .pl-case>.pl-cls{position:absolute;left:24px;bottom:15px;opacity:.6}
+  .pl-saut{flex-basis:100%;height:0}
+  .pl-sur-nuit{display:inline-flex;padding:9px 10px;border-radius:14px;background:var(--nuit)}
+  .pl-gros{zoom:3;margin-left:26px}
+  .pl-case .dj-champ{flex:1}
+  .pl-case .dj-al{flex:1}
+  .pl-case .dj-t{flex:1}
+  .pl-case .dj-c{flex:1;min-height:0;align-self:stretch}
+  .pl-case.pl-cartes{align-items:stretch;padding-top:54px;padding-bottom:48px}
+  .pl-svg text{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;font-weight:500;fill:var(--lagune)}
+</style></head>
+<body>
+<div class="plate clair grain" id="p"></div>
+<script src="../brand/marque.js"></script><script src="../brand/carte.js"></script><script src="../brand/ecrans.js"></script>
+<script>
+const M = Marque, C = M.COULEURS, D = M.DONNEES, S = M.app, T = S.TOTAUX;
+let n = 0;
+const cas = (nom, cls, html, span, h, extra = '') => `<div class="pl-case ${extra}" style="--n:${span};--h:${h}px"><span class="pl-nom pl-m"><b>${String(++n).padStart(2, '0')}</b>${nom}</span>${html}<span class="pl-cls pl-k">${cls}</span></div>`;
+const saut = '<i class="pl-saut"></i>';
+
+const cases =
+  cas('Le bouton principal, trois fois plus grand', '.dj-btn.p · hauteur 40 · rayon 13 · marge intérieure 16 · graisse 700', `<span class="dj-btn p pl-gros" id="gros">${S.ico('plus')}Nouveau projet</span>`, 6, 236) +
+  cas('Boutons', '.dj-btn · .p · .e · .v · .s · .clair', S.btn('Nouveau projet', 'p', 'plus') + S.btn('Exporter', '', 'export') + S.btn('Valider', 'e', 'coche') + S.btn('Signaler', 'v', 'alerte') + saut +
+    S.btn('Filtrer', 's', 'filtre') + S.btn('Ajouter une ligne', 's', 'plus') + `<span class="pl-sur-nuit">${S.btn('Extraire', 's clair', 'sync')}</span>`, 6, 236) +
+  cas('Pastilles de statut', '.dj-chip · .ok · .att · .al · .lag', S.statut('Signé') + S.statut('En attente') + S.chip('À surveiller', 'al') + S.chip('100 % acquis', 'lag', false) + S.chip('Clôturé'), 5, 144) +
+  cas('Avatars', '.dj-av · .s · .dj-avs', S.av('Awa D.') + S.av('Mamadou S.') + S.av('Claire M.') + S.av('Sami K.', 's') + S.avs(['Mariam K.', 'Ousmane T.', 'Kadiatou S.'], 2), 4, 144) +
+  cas('Segment', '.dj-seg', `<span class="dj-seg"><span class="on">Cumul</span><span>Mensuel</span></span>`, 3, 144) +
+  cas('Champs', '.dj-champ · .foc', `<label class="dj-champ">Libellé de la ligne<div>Animation territoriale</div></label><label class="dj-champ">Montant prévisionnel<div class="foc">${M.nombre(91500)}<i>€</i></div></label>`, 6, 226) +
+  cas('Alerte', '.dj-al · .v', `<div class="dj-al">${S.ALERTES.slice(0, 2).map((a) => `<div class="${a.v ? 'v' : ''}"><span class="dj-al-i">${S.ico(a.i)}</span><div><b>${a.t}</b><span>${a.s}</span></div>${S.ico('droite', 'style="color:var(--dj-pale)"')}</div>`).join('')}</div>`, 6, 226) +
+  cas('Ligne de tableau', '.dj-t · .dj-proj · .dj-num · .dj-ex', `<table class="dj-t"><colgroup><col><col style="width:150px"><col style="width:250px"><col style="width:150px"></colgroup><thead><tr><th>Projet</th><th class="d">Budget total</th><th class="d">Exécuté · repère : prorata</th><th class="d">Reste</th></tr></thead><tbody>${S.ligneProjet(D.projets[0])}${S.ligneProjet(D.projets[3])}</tbody></table>`, 12, 226) +
+  cas('Cartes', '.dj-c · .pap · .nuit', S.carte('Exécuté', 'Tout le portefeuille, au 16 juin 2025', `${S.lbl('Montant exécuté')}<div style="margin:8px 0 18px">${S.num(T.execute, '', `font-size:40px;color:${C.lagune}`)}</div>${M.jauge({ v: T.taux, repere: T.prorata, w: 300, ep: 8, c: 'lagune' })}<p style="margin:12px 0 0;font-size:12.5px;color:var(--dj-doux)">${M.pct(T.taux, 1)} du total · attendu au prorata ${M.pct(T.prorata)}</p>`) +
+    S.carte('Équipe du projet', 'Trois personnes par ligne, au plus', `<div class="dj-eq">${[['Mamadou S.', 'Coordination · 80 %', 162], ['Mariam K.', 'Animation · 100 %', 202], ['Claire M.', 'Appui du siège · 35 %', 71]].map(([q, r, j]) => `<div>${S.av(q)}<div><b>${q}</b><span>${r}</span></div><em>${j} j${M.jauge({ v: j / 202, w: 64, ep: 5, c: j >= 202 ? 'vermillon' : 'lagune' })}</em></div>`).join('')}</div>`, { cls: 'pap' }) +
+    S.blocTaux().replace('<section', '<section data-voulu'), 12, 396, 'pl-cartes');
+
+document.getElementById('p').innerHTML = M.entete() +
+  `<div class="pl-tete net"><div><div class="pl-m">11 · Composants</div><h1 class="t-titre">La feuille à plat.</h1></div>
+     <p class="pl-m">Neuf cases, les vraies pièces, à l’échelle 1<br>Sauf une : le bouton, agrandi et coté</p></div>
+   <div class="dj pl-dj net">${cases}</div>
+   <svg class="pl-svg net" width="1400" height="1500" viewBox="0 0 1400 1500" id="cotes"></svg>` +
+  M.foot('11 · Composants', 'GRDR · Djongoma');
+
+/* les cotes du bouton agrandi, posées sur sa boîte réelle (les valeurs sont celles de la feuille de style, avant agrandissement) */
+{ const P = document.getElementById('p').getBoundingClientRect(), b = document.getElementById('gros').getBoundingClientRect(), k = 3;
+  const x0 = b.left - P.left, y0 = b.top - P.top, x1 = x0 + b.width, y1 = y0 + b.height, f = `stroke="${C.lagune}" stroke-width="1" fill="none"`, r = 13 * k, m = 16 * k;
+  const tic = (x, y) => `<path d="M${x - 5},${y + 5} L${x + 5},${y - 5}" ${f} stroke-width="1.4"/>`;
+  document.getElementById('cotes').innerHTML =
+    `<path d="M${x0 - 22},${y0} V${y1} M${x0 - 30},${y0} H${x0 - 8} M${x0 - 30},${y1} H${x0 - 8}" ${f}/>${tic(x0 - 22, y0)}${tic(x0 - 22, y1)}<text x="${x0 - 30}" y="${(y0 + y1) / 2 + 4}" text-anchor="end">40</text>` +
+    `<path d="M${x0},${y0 - 18} H${x0 + m} M${x0},${y0 - 26} V${y0 - 6} M${x0 + m},${y0 - 26} V${y0 - 6}" ${f}/>${tic(x0, y0 - 18)}${tic(x0 + m, y0 - 18)}<text x="${x0 + m + 10}" y="${y0 - 14}">16</text>` +
+    `<path d="M${x1 - r * 0.293},${y0 + r * 0.293} L${x1 + 22},${y0 - 22} H${x1 + 38}" ${f}/><circle cx="${x1 - r * 0.293}" cy="${y0 + r * 0.293}" r="3" fill="${C.blanc}" stroke="${C.lagune}"/><text x="${x1 + 46}" y="${y0 - 18}">Rayon 13</text>`; }
+window.pret = Promise.all([...document.images].map((i) => (i.decode ? i.decode().catch(() => 0) : 0)));
+</script>
+</body></html>

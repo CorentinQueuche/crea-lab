@@ -1,0 +1,17 @@
+<!doctype html><meta charset="utf-8"><title>Gabarit de planche</title>
+<link rel="stylesheet" href="../brand/marque.css"><script src="../brand/marque.js"></script>
+<style>
+  /* Gabarit de planche : la structure seulement (bandeau, contenu au-dessus du grain, pied). Le copier sous
+     plates/NN-nom.html, puis tout composer : ce fichier ne propose aucune mise en page.
+     Rendu : node tools/shot.mjs plates/NN-nom.html out/plates/NN-nom.png
+     Classes à préfixer (ici gb-) : celles du socle sont globales. */
+  .gb-corps{padding:150px 84px 120px}
+</style>
+<body><div class="plate grain" id="p" style="min-height:1050px"></div>
+<script>
+const A = Marque;
+document.getElementById('p').innerHTML =
+  A.entete() +
+  `<div class="gb-corps net"><div class="t-mono t-doux">NN · titre de la planche</div></div>` +
+  A.foot('NN · titre', A.NOM);
+</script></body>

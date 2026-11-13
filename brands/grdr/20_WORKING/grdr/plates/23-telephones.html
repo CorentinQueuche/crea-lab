@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><title>23 · Sur téléphone</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="../brand/ecrans.css"><link rel="stylesheet" href="../brand/ecrans-b.css"><link rel="stylesheet" href="../brand/ecrans-c.css"><link rel="stylesheet" href="sc.css">
+<style>
+  /* 23 · Sur téléphone : les trois écrans du chef de projet, en rangée décalée, recadrés en haut et en bas.
+     Le lavis passe derrière ; une seule phrase, à gauche. */
+  .plate{width:1400px;height:1050px;background:var(--papier)}
+  .tl-fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.9}
+  .tl-r{position:absolute;left:430px;top:0;display:flex;gap:44px}
+  .tl-r>div:nth-child(1){margin-top:150px}
+  .tl-r>div:nth-child(2){margin-top:-70px}
+  .tl-r>div:nth-child(3){margin-top:250px}
+  .tl-t{position:absolute;left:84px;bottom:130px;width:320px}
+  .tl-t h1{margin:0 0 18px;font-family:var(--titre);font-weight:900;font-size:62px;letter-spacing:-.05em;line-height:.92}
+  .tl-t h1 em{font-style:normal;color:var(--vermillon)}
+  .tl-t p{margin:0;font-size:15.5px;line-height:1.45;max-width:290px}
+</style></head>
+<body>
+<div class="plate sc grain" id="p"></div>
+<script src="../brand/marque.js"></script><script src="../brand/carte.js"></script><script src="../brand/ecrans.js"></script><script src="../brand/ecrans-b.js"></script><script src="../brand/ecrans-c.js"></script>
+<script>
+const M = Marque, E = ['mAccueil', 'mProjet', 'mAlerte'].filter((e) => typeof M.app[e] === 'function');
+document.getElementById('p').innerHTML = `<img class="tl-fond" src="${M.aqURL('brume')}" alt="">` + M.filigrane({ c: 'blanc', op: 0.8, style: 'left:-260px;top:-240px;width:820px;height:1105px' }) +
+  `<div class="tl-r net">${E.map((e) => `<div>${M.phone(M.app[e]({}), 0.72)}</div>`).join('')}</div>
+   <div class="tl-t net"><h1>Dans la poche du <em>chef de projet.</em></h1><p>Son périmètre, et seulement le sien : ses projets, leurs chiffres, ce qui demande un regard. En lecture seule.</p></div>` +
+  M.foot('23 · Sur téléphone', 'GRDR · Djongoma');
+M.typo();
+window.pret = Promise.all([...document.images].map((i) => (i.decode ? i.decode().catch(() => 0) : 0)));
+</script>
+</body></html>

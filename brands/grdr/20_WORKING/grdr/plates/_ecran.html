@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><title>Un écran de l'outil, seul</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="../brand/ecrans.css"><link rel="stylesheet" href="../brand/ecrans-b.css"><link rel="stylesheet" href="../brand/ecrans-c.css">
+<style>html,body{margin:0;background:#FBF5EC}.plate{width:auto;display:inline-block;background:transparent}</style></head>
+<body>
+<!-- Rend un écran seul, sans cadre : plates/_ecran.html?e=tableauDeBord[&h=900][&p=0.5][&m=1]
+     e : nom d'une fonction de Marque.app · h : hauteur fixe (sinon toute la page) · p : avancement · m=1 : écran de téléphone (390 × 844)
+     node tools/shot.mjs "plates/_ecran.html?e=ficheProjet" out/ecrans/fiche.png --w 1440 --scale 2 -->
+<div class="plate" id="p"></div>
+<script src="../brand/marque.js"></script><script src="../brand/carte.js"></script><script src="../brand/ecrans.js"></script><script src="../brand/ecrans-b.js"></script><script src="../brand/ecrans-c.js"></script>
+<script>
+const q = new URLSearchParams(location.search), e = q.get('e') || 'tableauDeBord', o = {};
+if (q.get('h')) o.h = +q.get('h'); if (q.get('p')) o.p = +q.get('p');
+for (const [k, v] of q) if (!['e', 'h', 'p', 'm'].includes(k)) o[k] = isNaN(+v) ? v : +v;
+document.getElementById('p').innerHTML = Marque.app[e](o);
+if (q.get('m')) document.body.style.background = 'transparent';
+Marque.typo();
+window.pret = Promise.all([...document.images].map((i) => (i.decode ? i.decode().catch(() => 0) : 0)));
+</script>
+</body></html>

@@ -1,0 +1,73 @@
+<!doctype html><meta charset="utf-8"><title>31 · Le tableau de bord se construit</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="../brand/ecrans.css"><link rel="stylesheet" href="motion.css">
+<script src="../brand/marque.js"></script><script src="../brand/carte.js"></script><script src="../brand/ecrans.js"></script>
+<script src="lib.js"></script><script src="scenes.js"></script>
+<style>
+  .mv31-fen{position:absolute}
+  /* dans la fenêtre : la barre latérale et la barre du haut restent en place, seule la page défile */
+  .mv31-fen .dj{grid-template-rows:minmax(0,1fr)}
+  .mv31-fen .dj-lat{min-height:0}
+  .mv31-fen .dj-main{min-height:0;overflow:hidden}
+  .mv31-fen .dj-top{position:relative;z-index:5;flex:none;background:var(--dj-fond)}
+  .mv31-fen .dj-page{position:relative;z-index:1;flex:none}
+</style>
+<body><div class="m-stage mv-scene grain" id="s"><div class="mv31-fen m-net" id="fen"></div></div>
+<script>
+/* 31 · Le tableau de bord se construit dans une fenêtre de navigateur : les cartes arrivent l'une après l'autre (montée
+   courte, fondu), les chiffres montent, la courbe se trace, puis la page défile en deux temps vers le tableau des projets,
+   où chaque ligne arrive, son empreinte se trace et sa jauge avance. 1,9 s immobile à la fin. 10 s.
+   Le DOM de l'écran est construit une fois ; chaque bloc n'est refait (sur place, MV.bloc) que pendant que ses chiffres montent.
+   node tools/record.mjs motion/31-tableau-de-bord.html out/motion/31-tableau-de-bord.mp4 --dur 10 --apercu */
+const A = Marque, app = A.app, D = A.DONNEES, T = app.TOTAUX;
+const K = 1.12, VH = 746, LARG = 1440 * K, HAUT = (46 + VH) * K;
+const fen = document.getElementById('fen');
+M.css(fen, { left: ((1920 - LARG) / 2).toFixed(1) + 'px', top: ((1080 - HAUT) / 2).toFixed(1) + 'px' });
+fen.innerHTML = A.browser(app.tableauDeBord({ h: VH, p: 0 }), K, { h: VH });
+A.typo(fen);
+
+const page = fen.querySelector('.dj-page'), grille = page.querySelector('.dj-g');
+const [hero, taux, courbe, alertes, projets, terr] = grille.children;
+/* tableauDeBord({ h }) passe h à blocTerritoires, qui le lit comme sa propre hauteur minimale : on remet la valeur par défaut */
+terr.style.minHeight = '430px';
+const tete = page.querySelector('.dj-tete'), teteParts = [tete.querySelector('h1'), tete.querySelector('p'), tete.querySelector('.dj-tete-d')];
+const lignes = [...projets.querySelectorAll('tbody tr')];
+const alertesL = [...alertes.querySelectorAll('.dj-al>div')], terrL = [...terr.querySelectorAll('.dj-terr-l>div')];
+const epingles = [...terr.querySelectorAll('svg.dj-carte g path[stroke-dasharray]')].map((el) => ({ el, d: el.getAttribute('stroke-dasharray').split(' ').map(Number) }));
+
+const majHero = MV.bloc(hero, (p) => app.blocHero({ p }));
+const majTaux = MV.bloc(taux, (p) => app.blocTaux({ p }));
+const majCourbe = MV.bloc(courbe, (p) => app.blocCourbe({ p }));
+const majLignes = lignes.map((tr, i) => MV.bloc(tr, (p) => app.ligneProjet(D.projets[i], { p })));
+
+/* le défilement : deux paliers, mesurés sur la page (pixels de l'écran, avant le zoom de la fenêtre) */
+const VUE = VH - 68;
+let S1 = 0, S2 = 0;
+const mesurer = () => { S1 = Math.max(0, courbe.offsetTop - 104); S2 = Math.max(S1, page.scrollHeight - VUE); };
+
+const CARTES = [[hero, 0.35], [taux, 0.47], [courbe, 0.59], [alertes, 0.71], [projets, 3.1], [terr, 3.22]];
+
+window.seek = (t) => {
+  /* 1. les chiffres et les tracés (avant les styles : la mise à jour sur place remet les attributs du socle) */
+  majHero(MV.lin(t, 0.6, 2.0));
+  majTaux(MV.lin(t, 0.8, 1.9));
+  const pc = M.tw(t, 3.5, 1.7, M.quartOut);
+  majCourbe(pc);
+  courbe.querySelector('.dj-num').innerHTML = MV.euroHTML(Math.round(T.executeExercice * pc));
+  lignes.forEach((tr, i) => { const d = 6.0 + i * 0.14; majLignes[i](MV.lin(t, d + 0.1, 1.3)); MV.entree(tr, M.tw(t, d, 0.6), 14); });
+  const pe = M.tw(t, 6.4, 1.5, M.quartOut);
+  epingles.forEach(({ el, d }) => el.setAttribute('stroke-dasharray', `${(d[0] * pe).toFixed(2)} ${d[1]}`));
+
+  /* 2. l'en-tête, les cartes, les listes : montée courte et fondu */
+  teteParts.forEach((el, i) => MV.entree(el, M.tw(t, 0.12 + i * 0.09, 0.7), 14));
+  CARTES.forEach(([el, d]) => MV.entree(el, M.tw(t, d, 0.75), 26));
+  alertesL.forEach((el, i) => MV.entree(el, M.tw(t, 3.45 + i * 0.1, 0.6), 12));
+  terrL.forEach((el, i) => MV.entree(el, M.tw(t, 6.3 + i * 0.08, 0.6), 10));
+
+  /* 3. le travelling vertical, en deux temps */
+  const y = S1 * M.tw(t, 2.7, 1.4, M.quintInOut) + (S2 - S1) * M.tw(t, 5.5, 1.4, M.quintInOut);
+  page.style.transform = `translateY(${(-y).toFixed(2)}px)`;
+};
+/* les paliers se mesurent une fois les polices chargées */
+window.pret = MV.pret(fen).then(() => { mesurer(); seek(0); });
+seek(0);
+</script></body>

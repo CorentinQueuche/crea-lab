@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><title>02 · L’existant</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="pl.css">
+<style>
+  /* 02 · L'existant : une planche d'archives. Ce que le GRDR a déjà (logo, couleurs, police, signature) et ce que l'outil
+     montrait avant, en petits formats épinglés sur le papier, chacun avec son numéro de pièce en chasse fixe.
+     Rien n'est retouché : les anciens écrans sont les fichiers publiés, réduits. */
+  .plate{height:1240px}
+  .pl-titre{position:absolute;left:84px;top:118px;width:520px}
+  .pl-titre h1{margin:20px 0 0;font-size:96px}
+  .pl-titre .t-chapo{margin:30px 0 0;max-width:470px}
+  .pl-titre .t-txt{margin:16px 0 0;max-width:400px}
+
+  /* une pièce épinglée : tirage sur blanc de papier, ruban, légende */
+  .pl-p{position:absolute;left:var(--x);top:var(--y);width:var(--w);padding:10px 10px 0;background:var(--blanc);transform:rotate(var(--r,0deg));
+    box-shadow:0 0 0 1px rgba(42,30,23,.05),0 1px 2px rgba(90,45,15,.12),0 18px 26px -16px rgba(90,45,15,.5)}
+  .pl-p img{width:100%;height:auto}
+  .pl-p figcaption,.pl-cap{display:flex;justify-content:space-between;gap:10px;padding:9px 2px 10px}
+  .pl-p figcaption b,.pl-cap b{font-weight:600}
+  .pl-p figcaption span,.pl-cap span{opacity:.62}
+  .pl-ruban{position:absolute;left:var(--rx,50%);top:-12px;width:78px;height:24px;margin-left:-39px;background:rgba(239,223,118,.78);transform:rotate(var(--rr,-3deg));mix-blend-mode:multiply;
+    clip-path:polygon(0 0,3% 18%,0 36%,3% 54%,0 72%,3% 90%,2% 100%,98% 100%,100% 84%,97% 66%,100% 48%,97% 30%,100% 12%,98% 0)}
+  figure{margin:0}
+
+  /* le logo officiel */
+  .pl-logo>div{display:grid;place-items:center;height:316px;border:1px solid rgba(42,30,23,.08)}
+  .pl-logo svg{width:356px;height:auto}
+  /* les trois couleurs, en nuanciers */
+  .pl-nu{position:absolute;left:var(--x);top:var(--y);width:120px;background:var(--blanc);transform:rotate(var(--r,0deg));
+    box-shadow:0 0 0 1px rgba(42,30,23,.05),0 1px 2px rgba(90,45,15,.12),0 16px 22px -14px rgba(90,45,15,.5)}
+  .pl-nu>i{display:block;height:118px;background:var(--c)}
+  .pl-nu>div{padding:10px 10px 12px;display:grid;gap:3px}
+  .pl-nu b{font-family:var(--titre);font-weight:800;font-size:15px;letter-spacing:-.02em;line-height:1}
+  .pl-nu .pl-k{font-size:10px}
+  .pl-nu .pl-o{font-family:var(--mono);font-size:8.5px;letter-spacing:.03em;line-height:1.35;opacity:.66;white-space:normal}
+  /* la police */
+  .pl-po>div{padding:16px 18px 6px;border:1px solid rgba(42,30,23,.08)}
+  .pl-po .pl-gr{font-family:var(--titre);font-weight:800;font-size:104px;letter-spacing:-.045em;line-height:.9}
+  .pl-po .pl-al{margin-top:24px;font-family:var(--titre);font-weight:600;font-size:15px;letter-spacing:.01em;line-height:1.45}
+  /* la signature */
+  .pl-si>div{padding:22px 22px 20px;border:1px solid rgba(42,30,23,.08);font-family:var(--titre);font-weight:800;font-size:35px;letter-spacing:-.03em;line-height:1;color:var(--vermillon);white-space:nowrap}
+
+  .pl-src{position:absolute;right:84px;bottom:92px;width:226px;white-space:normal;text-align:left}
+  .pl-src i{display:block;width:26px;height:1px;background:currentColor;opacity:.5;margin-bottom:12px}
+</style></head>
+<body>
+<div class="plate grain" id="p"></div>
+<script src="../brand/marque.js"></script>
+<script>
+const M = Marque, C = M.COULEURS;
+const E = '../_prep/existant/';
+/* Les anciens écrans : les médias de l'étude de cas, tels que publiés. x, y, largeur, rotation, position du ruban. */
+const AVANT = [
+  ['dash.png',    'A·05', 'Tableau des projets', 664, 124, 312, -2.2, '34%', -4],
+  ['dash2.png',   'A·06', 'Mosaïque d’écrans',   996, 108, 320,  1.6, '62%',  3],
+  ['desktop.png', 'A·07', 'Mise en situation',   712, 408, 292,  1.9, '30%',  5],
+  ['menu.png',    'A·08', 'Menu de l’outil',     1030, 338, 286, -1.3, '70%', -2],
+  ['hero.png',    'A·09', 'Image d’ouverture',   1024, 596, 292,  2.3, '48%', -5],
+];
+const piece = ([f, n, t, x, y, w, r, rx, rr]) => `<figure class="pl-p" style="--x:${x}px;--y:${y}px;--w:${w}px;--r:${r}deg"><i class="pl-ruban" style="--rx:${rx};--rr:${rr}deg"></i><img src="${E}${f}" alt=""><figcaption class="pl-m pl-s"><b>${n} · Avant</b><span>${t}</span></figcaption></figure>`;
+const NU = [['vermillon', 664, 716, 2.2], ['ocre', 778, 728, -1.8], ['lagune', 892, 712, 2.8]];
+const nuancier = ([k, x, y, r]) => `<div class="pl-nu" style="--x:${x}px;--y:${y}px;--r:${r}deg"><i style="--c:${C[k]}"></i><div><b>${M.NOMS[k]}</b><span class="pl-k">${C[k]}</span><span class="pl-o">${M.ORIGINES[k].replace('officiel · ', '')}</span></div></div>`;
+
+document.getElementById('p').innerHTML = M.entete() +
+  `<div class="pl-titre net"><div class="pl-m">02 · L’existant</div><h1 class="t-titre">D’où l’on part.</h1>
+     <p class="t-chapo">Le GRDR a son logo, ses trois couleurs, sa police, sa signature. On n’y touche pas.</p>
+     <p class="t-txt t-doux">Les écrans de l’outil, eux, s’en servaient à peine. C’est là que le travail commence.</p></div>` +
+  AVANT.map(piece).join('') +
+  `<figure class="pl-p pl-logo" style="--x:84px;--y:528px;--w:540px;--r:-1.4deg"><i class="pl-ruban" style="--rx:22%;--rr:-5deg"></i><i class="pl-ruban" style="--rx:80%;--rr:4deg"></i><div>${M.lockup()}</div>
+     <figcaption class="pl-m pl-s"><b>A·01 · Logo officiel</b><span>Tracés du rapport d’activité 2025</span></figcaption></figure>` +
+  NU.map(nuancier).join('') +
+  `<div class="pl-m pl-s" style="position:absolute;left:668px;top:934px"><b style="font-weight:600">A·02 · Trois couleurs</b> <span style="opacity:.62">&nbsp;relevées sur le logo</span></div>` +
+  `<figure class="pl-p pl-po" style="--x:84px;--y:940px;--w:404px;--r:1.3deg"><i class="pl-ruban" style="--rx:50%;--rr:2deg"></i><div><div class="pl-gr">Nunito</div><div class="pl-al">abcdefghijklmnopqrstuvwxyz<br>0123456789 € % « » ’</div></div>
+     <figcaption class="pl-m pl-s"><b>A·03 · Police</b><span>Celle des publications du GRDR</span></figcaption></figure>` +
+  `<figure class="pl-p pl-si" style="--x:536px;--y:1010px;--w:478px;--r:-1.1deg"><i class="pl-ruban" style="--rx:86%;--rr:-6deg"></i><div>${M.SIGNATURE}</div>
+     <figcaption class="pl-m pl-s"><b>A·04 · Signature</b><span>Telle que le GRDR l’écrit</span></figcaption></figure>` +
+  `<div class="pl-src pl-m pl-s net"><i></i>A·01 à A·04 : ce qui existe et ne change pas.<br>A·05 à A·09 : les médias de l’étude de cas, tels que publiés, non retouchés.</div>` +
+  M.foot('02 · L’existant', 'GRDR · Djongoma');
+window.pret = Promise.all([...document.images].map((i) => (i.decode ? i.decode().catch(() => 0) : 0)));
+</script>
+</body></html>

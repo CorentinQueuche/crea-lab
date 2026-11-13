@@ -16552,5 +16552,3191 @@
     "path": "brands/drupe/licenses/@fontsource-variable/bricolage-grotesque/LICENSE",
     "bytes": 4401,
     "sha256": "923f4ddf0fd39f9b7794ab0df7332f3d95dc43e8ad7ec2289d6d9e8491177f51"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/MARQUE.md",
+    "bytes": 18673,
+    "sha256": "f785062df389839605371ad9e831c8d94566d5a0f1b8b3da4ee362866f5dad04"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/_prep/carte_controle.png",
+    "bytes": 77602,
+    "sha256": "b351ee3d457fcf0e1bd43a091622e58e2284417dcecce1a0480e5c8dbe122d52"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/_prep/carte_controle.svg",
+    "bytes": 103428,
+    "sha256": "4ff089e872f302fe3c47b8e1edfa387a4f49947ffdaf53d5a6d4098ee7ceff38"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/_prep/coins.py",
+    "bytes": 1888,
+    "sha256": "7234e925cd03ec3cbcca6d128cfd245d5ad4d05eab9b1eaba17394a9dcedfdc0"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/_prep/existant/Timeline.svg",
+    "bytes": 38817,
+    "sha256": "d10d1d8acc2e1d4e4738ad7e81d65aa61ee8caa77b915a614f17a63c433dd70e"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/_prep/existant/dash.png",
+    "bytes": 212745,
+    "sha256": "190a00bf6cb0e9c0c230c7fb9132cbf0a16002fb2d2c4ec2a9e8276e5164bb57"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/_prep/existant/dash2.png",
+    "bytes": 336245,
+    "sha256": "f5536cbd1447d577b76dabdfec40355593c29f14471cd91092fb740d410c4c8e"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/_prep/existant/desktop.png",
+    "bytes": 677354,
+    "sha256": "fecfb3eebd2d8316f1fa484443a455d3ed7ac9d44137791f045a1061efe822ca"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/_prep/existant/grdr-icon.svg",
+    "bytes": 1825,
+    "sha256": "bddbe5dababd809ad0000e777f2f5099eda8691ac759e90c5c920b023dc4d997"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/_prep/existant/hero.png",
+    "bytes": 1031666,
+    "sha256": "696ee0b86faa862a05e2180c5a7f720b352598d28c19d61475c2d570b030d27d"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/_prep/existant/img2.png",
+    "bytes": 1177816,
+    "sha256": "0b82830320c06577be4914448b42d9b5e4b55206ceaf2cad7d4b7b50b98af739"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/_prep/existant/img4.png",
+    "bytes": 1588631,
+    "sha256": "3fd965261ae838e10d0996ff7dd7289b22d66d9c96fca0c5a80993e36edc9b82"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/_prep/existant/img5.png",
+    "bytes": 1139561,
+    "sha256": "2a6b1fafdf795b6ece563ad33116a6c24c93ebf3e9f34488b64c7b5e90082f2d"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/_prep/existant/menu.png",
+    "bytes": 390351,
+    "sha256": "c2836eef30385017498ed22419e2f61a5cbdc4f3579362535f74d0cf0a15f331"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/_prep/existant/phone.png",
+    "bytes": 499901,
+    "sha256": "d05e0fba8173a442086a452aa9cc9b99f5b271ebfcf1aa25e63bc63e495e063c"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/_prep/extraire_logo.py",
+    "bytes": 6325,
+    "sha256": "cb88889ba3e28559847be56257aca0f3e339010e4b996b88116936e8b27acbbe"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/_prep/injecter.mjs",
+    "bytes": 5629,
+    "sha256": "2bb1523e9e2578f1edad52b52117fcaa345d873d126300a9991c8c69e2dd1e01"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/_prep/kit.json",
+    "bytes": 287952,
+    "sha256": "0cba9b40506a7e2c50575f72c192216a3424a2bef70e0cd8928ba71ef2d1bc8b"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/_prep/logo_officiel.json",
+    "bytes": 38171,
+    "sha256": "dcfbd101c2a0ba02887e6cc99bdff12e278c07544e0ed185409094dbfb81e936"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/_prep/logo_officiel.png",
+    "bytes": 114081,
+    "sha256": "7bba8c7420c3353e69df99cd5ca31f66d8b53b175808276329b18e837f6cf913"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/_prep/logo_officiel.svg",
+    "bytes": 37523,
+    "sha256": "d1f176944036c5d45759490d4cad0449d6e855606226af34bf6744558ec91273"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/_prep/preparer_kit.mjs",
+    "bytes": 9803,
+    "sha256": "4a8ae012d82e9455bb1accfc7c160823490c79ab1b84ba1504e589982db0ed08"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/_prep/symbole_superpose.png",
+    "bytes": 69864,
+    "sha256": "120cd4132644480e3d68ea00ff9174a9e7b901236a7fbecff22ccec88ea3a40b"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/_prep/symbole_superpose.svg",
+    "bytes": 10598,
+    "sha256": "ee66e1ac5aff058991feab1c854067520bd2ac21b5ea889e7608abff6f70babb"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/art/aquarelle.html",
+    "bytes": 7132,
+    "sha256": "348fd9f9844f6397857a94ccc36e6734f1d61f8c497c0a0814ba296d71881540"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/brand/carte.js",
+    "bytes": 105720,
+    "sha256": "56cdb0c2df7aa60e664a6a0bf475491b8845ae0efb5834639e4ce2cbb3e31c2b"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/brand/ecrans-b.css",
+    "bytes": 24589,
+    "sha256": "06be79d8601b85f9aae58abba88a477f9b465124dece01289041328c77f22e1b"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/brand/ecrans-b.js",
+    "bytes": 33039,
+    "sha256": "291722b864e8c8b7f7b71fd41823b2c57f098458caf7d1cb7fb8cc25f046150b"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/brand/ecrans-c.css",
+    "bytes": 26839,
+    "sha256": "a1cf47c79d55709424511141252f917d47023909afa69dbf0f8b327d1614e698"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/brand/ecrans-c.js",
+    "bytes": 37438,
+    "sha256": "b10870238833b7516624a9c1880dde178460c31704a59fcbe2bae3a6ebfbc2ef"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/brand/ecrans.css",
+    "bytes": 19742,
+    "sha256": "753c0d22f4d39dddd4901850187afda04feee296add48c5068ba67cea11b44b9"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/brand/ecrans.js",
+    "bytes": 25562,
+    "sha256": "044302ad1760ecdf3ee6be2946200441d4cf4f4dc87cb6d6cf9f184b7eca8ce3"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/brand/fonts/GeistMono-Medium.ttf",
+    "bytes": 21516,
+    "sha256": "5b27963153679880aa29abecbca48b8220dd78d90d94dd28fefd602071dfd0b5"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/brand/fonts/GeistMono-Regular.ttf",
+    "bytes": 21452,
+    "sha256": "f008a3399b6bf605e21d6e628b2b5138e2884ea6bc9c18a3b8795a519fffaeea"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/brand/fonts/GeistMono-SemiBold.ttf",
+    "bytes": 21520,
+    "sha256": "2a2d3865f3b81b7901368dcbea73e86cd1bf0777aa9ade673605dbc0881ce60d"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/brand/fonts/Nunito-Black.ttf",
+    "bytes": 39480,
+    "sha256": "a2078aaa7d495e03a09cc1a101c9feb9a7997dfda4314c6afd3dab86858e60ef"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/brand/fonts/Nunito-Bold.ttf",
+    "bytes": 39508,
+    "sha256": "4af7bc8e89a5fa836f4c56688f6b39111cb14fb6561bdb31648a3549496af695"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/brand/fonts/Nunito-ExtraBold.ttf",
+    "bytes": 39520,
+    "sha256": "ac7266d86da0c3750e3852e2c9749ab9e9dcf52d76c669ca7a21dcb468059b59"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/brand/fonts/Nunito-Medium.ttf",
+    "bytes": 39640,
+    "sha256": "936e05f7a7073e37297d3ac5ac3988a818dd510f7738028c3d59f91c8885d104"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/brand/logo/grdr-complet-blanc.svg",
+    "bytes": 37468,
+    "sha256": "7ad53bdde542f8574c33cf282950617c90782a2408082832003418969d777014"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/brand/logo/grdr-complet-encre.svg",
+    "bytes": 37468,
+    "sha256": "e4eaf7b6c71bb5b9f0ff5c1912d24eb174220c29e141426b236cece19f50f24b"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/brand/logo/grdr-complet-lagune.svg",
+    "bytes": 37468,
+    "sha256": "0ff9a3caa76417ca98920d7bbb8ad996eef8fa9c2ea9b6d8bca5298ba07d0051"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/brand/logo/grdr-complet-vermillon.svg",
+    "bytes": 37468,
+    "sha256": "4fbdf983676c7e1a369c382999917e8e58266a0e55bfd4dfa382c7643dc17202"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/brand/logo/grdr-logotype-blanc.svg",
+    "bytes": 5978,
+    "sha256": "d3883631e5859e361655d4df8d83c817fee2519cd01a93234332451baab85b08"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/brand/logo/grdr-logotype-encre.svg",
+    "bytes": 5978,
+    "sha256": "2c76ce40105292b6e4c3c87b784b1d54d8d8f79a126ad8b33cf8ab43113306ad"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/brand/logo/grdr-logotype-lagune.svg",
+    "bytes": 5978,
+    "sha256": "a2f76310f2fff81d894575df8e5b8da4f7b8e1c70a9e66afecea8f107337de75"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/brand/logo/grdr-logotype-vermillon.svg",
+    "bytes": 5978,
+    "sha256": "20b9a53e3b607a779d4a8c7eb56970f5fab6151aea9387c62f52e44d1c408bd4"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/brand/logo/grdr-officiel.svg",
+    "bytes": 37520,
+    "sha256": "e23c0797b4c3a8dff01e1d2678f584a584a3a08afe844a307f39a257d8a1b360"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/brand/logo/grdr-symbole-blanc.svg",
+    "bytes": 2585,
+    "sha256": "e8861179e2732b4fe0c1743ddfa56a591f9bea578916a0f794305eb59050fc24"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/brand/logo/grdr-symbole-encre.svg",
+    "bytes": 2585,
+    "sha256": "f45d956a2cf3127a450f8f465678e454eff11e93f72ef24cd0473e5b83534126"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/brand/logo/grdr-symbole-lagune.svg",
+    "bytes": 2585,
+    "sha256": "692d18dbbcb2a5e697f7c1c5661219bca1650b0762fa7536d2226c94a9f0d05e"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/brand/logo/grdr-symbole-vermillon.svg",
+    "bytes": 2585,
+    "sha256": "afd7ed7816dfe8917a323e6a171f2614993b92301307f7c9b97e1e59845d698c"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/brand/logo/logo.json",
+    "bytes": 8641,
+    "sha256": "fa08a5703d1b8c0ffa754ba15c0fe5a7262ea66219905da41b544b686bd42ead"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/brand/marque.css",
+    "bytes": 12470,
+    "sha256": "2a5b428e98de459565a09fbd90b5d04e455417dcebd5e37be9d62de50fc6eb27"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/brand/marque.js",
+    "bytes": 83949,
+    "sha256": "171d1defafa6123b1eb13d73ed3eac3b065e7354c07f9521ca418e99a9df45b7"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/deck/pages.css",
+    "bytes": 23425,
+    "sha256": "a8d9118ebc3872b86cca9b584095062fd10532e6b033eb89fb70f5cd617a3811"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/deck/pages.js",
+    "bytes": 52127,
+    "sha256": "055961c4ece9c7d88afc0779f65fa29502e4dbf77b8df91c411b51930ebe162f"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/deck/render.html",
+    "bytes": 1642,
+    "sha256": "007d8d9e182551abbcb4e8f79f40a609cbd1accc4e57b4af9cadf080e806d6aa"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/motion/29-symbole.html",
+    "bytes": 4249,
+    "sha256": "107066a5248554105d4285e6c9de853634b1163ac1b3867760a8d5ce708d593d"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/motion/30-empreinte.html",
+    "bytes": 8069,
+    "sha256": "56dfb7af5519c2fbc7825e5d490ce560013c38ccf753847bec91c056c5d2e2e8"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/motion/31-tableau-de-bord.html",
+    "bytes": 4775,
+    "sha256": "fb56633d2f9d1fdc0cf90a615600b1780f3a4c089930ba882dc74fd8c0ce909e"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/motion/32-du-tableur-a-l-outil.html",
+    "bytes": 16385,
+    "sha256": "55309a617917435b8a283cc6fd2c1f1e329446aa16c7ff8bad786e74452ba632"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/motion/33-mur-des-empreintes.html",
+    "bytes": 5061,
+    "sha256": "1e44b07708cf4159c18f57174dafacc3b02c5c27941c7c7f505f978e7f5a9e96"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/motion/34-a-l-euro-pres.html",
+    "bytes": 6101,
+    "sha256": "68ff03dea1c525c48d4a735b195a188c6c7664431e0c934d6bda53a45cc0537a"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/motion/_gabarit.html",
+    "bytes": 1286,
+    "sha256": "d8cc0b45a49158cbbbd42859eaf76ede1a5f8080d872ae8ccb488e7f8216a069"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/motion/lib.js",
+    "bytes": 4254,
+    "sha256": "ec4da08af7a976ea758aa9e34752e62ca183810df81d864bf8a98c178e490bf7"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/motion/motion.css",
+    "bytes": 1812,
+    "sha256": "4d9d1eab3d373537c9bdd34024a9efcf399ed23fd6bdb62b3e8c9bc253ac5fd5"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/motion/scenes.js",
+    "bytes": 4062,
+    "sha256": "8c046b453fcc064ad918604353c69d88692fa209de8ab02dfdd041c7c82f9f03"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/_test.png",
+    "bytes": 1451258,
+    "sha256": "073fca236e4c79b2f4ba2d4b34d1ed736d1893575e64baf01ce9312f3eb84cf6"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/ecrans/admin.png",
+    "bytes": 1248275,
+    "sha256": "96f4a1030008ee8edca837b46a51ebadfb7c918df9e0ccde491d7f74b73c0d10"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/ecrans/affectation.png",
+    "bytes": 929470,
+    "sha256": "569ed60012d1e6f1bbd81e67fba5d665daa82b911a3c5c3ee5af9db05b371cb9"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/ecrans/connexion-900.png",
+    "bytes": 4363681,
+    "sha256": "03804517f36b9ab68f12ae83954d8cd8a211a556c500e00578c9e6eef18859de"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/ecrans/connexion.png",
+    "bytes": 4363681,
+    "sha256": "03804517f36b9ab68f12ae83954d8cd8a211a556c500e00578c9e6eef18859de"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/ecrans/ficheProjet.png",
+    "bytes": 1295298,
+    "sha256": "f5b7ddb91ef62b30c418c4722893e99198bf2c00bf093b10b859d264ffeb3d15"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/ecrans/journal.png",
+    "bytes": 1639967,
+    "sha256": "a305ca6003194c6f3c112b26b2a02b16b9ac47e1b426e03087228114954c92e0"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/ecrans/mAccueil.png",
+    "bytes": 952974,
+    "sha256": "1dbe5e2b1bf64843e3b3bd97d54db012620b2a79f168d2335b5af9d0f1422f65"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/ecrans/mAlerte.png",
+    "bytes": 854886,
+    "sha256": "a74643116533c3cff1b14a11375badf506f7a8e777f2e466866c30173568e6f7"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/ecrans/mProjet.png",
+    "bytes": 387762,
+    "sha256": "deefe40065485c32d5a09fc9634a13046feefb518f1cf8895efe0f31410580e6"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/ecrans/nouveauProjet.png",
+    "bytes": 1335467,
+    "sha256": "648ddee02ddf6e5096a124b87846405198b588ef3cf0653ba0af8a2b7224ac66"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/ecrans/projets.png",
+    "bytes": 669777,
+    "sha256": "1aa1fb147da75b6caf4ce777194c51881812613c35b0bee6772a1049348e274b"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/ecrans/projetsGrille.png",
+    "bytes": 815695,
+    "sha256": "30a29352d57554d3a12e7c685fecd0ceebbbd928ce38761398eae0a4e12c1d33"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/ecrans/rh.png",
+    "bytes": 994309,
+    "sha256": "2fbbe50dce8f4deec603dd847954d28764d302b4b669ee4acc52b057059c4757"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/ecrans/sage.png",
+    "bytes": 1492661,
+    "sha256": "8f6ec93624628d8e9e7749e60760370ce75906fc7fb126190178aa6d3cdc14dc"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/ecrans/stats.png",
+    "bytes": 1045064,
+    "sha256": "08706445ddf95add05d7c400c45d6cfa3aa3fb071faaa566f51d64045bbfc1ca"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/ecrans/tableauDeBord.png",
+    "bytes": 2229324,
+    "sha256": "f08ce19ee5c898a79723384516a50d3841f904b4a1f96e585ae20ff793019703"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/final/35-portable-velours.jpg",
+    "bytes": 655039,
+    "sha256": "b0868e375d45be988058c4665313af20095a1d18762a9186e7c7b8d09acd92e5"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/final/36-portable-terre.jpg",
+    "bytes": 846862,
+    "sha256": "74df068c2dd474bfd7c452765c2e9b5be76145e70070c7be2dffd20bee29cba0"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/final/42-telephone.jpg",
+    "bytes": 479305,
+    "sha256": "d697ac6863af27ea8479a45c60a5da4f17af5f8e21a5b7fea2ff47dcfc06f660"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/final/Timeline.svg",
+    "bytes": 112001,
+    "sha256": "f7441769630637c10dc765eddbf2a5ec8683ec07f63149ceea34b8a92015b110"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/motion/29-symbole.mp4",
+    "bytes": 1394554,
+    "sha256": "7fb0610687cd1e3157a306f5016bbe939bc59eacea1232ac80a07a129510f2be"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/motion/29-symbole.png",
+    "bytes": 750198,
+    "sha256": "5d9d09fc0eb1a1dca8c05a0e4c428298c964b0cfa74ac0944bf0f2940d8e3b34"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/motion/30-empreinte.mp4",
+    "bytes": 1094523,
+    "sha256": "76dc2a439419dfc6206f72920877b98f35cee36e0eb7972f3d420d9f29450cd8"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/motion/30-empreinte.png",
+    "bytes": 2365078,
+    "sha256": "eed5d079336f31e94673a494f8c4b5045a78474e161cca2c7a0c98f5cb3f2b20"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/motion/31-tableau-de-bord.mp4",
+    "bytes": 1979439,
+    "sha256": "9707dcee5c1d7d43c575afe72673fbd6f1cf88d519df838e39cc59b8a5d41ce2"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/motion/31-tableau-de-bord.png",
+    "bytes": 987468,
+    "sha256": "a4d99eda6c8782095ecb9e4879e7d71f5c7d7aa9023d2f43fcf65b55225b4b73"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/motion/32-du-tableur-a-l-outil.mp4",
+    "bytes": 2059261,
+    "sha256": "4d2d672a67ba30e8e8fbfbd37212355853728a9d5bfc8dfa31ea3db65908ed4d"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/motion/32-du-tableur-a-l-outil.png",
+    "bytes": 843914,
+    "sha256": "865d6103395d1ad085b24b592bb6c22e581dfe049cd7644802d58ef29afe3b22"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/motion/33-mur-des-empreintes.mp4",
+    "bytes": 747761,
+    "sha256": "6760cd92c663fa6240863d77dc1c1d01d5b93af3bb3cb0c0fd46335c9dcd2912"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/motion/33-mur-des-empreintes.png",
+    "bytes": 2442024,
+    "sha256": "908bcce8cfcf85a0715a9935543d8aaaf7d2c34315ae591a54e1d68215103245"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/motion/34-a-l-euro-pres.mp4",
+    "bytes": 1847666,
+    "sha256": "37db0dd56e31793d0370e006be279c52c81de1964978145318e1c9c0d471adb8"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/motion/34-a-l-euro-pres.png",
+    "bytes": 3262241,
+    "sha256": "cdb77190851a8dfeae0dc37617d7dde14d611525a1793f624c154a24cc75ba1e"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/plates/01-ouverture.png",
+    "bytes": 3641873,
+    "sha256": "e4d9d74c990957aaaf72aced2eaa62acf539f32d1d79387e59523c94a713e8c3"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/plates/02-existant.png",
+    "bytes": 6744857,
+    "sha256": "605361a338f7ff892f89aeec6fb0db24974c8ec79a642eee9c77e36174b30cbe"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/plates/03-idee.png",
+    "bytes": 4466643,
+    "sha256": "3683877f5604f7e839382a452c58dbe65caeba1024388a9440b25c6a68bb5722"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/plates/04-lire-une-empreinte.png",
+    "bytes": 2204611,
+    "sha256": "029d854d5493e545880d92390f72ab7f3b0f1f3b92c2a6e5aa84fe7c146d23b3"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/plates/05-mur-des-empreintes.png",
+    "bytes": 8441649,
+    "sha256": "115fa70105212f4ce7579e86fd88a97e4465f1cc40a4a125b643b75e33b85480"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/plates/06-couleurs.png",
+    "bytes": 8102075,
+    "sha256": "9c3d7288deedf62d7685c4a590bbed5e058c61e5ba62f98f57b4271b1fd67663"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/plates/07-typographie.png",
+    "bytes": 4241961,
+    "sha256": "db9ab9a6c8af1d0083dc24452b3b99ff0faffda40924e55ceaa6faf7113d5a22"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/plates/08-aquarelle.png",
+    "bytes": 10150692,
+    "sha256": "6bf2565eba44a65f14dfa46e646262f57005d1f25af159d28d1d80596a48efb0"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/plates/09-marge-du-comptable.png",
+    "bytes": 4082988,
+    "sha256": "689849e1f9e59780fb1700ce3069106cb2546c6e728cf2300d14de73f78f14d9"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/plates/10-graphiques.png",
+    "bytes": 4325740,
+    "sha256": "51d608b39e3d7b499898623e987bd1ebe69ad0add08a2cd6f5eab45de66e3cf2"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/plates/11-composants.png",
+    "bytes": 4012917,
+    "sha256": "c6a45731809c196e9527ed0dc72d99d691badf88d487f544092b3db149338548"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/plates/12-tableau-de-bord-incline.png",
+    "bytes": 4722371,
+    "sha256": "81c685a369a5843cc5bddffc49264c302a450989fa15f87e6ccbfe85ddbd563a"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/plates/13-details.png",
+    "bytes": 4490197,
+    "sha256": "8fd4f3852f3a917c5d34c3813e39eed30cb45ceee2b65351eff3d58b72e2aa6f"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/plates/14-fiche-inclinee.png",
+    "bytes": 3429645,
+    "sha256": "1dc3bae1805c493ea653b5898c67f6b4d6afdec0a952f01dedf8901bafc6b06a"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/plates/15-barre-laterale.png",
+    "bytes": 5884412,
+    "sha256": "9df4c2896eaa3e83ba23950b8ba3955b70c5ba98bc0e4940b5018818e5620840"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/plates/16-tableau-des-projets.png",
+    "bytes": 2780346,
+    "sha256": "67fbd806e87853ad6db141b5155ac7aa49358094b7c93f93c23bc30d7d447332"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/plates/17-courbe.png",
+    "bytes": 3843997,
+    "sha256": "cd8e9eb70cbea1c24cdba08f5acd3d270c6d659bcc5a6d6aef621781f050960a"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/plates/18-mur-d-ecrans.png",
+    "bytes": 3881522,
+    "sha256": "c41104ebd047271990ef17f8cf1c6600809ecf771eca64693db84576344d9765"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/plates/19-projets.png",
+    "bytes": 3414180,
+    "sha256": "0489952dc3f79b5d616025a88b066ba69f6ed2ddc81e678f8793836b946472ff"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/plates/20-ressources-humaines.png",
+    "bytes": 3172897,
+    "sha256": "8d6d1fe8c651f8dd392ead706e0633bde558ee9f140a2bae03a49f57d44789e0"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/plates/21-extraction-sage.png",
+    "bytes": 4603056,
+    "sha256": "e360914dfddf3c60ccce43ca1bd845e454475cdfa43b6c138cac2b10dd7e568d"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/plates/22-statistiques.png",
+    "bytes": 3279439,
+    "sha256": "70cf4850ead95980b30ba9064ae2ec31bdde1dc2d3ef93e6455ec6701f526149"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/plates/23-telephones.png",
+    "bytes": 7298045,
+    "sha256": "7dd607411b199663b07a61a42034872ce8d359da66555dbf962d6f38d0185b2d"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/plates/26-ici-et-la-bas.png",
+    "bytes": 6077919,
+    "sha256": "78e548bb556df9a1c098a22e81992b45c07fee0712d1d66706ccfdb4be6f7588"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/plates/27-roles.png",
+    "bytes": 5653401,
+    "sha256": "4ce3f3ea1e6af6adcdbecdc44aa93998aac5266ce70f0b11864c96868586f84f"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/plates/28-avant-apres.png",
+    "bytes": 7060351,
+    "sha256": "f4dc4f1eda03ec0c23d0328887d05ef6d88930cb555b1bc8ac7733f2fa59bed9"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/plates/37-suivi-imprime.png",
+    "bytes": 3727820,
+    "sha256": "6bb48efa7cce2ee750eb2496161e4a95b8fdd116198944dcc9648e2a25fc3c80"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/plates/38-affiche.png",
+    "bytes": 12373988,
+    "sha256": "c90428658f517665435870a335ecd17062267ce23c7a61cc31009b198908def4"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/plates/39-terrain.png",
+    "bytes": 7173738,
+    "sha256": "8b81e9207fb1e172e295699ab40873026a730944c58ab5684e60a905a57e1c00"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/plates/40-des-gens.png",
+    "bytes": 8983173,
+    "sha256": "d152debf1c9c2a8ed3f8db2669d79a418f2d37b5df29aa8790b8473c8418c29b"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/plates/43-trois-pistes.png",
+    "bytes": 3818713,
+    "sha256": "dc534b893982a2da4ecfaa2a39497b9a940092c65426a1fcad8c20a5f7ca76cd"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/out/plates/45-citation.png",
+    "bytes": 8813091,
+    "sha256": "12a527466f39ce4d26066cc3cc273ce01eb825e095df22a864dd8bda57017c58"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/package-lock.json",
+    "bytes": 5281,
+    "sha256": "4b8d198ed762a9051be91de1f0633ece475aba6cfa59c7dde7a7c514498a8ef9"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/package.json",
+    "bytes": 459,
+    "sha256": "783f1e08bd6c24712bc21fe6146a2d477426fb43a4e505514dc068a2e7c3295f"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/photos/aq-aube.jpg",
+    "bytes": 1134631,
+    "sha256": "faea30662fb7f2617be557fcb05681f2925c94fc01133de567edd81051b0a660"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/photos/aq-brume.jpg",
+    "bytes": 1270087,
+    "sha256": "cdb28a298e19188717b7185092006bbe0e5f7b3bf8980059068af58c6c9faa96"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/photos/aq-lagune.jpg",
+    "bytes": 1092489,
+    "sha256": "fc95482b76adcd01a45567cb9d7fe7684a9243fd7ffdc8b876ed169f07e4a3b0"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/photos/aq-nuit.jpg",
+    "bytes": 492079,
+    "sha256": "d8dfb69061bb99407010ec1771e8e221c3f3216e4c142ccc2fc1d3105debe0d1"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/photos/aq-terre.jpg",
+    "bytes": 1127593,
+    "sha256": "088e7ec49d85d7c0e5310c54dc47fbf7f0b3071f08f4d8a9e59ba94b6a51127f"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/photos/artisan.jpg",
+    "bytes": 606377,
+    "sha256": "dba7e6650c00aa5e145154516c6f425b140d2779a03f36924e1730f986da261c"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/photos/atelier.jpg",
+    "bytes": 745176,
+    "sha256": "2a734a3d7025d902297beaf25b3919374649f93ce0f5d2e69bf998645b1f26a3"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/photos/marche.jpg",
+    "bytes": 769973,
+    "sha256": "b3273e9309b047931d46256758b0b2bb1706c55e44a407c29f1ed89a8ebadbed"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/plates/01-ouverture.html",
+    "bytes": 2414,
+    "sha256": "6c95cd1dfad5c9a51501e914c2077e3d8fc1f21473df5365e5cfae128625f459"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/plates/02-existant.html",
+    "bytes": 6715,
+    "sha256": "ac19d6d6898578eac56a05fa9c1fb7ee43e68ac6d782f8da04b3470772369f3b"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/plates/03-idee.html",
+    "bytes": 7998,
+    "sha256": "9f2e7a5b19228727741a022b89cf88e4c47ce27b6b16ae146fd8a87814f1718a"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/plates/04-lire-une-empreinte.html",
+    "bytes": 7547,
+    "sha256": "b4aaca96ae559e7080be79cff8653bc806b8b9f2b7810b7724d5e52dc971a398"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/plates/05-mur-des-empreintes.html",
+    "bytes": 5840,
+    "sha256": "94103ee61fdb6a6a161219ade915520537736b47f7dfce5095bc7e819de0eeb3"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/plates/06-couleurs.html",
+    "bytes": 5547,
+    "sha256": "6281c1bc56bb6b5d9c115435a070d669461646b4d63dbd9e83935b69fd7d0e6c"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/plates/07-typographie.html",
+    "bytes": 5887,
+    "sha256": "375e9d057b58e41f05a4516484ad2fb6fe111621c056e6c766caae9fd063da41"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/plates/08-aquarelle.html",
+    "bytes": 3194,
+    "sha256": "9027fcbda850d0067b2230dd2a58eed6062fbbd2658be89c2e7267067982af98"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/plates/09-marge-du-comptable.html",
+    "bytes": 6672,
+    "sha256": "08346c51fff3172073414616b916cb8da92d016d0faa555b872f76eb99fa950a"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/plates/10-graphiques.html",
+    "bytes": 7958,
+    "sha256": "df3a8d536efcc62c2ad10aaa81eb7f93d2b10cf9397d892d25079c65848b4cd3"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/plates/11-composants.html",
+    "bytes": 7857,
+    "sha256": "60686b7794560878f3e1c4ac3140aeaa5b7dc756c765cab298d37264e2267d28"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/plates/13-details.html",
+    "bytes": 2335,
+    "sha256": "848144cf8ca70e6dabae3742aa8b56e19c4005921be7a7632c4cf15300016954"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/plates/15-gros-plans.html",
+    "bytes": 2273,
+    "sha256": "d37af7350dd55144c3d7ab737183e475b6c645b2fec2f112986d5971ae7932f3"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/plates/18-mur-d-ecrans.html",
+    "bytes": 2791,
+    "sha256": "8b760a83a99094924abbb54046e0404598b19e6c35776751aed4c76e59bba2e4"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/plates/23-telephones.html",
+    "bytes": 2273,
+    "sha256": "89f4c285ab856f4495261bc102187dcc144f3a2065a7b9e24175fd45713023e3"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/plates/26-ici-et-la-bas.html",
+    "bytes": 4850,
+    "sha256": "0a67210051ba4494acf9f73e76c84b42dd09d81ee3c94e6a5fcfc3e2b291c64b"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/plates/27-roles.html",
+    "bytes": 3885,
+    "sha256": "7a294f2270800b9fa024cb4891fad736c83b65d4584371a4e26ff40fd833f6e8"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/plates/28-avant-apres.html",
+    "bytes": 3056,
+    "sha256": "c3c7e3263e6d67f9e1cd0c7e25ef32e348341770bc678795ca7605a34276360b"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/plates/37-suivi-imprime.html",
+    "bytes": 7309,
+    "sha256": "92efe41de77da61b8ddaec766d54df1b81d3ad5d772422df49ad312cf9671e8e"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/plates/38-affiche.html",
+    "bytes": 4781,
+    "sha256": "eb04d2ab738489826b13ffbdb7303a18b4604da7f34528e0d396c6cef1205590"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/plates/39-terrain.html",
+    "bytes": 4350,
+    "sha256": "61535d2aeb954803ff4d56d0ba7762330d3e42399be9e225f93e11302c7e9a16"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/plates/43-trois-pistes.html",
+    "bytes": 3996,
+    "sha256": "4ff05f31b12e38dd5009d8c114337d2b5f712baa1759aad1ed43d5e2707a1633"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/plates/45-citation.html",
+    "bytes": 2917,
+    "sha256": "1f8b0c45543ed8f15fedd241f1faf5efcbb0897e9f44c5b1f41f2fdc8d03153e"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/plates/_dans-navigateur.html",
+    "bytes": 1718,
+    "sha256": "5e17f00e815906ae736603bf9f028010cdc2bc300d22391986dbe86241b7b3a3"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/plates/_ecran.html",
+    "bytes": 1557,
+    "sha256": "f777848d2039644eccb2572143dc15562641d6d3d0a51cef0e5adea1e757faa6"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/plates/_gabarit.html",
+    "bytes": 863,
+    "sha256": "c9e8e7e8b0549980c39c56ad9f7c04e7d4fc2166d0c41106fbdcdc11f79a4f2b"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/plates/_scene.html",
+    "bytes": 3725,
+    "sha256": "bc318acea9091efb5d84cf07b44c6bcc8c600d6accf7b4170dc0464b2cea44ef"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/plates/_test.html",
+    "bytes": 10216,
+    "sha256": "11aff8ae5a719462b55ba3a63b431576becdd2e5e5dafbbe932aae0577c6ded4"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/plates/pl.css",
+    "bytes": 1064,
+    "sha256": "a6a0fa453d404fe75f70e953315b3825596e5ab43281fe45152ae32214fa7621"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/plates/sc.css",
+    "bytes": 1891,
+    "sha256": "4efbedfc83d712960a285e9fe461ab882a306ed38f5eb4b0fb47c7dbf1e28982"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/presentation.json",
+    "bytes": 6926,
+    "sha256": "9029818436617caa60bd0bfb24ff4cee3fff66e05f01e4892e214f18eedab81c"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/site/assets/galerie.js",
+    "bytes": 1058,
+    "sha256": "5afc7fcb2fa68903b6c43ed3994ead353390b3fb0fbfbe6b62c8439cff930dc3"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/site/assets/guide.css",
+    "bytes": 43798,
+    "sha256": "b28f468323395e595d05ebc636c59ce8c9efd06814b145ddce41419bed96e124"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/site/assets/guide.js",
+    "bytes": 57302,
+    "sha256": "e587440fca2f932a56e01cb48384e5756f1103b896319c5a3c591edd65ab83ae"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/site/index.html",
+    "bytes": 44763,
+    "sha256": "7d1433fc2f7df2cae23c427d17bc8f31e1316dbb0fab115ff7310ee4e6cf6e72"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/site/presentation.html",
+    "bytes": 7363,
+    "sha256": "b2191624176eeacf120a9aa7b08d2f37bda8d79d9421a8d5490dc0da52d1bf9a"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/site/prototype.html",
+    "bytes": 8263,
+    "sha256": "cd62868bb8d4f2f3df3cc015224c8f8288a56dfe706b7c740ea14b7899159b48"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/tools/behance_collecte.mjs",
+    "bytes": 3795,
+    "sha256": "533a12b6ed704c1a57fcf5c7360a2221de8e8f804db21363c8dea0ed77b6fe8b"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/tools/build_presentation.py",
+    "bytes": 5026,
+    "sha256": "bc5f54e39af1e7c1b0f15b47cf8900235e2fba1662b50faccbddd7f0069ba56b"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/tools/build_site.py",
+    "bytes": 8612,
+    "sha256": "8380d5ab9e7b480ffe044521bb1b34cc964e3c70cec650661f0cf979a1c84139"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/tools/check_deck.mjs",
+    "bytes": 2273,
+    "sha256": "258b790d374398266123a688bee16591625f19c5607abe1aae6d7dda069e0497"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/tools/check_guide.mjs",
+    "bytes": 1763,
+    "sha256": "134aefddf3aba80a258c427e929fbecd2fcce697f6377ca13734e34c6b078b37"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/tools/check_inter.mjs",
+    "bytes": 11472,
+    "sha256": "3cbc54dae7c69644ff43765b86eae8aa31b90fbbf9869e652547e3210abc8c8b"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/tools/check_live.mjs",
+    "bytes": 1504,
+    "sha256": "890c3fa44740650389b9b08225e8dfc608f46550e81030afe0234983a80d0af8"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/tools/check_page.mjs",
+    "bytes": 1262,
+    "sha256": "e980c4db187c54302758ddd40c9314a2958c69879eb5994875b334d991e077b7"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/tools/check_planche.mjs",
+    "bytes": 12825,
+    "sha256": "f8b503763a309fbdebc6136c1a9d1d939c2a488a2e52811a39a54fa44f77aed9"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/tools/check_proto.mjs",
+    "bytes": 5194,
+    "sha256": "6e0b976d9b9c601b9b8dddc42175f0276103c44cde1b2f830c08d773e2b4d814"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/tools/contact.py",
+    "bytes": 3350,
+    "sha256": "5f31ff5fa7233576c68195512d641fe361903fee2f7540a3a432a6edd4ce3120"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/tools/deck.mjs",
+    "bytes": 3109,
+    "sha256": "05c962aebf0c65c3376007b8026b2a5d7aa1e7d95f7428559a96fe1044d01c4c"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/tools/deck_pdf.py",
+    "bytes": 1707,
+    "sha256": "c70a58e2b03f07337045cd397167274b298fb9b672c83c93d4b16916ebdd87b5"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/tools/export_logo.py",
+    "bytes": 7406,
+    "sha256": "4ebb94709b9cfba4a81434dd9504e83601e5f260e14902ca521a9efa74caff50"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/tools/frise_phases.py",
+    "bytes": 3128,
+    "sha256": "acbc3cd9fe9c0019945446318e11d5f1c20974ce5410bbb596b211e6c08ebe93"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/tools/incruster.py",
+    "bytes": 1894,
+    "sha256": "ae6df77f7fe58ed0751442801bc9de9e8c22abcdedf225a0058f81311d24c87e"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/tools/polyhaven.py",
+    "bytes": 2166,
+    "sha256": "d84ec8f196d4788631e0f707c2f82ada2541c6877463dc0f0a1b95eb79fafe7d"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/tools/post.py",
+    "bytes": 1825,
+    "sha256": "830ddf870ffe1698e8d7bf3309a320d001cd15fd9e47d17d3f90d6c7b2db1ac2"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/tools/record.mjs",
+    "bytes": 7070,
+    "sha256": "2029387cbe0be7d3d63285c7a4498403813e8d037201adb0dd36f262288ba26e"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/tools/reference_planche.py",
+    "bytes": 2974,
+    "sha256": "d8f2071c650c3682ee77bea7d0f9254745668c87e0211772b5ffc5f638fd5876"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/tools/rehabiller.py",
+    "bytes": 6050,
+    "sha256": "4a2f29ce02b2f7eca79ccc085ab2b8c385b13bb73b8d34d2fb1fdd42e8ded02c"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/tools/shot.mjs",
+    "bytes": 3119,
+    "sha256": "67ce41dc9f83a644503e37529c95512f6cffaee5d295b96e0a372a43ccb3d8e6"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/tools/tout_rendre.sh",
+    "bytes": 4273,
+    "sha256": "1657c301083fff669461b2657884fc7a315d12c48af0ef0e502d8c5550144af0"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/tools/verifier_restes.py",
+    "bytes": 4244,
+    "sha256": "ca45d8835bfe94847a9c409dfe13e85c89069b7f44d4f922d0ed5ff35de3714f"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/20_WORKING/grdr/tools/vers_crea_lab.py",
+    "bytes": 6976,
+    "sha256": "ec312b0a359833577e9ff24b8c668a1cda612e2cfa7d38206ec2be04c3bca4b4"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guide-pdf/grdr-guide-de-marque.pdf",
+    "bytes": 8482115,
+    "sha256": "ac74309d8c944d82b7f23c0a80e997c054a3e89dc57e51444aaa5751517990eb"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guide-pdf/pages/01-couverture.png",
+    "bytes": 2834644,
+    "sha256": "1d8a623bc39f6f26ee1f11bc1118b369f2ea50861299a73fce1e1ed117cd6b3c"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guide-pdf/pages/02-existant.png",
+    "bytes": 472915,
+    "sha256": "9718e46b332bfc6b22da4f33a7587ff0f2e53c99debeb4f8b6a10b52bbb61dfe"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guide-pdf/pages/03-idee.png",
+    "bytes": 268704,
+    "sha256": "2038c26f4d9a56ec356fd86f66a8bfd38edf81954cf75a709a5578056608e00a"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guide-pdf/pages/04-ton.png",
+    "bytes": 750613,
+    "sha256": "a767d8e3fcf3bb3c958836a8767e1c412ffa05be6d002d73ed33b09a9a245e39"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guide-pdf/pages/05-logo.png",
+    "bytes": 616593,
+    "sha256": "ea55958d4cd7cd6ff781573f74f09fc079846169d57114a4e73ddadcf25bd1ec"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guide-pdf/pages/06-protection.png",
+    "bytes": 283338,
+    "sha256": "fab16bb21350a280b530176d8e4450e33f9a185f183de1649fd4cdc005ccf947"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guide-pdf/pages/07-interdits.png",
+    "bytes": 649990,
+    "sha256": "7462986eea402f8cca1c2ec21a1d1faad9bc19f0ef175936d55087be6d0dac13"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guide-pdf/pages/08-construction.png",
+    "bytes": 289691,
+    "sha256": "428a24a8d7caab5328050a49890a8c0298f9682a401bc665cbdbb835335ee384"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guide-pdf/pages/09-lecture.png",
+    "bytes": 2745683,
+    "sha256": "b2187b2dafe8acda86e93902e258153d3be3c9e4f988d07814ee612eb8925213"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guide-pdf/pages/10-usage.png",
+    "bytes": 317738,
+    "sha256": "7f9b646ed8586c5c6cf3b43b17dc92667ff2fea883c314e629623b312321705a"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guide-pdf/pages/11-palette.png",
+    "bytes": 274062,
+    "sha256": "1196334169875c954aa142f381a2475b057b073d331b72ba0983606df6e3b201"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guide-pdf/pages/12-contrastes.png",
+    "bytes": 286182,
+    "sha256": "0cd933dd2ed124ae6cca7c61794092e44b2a6df8bde791656fc2dbb9c3e68dcb"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guide-pdf/pages/13-typographie.png",
+    "bytes": 300097,
+    "sha256": "b734542c7a3cfbb71ce41d73b188a8b3093ca7e054bba9b76a3a9bf06b61d07c"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guide-pdf/pages/14-aquarelle.png",
+    "bytes": 2843621,
+    "sha256": "e4a3d2e769c93662d9479927821e70a74a876c3da29d9eb5791704bd2b1e0852"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guide-pdf/pages/15-image.png",
+    "bytes": 1486539,
+    "sha256": "b7fcf77711d90856d4a5bc847e1c386bbadf1c2095658685915860df63d7fa92"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guide-pdf/pages/16-marge.png",
+    "bytes": 334225,
+    "sha256": "7c03bb13224714e823df05e365cc4f829f88948977fb8b3cdc6ea37f8f887b5a"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guide-pdf/pages/17-graphiques.png",
+    "bytes": 239796,
+    "sha256": "a0f2d71e661f45213d1fa2b354ffba66c6c3a1cfa6805655452365d730b3f2a2"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guide-pdf/pages/18-interface.png",
+    "bytes": 1037685,
+    "sha256": "fdb2e63b582835af229320c5197ce45f1016145e72a437a352edacbc6e1889f4"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guide-pdf/pages/19-ecrans.png",
+    "bytes": 620010,
+    "sha256": "5962b1cd2d8e6a0f5fd92f403022979cf3d6755787398913dc9a341e8bb62b4d"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guide-pdf/pages/20-mouvement.png",
+    "bytes": 225767,
+    "sha256": "712ec7c104fc554e43ddc4c1d5b85f2adbed6bda9733c473dc909b6ef1a99de6"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guide-pdf/pages/21-situation.png",
+    "bytes": 2411845,
+    "sha256": "64618b19a309129e4d8c5e84961f996c8abe1d6a95a685cf541959211ef11e30"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guide-pdf/pages/22-credits.png",
+    "bytes": 2608868,
+    "sha256": "e89995d39acc6f13563f28aa4a9c29d0ba86cdf81e9ebc3decc59a61fec74e42"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guide-pdf/vignettes/01.jpg",
+    "bytes": 42628,
+    "sha256": "6acfc2b28e2b0db96c95f0248612abf2f4ee454c8b2857175c6133343cee95a9"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guide-pdf/vignettes/02.jpg",
+    "bytes": 33068,
+    "sha256": "a202658d852ebc75ec97d5ad4e120a23d8e888cbebc6ced5ec35d0cc27b56a3b"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guide-pdf/vignettes/03.jpg",
+    "bytes": 33721,
+    "sha256": "c5aded58bd805ac3ae241e878b154b4a38c0e46d5a18c0027b94628623bf6b98"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guide-pdf/vignettes/04.jpg",
+    "bytes": 37839,
+    "sha256": "03dd07065f1831a78f93842a7296d3a540f3827144a24720353400bac8870bd7"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guide-pdf/vignettes/05.jpg",
+    "bytes": 45225,
+    "sha256": "73c74ac95797df221850272632bc88ffe27faf938d1f4d9d24bebbdc7113feea"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guide-pdf/vignettes/06.jpg",
+    "bytes": 36325,
+    "sha256": "f2f93b2eb80f39f37085423f21c8b57879d896b632fa476615d70608c7ed6295"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guide-pdf/vignettes/07.jpg",
+    "bytes": 38071,
+    "sha256": "48c676820d2ddc3c8424468fca853bfb4a7de8928c970c006f8d695219b2a740"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guide-pdf/vignettes/08.jpg",
+    "bytes": 31501,
+    "sha256": "fb67370fd0413a45bb8c7f3223c819d5dcd47cce288e66087493ae671a0db680"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guide-pdf/vignettes/09.jpg",
+    "bytes": 40637,
+    "sha256": "0067e271ade082b1f8e0a2a8990b6d999b8df6e0c9c5e9a75516a3c7d5e82bae"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guide-pdf/vignettes/10.jpg",
+    "bytes": 37215,
+    "sha256": "4dbdf2753368cab32a62a1127cff65a626cbd7b3cd5e7b561ae87886204f5109"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guide-pdf/vignettes/11.jpg",
+    "bytes": 35921,
+    "sha256": "f0af875a3c1164d66073eb24d0f263049cd35eb0434159e63c181fb9b76480d2"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guide-pdf/vignettes/12.jpg",
+    "bytes": 39949,
+    "sha256": "df908583d02719f68d4151c2ecab9f2b443ea4fe494d270893d3482ffda0d1c6"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guide-pdf/vignettes/13.jpg",
+    "bytes": 40828,
+    "sha256": "b0176c619c116ea2a0c601018b92a491723de1c7120711066625f1d218bd20a7"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guide-pdf/vignettes/14.jpg",
+    "bytes": 41710,
+    "sha256": "b60f3497b1b49e2b81231a900f140ba4bbf29d410797f876e676d3bd7c06d3d5"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guide-pdf/vignettes/15.jpg",
+    "bytes": 47037,
+    "sha256": "bf49290c1f8c2525041ff6d3c1b274b384c5d3d4dc2d90bcede49bc103fa627b"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guide-pdf/vignettes/16.jpg",
+    "bytes": 41316,
+    "sha256": "2670a20431f47247aa194f0419f741bd909b58c41776c9d945feef52a4d48050"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guide-pdf/vignettes/17.jpg",
+    "bytes": 31562,
+    "sha256": "11652ffaa3c427e32923805f63d491e13bf259f9757a3d2e60a3f6ac2b6ff1eb"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guide-pdf/vignettes/18.jpg",
+    "bytes": 45347,
+    "sha256": "efa5c1451bb63464628a50ccb2b9d955fd6d0f4068f3b201e9513ee661f5ef0f"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guide-pdf/vignettes/19.jpg",
+    "bytes": 44969,
+    "sha256": "4704794834b2e156759f6465ce0c25afb795c02c04a80a87b5d321fca522e18e"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guide-pdf/vignettes/20.jpg",
+    "bytes": 34494,
+    "sha256": "878ad244202163701bcf63de10af179e0ab5e226d3c3e8cb6cc25dd10f35fa2e"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guide-pdf/vignettes/21.jpg",
+    "bytes": 44062,
+    "sha256": "4c5778f01b60797086b47c0f66b775fae8156824e24b9f12090b008825b073bb"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guide-pdf/vignettes/22.jpg",
+    "bytes": 45332,
+    "sha256": "5ceb898095b018f8cb7790d5c292fd7b9115193c954c722567849b57eb19a831"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/.gitignore",
+    "bytes": 8,
+    "sha256": "56537ebe03160a28fdb6e59ae18f408d6f8aba609df73c45917c9358fd3bad52"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/assets/carte.js",
+    "bytes": 105720,
+    "sha256": "56cdb0c2df7aa60e664a6a0bf475491b8845ae0efb5834639e4ce2cbb3e31c2b"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/assets/ecrans-b.css",
+    "bytes": 24589,
+    "sha256": "06be79d8601b85f9aae58abba88a477f9b465124dece01289041328c77f22e1b"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/assets/ecrans-b.js",
+    "bytes": 33039,
+    "sha256": "291722b864e8c8b7f7b71fd41823b2c57f098458caf7d1cb7fb8cc25f046150b"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/assets/ecrans-c.css",
+    "bytes": 26839,
+    "sha256": "a1cf47c79d55709424511141252f917d47023909afa69dbf0f8b327d1614e698"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/assets/ecrans-c.js",
+    "bytes": 37438,
+    "sha256": "b10870238833b7516624a9c1880dde178460c31704a59fcbe2bae3a6ebfbc2ef"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/assets/ecrans.css",
+    "bytes": 19742,
+    "sha256": "753c0d22f4d39dddd4901850187afda04feee296add48c5068ba67cea11b44b9"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/assets/ecrans.js",
+    "bytes": 25562,
+    "sha256": "044302ad1760ecdf3ee6be2946200441d4cf4f4dc87cb6d6cf9f184b7eca8ce3"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/assets/fonts/geist-mono-latin-wght-normal.woff2",
+    "bytes": 23128,
+    "sha256": "684ad5b531f81d43c1e8c7038262d5db7cdc1f68006e04d6c7769efa8d33c8cc"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/assets/fonts/nunito-latin-wght-normal.woff2",
+    "bytes": 39128,
+    "sha256": "ba344451eab25b217a165363b1982048a5e5830a0daf36577973955a04cac793"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/assets/fonts/nunito-sans-latin-wght-normal.woff2",
+    "bytes": 31076,
+    "sha256": "29e3890496844a9ea81975c52771c587c872b4eb317026422d1995b88d21b57d"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/assets/galerie.js",
+    "bytes": 5121,
+    "sha256": "d43ac9d0af8f5b9f1177fd7babc644f36d8c622a7d30f22781d6b9f95704299d"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/assets/guide.css",
+    "bytes": 43798,
+    "sha256": "b28f468323395e595d05ebc636c59ce8c9efd06814b145ddce41419bed96e124"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/assets/guide.js",
+    "bytes": 57302,
+    "sha256": "e587440fca2f932a56e01cb48384e5756f1103b896319c5a3c591edd65ab83ae"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/assets/marque.css",
+    "bytes": 12329,
+    "sha256": "5e2848f441a487b13c117639358b78982199b76acfa262dcd9c8ee3b8b84fa12"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/assets/marque.js",
+    "bytes": 83982,
+    "sha256": "e6789188dad8b7eb1e9f88504a7d4a2b2578687ffbcc5afa1ddc820a83d9cadb"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/assets/pages.css",
+    "bytes": 23425,
+    "sha256": "a8d9118ebc3872b86cca9b584095062fd10532e6b033eb89fb70f5cd617a3811"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/assets/pages.js",
+    "bytes": 52127,
+    "sha256": "055961c4ece9c7d88afc0779f65fa29502e4dbf77b8df91c411b51930ebe162f"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/deck/01.jpg",
+    "bytes": 42628,
+    "sha256": "6acfc2b28e2b0db96c95f0248612abf2f4ee454c8b2857175c6133343cee95a9"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/deck/02.jpg",
+    "bytes": 33068,
+    "sha256": "a202658d852ebc75ec97d5ad4e120a23d8e888cbebc6ced5ec35d0cc27b56a3b"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/deck/03.jpg",
+    "bytes": 33721,
+    "sha256": "c5aded58bd805ac3ae241e878b154b4a38c0e46d5a18c0027b94628623bf6b98"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/deck/04.jpg",
+    "bytes": 37839,
+    "sha256": "03dd07065f1831a78f93842a7296d3a540f3827144a24720353400bac8870bd7"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/deck/05.jpg",
+    "bytes": 45225,
+    "sha256": "73c74ac95797df221850272632bc88ffe27faf938d1f4d9d24bebbdc7113feea"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/deck/06.jpg",
+    "bytes": 36325,
+    "sha256": "f2f93b2eb80f39f37085423f21c8b57879d896b632fa476615d70608c7ed6295"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/deck/07.jpg",
+    "bytes": 38071,
+    "sha256": "48c676820d2ddc3c8424468fca853bfb4a7de8928c970c006f8d695219b2a740"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/deck/08.jpg",
+    "bytes": 31501,
+    "sha256": "fb67370fd0413a45bb8c7f3223c819d5dcd47cce288e66087493ae671a0db680"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/deck/09.jpg",
+    "bytes": 40637,
+    "sha256": "0067e271ade082b1f8e0a2a8990b6d999b8df6e0c9c5e9a75516a3c7d5e82bae"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/deck/10.jpg",
+    "bytes": 37215,
+    "sha256": "4dbdf2753368cab32a62a1127cff65a626cbd7b3cd5e7b561ae87886204f5109"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/deck/11.jpg",
+    "bytes": 35921,
+    "sha256": "f0af875a3c1164d66073eb24d0f263049cd35eb0434159e63c181fb9b76480d2"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/deck/12.jpg",
+    "bytes": 39949,
+    "sha256": "df908583d02719f68d4151c2ecab9f2b443ea4fe494d270893d3482ffda0d1c6"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/deck/13.jpg",
+    "bytes": 40828,
+    "sha256": "b0176c619c116ea2a0c601018b92a491723de1c7120711066625f1d218bd20a7"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/deck/14.jpg",
+    "bytes": 41710,
+    "sha256": "b60f3497b1b49e2b81231a900f140ba4bbf29d410797f876e676d3bd7c06d3d5"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/deck/15.jpg",
+    "bytes": 47037,
+    "sha256": "bf49290c1f8c2525041ff6d3c1b274b384c5d3d4dc2d90bcede49bc103fa627b"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/deck/16.jpg",
+    "bytes": 41316,
+    "sha256": "2670a20431f47247aa194f0419f741bd909b58c41776c9d945feef52a4d48050"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/deck/17.jpg",
+    "bytes": 31562,
+    "sha256": "11652ffaa3c427e32923805f63d491e13bf259f9757a3d2e60a3f6ac2b6ff1eb"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/deck/18.jpg",
+    "bytes": 45347,
+    "sha256": "efa5c1451bb63464628a50ccb2b9d955fd6d0f4068f3b201e9513ee661f5ef0f"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/deck/19.jpg",
+    "bytes": 44969,
+    "sha256": "4704794834b2e156759f6465ce0c25afb795c02c04a80a87b5d321fca522e18e"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/deck/20.jpg",
+    "bytes": 34494,
+    "sha256": "878ad244202163701bcf63de10af179e0ab5e226d3c3e8cb6cc25dd10f35fa2e"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/deck/21.jpg",
+    "bytes": 44062,
+    "sha256": "4c5778f01b60797086b47c0f66b775fae8156824e24b9f12090b008825b073bb"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/deck/22.jpg",
+    "bytes": 45332,
+    "sha256": "5ceb898095b018f8cb7790d5c292fd7b9115193c954c722567849b57eb19a831"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/deck/grdr-guide-de-marque.pdf",
+    "bytes": 8482115,
+    "sha256": "ac74309d8c944d82b7f23c0a80e997c054a3e89dc57e51444aaa5751517990eb"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/etude-de-cas.html",
+    "bytes": 8285,
+    "sha256": "937786d628bb28703fa20e89b9b97bd2f6fe63c5b184ab21183da7a6486584f4"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/guide-media/35-portable-velours.jpg",
+    "bytes": 73532,
+    "sha256": "062f1944328aec77bb449f7ba0a8ded1e7ac5582162d346e251f3edf819b2450"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/guide-media/36-portable-terre.jpg",
+    "bytes": 77214,
+    "sha256": "03a7021fe439938ef722d3452c9279ecbe2ec8d6ac1552d04b700b22dcb209f7"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/guide-media/37-suivi-imprime.png",
+    "bytes": 784759,
+    "sha256": "58a9ac9c42341c609d1c8fff6a60c38546fc5729fd3bcfcaef2779d10208d650"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/guide-media/38-affiche.png",
+    "bytes": 1865453,
+    "sha256": "2949c279a64c257b366d0b2251f60807d051041efb14bc6deb8222a163b3dea4"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/index.html",
+    "bytes": 44763,
+    "sha256": "7d1433fc2f7df2cae23c427d17bc8f31e1316dbb0fab115ff7310ee4e6cf6e72"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/logo/grdr-complet-blanc.svg",
+    "bytes": 37468,
+    "sha256": "7ad53bdde542f8574c33cf282950617c90782a2408082832003418969d777014"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/logo/grdr-complet-encre.svg",
+    "bytes": 37468,
+    "sha256": "e4eaf7b6c71bb5b9f0ff5c1912d24eb174220c29e141426b236cece19f50f24b"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/logo/grdr-complet-lagune.svg",
+    "bytes": 37468,
+    "sha256": "0ff9a3caa76417ca98920d7bbb8ad996eef8fa9c2ea9b6d8bca5298ba07d0051"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/logo/grdr-complet-vermillon.svg",
+    "bytes": 37468,
+    "sha256": "4fbdf983676c7e1a369c382999917e8e58266a0e55bfd4dfa382c7643dc17202"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/logo/grdr-logos.zip",
+    "bytes": 89538,
+    "sha256": "1907f77fc548d3f05f7aef51d81dbe755cc5082bcc3b22c33a5479be65c8cd86"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/logo/grdr-logotype-blanc.svg",
+    "bytes": 5978,
+    "sha256": "d3883631e5859e361655d4df8d83c817fee2519cd01a93234332451baab85b08"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/logo/grdr-logotype-encre.svg",
+    "bytes": 5978,
+    "sha256": "2c76ce40105292b6e4c3c87b784b1d54d8d8f79a126ad8b33cf8ab43113306ad"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/logo/grdr-logotype-lagune.svg",
+    "bytes": 5978,
+    "sha256": "a2f76310f2fff81d894575df8e5b8da4f7b8e1c70a9e66afecea8f107337de75"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/logo/grdr-logotype-vermillon.svg",
+    "bytes": 5978,
+    "sha256": "20b9a53e3b607a779d4a8c7eb56970f5fab6151aea9387c62f52e44d1c408bd4"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/logo/grdr-officiel.svg",
+    "bytes": 37520,
+    "sha256": "e23c0797b4c3a8dff01e1d2678f584a584a3a08afe844a307f39a257d8a1b360"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/logo/grdr-symbole-blanc.svg",
+    "bytes": 2585,
+    "sha256": "e8861179e2732b4fe0c1743ddfa56a591f9bea578916a0f794305eb59050fc24"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/logo/grdr-symbole-encre.svg",
+    "bytes": 2585,
+    "sha256": "f45d956a2cf3127a450f8f465678e454eff11e93f72ef24cd0473e5b83534126"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/logo/grdr-symbole-lagune.svg",
+    "bytes": 2585,
+    "sha256": "692d18dbbcb2a5e697f7c1c5661219bca1650b0762fa7536d2226c94a9f0d05e"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/logo/grdr-symbole-vermillon.svg",
+    "bytes": 2585,
+    "sha256": "afd7ed7816dfe8917a323e6a171f2614993b92301307f7c9b97e1e59845d698c"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/01-ouverture.jpg",
+    "bytes": 398274,
+    "sha256": "cc5650fc8fc2a0069a1a5795a9552a120b56b456bd5c6cecd02b0156f5272d26"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/02-existant.jpg",
+    "bytes": 697463,
+    "sha256": "127858577a318234c01a47aff823ee3c34b47ba15071d2deaf87de6f2e870407"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/03-idee.jpg",
+    "bytes": 792479,
+    "sha256": "9ddebf6e8c9595922f841b2c3d7c4e150da7cc1356f94f20c831e4a0bd6eaab3"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/04-lire-une-empreinte.jpg",
+    "bytes": 266384,
+    "sha256": "567c711e6f73c4f8aabef38493e19818706343762e3c62a09bad844ceac92b99"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/05-mur-des-empreintes.jpg",
+    "bytes": 336998,
+    "sha256": "e76d9a1a022f3b2dc5d471bf5ec02b0dd57004db110ea3a21e99eb176917a082"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/06-couleurs.jpg",
+    "bytes": 493569,
+    "sha256": "9f6c423482e431258dbab072c3c3873d90d91e0054f51054b8d7e66363691092"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/07-typographie.jpg",
+    "bytes": 639669,
+    "sha256": "d30004de184e25afac65e6e522cd9321b4b27299ae256933a268168bb7b72081"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/08-aquarelle.jpg",
+    "bytes": 722800,
+    "sha256": "165fa1ab7f45aaa3d5944cf332984752d5099f6b81aa235e895a66354736b9ac"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/09-marge-du-comptable.jpg",
+    "bytes": 554261,
+    "sha256": "3fe67b8d849ec1f7f19d4d9fd43625a37aed9d921eecae81f4c7cf9591a0c40b"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/10-graphiques.jpg",
+    "bytes": 588960,
+    "sha256": "5dcc9b6e6359a754d95327bea443d817d445623aca9612b77e2a218e6d8a3c48"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/11-composants.jpg",
+    "bytes": 740315,
+    "sha256": "d3f414f7983cf04c019fdc5f01c236afb7bfb0a4b3e87dbb65e66fe85155a725"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/12-tableau-de-bord-incline.jpg",
+    "bytes": 397214,
+    "sha256": "ebcfa698df14b53f00f8cbcc623e483ef8d2f18dd765439beb16411fb7f1284f"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/13-details.jpg",
+    "bytes": 334867,
+    "sha256": "6c7132eed523b564f31e3c34ae604a7f1eed984611557fe0d16c6b00bfb3b551"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/14-fiche-inclinee.jpg",
+    "bytes": 283890,
+    "sha256": "1585598bf42421f9707e563a27dfad2d9117a2f5e3a279ae7b622a8770a65698"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/15-barre-laterale.jpg",
+    "bytes": 436000,
+    "sha256": "462ea4d4c397cad8333efda98b4031b9e9af35cc61581d31c962e7466df67cef"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/16-tableau-des-projets.jpg",
+    "bytes": 223185,
+    "sha256": "2e535deda457cb4df7bd413dfb9b513dca6dad3302e9b9c26d3c70d1687ce4e3"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/17-courbe.jpg",
+    "bytes": 353172,
+    "sha256": "a9be4ed21e9ae34e1f2f8a9ccefd67f5e817c5e9d9864757f26501187207019e"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/18-mur-d-ecrans.jpg",
+    "bytes": 481719,
+    "sha256": "76cdbbbff690a74b0eac51a341a49f32368bd7e9ee1e93f9ce1f1d1a1cd1dc1a"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/19-projets.jpg",
+    "bytes": 362091,
+    "sha256": "fe99c448f3c6f2285d103436be9888e640b4138fbf5c8b9fcadf2796a09469a4"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/20-ressources-humaines.jpg",
+    "bytes": 318933,
+    "sha256": "bbaac494dd9869678b8d129b9410568954b68bf08178ce007607fc2a3c8ac59f"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/21-extraction-sage.jpg",
+    "bytes": 404850,
+    "sha256": "103e476d6905a4cd7611de4247e62dbf7144b00bedf8a885ef58b037fb210087"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/22-statistiques.jpg",
+    "bytes": 341939,
+    "sha256": "5e251e52a386b5007cb0f3db82abd54de22c64c7c88617a3b432488f8794f9d8"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/23-telephones.jpg",
+    "bytes": 613665,
+    "sha256": "84bbed2f8fd49356cdddfc228c3b67366f22922bd37672254cbb8f1d7eda8b85"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/26-ici-et-la-bas.jpg",
+    "bytes": 592068,
+    "sha256": "a2232f3d43186f0dbd1b04f2712e8d61658490bd8af736d86ac538bf4f6f0e13"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/27-roles.jpg",
+    "bytes": 510618,
+    "sha256": "16fbb3c24d003f0b42e3d5113779f053d865d8e27ae4bce666cb8633a773aed1"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/28-avant-apres.jpg",
+    "bytes": 647889,
+    "sha256": "431fe9728ba8dc0f720372a57abe9eae92a28fa696fde72717bb4e678bdb29b8"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/29-symbole.mp4",
+    "bytes": 1394554,
+    "sha256": "7fb0610687cd1e3157a306f5016bbe939bc59eacea1232ac80a07a129510f2be"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/30-empreinte.mp4",
+    "bytes": 1094523,
+    "sha256": "76dc2a439419dfc6206f72920877b98f35cee36e0eb7972f3d420d9f29450cd8"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/31-tableau-de-bord.mp4",
+    "bytes": 1979439,
+    "sha256": "9707dcee5c1d7d43c575afe72673fbd6f1cf88d519df838e39cc59b8a5d41ce2"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/32-du-tableur-a-l-outil.mp4",
+    "bytes": 2059261,
+    "sha256": "4d2d672a67ba30e8e8fbfbd37212355853728a9d5bfc8dfa31ea3db65908ed4d"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/33-mur-des-empreintes.mp4",
+    "bytes": 747761,
+    "sha256": "6760cd92c663fa6240863d77dc1c1d01d5b93af3bb3cb0c0fd46335c9dcd2912"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/34-a-l-euro-pres.mp4",
+    "bytes": 1847666,
+    "sha256": "37db0dd56e31793d0370e006be279c52c81de1964978145318e1c9c0d471adb8"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/35-portable-velours.jpg",
+    "bytes": 238262,
+    "sha256": "b5de109a4de37ec211ceb6eac1ab0b233e556f98824f495cfdf7a4ef39267f82"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/36-portable-terre.jpg",
+    "bytes": 340162,
+    "sha256": "9eec7db1183af6526ca4105a31398b34cc0ebc2d1a1e7234d8a080f60a8c50a7"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/37-suivi-imprime.jpg",
+    "bytes": 327778,
+    "sha256": "0d697ba839f134ccb6c697e2d9201ebeef2b68a26ea9204f02929c16d1d934d8"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/38-affiche.jpg",
+    "bytes": 855630,
+    "sha256": "bdfa1ed5c43a4bc8e4f72570dd46a722fe647cbfefcd276e9a2e5520e4565d1d"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/39-terrain.jpg",
+    "bytes": 394536,
+    "sha256": "ae2081ac384d26b26b1307fd1af91ed1c347826c6b9288d6e247f37bba0bb72e"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/40-des-gens.jpg",
+    "bytes": 621046,
+    "sha256": "83dde6af2165ea7158ff4d3af635ad8b1f12882e0d98afaa7213095930f1c0c2"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/42-telephone.jpg",
+    "bytes": 233107,
+    "sha256": "138131c9e6914b2a6a0a1084753286c8aba089284aee92ca3552ba5402a846f4"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/43-trois-pistes.jpg",
+    "bytes": 421544,
+    "sha256": "a93b0e1eddcfe191e26c13f30dedef84c7039cfb8067cc1f200036d47a214127"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/45-citation.jpg",
+    "bytes": 702783,
+    "sha256": "1dba926a45071e545ccc4c16f475d6451ecf5fb1df472021cf28d6bc0554279c"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/ecran-administration.jpg",
+    "bytes": 516899,
+    "sha256": "6549719da70b611adc56e7026a32c7ce75cbf82baf3a4b3da925548cc54ba906"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/ecran-affectation.jpg",
+    "bytes": 482806,
+    "sha256": "43f4cea4a2b37d9654d2fd338a35c9833df68ecbf40d84880c7cee4255c5dce0"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/ecran-connexion.jpg",
+    "bytes": 369351,
+    "sha256": "b9799e087fa2012851083e790d2f8e086d420937a333aa125290ca56b4c0c5f7"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/ecran-fiche-projet.jpg",
+    "bytes": 546901,
+    "sha256": "04512e0a7549d216ff7737a27ea3b2c27909fea2c226a521b3ae691240c40026"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/ecran-journal.jpg",
+    "bytes": 519409,
+    "sha256": "bb11a844f312d83632a622486ea7583ec4e587549bc411c38064b8a1c73722fe"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/ecran-nouveau-projet.jpg",
+    "bytes": 434071,
+    "sha256": "3021c3975d2b55feb76272d7a8c5b39d088df6f51eae95280c2263db1c771643"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/ecran-projets-grille.jpg",
+    "bytes": 608123,
+    "sha256": "1ad37b4aa8c752573b088767c0d72974acae6c63f7635f5bc18b196f792739e8"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/ecran-tableau-de-bord.jpg",
+    "bytes": 465431,
+    "sha256": "d78f38acdce8d65be282e25e3956ef88db093562c73a8e53d4ad27be53d03a9c"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/vignettes/01-ouverture.jpg",
+    "bytes": 90949,
+    "sha256": "707018ac59b0d7fb4de098efd40dd4c8a0205207cf3234fa7d1bcdcefeacffc1"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/vignettes/02-existant.jpg",
+    "bytes": 105763,
+    "sha256": "fe00bbbfb9e38097f14a94c53dcd3989580cff5bf519629ed2a555adb44566e1"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/vignettes/03-idee.jpg",
+    "bytes": 120622,
+    "sha256": "d22db400e6e0ebabf6937acab91221e364cf0a07892a3da3ae0ef51029886e8c"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/vignettes/04-lire-une-empreinte.jpg",
+    "bytes": 85819,
+    "sha256": "986866e385605e351d790e8b9f9bc605e90631882249da778f804bd560b24c26"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/vignettes/05-mur-des-empreintes.jpg",
+    "bytes": 92216,
+    "sha256": "f9d4e7b85fa8b67641f3b8bb5aa6fcff2d74474c43fc25ac820028caacff3885"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/vignettes/06-couleurs.jpg",
+    "bytes": 90415,
+    "sha256": "feb0c8fd2b360d20fc19a494db4cab1f06a57db82a8b44dc0e462b4719fea8b9"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/vignettes/07-typographie.jpg",
+    "bytes": 92548,
+    "sha256": "abd0795cf59e581a0e0f9d38804de872ffefc080d0c8dfe054bb974eb2d7a22c"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/vignettes/08-aquarelle.jpg",
+    "bytes": 97475,
+    "sha256": "9b64bb96bf06bfc333487f3d4f2c41bf3abbaf0bc7082eb1109989e2966a8445"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/vignettes/09-marge-du-comptable.jpg",
+    "bytes": 91790,
+    "sha256": "02ef8801cf424359e27b05d05254955d9eca47d41534063664e1c548b1b17c0f"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/vignettes/10-graphiques.jpg",
+    "bytes": 113057,
+    "sha256": "5db58637d90f932203a8d0cccb1ac4b77878af56fac3a409a16cbdeca7ce6e4c"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/vignettes/11-composants.jpg",
+    "bytes": 100578,
+    "sha256": "5cdce18252376ba0a66c0ce8606290839a0250eced833a3b77dffbbc71150577"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/vignettes/12-tableau-de-bord-incline.jpg",
+    "bytes": 89705,
+    "sha256": "656653adf95f28d5d23e7c1b05ffef41f1227b3018016cff4df2dc187c4488e5"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/vignettes/13-details.jpg",
+    "bytes": 95401,
+    "sha256": "b6f35e874fcd16adc90f8d298e285d2befd7f2fcfd15c91673e90fe092d5c98e"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/vignettes/14-fiche-inclinee.jpg",
+    "bytes": 88523,
+    "sha256": "111d49708e871354d963c9fdc20f65f4ed7ac868308dfc6bcf1166d770e1b9bc"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/vignettes/15-barre-laterale.jpg",
+    "bytes": 74259,
+    "sha256": "c28d8ab26172386f092491f6a961f7d06541d94ee2b38fdd2be04381576fc298"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/vignettes/16-tableau-des-projets.jpg",
+    "bytes": 65398,
+    "sha256": "314477385783dbb1660db457f92e8bdd7984cc4981600880fed5206dc5229749"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/vignettes/17-courbe.jpg",
+    "bytes": 59780,
+    "sha256": "7b1cad86d3f070db2890dae95cf75a57f0631aa9e17056249f34fe8f9116245f"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/vignettes/18-mur-d-ecrans.jpg",
+    "bytes": 123714,
+    "sha256": "3e0b99fba808ced5a4c85b343f222cfaba53285483e3d3c5f4ed09fd82761b1c"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/vignettes/19-projets.jpg",
+    "bytes": 85713,
+    "sha256": "482faffca9ce3c0f13e248c23757225a5bd5347bcf92df6d695561f827b44661"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/vignettes/20-ressources-humaines.jpg",
+    "bytes": 98686,
+    "sha256": "865e1411cf7da505c22c058aca6075df416f5a103ac23eac904a38b9c54f936a"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/vignettes/21-extraction-sage.jpg",
+    "bytes": 91616,
+    "sha256": "69249870f9db7b8bae518803c12505874a025f753fb966bfc4c765c8b5e2c916"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/vignettes/22-statistiques.jpg",
+    "bytes": 83336,
+    "sha256": "26eeb64177d5ea1e1e73313e87d4f4b61aaee119f0094ab49d643393cf698a9f"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/vignettes/23-telephones.jpg",
+    "bytes": 108452,
+    "sha256": "76237320ed1c423a5d255e18d5fe0de2b00ee910a30939dba76979fb349d5831"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/vignettes/26-ici-et-la-bas.jpg",
+    "bytes": 84993,
+    "sha256": "31296beda50c4fdbacae2fadabb66428dceef25b1e468bf404109e0668389fc0"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/vignettes/27-roles.jpg",
+    "bytes": 116194,
+    "sha256": "db4051e5cf89a03289f15dd10040ed04f99c3a939e39f6d36605349c6069bf28"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/vignettes/28-avant-apres.jpg",
+    "bytes": 88563,
+    "sha256": "90f3da3b781128576f832a5124e665a1cdbcd59f09976fdc8a1ae0544f606e89"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/vignettes/29-symbole.jpg",
+    "bytes": 32698,
+    "sha256": "70a9c08755879de9584e123b85ab64fc9c168e65e4e7ad0c47d06f59ace85196"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/vignettes/30-empreinte.jpg",
+    "bytes": 44173,
+    "sha256": "08063c662c3139c1fa5df000504844aca1cc71e4b1ee15b703fbff7cb5e3f3e9"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/vignettes/31-tableau-de-bord.jpg",
+    "bytes": 45577,
+    "sha256": "60c3f477f746028143b3f01b9a331b0f7c9790f5089967d7e0aeba94d351b13f"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/vignettes/32-du-tableur-a-l-outil.jpg",
+    "bytes": 38428,
+    "sha256": "dcebd041303c16a446268fccb5335d3c2eef3597aa38dee1751186f7a07d528e"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/vignettes/33-mur-des-empreintes.jpg",
+    "bytes": 34437,
+    "sha256": "cb1d34d26c7c4e8d666eb3ac571df2ac2e1b08a02bf313adc271114fa1823f9e"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/vignettes/34-a-l-euro-pres.jpg",
+    "bytes": 52693,
+    "sha256": "840582670ce15d6fb24b8bfb6b42323e558c787b347b7b50a8b5ba395b477086"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/vignettes/35-portable-velours.jpg",
+    "bytes": 62628,
+    "sha256": "b40dfc8c2f6d5229abf6f47eb7e43787069f6b96bb6ac9050ee87a7532a70ba0"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/vignettes/36-portable-terre.jpg",
+    "bytes": 71704,
+    "sha256": "ee09687320c16e198b8cb094c9da3f383276b4895020f70d35d7803f7c6f66ac"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/vignettes/37-suivi-imprime.jpg",
+    "bytes": 68951,
+    "sha256": "64019e6fe6d4166c617efe6c4a870a6f73799cc9e9e5ca9b33af93a436201226"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/vignettes/38-affiche.jpg",
+    "bytes": 110076,
+    "sha256": "02f040a612a9fbea70d6ed1907c8a8c60d36fa9fadaf8ad2755d2373c33b3466"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/vignettes/39-terrain.jpg",
+    "bytes": 109418,
+    "sha256": "d17c8341c819834a03906a81d0e662c68ee1a5d4352a57c29539862da8943f02"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/vignettes/40-des-gens.jpg",
+    "bytes": 107086,
+    "sha256": "492a4a4d9014b298413457a35ee310c71d647d57e0bc80d16d52e137b8b320ce"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/vignettes/42-telephone.jpg",
+    "bytes": 68883,
+    "sha256": "bf575c98ae4ea38dbe8b3e10ab97097b1b267b7690a782e857b176962f4f4447"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/vignettes/43-trois-pistes.jpg",
+    "bytes": 65385,
+    "sha256": "16c2a49fdc71f068eacf748fcf623dc5c77c034920295439384ceb038d54fe49"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/vignettes/45-citation.jpg",
+    "bytes": 123389,
+    "sha256": "f708f136d4049619ca8477c82d1071249f72b1dee5315a141ae2c49b9bdec088"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/vignettes/ecran-administration.jpg",
+    "bytes": 133610,
+    "sha256": "289b0ab0e05b1d7f95f6428c2eca315b7b4d9f869e8e09e02db2ba40a7a05e5b"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/vignettes/ecran-affectation.jpg",
+    "bytes": 115872,
+    "sha256": "e0b891bb739c892da83eca2edebf438d9f892cbab34195a57d64f9c21f86e614"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/vignettes/ecran-connexion.jpg",
+    "bytes": 70189,
+    "sha256": "8d32b9622345075af2e0764755df56817a5a1e08693531ff71ed50bed5dbff4d"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/vignettes/ecran-fiche-projet.jpg",
+    "bytes": 137570,
+    "sha256": "c42537eb345ee1ed5272e7e0f3a000a41ecaed49b2588a8fbcb5d762b1b2220b"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/vignettes/ecran-journal.jpg",
+    "bytes": 129269,
+    "sha256": "f99620c266334a4bc9e2c2dd0130a47472f41942057ec7c9340761663e91e281"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/vignettes/ecran-nouveau-projet.jpg",
+    "bytes": 111711,
+    "sha256": "b19d787c382a1351051291bc0cd21ce5a39b3e5d380a91c57aa5dc9c847cd8ec"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/vignettes/ecran-projets-grille.jpg",
+    "bytes": 156215,
+    "sha256": "3eded23ecc04fa27e21a83f665b0544da177bd8e222ba236fdad9336d8d6d221"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/media/vignettes/ecran-tableau-de-bord.jpg",
+    "bytes": 133638,
+    "sha256": "a7fe4d4e1e42c74d09f93312506721df80764db2f9a4b50d3df738eb479a3ec3"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/photos/aq-aube.jpg",
+    "bytes": 102724,
+    "sha256": "3d28386726eb3a93b044ef00a51573af47cf7db9884fc4a29b84966105643cb4"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/photos/aq-brume.jpg",
+    "bytes": 138857,
+    "sha256": "be90a0212d05868555ee687ce798c0033f659b45dab1aa1f59b91ce18cfef5a0"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/photos/aq-lagune.jpg",
+    "bytes": 103500,
+    "sha256": "34bc5db6952319aacd7661759dcb866a37a0584a3921eacbc586643199d604b2"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/photos/aq-nuit.jpg",
+    "bytes": 33044,
+    "sha256": "6952231c8467cf903381192e2ab6cfce383eba97d06173596d7efbb5e5d25289"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/photos/aq-terre.jpg",
+    "bytes": 109905,
+    "sha256": "ac06724f18feb6604237af54ed282fe44aeb167b3587313d072107dd03660d45"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/photos/artisan.jpg",
+    "bytes": 145572,
+    "sha256": "66ad69f629c028e4982b380a9f8c9b4b8709a84880af5428a16352613738407c"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/photos/atelier.jpg",
+    "bytes": 193153,
+    "sha256": "cd3337caf20b3337e3b3df71b236155a3dcfc2f7df9d57c7b845155a196b0e1d"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/photos/marche.jpg",
+    "bytes": 212680,
+    "sha256": "c5dfc91f10f7c48bb03f7f20d58196429a862ed40bf456ad94e653e3a3566e08"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/presentation.html",
+    "bytes": 7363,
+    "sha256": "b2191624176eeacf120a9aa7b08d2f37bda8d79d9421a8d5490dc0da52d1bf9a"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-guideline/prototype.html",
+    "bytes": 8263,
+    "sha256": "cd62868bb8d4f2f3df3cc015224c8f8288a56dfe706b7c740ea14b7899159b48"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-logo/grdr-complet-blanc.svg",
+    "bytes": 37468,
+    "sha256": "7ad53bdde542f8574c33cf282950617c90782a2408082832003418969d777014"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-logo/grdr-complet-encre.svg",
+    "bytes": 37468,
+    "sha256": "e4eaf7b6c71bb5b9f0ff5c1912d24eb174220c29e141426b236cece19f50f24b"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-logo/grdr-complet-lagune.svg",
+    "bytes": 37468,
+    "sha256": "0ff9a3caa76417ca98920d7bbb8ad996eef8fa9c2ea9b6d8bca5298ba07d0051"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-logo/grdr-complet-vermillon.svg",
+    "bytes": 37468,
+    "sha256": "4fbdf983676c7e1a369c382999917e8e58266a0e55bfd4dfa382c7643dc17202"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-logo/grdr-logotype-blanc.svg",
+    "bytes": 5978,
+    "sha256": "d3883631e5859e361655d4df8d83c817fee2519cd01a93234332451baab85b08"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-logo/grdr-logotype-encre.svg",
+    "bytes": 5978,
+    "sha256": "2c76ce40105292b6e4c3c87b784b1d54d8d8f79a126ad8b33cf8ab43113306ad"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-logo/grdr-logotype-lagune.svg",
+    "bytes": 5978,
+    "sha256": "a2f76310f2fff81d894575df8e5b8da4f7b8e1c70a9e66afecea8f107337de75"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-logo/grdr-logotype-vermillon.svg",
+    "bytes": 5978,
+    "sha256": "20b9a53e3b607a779d4a8c7eb56970f5fab6151aea9387c62f52e44d1c408bd4"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-logo/grdr-officiel.svg",
+    "bytes": 37520,
+    "sha256": "e23c0797b4c3a8dff01e1d2678f584a584a3a08afe844a307f39a257d8a1b360"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-logo/grdr-symbole-blanc.svg",
+    "bytes": 2585,
+    "sha256": "e8861179e2732b4fe0c1743ddfa56a591f9bea578916a0f794305eb59050fc24"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-logo/grdr-symbole-encre.svg",
+    "bytes": 2585,
+    "sha256": "f45d956a2cf3127a450f8f465678e454eff11e93f72ef24cd0473e5b83534126"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-logo/grdr-symbole-lagune.svg",
+    "bytes": 2585,
+    "sha256": "692d18dbbcb2a5e697f7c1c5661219bca1650b0762fa7536d2226c94a9f0d05e"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-logo/grdr-symbole-vermillon.svg",
+    "bytes": 2585,
+    "sha256": "afd7ed7816dfe8917a323e6a171f2614993b92301307f7c9b97e1e59845d698c"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/index.html",
+    "bytes": 8213,
+    "sha256": "372025f89337848bd2d321fd56fc442aa545b265f19d08c1659e10634e22e3c8"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/media/01-ouverture.jpg",
+    "bytes": 1191149,
+    "sha256": "a27c861bd407fe72dd145dd60a165bb51091c362f16ed2e8301ace0124ef61df"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/media/02-existant.jpg",
+    "bytes": 2630883,
+    "sha256": "56f665b1497541cb3243c7001af0a14408abaf32097a6efdf84f355d9a693b6f"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/media/03-idee.jpg",
+    "bytes": 2989266,
+    "sha256": "87cfe0221109eac5362e2dfa686c59c86c5cc2dcccd2852258bd5995d4c8ff31"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/media/04-lire-une-empreinte.jpg",
+    "bytes": 1006884,
+    "sha256": "a3f4895cfad98ff515d1ca5bfea3f8c671371e68645bb52059c7e472e86a9dc5"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/media/05-mur-des-empreintes.jpg",
+    "bytes": 1559489,
+    "sha256": "510e6e3994e979d6b9d18b2b0b665c3274a07cd57177c424c5ad0bd0234e8c74"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/media/06-couleurs.jpg",
+    "bytes": 1881046,
+    "sha256": "7896bad2a0071510bd8fb457a201929f39aca5ec0ebfef3835c011f83b09e1d4"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/media/07-typographie.jpg",
+    "bytes": 2640632,
+    "sha256": "e1a38d0eea5e8b9de3230b01a4182cf1ec36c71776eb73c345f51dbd571d7699"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/media/08-aquarelle.jpg",
+    "bytes": 2552657,
+    "sha256": "5bab4f81eed974a9cf30368eba030d649f1e64a53e8ec4a300e2cc3feaa61160"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/media/09-marge-du-comptable.jpg",
+    "bytes": 2028130,
+    "sha256": "482f9baad58fe319385258f00f0205bd9602bbe7a77ed626d4c86fdceb247733"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/media/10-graphiques.jpg",
+    "bytes": 2012672,
+    "sha256": "84d878566e33fff1de8fcc4b4659bd0b9d1b96a74a44c851d83d4e3e4a308fdc"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/media/11-composants.jpg",
+    "bytes": 2881726,
+    "sha256": "952e5470acd80680f371dea0ba7e8766a06e51899a1849476551b39547153853"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/media/12-tableau-de-bord-incline.jpg",
+    "bytes": 1282847,
+    "sha256": "7163baf3731db7420aee66910c9f4ff8a84d4c29be9ce119ea856c0a82467bed"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/media/13-details.jpg",
+    "bytes": 1149579,
+    "sha256": "b585ed63ef8b7efcb0184ccc2eb1ecbf409878c9270184c0137e729d3d323ef8"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/media/14-fiche-inclinee.jpg",
+    "bytes": 875113,
+    "sha256": "651ffd31617ca6073b63cc6a47b8e388bbb6208c06d5c61d45efec37339bc3d2"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/media/15-barre-laterale.jpg",
+    "bytes": 1517759,
+    "sha256": "d3c37124fc021ee45cd18eaeb964ff82390c01bc4a85855ab1db634b9ea92b59"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/media/16-tableau-des-projets.jpg",
+    "bytes": 775546,
+    "sha256": "1bdc6ed315202f292ffcdce3bac0c564d3410e9f09566ea845bc60f3cf433a48"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/media/17-courbe.jpg",
+    "bytes": 1162801,
+    "sha256": "ce1a82cbaa3ea5cc130d445e78adfc71dd2b1e9a08c2b42db2c4d22d658f208e"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/media/18-mur-d-ecrans.jpg",
+    "bytes": 1538013,
+    "sha256": "74e3e0d4cd8f1ff3410fad7440b21548ad9d3e61fb964e3afd3144670ef3dfc7"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/media/19-projets.jpg",
+    "bytes": 1099650,
+    "sha256": "fab55b2abf6d6cbc1993dc8b0fdcff853dfcac22efb95a838bb1bea0fb091ab7"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/media/20-ressources-humaines.jpg",
+    "bytes": 913211,
+    "sha256": "a675522e0d6ecaf2d20e29b147637e77e154fe73de4ee920be0d94846ad2a2a6"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/media/21-extraction-sage.jpg",
+    "bytes": 1276944,
+    "sha256": "e0ebe60c50b38d0107ec275d8681aa0735bf357573f92427e215c1f73c92237f"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/media/22-statistiques.jpg",
+    "bytes": 1034990,
+    "sha256": "a5c9b68e4697448a1bef05d1ac18295fa867e36fafeb0b343042aec729e310bb"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/media/23-telephones.jpg",
+    "bytes": 1936283,
+    "sha256": "b6a566a2905bbb94d3a91142765209eb39276057c7c24d091fba7bbb4c4c5219"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/media/26-ici-et-la-bas.jpg",
+    "bytes": 2344804,
+    "sha256": "22c49fb779d49effe94a52215c1a7f3990ce4094021ab2b8e8f0c2a61ce9976d"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/media/27-roles.jpg",
+    "bytes": 1634343,
+    "sha256": "713d34e8647de2b93fd23665aa30b3095c13c72ec7843283ce4310eee2981f69"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/media/28-avant-apres.jpg",
+    "bytes": 2411212,
+    "sha256": "2428cb30de7705aaa55e7c3c80ed308e7617b718c9c316b1ad76cf8e1fcd1a02"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/media/29-symbole.mp4",
+    "bytes": 1394554,
+    "sha256": "7fb0610687cd1e3157a306f5016bbe939bc59eacea1232ac80a07a129510f2be"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/media/30-empreinte.mp4",
+    "bytes": 1094523,
+    "sha256": "76dc2a439419dfc6206f72920877b98f35cee36e0eb7972f3d420d9f29450cd8"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/media/31-tableau-de-bord.mp4",
+    "bytes": 1979439,
+    "sha256": "9707dcee5c1d7d43c575afe72673fbd6f1cf88d519df838e39cc59b8a5d41ce2"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/media/32-du-tableur-a-l-outil.mp4",
+    "bytes": 2059261,
+    "sha256": "4d2d672a67ba30e8e8fbfbd37212355853728a9d5bfc8dfa31ea3db65908ed4d"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/media/33-mur-des-empreintes.mp4",
+    "bytes": 747761,
+    "sha256": "6760cd92c663fa6240863d77dc1c1d01d5b93af3bb3cb0c0fd46335c9dcd2912"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/media/34-a-l-euro-pres.mp4",
+    "bytes": 1847666,
+    "sha256": "37db0dd56e31793d0370e006be279c52c81de1964978145318e1c9c0d471adb8"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/media/35-portable-velours.jpg",
+    "bytes": 744871,
+    "sha256": "e00e94c2b7fb2a8368679f4298ad3db271d4b8050e8e5e4192911b21a378c91a"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/media/36-portable-terre.jpg",
+    "bytes": 959511,
+    "sha256": "a6a24a3e853996ebff52f2239aaa8015832a157d08642ec4f707ed796f883e83"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/media/37-suivi-imprime.jpg",
+    "bytes": 930525,
+    "sha256": "84a1fa61646fefa06a3b7aa1dbc88bd105e4ea0039b60db35b881b91dba783c7"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/media/38-affiche.jpg",
+    "bytes": 2993756,
+    "sha256": "0459272f89a8ad5bf5e4636fec6fe91df1b87b579acb0a7ba01ae937801f6798"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/media/39-terrain.jpg",
+    "bytes": 1441177,
+    "sha256": "f1fbc911cb112fc160d8ec03701452a990bc0100dc9b630bd2d68814cf32c673"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/media/40-des-gens.jpg",
+    "bytes": 2124188,
+    "sha256": "56b2086d16ec909e7c3fd7a6e494e76d032b9abeb9aa057f49f012daf1b54399"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/media/42-telephone.jpg",
+    "bytes": 564373,
+    "sha256": "10e92a3fbf150ad201e177654fe572abc2ffd0fca5188b412635efa3dea9863b"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/media/43-trois-pistes.jpg",
+    "bytes": 1647205,
+    "sha256": "5d161e4113e8e58cd959b98ff2d28adcce46b008b3c153118a511d5f26b30c89"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/media/45-citation.jpg",
+    "bytes": 2342004,
+    "sha256": "d583593ce81a5c561eeaf919a7f2c64be9abd9fc43d5ca82d3f2ff4266274914"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/media/ecran-administration.jpg",
+    "bytes": 1214546,
+    "sha256": "2ffc97a22e0e83c9515da45508a72b3c5abc3942c1f67daeada13ba3acbc380f"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/media/ecran-affectation.jpg",
+    "bytes": 1159669,
+    "sha256": "1a4a06b6a651a1d653ac88005bdd321968e9ef4b5750296b5c52b04d13af3cc5"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/media/ecran-connexion.jpg",
+    "bytes": 1227559,
+    "sha256": "7cf421b35bfa12fce1ff505c9bd53fe64e95c8d36dda1edffab022bb94d9c6f8"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/media/ecran-fiche-projet.jpg",
+    "bytes": 1295023,
+    "sha256": "1030e5573f306277b00793fbeeb0017c3cd6deed640201c7b52e5cc49771f15e"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/media/ecran-journal.jpg",
+    "bytes": 1248101,
+    "sha256": "edc1be4c6e133584f2e5cf7f8c6c2d72be88b500649bc83f3f469c07054dcc3e"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/media/ecran-nouveau-projet.jpg",
+    "bytes": 1049755,
+    "sha256": "719471ceed89e9e68bcb27f6b190fc79b54b43134bf283a7a4f422ac11be8bf7"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/media/ecran-projets-grille.jpg",
+    "bytes": 1438124,
+    "sha256": "6b4afecfd45d652779fb5938ea64513178f2f2045121e499c404b0aaeac34abd"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/media/ecran-tableau-de-bord.jpg",
+    "bytes": 1222790,
+    "sha256": "18702f6d93970b9b489e72143cd0f29d4c366dcffdaefcf565ab77d72f09f4dd"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/planches-png/01-ouverture.png",
+    "bytes": 3641873,
+    "sha256": "e4d9d74c990957aaaf72aced2eaa62acf539f32d1d79387e59523c94a713e8c3"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/planches-png/02-existant.png",
+    "bytes": 6744857,
+    "sha256": "605361a338f7ff892f89aeec6fb0db24974c8ec79a642eee9c77e36174b30cbe"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/planches-png/03-idee.png",
+    "bytes": 4466643,
+    "sha256": "3683877f5604f7e839382a452c58dbe65caeba1024388a9440b25c6a68bb5722"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/planches-png/04-lire-une-empreinte.png",
+    "bytes": 2204611,
+    "sha256": "029d854d5493e545880d92390f72ab7f3b0f1f3b92c2a6e5aa84fe7c146d23b3"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/planches-png/05-mur-des-empreintes.png",
+    "bytes": 8441649,
+    "sha256": "115fa70105212f4ce7579e86fd88a97e4465f1cc40a4a125b643b75e33b85480"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/planches-png/06-couleurs.png",
+    "bytes": 8102075,
+    "sha256": "9c3d7288deedf62d7685c4a590bbed5e058c61e5ba62f98f57b4271b1fd67663"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/planches-png/07-typographie.png",
+    "bytes": 4241961,
+    "sha256": "db9ab9a6c8af1d0083dc24452b3b99ff0faffda40924e55ceaa6faf7113d5a22"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/planches-png/08-aquarelle.png",
+    "bytes": 10150692,
+    "sha256": "6bf2565eba44a65f14dfa46e646262f57005d1f25af159d28d1d80596a48efb0"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/planches-png/09-marge-du-comptable.png",
+    "bytes": 4082988,
+    "sha256": "689849e1f9e59780fb1700ce3069106cb2546c6e728cf2300d14de73f78f14d9"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/planches-png/10-graphiques.png",
+    "bytes": 4325740,
+    "sha256": "51d608b39e3d7b499898623e987bd1ebe69ad0add08a2cd6f5eab45de66e3cf2"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/planches-png/11-composants.png",
+    "bytes": 4012917,
+    "sha256": "c6a45731809c196e9527ed0dc72d99d691badf88d487f544092b3db149338548"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/planches-png/12-tableau-de-bord-incline.png",
+    "bytes": 4722371,
+    "sha256": "81c685a369a5843cc5bddffc49264c302a450989fa15f87e6ccbfe85ddbd563a"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/planches-png/13-details.png",
+    "bytes": 4490197,
+    "sha256": "8fd4f3852f3a917c5d34c3813e39eed30cb45ceee2b65351eff3d58b72e2aa6f"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/planches-png/14-fiche-inclinee.png",
+    "bytes": 3429645,
+    "sha256": "1dc3bae1805c493ea653b5898c67f6b4d6afdec0a952f01dedf8901bafc6b06a"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/planches-png/15-barre-laterale.png",
+    "bytes": 5884412,
+    "sha256": "9df4c2896eaa3e83ba23950b8ba3955b70c5ba98bc0e4940b5018818e5620840"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/planches-png/16-tableau-des-projets.png",
+    "bytes": 2780346,
+    "sha256": "67fbd806e87853ad6db141b5155ac7aa49358094b7c93f93c23bc30d7d447332"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/planches-png/17-courbe.png",
+    "bytes": 3843997,
+    "sha256": "cd8e9eb70cbea1c24cdba08f5acd3d270c6d659bcc5a6d6aef621781f050960a"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/planches-png/18-mur-d-ecrans.png",
+    "bytes": 3881522,
+    "sha256": "c41104ebd047271990ef17f8cf1c6600809ecf771eca64693db84576344d9765"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/planches-png/19-projets.png",
+    "bytes": 3414180,
+    "sha256": "0489952dc3f79b5d616025a88b066ba69f6ed2ddc81e678f8793836b946472ff"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/planches-png/20-ressources-humaines.png",
+    "bytes": 3172897,
+    "sha256": "8d6d1fe8c651f8dd392ead706e0633bde558ee9f140a2bae03a49f57d44789e0"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/planches-png/21-extraction-sage.png",
+    "bytes": 4603056,
+    "sha256": "e360914dfddf3c60ccce43ca1bd845e454475cdfa43b6c138cac2b10dd7e568d"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/planches-png/22-statistiques.png",
+    "bytes": 3279439,
+    "sha256": "70cf4850ead95980b30ba9064ae2ec31bdde1dc2d3ef93e6455ec6701f526149"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/planches-png/23-telephones.png",
+    "bytes": 7298045,
+    "sha256": "7dd607411b199663b07a61a42034872ce8d359da66555dbf962d6f38d0185b2d"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/planches-png/26-ici-et-la-bas.png",
+    "bytes": 6077919,
+    "sha256": "78e548bb556df9a1c098a22e81992b45c07fee0712d1d66706ccfdb4be6f7588"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/planches-png/27-roles.png",
+    "bytes": 5653401,
+    "sha256": "4ce3f3ea1e6af6adcdbecdc44aa93998aac5266ce70f0b11864c96868586f84f"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/planches-png/28-avant-apres.png",
+    "bytes": 7060351,
+    "sha256": "f4dc4f1eda03ec0c23d0328887d05ef6d88930cb555b1bc8ac7733f2fa59bed9"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/planches-png/35-portable-velours.png",
+    "bytes": 655039,
+    "sha256": "b0868e375d45be988058c4665313af20095a1d18762a9186e7c7b8d09acd92e5"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/planches-png/36-portable-terre.png",
+    "bytes": 846862,
+    "sha256": "74df068c2dd474bfd7c452765c2e9b5be76145e70070c7be2dffd20bee29cba0"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/planches-png/37-suivi-imprime.png",
+    "bytes": 3727820,
+    "sha256": "6bb48efa7cce2ee750eb2496161e4a95b8fdd116198944dcc9648e2a25fc3c80"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/planches-png/38-affiche.png",
+    "bytes": 12373988,
+    "sha256": "c90428658f517665435870a335ecd17062267ce23c7a61cc31009b198908def4"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/planches-png/39-terrain.png",
+    "bytes": 7173738,
+    "sha256": "8b81e9207fb1e172e295699ab40873026a730944c58ab5684e60a905a57e1c00"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/planches-png/40-des-gens.png",
+    "bytes": 8983173,
+    "sha256": "d152debf1c9c2a8ed3f8db2669d79a418f2d37b5df29aa8790b8473c8418c29b"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/planches-png/42-telephone.png",
+    "bytes": 479305,
+    "sha256": "d697ac6863af27ea8479a45c60a5da4f17af5f8e21a5b7fea2ff47dcfc06f660"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/planches-png/43-trois-pistes.png",
+    "bytes": 3818713,
+    "sha256": "dc534b893982a2da4ecfaa2a39497b9a940092c65426a1fcad8c20a5f7ca76cd"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/planches-png/45-citation.png",
+    "bytes": 8813091,
+    "sha256": "12a527466f39ce4d26066cc3cc273ce01eb825e095df22a864dd8bda57017c58"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/planches-png/ecran-administration.png",
+    "bytes": 1248275,
+    "sha256": "96f4a1030008ee8edca837b46a51ebadfb7c918df9e0ccde491d7f74b73c0d10"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/planches-png/ecran-affectation.png",
+    "bytes": 929470,
+    "sha256": "569ed60012d1e6f1bbd81e67fba5d665daa82b911a3c5c3ee5af9db05b371cb9"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/planches-png/ecran-connexion.png",
+    "bytes": 4363681,
+    "sha256": "03804517f36b9ab68f12ae83954d8cd8a211a556c500e00578c9e6eef18859de"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/planches-png/ecran-fiche-projet.png",
+    "bytes": 1295298,
+    "sha256": "f5b7ddb91ef62b30c418c4722893e99198bf2c00bf093b10b859d264ffeb3d15"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/planches-png/ecran-journal.png",
+    "bytes": 1639967,
+    "sha256": "a305ca6003194c6f3c112b26b2a02b16b9ac47e1b426e03087228114954c92e0"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/planches-png/ecran-nouveau-projet.png",
+    "bytes": 1335467,
+    "sha256": "648ddee02ddf6e5096a124b87846405198b588ef3cf0653ba0af8a2b7224ac66"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/planches-png/ecran-projets-grille.png",
+    "bytes": 815695,
+    "sha256": "30a29352d57554d3a12e7c685fecd0ceebbbd928ce38761398eae0a4e12c1d33"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/40_DELIVERABLES/grdr-presentation/planches-png/ecran-tableau-de-bord.png",
+    "bytes": 2229324,
+    "sha256": "f08ce19ee5c898a79723384516a50d3841f904b4a1f96e585ae20ff793019703"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/LAB.md",
+    "bytes": 3185,
+    "sha256": "39e7d14be946be019f1b609f2097b519fa6f12dbeb038768eb9f1e42ea5c80b0"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/licenses/@fontsource-variable/geist-mono/LICENSE",
+    "bytes": 4498,
+    "sha256": "cc815ed4fc045f0e991abb10395b7932bd028c6a067deb13316d6002105074e6"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/licenses/@fontsource-variable/nunito-sans/LICENSE",
+    "bytes": 4526,
+    "sha256": "6632e6c45fcc18cc03909a0a53d84e9775185e06203ff80d6367cf93959b91a8"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/licenses/@fontsource-variable/nunito/LICENSE",
+    "bytes": 4491,
+    "sha256": "40991bfa02ac620aae16dc527f3c47765a25e43f270d4c301ee6ab663a8d9015"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/licenses/world-atlas/LICENSE",
+    "bytes": 734,
+    "sha256": "8048290dfdb6e83fbed17e8985c8cfc4ce9da9b842642f3d3e497280790cfa31"
+  },
+  {
+    "brand": "grdr",
+    "path": "brands/grdr/licenses/world-atlas/NATURAL-EARTH.txt",
+    "bytes": 232,
+    "sha256": "5d311af70270f306c504625c77cf4cb7b478f9527968e2fade276ca484f13ceb"
   }
 ]

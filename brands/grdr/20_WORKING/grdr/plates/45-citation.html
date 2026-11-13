@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><title>45 · Clôture : la citation</title>
+<link rel="stylesheet" href="../brand/marque.css">
+<style>
+  /* 45 · Clôture : la citation publiée d'Arezki Harkouk (GRDR), mot pour mot, sur le lavis. Puis les crédits. */
+  .plate{width:1400px;height:1050px;background:var(--papier)}
+  .ci-fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .ci-q{position:absolute;left:84px;top:150px;width:1010px;font-family:var(--titre);font-weight:800;font-size:57px;letter-spacing:-.04em;line-height:1.04;color:var(--encre)}
+  .ci-q em{font-style:normal;color:var(--blanc)}
+  .ci-g{position:absolute;left:70px;top:36px;font-family:var(--titre);font-weight:900;font-size:240px;line-height:1;color:var(--blanc);opacity:.85}
+  .ci-a{position:absolute;left:84px;top:716px;display:flex;gap:16px;align-items:center}
+  .ci-a b{display:block;font-family:var(--titre);font-weight:800;font-size:22px;letter-spacing:-.02em}
+  .ci-a span{display:block;font-size:14px;opacity:.75}
+  .ci-a i{width:54px;height:54px;border-radius:50%;background:var(--blanc);display:grid;place-items:center;font-style:normal;font-family:var(--titre);font-weight:800;font-size:18px;color:var(--vermillon)}
+  .ci-c{position:absolute;left:84px;right:84px;bottom:84px;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding-top:20px;border-top:1.5px solid rgba(42,30,23,.5)}
+  .ci-c div{font-size:12.5px;line-height:1.5}
+  .ci-c div b{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;font-weight:500;opacity:.7;margin-bottom:6px}
+</style></head>
+<body>
+<div class="plate grain" id="p"></div>
+<script src="../brand/marque.js"></script>
+<script>
+const M = Marque;
+document.getElementById('p').innerHTML = `<img class="ci-fond" src="${M.aqURL('aube')}" alt="">` + M.filigrane({ c: 'blanc', op: 0.5, style: 'right:-200px;top:-150px;width:860px;height:1159px' }) +
+  `<div class="net" style="position:absolute;inset:0"><div class="ci-g">“</div>
+   <div class="ci-q">Notre gestion budgétaire reposait sur un fichier Excel que tout le monde craignait de casser. KLYRA en a fait une vraie application : <em>nos équipes saisissent en confiance,</em> les calculs sont automatiques et on garde le lien avec notre comptabilité.</div>
+   <div class="ci-a"><i>AH</i><div><b>Arezki Harkouk</b><span>GRDR</span></div></div>
+   <div class="ci-c"><div><b>Client</b>GRDR · Migrations, Citoyenneté, Solidarités</div><div><b>Projet</b>Djongoma, gestion budgétaire · 2025, 7 semaines</div><div><b>Studio</b>KLYRA · outil métier, UX/UI, développement</div><div><b>À savoir</b>Proposition KLYRA, non validée par le GRDR. Logo, couleurs et police du GRDR. Données de démonstration.</div></div></div>`;
+window.pret = Promise.all([...document.images].map((i) => (i.decode ? i.decode().catch(() => 0) : 0)));
+</script>
+</body></html>

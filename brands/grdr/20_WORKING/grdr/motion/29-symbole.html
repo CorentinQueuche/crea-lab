@@ -1,0 +1,70 @@
+<!doctype html><meta charset="utf-8"><title>29 · Le symbole se trace</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="motion.css">
+<script src="../brand/marque.js"></script><script src="lib.js"></script><script src="scenes.js"></script>
+<style>
+  .mv29-logo{position:absolute;overflow:visible}
+  .mv29-final{position:absolute}
+  .mv29-final svg{width:100%;height:100%}
+</style>
+<body><div class="m-stage mv-scene grain" id="s">
+  <svg class="mv29-logo m-net" id="logo" xmlns="http://www.w3.org/2000/svg"></svg>
+  <div class="mv29-final m-net" id="final"></div>
+  <div class="mv-leg mv-doux m-net" style="left:96px;bottom:96px">Logo officiel du GRDR · rien n’est redessiné</div>
+  <div class="mv-leg mv-doux m-net" id="cpt" style="right:96px;bottom:96px"></div>
+</div>
+<script>
+/* 29 · Le symbole officiel du GRDR se trace trait par trait, du plus petit au plus grand, chacun depuis son pied.
+   Puis il prend sa place dans le logo : le mot « grdr » monte lettre à lettre, le descripteur ligne à ligne.
+   État final : exactement Marque.lockup(). 6 s.
+   node tools/record.mjs motion/29-symbole.html out/motion/29-symbole.mp4 --dur 6 --apercu */
+const A = Marque, C = A.COULEURS, T = A.TRACES;
+const box = A.LOCKUP.box, sb = A.LOGO.symbolBox;
+const L = 1080, K = L / box[2], H = box[3] * K, X0 = (1920 - L) / 2, Y0 = (1080 - H) / 2;
+/* le symbole se trace au centre de la scène, puis glisse à sa place dans le logo */
+const DX = (box[0] + box[2] / 2) - (sb[0] + sb[2] / 2);
+
+const logo = document.getElementById('logo'), fin = document.getElementById('final'), cpt = document.getElementById('cpt');
+for (const el of [logo, fin]) M.css(el, { left: X0 + 'px', top: Y0 + 'px', width: L + 'px', height: H + 'px' });
+logo.setAttribute('viewBox', box.join(' '));
+logo.innerHTML =
+  `<g id="mot">${A.LETTRES.ordre.map((l) => `<path fill="${C.vermillon}" d="${A.letterPath(l)}"/>`).join('')}</g>` +
+  `<g id="desc">${T.descripteur.lignes.map((d) => `<path fill="${C.lagune}" d="${d}"/>`).join('')}</g>` +
+  `<g id="sym"><path id="piste" fill="${C.sable}" d="${A.symbolPath()}"/><g id="trace"></g></g>`;
+fin.innerHTML = A.lockup();
+const lettres = [...logo.querySelectorAll('#mot path')], lignes = [...logo.querySelectorAll('#desc path')];
+const sym = logo.querySelector('#sym'), piste = logo.querySelector('#piste'), trace = logo.querySelector('#trace');
+
+/* les cinq traits : [début, durée], du plus petit au plus grand (l'ordre de Marque.symbolParts().traits) */
+const TRAITS = [[0.2, 0.85], [0.5, 0.95], [0.85, 1.1], [1.2, 1.25], [1.55, 1.35]];
+const FIN_TRACE = 2.9, GLISSE = [2.7, 0.95], MOT = [2.95, 0.09, 0.75], DESC = [3.45, 0.1, 0.65], FIN = 4.3;
+let cle = '';
+
+window.seek = (t) => {
+  const exact = t >= FIN;
+  logo.style.visibility = exact ? 'hidden' : 'visible';
+  fin.style.visibility = exact ? 'visible' : 'hidden';
+
+  /* 1. le tracé */
+  const P = TRAITS.map(([d, du]) => MV.arr(M.tw(t, d, du, M.quartOut), 4));
+  const k = P.join(' ');
+  if (k !== cle) { cle = k; trace.innerHTML = A.symbolTrace({ p: P, c: 'ocre', id: 'mv29t', attrs: `x="${sb[0]}" y="${sb[1]}" width="${sb[2]}" height="${sb[3]}"` }); }
+  piste.setAttribute('fill-opacity', t >= FIN_TRACE ? 0 : 1);
+
+  /* 2. le symbole glisse à sa place */
+  const g = M.tw(t, GLISSE[0], GLISSE[1], M.quintInOut);
+  sym.setAttribute('transform', `translate(${(DX * (1 - g)).toFixed(2)} 0)`);
+
+  /* 3. le mot, lettre à lettre ; le descripteur, ligne à ligne */
+  lettres.forEach((el, i) => { const p = M.tw(t, MOT[0] + i * MOT[1], MOT[2], M.expoOut);
+    el.setAttribute('fill-opacity', p.toFixed(3)); el.setAttribute('transform', `translate(0 ${((1 - p) * 16).toFixed(2)})`); });
+  lignes.forEach((el, i) => { const p = M.tw(t, DESC[0] + i * DESC[1], DESC[2], M.expoOut);
+    el.setAttribute('fill-opacity', p.toFixed(3)); el.setAttribute('transform', `translate(0 ${((1 - p) * 9).toFixed(2)})`); });
+
+  /* la légende : le compte des traits, puis ce qu'on vient de voir */
+  const n = Math.max(1, TRAITS.filter(([d]) => t >= d).length);
+  const txt = t >= FIN_TRACE ? '5 traits · du pied vers la boucle' : `Trait ${n} / 5`;
+  if (cpt.textContent !== txt) cpt.textContent = txt;
+};
+window.pret = MV.pret();
+seek(0);
+</script></body>

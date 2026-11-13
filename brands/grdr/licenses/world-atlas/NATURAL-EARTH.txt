@@ -1,0 +1,2 @@
+Fond de carte : Natural Earth (naturalearthdata.com), domaine public, repris du paquet world-atlas (licence ISC, ci-contre).
+Projection et tracés calculés par 20_WORKING/grdr/_prep/preparer_kit.mjs avec d3-geo et topojson-client.

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><title>37 · Le suivi imprimé</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="../brand/ecrans.css"><link rel="stylesheet" href="sc.css">
+<style>
+  /* 37 · Le suivi imprimé : ce que l'outil exporte pour un bailleur. Deux feuilles A4 posées sur une table de sable,
+     vues de dessus, légèrement tournées. La première porte l'empreinte du projet, la seconde ses lignes budgétaires. */
+  .plate{width:1400px;height:1050px;background:#E9CDB2}
+  .si-fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.85}
+  .si-lum{position:absolute;inset:0;background:linear-gradient(118deg,rgba(255,244,230,.55) 0%,rgba(255,244,230,0) 42%,rgba(90,45,15,.22) 100%)}
+  .si-f{position:absolute;width:794px;height:1123px;background:#FFFCF7;color:var(--encre);padding:64px 62px;font-size:13px;line-height:1.45;
+    box-shadow:0 1px 1px rgba(70,35,10,.18),0 22px 30px -14px rgba(70,35,10,.38),0 60px 70px -30px rgba(70,35,10,.4)}
+  .si-f::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(100deg,rgba(255,255,255,.5),rgba(255,255,255,0) 30%,rgba(90,45,15,.05) 100%)}
+  .si-1{left:140px;top:70px;transform:rotate(-7deg);z-index:3}
+  .si-2{left:720px;top:130px;transform:rotate(5.5deg);z-index:2}
+  .si-h{display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:22px;border-bottom:1.5px solid var(--encre)}
+  .si-h svg{height:64px;width:auto}
+  .si-h div{text-align:right;font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;line-height:1.7}
+  .si-t{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center;margin:34px 0 26px}
+  .si-t h1{margin:10px 0 8px;font-family:var(--titre);font-weight:900;font-size:44px;letter-spacing:-.045em;line-height:.95}
+  .si-t p{margin:0;font-size:12.5px;opacity:.7}
+  .si-t svg{height:176px;width:auto}
+  .si-k{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--filet);border-bottom:1px solid var(--filet)}
+  .si-k div{padding:16px 0 16px 18px;border-left:1px solid var(--filet)}
+  .si-k div:first-child{border-left:0;padding-left:0}
+  .si-k b{display:block;font-family:var(--titre);font-weight:800;font-size:27px;letter-spacing:-.04em;line-height:1.1;margin-top:5px}
+  .si-l{font-family:var(--mono);font-size:9px;letter-spacing:.09em;text-transform:uppercase;opacity:.6}
+  .si-2c{display:grid;grid-template-columns:1.15fr 1fr;gap:34px;margin-top:28px}
+  .si-2c h2,.si-f h2{margin:0 0 12px;font-family:var(--titre);font-weight:800;font-size:16px;letter-spacing:-.025em}
+  .si-bl{display:grid;gap:9px;font-size:12px}
+  .si-bl div{display:grid;grid-template-columns:10px 1fr auto;gap:9px;align-items:center}
+  .si-bl u{width:10px;height:10px;border-radius:50%;background:var(--bc)}
+  .si-bl b{font-family:var(--titre);font-weight:800}
+  .si-p{position:absolute;left:62px;right:62px;bottom:46px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;opacity:.6}
+  .si-tab{width:100%;border-collapse:collapse;font-size:12px;margin-top:6px}
+  .si-tab th{text-align:left;font-family:var(--mono);font-size:8.5px;letter-spacing:.09em;text-transform:uppercase;font-weight:500;opacity:.6;padding:0 8px 8px 0;border-bottom:1px solid var(--encre)}
+  .si-tab td{padding:9px 8px 9px 0;border-bottom:1px solid var(--filet)}
+  .si-tab .d{text-align:right;padding-right:0;padding-left:8px;font-family:var(--titre);font-weight:800;letter-spacing:-.02em;white-space:nowrap}
+  .si-tab tr.c td{font-family:var(--titre);font-weight:800;font-size:12.5px;padding-top:16px;border-bottom:0}
+  .si-tab tr.t td{border-bottom:0;border-top:1.5px solid var(--encre);font-family:var(--titre);font-weight:900;font-size:13.5px}
+  .si-sig{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:38px}
+  .si-sig div{border-top:1px solid var(--encre);padding-top:8px;height:86px}
+</style></head>
+<body>
+<div class="plate grain fort" id="p"></div>
+<script src="../brand/marque.js"></script><script src="../brand/carte.js"></script><script src="../brand/ecrans.js"></script>
+<script>
+const M = Marque, C = M.COULEURS, D = M.DONNEES, F = M.app.FICHE, p = D.projets[0];
+const tete = (n) => `<div class="si-h">${M.lockup()}<div>Suivi budgétaire · ${p.code}<br>Exercice ${D.exercice} · édité le ${D.extraction.court.split(' ')[0]}<br>Page ${n} / 2</div></div>`;
+const pied = `<div class="si-p"><span>${M.PRODUIT} · ${M.PRODUIT_DESC}</span><span>Montants extraits de Sage · ${D.extraction.court}</span></div>`;
+const f1 = `<div class="si-f si-1" data-voulu>${tete(1)}
+  <div class="si-t"><div>${M.code(p.code, 'vermillon')}<h1>${p.titre}</h1><p>Mauritanie · ${M.app.moisLong(p.debut)} → ${M.app.moisLong(p.fin)} · 48 mois</p></div>${M.empreinte({ cernes: F.annees.map((a) => a.execute / a.prevu), actif: 3 })}</div>
+  <div class="si-k"><div><span class="si-l">Budget total</span><b>${M.euro(p.total)}</b></div><div><span class="si-l">Exécuté · ${M.pct(p.taux, 1)}</span><b style="color:${C.lagune}">${M.euro(p.execute)}</b></div><div><span class="si-l">Reste à exécuter</span><b>${M.euro(p.total - p.execute)}</b></div></div>
+  <div class="si-2c"><div><h2>Budget par année</h2>${M.annees({ w: 360, h: 210, annees: F.annees, ep: 20 })}</div>
+    <div><h2>Bailleurs</h2><div class="si-bl">${F.bailleurs.map((b) => `<div><u style="--bc:${C[b[3]]}"></u>${b[0]}<b>${M.pct(b[1])}</b></div>`).join('')}</div>
+      <h2 style="margin-top:26px">Lecture</h2><p style="margin:0;font-size:11.5px;opacity:.75">Une boucle par année du projet, tracée jusqu’à sa part exécutée. L’année en cours est en vermillon.</p></div></div>
+  ${pied}</div>`;
+const f2 = `<div class="si-f si-2" data-voulu>${tete(2)}<h2 style="margin-top:34px">Lignes budgétaires</h2>
+  <table class="si-tab"><thead><tr><th>Libellé</th><th class="d">Prévisionnel</th><th class="d">Exécuté</th><th class="d">Reste</th><th class="d">%</th></tr></thead><tbody>
+  ${F.lignes.map(([cat, cc, ls]) => `<tr class="c"><td colspan="5">${cat}</td></tr>` + ls.map((l) => `<tr><td>${l[0]}</td><td class="d">${M.euro(l[1])}</td><td class="d">${M.euro(l[2])}</td><td class="d" style="color:${C.lagune}">${M.euro(l[1] - l[2])}</td><td class="d">${M.pct(l[2] / l[1])}</td></tr>`).join('')).join('')}
+  <tr class="t"><td>Total</td><td class="d">${M.euro(p.total)}</td><td class="d">${M.euro(p.execute)}</td><td class="d">${M.euro(p.total - p.execute)}</td><td class="d">${M.pct(p.taux)}</td></tr></tbody></table>
+  <div class="si-sig"><div><span class="si-l">Pour la gestion financière</span></div><div><span class="si-l">Pour la direction du projet</span></div></div>${pied}</div>`;
+const large = new URLSearchParams(location.search).get('f') === 'large';
+if (large) { const P = document.getElementById('p'); P.style.width = '1600px'; P.style.height = '900px'; }
+document.getElementById('p').innerHTML = `<img class="si-fond" src="${M.aqURL('terre')}" alt=""><div class="si-lum"></div><div class="net" style="position:absolute;inset:0;${large ? 'left:120px;top:-40px' : ''}">${f2}${f1}</div>`;
+window.pret = Promise.all([...document.images].map((i) => (i.decode ? i.decode().catch(() => 0) : 0)));
+</script>
+</body></html>

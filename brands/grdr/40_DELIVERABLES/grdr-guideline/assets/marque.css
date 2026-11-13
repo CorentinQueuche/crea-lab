@@ -1,0 +1,154 @@
+/* SOCLE DE MARQUE — GRDR · Djongoma (feuille de style).
+   L'identité du GRDR existe et ne change pas : couleurs relevées dans le rapport d'activité 2025 (logo, couverture),
+   police Nunito relevée dans le même document. Ce qui est ajouté pour l'outil est signalé « proposition ».
+   Ordre : 1 polices · 2 couleurs · 3 rôles · 4 typographie · 5 le kit · 6 mécanique commune.
+   Tout le projet lit ce fichier ; personne ne le modifie hors du socle. */
+
+/* ---------- 1. Polices ---------- */
+@font-face{font-family:"Nunito";src:url("fonts/nunito-latin-wght-normal.woff2") format("woff2");font-weight:200 1000;font-display:block}
+@font-face{font-family:"Nunito Sans";src:url("fonts/nunito-sans-latin-wght-normal.woff2") format("woff2");font-weight:200 1000;font-display:block}
+@font-face{font-family:"Geist Mono";src:url("fonts/geist-mono-latin-wght-normal.woff2") format("woff2");font-weight:100 900;font-display:block}
+
+:root{
+  /* ---------- 2. Couleurs ---------- */
+  /* relevées sur le logo officiel */
+  --vermillon:#E85330;   /* le mot « grdr » : la couleur vive */
+  --ocre:#B25F25;        /* le symbole : la terre */
+  --lagune:#296C6E;      /* le descripteur : le texte coloré, la donnée posée */
+  /* relevées sur la couverture du rapport d'activité 2025 */
+  --papier:#F6EADE;      /* le papier crème */
+  --sable:#EBD1B8;       /* le sable : fonds neutres, pistes des jauges */
+  --corail:#F18873;      /* aquarelle */
+  --rose:#EEA3AD;        /* aquarelle */
+  --peche:#F3B464;       /* aquarelle */
+  --miel:#EFDF76;        /* aquarelle */
+  /* reprise de l'application livrée (« vert GRDR » du design system) */
+  --emeraude:#009F71;    /* ce qui est exécuté, signé, à jour */
+  /* propositions : les deux extrémités qui manquaient à l'échelle */
+  --nuit:#12312F;        /* la lagune la nuit : panneaux denses */
+  --encre:#2A1E17;       /* le texte : un brun presque noir */
+  --blanc:#FFFBF6;       /* le blanc du papier : cartes, écrans */
+  --menthe:#CFEBDD;      /* l'émeraude délavée : fonds de pastilles */
+  --brume:#DCE9E6;       /* la lagune délavée */
+
+  /* ---------- 3. Rôles ---------- */
+  --vif:var(--vermillon);
+  --clair:var(--miel);
+  --moyen:var(--ocre);
+  --sombre:var(--nuit);
+  --scene:var(--papier);
+  --sur-scene:var(--encre);
+  --doux:var(--sable);
+  --filet:rgba(42,30,23,.14);
+  --filet-clair:rgba(42,30,23,.14);
+  --filet-sombre:rgba(255,251,246,.16);
+
+  --font:"Nunito Sans",system-ui,sans-serif;     /* texte courant, interface */
+  --titre:"Nunito",system-ui,sans-serif;         /* la voix des titres : celle des publications du GRDR */
+  --mono:"Geist Mono",ui-monospace,monospace;    /* codes analytiques, montants alignés, journal */
+
+  /* l'aquarelle : toujours du corail vers le miel (l'ordre de la couverture 2025), jamais l'inverse */
+  --aq-aube:linear-gradient(152deg,#F18873 0%,#EEA3AD 34%,#F3B464 62%,#EFDF76 100%);
+}
+
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--scene);color:var(--sur-scene);font-family:var(--font);font-weight:400;-webkit-font-smoothing:antialiased;text-rendering:geometricPrecision;font-optical-sizing:auto}
+img,svg,canvas{display:block}
+
+/* ---------- 4. Typographie ---------- */
+/* Nunito en graisse forte, serrée, en bas de casse : la voix ronde du mot « grdr ». Jamais en capitales sur plus de six mots. */
+.t-titre{font-family:var(--titre);font-weight:800;line-height:.96;letter-spacing:-.035em}
+.t-geant{font-family:var(--titre);font-weight:900;line-height:.86;letter-spacing:-.05em}
+.t-chapo{font-family:var(--titre);font-size:24px;line-height:1.28;letter-spacing:-.018em;font-weight:600}
+.t-txt{font-size:16px;line-height:1.5}
+.t-petit{font-size:13px;line-height:1.45}
+.t-doux{opacity:.62}
+.t-mono{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;line-height:1.5;font-weight:500}
+.t-cap{font-family:var(--titre);font-weight:800;letter-spacing:.09em;text-transform:uppercase;font-size:12px}   /* « CITOYENS D'ICI ET DE LÀ-BAS » */
+.chiffres{font-variant-numeric:tabular-nums lining-nums;font-feature-settings:"tnum" 1,"lnum" 1}
+
+/* ---------- 5. Le kit ---------- */
+/* 5.1 L'aquarelle. Marque.aquarelle(nom) pose l'image rendue (art/aquarelle.html → photos/aq-*.jpg) ; .aq seule donne le
+   dégradé de secours. Le grain du papier vient par .grain. */
+.aq{position:relative;isolation:isolate;background:var(--aq-aube);background-size:cover;background-position:center;overflow:hidden}
+.aq>.aq-i{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-1}
+
+/* 5.2 La marge du métier : le code analytique, le montant, le tampon du journal */
+.code{display:inline-flex;align-items:center;height:1.9em;padding:0 .62em;border-radius:.55em;font-family:var(--mono);font-size:.78em;font-weight:600;letter-spacing:.04em;background:color-mix(in srgb,var(--cc,var(--lagune)) 13%,transparent);color:color-mix(in srgb,var(--cc,var(--lagune)) 74%,var(--encre));white-space:nowrap}
+.montant{font-family:var(--titre);font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums lining-nums;white-space:nowrap}
+.montant>i{font-style:normal;font-weight:700;opacity:.5;margin-left:.16em;font-size:.62em;letter-spacing:0}
+.tampon{display:inline-flex;align-items:center;gap:.6em;font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;font-weight:500;white-space:nowrap}
+.tampon>b{width:.62em;height:.62em;border-radius:50%;background:var(--tc,var(--emeraude));box-shadow:0 0 0 .3em color-mix(in srgb,var(--tc,var(--emeraude)) 22%,transparent)}
+
+/* 5.3 L'empreinte (Marque.empreinte) : rien à styler, tout est dans le tracé. .emp-l pose la légende à côté. */
+.emp{display:block;overflow:visible}
+
+/* 5.4 Le symbole en grand, coupé par les bords (le procédé des publications du GRDR et des médias existants) */
+.filigrane{position:absolute;pointer-events:none}
+.filigrane svg{width:100%;height:100%;overflow:visible}
+
+/* ---------- 6. Mécanique commune ---------- */
+/* Grain de papier. Marque claire : mélange en multiply. L'élément doit avoir un fond. */
+.grain{position:relative;isolation:isolate}
+.grain::after{content:"";position:absolute;inset:0;z-index:50;pointer-events:none;opacity:.42;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='320'%3E%3Cfilter id='n' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .42 0 0 0 0 .32 0 0 0 0 .24 -1.1 -1.1 -1.1 0 1.75'/%3E%3C/filter%3E%3Crect width='320' height='320' filter='url(%23n)'/%3E%3C/svg%3E")}
+.grain.fort::after{opacity:.7}
+.grain.nuit::after{mix-blend-mode:soft-light;opacity:.55}
+.net{z-index:60}
+:where(.net){position:relative}
+
+/* Photo. Modes : brut, sombre, nb, duo (une couleur multipliée), lavis (la photo sous une couche d'aquarelle). */
+.ph{position:relative;overflow:hidden;background:var(--sable);isolation:isolate}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.ph.sombre img{filter:brightness(.78) contrast(1.05)}
+.ph.nb img{filter:grayscale(1) contrast(1.12) brightness(1.02)}
+.ph.duo img{filter:grayscale(1) contrast(1.2) brightness(1.1)}
+.ph.duo::after,.ph.tr::after{content:"";position:absolute;inset:0;z-index:3;background:var(--tc,var(--vif));mix-blend-mode:multiply;pointer-events:none}
+.ph.duo::before{content:"";position:absolute;inset:0;z-index:4;background:var(--tc2,var(--nuit));mix-blend-mode:lighten;pointer-events:none}
+.ph.lavis img{filter:grayscale(1) contrast(1.08) brightness(1.22)}
+.ph.lavis::after{content:"";position:absolute;inset:0;z-index:3;background:var(--aq-img,var(--aq-aube));background-size:cover;background-position:center;mix-blend-mode:multiply;pointer-events:none}
+.ph.lavis::before{content:"";position:absolute;inset:0;z-index:4;background:var(--tc2,#1B4A47);mix-blend-mode:lighten;pointer-events:none}
+.ph.tr{background:#000}
+.ph .ph-t{position:absolute;inset:0;filter:contrast(60);background:#fff;overflow:hidden}
+.ph .ph-t img{filter:grayscale(1) contrast(var(--ct,1.1)) brightness(var(--lu,1)) blur(.7px)}
+.ph .ph-t i{position:absolute;inset:-60%;z-index:2;opacity:.5;pointer-events:none;background:var(--ph-trame,#808080);background-size:var(--tp,9px) var(--tp,9px);transform:rotate(var(--ta,0deg))}
+.ph.tr.inv .ph-t img{filter:grayscale(1) contrast(var(--ct,1.1)) brightness(var(--lu,1)) blur(.7px) invert(1)}
+
+/* Masques : une image ou un aplat dans la silhouette du symbole (posée par marque.js au chargement) */
+.dans-symbole{-webkit-mask-image:var(--m-symbole);mask-image:var(--m-symbole);-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;aspect-ratio:var(--r-symbole,1)}
+.dans-traits{-webkit-mask-image:var(--m-traits);mask-image:var(--m-traits);-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;aspect-ratio:var(--r-symbole,1)}
+
+/* Bandeau d'en-tête et pied de planche */
+.entete{position:absolute;left:36px;right:36px;top:26px;z-index:70;display:grid;grid-template-columns:40% 16.5% 1fr auto;font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;line-height:1.5}
+.entete span{padding-right:16px}
+.pfoot{position:absolute;left:36px;right:36px;bottom:26px;z-index:70;display:grid;grid-template-columns:40% 16.5% 1fr auto;align-items:end;font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;line-height:1.5}
+.pfoot svg{height:22px;width:auto}
+.pfoot span{padding-right:16px}
+
+/* Planche : 1400 px de large, hauteur libre */
+.plate{position:relative;width:1400px;overflow:hidden;background:var(--scene);color:var(--sur-scene)}
+.plate.clair{background:var(--blanc);color:var(--encre)}
+.plate.nuit{background:var(--nuit);color:var(--blanc);--filet:var(--filet-sombre)}
+
+/* Appareils : dessinés à taille fixe, mis à l'échelle par zoom:var(--k). L'interface dedans reste à 390 × 844 ou 1440 de large. */
+.phone{--k:1;zoom:var(--k);position:relative;width:414px;height:868px;border-radius:58px;background:#1B1512;padding:12px;flex:none;box-shadow:0 0 0 1.5px #4A3F38,0 0 0 4px #241C18,0 60px 90px -40px rgba(70,35,10,.55),0 18px 30px -18px rgba(70,35,10,.35)}
+.phone>.scr{position:relative;width:390px;height:844px;border-radius:47px;overflow:hidden;background:var(--blanc);color:var(--encre)}
+.phone>.ilot{position:absolute;left:50%;top:24px;width:112px;height:32px;margin-left:-56px;border-radius:16px;background:#0E0A08;z-index:80}
+.browser{--k:1;zoom:var(--k);position:relative;width:1440px;border-radius:18px;overflow:hidden;background:#EFE3D6;flex:none;box-shadow:0 0 0 1px rgba(42,30,23,.14),0 70px 120px -50px rgba(70,35,10,.45),0 24px 40px -24px rgba(70,35,10,.25)}
+.browser.nuit{background:#1F1916;box-shadow:0 0 0 1px rgba(255,251,246,.14),0 70px 120px -50px rgba(0,0,0,.7)}
+.browser>.bar{height:46px;display:flex;align-items:center;gap:8px;padding:0 18px;font-family:var(--mono);font-size:11.5px;letter-spacing:.02em;color:rgba(42,30,23,.55)}
+.browser.nuit>.bar{color:rgba(255,251,246,.55)}
+.browser>.bar>b{width:11px;height:11px;border-radius:50%;background:rgba(42,30,23,.16);display:block}
+.browser.nuit>.bar>b{background:rgba(255,251,246,.18)}
+.browser>.bar>span{margin:0 auto;padding:6px 64px;border-radius:9px;background:rgba(42,30,23,.06)}
+.browser.nuit>.bar>span{background:rgba(255,251,246,.08)}
+.browser>.vue{position:relative;width:1440px;overflow:hidden;background:var(--blanc);color:var(--encre)}
+.laptop{--k:1;zoom:var(--k);position:relative;width:1560px;flex:none;filter:drop-shadow(0 50px 50px rgba(70,35,10,.28))}
+.laptop>.ecran{position:relative;margin:0 auto;width:1480px;padding:20px 20px 24px;border-radius:26px 26px 0 0;background:#14100E;box-shadow:0 0 0 2px #3A302B}
+.laptop>.ecran>.vue{position:relative;width:1440px;height:900px;overflow:hidden;border-radius:6px;background:var(--blanc);color:var(--encre)}
+.laptop>.socle{height:22px;border-radius:0 0 22px 22px;background:linear-gradient(#CFC6BE,#8E857D)}
+
+/* Icône d'application */
+.icone-app{display:grid;place-items:center;border-radius:22.5%;overflow:hidden;flex:none}
+.icone-app svg{width:58%;height:auto}

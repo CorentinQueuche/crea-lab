@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><title>15 · Gros plans d'interface</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="../brand/ecrans.css"><link rel="stylesheet" href="sc.css">
+<style>
+  /* 15 · Gros plans : l'interface vue de très près, sans un mot ajouté.
+     ?v=menu  : la barre latérale, sur le lavis, le symbole en filigrane.
+     ?v=table : le tableau des projets, sur la nuit de lagune.
+     ?v=courbe : la courbe à échos, sur papier. */
+  .plate{width:1400px;height:1050px}
+  .gp-z{position:absolute;transform-origin:0 0}
+</style></head>
+<body>
+<div class="plate sc grain" id="p"></div>
+<script src="../brand/marque.js"></script><script src="../brand/carte.js"></script><script src="../brand/ecrans.js"></script>
+<script>
+const M = Marque, C = M.COULEURS, S = M.app, v = new URLSearchParams(location.search).get('v') || 'menu', P = document.getElementById('p');
+if (new URLSearchParams(location.search).get('f') === 'menu') P.style.height = '943px';
+if (v === 'menu') {
+  P.innerHTML = `<img class="sc-fond" src="${M.aqURL('aube')}" alt="">` + M.filigrane({ c: 'blanc', op: 0.55, style: 'right:-210px;top:-120px;width:900px;height:1213px' }) +
+    `<div class="sc-fen net" style="left:250px;top:120px;width:655px;height:1100px;border-radius:44px"><div class="dj" style="zoom:2.6;display:block;width:252px;min-height:0">${S.lateral('tableau')}</div></div>`;
+} else if (v === 'table') {
+  P.style.background = C.nuit;
+  P.innerHTML = `<img class="sc-fond" src="${M.aqURL('nuit')}" alt="" style="opacity:.55">` + M.empreinte({ cernes: [1, 1, 1, 1, 1, 1], c: 'rgba(255,251,246,.06)', piste: null, attrs: 'style="position:absolute;left:-330px;top:-260px;height:1250px;width:auto"' }) +
+    `<div class="sc-fen nuit net dj" style="display:block;min-height:0;left:66px;top:118px;width:742px;zoom:1.6">${S.blocProjets({ n: 6 })}</div>`;
+} else {
+  P.innerHTML = `<img class="sc-fond" src="${M.aqURL('brume')}" alt="">` +
+    `<div class="sc-fen net dj" style="display:block;min-height:0;left:29px;top:150px;width:742px;zoom:1.75">${S.blocCourbe({ id: 'gpc' })}</div>`;
+}
+window.pret = Promise.all([...document.images].map((i) => (i.decode ? i.decode().catch(() => 0) : 0)));
+</script>
+</body></html>

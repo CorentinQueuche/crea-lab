@@ -27,11 +27,15 @@
     "maillon": {
       "files": 103,
       "bytes": 170120347
+    },
+    "grdr": {
+      "files": 531,
+      "bytes": 587031057
     }
   },
-  "files": 2759,
-  "bytes": 3718102537,
-  "unique_bytes": 2636306911,
-  "unique_blobs": 2085,
+  "files": 3290,
+  "bytes": 4305133594,
+  "unique_bytes": 2999630773,
+  "unique_blobs": 2482,
   "blocked": []
 }

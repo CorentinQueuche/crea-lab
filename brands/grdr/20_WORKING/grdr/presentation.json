@@ -1,0 +1,304 @@
+{
+ "titre": "GRDR · Djongoma — un budget se lit comme une empreinte",
+ "sous_titre": "Le GRDR pilotait ses budgets pluriannuels dans un fichier Excel que tout le monde craignait de casser. KLYRA en a fait une application. Nous avons repris sa direction artistique en partant de ce que le GRDR possède déjà : son symbole. Chaque projet y devient une empreinte, une boucle par année, tracée jusqu’à ce qui est exécuté.",
+ "pied": "Proposition KLYRA, non validée par le GRDR. Logo, couleurs et police (Nunito) du GRDR, relevés sur son rapport d’activité 2025. Polices : Nunito, Nunito Sans, Geist Mono (licences libres OFL). Photos de terrain et photos de mockup : médias déjà publiés sur klyra.fr/realisations/grdr, écrans remplacés par le code. Carte : Natural Earth (domaine public). Données de démonstration : personnes, bailleurs par type et mois sont inventés ; projets, montants et effectifs reprennent les captures déjà publiées.",
+ "fond": "#F6EADE",
+ "texte": "#2A1E17",
+ "police": "Nunito Sans",
+ "planches": [
+  [
+   "plates/01-ouverture.png",
+   "01-ouverture",
+   "Le tableau de bord",
+   "L’outil"
+  ],
+  [
+   "motion/31-tableau-de-bord.mp4",
+   "31-tableau-de-bord",
+   "Le tableau de bord se construit",
+   "Mouvement"
+  ],
+  [
+   "plates/02-existant.png",
+   "02-existant",
+   "D’où l’on part : l’identité du GRDR et les écrans de 2025",
+   "La marque"
+  ],
+  [
+   "plates/43-trois-pistes.png",
+   "43-trois-pistes",
+   "Trois pistes, une retenue",
+   "La marque"
+  ],
+  [
+   "plates/03-idee.png",
+   "03-idee",
+   "L’idée : du symbole à l’empreinte",
+   "La marque"
+  ],
+  [
+   "motion/29-symbole.mp4",
+   "29-symbole",
+   "Le symbole se trace",
+   "Mouvement"
+  ],
+  [
+   "plates/04-lire-une-empreinte.png",
+   "04-lire-une-empreinte",
+   "Lire une empreinte",
+   "Le système"
+  ],
+  [
+   "motion/30-empreinte.mp4",
+   "30-empreinte",
+   "Une empreinte pousse, année par année",
+   "Mouvement"
+  ],
+  [
+   "plates/05-mur-des-empreintes.png",
+   "05-mur-des-empreintes",
+   "Le mur des empreintes : neuf projets, aucune pareille",
+   "Le système"
+  ],
+  [
+   "final/36-portable-terre.jpg",
+   "36-portable-terre",
+   "Le tableau de bord, posé sur un bloc de terre",
+   "En situation"
+  ],
+  [
+   "plates/06-couleurs.png",
+   "06-couleurs",
+   "Les couleurs : celles du GRDR, celles de l’outil",
+   "Le système"
+  ],
+  [
+   "plates/08-aquarelle.png",
+   "08-aquarelle",
+   "La matière : l’aquarelle des publications du GRDR",
+   "Le système"
+  ],
+  [
+   "plates/07-typographie.png",
+   "07-typographie",
+   "La typographie : Nunito, Nunito Sans, Geist Mono",
+   "Le système"
+  ],
+  [
+   "plates/09-marge-du-comptable.png",
+   "09-marge-du-comptable",
+   "La marge du comptable : codes, montants, tampons",
+   "Le système"
+  ],
+  [
+   "plates/10-graphiques.png",
+   "10-graphiques",
+   "Les graphiques : le trait du symbole appliqué aux chiffres",
+   "Le système"
+  ],
+  [
+   "plates/12-tableau-de-bord-incline.png",
+   "12-tableau-de-bord-incline",
+   "Le tableau de bord, de trois quarts",
+   "L’outil"
+  ],
+  [
+   "ecrans/tableauDeBord.png",
+   "ecran-tableau-de-bord",
+   "Tableau de bord : la page entière",
+   "L’outil"
+  ],
+  [
+   "plates/13-details.png",
+   "13-details",
+   "Trois détails du tableau de bord",
+   "L’outil"
+  ],
+  [
+   "motion/32-du-tableur-a-l-outil.mp4",
+   "32-du-tableur-a-l-outil",
+   "Du tableur à l’outil",
+   "Mouvement"
+  ],
+  [
+   "plates/28-avant-apres.png",
+   "28-avant-apres",
+   "Avant, après : mêmes chiffres, autre lecture",
+   "L’outil"
+  ],
+  [
+   "plates/16-tableau-des-projets.png",
+   "16-tableau-des-projets",
+   "Le tableau des projets, de près",
+   "L’outil"
+  ],
+  [
+   "final/35-portable-velours.jpg",
+   "35-portable-velours",
+   "La fiche projet, sur un portable",
+   "En situation"
+  ],
+  [
+   "ecrans/ficheProjet.png",
+   "ecran-fiche-projet",
+   "Fiche projet : la page entière",
+   "L’outil"
+  ],
+  [
+   "plates/14-fiche-inclinee.png",
+   "14-fiche-inclinee",
+   "La fiche projet, de trois quarts",
+   "L’outil"
+  ],
+  [
+   "plates/19-projets.png",
+   "19-projets",
+   "Les projets",
+   "L’outil"
+  ],
+  [
+   "ecrans/projetsGrille.png",
+   "ecran-projets-grille",
+   "Les projets, en empreintes",
+   "L’outil"
+  ],
+  [
+   "plates/20-ressources-humaines.png",
+   "20-ressources-humaines",
+   "Ressources humaines : la charge sur 202 jours",
+   "L’outil"
+  ],
+  [
+   "ecrans/affectation.png",
+   "ecran-affectation",
+   "Affecter jusqu’à trois personnes à une ligne",
+   "L’outil"
+  ],
+  [
+   "plates/21-extraction-sage.png",
+   "21-extraction-sage",
+   "L’extraction Sage, sans ressaisie",
+   "L’outil"
+  ],
+  [
+   "ecrans/nouveauProjet.png",
+   "ecran-nouveau-projet",
+   "Nouveau projet : le prorata se calcule seul",
+   "L’outil"
+  ],
+  [
+   "plates/17-courbe.png",
+   "17-courbe",
+   "La courbe à échos, de près",
+   "L’outil"
+  ],
+  [
+   "plates/22-statistiques.png",
+   "22-statistiques",
+   "Statistiques",
+   "L’outil"
+  ],
+  [
+   "ecrans/journal.png",
+   "ecran-journal",
+   "Le journal : rien ne change sans laisser de trace",
+   "L’outil"
+  ],
+  [
+   "ecrans/admin.png",
+   "ecran-administration",
+   "Administration : rôles et périmètres",
+   "L’outil"
+  ],
+  [
+   "plates/18-mur-d-ecrans.png",
+   "18-mur-d-ecrans",
+   "Tous les écrans",
+   "L’outil"
+  ],
+  [
+   "plates/11-composants.png",
+   "11-composants",
+   "Les composants de l’interface",
+   "Le système"
+  ],
+  [
+   "plates/15-barre-laterale.png",
+   "15-barre-laterale",
+   "La barre latérale, de près",
+   "L’outil"
+  ],
+  [
+   "ecrans/connexion-900.png",
+   "ecran-connexion",
+   "La connexion",
+   "L’outil"
+  ],
+  [
+   "plates/27-roles.png",
+   "27-roles",
+   "Chacun son périmètre",
+   "L’outil"
+  ],
+  [
+   "plates/23-telephones.png",
+   "23-telephones",
+   "Sur téléphone",
+   "L’outil"
+  ],
+  [
+   "final/42-telephone.jpg",
+   "42-telephone",
+   "L’accueil du chef de projet, en main",
+   "En situation"
+  ],
+  [
+   "plates/26-ici-et-la-bas.png",
+   "26-ici-et-la-bas",
+   "Ici et là-bas : huit pays, quatorze bureaux",
+   "En situation"
+  ],
+  [
+   "plates/39-terrain.png",
+   "39-terrain",
+   "Le budget, jusqu’au terrain",
+   "En situation"
+  ],
+  [
+   "plates/37-suivi-imprime.png",
+   "37-suivi-imprime",
+   "Le suivi imprimé, prêt pour le bailleur",
+   "En situation"
+  ],
+  [
+   "plates/38-affiche.png",
+   "38-affiche",
+   "L’affiche de lancement",
+   "En situation"
+  ],
+  [
+   "motion/33-mur-des-empreintes.mp4",
+   "33-mur-des-empreintes",
+   "Le mur des empreintes, en boucle",
+   "Mouvement"
+  ],
+  [
+   "plates/40-des-gens.png",
+   "40-des-gens",
+   "Des chiffres qui servent des gens",
+   "En situation"
+  ],
+  [
+   "motion/34-a-l-euro-pres.mp4",
+   "34-a-l-euro-pres",
+   "À l’euro près",
+   "Mouvement"
+  ],
+  [
+   "plates/45-citation.png",
+   "45-citation",
+   "La parole du GRDR",
+   "La marque"
+  ]
+ ]
+}

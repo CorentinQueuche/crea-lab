@@ -6988,5 +6988,255 @@
     "brand": "sillon",
     "path": "out/_mesure-pieces.jpg",
     "reason": "référence tierce, non nécessaire aux rendus"
+  },
+  {
+    "brand": "grdr",
+    "path": "node_modules/",
+    "reason": "dépendances, à réinstaller (npm ci)"
+  },
+  {
+    "brand": "grdr",
+    "path": "livrables/",
+    "reason": "doublon des livrables rangés sous 40_DELIVERABLES ; le jeu de médias pour le site de KLYRA reste dans la copie privée"
+  },
+  {
+    "brand": "grdr",
+    "path": "blender/",
+    "reason": "gabarit 3D non utilisé par ce projet"
+  },
+  {
+    "brand": "grdr",
+    "path": "out/guide/",
+    "reason": "rendus intermédiaires et captures de contrôle"
+  },
+  {
+    "brand": "grdr",
+    "path": "out/gen/",
+    "reason": "rendus intermédiaires et captures de contrôle"
+  },
+  {
+    "brand": "grdr",
+    "path": "out/deck/",
+    "reason": "rendus intermédiaires et captures de contrôle"
+  },
+  {
+    "brand": "grdr",
+    "path": "out/_zones/",
+    "reason": "rendus intermédiaires et captures de contrôle"
+  },
+  {
+    "brand": "grdr",
+    "path": "out/_rendu-planches.log",
+    "reason": "journaux et planches-contact de travail"
+  },
+  {
+    "brand": "grdr",
+    "path": "out/_assemblage.log",
+    "reason": "journaux et planches-contact de travail"
+  },
+  {
+    "brand": "grdr",
+    "path": "out/_contact-tout.jpg",
+    "reason": "journaux et planches-contact de travail"
+  },
+  {
+    "brand": "grdr",
+    "path": "out/_rendu-ecrans.log",
+    "reason": "journaux et planches-contact de travail"
+  },
+  {
+    "brand": "grdr",
+    "path": "out/_rendu-tout.log",
+    "reason": "journaux et planches-contact de travail"
+  },
+  {
+    "brand": "grdr",
+    "path": "out/_rendu-situations.log",
+    "reason": "journaux et planches-contact de travail"
+  },
+  {
+    "brand": "grdr",
+    "path": "out/_apercu-grdr.jpg",
+    "reason": "journaux et planches-contact de travail"
+  },
+  {
+    "brand": "grdr",
+    "path": "out/motion/_contact-32.jpg",
+    "reason": "planches de contrôle des vidéos"
+  },
+  {
+    "brand": "grdr",
+    "path": "out/motion/32-du-tableur-a-l-outil-planche.jpg",
+    "reason": "planches de contrôle des vidéos"
+  },
+  {
+    "brand": "grdr",
+    "path": "out/motion/30-empreinte-planche.jpg",
+    "reason": "planches de contrôle des vidéos"
+  },
+  {
+    "brand": "grdr",
+    "path": "out/motion/_contact-33.jpg",
+    "reason": "planches de contrôle des vidéos"
+  },
+  {
+    "brand": "grdr",
+    "path": "out/motion/_contact-29.jpg",
+    "reason": "planches de contrôle des vidéos"
+  },
+  {
+    "brand": "grdr",
+    "path": "out/motion/33-mur-des-empreintes-planche.jpg",
+    "reason": "planches de contrôle des vidéos"
+  },
+  {
+    "brand": "grdr",
+    "path": "out/motion/34-a-l-euro-pres-planche.jpg",
+    "reason": "planches de contrôle des vidéos"
+  },
+  {
+    "brand": "grdr",
+    "path": "out/motion/31-tableau-de-bord-planche.jpg",
+    "reason": "planches de contrôle des vidéos"
+  },
+  {
+    "brand": "grdr",
+    "path": "out/motion/_contact-30.jpg",
+    "reason": "planches de contrôle des vidéos"
+  },
+  {
+    "brand": "grdr",
+    "path": "out/motion/_contact-31.jpg",
+    "reason": "planches de contrôle des vidéos"
+  },
+  {
+    "brand": "grdr",
+    "path": "out/motion/_contact-34.jpg",
+    "reason": "planches de contrôle des vidéos"
+  },
+  {
+    "brand": "grdr",
+    "path": "out/motion/29-symbole-planche.jpg",
+    "reason": "planches de contrôle des vidéos"
+  },
+  {
+    "brand": "grdr",
+    "path": "out/plates/05-mur-des-empreintes-large.png",
+    "reason": "variantes de format pour le site de KLYRA et planche-contact"
+  },
+  {
+    "brand": "grdr",
+    "path": "out/plates/_contact-systeme.jpg",
+    "reason": "variantes de format pour le site de KLYRA et planche-contact"
+  },
+  {
+    "brand": "grdr",
+    "path": "out/plates/37-suivi-imprime-large.png",
+    "reason": "variantes de format pour le site de KLYRA et planche-contact"
+  },
+  {
+    "brand": "grdr",
+    "path": "out/plates/40-des-gens-large.png",
+    "reason": "variantes de format pour le site de KLYRA et planche-contact"
+  },
+  {
+    "brand": "grdr",
+    "path": "out/plates/15-barre-laterale-menu.png",
+    "reason": "variantes de format pour le site de KLYRA et planche-contact"
+  },
+  {
+    "brand": "grdr",
+    "path": "out/plates/05-mur-des-empreintes-4x3.png",
+    "reason": "variantes de format pour le site de KLYRA et planche-contact"
+  },
+  {
+    "brand": "grdr",
+    "path": "out/ecrans/ficheProjet-900.png",
+    "reason": "écrans à hauteur fixe, à rendre de nouveau (tools/tout_rendre.sh)"
+  },
+  {
+    "brand": "grdr",
+    "path": "out/ecrans/nouveauProjet-900.png",
+    "reason": "écrans à hauteur fixe, à rendre de nouveau (tools/tout_rendre.sh)"
+  },
+  {
+    "brand": "grdr",
+    "path": "out/ecrans/admin-900.png",
+    "reason": "écrans à hauteur fixe, à rendre de nouveau (tools/tout_rendre.sh)"
+  },
+  {
+    "brand": "grdr",
+    "path": "out/ecrans/journal-900.png",
+    "reason": "écrans à hauteur fixe, à rendre de nouveau (tools/tout_rendre.sh)"
+  },
+  {
+    "brand": "grdr",
+    "path": "out/ecrans/rh-900.png",
+    "reason": "écrans à hauteur fixe, à rendre de nouveau (tools/tout_rendre.sh)"
+  },
+  {
+    "brand": "grdr",
+    "path": "out/ecrans/tableauDeBord-900.png",
+    "reason": "écrans à hauteur fixe, à rendre de nouveau (tools/tout_rendre.sh)"
+  },
+  {
+    "brand": "grdr",
+    "path": "out/ecrans/affectation-900.png",
+    "reason": "écrans à hauteur fixe, à rendre de nouveau (tools/tout_rendre.sh)"
+  },
+  {
+    "brand": "grdr",
+    "path": "out/ecrans/sage-900.png",
+    "reason": "écrans à hauteur fixe, à rendre de nouveau (tools/tout_rendre.sh)"
+  },
+  {
+    "brand": "grdr",
+    "path": "out/ecrans/projets-900.png",
+    "reason": "écrans à hauteur fixe, à rendre de nouveau (tools/tout_rendre.sh)"
+  },
+  {
+    "brand": "grdr",
+    "path": "out/ecrans/stats-900.png",
+    "reason": "écrans à hauteur fixe, à rendre de nouveau (tools/tout_rendre.sh)"
+  },
+  {
+    "brand": "grdr",
+    "path": "out/ecrans/projetsGrille-900.png",
+    "reason": "écrans à hauteur fixe, à rendre de nouveau (tools/tout_rendre.sh)"
+  },
+  {
+    "brand": "grdr",
+    "path": "out/final/41-carte-de-visite.jpg",
+    "reason": "média non repris (carte de visite)"
+  },
+  {
+    "brand": "grdr",
+    "path": "tools/export_klyra.py",
+    "reason": "outil propre au site de KLYRA"
+  },
+  {
+    "brand": "grdr",
+    "path": "_prep/sources/",
+    "reason": "documents du GRDR (rapport d’activité, logo du site) : à télécharger sur grdr.org, non redistribués"
+  },
+  {
+    "brand": "grdr",
+    "path": "_prep/existant/card.png",
+    "reason": "médias de la page d’origine que ce projet n’utilise pas"
+  },
+  {
+    "brand": "grdr",
+    "path": "_prep/existant/businesscard.png",
+    "reason": "média non repris (carte de visite) et page du site de KLYRA"
+  },
+  {
+    "brand": "grdr",
+    "path": "_prep/existant/img3.png",
+    "reason": "médias de la page d’origine que ce projet n’utilise pas"
+  },
+  {
+    "brand": "grdr",
+    "path": "_prep/existant/klyra-realisation-grdr.html",
+    "reason": "média non repris (carte de visite) et page du site de KLYRA"
   }
 ]

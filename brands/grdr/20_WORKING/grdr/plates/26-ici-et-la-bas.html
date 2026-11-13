@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><title>26 · Ici et là-bas</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="../brand/ecrans.css">
+<style>
+  /* 26 · Ici et là-bas : la carte du double espace, plein cadre. Les terres sont découpées dans le lavis (la mer est le papier),
+     les pays d'intervention ressortent en clair, chaque bureau est nommé, les budgets sont posés par leur pied. */
+  .plate{width:1400px;height:1320px;background:var(--papier)}
+  .ic-carte{position:absolute;right:-60px;top:-36px;width:1080px;height:1393px}
+  .ic-carte>*{position:absolute;inset:0;width:100%;height:100%}
+  .ic-titre{position:absolute;left:84px;top:150px;width:600px}
+  .ic-titre h1{margin:0;font-family:var(--titre);font-weight:900;font-size:124px;letter-spacing:-.06em;line-height:.86;color:var(--encre);white-space:nowrap}
+  .ic-nom{position:absolute;font-family:var(--titre);font-weight:800;font-size:15.5px;letter-spacing:-.01em;line-height:1;white-space:nowrap;color:var(--encre)}
+  .ic-nom.g{transform:translate(-100%,-50%)}.ic-nom.d{transform:translate(0,-50%)}
+  .ic-titre h1 em{font-style:normal;color:var(--vermillon)}
+  .ic-titre p{margin:28px 0 0;max-width:360px}
+  .ic-liste{position:absolute;left:84px;bottom:120px;width:330px;display:grid;gap:0}
+  .ic-liste div{display:grid;grid-template-columns:1fr auto;align-items:baseline;padding:11px 0;border-top:1px solid var(--filet)}
+  .ic-liste div:last-child{border-bottom:1px solid var(--filet)}
+  .ic-liste span{font-weight:700;font-size:15px}
+  .ic-liste b{font-family:var(--titre);font-weight:800;font-size:22px;letter-spacing:-.035em}
+  .ic-liste small{grid-column:1 / span 2;font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;opacity:.55;margin-top:2px}
+</style></head>
+<body>
+<div class="plate grain" id="p"></div>
+<script src="../brand/marque.js"></script><script src="../brand/carte.js"></script><script src="../brand/ecrans.js"></script>
+<script>
+const M = Marque, C = M.COULEURS, T = M.app.TERRITOIRES, K = M.CARTE;
+const cadre = [-80, -110, 1000, 1290], ECH = 1080 / 1000;
+/* étiquettes posées à la main : côté (g : à gauche du point, d : à droite) et décalage vertical */
+const NOMS = { Montreuil: ['d', 4], Lille: ['d', -2], Rouen: ['g', 0], Nouakchott: ['g', 0], 'Kaédi': ['g', -6], 'Sélibaby': ['d', -9], Kayes: ['d', 9], Bakel: ['g', 9], Bamako: ['d', 0], Dakar: ['g', 0], Ziguinchor: ['g', -5], Canchungo: ['g', 9], 'Boké': ['d', -2], Conakry: ['g', 4] };
+const noms = K.villes.filter((v) => NOMS[v.nom]).map((v) => { const [c, dy] = NOMS[v.nom], x = (v.x - cadre[0]) * ECH + (c === 'g' ? -11 : 11), y = (v.y - cadre[1]) * ECH + dy; return `<span class="ic-nom ${c}" style="left:${x.toFixed(1)}px;top:${y.toFixed(1)}px;width:auto;height:auto;inset:auto;left:${x.toFixed(1)}px;top:${y.toFixed(1)}px">${v.nom === 'Bakel' ? 'Bakel et Matam' : v.nom}</span>`; }).join('');
+/* les terres servent de masque au lavis : la mer reste en papier */
+const masque = M.dataSVG(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="${cadre.join(' ')}"><path d="${M.carteTerres()}"/></svg>`);
+const pays = Object.fromEntries(Object.keys(K.pays).map((k) => [k, 'rgba(255,251,246,.5)']));
+const bureaux = ['Montreuil', 'Lille', 'Rouen', 'Kayes', 'Bamako', 'Nouakchott', 'Sélibaby', 'Kaédi', 'Dakar', 'Bakel', 'Ziguinchor', 'Canchungo', 'Conakry', 'Boké'];
+document.getElementById('p').innerHTML = M.entete() +
+  `<div class="ic-carte net">
+     <div style="-webkit-mask-image:${masque};mask-image:${masque};-webkit-mask-size:100% 100%;mask-size:100% 100%"><img src="${M.aqURL('aube')}" alt="" style="width:100%;height:100%;object-fit:cover;object-position:30% 50%"></div>
+     ${M.carte({ cadre, terres: null, pays, filet: 'rgba(255,251,246,.9)', par: 'none', villes: bureaux, noms: false, rVille: 5, cVille: 'encre', cNom: 'encre', ke: 1.1,
+        epingles: [{ ville: 'Tunis', v: 1.1, cernes: [1, 0.56, 0, 0], c: 'nuit', piste: 'blanc', label: 'Tunis', taille: 15.5 }, { ville: 'Alger', v: 0.8, cernes: [0.61, 0, 0, 0], c: 'nuit', piste: 'blanc', label: 'Alger', taille: 15.5 }] })}
+     ${noms}
+   </div>
+   <div class="ic-titre net"><h1>Ici<br>et <em>là‑bas</em></h1><p class="t-chapo">Huit pays, quatorze bureaux, un seul portefeuille. Chaque budget est posé là où il se dépense.</p></div>
+   <div class="ic-liste net">${T.map(([n, v]) => `<div><span>${n}</span><b>${M.euroK(v)}</b></div>`).join('')}<div><span style="opacity:.6">Trois projets non ventilés ici</span><b style="opacity:.6">${M.euroK(15628761 - T.reduce((a, t) => a + t[1], 0))}</b></div></div>` +
+  M.foot('26 · Ici et là-bas', 'Bureaux : rapport d’activité 2025 du GRDR');
+window.pret = Promise.all([...document.images].map((i) => (i.decode ? i.decode().catch(() => 0) : 0)));
+</script>
+</body></html>

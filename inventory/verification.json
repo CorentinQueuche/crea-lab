@@ -354,14 +354,146 @@
     {
       "file": "brands/sillon/20_WORKING/sillon/site/presentation.html",
       "target": "assets/pages.js"
+    },
+    {
+      "file": "brands/grdr/20_WORKING/grdr/site/index.html",
+      "target": "assets/marque.css"
+    },
+    {
+      "file": "brands/grdr/20_WORKING/grdr/site/index.html",
+      "target": "assets/ecrans.css"
+    },
+    {
+      "file": "brands/grdr/20_WORKING/grdr/site/index.html",
+      "target": "assets/ecrans-b.css"
+    },
+    {
+      "file": "brands/grdr/20_WORKING/grdr/site/index.html",
+      "target": "assets/ecrans-c.css"
+    },
+    {
+      "file": "brands/grdr/20_WORKING/grdr/site/index.html",
+      "target": "assets/marque.js"
+    },
+    {
+      "file": "brands/grdr/20_WORKING/grdr/site/index.html",
+      "target": "assets/carte.js"
+    },
+    {
+      "file": "brands/grdr/20_WORKING/grdr/site/index.html",
+      "target": "assets/ecrans.js"
+    },
+    {
+      "file": "brands/grdr/20_WORKING/grdr/site/index.html",
+      "target": "assets/ecrans-b.js"
+    },
+    {
+      "file": "brands/grdr/20_WORKING/grdr/site/index.html",
+      "target": "assets/ecrans-c.js"
+    },
+    {
+      "file": "brands/grdr/20_WORKING/grdr/site/index.html",
+      "target": "assets/pages.js"
+    },
+    {
+      "file": "brands/grdr/20_WORKING/grdr/site/index.html",
+      "target": "etude-de-cas.html"
+    },
+    {
+      "file": "brands/grdr/20_WORKING/grdr/site/index.html",
+      "target": "etude-de-cas.html"
+    },
+    {
+      "file": "brands/grdr/20_WORKING/grdr/site/index.html",
+      "target": "etude-de-cas.html"
+    },
+    {
+      "file": "brands/grdr/20_WORKING/grdr/site/presentation.html",
+      "target": "assets/marque.css"
+    },
+    {
+      "file": "brands/grdr/20_WORKING/grdr/site/presentation.html",
+      "target": "assets/ecrans.css"
+    },
+    {
+      "file": "brands/grdr/20_WORKING/grdr/site/presentation.html",
+      "target": "assets/ecrans-b.css"
+    },
+    {
+      "file": "brands/grdr/20_WORKING/grdr/site/presentation.html",
+      "target": "assets/ecrans-c.css"
+    },
+    {
+      "file": "brands/grdr/20_WORKING/grdr/site/presentation.html",
+      "target": "assets/pages.css"
+    },
+    {
+      "file": "brands/grdr/20_WORKING/grdr/site/presentation.html",
+      "target": "assets/marque.js"
+    },
+    {
+      "file": "brands/grdr/20_WORKING/grdr/site/presentation.html",
+      "target": "assets/carte.js"
+    },
+    {
+      "file": "brands/grdr/20_WORKING/grdr/site/presentation.html",
+      "target": "assets/ecrans.js"
+    },
+    {
+      "file": "brands/grdr/20_WORKING/grdr/site/presentation.html",
+      "target": "assets/ecrans-b.js"
+    },
+    {
+      "file": "brands/grdr/20_WORKING/grdr/site/presentation.html",
+      "target": "assets/ecrans-c.js"
+    },
+    {
+      "file": "brands/grdr/20_WORKING/grdr/site/presentation.html",
+      "target": "assets/pages.js"
+    },
+    {
+      "file": "brands/grdr/20_WORKING/grdr/site/prototype.html",
+      "target": "assets/marque.css"
+    },
+    {
+      "file": "brands/grdr/20_WORKING/grdr/site/prototype.html",
+      "target": "assets/ecrans.css"
+    },
+    {
+      "file": "brands/grdr/20_WORKING/grdr/site/prototype.html",
+      "target": "assets/ecrans-b.css"
+    },
+    {
+      "file": "brands/grdr/20_WORKING/grdr/site/prototype.html",
+      "target": "assets/ecrans-c.css"
+    },
+    {
+      "file": "brands/grdr/20_WORKING/grdr/site/prototype.html",
+      "target": "assets/marque.js"
+    },
+    {
+      "file": "brands/grdr/20_WORKING/grdr/site/prototype.html",
+      "target": "assets/carte.js"
+    },
+    {
+      "file": "brands/grdr/20_WORKING/grdr/site/prototype.html",
+      "target": "assets/ecrans.js"
+    },
+    {
+      "file": "brands/grdr/20_WORKING/grdr/site/prototype.html",
+      "target": "assets/ecrans-b.js"
+    },
+    {
+      "file": "brands/grdr/20_WORKING/grdr/site/prototype.html",
+      "target": "assets/ecrans-c.js"
     }
   ],
   "missing_presentation_inputs": [],
   "syntax_errors": [],
-  "checked_links": 1535,
-  "html_files": 246,
-  "python_files": 113,
-  "js_files": 107,
+  "checked_links": 1932,
+  "html_files": 291,
+  "python_files": 128,
+  "js_files": 138,
   "large_files": [],
   "secret_files": []
 }

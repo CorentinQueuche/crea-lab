@@ -1,0 +1,78 @@
+<!doctype html><meta charset="utf-8"><title>34 · À l’euro près</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="motion.css">
+<script src="../brand/marque.js"></script><script src="lib.js"></script><script src="scenes.js"></script>
+<style>
+  .mv34-fond{position:absolute;inset:0}
+  .mv34-fil{position:absolute;opacity:.5}
+  .mv34-fil svg{width:100%;height:100%;overflow:visible}
+  .mv34-etq{position:absolute;left:130px;top:150px;color:rgba(42,30,23,.78)}
+  /* le compteur : une colonne par chiffre, chacune roule vers le haut et ralentit à l'arrivée */
+  .mv34-n{position:absolute;left:111px;top:292px;display:flex;align-items:flex-end;color:var(--encre);font-size:268px;letter-spacing:0;line-height:1;
+    -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 10%,#000 90%,transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 10%,#000 90%,transparent 100%)}
+  .mv34-col{display:block;height:1em;overflow:hidden;text-align:center}
+  .mv34-col>span{display:block}
+  .mv34-col>span>b{display:block;height:1em;line-height:1;font-weight:inherit}
+  .mv34-esp{display:block;height:1em}
+  .mv34-eur{display:block;font-weight:700;font-size:.5em;opacity:.55;line-height:1;margin:0 0 .235em .16em}
+  .mv34-phrase{position:absolute;left:128px;top:622px;font-size:60px;line-height:1.04;color:var(--encre);white-space:nowrap}
+  .mv34-pied{position:absolute;left:128px;bottom:96px;display:flex;align-items:center;gap:26px;padding:22px 34px 22px 28px;border-radius:30px;background:var(--blanc);box-shadow:0 1px 0 rgba(42,30,23,.04),0 30px 50px -30px rgba(110,60,20,.45)}
+  .mv34-pied>svg{height:84px;width:auto}
+  .mv34-pied>hr{width:1px;height:54px;border:0;margin:0;background:var(--filet)}
+  .mv34-prod{display:flex;align-items:center;gap:13px}
+  .mv34-prod .icone-app{border-radius:13px}
+  .mv34-prod b{display:block;font-family:var(--titre);font-weight:800;font-size:22px;letter-spacing:-.025em;line-height:1.1}
+  .mv34-prod span{display:block;font-size:15px;color:rgba(42,30,23,.62);line-height:1.2;margin-top:2px}
+</style>
+<body><div class="m-stage mv-scene grain" id="s"></div>
+<script>
+/* 34 · À l'euro près. Sur le lavis « aube », le budget total du portefeuille (15 628 761 €, chiffre publié) monte chiffre par
+   chiffre : chaque colonne roule vers le haut et ralentit à l'arrivée, de gauche à droite ; l'unité se pose la dernière.
+   Derrière, le symbole du GRDR se trace en filigrane. Puis la signature de l'outil, et le logo sur sa pastille blanche. 7 s.
+   node tools/record.mjs motion/34-a-l-euro-pres.html out/motion/34-a-l-euro-pres.mp4 --dur 7 --apercu */
+const A = Marque, D = A.DONNEES, s = document.getElementById('s');
+const MONTANT = D.synthese.budget, CH = A.nombre(MONTANT);       /* « 15 628 761 », espaces fines insécables */
+const sb = A.LOGO.symbolBox, FH = 1640, FW = FH * sb[2] / sb[3];
+
+/* chaque chiffre : le nombre de crans qu'il parcourt, son départ, sa durée (les unités roulent plus longtemps) */
+let rang = 0;
+const cols = [...CH].map((c) => { if (!/\d/.test(c)) return { esp: true };
+  const i = rang++, n = 5 + 2 * i, suite = Array.from({ length: n }, (_, k) => ((+c - (n - 1 - k)) % 10 + 10) % 10);
+  return { c: +c, i, n, suite, debut: 0.3 + 0.07 * i, duree: 1.6 + 0.18 * i }; });
+const FIN_COMPTE = Math.max(...cols.filter((c) => !c.esp).map((c) => c.debut + c.duree));
+
+s.innerHTML = A.aquarelle('aube', { cls: 'mv34-fond' }) +
+  `<div class="mv34-fil" id="fil" style="right:-250px;top:-330px;width:${FW.toFixed(0)}px;height:${FH}px"></div>
+   <div class="mv-leg mv34-etq m-net" id="etq">Portefeuille · ${D.synthese.projets} projets signés · 8 pays</div>
+   <div class="mv-chiffre mv34-n m-net" id="n">${cols.map((c) => (c.esp ? `<span class="mv34-esp"></span>` : `<span class="mv34-col"><span><b>&nbsp;</b>${c.suite.map((d) => `<b>${d}</b>`).join('')}</span></span>`)).join('')}<span class="mv34-eur" id="eur">€</span></div>
+   <div class="mv-phrase mv34-phrase m-net" id="phrase">${A.SIGNATURE_OUTIL || 'Le budget de chaque projet, à l’euro près.'}</div>
+   <div class="mv34-pied m-net" id="pied">${A.lockup()}<hr><div class="mv34-prod">${A.icone(48)}<div><b>${A.PRODUIT}</b><span>${A.PRODUIT_DESC}</span></div></div></div>`;
+A.typo(s);
+const $ = (id) => document.getElementById(id), fil = $('fil'), eur = $('eur');
+const colEls = [...s.querySelectorAll('#n>span')].slice(0, cols.length);
+const ecrire = M.typer($('phrase'), { soft: 4, rise: 0.2 });
+
+/* largeur d'un chiffre tabulaire et d'une espace fine, mesurées une fois les polices chargées (le chiffre est un peu serré) */
+function mesurer() { const n = $('n'), jauge = M.el('<span style="position:absolute;visibility:hidden;white-space:pre"></span>'); n.appendChild(jauge);
+  jauge.textContent = '0000000000'; const l = jauge.getBoundingClientRect().width / 10;
+  jauge.textContent = A.FINE.repeat(10); const e = jauge.getBoundingClientRect().width / 10; jauge.remove();
+  const fs = parseFloat(getComputedStyle(n).fontSize);
+  colEls.forEach((el, k) => { el.style.width = (cols[k].esp ? Math.max(e, fs * 0.16) : l - fs * 0.045).toFixed(2) + 'px'; }); }
+
+/* le symbole en filigrane : cinq traits, du plus petit au plus grand, chacun depuis son pied */
+const TRAITS = [[0.15, 1.5], [0.4, 1.7], [0.7, 2.0], [1.0, 2.3], [1.3, 2.5]];
+let cle = '';
+
+window.seek = (t) => {
+  const P = TRAITS.map(([d, du]) => MV.arr(M.tw(t, d, du, M.quartOut), 4)), k = P.join(' ');
+  if (k !== cle) { cle = k; fil.innerHTML = A.symbolTrace({ p: P, c: 'blanc', id: 'mv34f' }); }
+
+  cols.forEach((c, k) => { if (c.esp) return; const p = M.tw(t, c.debut, c.duree, M.quartOut);
+    colEls[k].firstElementChild.style.transform = `translateY(${(-p * c.n * 100 / (c.n + 1)).toFixed(4)}%)`; });
+  MV.entree(eur, M.tw(t, FIN_COMPTE - 0.55, 0.7), 26); eur.style.opacity = (0.55 * M.tw(t, FIN_COMPTE - 0.55, 0.7)).toFixed(3);
+
+  ecrire(M.tw(t, FIN_COMPTE + 0.15, 1.0, M.cubicOut));
+  MV.entree($('pied'), M.tw(t, FIN_COMPTE + 0.95, 0.75), 22);
+};
+window.pret = MV.pret(s).then(() => { mesurer(); seek(0); });
+seek(0);
+</script></body>

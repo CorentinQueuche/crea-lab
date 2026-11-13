@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><title>39 · Jusqu'au terrain</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="../brand/ecrans.css"><link rel="stylesheet" href="sc.css">
+<style>
+  /* 39 · Jusqu'au terrain : une photo de travail (média existant), plein cadre, et par-dessus la carte d'un projet.
+     ?v=symbole : la photo du marché dans la silhouette du symbole, avec la signature du GRDR. */
+  .plate{width:1400px;height:1050px;background:var(--nuit);color:var(--blanc)}
+  .te-ph{position:absolute;inset:0}
+  .te-ph .ph{position:absolute;inset:0}
+  .te-v{position:absolute;inset:0;background:linear-gradient(90deg,rgba(18,49,47,.86) 0%,rgba(18,49,47,.5) 34%,rgba(18,49,47,0) 62%)}
+  .te-t{position:absolute;left:84px;top:150px;width:520px}
+  .te-t h1{margin:0;font-family:var(--titre);font-weight:900;font-size:86px;letter-spacing:-.055em;line-height:.9}
+  .te-t h1 em{font-style:normal;color:var(--miel)}
+  .te-t p{margin:26px 0 0;max-width:400px;color:rgba(255,251,246,.86)}
+  .te-c{left:84px;bottom:110px;width:520px}
+  .te-c>section{grid-column:auto!important;width:100%}
+  .te-s{position:absolute;right:84px;top:60px;bottom:60px;width:640px;display:grid;place-items:center}
+  .te-s .dans-symbole{height:900px;position:relative}
+  .te-s .ph{position:absolute;inset:0}
+</style></head>
+<body>
+<div class="plate grain" id="p"></div>
+<script src="../brand/marque.js"></script><script src="../brand/carte.js"></script><script src="../brand/ecrans.js"></script>
+<script>
+const M = Marque, C = M.COULEURS, S = M.app, D = M.DONNEES, v = new URLSearchParams(location.search).get('v') || 'atelier', P = document.getElementById('p');
+if (v === 'atelier') {
+  const p = D.projets[0], c = M.cernesDe(p);
+  P.innerHTML = `<div class="te-ph">${M.photo('atelier', { pos: '70% 40%' })}</div><div class="te-v"></div>
+    <div class="te-t net"><h1>Le budget, <em>jusqu’au terrain.</em></h1><p class="t-chapo">Les chefs de projet consultent leur périmètre sans passer par le siège. Le même chiffre pour tous.</p></div>
+    <div class="sc-frag dj te-c net" style="display:block;min-height:0;background:transparent;position:absolute"><section class="dj-c" style="padding:20px 22px">
+      <div style="display:flex;gap:18px;align-items:center">${M.empreinte({ cernes: S.FICHE.annees.map((a) => a.execute / a.prevu), actif: 3, taille: 104 })}
+        <div style="min-width:0;flex:1"><div style="display:flex;gap:8px;align-items:center;font-size:14px">${M.code(p.code, 'vermillon')}${S.statut('Signé')}</div>
+          <div style="font-family:var(--titre);font-weight:800;font-size:22px;letter-spacing:-.03em;margin:8px 0 10px">${p.titre}</div>
+          <div style="display:flex;gap:22px"><div>${S.lbl('Exécuté')}<div class="dj-num" style="font-size:21px;margin-top:4px;color:${C.lagune}">${M.nombre(p.execute)}<i>€</i></div></div><div>${S.lbl('Reste')}<div class="dj-num" style="font-size:21px;margin-top:4px">${M.nombre(p.total - p.execute)}<i>€</i></div></div></div></div></div>
+    </section></div>` + M.entete(M.ENTETE, 'blanc', 'opacity:.75') + M.foot('39 · Jusqu’au terrain', 'Photo : média existant de la réalisation', 'blanc');
+} else {
+  P.style.background = C.papier; P.style.color = C.encre;
+  const large = new URLSearchParams(location.search).get('f') === 'large';
+  if (large) { P.style.width = '1600px'; P.style.height = '900px'; }
+  P.innerHTML = `<img src="${M.aqURL('brume')}" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.8">
+    <div class="te-s net" style="${large ? 'right:150px;top:36px;bottom:36px' : ''}"><div class="dans-symbole" style="${large ? 'height:828px' : ''}">${M.photo('marche', { pos: '42% 50%' })}</div></div>
+    <div class="te-t net" style="top:auto;bottom:${large ? 110 : 130}px;left:${large ? 110 : 84}px;width:560px;color:${C.encre}"><div class="t-cap" style="color:${C.vermillon};margin-bottom:22px">${M.SIGNATURE}</div><h1 style="font-size:92px">Des chiffres qui servent <em style="color:${C.vermillon}">des gens.</em></h1></div>` +
+    (large ? '' : M.entete() + M.foot('40 · Des chiffres qui servent des gens', 'Photo : média existant de la réalisation'));
+}
+window.pret = Promise.all([...document.images].map((i) => (i.decode ? i.decode().catch(() => 0) : 0)));
+</script>
+</body></html>

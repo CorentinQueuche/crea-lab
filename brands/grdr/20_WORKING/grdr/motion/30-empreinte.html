@@ -1,0 +1,104 @@
+<!doctype html><meta charset="utf-8"><title>30 · Une empreinte pousse</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="../brand/ecrans.css"><link rel="stylesheet" href="motion.css">
+<script src="../brand/marque.js"></script><script src="../brand/carte.js"></script><script src="../brand/ecrans.js"></script>
+<script src="lib.js"></script><script src="scenes.js"></script>
+<style>
+  .mv30-col{position:absolute;left:128px;top:0;width:900px;height:1080px}
+  .mv30-tete{position:absolute;left:0;top:112px;display:flex;align-items:center;gap:16px;font-family:var(--titre);font-weight:800;font-size:30px;letter-spacing:-.03em;line-height:1}
+  .mv30-tete .code{font-size:17px}
+  .mv30-sous{position:absolute;left:0;top:166px}
+  .mv30-lbl{position:absolute;left:0;top:318px}
+  .mv30-montant{position:absolute;left:-6px;top:352px;font-size:172px;color:var(--blanc)}
+  .mv30-part{position:absolute;left:0;top:528px;font-family:var(--titre);font-weight:700;font-size:23px;letter-spacing:-.015em;color:rgba(255,251,246,.72);font-variant-numeric:tabular-nums}
+  .mv30-part b{font-weight:800;color:var(--miel)}
+  .mv30-ans{position:absolute;left:0;top:626px;display:grid;gap:0;width:560px}
+  .mv30-ans>div{display:grid;grid-template-columns:44px 84px 190px 1fr;align-items:center;height:47px;border-top:1px solid rgba(255,251,246,.12);font-variant-numeric:tabular-nums}
+  .mv30-ans>div.mv30-th{height:30px;border-top:0;font-family:var(--mono);font-size:12.5px;letter-spacing:.09em;text-transform:uppercase;font-weight:500;color:rgba(255,251,246,.5);align-items:start}
+  .mv30-ans u{display:block;width:26px;height:8px;border-radius:4px;background:var(--uc,var(--menthe))}
+  .mv30-ans span{font-family:var(--mono);font-size:17px;font-weight:500;letter-spacing:.04em}
+  .mv30-ans b{font-family:var(--titre);font-weight:800;font-size:25px;letter-spacing:-.03em;text-align:right;white-space:nowrap}
+  .mv30-ans b>i,.mv30-ans em>i{font-style:normal;font-weight:700;font-size:.62em;opacity:.55;margin-left:.16em}
+  .mv30-ans em{font-style:normal;font-family:var(--titre);font-weight:700;font-size:18px;letter-spacing:-.02em;text-align:right;color:rgba(255,251,246,.64);white-space:nowrap}
+  .mv30-ans b>small{font-family:var(--mono);font-weight:500;font-size:13px;letter-spacing:.09em;text-transform:uppercase;opacity:.7}
+  .mv30-voile{position:absolute;inset:0;background:rgba(18,49,47,.42);z-index:1}
+  .mv30-ans .mv30-d{text-align:right}
+  .mv30-phrase{position:absolute;left:0;bottom:96px;font-size:34px;line-height:1.08;letter-spacing:-.03em;color:var(--blanc)}
+  .mv30-emp{position:absolute}
+  .mv30-emp svg{width:100%;height:100%}
+  .mv30-an{position:absolute;display:block;width:68px;height:32px;margin:-16px 0 0 -34px;border-radius:16px;background:var(--menthe);color:var(--nuit);font-family:var(--mono);font-weight:600;font-size:17px;letter-spacing:.02em;line-height:32px;padding-left:12.5px;white-space:pre;box-shadow:0 0 0 3px rgba(18,49,47,.6)}
+  .mv30-an.mv30-cours{background:var(--miel)}
+  .mv30-lieu{position:absolute}
+</style>
+<body><div class="m-stage mv-scene mv-nuit grain nuit" id="s"></div>
+<script>
+/* 30 · Une empreinte pousse : le projet ECOS, année par année. Chaque boucle part du pied et se trace jusqu'à sa part
+   exécutée ; l'année s'écrit au bout de la boucle ; le montant exécuté monte avec le tracé (0 → 2 362 940 €).
+   2025, l'année en cours, en miel (sur fond nuit) : elle s'arrête à sa part exécutée. 2026 reste en piste. 8 s.
+   node tools/record.mjs motion/30-empreinte.html out/motion/30-empreinte.mp4 --dur 8 --apercu */
+const A = Marque, C = A.COULEURS, D = A.DONNEES, P = D.projets[0], F = A.app.FICHE.annees;
+const s = document.getElementById('s');
+const N = F.length, box = A.empreinteCadre(N), EH = 860, K = EH / box[3], EW = box[2] * K, EX = 1920 - 128 - EW, EY = (1080 - EH) / 2;
+const PISTE = 'rgba(207,235,221,.13)';
+const fait = F.filter((a) => a.execute > 0), TOTAL = fait.reduce((x, a) => x + a.execute, 0);
+
+s.innerHTML = A.aquarelle('nuit', { cls: 'm-fill' }) + `<div class="mv30-voile"></div>` +
+  `<div class="mv30-col m-net">
+    <div class="mv30-tete" id="tete">${A.code(P.code, C.miel)}<span>${P.titre}</span></div>
+    <div class="mv-leg mv-doux mv30-sous" id="sous">${D.pays[P.pays]} · ${A.app.moisLong(P.debut)} → ${A.app.moisLong(P.fin)}</div>
+    <div class="mv-leg mv-doux mv30-lbl" id="lbl">Exécuté, année après année</div>
+    <div class="mv-chiffre mv30-montant" id="montant"></div>
+    <div class="mv30-part" id="part"></div>
+    <div class="mv30-ans" id="ans"><div class="mv30-th"><u style="visibility:hidden"></u><span style="font:inherit;letter-spacing:inherit">Année</span><span class="mv30-d" style="font:inherit;letter-spacing:inherit">Exécuté</span><span class="mv30-d" style="font:inherit;letter-spacing:inherit">Prévu</span></div>` +
+      F.map((a) => `<div class="mv30-l"><u style="--uc:${a.encours ? C.miel : a.execute ? C.menthe : PISTE}"></u><span>${a.a}</span><b></b><em>${MV.euroHTML(a.prevu)}</em></div>`).join('') + `</div>
+    <div class="mv-phrase mv30-phrase" id="phrase">${A.PHRASES.cernes}</div>
+  </div>
+  <div class="mv30-emp m-net" id="emp" style="left:${EX}px;top:${EY}px;width:${EW}px;height:${EH}px"></div>` +
+  fait.map((a) => `<div class="mv30-an m-net${a.encours ? ' mv30-cours' : ''}"></div>`).join('') +
+  `<div class="mv-leg mv-doux mv30-lieu m-net" id="lieu">Le lieu · ${D.pays[P.pays]}</div>`;
+
+const $ = (id) => document.getElementById(id);
+const emp = $('emp'), montant = $('montant'), part = $('part'), phrase = $('phrase');
+const lignes = [...s.querySelectorAll('.mv30-l')], pastilles = [...s.querySelectorAll('.mv30-an')];
+const sondes = MV.sondes(N);
+const versScene = ([x, y]) => [EX + (x - box[0]) * K, EY + (y - box[1]) * K];
+/* la légende du lieu : à droite du pied le plus bas */
+{ const [x, y] = versScene(sondes[N - 1].pied); M.css($('lieu'), { left: (x + 34) + 'px', top: (y - 9) + 'px' }); }
+const ecrire = M.typer(phrase, { soft: 4, rise: 0.22 });
+
+/* une boucle après l'autre : [début, durée] */
+const TR = [[0.45, 1.3], [1.65, 1.35], [2.9, 1.4], [4.15, 1.2]];
+let cle = '';
+
+window.seek = (t) => {
+  /* le projet, son lieu et la piste des années sont là dès la première image ; le cadre de lecture monte aussitôt */
+  MV.entree($('lbl'), M.tw(t, 0.0, 0.6), 14);
+  MV.entree(montant, M.tw(t, 0.06, 0.7), 22);
+  MV.entree(part, M.tw(t, 0.16, 0.7), 14);
+  MV.entree(lignes[0].parentNode.firstElementChild, M.tw(t, 0.3, 0.6), 10);
+
+  /* les boucles, le montant, les années */
+  const pr = fait.map((a, i) => M.tw(t, TR[i][0], TR[i][1], M.quartOut));
+  const cernes = F.map((a, i) => (a.execute > 0 ? MV.arr((a.execute / a.prevu) * pr[i], 4) : 0));
+  const k = cernes.join(' ');
+  if (k !== cle) { cle = k; emp.innerHTML = A.empreinte({ cernes, c: 'menthe', piste: PISTE, actif: F.findIndex((a) => a.encours), cActif: 'miel', cadre: N }); }
+  const v = fait.reduce((x, a, i) => x + a.execute * pr[i], 0);
+  montant.innerHTML = MV.euroHTML(Math.round(v));
+  part.innerHTML = `<b>${A.pct(v / P.total, 1)}</b> d’un budget de ${A.euro(P.total)}`;
+
+  F.forEach((a, i) => { const l = lignes[i];
+    if (a.execute > 0) { MV.entree(l, M.tw(t, TR[i][0] - 0.05, 0.6), 12); l.querySelector('b').innerHTML = MV.euroHTML(Math.round(a.execute * pr[i])); }
+    else { MV.entree(l, M.tw(t, 5.1, 0.6), 12); l.querySelector('b').innerHTML = '<small>à venir</small>'; } });
+
+  /* l'année s'écrit au bout de la boucle, quand le trait ralentit */
+  fait.forEach((a, i) => { const el = pastilles[i], d = TR[i][0] + TR[i][1] * 0.42, o = M.tw(t, d, 0.3);
+    const [x, y] = versScene(sondes[i].bout((a.execute / a.prevu) * pr[i]));
+    el.style.left = x.toFixed(2) + 'px'; el.style.top = y.toFixed(2) + 'px'; el.style.opacity = o.toFixed(3);
+    const n = Math.round(4 * MV.lin(t, d + 0.04, 0.32)), txt = String(a.a).slice(0, n);
+    if (el.textContent !== txt) el.textContent = txt; });
+
+  /* la phrase */
+  ecrire(M.tw(t, 5.3, 1.0, M.cubicOut));
+};
+window.pret = MV.pret();
+seek(0);
+</script></body>

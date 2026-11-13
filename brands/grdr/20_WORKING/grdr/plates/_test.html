@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><title>Page de test du socle — GRDR · Djongoma</title>
+<link rel="stylesheet" href="../brand/marque.css">
+<style>
+  .plate{padding:60px 56px 90px;background:var(--blanc);color:var(--encre)}
+  .tz{display:grid;gap:22px;margin-bottom:22px}
+  .tz>section{position:relative;border:1px solid var(--filet);border-radius:22px;padding:26px 26px 22px;overflow:hidden;background:var(--blanc)}
+  .tz h3{margin:0 0 16px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;opacity:.55}
+  .c2{grid-template-columns:1fr 1fr}.c3{grid-template-columns:1fr 1fr 1fr}.c13{grid-template-columns:1.25fr 1fr}.c31{grid-template-columns:2fr 1fr}
+  .tl-logos{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .tl-logos>div{border-radius:14px;height:150px;display:grid;place-items:center}
+  .tl-logos svg{height:86px;width:auto}
+  .tc{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+  .tc>div{border-radius:12px;height:92px;padding:10px 12px;display:flex;flex-direction:column;justify-content:flex-end;font-size:11.5px;line-height:1.3;font-weight:700}
+  .tc small{font-family:var(--mono);font-size:9.5px;font-weight:500;opacity:.75;letter-spacing:.04em}
+  .te{display:flex;gap:26px;align-items:flex-end;flex-wrap:wrap}
+  .te figure{margin:0;display:grid;gap:8px;justify-items:start}
+  .te figcaption{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;opacity:.6}
+  .taq{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+  .taq .aq{height:150px;border-radius:12px}
+  .taq p{margin:6px 0 0;font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;opacity:.6}
+  .tph{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+  .tph .ph{height:200px;border-radius:12px}
+</style></head>
+<body>
+<div class="plate" id="p"></div>
+<script src="../brand/marque.js"></script>
+<script src="../brand/carte.js"></script>
+<script>
+const M = Marque, C = M.COULEURS, D = M.DONNEES;
+const clair = (h) => M.contraste(h, '#FFFFFF') < 2.6;
+let h = '';
+h += `<div class="tz c31"><section><h3>Le logo officiel · tracés du rapport d'activité 2025 · rien n'est redessiné</h3>
+  <div class="tl-logos">
+    <div style="background:${C.blanc};border:1px solid var(--filet)">${M.lockup()}</div>
+    <div style="background:${C.papier}">${M.lockup()}</div>
+    <div style="background:${C.nuit}">${M.lockup('blanc')}</div>
+    <div style="background:${C.vermillon}">${M.lockup('blanc')}</div>
+    <div style="background:${C.lagune}">${M.court('blanc')}</div>
+    <div class="aq">${M.aquarelle('aube', { style: 'position:absolute;inset:0' })}<div class="net">${M.lockup('blanc')}</div></div>
+    <div style="background:${C.sable}">${M.lockup('encre')}</div>
+    <div style="background:${C.blanc};border:1px solid var(--filet);display:flex;gap:26px;justify-content:center;align-items:center">${M.lockup(null, 'style="height:38px"')}${M.court(null, 'style="height:26px"')}${M.symbol('ocre', 'style="height:32px"')}${M.symbol('ocre', 'style="height:16px"')}</div>
+  </div></section>
+  <section><h3>Le symbole se trace · du pied vers la boucle</h3><div class="te">${[0.18, 0.5, 0.78, 1].map((p, i) => `<figure>${M.symbolTrace({ p: [p * 1.6, p * 1.35, p * 1.15, p * 1.05, p].map((x) => Math.min(1, x)), piste: 'sable', id: 'ts' + i, attrs: 'style="height:128px;width:auto"' })}<figcaption>${Math.round(p * 100)} %</figcaption></figure>`).join('')}</div></section></div>`;
+
+h += `<div class="tz"><section><h3>Couleurs · officielles, de l'outil, proposées</h3><div class="tc">${Object.keys(C).map((k) => `<div style="background:${C[k]};color:${clair(C[k]) ? C.encre : C.blanc};${k === 'blanc' ? 'border:1px solid var(--filet)' : ''}">${M.NOMS[k]}<small>${C[k]} · ${M.ORIGINES[k]}</small></div>`).join('')}</div></section></div>`;
+
+h += `<div class="tz c13"><section><h3>Typographie · Nunito (publications du GRDR), Nunito Sans, Geist Mono</h3>
+  <div class="t-geant" style="font-size:112px;color:${C.vermillon}">à l’euro près</div>
+  <div class="t-titre" style="font-size:44px;margin-top:14px">Un budget pluriannuel, lisible d’un regard.</div>
+  <p class="t-chapo" style="margin:14px 0 8px;max-width:640px">${M.PHRASES.promesse}</p>
+  <p class="t-txt t-doux" style="margin:0 0 14px;max-width:600px">Prorata temporis, budgets acquis et restants, répartition des coûts salariaux : les calculs se font seuls, les montants exécutés viennent de Sage. 0123456789 € % − … « » ’</p>
+  <div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap"><span class="t-cap" style="color:${C.vermillon}">${M.SIGNATURE}</span><span class="t-mono">ECOS · 3 094 068 € · 76,4 %</span>
+    <span class="chiffres" style="font-weight:700">1 111 111,11<br>8 888 888,88</span></div></section>
+  <section><h3>La marge du comptable · code, montant, tampon</h3>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;font-size:15px;margin-bottom:18px">${D.projets.map((p, i) => M.code(p.code, ['lagune', 'ocre', 'vermillon', 'emeraude'][i % 4])).join('')}</div>
+    <div style="font-size:54px">${M.montant(D.synthese.budget)}</div>
+    <div style="font-size:26px;color:${C.lagune};margin:6px 0 18px">${M.montant(5507402)} <span class="t-petit t-doux" style="font-family:var(--font);font-weight:500;letter-spacing:0">exécutés · ${M.pct(0.3524, 1)}</span></div>
+    <div style="display:grid;gap:10px">${M.tampon('Extrait de Sage · ' + D.extraction.court)}${M.tampon('Modifié par Julien P. · 14:52', 'ocre')}${M.tampon('ECOS · se termine dans 8 mois', 'vermillon')}</div></section></div>`;
+
+const emps = D.projets.map((p) => { const c = M.cernesDe(p); return `<figure>${M.empreinte({ cernes: c.cernes, actif: c.actif, taille: 150, cadre: 5 })}<figcaption>${p.code} · ${c.annees[0]}–${String(c.annees[c.annees.length - 1]).slice(2)} · ${M.pct(p.taux)}</figcaption></figure>`; }).join('');
+h += `<div class="tz"><section><h3>L'empreinte · une boucle par année du projet, tracée jusqu'à ce qui est exécuté ; l'année en cours en vermillon</h3><div class="te">${emps}</div></section></div>`;
+h += `<div class="tz c3"><section style="background:${C.nuit};color:${C.blanc}"><h3>Empreinte · sur nuit, géante, coupée</h3>${M.empreinte({ cernes: [1, 1, 1, 0.62, 0.2], c: 'menthe', piste: '#1D4A47', actif: 3, cActif: 'miel', attrs: 'style="position:absolute;right:-90px;bottom:-190px;height:520px;width:auto"' })}<div class="t-titre" style="font-size:40px;position:relative;max-width:240px">${M.PHRASES.cernes}</div><div style="height:150px"></div></section>
+  <section><h3>Empreinte · petite, en ligne de tableau, en icône</h3><div class="te" style="align-items:center">${[16, 24, 36, 56].map((t) => M.empreinte({ cernes: [1, 0.7, 0.2], taille: t, actif: 1 })).join('')}${M.icone(72)}${M.icone(72, 'nuit', 'miel')}${M.icone(72, 'papier', 'vermillon')}</div>
+    <h3 style="margin-top:22px">Bailleurs · une boucle par bailleur</h3><div class="te" style="align-items:center">${M.empreinte({ cernes: D.bailleurs.map((b) => b.part / 0.42).reverse(), c: ['brume', 'sable', 'peche', 'ocre', 'lagune'].map((k) => C[k]).reverse().reverse(), piste: null, taille: 130 })}<div class="t-petit">${D.bailleurs.map((b) => `${b.nom} · ${M.pct(b.part)}`).join('<br>')}</div></div></section>
+  <section class="aq" style="border:0"><img class="aq-i" src="${M.aqURL('aube')}" alt="">${M.filigrane({ c: 'blanc', op: 0.55, style: 'right:-120px;top:-60px;width:420px;height:566px' })}<h3 style="color:${C.encre};opacity:.7">Le filigrane · le symbole en grand sur l'aquarelle</h3><div class="t-titre net" style="font-size:40px;max-width:300px;margin-top:150px;color:${C.encre}">${M.SIGNATURE}</div></section></div>`;
+
+h += `<div class="tz"><section><h3>L'aquarelle · cinq lavis rendus (art/aquarelle.html)</h3><div class="taq">${Object.keys(M.AQUARELLES).map((n) => `<div>${M.aquarelle(n)}<p>${n} · ${M.AQUARELLES[n]}</p></div>`).join('')}</div></section></div>`;
+
+h += `<div class="tz c13"><section><h3>Graphiques · le trait du symbole appliqué aux chiffres</h3>
+    ${M.courbe({ w: 700, h: 300, labels: D.mois, series: [{ v: D.cumulPrevu, c: 'ocre', ep: 2.2, tirets: '2 7' }, { v: D.cumulExecute, c: 'lagune', ep: 3.6, echos: 9 }], id: 'tcb' })}
+    <div style="display:flex;gap:34px;align-items:flex-end;margin-top:18px">${M.annees({ w: 300, h: 170, annees: [{ a: 2023, prevu: 211000, execute: 211000 }, { a: 2024, prevu: 348000, execute: 348000 }, { a: 2025, prevu: 352000, execute: 122000, encours: true }, { a: 2026, prevu: 255000, execute: 0 }] })}
+      <div style="display:grid;gap:12px">${[[0.76, 0.69, 'vermillon'], [0.45, 0.33, 'emeraude'], [0.19, 0.46, 'emeraude'], [0.01, 0.12, 'emeraude']].map(([v, r, c]) => `<div style="display:flex;gap:12px;align-items:center">${M.jauge({ v, repere: r, c, w: 220 })}<span class="chiffres" style="font-weight:800;font-family:var(--titre)">${M.pct(v)}</span></div>`).join('')}</div></div></section>
+  <section style="background:${C.papier}"><h3>Ici et là-bas · la carte, les bureaux, les empreintes posées par leur pied</h3>${M.carte({ w: 430, terres: 'sable', cPays: 'peche', filet: 'papier', villes: ['Montreuil', 'Bamako', 'Nouakchott', 'Dakar', 'Conakry', 'Tunis', 'Alger'], noms: true, tailleNom: 22, rVille: 7,
+    epingles: [{ ville: 'Sélibaby', v: 1, cernes: [1, 1, 0.76] }, { ville: 'Ziguinchor', v: 0.9, cernes: [0.4, 0.1, 0], c: 'vermillon' }, { ville: 'Canchungo', v: 0.3, cernes: [1, 0.5] }] })}</section></div>`;
+
+h += `<div class="tz"><section><h3>Photos de terrain (médias existants) · brut, lavis, duo, dans le symbole</h3><div class="tph">${M.photo('marche')}${M.photo('atelier', { mode: 'lavis', aq: 'aube' })}${M.photo('artisan', { mode: 'duo', c: 'peche', c2: 'nuit' })}
+   <div style="display:grid;place-items:center;background:${C.papier};border-radius:12px"><div class="dans-symbole" style="height:190px">${M.photo('marche', { style: 'position:absolute;inset:0', mode: 'lavis' })}</div></div></div></section></div>`;
+document.getElementById('p').innerHTML = h;
+window.pret = Promise.all([...document.images].map((i) => i.decode ? i.decode().catch(() => 0) : 0));
+</script>
+</body></html>

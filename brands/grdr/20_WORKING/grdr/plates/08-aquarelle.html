@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><title>08 · L’aquarelle</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="pl.css">
+<style>
+  /* 08 · L'aquarelle : la matière, de très près. Le lavis « aube » plein cadre, agrandi jusqu'au pigment ; le symbole en
+     filigrane, coupé par les bords ; une photo de terrain passée sous le lavis « lagune », dans la silhouette du symbole ;
+     les cinq lavis en échantillons. Presque pas de mots, ni bandeau ni pied : la matière tient la planche. */
+  .plate{height:1080px;background:var(--papier)}
+  .pl-fond{position:absolute;left:-330px;top:-300px;width:2140px;height:auto;max-width:none}
+  /* la silhouette pleine du symbole : les traits officiels épaissis jusqu'à se toucher, et l'intérieur des boucles rempli */
+  .pl-ps{position:absolute;left:108px;top:150px;height:690px;aspect-ratio:var(--r-symbole);-webkit-mask:var(--pl-sil) 0 0/100% 100% no-repeat;mask:var(--pl-sil) 0 0/100% 100% no-repeat}
+  .pl-n{position:absolute;left:84px;top:66px;color:var(--encre)}
+  .pl-dit{position:absolute;left:84px;bottom:74px;margin:0;font-size:46px;line-height:1;color:var(--encre)}
+  .pl-ech{position:absolute;right:84px;bottom:74px;display:flex;gap:16px}
+  .pl-ech figure{margin:0;width:128px}
+  .pl-ech .aq{height:172px;border:5px solid var(--blanc);box-shadow:0 1px 2px rgba(90,45,15,.14),0 18px 24px -14px rgba(90,45,15,.5)}
+  .pl-ech figcaption{margin-top:12px;color:var(--encre)}
+  .pl-ech figcaption b{display:block;font-weight:600}
+  .pl-ech figcaption span{display:block;white-space:normal;font-size:9px;letter-spacing:.05em;line-height:1.4;opacity:.8}
+</style></head>
+<body>
+<div class="plate grain fort" id="p"></div>
+<script src="../brand/marque.js"></script>
+<script>
+const M = Marque;
+{ const b = M.LOGO.symbolBox, tr = M.symbolParts().traits;
+  document.documentElement.style.setProperty('--pl-sil', M.dataSVG(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="${b.join(' ')}" preserveAspectRatio="none">${tr.map((t) => `<path d="${t.d}" fill="#000" stroke="#000" stroke-width="31" stroke-linecap="round" stroke-linejoin="round"/>`).join('')}</svg>`)); }
+/* le rôle de chaque lavis, en trois mots (le détail est dans Marque.AQUARELLES) */
+const ROLE = { aube: 'la couverture', lagune: 'l’exécuté', terre: 'le terrain', nuit: 'le panneau dense', brume: 'un voile' };
+document.getElementById('p').innerHTML =
+  `<img class="pl-fond" src="${M.aqURL('aube')}" alt="">` +
+  M.filigrane({ c: 'blanc', op: 0.56, style: 'right:-170px;top:-300px;width:1060px;height:1428px' }) +
+  `<div class="pl-ps">${M.photo('atelier', { mode: 'lavis', aq: 'lagune', pos: '42% 40%', style: 'position:absolute;inset:0' })}</div>` +
+  `<div class="pl-n pl-m net">08 · L’aquarelle</div>` +
+  `<p class="pl-dit t-titre net">Toujours du corail<br>vers le miel.</p>` +
+  `<div class="pl-ech net">${Object.keys(M.AQUARELLES).map((n) => `<figure>${M.aquarelle(n)}<figcaption class="pl-m"><b>${n}</b><span>${ROLE[n]}</span></figcaption></figure>`).join('')}</div>`;
+window.pret = Promise.all([...document.images].map((i) => (i.decode ? i.decode().catch(() => 0) : 0)));
+</script>
+</body></html>

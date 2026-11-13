@@ -1,0 +1,16 @@
+/* Planches du système (02 à 11) : ce qui leur est commun. Préfixe pl-.
+   Chaque planche garde ses propres styles dans son fichier ; ici, seulement l'outillage partagé :
+   le calque de contenu au-dessus du grain, la petite légende en chasse fixe, le filet, le nom de classe non capitalisé. */
+
+/* Calque de contenu : au-dessus du grain (z 50), sous le bandeau et le pied (z 70) */
+.pl-c{position:absolute;inset:0;z-index:60}
+
+/* Légende en chasse fixe (la marge du métier) : plus petite que .t-mono, pour les cotes et les numéros de pièce */
+.pl-m{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;line-height:1.5;white-space:nowrap}
+.pl-m.pl-s{font-size:9.5px}
+/* Chasse fixe sans capitales : noms de classe, valeurs, codes */
+.pl-k{font-family:var(--mono);font-size:10.5px;letter-spacing:.02em;font-weight:500;line-height:1.5;white-space:nowrap}
+
+/* Filets */
+.pl-f{position:absolute;background:currentColor;opacity:.3}
+.pl-svg{position:absolute;left:0;top:0;overflow:visible;pointer-events:none}

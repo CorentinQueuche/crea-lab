@@ -1,0 +1,707 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GRDR · Djongoma, guide de marque</title>
+<meta name="description" content="Le guide de marque de Djongoma, l’outil de gestion budgétaire du GRDR : comment l’identité du GRDR a été mise en système pour l’outil.">
+<meta name="robots" content="noindex">
+<link rel="icon" id="favicon" type="image/svg+xml">
+<link rel="stylesheet" href="assets/marque.css">
+<link rel="stylesheet" href="assets/ecrans.css">
+<link rel="stylesheet" href="assets/ecrans-b.css">
+<link rel="stylesheet" href="assets/ecrans-c.css">
+<link rel="stylesheet" href="assets/guide.css">
+<!-- SITE DU GUIDE DE MARQUE : GRDR · Djongoma (site/index.html). Douze pages, affichées une à une selon l'ancre.
+     Un site statique sans compilation. python tools/build_site.py le copie dans livrables/site avec le socle
+     (assets/marque.css, marque.js, carte.js, ecrans*.js, ecrans*.css), deck/pages.js (assets/pages.js), les médias, les logos, le PDF.
+     CONTRAT : chaque page est un <div class="page" id data-title data-desc data-subs>, une seule visible (.page.on) ;
+     #sommaire, #nav, #burger, [data-pager] (classe pager), #main, #toast, et la visionneuse #lb. window.MarquePhotos et
+     window.GuideMedia AVANT le socle. Classes préfixées gd-. Les éléments vivants sont déclarés dans window.GuideTests
+     (assets/guide.js) pour tools/check_inter.mjs. -->
+<script>window.MarquePhotos = new URL('photos/', document.baseURI).href; window.GuideMedia = 'guide-media/';</script>
+<script src="assets/marque.js"></script>
+<script src="assets/carte.js"></script>
+<script src="assets/ecrans.js"></script>
+<script src="assets/ecrans-b.js"></script>
+<script src="assets/ecrans-c.js"></script>
+<script src="assets/pages.js"></script>
+<script src="assets/galerie.js"></script>
+</head>
+<body>
+<a class="gd-evite" href="#main">Aller au contenu</a>
+
+<header class="gd-haut">
+  <a class="gd-haut-logo" href="#accueil" data-logo aria-label="Retour à l’accueil du guide"></a>
+  <button class="gd-burger" id="burger" type="button" aria-label="Ouvrir le sommaire" aria-controls="sommaire" aria-expanded="false"><i></i><i></i></button>
+</header>
+
+<aside class="gd-som" id="sommaire">
+  <a class="gd-som-logo" href="#accueil" data-logo aria-label="Retour à l’accueil du guide"></a>
+  <a class="gd-prod" href="#accueil"><span data-icone></span><span><b data-produit></b><span>Guide de marque</span></span></a>
+  <nav class="gd-nav" id="nav" aria-label="Sommaire du guide"></nav>
+  <div class="gd-som-pied">
+    <a href="presentation.html">Le guide en pages</a>
+    <a href="etude-de-cas.html">L’étude de cas</a>
+    <a href="prototype.html">Le prototype de l’outil</a>
+    <a href="#ressources">Logos et PDF</a>
+  </div>
+</aside>
+
+<main class="gd-main" id="main" tabindex="-1">
+
+<!-- ======================= ACCUEIL ======================= -->
+<div class="page" id="accueil" data-title="Accueil" data-subs="chapitres:Les chapitres">
+  <header class="gd-hero">
+    <div class="gd-hero-t">
+      <span class="gd-etiq">GRDR · Djongoma · Guide de marque</span>
+      <h1 class="gd-h1" tabindex="-1">Le budget de chaque projet, <em>à l’euro près.</em></h1>
+      <p class="gd-lead">L’identité du GRDR existe et ne change pas. Ce guide montre comment elle a été mise en système pour Djongoma, son outil de gestion budgétaire : une empreinte par projet, une boucle par année.</p>
+      <div class="gd-rang">
+        <a class="gd-bt" href="#marque">Commencer</a>
+        <a class="gd-bt gd-creux" href="presentation.html">Le guide en pages</a>
+        <a class="gd-bt gd-creux" id="accueil-pdf" download>Le PDF</a>
+      </div>
+      <div class="gd-rang gd-liens">
+        <a href="etude-de-cas.html">L’étude de cas <span data-fleche></span></a>
+        <a href="prototype.html">Le prototype de l’outil <span data-fleche></span></a>
+      </div>
+    </div>
+    <div class="gd-hero-v" id="accueil-vivant"></div>
+  </header>
+
+  <div class="gd-trip">
+    <div><b>Sûr.</b><p>Rien ne change sans laisser de trace. Chaque action a son tampon : qui, quoi, quand.</p></div>
+    <div><b>Lisible.</b><p>Un projet se lit d’un regard : son empreinte, son montant, ce qui reste à exécuter.</p></div>
+    <div><b>Partagé.</b><p>Chacun son périmètre. Le même chiffre pour tous.</p></div>
+  </div>
+
+  <section id="chapitres">
+    <h2 class="gd-h2">Les chapitres</h2>
+    <p class="gd-intro">Onze chapitres. Les règles sont celles du guide en pages ; ici, on peut les essayer : régler une empreinte, copier une couleur, parcourir les écrans.</p>
+    <div class="gd-tuiles" id="tuiles"></div>
+  </section>
+  <nav class="pager gd-pager" data-pager aria-label="Page précédente et suivante"></nav>
+</div>
+
+<!-- ======================= LA MARQUE ======================= -->
+<div class="page" id="marque" data-title="La marque" data-desc="L’existant, l’idée, le triptyque, le ton." data-subs="existant:D’où l’on part|idee:L’idée|triptyque:Le triptyque|ton:Le ton">
+  <header class="gd-tete">
+    <span class="gd-etiq">01 · La marque</span>
+    <h1 class="gd-h1" tabindex="-1">Une identité qui existe, mise en système</h1>
+    <p class="gd-lead">Le GRDR est une association de solidarité internationale, présente dans huit pays. Sa signature : « Citoyens d’ici et de là-bas ». Djongoma est son outil de gestion budgétaire. Il parle avec la voix du GRDR, pas avec la sienne.</p>
+  </header>
+
+  <section id="existant">
+    <h2 class="gd-h2">D’où l’on part</h2>
+    <p class="gd-intro">Le GRDR a déjà son identité : un logo, trois couleurs, la police Nunito, des lavis d’aquarelle. Rien de cela ne change. Ce qui est ajouté pour l’outil est une proposition, signalée comme telle.</p>
+    <div class="gd-carte"><span class="gd-etiq">Ce qui existe · on n’y touche pas</span><div class="gd-ex" id="existe"></div></div>
+    <div class="gd-carte gd-sable gd-esp" style="margin-top:16px"><span class="gd-etiq">Ce que l’outil ajoute · proposition</span><div class="gd-ex" id="ajoute"></div></div>
+  </section>
+
+  <section id="idee">
+    <h2 class="gd-h2">L’idée</h2>
+    <p class="gd-citation" id="idee-phrase"></p>
+    <div class="gd-carte"><div class="gd-idee" id="idee-vue"></div></div>
+    <ol class="gd-regles">
+      <li>Un projet, une empreinte.</li>
+      <li>Une boucle par année, tracée jusqu’à ce qui est exécuté.</li>
+      <li>Graphiques, pictogrammes et mouvement reprennent ce trait.</li>
+      <li>Deux pistes écartées : une D.A. de grilles et de cellules, juste mais froide ; la carte en héros, belle, mais un outil de budget n’est pas d’abord une carte.</li>
+    </ol>
+  </section>
+
+  <section id="triptyque">
+    <h2 class="gd-h2">Le triptyque</h2>
+    <p class="gd-intro">Trois mots, dans cet ordre. Ils disent ce que l’outil doit à celles et ceux qui s’en servent.</p>
+    <div class="gd-g3">
+      <div class="gd-carte"><span class="gd-etiq">01</span><p class="gd-mot">Sûr.</p><p class="gd-note">Le fichier que tout le monde craignait de casser prend sa retraite. Les calculs sont automatiques, chaque action laisse une trace dans le journal.</p></div>
+      <div class="gd-carte"><span class="gd-etiq">02</span><p class="gd-mot">Lisible.</p><p class="gd-note">Un budget pluriannuel se lit d’un regard. L’empreinte dit où en est le projet ; le montant, à l’euro près, dit le reste.</p></div>
+      <div class="gd-carte gd-nuit"><span class="gd-etiq">03</span><p class="gd-mot" style="color:var(--miel)">Partagé.</p><p class="gd-note">Gestionnaire financier, chef de projet, administrateur : chacun son périmètre, le même chiffre pour tous.</p></div>
+    </div>
+  </section>
+
+  <section id="ton">
+    <h2 class="gd-h2">Le ton</h2>
+    <p class="gd-intro">Celui d’un collègue précis et chaleureux : la personne du service financier à qui l’on aime poser ses questions. Elle sait, elle explique, elle ne fait pas la leçon. Phrases courtes. On vouvoie.</p>
+    <div class="gd-g2">
+      <div class="gd-carte"><span class="gd-m gd-oui" data-oui></span><span class="gd-etiq">On dit</span>
+        <ul class="gd-mots"><li>exécuté</li><li>reste à exécuter</li><li>prorata</li><li>ligne budgétaire</li><li>bailleur</li><li>extraction Sage</li><li>à l’euro près</li></ul></div>
+      <div class="gd-carte"><span class="gd-m gd-non" data-non></span><span class="gd-etiq">On évite</span>
+        <ul class="gd-mots gd-non"><li>dashboard</li><li>KPI</li><li>data</li><li>les superlatifs</li><li>le point d’exclamation</li></ul></div>
+    </div>
+    <div class="gd-carte gd-esp" style="margin-top:16px"><div class="gd-phrases" id="phrases"></div></div>
+    <ol class="gd-regles">
+      <li>Le mot juste du métier, jamais le jargon de l’outil.</li>
+      <li>Un chiffre est exact ou absent : à l’euro près.</li>
+      <li>Ni superlatif, ni point d’exclamation.</li>
+      <li>On vouvoie, et on nomme les choses : un projet, une ligne, un bailleur.</li>
+    </ol>
+  </section>
+  <nav class="pager gd-pager" data-pager aria-label="Page précédente et suivante"></nav>
+</div>
+
+<!-- ======================= LE LOGO ======================= -->
+<div class="page" id="logo" data-title="Le logo" data-desc="Versions, fonds, zone de protection, interdits, fichiers." data-subs="versions:Versions et fonds|protection:Zone de protection|tailles:Tailles minimales|interdits:Les interdits|trace:Le symbole se trace|telechargements:Téléchargements">
+  <header class="gd-tete">
+    <span class="gd-etiq">02 · Le logo</span>
+    <h1 class="gd-h1" tabindex="-1">Le logo du GRDR, tel qu’il est</h1>
+    <p class="gd-lead">Le logo est celui du GRDR, recopié en tracés depuis son rapport d’activité 2025. On ne le redessine pas. On le pose, sur les bons fonds, à la bonne taille.</p>
+  </header>
+
+  <section id="versions">
+    <h2 class="gd-h2">Versions et fonds permis</h2>
+    <p class="gd-intro">Choisissez un fond : le logo prend la version permise. En couleurs ou en encre sur les fonds clairs ; en blanc sur la nuit, la lagune, le vermillon et l’aquarelle.</p>
+    <div class="gd-choix" id="logo-fonds" role="group" aria-label="Fond derrière le logo"></div>
+    <div class="gd-scene" id="logo-scene" role="img"></div>
+    <div class="gd-carte gd-versions" id="logo-versions"></div>
+    <ol class="gd-regles">
+      <li>Trois versions : la complète, la courte sans descripteur, le symbole seul.</li>
+      <li>Le mot en vermillon, le symbole en ocre, le descripteur en lagune : toujours ces trois-là.</li>
+      <li>En une teinte : encre sur fond clair, blanc sur fond dense.</li>
+      <li>Sur une image : seulement sur l’aquarelle, jamais sur une photo brute.</li>
+    </ol>
+  </section>
+
+  <section id="protection">
+    <h2 class="gd-h2">Zone de protection</h2>
+    <p class="gd-intro">L’unité de mesure est dans le logo : x, la hauteur d’x du mot « grdr ». On laisse un x libre sur les quatre côtés, pour les trois versions.</p>
+    <div class="gd-carte" id="logo-zone"></div>
+  </section>
+
+  <section id="tailles">
+    <h2 class="gd-h2">Tailles minimales</h2>
+    <p class="gd-intro">Quand la place manque, on change de version plutôt que de réduire. Les logos ci-dessous sont à leur taille plancher.</p>
+    <div class="gd-duo">
+      <div class="gd-carte"><div class="gd-tailles" id="logo-tailles"></div></div>
+      <div class="gd-carte gd-sable"><span class="gd-etiq">À retenir</span>
+        <ol class="gd-regles gd-une" style="margin-top:12px">
+          <li>Version complète : 110 px de large au minimum, 30 mm à l’impression.</li>
+          <li>En dessous de 110 px : la version courte, jusqu’à 48 px (14 mm).</li>
+          <li>Symbole seul : 24 px de haut (6 mm). Plus petit, on prend l’icône de l’outil.</li>
+        </ol></div>
+    </div>
+  </section>
+
+  <section id="interdits">
+    <h2 class="gd-h2">Les interdits</h2>
+    <p class="gd-intro">Le logo n’appartient pas à l’outil : il appartient au GRDR. Six gestes à écarter, même pour un essai.</p>
+    <div class="gd-int" id="logo-interdits"></div>
+  </section>
+
+  <section id="trace">
+    <h2 class="gd-h2">Le symbole se trace</h2>
+    <p class="gd-intro">En mouvement, le symbole part du pied et s’enroule, un trait après l’autre. À la fin du geste, on voit exactement le tracé officiel.</p>
+    <div class="gd-carte gd-trace">
+      <div class="gd-trace-v" id="trace-vue" role="img" aria-label="Le symbole du GRDR en cours de tracé"></div>
+      <div>
+        <div class="gd-curseur"><label for="trace-p">Avancement</label><input type="range" id="trace-p" min="0" max="100" value="62" step="1"><output id="trace-o" for="trace-p"></output></div>
+        <div class="gd-rang gd-esp"><button class="gd-bt gd-petit" id="trace-rejouer" type="button">Rejouer le tracé</button><span class="gd-note">Cinq traits, décalés de 0,12 s.</span></div>
+        <ol class="gd-regles gd-une">
+          <li>Le pied d’abord : c’est le lieu.</li>
+          <li>Un trait après l’autre, jamais tous ensemble.</li>
+          <li>Rien ne rebondit, rien ne tourne sur soi.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section id="telechargements">
+    <h2 class="gd-h2">Téléchargements</h2>
+    <p class="gd-intro">Fichiers SVG, en tracés. Le logo officiel en trois couleurs, puis chaque version en une teinte.</p>
+    <div class="gd-rang" style="margin-bottom:18px"><a class="gd-bt" id="logo-officiel" download>Le logo officiel (SVG)</a><a class="gd-bt gd-creux" id="zip" download>Tous les fichiers (ZIP)</a><span class="gd-note" id="nb-logos"></span></div>
+    <div class="gd-tab"><table><thead><tr id="logos-tete"></tr></thead><tbody id="logos-table"></tbody></table></div>
+  </section>
+  <nav class="pager gd-pager" data-pager aria-label="Page précédente et suivante"></nav>
+</div>
+
+<!-- ======================= L'EMPREINTE ======================= -->
+<div class="page" id="empreinte" data-title="L’empreinte" data-desc="L’atelier : réglez les années, l’empreinte se retrace." data-subs="atelier:L’atelier|projets:Les neuf projets|lecture:Lire une empreinte|construction:La construction|usage:Règles d’usage">
+  <header class="gd-tete">
+    <span class="gd-etiq">03 · L’empreinte</span>
+    <h1 class="gd-h1" tabindex="-1">Un projet, une empreinte</h1>
+    <p class="gd-lead">Le symbole du GRDR est fait de boucles concentriques. Un budget pluriannuel a la même forme. L’empreinte dessine un projet avec ce trait : une boucle par année, tracée jusqu’à ce qui est exécuté.</p>
+  </header>
+
+  <section id="atelier">
+    <h2 class="gd-h2">L’atelier</h2>
+    <p class="gd-intro">Réglez le nombre d’années et la part exécutée de chacune : l’empreinte se retrace. Ou chargez l’un des neuf projets, plus bas.</p>
+    <div class="gd-atelier">
+      <div class="gd-at-vue" id="at-vue" role="img"></div>
+      <div class="gd-carte gd-at-cmd">
+        <div class="gd-curseur"><label for="at-n">Années</label><input type="range" id="at-n" min="2" max="6" step="1" value="4"><output id="at-n-o" for="at-n"></output></div>
+        <fieldset><legend class="gd-etiq">Part exécutée de chaque année</legend><div id="at-curseurs"></div></fieldset>
+        <fieldset><legend class="gd-etiq">Année en cours</legend><div class="gd-choix" id="at-actif" role="group" aria-label="Année en cours"></div></fieldset>
+        <fieldset><legend class="gd-etiq">Fond</legend><div class="gd-choix" id="at-fond" role="group" aria-label="Fond de l’empreinte"></div></fieldset>
+      </div>
+    </div>
+  </section>
+
+  <section id="projets">
+    <h2 class="gd-h2">Les neuf projets</h2>
+    <p class="gd-intro">Les neuf projets dont le libellé est publié. Un clic charge le projet dans l’atelier : ses années, son exécuté, son année en cours. Aucune empreinte n’est pareille.</p>
+    <div class="gd-projets" id="at-projets" role="group" aria-label="Charger un projet dans l’atelier"></div>
+    <p class="gd-note gd-esp">Montants et taux : ceux des captures déjà publiées. La répartition par année est calculée pour la démonstration.</p>
+  </section>
+
+  <section id="lecture">
+    <h2 class="gd-h2">Lire une empreinte</h2>
+    <p class="gd-intro">Du centre vers le bord, comme on compte les cernes d’un arbre. Le trait plein dit ce qui est exécuté, la piste ce qui reste.</p>
+    <div class="gd-carte"><div class="gd-g3" id="lectures"></div>
+      <div class="gd-cles" id="cles"></div></div>
+    <ol class="gd-regles">
+      <li>La boucle du centre est la première année.</li>
+      <li>L’année en cours : en vermillon sur fond clair, en miel sur la nuit.</li>
+      <li>Le pied touche le lieu : sur une carte, il désigne le bureau.</li>
+      <li>Une boucle peut aussi porter un bailleur. On le dit alors dans la légende.</li>
+    </ol>
+  </section>
+
+  <section id="construction">
+    <h2 class="gd-h2">La construction</h2>
+    <p class="gd-intro">L’empreinte n’est pas dessinée à l’œil. Elle reprend la famille gauche du symbole officiel, mesurée sur son tracé. L’unité : la hauteur d’x du mot « grdr » vaut 100.</p>
+    <div class="gd-carte"><div class="gd-idee" id="construction-vue"></div></div>
+    <div class="gd-tab gd-esp" style="margin-top:16px"><table><thead><tr><th>Mesure</th><th>Valeur</th><th>Ce qu’elle fixe</th></tr></thead><tbody id="mesures"></tbody></table></div>
+  </section>
+
+  <section id="usage">
+    <h2 class="gd-h2">Règles d’usage</h2>
+    <p class="gd-intro">L’empreinte est un graphique avant d’être un motif. Une seule exception : en très grand, coupée par les bords.</p>
+    <div class="gd-us" id="usages"></div>
+    <ol class="gd-regles">
+      <li>Elle porte toujours une donnée : les années d’un projet, ou les bailleurs d’un budget.</li>
+      <li>De deux à six boucles. Au-delà, on regroupe les années les plus anciennes.</li>
+      <li>Hauteur minimale : 32 px. En dessous, la jauge prend le relais.</li>
+      <li>Tracé en lagune, piste en sable, année en cours en vermillon. Sur la nuit : menthe et miel.</li>
+    </ol>
+  </section>
+  <nav class="pager gd-pager" data-pager aria-label="Page précédente et suivante"></nav>
+</div>
+
+<!-- ======================= LES COULEURS ======================= -->
+<div class="page" id="couleurs" data-title="Les couleurs" data-desc="Quinze couleurs à copier, leurs origines, proportions, contrastes." data-subs="palette:La palette|proportions:Les proportions|contrastes:Les contrastes">
+  <header class="gd-tete">
+    <span class="gd-etiq">04 · Les couleurs</span>
+    <h1 class="gd-h1" tabindex="-1">Quinze couleurs, chacune son rôle</h1>
+    <p class="gd-lead">Neuf sont relevées sur les documents du GRDR : son logo, la couverture de son rapport 2025. Une vient de l’application livrée. Cinq sont proposées, pour tenir les deux bouts de l’échelle.</p>
+  </header>
+
+  <section id="palette">
+    <h2 class="gd-h2">La palette</h2>
+    <p class="gd-intro">Un clic sur une couleur copie son code. Sous chaque nom : le code, puis le rôle.</p>
+    <div id="nuances"></div>
+    <ol class="gd-regles">
+      <li>Vermillon : vif et rare. Une alerte, l’année en cours, un mot.</li>
+      <li>Lagune : le texte coloré et les tracés.</li>
+      <li>Émeraude : ce qui est exécuté, à jour. En aplat seulement.</li>
+      <li>Nuit : un seul panneau dense par écran.</li>
+    </ol>
+  </section>
+
+  <section id="proportions">
+    <h2 class="gd-h2">Les proportions</h2>
+    <p class="gd-intro">La page est en papier, le texte en encre. La couleur arrive par touches : un panneau d’aquarelle, un panneau de nuit, un mot en vermillon.</p>
+    <div class="gd-carte"><div class="gd-prop" id="proportions-barre"></div><div class="gd-prop-l" id="proportions-legende"></div></div>
+  </section>
+
+  <section id="contrastes">
+    <h2 class="gd-h2">Les contrastes</h2>
+    <p class="gd-intro">Calculés à partir des codes, pas estimés. À partir de 4,5 : texte courant. Entre 3 et 4,5 : grands titres et pictogrammes. En dessous : jamais en texte.</p>
+    <div class="gd-carte"><div class="gd-ctr" id="contrastes-table"></div>
+      <div class="gd-essai">
+        <label class="gd-champ">Texte<select id="ct-texte"></select></label>
+        <label class="gd-champ">Fond<select id="ct-fond"></select></label>
+        <div class="gd-essai-v" id="ct-vue" aria-live="polite"></div>
+      </div></div>
+    <ol class="gd-regles">
+      <li>Texte courant : encre sur clair, blanc sur nuit.</li>
+      <li>Vermillon et émeraude : jamais en petit texte sur fond clair.</li>
+      <li>Pour écrire « exécuté » : la lagune. L’émeraude reste un aplat ou une pastille.</li>
+      <li>Jamais de fondu entre deux couleurs éloignées.</li>
+    </ol>
+  </section>
+  <nav class="pager gd-pager" data-pager aria-label="Page précédente et suivante"></nav>
+</div>
+
+<!-- ======================= LA TYPOGRAPHIE ======================= -->
+<div class="page" id="typographie" data-title="La typographie" data-desc="Nunito, Nunito Sans, Geist Mono : un spécimen à régler." data-subs="specimen:Le spécimen|graisses:Les graisses|hierarchie:La hiérarchie|chiffres:Les chiffres">
+  <header class="gd-tete">
+    <span class="gd-etiq">05 · La typographie</span>
+    <h1 class="gd-h1" tabindex="-1">Nunito, et deux compagnes</h1>
+    <p class="gd-lead">Nunito est la police des publications du GRDR : ronde, franche, en bas de casse. On lui adjoint Nunito Sans pour le texte et l’interface, et Geist Mono pour les codes.</p>
+  </header>
+
+  <section id="specimen">
+    <h2 class="gd-h2">Le spécimen</h2>
+    <p class="gd-intro">Écrivez, changez de police, de taille, de graisse.</p>
+    <div class="gd-sp">
+      <div class="gd-sp-v" id="sp-vue" aria-live="polite"></div>
+      <div class="gd-carte gd-sp-c">
+        <div class="gd-choix" id="sp-police" role="group" aria-label="Police"></div>
+        <label class="gd-champ">Texte<input type="text" id="sp-texte" value="à l’euro près" maxlength="60" autocomplete="off"></label>
+        <div class="gd-curseur"><label for="sp-taille">Taille</label><input type="range" id="sp-taille" min="24" max="160" step="2" value="96"><output id="sp-taille-o" for="sp-taille"></output></div>
+        <div class="gd-curseur"><label for="sp-graisse">Graisse</label><input type="range" id="sp-graisse" min="200" max="1000" step="100" value="900"><output id="sp-graisse-o" for="sp-graisse"></output></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="graisses">
+    <h2 class="gd-h2">Les graisses</h2>
+    <p class="gd-intro">Trois polices à licence libre. On n’utilise que les graisses ci-dessous.</p>
+    <div class="gd-g3" id="graisses-liste"></div>
+  </section>
+
+  <section id="hierarchie">
+    <h2 class="gd-h2">La hiérarchie</h2>
+    <p class="gd-intro">Six niveaux suffisent, de l’affiche à l’étiquette.</p>
+    <div class="gd-carte gd-hier" id="hierarchie-liste"></div>
+    <ol class="gd-regles">
+      <li>Titres en Nunito 800 ou 900, serrés, en bas de casse.</li>
+      <li>Jamais de capitales sur plus de six mots.</li>
+      <li>Codes et étiquettes en Geist Mono, en capitales, bien espacées.</li>
+      <li>Le texte courant ne descend pas sous 13 px.</li>
+    </ol>
+  </section>
+
+  <section id="chiffres">
+    <h2 class="gd-h2">Les chiffres</h2>
+    <p class="gd-intro">Dans un tableau, les montants s’alignent chiffre sous chiffre : chiffres tabulaires, espaces fines entre les milliers, jamais d’arrondi.</p>
+    <div class="gd-duo">
+      <div class="gd-carte"><div class="gd-choix" id="ch-choix" role="group" aria-label="Chiffres"></div><div class="gd-chiffres chiffres" id="ch-vue"></div></div>
+      <div class="gd-carte gd-sable"><span class="gd-etiq">À retenir</span>
+        <ol class="gd-regles gd-une" style="margin-top:12px">
+          <li>Un montant en Nunito 800, le signe € en retrait.</li>
+          <li>À l’euro près dans un tableau. L’abrégé (M€, k€) seulement dans un graphique ou sur la carte.</li>
+          <li>Les pourcentages : sans décimale dans une liste, une décimale sur une fiche.</li>
+        </ol></div>
+    </div>
+  </section>
+  <nav class="pager gd-pager" data-pager aria-label="Page précédente et suivante"></nav>
+</div>
+
+<!-- ======================= MATIÈRE ET IMAGE ======================= -->
+<div class="page" id="matiere" data-title="Matière et image" data-desc="Cinq lavis, le filigrane, la carte, les photos de terrain." data-subs="lavis:Les cinq lavis|filigrane:Le filigrane|carte:Ici et là-bas|photos:Les photos">
+  <header class="gd-tete">
+    <span class="gd-etiq">06 · Matière et image</span>
+    <h1 class="gd-h1" tabindex="-1">Du papier, de l’aquarelle, une carte</h1>
+    <p class="gd-lead">La matière vient de la couverture du rapport 2025 : des lavis sur papier crème. L’image, c’est le double espace du GRDR : huit pays sur une même carte, et trois photos de terrain.</p>
+  </header>
+
+  <section id="lavis">
+    <h2 class="gd-h2">Les cinq lavis</h2>
+    <p class="gd-intro">Cinq lavis sont rendus une fois pour toutes. Changez celui du panneau : le contenu reste, la matière change.</p>
+    <div class="gd-choix" id="lavis-choix" role="group" aria-label="Lavis du panneau"></div>
+    <div class="gd-lavis" id="lavis-panneau"></div>
+    <div class="gd-mini" id="lavis-mini"></div>
+    <ol class="gd-regles">
+      <li>Un seul panneau d’aquarelle par écran ou par planche.</li>
+      <li>Toujours du corail vers le miel, jamais l’inverse.</li>
+      <li>Sur le lavis, le texte est en encre et le logo en blanc. Sur la nuit, tout est en blanc.</li>
+      <li>L’aube pour le chiffre qui compte ; la brume quand il faut presque rien.</li>
+    </ol>
+  </section>
+
+  <section id="filigrane">
+    <h2 class="gd-h2">Le filigrane</h2>
+    <p class="gd-intro">Le symbole du GRDR, très grand, posé sur le lavis : le procédé de ses publications.</p>
+    <div class="gd-duo gd-inv">
+      <div class="gd-carte gd-sable"><span class="gd-etiq">Réglage</span>
+        <div class="gd-rang gd-esp" style="margin:14px 0 4px"><button class="gd-bt gd-petit gd-creux" id="filigrane-bt" type="button" aria-pressed="true">Filigrane posé</button></div>
+        <ol class="gd-regles gd-une">
+          <li>En blanc, à 50 %.</li>
+          <li>Coupé par deux bords au moins.</li>
+          <li>Jamais sous un texte long : un titre, un chiffre, pas plus.</li>
+        </ol></div>
+      <div class="gd-lavis" id="filigrane-vue" style="min-height:340px"></div>
+    </div>
+  </section>
+
+  <section id="carte">
+    <h2 class="gd-h2">Ici et là-bas</h2>
+    <p class="gd-intro">La carte du double espace, de la France au fleuve Sénégal. Les bureaux sont ceux du rapport d’activité 2025. Un budget se pose par le pied de son empreinte, là où il se dépense.</p>
+    <div class="gd-choix" id="carte-choix" role="group" aria-label="Ce que montre la carte"></div>
+    <div class="gd-duo">
+      <div class="gd-carte-v" id="carte-vue" role="img" aria-label="Carte des pays d’intervention du GRDR"></div>
+      <div class="gd-carte"><span class="gd-etiq">Huit pays · leurs bureaux</span><ul class="gd-bureaux" id="carte-bureaux" style="margin-top:10px"></ul></div>
+    </div>
+    <ol class="gd-regles">
+      <li>La carte en sable sur papier ; la mer, c’est le papier.</li>
+      <li>Les pays d’intervention en teintes d’aquarelle, les frontières en papier.</li>
+      <li>Une empreinte se pose par son pied, sur le bureau.</li>
+      <li>La carte accompagne un budget. Elle n’est jamais un décor.</li>
+    </ol>
+  </section>
+
+  <section id="photos">
+    <h2 class="gd-h2">Les photos</h2>
+    <p class="gd-intro">Trois photos de terrain, celles déjà publiées. On ne fabrique pas de faux bénéficiaires : aucune personne générée. Trois traitements, au choix.</p>
+    <div class="gd-choix" id="photo-choix" role="group" aria-label="Traitement des photos"></div>
+    <div class="gd-photos" id="photos-vue"></div>
+    <ol class="gd-regles">
+      <li>Brute, quand la photo est le sujet.</li>
+      <li>Sous lavis, quand elle porte un titre ou accompagne l’outil.</li>
+      <li>En deux tons, en petit, dans une série.</li>
+      <li>Jamais tramée, jamais détourée, jamais sous le logo sans lavis.</li>
+    </ol>
+  </section>
+  <nav class="pager gd-pager" data-pager aria-label="Page précédente et suivante"></nav>
+</div>
+
+<!-- ======================= GRAPHIQUES ET MARGE ======================= -->
+<div class="page" id="graphiques" data-title="Graphiques et marge" data-desc="Jauge, courbe à échos, années, codes, montants, tampons." data-subs="jauge:La jauge|courbe:La courbe à échos|annees:Les années|marge:La marge du comptable">
+  <header class="gd-tete">
+    <span class="gd-etiq">07 · Graphiques et marge du comptable</span>
+    <h1 class="gd-h1" tabindex="-1">Le trait du symbole, appliqué aux chiffres</h1>
+    <p class="gd-lead">Les graphiques sont tracés comme le symbole : bouts ronds, épaisseur constante. Et autour des chiffres, la marge du métier : un code, un montant, la trace de qui a fait quoi.</p>
+  </header>
+
+  <section id="jauge">
+    <h2 class="gd-h2">La jauge</h2>
+    <p class="gd-intro">Une piste en sable, l’exécuté tracé dessus, et un repère fin : le prorata, ce qui devrait être exécuté à cette date.</p>
+    <div class="gd-gra">
+      <div class="gd-carte gd-gra-v"><div class="gd-jg"><div id="jg-vue"></div><b id="jg-nb"></b></div><p class="gd-note" id="jg-lecture" aria-live="polite"></p></div>
+      <div class="gd-carte">
+        <div class="gd-curseur"><label for="jg-v">Exécuté</label><input type="range" id="jg-v" min="0" max="100" value="76"><output id="jg-v-o" for="jg-v"></output></div>
+        <div class="gd-curseur"><label for="jg-r">Prorata</label><input type="range" id="jg-r" min="0" max="100" value="84"><output id="jg-r-o" for="jg-r"></output></div>
+        <div class="gd-choix" id="jg-etat" role="group" aria-label="État de la ligne" style="margin:14px 0 0"></div>
+      </div>
+    </div>
+    <ol class="gd-regles">
+      <li>La piste en sable, l’exécuté en émeraude, le repère en encre.</li>
+      <li>En vermillon quand la ligne demande un regard.</li>
+      <li>6 px d’épaisseur dans un tableau, 8 px seule.</li>
+      <li>Le pourcentage s’écrit à côté, en Nunito 800. Jamais dans la jauge.</li>
+    </ol>
+  </section>
+
+  <section id="courbe">
+    <h2 class="gd-h2">La courbe à échos</h2>
+    <p class="gd-intro">L’exécuté cumulé de l’exercice, face au prorata attendu. Sous la courbe, des échos parallèles : les cernes, à plat.</p>
+    <div class="gd-carte gd-courbe"><div class="gd-rang" style="justify-content:space-between;margin-bottom:10px"><span class="gd-etiq">Exécution de l’exercice 2025 · cumul · données de démonstration</span><button class="gd-bt gd-petit gd-creux" id="cb-rejouer" type="button">Rejouer le tracé</button></div><div id="cb-vue"></div></div>
+    <ol class="gd-regles">
+      <li>L’exécuté en lagune, trait de 3,8 px, huit échos dessous.</li>
+      <li>L’attendu en pointillé ocre, plus fin.</li>
+      <li>Un seul point marqué : le dernier relevé.</li>
+      <li>Les montants de l’axe en abrégé, en Geist Mono.</li>
+    </ol>
+  </section>
+
+  <section id="annees">
+    <h2 class="gd-h2">Les années</h2>
+    <p class="gd-intro">Le budget d’un projet, année par année : ce qui est prévu, ce qui est exécuté. L’année en cours se reconnaît à sa couleur.</p>
+    <div class="gd-duo">
+      <div class="gd-carte gd-gra-v" id="an-vue"></div>
+      <div class="gd-carte gd-sable"><span class="gd-etiq">À retenir</span>
+        <ol class="gd-regles gd-une" style="margin-top:12px">
+          <li>Le prévu en sable, l’exécuté en lagune.</li>
+          <li>L’année en cours en vermillon, son libellé en gras.</li>
+          <li>Le montant prévu au-dessus de la barre, en abrégé.</li>
+        </ol></div>
+    </div>
+  </section>
+
+  <section id="marge">
+    <h2 class="gd-h2">La marge du comptable</h2>
+    <p class="gd-intro">Tout document de suivi budgétaire a sa marge : un code analytique, un montant, un tampon. On la garde, et on la soigne.</p>
+    <div class="gd-g3">
+      <div class="gd-carte"><span class="gd-etiq">Le code</span><div class="gd-codes gd-esp" id="mg-codes"></div><p class="gd-note gd-esp">Geist Mono 600, en capitales, sur une pastille teintée à 13 %. Le vermillon signale une alerte.</p></div>
+      <div class="gd-carte"><span class="gd-etiq">Le montant</span><div class="gd-montant gd-esp" id="mg-vue" aria-live="polite"></div>
+        <label class="gd-champ gd-esp">Essayez un montant<input type="number" id="mg-montant" value="731128" min="0" max="99999999" step="1" inputmode="numeric"></label></div>
+      <div class="gd-carte"><span class="gd-etiq">Le tampon</span><div class="gd-tampons gd-esp" id="mg-tampons"></div><p class="gd-note gd-esp">Un point de couleur, puis qui, quoi, quand. Émeraude : à jour. Ocre : modifié. Vermillon : à regarder.</p></div>
+    </div>
+    <ol class="gd-regles">
+      <li>Le code en chasse fixe, dans sa pastille.</li>
+      <li>Le montant en Nunito grasse et chiffres tabulaires, à l’euro près.</li>
+      <li>Le tampon dit qui, quoi, quand.</li>
+      <li>Dans un tableau, un montant ne s’arrondit jamais.</li>
+    </ol>
+  </section>
+  <nav class="pager gd-pager" data-pager aria-label="Page précédente et suivante"></nav>
+</div>
+
+<!-- ======================= L'INTERFACE ======================= -->
+<div class="page" id="interface" data-title="L’interface" data-desc="Les écrans de l’outil, vivants, et leurs composants." data-subs="principes:Les principes|ecrans:Les écrans|telephone:Sur téléphone|composants:Les composants|pictogrammes:Les pictogrammes">
+  <header class="gd-tete">
+    <span class="gd-etiq">08 · L’interface</span>
+    <h1 class="gd-h1" tabindex="-1">Du papier, pas du gris</h1>
+    <p class="gd-lead">Fond crème, cartes en blanc de papier. Un panneau d’aquarelle pour le chiffre qui compte, un panneau de nuit pour ce qui est dense. Le reste se tait.</p>
+  </header>
+
+  <section id="principes">
+    <h2 class="gd-h2">Les principes</h2>
+    <ol class="gd-regles" style="margin-top:0">
+      <li>Une grille de 12 colonnes, des cartes au rayon de 22 px.</li>
+      <li>Un seul panneau d’aquarelle et un seul panneau de nuit par écran.</li>
+      <li>Le chiffre d’abord, en Nunito grasse ; son étiquette en chasse fixe.</li>
+      <li>Chaque projet garde son empreinte, partout où il apparaît.</li>
+      <li>Jusqu’à trois personnes par ligne budgétaire, montrées par leurs initiales.</li>
+      <li>Rien ne change sans laisser de trace : le journal est sur chaque fiche.</li>
+    </ol>
+  </section>
+
+  <section id="ecrans">
+    <h2 class="gd-h2">Les écrans</h2>
+    <p class="gd-intro">Les écrans de l’outil, rendus ici même par le code du socle, à 1440 px puis mis à l’échelle. Ils défilent dans leur fenêtre. Pour passer de l’un à l’autre comme dans l’outil : <a href="prototype.html">le prototype</a>.</p>
+    <div class="gd-choix" id="tabs" role="group" aria-label="Écran de bureau"></div>
+    <div class="gd-fen"><div class="gd-fen-b"><b></b><b></b><b></b><span id="ecran-url"></span></div><div class="gd-fen-v" id="ecran" tabindex="0" aria-label="Écran de l’outil"></div></div>
+    <p class="gd-note gd-esp" id="ecran-note"></p>
+  </section>
+
+  <section id="telephone">
+    <h2 class="gd-h2">Sur téléphone</h2>
+    <p class="gd-intro">Le chef de projet retrouve ses projets et ses alertes. Même grammaire, à 390 × 844.</p>
+    <div class="gd-choix" id="tabs-tel" role="group" aria-label="Écran de téléphone"></div>
+    <div class="gd-tel" id="phone"></div>
+  </section>
+
+  <section id="composants">
+    <h2 class="gd-h2">Les composants</h2>
+    <p class="gd-intro">Les briques des écrans, telles que le socle les dessine.</p>
+    <div class="gd-comp" id="composants-liste"></div>
+  </section>
+
+  <section id="pictogrammes">
+    <h2 class="gd-h2">Les pictogrammes</h2>
+    <p class="gd-intro">Au trait, bouts ronds, comme le symbole. Grille de 24, trait de 1,75.</p>
+    <div class="gd-pictos" id="pictos"></div>
+  </section>
+  <nav class="pager gd-pager" data-pager aria-label="Page précédente et suivante"></nav>
+</div>
+
+<!-- ======================= LE MOUVEMENT ======================= -->
+<div class="page" id="mouvement" data-title="Le mouvement" data-desc="La règle, les durées à rejouer, les vidéos." data-subs="regle:La règle|durees:Durées et courbe|videos:Les vidéos">
+  <header class="gd-tete">
+    <span class="gd-etiq">09 · Le mouvement</span>
+    <h1 class="gd-h1" tabindex="-1">Le trait qui s’enroule</h1>
+    <p class="gd-lead">Tout part du pied, monte, s’enroule. Une boucle après l’autre. Les chiffres montent avec leur tracé, puis l’image se pose et ne bouge plus.</p>
+  </header>
+
+  <section id="regle">
+    <h2 class="gd-h2">La règle</h2>
+    <p class="gd-intro">Un seul geste pour tout : le symbole, l’empreinte, la jauge et son chiffre. Relancez-le.</p>
+    <div class="gd-carte">
+      <div class="gd-rang" style="justify-content:space-between;margin-bottom:8px"><span class="gd-etiq" id="mv-etat" aria-live="polite"></span><button class="gd-bt gd-petit" id="rejouer" type="button">Rejouer</button></div>
+      <div class="gd-mv" id="mv-scene"></div>
+    </div>
+    <ol class="gd-regles">
+      <li>Tout part du pied : le lieu d’abord.</li>
+      <li>Une boucle après l’autre, de la première année à la dernière.</li>
+      <li>Les chiffres montent avec leur tracé, pas avant, pas après.</li>
+      <li>Jamais de rebond, de rotation, de fondu entre deux couleurs éloignées.</li>
+    </ol>
+  </section>
+
+  <section id="durees">
+    <h2 class="gd-h2">Durées et courbe</h2>
+    <p class="gd-intro">Le geste démarre vite et se pose lentement : une sortie quartique.</p>
+    <div class="gd-duo gd-inv">
+      <div class="gd-carte" id="mv-courbe"></div>
+      <div class="gd-tab"><table><thead><tr><th>Réglage</th><th>Valeur</th><th>Où</th></tr></thead><tbody>
+        <tr><th scope="row">Durée d’un tracé</th><td>0,6 à 1,4 s</td><td>boucle, courbe, jauge</td></tr>
+        <tr><th scope="row">Décalage</th><td>0,08 à 0,15 s</td><td>entre deux éléments</td></tr>
+        <tr><th scope="row">Courbe</th><td><code>1 − (1 − t)⁴</code></td><td><code>Marque.ease</code></td></tr>
+        <tr><th scope="row">Pause finale</th><td>1,5 s</td><td>l’image reste immobile</td></tr>
+      </tbody></table></div>
+    </div>
+  </section>
+
+  <section id="videos">
+    <h2 class="gd-h2">Les vidéos</h2>
+    <p class="gd-intro">Le système en mouvement : le symbole se trace, une empreinte pousse, le tableau de bord se construit.</p>
+    <div class="gd-videos" id="videos-liste"></div>
+  </section>
+  <nav class="pager gd-pager" data-pager aria-label="Page précédente et suivante"></nav>
+</div>
+
+<!-- ======================= EN SITUATION ======================= -->
+<div class="page" id="situation" data-title="En situation" data-desc="La galerie des pièces, à filtrer et à agrandir." data-subs="galerie:La galerie|supports:Par support">
+  <header class="gd-tete">
+    <span class="gd-etiq">10 · En situation</span>
+    <h1 class="gd-h1" tabindex="-1">Hors de l’écran, et dedans</h1>
+    <p class="gd-lead">Toutes les pièces de l’étude de cas : l’outil, le système, le mouvement, les mises en situation. Un clic agrandit.</p>
+  </header>
+
+  <section id="galerie">
+    <h2 class="gd-h2">La galerie</h2>
+    <div class="gd-choix" id="filters" role="group" aria-label="Filtrer par section"></div>
+    <div class="gd-gal" id="gal"></div>
+  </section>
+
+  <section id="supports">
+    <h2 class="gd-h2">Par support</h2>
+    <ol class="gd-regles" style="margin-top:0">
+      <li>À l’écran : l’interface est plaquée telle qu’elle est, jamais redessinée pour la photo.</li>
+      <li>À l’impression : papier crème, un seul lavis, les montants à l’euro près.</li>
+      <li>En affiche : une phrase, une empreinte géante coupée par les bords.</li>
+      <li>En décor : papier, terre ou velours sombre. Rien qui dispute la couleur.</li>
+    </ol>
+  </section>
+  <nav class="pager gd-pager" data-pager aria-label="Page précédente et suivante"></nav>
+</div>
+
+<!-- ======================= RESSOURCES ======================= -->
+<div class="page" id="ressources" data-title="Ressources" data-desc="PDF, logos, variables CSS, polices, crédits." data-subs="guide-pdf:Le guide en PDF|logos:Les logos|variables:Les variables CSS|polices:Les polices|credits:Crédits">
+  <header class="gd-tete">
+    <span class="gd-etiq">11 · Ressources</span>
+    <h1 class="gd-h1" tabindex="-1">Les fichiers</h1>
+    <p class="gd-lead">Ce qu’il faut pour produire aux couleurs du GRDR et de son outil.</p>
+  </header>
+
+  <section id="guide-pdf">
+    <h2 class="gd-h2">Le guide en PDF</h2>
+    <p class="gd-intro" id="pdf-texte"></p>
+    <div class="gd-rang"><a class="gd-bt" id="pdf" download>Télécharger le PDF</a><a class="gd-bt gd-creux" href="presentation.html">Ouvrir la présentation</a><a class="gd-bt gd-creux" href="etude-de-cas.html">L’étude de cas</a><a class="gd-bt gd-creux" href="prototype.html">Le prototype</a></div>
+  </section>
+
+  <section id="logos">
+    <h2 class="gd-h2">Les logos</h2>
+    <p class="gd-intro">Le logo du GRDR en tracés, prêt à poser. Les fichiers par version et par teinte sont sur la page <a href="#telechargements">Le logo</a>.</p>
+    <div class="gd-rang"><a class="gd-bt" id="logo-officiel-2" download>Le logo officiel (SVG)</a><a class="gd-bt gd-creux" id="zip-2" download>Tous les fichiers (ZIP)</a></div>
+  </section>
+
+  <section id="variables">
+    <h2 class="gd-h2">Les variables CSS</h2>
+    <p class="gd-intro">Les couleurs, les rôles et les polices, tels que le socle les déclare.</p>
+    <div class="gd-rang" style="margin-bottom:12px"><button class="gd-bt gd-petit" id="copier-variables" type="button">Copier les variables</button></div>
+    <pre class="gd-pre" id="variables-code" tabindex="0"></pre>
+  </section>
+
+  <section id="polices">
+    <h2 class="gd-h2">Les polices</h2>
+    <p class="gd-intro">Trois polices à licence libre (SIL Open Font License) : on peut les installer, les embarquer et les servir sans redevance.</p>
+    <div class="gd-polices">
+      <div class="gd-carte"><b style="font-family:var(--titre);font-weight:900;color:var(--vif)">Aa</b><h3 class="gd-h3 gd-esp">Nunito</h3><p class="gd-note">Titres et chiffres clés. Graisses 600 à 900. Licence OFL.</p></div>
+      <div class="gd-carte"><b style="font-weight:400">Aa</b><h3 class="gd-h3 gd-esp">Nunito Sans</h3><p class="gd-note">Texte courant et interface. Graisses 400 à 700. Licence OFL.</p></div>
+      <div class="gd-carte"><b style="font-family:var(--mono);font-weight:500;color:var(--lagune);letter-spacing:-.06em">Aa</b><h3 class="gd-h3 gd-esp">Geist Mono</h3><p class="gd-note">Codes, étiquettes, journal. Graisses 400 à 600. Licence OFL.</p></div>
+    </div>
+  </section>
+
+  <section id="credits">
+    <h2 class="gd-h2">Crédits</h2>
+    <p class="gd-credit">Proposition KLYRA, non validée par le GRDR. Logo, couleurs et police du GRDR. Données de démonstration.</p>
+    <ol class="gd-regles">
+      <li>Logo, couleurs, pays et bureaux : relevés sur le rapport d’activité 2025 du GRDR.</li>
+      <li>Photos de terrain : les trois images déjà publiées avec la réalisation.</li>
+      <li>Personnes, bailleurs par type, mois et journal : inventés pour la démonstration.</li>
+      <li>Carte : Natural Earth, domaine public.</li>
+    </ol>
+  </section>
+  <nav class="pager gd-pager" data-pager aria-label="Page précédente et suivante"></nav>
+</div>
+
+<footer class="gd-pied">
+  <p>Proposition KLYRA, non validée par le GRDR. Logo, couleurs et police du GRDR. Données de démonstration. Polices : Nunito, Nunito Sans, Geist Mono (licences libres OFL).</p>
+</footer>
+</main>
+
+<div class="gd-lb" id="lb" role="dialog" aria-modal="true" aria-label="Agrandissement" aria-hidden="true">
+  <div class="gd-lb-media" id="lb-m"></div>
+  <div class="gd-lb-leg"><span id="lb-leg"></span><span id="lb-n"></span></div>
+  <button class="gd-lb-bt gd-lb-prec" id="lb-prec" type="button" aria-label="Précédent"></button>
+  <button class="gd-lb-bt gd-lb-suiv" id="lb-suiv" type="button" aria-label="Suivant"></button>
+  <button class="gd-lb-bt gd-lb-fermer" id="lb-fermer" type="button" aria-label="Fermer"></button>
+</div>
+<div class="gd-toast" id="toast" role="status" aria-live="polite"></div>
+<script src="assets/guide.js"></script>
+</body>
+</html>

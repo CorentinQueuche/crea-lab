@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><title>18 · Le mur d'écrans</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="../brand/ecrans.css"><link rel="stylesheet" href="../brand/ecrans-b.css"><link rel="stylesheet" href="../brand/ecrans-c.css"><link rel="stylesheet" href="sc.css">
+<style>
+  /* 18 · Le mur d'écrans : tous les écrans de bureau de l'outil, posés en nappe et vus de trois quarts, sans un mot.
+     1600 × 900 par défaut (?W=1400&H=1050 pour le format 4:3). Les écrans absents (lot non livré) sont sautés. */
+  .plate{background:var(--papier)}
+  .me-nappe{position:absolute;display:grid;grid-template-columns:repeat(4,1440px);gap:70px;transform-style:preserve-3d}
+  .me-nappe>div{position:relative;width:1440px;height:900px}
+  .me-nappe .sc-fen{position:relative;width:1440px;height:900px;border-radius:26px}
+  .me-nappe>div:nth-child(4n+2){top:-240px}
+  .me-nappe>div:nth-child(4n+3){top:120px}
+  .me-nappe>div:nth-child(4n+4){top:-150px}
+  .me-lavis{position:absolute;-webkit-mask-image:radial-gradient(closest-side,#000 45%,transparent 100%);mask-image:radial-gradient(closest-side,#000 45%,transparent 100%)}
+</style></head>
+<body>
+<div class="plate sc grain" id="p"></div>
+<script src="../brand/marque.js"></script><script src="../brand/carte.js"></script><script src="../brand/ecrans.js"></script><script src="../brand/ecrans-b.js"></script><script src="../brand/ecrans-c.js"></script>
+<script>
+const M = Marque, q = new URLSearchParams(location.search), W = +(q.get('W') || 1600), H = +(q.get('H') || 900), P = document.getElementById('p');
+P.style.width = W + 'px'; P.style.height = H + 'px';
+const ORDRE = ['stats', 'projets', 'rh', 'journal', 'ficheProjet', 'tableauDeBord', 'sage', 'admin', 'nouveauProjet', 'projetsGrille', 'affectation', 'connexion'].filter((e) => typeof M.app[e] === 'function');
+const cell = (e) => `<div><div class="sc-ombre" style="left:50px;top:90px;width:1440px;height:880px;opacity:.5;transform:translateZ(-80px)"></div><div class="sc-fen"><div>${M.app[e]({ h: 900 })}</div></div></div>`;
+P.innerHTML = `<img class="me-lavis" src="${M.aqURL('aube')}" alt="" style="left:-10%;top:-30%;width:70%;height:110%;opacity:.9"><img class="me-lavis" src="${M.aqURL('lagune')}" alt="" style="right:-20%;bottom:-40%;width:70%;height:110%;opacity:.55">
+  <div class="net" style="position:absolute;inset:0;perspective:3400px;perspective-origin:50% 40%">
+    <div class="me-nappe" style="left:${W / 2 - 3000}px;top:${H / 2 - 1500}px;transform:rotateX(52deg) rotateZ(-34deg) scale(${+(q.get('k') || 0.56)})">${ORDRE.map(cell).join('')}</div></div>`;
+M.typo();
+window.pret = Promise.all([...document.images].map((i) => (i.decode ? i.decode().catch(() => 0) : 0)));
+</script>
+</body></html>

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><title>07 · Typographie</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="pl.css">
+<style>
+  /* 07 · Typographie : un contraste d'échelle. La signature de l'outil en Nunito noire, énorme, coupée par le bord ;
+     tout le reste (graisses, tableau de montants, code analytique) à la taille où on le lit dans l'outil.
+     Deux filets de spécimen (ligne de base, hauteur d'x) traversent le mot. */
+  .plate{height:1340px}
+  .pl-mot{position:absolute;left:58px;top:92px;margin:0;font-size:472px;color:var(--vermillon);white-space:nowrap}
+  .pl-fil{position:absolute;left:36px;right:36px;height:1px;background:var(--encre);opacity:.42}
+  .pl-fl{position:absolute;right:36px;transform:translateY(-22px)}
+  .pl-fl.pl-sous{transform:translateY(8px)}
+  .pl-spec{position:absolute;left:567px;top:66px;opacity:.7}
+  .pl-gr{position:absolute;left:1078px;top:540px;width:238px}
+  .pl-gr .pl-m{opacity:.7}
+  .pl-gr ul{list-style:none;margin:9px 0 0;padding:0;border-top:1px solid var(--filet)}
+  .pl-gr li{display:flex;justify-content:space-between;align-items:baseline;padding:5px 0 4px;border-bottom:1px solid var(--filet);font-family:var(--titre);font-size:19px;letter-spacing:-.02em;line-height:1.1}
+  .pl-gr li i{font-style:normal;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;font-weight:500;opacity:.62}
+  .pl-gr li.pl-on i{opacity:1;color:var(--encre)}
+  .pl-gr li.pl-on i::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--vermillon);margin-right:8px}
+  .pl-bas{position:absolute;left:84px;right:84px;top:1004px;display:grid;grid-template-columns:400px 1fr;gap:83px}
+  .pl-bas h3{margin:0 0 14px}
+  .pl-txt{margin:0;font-size:17px;line-height:1.5;max-width:390px}
+  .pl-code{margin-top:22px;display:flex;align-items:baseline;gap:16px}
+  .pl-code b{font-family:var(--mono);font-weight:500;font-size:34px;letter-spacing:-.01em;line-height:1}
+  .pl-t{width:100%;border-collapse:collapse;font-size:14px;table-layout:fixed}
+  .pl-t th{padding:0 0 9px;text-align:left;font-family:var(--mono);font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;font-weight:500;opacity:.62;border-bottom:1px solid rgba(42,30,23,.3)}
+  .pl-t td{padding:8px 0 7px;border-bottom:1px solid var(--filet);vertical-align:baseline;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .pl-t .pl-d{text-align:right}
+  .pl-t .montant{font-size:16px}
+  .pl-t .code{font-size:11px;height:21px}
+</style></head>
+<body>
+<div class="plate grain" id="p"></div>
+<script src="../brand/marque.js"></script>
+<script>
+const M = Marque, C = M.COULEURS, D = M.DONNEES;
+/* la ligne de base et la hauteur d'x de la seconde ligne, mesurées sur la police chargée */
+const corps = 472, haut = 92;
+const G = [['Regular', 400], ['Medium', 500], ['SemiBold', 600], ['Bold', 700], ['ExtraBold', 800], ['Black', 900]];
+const lignes = D.projets.slice(0, 5).map((p) => `<tr><td>${M.code(p.code, p.alerte ? 'vermillon' : 'lagune')}</td><td>${p.titre}</td><td class="pl-d">${M.montant(p.total)}</td><td class="pl-d" style="color:${C.lagune}">${M.montant(p.execute)}</td><td class="pl-d">${M.montant(p.total - p.execute)}</td></tr>`).join('');
+
+document.getElementById('p').innerHTML = M.entete() +
+  `<div class="pl-spec pl-m net">Nunito Black 900 · interlettrage −0,05 em · interligne 0,86</div>
+   <p class="pl-mot t-geant" data-voulu id="mot">à l’euro<br><span id="l2">près</span></p>
+   <i class="pl-fil net" id="fx"></i><span class="pl-fl pl-m net" id="tx">Hauteur d’x</span>
+   <i class="pl-fil net" id="fb"></i><span class="pl-fl pl-sous pl-m net" id="tb">Ligne de base</span>
+   <div class="pl-gr net"><div class="pl-m">Nunito · titres et chiffres</div><ul>${G.map(([n, g]) => `<li class="${g >= 800 ? 'pl-on' : ''}" style="font-weight:${g}">${n}<i>${g}</i></li>`).join('')}</ul></div>
+   <div class="pl-bas net">
+     <div><h3 class="pl-m">Nunito Sans · texte et interface</h3>
+       <p class="pl-txt">Prorata temporis, budgets acquis et restants, répartition des coûts salariaux : les calculs se font seuls, les montants exécutés viennent de Sage.</p>
+       <h3 class="pl-m" style="margin-top:30px">Geist Mono · codes et étiquettes</h3>
+       <div class="pl-code"><b>ECOS-MR-22</b><span class="pl-k">${D.extraction.court}</span></div></div>
+     <div><h3 class="pl-m">Chiffres tabulaires · les montants s’alignent à l’euro</h3>
+       <table class="pl-t chiffres"><colgroup><col style="width:74px"><col><col style="width:128px"><col style="width:128px"><col style="width:128px"></colgroup>
+         <thead><tr><th>Code</th><th>Projet</th><th class="pl-d">Budget total</th><th class="pl-d">Exécuté</th><th class="pl-d">Reste</th></tr></thead><tbody>${lignes}</tbody></table></div>
+   </div>` +
+  M.foot('07 · Typographie', 'GRDR · Djongoma');
+
+/* les filets de spécimen se posent sur le mot réel : une sonde sans hauteur donne la ligne de base, un x donne la hauteur d'x */
+window.pret = document.fonts.ready.then(() => { const P = document.getElementById('p').getBoundingClientRect(), l2 = document.getElementById('l2');
+  const sonde = document.createElement('span'); sonde.style.cssText = 'display:inline-block;width:0;height:0;vertical-align:baseline'; l2.appendChild(sonde);
+  const base = sonde.getBoundingClientRect().top - P.top; sonde.remove();
+  const cv = document.createElement('canvas').getContext('2d'); cv.font = `900 ${corps}px Nunito`; const hx = cv.measureText('x').actualBoundingBoxAscent;
+  const pose = (id, y) => { document.getElementById('f' + id).style.top = Math.round(y) + 'px'; document.getElementById('t' + id).style.top = Math.round(y) + 'px'; };
+  pose('b', base); pose('x', base - hx); document.querySelector('.pl-gr').style.top = Math.round(base - hx + 16) + 'px'; });
+</script>
+</body></html>

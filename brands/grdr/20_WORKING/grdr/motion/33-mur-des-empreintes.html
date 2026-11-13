@@ -1,0 +1,68 @@
+<!doctype html><meta charset="utf-8"><title>33 · Le mur des empreintes</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="motion.css">
+<script src="../brand/marque.js"></script><script src="lib.js"></script><script src="scenes.js"></script>
+<style>
+  .mv33-g{position:absolute;left:128px;top:0;width:560px;height:1080px}
+  .mv33-etq{position:absolute;left:2px;top:128px}
+  .mv33-phrase{position:absolute;left:0;top:392px;font-size:54px;line-height:1.02;color:var(--blanc);white-space:nowrap}
+  .mv33-phrase>span{display:block;color:var(--miel);margin-top:.2em}
+  .mv33-leg{position:absolute;left:2px;bottom:96px;display:grid;gap:16px}
+  .mv33-leg>div{display:flex;align-items:center;gap:16px;font-family:var(--mono);font-size:14.5px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;line-height:1.35;color:rgba(255,251,246,.72)}
+  .mv33-leg u{flex:none;width:34px;height:7px;border-radius:4px;background:var(--uc)}
+  .mv33-mur{position:absolute}
+  .mv33-mur>i{position:absolute;background:rgba(255,251,246,.1)}
+  .mv33-c{position:absolute;display:grid;justify-items:center;align-content:start}
+  .mv33-e svg{display:block;width:100%;height:100%}
+  .mv33-l{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:14px;height:30px}
+  .mv33-l .code{font-size:14.5px}
+  .mv33-l b{font-family:var(--titre);font-weight:800;font-size:27px;letter-spacing:-.03em;line-height:1;color:var(--miel);width:76px;text-align:left;font-variant-numeric:tabular-nums lining-nums;white-space:nowrap}
+</style>
+<body><div class="m-stage mv-scene mv-nuit grain nuit" id="s"></div>
+<script>
+/* 33 · Le mur des empreintes : les neuf projets en grille 3 × 3. Boucle de 8 s.
+   Le mur est complet au raccord (immobile de 6,3 s à 8 s puis de 0 à 1 s : la première et la dernière image sont identiques).
+   Entre les deux, chaque empreinte se retire vers son pied (la boucle la plus récente d'abord), puis se retrace depuis le pied
+   (l'année la plus ancienne d'abord) et tient ; le tout en décalé, par diagonales. Le taux monte et descend avec le tracé.
+   node tools/record.mjs motion/33-mur-des-empreintes.html out/motion/33-mur-des-empreintes.mp4 --dur 8 --apercu */
+const A = Marque, C = A.COULEURS, D = A.DONNEES, s = document.getElementById('s');
+const PISTE = 'rgba(207,235,221,.13)', P = D.projets, CADRE = 5;
+const MX = 700, MY = 96, ML = 1920 - 128 - MX, MH = 1080 - 192, CL = ML / 3, CH = MH / 3;     /* le mur : place, taille, cellule */
+const box = A.empreinteCadre(CADRE), EH = 214, EW = EH * box[2] / box[3];
+
+s.innerHTML = A.aquarelle('nuit', { cls: 'm-fill' }) + `<div class="mv-voile"></div>
+  <div class="mv33-g m-net">
+    <div class="mv-leg mv-doux mv33-etq">Le mur des empreintes</div>
+    <div class="mv-phrase mv33-phrase">Neuf projets,<br>neuf empreintes.<span>Aucune n’est pareille.</span></div>
+    <div class="mv33-leg">
+      <div><u style="--uc:${C.menthe}"></u>Une boucle par année,<br>tracée jusqu’à l’exécuté</div>
+      <div><u style="--uc:${C.miel}"></u>L’année en cours</div>
+      <div><u style="--uc:rgba(207,235,221,.24)"></u>Ce qui reste à exécuter</div>
+    </div>
+  </div>
+  <div class="mv33-mur m-net" style="left:${MX}px;top:${MY}px;width:${ML}px;height:${MH}px">
+    <i style="left:${CL}px;top:0;width:1px;height:100%"></i><i style="left:${2 * CL}px;top:0;width:1px;height:100%"></i>
+    <i style="left:0;top:${CH}px;width:100%;height:1px"></i><i style="left:0;top:${2 * CH}px;width:100%;height:1px"></i>` +
+    P.map((p, i) => `<div class="mv33-c" style="left:${(i % 3) * CL}px;top:${Math.floor(i / 3) * CH + 14}px;width:${CL}px"><div class="mv33-e" style="width:${EW.toFixed(1)}px;height:${EH}px"></div><div class="mv33-l">${A.code(p.code, C.menthe)}<b></b></div></div>`).join('') +
+  `</div>`;
+A.typo(s);
+
+const cellules = [...s.querySelectorAll('.mv33-c')].map((el, i) => { const k = A.cernesDe(P[i]), poids = k.cernes.map((v, j) => v * k.mois[j]);
+  return { emp: el.querySelector('.mv33-e'), taux: el.querySelector('b'), k, poids, somme: poids.reduce((a, b) => a + b, 0), diag: (i % 3) + Math.floor(i / 3), p: P[i], cle: '' }; });
+
+const DUREE = 8, RETRAIT = 1.0, TRACE = 3.6;
+window.seek = (t) => {
+  t = ((t % DUREE) + DUREE) % DUREE;
+  for (const c of cellules) { const n = c.k.cernes.length;
+    /* avancement de chaque boucle : 1 (tracée), puis elle se retire, puis elle se retrace */
+    const e = c.k.cernes.map((_, j) => (t < 3.3
+      ? 1 - M.tw(t, RETRAIT + c.diag * 0.14 + (n - 1 - j) * 0.12, 0.9, M.cubicInOut)
+      : M.tw(t, TRACE + c.diag * 0.2 + j * 0.2, 1.1, M.quartOut)));
+    const cernes = c.k.cernes.map((v, j) => MV.arr(v * e[j], 4)), cle = cernes.join(' ');
+    if (cle !== c.cle) { c.cle = cle;
+      c.emp.innerHTML = A.empreinte({ cernes, c: 'menthe', piste: PISTE, actif: c.k.actif, cActif: 'miel', cadre: CADRE });
+      const part = c.somme ? c.poids.reduce((a, w, j) => a + w * e[j], 0) / c.somme : 0;
+      c.taux.textContent = A.pct(c.p.taux * part); } }
+};
+window.pret = MV.pret(s);
+seek(0);
+</script></body>

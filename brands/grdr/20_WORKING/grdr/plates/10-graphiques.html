@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><title>10 · Les graphiques</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="../brand/ecrans.css"><link rel="stylesheet" href="pl.css">
+<style>
+  /* 10 · Les graphiques : l'écran et le détail. En haut, le tableau de bord incliné qui sort du cadre (la courbe à échos
+     dans son contexte) et, à côté, la fin de la même courbe agrandie, reliée à l'écran par un filet. En travers, sur la nuit,
+     une seule jauge agrandie jusqu'à tenir toute la largeur, avec son repère. En bas, les deux autres tracés.
+     Chaque graphique porte une ligne qui dit sa règle. Le bandeau ne garde que ses deux mentions de droite : l'écran
+     occupe le coin gauche. L'écran est une image : il est marqué data-voulu (ses textes sont coupés par le cadre). */
+  .plate{height:1322px}
+  .pl-scene{position:absolute;left:-150px;top:-378px;width:1440px;transform-origin:0 633px;transform:perspective(3200px) rotateY(11deg) rotateX(3deg) rotateZ(-2.2deg) scale(.58);z-index:56}
+  /* l'écran est dessiné en vraie grandeur puis réduit par la transformation : il reste net une fois incliné */
+  .pl-scene .dj-verre{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(255,253,249,.86)}
+  .pl-tete{position:absolute;left:800px;top:112px;width:516px}
+  .pl-tete h1{margin:18px 0 0;font-size:54px;line-height:.98}
+  /* une règle : son numéro, sa phrase */
+  .pl-r{display:grid;grid-template-columns:30px 1fr;align-items:baseline;font-family:var(--titre);font-weight:700;font-size:16.5px;line-height:1.3;letter-spacing:-.012em;margin:0}
+  .pl-r i{font-style:normal;font-family:var(--mono);font-weight:600;font-size:11px;letter-spacing:.04em;color:var(--lagune)}
+  .pl-r b{font-weight:800}
+  .pl-r1{position:absolute;left:800px;top:610px;width:516px}
+  /* le détail agrandi : la fin de la courbe, sortie de l'écran */
+  .pl-frag{position:absolute;left:800px;top:286px;width:516px;height:300px;border-radius:26px;overflow:hidden;background:#FFFDF9;
+    box-shadow:0 0 0 1px rgba(42,30,23,.08),0 24px 40px -18px rgba(90,45,15,.35),0 70px 90px -40px rgba(90,45,15,.4)}
+  .pl-frag svg{position:absolute;left:-322px;top:-196px}
+  .pl-frag .pl-m{position:absolute;left:22px;top:18px;opacity:.62}
+  /* la bande de nuit et la jauge */
+  .pl-nuit{position:absolute;left:0;right:0;top:690px;height:246px;background:var(--nuit);color:var(--blanc)}
+  .pl-nuit .pl-r{position:absolute;left:84px;top:34px;width:900px}
+  .pl-nuit .pl-r i{color:var(--miel)}
+  .pl-qui{position:absolute;right:84px;top:32px;display:flex;align-items:center;gap:12px;font-family:var(--titre);font-weight:700;font-size:15px}
+  .pl-qui .code{background:rgba(239,223,118,.16);color:var(--miel);font-size:11px;height:22px}
+  .pl-j{position:absolute;left:84px;top:104px}
+  .pl-jl{position:absolute;top:190px;padding-left:10px;color:rgba(255,251,246,.82)}
+  .pl-jl::before{content:"";position:absolute;left:0;bottom:2px;height:34px;border-left:1px solid rgba(255,251,246,.7)}
+  .pl-jl.pl-h{top:80px}
+  .pl-jl.pl-h::before{bottom:auto;top:2px;height:30px;border-color:var(--miel)}
+  .pl-jn{position:absolute;top:108px;padding-left:22px;font-family:var(--titre);font-weight:900;font-size:56px;letter-spacing:-.05em;line-height:1;color:var(--miel)}
+  .pl-jn small{font-size:.5em;font-weight:800;letter-spacing:0;margin-left:.08em}
+  /* en bas : les deux autres tracés */
+  .pl-bas{position:absolute;left:84px;right:84px;top:988px;display:grid;grid-template-columns:483px 1fr;gap:136px}
+  .pl-bas .pl-r{margin-bottom:22px}
+  .pl-ba{display:flex;align-items:center;gap:40px}
+  .pl-bl{display:grid;gap:9px;font-size:13.5px;font-weight:600;flex:1}
+  .pl-bl div{display:grid;grid-template-columns:12px 1fr auto;gap:10px;align-items:center;padding-bottom:8px;border-bottom:1px solid var(--filet)}
+  .pl-bl u{width:12px;height:12px;border-radius:50%;background:var(--bc)}
+  .pl-bl b{font-family:var(--titre);font-weight:800;font-size:15px;letter-spacing:-.02em}
+</style></head>
+<body>
+<div class="plate grain" id="p"></div>
+<script src="../brand/marque.js"></script><script src="../brand/carte.js"></script><script src="../brand/ecrans.js"></script>
+<script>
+const M = Marque, C = M.COULEURS, D = M.DONNEES, S = M.app;
+/* la jauge agrandie : un projet à jour (ECSI), son exécuté et le prorata attendu au 16 juin */
+const pj = D.projets.find((q) => q.code === 'ECSI'), W = 1232, EP = 56, v = pj.taux, rp = S.ecoule(pj);
+const xj = (t) => 84 + EP / 2 + (W - EP) * t;
+/* l'empreinte des bailleurs : une boucle par type de bailleur, la plus grande part à l'extérieur */
+const BC = ['lagune', 'ocre', 'peche', 'corail', 'sable'], B = D.bailleurs;
+
+const E = M.ENTETE, CP = D.cumulPrevu, CE = D.cumulExecute;
+document.getElementById('p').innerHTML = M.entete(['', '', E[2], E[3]]) +
+  `<div class="pl-scene" data-voulu>${M.browser(S.tableauDeBord({ h: 1330, id: 'plc' }), 1, { h: 1330 })}</div>
+   <svg class="pl-svg net" width="1400" height="1322" viewBox="0 0 1400 1322" id="lien"></svg>
+   <div class="pl-frag net">${M.courbe({ w: 1290, h: 640, labels: [], max: 4400000, marge: [20, 20, 40, 80], grille: 4, unite: () => '', series: [{ v: CP, c: 'ocre', ep: 5, tirets: '3 17' }, { v: CE, c: 'lagune', ep: 9.5, echos: 9, pasEcho: 25 }], point: 1, id: 'pld' })}<span class="pl-m">Détail · la fin du tracé, en juin</span></div>
+   <div class="pl-tete net"><div class="pl-m">10 · Les graphiques</div><h1 class="t-titre">Le trait du symbole, appliqué aux chiffres.</h1></div>
+   <p class="pl-r pl-r1 net"><i>1</i><span><b>La courbe à échos.</b> Sous la courbe, des traits parallèles : les cernes, à plat.</span></p>
+   <div class="pl-nuit grain nuit">
+     <p class="pl-r net"><i>2</i><span><b>La jauge à repère.</b> Le trait dit ce qui est exécuté ; le repère, ce qu’on attend au prorata.</span></p>
+     <div class="pl-qui net">${M.code(pj.code)}${pj.titre}</div>
+     <div class="pl-j">${M.jauge({ v, repere: rp, w: W, ep: EP, c: 'emeraude', piste: '#1D4A47', cRepere: 'miel' })}</div>
+     <div class="pl-jn net" style="left:${Math.round(xj(v) + EP / 2)}px">${Math.round(v * 100)}<small>%</small></div>
+     <div class="pl-jl pl-h pl-m net" style="left:${Math.round(xj(rp))}px">Le repère : le prorata attendu</div>
+     <div class="pl-jl pl-m net" style="left:${Math.round(xj(v))}px">Le trait : ce qui est exécuté</div>
+   </div>
+   <div class="pl-bas net">
+     <div><p class="pl-r"><i>3</i><span><b>Les barres par année.</b> Le prévu en piste, l’exécuté en trait, l’année en cours en vermillon.</span></p>
+       ${M.annees({ w: 483, h: 216, annees: S.FICHE.annees, ep: 26 })}</div>
+     <div><p class="pl-r"><i>4</i><span><b>L’empreinte des bailleurs.</b> Une boucle par bailleur, longue de sa part.</span></p>
+       <div class="pl-ba">${M.empreinte({ cernes: B.map((b) => b.part / B[0].part).reverse(), c: BC.map((k) => C[k]).reverse(), piste: 'rgba(42,30,23,.07)', taille: 214 })}
+         <div class="pl-bl">${B.map((b, i) => `<div><u style="--bc:${C[BC[i]]}"></u>${b.nom}<b>${M.pct(b.part)}</b></div>`).join('')}</div></div></div>
+   </div>` +
+  M.foot('10 · Les graphiques', 'GRDR · Djongoma');
+/* le filet qui relie le détail au bout de la courbe, dans l'écran incliné */
+{ const P = document.getElementById('p').getBoundingClientRect(), cs = document.getElementById('plcc1').closest('svg').querySelectorAll('circle'), q = cs[cs.length - 1].getBoundingClientRect();
+  const x = q.left + q.width / 2 - P.left, y = q.top + q.height / 2 - P.top;
+  document.getElementById('lien').innerHTML = `<path d="M${x.toFixed(1)},${y.toFixed(1)} L800,436" stroke="${C.encre}" stroke-opacity=".55" stroke-width="1" fill="none"/><circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="9" fill="none" stroke="${C.encre}" stroke-width="1.2"/>`; }
+window.pret = Promise.all([...document.images].map((i) => (i.decode ? i.decode().catch(() => 0) : 0)));
+</script>
+</body></html>

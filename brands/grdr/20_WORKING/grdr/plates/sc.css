@@ -1,0 +1,21 @@
+/* Scènes : les pièces maîtresses et les mises en situation rendues en code (préfixe sc-).
+   Une scène pose un ou plusieurs écrans de l'outil dans un décor fait du kit (papier, aquarelle, filigrane), avec une
+   vraie perspective (transformations 3D) et des ombres portées en plusieurs couches. */
+.sc{position:relative;overflow:hidden;background:var(--papier);color:var(--encre)}
+.sc-fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.sc-voile{position:absolute;inset:0}
+/* Une fenêtre de l'outil, sans barre de navigateur : coins arrondis, liseré, ombre longue */
+.sc-fen{position:absolute;border-radius:calc(22px * var(--z,1));overflow:hidden;background:#FBF5EC;
+  box-shadow:0 0 0 1px rgba(42,30,23,.10),0 2px 4px rgba(90,45,15,.08),0 30px 50px -20px rgba(90,45,15,.28),0 90px 120px -40px rgba(90,45,15,.38)}
+.sc-fen>div{zoom:var(--z,1);width:1440px}
+.sc-fen.nuit{box-shadow:0 0 0 1px rgba(255,251,246,.10),0 30px 50px -20px rgba(0,0,0,.5),0 90px 120px -40px rgba(0,0,0,.6)}
+/* Un fragment d'interface sorti de l'écran (une carte agrandie) */
+.sc-frag{position:absolute;border-radius:calc(24px * var(--z,1));
+  box-shadow:0 0 0 1px rgba(42,30,23,.08),0 24px 40px -18px rgba(90,45,15,.35),0 70px 90px -40px rgba(90,45,15,.4)}
+.sc-frag>*{zoom:var(--z,1)}
+/* Plan incliné : le contenu est posé sur une table vue de trois quarts */
+.sc-plan{position:absolute;transform-style:preserve-3d;transform-origin:50% 50%}
+.sc-ombre{position:absolute;border-radius:40px;background:rgba(90,45,15,.5);filter:blur(60px)}
+.sc-legende{position:absolute;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:500}
+/* Le verre dépoli se rend mal dans un plan incliné (capture) : on le remplace par un blanc presque opaque */
+.sc-plan .dj-verre{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(255,253,249,.86)}

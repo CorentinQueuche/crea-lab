@@ -1,9 +1,9 @@
 {
-  "images": 1296,
-  "pdf": 5,
-  "video": 53,
-  "svg": 88,
-  "documentation_links": 24,
+  "images": 1564,
+  "pdf": 6,
+  "video": 59,
+  "svg": 107,
+  "documentation_links": 30,
   "errors": [],
   "ffprobe_available": true
 }

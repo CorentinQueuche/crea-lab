@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Djongoma, le prototype de l’outil</title>
+<meta name="description" content="Le prototype navigable de Djongoma, l’outil de gestion budgétaire du GRDR. Données de démonstration.">
+<meta name="robots" content="noindex">
+<link rel="icon" id="favicon" type="image/svg+xml">
+<link rel="stylesheet" href="assets/marque.css">
+<link rel="stylesheet" href="assets/ecrans.css">
+<link rel="stylesheet" href="assets/ecrans-b.css">
+<link rel="stylesheet" href="assets/ecrans-c.css">
+<link rel="stylesheet" href="assets/guide.css">
+<!-- PROTOTYPE NAVIGABLE : GRDR · Djongoma (site/prototype.html).
+     L'outil en plein écran : chaque écran est rendu par sa fonction de Marque.app (brand/ecrans.js et ses compléments),
+     à 1440 px de large, puis mis à l'échelle de la fenêtre. Rien n'est redessiné ici.
+     Navigation : un clic dans la barre latérale, sur une ligne de projet, sur « Voir les 12 projets », sur les boutons
+     principaux ; le sélecteur du haut atteint tous les écrans, connexion et téléphone compris. L'adresse garde l'écran
+     (prototype.html#rh). Seuls les écrans dont la fonction existe sont proposés.
+     window.Prototype = { aller(nom), courant(), ecrans } sert aux contrôles. -->
+<script>window.MarquePhotos = new URL('photos/', document.baseURI).href;</script>
+<script src="assets/marque.js"></script>
+<script src="assets/carte.js"></script>
+<script src="assets/ecrans.js"></script>
+<script src="assets/ecrans-b.js"></script>
+<script src="assets/ecrans-c.js"></script>
+</head>
+<body class="gd-proto">
+<nav class="gd-proto-b" aria-label="Prototype">
+  <a href="index.html">Le guide</a>
+  <select id="proto-ecran" aria-label="Écran affiché"></select>
+</nav>
+<main class="gd-proto-s" id="proto" aria-live="polite"></main>
+<script>
+(function () {
+  'use strict';
+  const A = window.Marque, C = A.COULEURS, APP = A.app || {}, $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const existe = (n) => typeof APP[n] === 'function';
+  const BUREAU = [['tableauDeBord', 'Tableau de bord'], ['projets', 'Projets'], ['projetsGrille', 'Projets en empreintes'], ['ficheProjet', 'Fiche projet'], ['nouveauProjet', 'Nouveau projet'], ['rh', 'Ressources humaines'],
+    ['affectation', 'Affectation'], ['sage', 'Extraction Sage'], ['stats', 'Statistiques'], ['journal', 'Journal'], ['admin', 'Administration'], ['connexion', 'Connexion']].filter(([n]) => existe(n));
+  const TEL = [['mAccueil', 'Accueil'], ['mProjet', 'Projet'], ['mAlerte', 'Alerte']].filter(([n]) => existe(n));
+  const TITRES = Object.fromEntries([...BUREAU, ...TEL]);
+  const estTel = (n) => TEL.some(([k]) => k === n);
+  const proto = $('#proto'), sel = $('#proto-ecran');
+  $('#favicon').href = 'data:image/svg+xml,' + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="${C.vermillon}"/>${A.empreinte({ cernes: [1, 1, 1], c: 'blanc', piste: null, attrs: 'x="15" y="9" width="34" height="46"' })}</svg>`);
+  sel.innerHTML = (BUREAU.length ? `<optgroup label="Bureau">${BUREAU.map(([n, t]) => `<option value="${n}">${t}</option>`).join('')}</optgroup>` : '') +
+    (TEL.length ? `<optgroup label="Téléphone">${TEL.map(([n, t]) => `<option value="${n}">${t}</option>`).join('')}</optgroup>` : '');
+  if (!BUREAU.length && !TEL.length) { proto.innerHTML = '<p style="padding:80px 24px;text-align:center">Les écrans de l’outil ne sont pas encore livrés.</p>'; return; }
+
+  /* Où mène chaque élément cliquable : le libellé affiché, associé à une fonction de Marque.app qui existe */
+  const NAV = { 'Tableau de bord': 'tableauDeBord', 'Projets': 'projets', 'Ressources humaines': 'rh', 'Extractions Sage': 'sage', 'Statistiques': 'stats', 'Journal': 'journal', 'Administration': 'admin' };
+  const ONGLETS = { 'Accueil': 'mAccueil', 'Projets': 'mProjet', 'Alertes': 'mAlerte' };
+  const texte = (el) => el.textContent.replace(/\s+/g, ' ').trim();
+  const premier = (...noms) => noms.find(existe) || null;
+  let courant = null;
+  const viser = (el, nom) => { if (!el || !nom || !existe(nom)) return; el.dataset.va = nom; el.setAttribute('role', 'link'); el.tabIndex = 0; el.setAttribute('aria-label', `${texte(el).slice(0, 60)} : ouvrir ${TITRES[nom] || nom}`); };
+  const baliser = () => {
+    $$('.dj-nav a', proto).forEach((a) => viser(a, NAV[texte(a).replace(/\s*\d+$/, '')]));
+    $$('.dj-lat-logo, .dj-prod', proto).forEach((el) => viser(el, 'tableauDeBord'));
+    $$('.dj-moi', proto).forEach((el) => viser(el, 'connexion'));
+    $$('.dj-fil span', proto).forEach((el) => { if (/^Projets$/.test(texte(el))) viser(el, 'projets'); });
+    $$('.dj-lien', proto).forEach((el) => { const t = texte(el); viser(el, /projets/i.test(t) ? premier('projets') : /comptes/i.test(t) ? 'admin' : /^Tout voir/.test(t) ? 'journal' : null); });
+    $$('tr', proto).forEach((tr) => { if ($('.dj-proj, .djb-pj', tr)) viser(tr, 'ficheProjet'); });
+    $$('.djb-tu', proto).forEach((el) => viser(el, 'ficheProjet'));
+    $$('.djb-seg span', proto).forEach((el) => { const t = texte(el); viser(el, /^Liste/.test(t) ? 'projets' : /^Empreintes/.test(t) ? 'projetsGrille' : null); });
+    $$('.dj-al > div', proto).forEach((el) => { const t = texte(el); viser(el, /personnes/.test(t) ? 'rh' : /extraction/.test(t) ? 'sage' : 'ficheProjet'); });
+    if (courant === 'ficheProjet') $$('.dj-avs', proto).forEach((el) => viser(el, 'affectation'));
+    $$('.dj-btn', proto).forEach((el) => { const t = texte(el);
+      viser(el, t === 'Nouveau projet' ? 'nouveauProjet' : t === 'Créer le projet' ? premier('projets', 'tableauDeBord') : t === 'Se connecter' ? 'tableauDeBord' : /^Extraire/.test(t) ? 'sage'
+        : t === 'Mettre à jour les exécutés' || t === 'Enregistrer' ? 'ficheProjet' : t === 'Annuler' ? (courant === 'nouveauProjet' ? premier('projets', 'tableauDeBord') : 'ficheProjet') : t === 'Ajouter une personne' ? null : null); });
+    $$('.djm-tab span', proto).forEach((el) => viser(el, ONGLETS[texte(el)]));
+  };
+  const ajuster = () => { const el = proto.firstElementChild; if (!el || estTel(courant)) return; el.style.zoom = document.documentElement.clientWidth / 1440; };
+  const rendre = (nom) => { courant = nom; sel.value = nom; proto.dataset.ecran = nom;
+    document.title = `${TITRES[nom]} · ${A.PRODUIT}, le prototype`;
+    if (estTel(nom)) { const k = Math.max(0.4, Math.min(1, (innerHeight - 110) / 868, (document.documentElement.clientWidth - 24) / 414));
+      proto.className = 'gd-proto-s gd-mob'; proto.innerHTML = A.aquarelle('brume', { cls: 'grain', style: 'position:absolute;inset:0' }) + `<div class="net">${A.phone(APP[nom]({}), +k.toFixed(3))}</div>`; }
+    else { proto.className = 'gd-proto-s'; let html; try { html = APP[nom]({ id: 'gdp' }); } catch (e) { html = '<p style="padding:80px 24px">Cet écran n’a pas pu être rendu.</p>'; }
+      proto.innerHTML = `<div>${html}</div>`; ajuster(); }
+    A.typo(proto); baliser(); };
+  const aller = (nom) => { if (!existe(nom)) return; if (location.hash.slice(1) === nom) rendre(nom); else location.hash = nom; window.scrollTo(0, 0); };
+  proto.addEventListener('click', (e) => { const el = e.target.closest('[data-va]'); if (el && proto.contains(el)) { e.preventDefault(); aller(el.dataset.va); } });
+  proto.addEventListener('keydown', (e) => { if (e.key !== 'Enter' && e.key !== ' ') return; const el = e.target.closest('[data-va]'); if (el) { e.preventDefault(); aller(el.dataset.va); } });
+  sel.addEventListener('change', () => aller(sel.value));
+  window.addEventListener('hashchange', () => { const n = location.hash.slice(1); if (existe(n) && TITRES[n]) rendre(n); });
+  window.addEventListener('resize', () => { if (estTel(courant)) rendre(courant); else ajuster(); });
+  const depart = location.hash.slice(1);
+  rendre(existe(depart) && TITRES[depart] ? depart : (BUREAU[0] || TEL[0])[0]);
+  window.Prototype = { aller, courant: () => courant, ecrans: Object.keys(TITRES) };
+  window.pret = Promise.all([...document.images].map((i) => (i.decode ? i.decode().catch(() => 0) : 0)));
+})();
+</script>
+</body>
+</html>

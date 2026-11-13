@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><title>Scène : un écran de l'outil posé en perspective</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="../brand/ecrans.css"><link rel="stylesheet" href="../brand/ecrans-b.css"><link rel="stylesheet" href="../brand/ecrans-c.css"><link rel="stylesheet" href="sc.css">
+<style>
+  .sn-lavis{position:absolute;-webkit-mask-image:radial-gradient(closest-side,#000 48%,transparent 100%);mask-image:radial-gradient(closest-side,#000 48%,transparent 100%)}
+</style></head>
+<body>
+<!-- Une scène paramétrable : un écran de l'outil posé sur un plan incliné, dans un décor du kit.
+     plates/_scene.html?e=tableauDeBord&W=1400&H=1050&fond=papier|nuit&lavis=aube&rx=48&rz=-30&x=250&y=-40&k=1.02&he=1500[&fil=bas|haut|non][&e2=mAccueil&x2=..&y2=..&k2=..]
+     e : fonction de Marque.app · W, H : taille de la planche · rx, rz : inclinaison · x, y : position du plan · k : échelle
+     he : hauteur de la fenêtre (px d'écran) · e2 : un téléphone posé sur le même plan (x2, y2 dans le repère du plan, k2 son échelle) -->
+<div class="plate sc grain" id="p"></div>
+<script src="../brand/marque.js"></script><script src="../brand/carte.js"></script><script src="../brand/ecrans.js"></script><script src="../brand/ecrans-b.js"></script><script src="../brand/ecrans-c.js"></script>
+<script>
+const M = Marque, q = new URLSearchParams(location.search), g = (k, d) => (q.get(k) == null ? d : (isNaN(+q.get(k)) ? q.get(k) : +q.get(k)));
+const W = g('W', 1400), H = g('H', 1050), fond = g('fond', 'papier'), nuit = fond === 'nuit', P = document.getElementById('p');
+P.style.width = W + 'px'; P.style.height = H + 'px'; P.style.background = nuit ? M.COULEURS.nuit : M.COULEURS.papier; if (nuit) P.classList.add('nuit');
+const lavis = g('lavis', nuit ? 'nuit' : 'aube'), fil = g('fil', 'bas'), e = g('e', 'tableauDeBord'), he = g('he', 1500);
+let h = nuit ? `<img class="sc-fond" src="${M.aqURL('nuit')}" alt="" style="opacity:.6">`
+  : `<img class="sn-lavis" src="${M.aqURL(lavis)}" alt="" style="left:-14%;top:-20%;width:78%;height:90%;opacity:.95"><img class="sn-lavis" src="${M.aqURL('terre')}" alt="" style="right:-24%;bottom:-36%;width:70%;height:82%;opacity:.7">`;
+if (fil !== 'non') h += M.filigrane({ c: nuit ? 'rgba(255,251,246,.07)' : 'blanc', op: nuit ? 1 : 0.7, style: fil === 'haut' ? `right:-${W * 0.1}px;top:-${H * 0.2}px;width:${H * 0.72}px;height:${H * 0.97}px` : `left:-${W * 0.12}px;bottom:-${H * 0.32}px;width:${H * 0.72}px;height:${H * 0.97}px` });
+const e2 = q.get('e2');
+h += `<div class="net" style="position:absolute;inset:0;perspective:${g('persp', 2600)}px;perspective-origin:50% 30%">
+  <div class="sc-plan" style="left:${g('x', 250)}px;top:${g('y', -40)}px;width:1440px;transform:rotateX(${g('rx', 48)}deg) rotateZ(${g('rz', -30)}deg) scale(${g('k', 1.02)})">
+    <div class="sc-ombre" style="left:60px;top:120px;width:1440px;height:${he - 100}px;transform:translateZ(-90px);opacity:${nuit ? 0.9 : 0.55};${nuit ? 'background:rgba(0,0,0,.7)' : ''}"></div>
+    <div class="sc-fen${nuit ? ' nuit' : ''}" style="position:relative;--z:1;width:1440px;height:${he}px"><div>${M.app[e]({})}</div></div>
+    ${e2 ? `<div style="position:absolute;left:${g('x2', 1180)}px;top:${g('y2', 520)}px;transform:translateZ(${g('z2', 70)}px) scale(${g('k2', 1.15)});transform-origin:0 0"><div class="sc-ombre" style="left:30px;top:60px;width:414px;height:868px;transform:translateZ(-60px);opacity:.6"></div>${M.phone(M.app[e2]({}), 1)}</div>` : ''}
+  </div></div>`;
+P.innerHTML = h; M.typo();
+window.pret = Promise.all([...document.images].map((i) => (i.decode ? i.decode().catch(() => 0) : 0)));
+</script>
+</body></html>

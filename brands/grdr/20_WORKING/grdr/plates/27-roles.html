@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><title>27 · Chacun son périmètre</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="../brand/ecrans.css"><link rel="stylesheet" href="../brand/ecrans-b.css"><link rel="stylesheet" href="../brand/ecrans-c.css"><link rel="stylesheet" href="sc.css">
+<style>
+  /* 27 · Chacun son périmètre : trois rôles, trois vues du même budget. Triptyque de trois colonnes de couleur
+     (lagune, papier, nuit) ; dans chacune, un morceau d'écran recadré et le verbe du rôle en très grand. */
+  .plate{width:1400px;height:1180px;background:var(--papier)}
+  .ro-c{position:absolute;top:0;bottom:0;width:466.67px;overflow:hidden}
+  .ro-v{position:absolute;left:44px;top:120px;font-family:var(--titre);font-weight:900;font-size:92px;letter-spacing:-.055em;line-height:.9}
+  .ro-q{position:absolute;left:46px;top:226px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;opacity:.8;line-height:1.6}
+  .ro-p{position:absolute;left:46px;right:46px;bottom:96px;font-size:15px;line-height:1.45}
+  .ro-e{position:absolute;left:46px;top:316px;width:375px;height:650px;overflow:hidden;border-radius:22px;box-shadow:0 0 0 1px rgba(42,30,23,.10),0 30px 50px -20px rgba(20,10,5,.45),0 70px 90px -40px rgba(20,10,5,.5)}
+  .ro-e .sc-fen{position:absolute;box-shadow:none;border-radius:0}
+  .ro-e.tel{overflow:visible;box-shadow:none;border-radius:0;width:auto;height:auto}
+</style></head>
+<body>
+<div class="plate sc" id="p"></div>
+<script src="../brand/marque.js"></script><script src="../brand/carte.js"></script><script src="../brand/ecrans.js"></script><script src="../brand/ecrans-b.js"></script><script src="../brand/ecrans-c.js"></script>
+<script>
+const M = Marque, C = M.COULEURS, S = M.app, a = (e, o) => (typeof S[e] === 'function' ? S[e](o || {}) : '');
+/* un morceau d'écran : la fenêtre entière, décalée pour ne montrer que la zone voulue */
+const morceau = (html, dx, dy, z) => `<div class="ro-e"><div class="sc-fen" style="--z:${z};width:${1440 * z}px;height:${1600 * z}px;left:${-dx * z}px;top:${-dy * z}px"><div>${html}</div></div></div>`;
+document.getElementById('p').innerHTML =
+  `<div class="ro-c grain" style="left:0;background:${C.lagune};color:${C.blanc}"><div class="ro-v">saisit</div><div class="ro-q">Le gestionnaire financier<br>5 comptes</div>${morceau(a('affectation', { h: 900 }) || a('ficheProjet'), a('affectation') ? 944 : 270, a('affectation') ? 8 : 800, 0.78)}<p class="ro-p net">Budgets, lignes, affectations, extractions Sage : il écrit, l’outil calcule.</p></div>
+   <div class="ro-c grain" style="left:466.67px;background:${C.papier};color:${C.encre}"><div class="ro-v" style="color:${C.vermillon}">consulte</div><div class="ro-q">Le chef de projet<br>4 comptes</div><div class="ro-e tel" style="left:74px;top:316px">${a('mAccueil') ? M.phone(a('mAccueil'), 0.78) : ''}</div><p class="ro-p net" style="background:${C.papier};padding-top:14px;bottom:82px">Ses projets et seulement les siens, en lecture, jusque sur son téléphone.</p></div>
+   <div class="ro-c grain nuit" style="left:933.33px;background:${C.nuit};color:${C.blanc}"><div class="ro-v" style="color:${C.miel}">règle</div><div class="ro-q">L’administrateur<br>4 comptes</div>${morceau(a('admin') || a('tableauDeBord'), 276, a('admin') ? 150 : 150, 0.86)}<p class="ro-p net">Comptes, rôles, périmètres. Chaque action reste dans le journal.</p></div>` +
+  M.entete(M.ENTETE, 'blanc', 'mix-blend-mode:difference') + `<div class="pfoot" style="color:#fff;mix-blend-mode:difference">${M.symbol('#fff')}<span>27 · Chacun son périmètre</span><span>GRDR · Djongoma</span><span>KLYRA × GRDR</span></div>`;
+M.typo();
+window.pret = Promise.all([...document.images].map((i) => (i.decode ? i.decode().catch(() => 0) : 0)));
+</script>
+</body></html>

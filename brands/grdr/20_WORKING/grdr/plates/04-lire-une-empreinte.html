@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><title>04 · Lire une empreinte</title>
+<link rel="stylesheet" href="../brand/marque.css"><link rel="stylesheet" href="pl.css">
+<style>
+  /* 04 · Lire une empreinte : une frise de trois tracés, à la même échelle, debout sur la même ligne.
+     Deux rails tiennent la planche : les projets sont posés sur celui du haut, deux règles y sont suspendues ; les deux
+     autres règles sont sous le rail du bas.
+     Chaque règle est reliée par un filet à l'endroit du tracé qu'elle explique. Les tracés viennent de Marque.cernesDe. */
+  .plate{height:1184px}
+  .pl-tete{position:absolute;left:84px;top:104px}
+  .pl-tete h1{margin:18px 0 0;font-size:62px;line-height:1}
+  .pl-cle{position:absolute;left:985px;top:132px;display:grid;gap:9px;color:rgba(255,251,246,.78)}
+  .pl-cle span{display:flex;align-items:center;gap:12px}
+  .pl-cle u{display:block;width:40px;height:0;border-top:6px solid var(--lc);border-radius:3px}
+  .pl-rail{position:absolute;left:84px;right:84px;height:1px;background:rgba(255,251,246,.26)}
+  .pl-id{position:absolute;bottom:836px;width:330px}
+  .pl-id>div{display:flex;align-items:center;gap:10px}
+  .pl-id b{font-family:var(--titre);font-weight:800;font-size:17px;letter-spacing:-.025em;line-height:1.15}
+  .pl-id .code{background:rgba(239,223,118,.16);color:var(--miel);font-size:11px;height:22px;flex:none}
+  .pl-id .pl-m{margin-top:8px;color:rgba(255,251,246,.66)}
+  .pl-emp{position:absolute}
+  .pl-taux{position:absolute;text-align:right}
+  .pl-taux b{display:block;font-family:var(--titre);font-weight:900;font-size:66px;letter-spacing:-.055em;line-height:.9;color:var(--miel)}
+  .pl-taux b small{font-size:.48em;font-weight:800;margin-left:.08em;letter-spacing:0}
+  .pl-taux .pl-m{color:rgba(255,251,246,.66);margin-bottom:6px}
+  .pl-r{position:absolute;display:flex;align-items:baseline;gap:10px;font-family:var(--titre);font-weight:700;font-size:16px;letter-spacing:-.01em;line-height:1.2;white-space:nowrap}
+  .pl-r i{font-style:normal;font-family:var(--mono);font-size:10.5px;font-weight:600;color:var(--miel);letter-spacing:.04em}
+  .pl-svg text{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;font-weight:500;fill:var(--blanc)}
+</style></head>
+<body>
+<div class="plate nuit grain nuit" id="p"></div>
+<script src="../brand/marque.js"></script>
+<script>
+const M = Marque, C = M.COULEURS, D = M.DONNEES, H = 1184;
+const s = 1.42, SOL = 974, HAUT = 360, BAS = 1016;      /* échelle (px par unité du tracé), ligne des pieds, rails */
+const a = M.CONSTRUCTION.inclinaison * Math.PI / 180, DX = Math.sin(a), DY = Math.cos(a), PAS = M.CONSTRUCTION.pas;
+const r1 = (v) => Math.round(v * 10) / 10;
+const proj = (code) => D.projets.find((p) => p.code === code);
+/* un point à la part p du tracé d'une boucle (repère : centre des boucles) */
+const pointSur = (g, p) => { const L = g.r + 1.45 * PAS, d = p * g.l; if (d <= L) return [g.pied[0] - d * DX, g.pied[1] - d * DY];
+  const t = Math.atan2(DX, -DY) + (d - L) / g.r; return [g.r * Math.cos(t), g.r * Math.sin(t)]; };
+
+const F = [['ECOS', 84], ['OICC', 567], ['HWCL', 985]].map(([code, x0]) => { const p = proj(code), c = M.cernesDe(p), n = c.cernes.length, G = M.empreinteGeo(n), box = M.empreinteCadre(n);
+  const h = box[3] * s, y0 = SOL - h, cx = x0 - box[0] * s, cy = y0 - box[1] * s, w = box[2] * s;
+  return { p, c, n, G, x0, y0, w, h, cx, cy, px: (q) => [cx + q[0] * s, cy + q[1] * s] }; });
+const [ECOS, OICC, HWCL] = F;
+
+let v = '', html = '';
+const filet = 'stroke="rgba(255,251,246,.6)" stroke-width="1" fill="none"';
+const point = (q) => `<circle cx="${r1(q[0])}" cy="${r1(q[1])}" r="3.5" fill="${C.nuit}" stroke="${C.blanc}" stroke-width="1.4"/>`;
+
+F.forEach((f) => { const { p, c, G } = f;
+  html += M.empreinte({ cernes: c.cernes, actif: c.actif, c: 'menthe', piste: '#1D4A47', cActif: 'vermillon', attrs: `style="position:absolute;left:${r1(f.x0)}px;top:${r1(f.y0)}px;height:${r1(f.h)}px;width:auto"` });
+  /* les années, au pied de chaque boucle */
+  c.annees.forEach((an, i) => { const q = f.px(G[i].pied), on = i === c.actif; v += `<text x="${r1(q[0] + 6)}" y="${r1(q[1] + 23)}" text-anchor="middle" fill-opacity="${on ? 1 : 0.62}"${on ? ' font-weight="700"' : ''}>${an}</text>`; });
+  html += `<div class="pl-id net" style="left:${f.x0}px"><div>${M.code(p.code)}<b>${p.titre}</b></div><div class="pl-m">${D.pays[p.pays]} · ${c.annees[0]} → ${c.annees[c.annees.length - 1]}</div></div>`;
+  html += `<div class="pl-taux net" style="right:${r1(1400 - f.x0 - f.w)}px;bottom:${H - SOL + 2}px"><div class="pl-m">Exécuté</div><b>${Math.round(p.taux * 100)}<small>%</small></b></div>`;
+});
+
+/* les quatre règles, chacune reliée à ce qu'elle explique */
+/* 1 · la jambe part du lieu : le pied de la grande boucle d'ECOS */
+const q1 = ECOS.px(ECOS.G[ECOS.n - 1].pied), x1 = r1(q1[0] - 50);
+v += `<path d="M${r1(q1[0] - 13)},${r1(q1[1])} H${x1} V${BAS}" ${filet}/>` + point([q1[0] - 13, q1[1]]);
+html += `<div class="pl-r net" style="left:${x1}px;top:${BAS + 16}px"><i>1</i>La jambe part du lieu.</div>`;
+/* le trait s'arrête à ce qui est exécuté : la fin d'un tracé inachevé, qu'on atteint par le haut (ECOS en 2025).
+   Les deux règles du rail haut sont numérotées 2 et 3 dans l'ordre où on les lit, de gauche à droite. */
+let f3 = null, q3 = null;
+for (const f of F) { if (f3) break; f.c.cernes.forEach((x, i) => { if (f3 || x <= 0 || x >= 1) return; const q = pointSur(f.G[i], x); if (q[1] < -0.3 * f.G[i].r) { f3 = f; q3 = f.px(q); } }); }
+if (f3) { v += `<path d="M${r1(q3[0])},${HAUT} V${r1(q3[1])}" ${filet}/>` + point(q3);
+  html += `<div class="pl-r net" style="left:${r1(q3[0] + 14)}px;top:${HAUT + 14}px"><i id="na"></i>Le trait s’arrête à ce qui est exécuté.</div>`; }
+/* une boucle par année : le haut de la grande boucle d'un autre projet (une année à venir est déjà une boucle) */
+const f2 = f3 === OICC ? ECOS : OICC, g2 = f2.G[f2.n - 1], q2 = f2.px([g2.r * 0.5, -g2.r * Math.sqrt(3) / 2]);
+v += `<path d="M${r1(q2[0])},${HAUT} V${r1(q2[1])}" ${filet}/>` + point(q2);
+html += `<div class="pl-r net" style="left:${r1(q2[0] + 14)}px;top:${HAUT + 14}px"><i id="nb"></i>Une boucle par année.</div>`;
+/* 4 · l'année en cours est en vermillon : l'année 2025 de HWCL */
+const q4 = HWCL.px(HWCL.G[HWCL.c.actif].pied), x4 = r1(q4[0] + 6);
+v += `<path d="M${x4},${r1(q4[1] + 32)} V${BAS}" ${filet}/>`;
+html += `<div class="pl-r net" style="right:${r1(1400 - x4)}px;top:${BAS + 16}px;flex-direction:row-reverse">L’année en cours est en vermillon.<i>4</i></div>`;
+
+document.getElementById('p').innerHTML = M.entete(M.ENTETE, 'blanc', 'opacity:.72') +
+  `<div class="pl-tete net"><div class="pl-m" style="opacity:.72">04 · Lire une empreinte</div><h1 class="t-titre">${M.PHRASES.cernes.replace('. ', '.<br>')}</h1></div>
+   <div class="pl-cle pl-m net"><span><u style="--lc:${C.menthe}"></u>Exécuté</span><span><u style="--lc:${C.vermillon}"></u>Année en cours</span><span><u style="--lc:#2A5F5B"></u>Reste à exécuter</span></div>
+   <i class="pl-rail" style="top:${HAUT}px"></i><i class="pl-rail" style="top:${BAS}px"></i>` + html +
+  `<svg class="pl-svg net" width="1400" height="${H}" viewBox="0 0 1400 ${H}">${v}</svg>` +
+  M.foot('04 · Lire une empreinte', 'GRDR · Djongoma', 'blanc');
+{ const a = document.getElementById('na'), b = document.getElementById('nb'), ga = !!(a && q3 && q3[0] < q2[0]);
+  if (a) a.textContent = ga ? '2' : '3'; b.textContent = a ? (ga ? '3' : '2') : '2'; }
+</script>
+</body></html>

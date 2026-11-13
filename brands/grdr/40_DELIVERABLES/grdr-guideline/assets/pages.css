@@ -1,0 +1,301 @@
+/* PAGES DU GUIDE : GRDR · Djongoma (deck/pages.css).
+   Lu par deck/render.html (PDF) et par la visionneuse du site (site/presentation.html).
+   Se charge APRÈS brand/marque.css et brand/ecrans.css. Marque claire : page en papier, texte en encre, cartes en blanc de
+   papier ; deux pages sur la nuit de lagune (lire une empreinte, crédits). Uniquement les couleurs et les polices du socle.
+
+   CE QUE LES OUTILS ATTENDENT :
+   - .mp-in : le conteneur d'une page, 1280 × 720, overflow hidden, mis à l'échelle par zoom:var(--mp-k).
+   - .mp-page : la page elle-même, en position absolue sur tout le conteneur.
+   - Cadre d'image : .mp-cadre > .mp-repli (z-index 1) puis img.mp-img (z-index 2). L'image passe AU-DESSUS du repli.
+   - Toutes les classes commencent par mp-. */
+
+/* ---------- Conteneur et page ---------- */
+.mp-in{position:relative;width:1280px;height:720px;overflow:hidden;zoom:var(--mp-k,1);background:var(--papier);color:var(--encre)}
+.mp-page{--mp-marge:56px;--mp-haut:26px;--mp-ligne:var(--filet);--mp-doux:rgba(42,30,23,.68);
+  position:absolute;inset:0;overflow:hidden;isolation:isolate;display:flex;flex-direction:column;
+  padding:72px var(--mp-marge) 44px;background:var(--papier);color:var(--encre);
+  font-family:var(--font);font-weight:400;-webkit-font-smoothing:antialiased}
+.mp-page.mp-nuit{background:var(--nuit);color:var(--blanc);--mp-ligne:var(--filet-sombre);--mp-doux:rgba(255,251,246,.74)}
+.mp-page *{box-sizing:border-box}
+.mp-page figure{margin:0}
+.mp-fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-1}
+
+/* ---------- Bandeau : marque, chapitre, titre, numéro (calculés depuis GuideOrder) ---------- */
+.mp-bande{position:absolute;left:var(--mp-marge);right:var(--mp-marge);top:var(--mp-haut);display:grid;grid-template-columns:1.25fr 1fr 1fr auto;gap:16px;
+  font-family:var(--mono);font-size:9.5px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;line-height:1.5;opacity:.62}
+.mp-bande span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mp-bande span:last-child{font-variant-numeric:tabular-nums}
+
+/* ---------- Texte ---------- */
+.mp-lbl{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;line-height:1.5;opacity:.62;margin:0}
+.mp-titre{font-family:var(--titre);font-weight:800;line-height:.98;letter-spacing:-.038em;margin:12px 0 0;text-wrap:balance}
+.mp-chapo{font-size:15px;line-height:1.5;margin:18px 0 0;color:var(--mp-doux)}
+.mp-leg{font-family:var(--mono);font-size:9.5px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;line-height:1.45;opacity:.62;margin:0}
+.mp-regles{margin:22px 0 0;padding:0;list-style:none}
+.mp-regles li{display:grid;grid-template-columns:30px 1fr;padding:9px 0;border-top:1px solid var(--mp-ligne);font-size:13px;line-height:1.4;font-weight:600}
+.mp-regles li:last-child{border-bottom:1px solid var(--mp-ligne)}
+.mp-regles i{font-style:normal;font-family:var(--mono);font-size:10px;line-height:1.85;font-weight:500;color:var(--lagune)}
+.mp-nuit .mp-regles i{color:var(--miel)}
+
+/* ---------- Mise en page : colonne de texte et démonstration ---------- */
+.mp-corps{flex:1;min-height:0;display:grid;grid-template-columns:360px 1fr;gap:48px}
+.mp-corps.mp-large{grid-template-columns:330px 1fr;gap:40px}
+.mp-colonne{min-width:0;display:flex;flex-direction:column}
+.mp-colonne .mp-regles{margin-top:auto}
+.mp-demo{position:relative;min-width:0;min-height:0;display:grid;gap:14px}
+.mp-g2{display:grid;grid-template-columns:1fr 1fr;gap:14px;min-height:0}
+.mp-g2 .mp-carte>svg{max-width:100%;height:auto}
+
+/* ---------- Carte (un panneau) ---------- */
+.mp-carte{position:relative;min-width:0;min-height:0;overflow:hidden;border-radius:20px;padding:18px 20px;background:var(--blanc);border:1px solid var(--mp-ligne)}
+.mp-carte.mp-sable{background:color-mix(in srgb,var(--sable) 40%,var(--papier));border-style:dashed;border-color:rgba(42,30,23,.24)}
+.mp-carte.mp-n{background:var(--nuit);color:var(--blanc);border-color:transparent}
+.mp-bord{box-shadow:inset 0 0 0 1px var(--filet)}
+
+/* ---------- À faire, à éviter ---------- */
+.mp-marque{position:absolute;right:11px;top:11px;z-index:6;width:24px;height:24px;border-radius:50%;display:grid;place-items:center}
+.mp-marque svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.mp-oui{background:var(--menthe);color:#0A6247}
+.mp-non{background:var(--vermillon);color:var(--blanc)}
+
+/* ---------- Pastilles de couleur ---------- */
+.mp-past{display:grid;gap:9px}
+.mp-past span{display:grid;grid-template-columns:22px 1fr;column-gap:10px;align-items:center;line-height:1.15}
+.mp-past u{grid-row:1 / span 2;width:22px;height:22px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(42,30,23,.12)}
+.mp-past b{font-family:var(--titre);font-weight:800;font-size:13px;letter-spacing:-.02em}
+.mp-past i{font-style:normal;font-family:var(--mono);font-size:9.5px;opacity:.62}
+
+/* ---------- Légende à filets ---------- */
+.mp-cles{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--mono);font-size:9.5px;letter-spacing:.07em;text-transform:uppercase;font-weight:500;padding:2px 2px 0}
+.mp-cles span{display:flex;align-items:center;gap:9px;opacity:.82}
+.mp-cles u{width:28px;height:0;border-top:5px solid var(--lc);border-radius:3px}
+.mp-cles u.mp-pt{width:9px;height:9px;border:0;border-radius:50%;background:var(--encre)}
+
+/* ---------- Une fenêtre de l'outil ---------- */
+.mp-fen{position:absolute;border-radius:calc(22px * var(--z,1));overflow:hidden;background:#FBF5EC;
+  box-shadow:0 0 0 1px rgba(42,30,23,.1),0 2px 4px rgba(90,45,15,.08),0 30px 50px -20px rgba(90,45,15,.28),0 70px 100px -40px rgba(90,45,15,.34)}
+.mp-fen>div{zoom:var(--z,1);width:1440px}
+.mp-fen .dj-verre{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(255,253,249,.84)}
+.mp-tel{position:absolute;right:40px;bottom:-64px;z-index:5}
+
+/* ---------- Cadre d'image (le repli SOUS l'image) ---------- */
+.mp-cadre{position:relative;overflow:hidden;border-radius:18px;background:var(--sable);isolation:isolate;min-height:0}
+.mp-repli{position:absolute;inset:0;z-index:1;display:grid;place-items:center;padding:20px;text-align:center}
+.mp-cadre>img.mp-img{position:absolute;inset:0;z-index:2;width:100%;height:100%;object-fit:cover;display:block}
+.mp-repli-t{display:grid;gap:10px;justify-items:center;font-family:var(--mono);font-size:9.5px;letter-spacing:.07em;text-transform:uppercase;opacity:.7}
+.mp-repli-t svg{height:44px;width:auto}
+
+/* =================================================================== Couverture */
+.mp-couv-aq{position:absolute;right:26px;top:26px;bottom:26px;width:566px;border-radius:30px}
+.mp-couv-emp{position:absolute;left:70px;top:64px;height:770px}
+.mp-couv-emp svg{height:100%;width:auto}
+.mp-couv-note{position:absolute;left:26px;top:22px;margin:0;font-family:var(--mono);font-size:9.5px;letter-spacing:.07em;text-transform:uppercase;font-weight:500;color:var(--encre);opacity:.85}
+.mp-couv{position:absolute;left:56px;top:44px;bottom:40px;width:590px;display:flex;flex-direction:column;justify-content:space-between}
+.mp-couv-logo svg{display:block;height:70px;width:auto}
+.mp-couv-t h1{margin:10px 0 0 -6px;font-family:var(--titre);font-weight:900;font-size:124px;line-height:.86;letter-spacing:-.06em}
+.mp-couv-t>p:last-child{margin:22px 0 0;max-width:470px;font-family:var(--titre);font-weight:600;font-size:23px;line-height:1.26;letter-spacing:-.018em}
+.mp-som{margin:0 0 16px;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;grid-auto-flow:column;grid-template-rows:repeat(5,auto);column-gap:34px;width:540px}
+.mp-som li{display:grid;grid-template-columns:26px 1fr auto;align-items:baseline;padding:5px 0;border-top:1px solid var(--mp-ligne);font-size:12.5px;font-weight:700}
+.mp-som i{font-style:normal;font-family:var(--mono);font-size:9.5px;opacity:.55;font-weight:500}
+.mp-som b{font-family:var(--mono);font-size:10px;font-weight:500;opacity:.7}
+
+/* =================================================================== 01 La marque */
+.mp-ex{display:flex;flex-direction:column;gap:12px}
+.mp-ex-g{flex:1;min-height:0;display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:16px}
+.mp-ex-g figure{display:grid;grid-template-rows:1fr auto;gap:10px;min-height:0;min-width:0}
+.mp-ex-v{position:relative;min-height:0;display:flex;align-items:center;justify-content:flex-start;gap:8px}
+.mp-ex-logo svg{height:112px;width:auto;max-width:100%}
+.mp-ex-aa{flex-direction:column;align-items:flex-start;justify-content:center;gap:2px}
+.mp-ex-aa b{font-family:var(--titre);font-weight:900;font-size:86px;line-height:.9;letter-spacing:-.05em;color:var(--vermillon)}
+.mp-ex-aa span{font-family:var(--titre);font-weight:800;font-size:17px;letter-spacing:-.02em}
+.mp-ex-aq{border-radius:14px}
+.mp-ex-marge{flex-direction:column;align-items:flex-start;justify-content:center;gap:10px}
+.mp-ex-marge .montant{font-size:26px}
+.mp-ex-gr{flex-direction:column;align-items:flex-start;justify-content:center;gap:15px}
+
+.mp-idee{display:grid;grid-template-columns:auto auto 1fr;align-items:center;gap:24px;padding:26px 28px}
+.mp-idee figure{display:grid;gap:16px;justify-items:start}
+.mp-idee-a>svg{height:270px;width:auto}
+.mp-idee-f{font-size:32px;opacity:.5}
+
+.mp-trip{padding:22px 26px;display:flex;flex-direction:column}
+.mp-trip-e{position:absolute;right:-50px;bottom:-190px;height:470px;z-index:-1}
+.mp-trip-e svg{height:100%;width:auto}
+.mp-trip-t{margin:auto 0 0;font-family:var(--titre);font-weight:900;font-size:60px;letter-spacing:-.05em;line-height:.9}
+.mp-trip-t span{display:block}
+.mp-trip-s{margin:12px 0 0;font-family:var(--titre);font-weight:600;font-size:17px;letter-spacing:-.015em;opacity:.82}
+.mp-phrases{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.mp-phrases p:last-child{margin:8px 0 0;font-family:var(--titre);font-weight:800;font-size:17px;letter-spacing:-.025em;line-height:1.16}
+.mp-dit{padding-right:44px}
+.mp-dit p:last-child{margin:10px 0 0;display:flex;flex-wrap:wrap;gap:6px}
+.mp-dit p span{display:inline-flex;align-items:center;height:26px;padding:0 11px;border-radius:13px;background:var(--menthe);color:#0A6247;font-size:12px;font-weight:700}
+.mp-evite p span{background:rgba(42,30,23,.06);color:rgba(42,30,23,.66);text-decoration:line-through;text-decoration-color:var(--vermillon);text-decoration-thickness:1.5px}
+
+/* =================================================================== 02 Le logo */
+.mp-versions{display:grid;grid-template-columns:1.7fr 1fr .6fr;align-items:end;gap:20px;padding:24px 28px 16px}
+.mp-versions figure{display:grid;gap:14px;justify-items:start;align-content:end}
+.mp-fonds{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:1fr 1fr;gap:12px;min-height:0}
+.mp-fond-t{position:relative;border-radius:16px;display:grid;grid-template-rows:1fr auto;justify-items:center;align-items:center;padding:14px 13px 10px;min-height:0;overflow:hidden}
+.mp-fond-t svg{height:78px;width:auto}
+.mp-fond-t p{margin:0;font-family:var(--mono);font-size:8.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:500;opacity:.8;justify-self:start}
+
+.mp-prot{display:flex;flex-direction:column;gap:6px}
+.mp-zone{flex:1;min-height:0;width:100%}
+.mp-tailles{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto 1fr;gap:6px 0}
+.mp-tailles>.mp-lbl{grid-column:1 / -1}
+.mp-tailles>div{display:grid;grid-template-rows:1fr auto auto;align-items:center;justify-items:start;padding:0 18px;border-left:1px solid var(--mp-ligne)}
+.mp-tailles>div:first-of-type{border-left:0;padding-left:0}
+.mp-tailles b{font-family:var(--titre);font-weight:800;font-size:15px;letter-spacing:-.02em}
+.mp-tailles span{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;opacity:.62}
+.mp-t-v{display:flex;align-items:center}
+
+.mp-int{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:1fr 1fr;gap:14px;min-height:0}
+.mp-int figure{display:grid;grid-template-rows:1fr auto;padding:0}
+.mp-int-v{position:relative;display:grid;place-items:center;min-height:0;overflow:hidden}
+.mp-int figcaption{padding:11px 16px 12px;border-top:1px solid var(--mp-ligne);font-size:12.5px;font-weight:700;background:var(--blanc);position:relative;z-index:6}
+.mp-int-faux svg{height:92px;width:auto}
+
+/* =================================================================== 03 L'empreinte */
+.mp-cons{display:grid;grid-template-columns:1fr auto 1.28fr;align-items:center;gap:16px;padding:20px 26px}
+.mp-cons figure{display:grid;gap:12px;align-content:center;min-width:0}
+.mp-mes{display:block;width:100%;height:auto}
+.mp-mesures{display:grid;grid-template-columns:.55fr .45fr .8fr 1.25fr 1.5fr;border-top:1px solid var(--mp-ligne)}
+.mp-mesures div{padding:10px 14px 0 0}
+.mp-mesures b{display:block;margin-top:3px;font-family:var(--titre);font-weight:800;font-size:17px;letter-spacing:-.025em;white-space:nowrap}
+
+.mp-lec{flex:1;min-height:0;display:grid;grid-template-rows:auto 1fr auto;gap:20px}
+.mp-lec-h{display:grid;grid-template-columns:330px 1fr 380px;gap:44px;align-items:start}
+.mp-lec-h .mp-chapo{margin:27px 0 0}
+.mp-lec-h .mp-regles{margin:24px 0 0}
+.mp-lus{display:grid;grid-template-columns:repeat(3,1fr);min-height:0}
+.mp-lus figure{display:grid;align-content:space-between;gap:14px;padding:4px 0 0 26px;border-left:1px solid var(--mp-ligne);min-width:0}
+.mp-lus figure:first-child{border-left:0;padding-left:0}
+.mp-lire{display:block}
+.mp-lus figcaption{display:grid;grid-template-columns:1fr auto;gap:5px 12px;align-items:end;padding-right:26px}
+.mp-lus figcaption b{font-family:var(--titre);font-weight:800;font-size:16px;letter-spacing:-.025em;line-height:1.14}
+.mp-lus figcaption i{grid-column:2;grid-row:1 / span 2;font-style:normal;font-family:var(--titre);font-weight:900;font-size:36px;letter-spacing:-.05em;line-height:.9;color:var(--miel)}
+.mp-lus figcaption i small{font-size:.5em;font-weight:800;margin-left:.06em;opacity:.8}
+.mp-lus figcaption span{grid-column:1;display:flex;gap:8px;align-items:center;font-family:var(--mono);font-size:10px;letter-spacing:.05em;color:rgba(255,251,246,.66);white-space:nowrap}
+.mp-lus .code{background:rgba(207,235,221,.14);color:var(--menthe);font-size:10px;height:19px}
+.mp-cles-n u.mp-pt{background:var(--blanc)}
+
+.mp-us{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:1fr 1fr;gap:12px;min-height:0}
+.mp-us figure{display:grid;grid-template-rows:1fr auto;padding:0}
+.mp-us-v{position:relative;display:flex;align-items:center;justify-content:center;min-height:0;overflow:hidden;padding:14px}
+.mp-us figcaption{padding:10px 14px 11px;border-top:1px solid var(--mp-ligne);font-size:12px;font-weight:700;line-height:1.25}
+.mp-us .mp-n figcaption{border-color:var(--filet-sombre)}
+.mp-us-ligne{gap:10px;justify-content:flex-start;padding-right:30px}
+.mp-us-ligne b{display:block;font-size:12px;font-weight:700;line-height:1.2}
+.mp-us-ligne span{display:flex;gap:6px;align-items:center;margin-top:5px;font-family:var(--mono);font-size:9.5px}
+.mp-us-ligne .code{font-size:9.5px;height:18px}
+.mp-us-geant svg{position:absolute;right:-64px;bottom:-128px;height:330px;width:auto}
+.mp-us-puces{flex-direction:column;align-items:flex-start;gap:11px;padding-left:22px}
+.mp-us-puces p{margin:0;display:flex;gap:10px;align-items:center}
+.mp-us-puces i{display:block;width:96px;height:7px;border-radius:4px;background:rgba(42,30,23,.12)}
+
+/* =================================================================== 04 Les couleurs */
+.mp-pal{display:grid;grid-template-rows:auto 1.45fr auto 1fr auto 1fr;gap:8px;min-height:0}
+.mp-pal .mp-lbl{margin-top:8px}
+.mp-pal .mp-lbl:first-child{margin-top:0}
+.mp-pal-r{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;min-height:0}
+.mp-pal-a{grid-template-columns:1.25fr 1fr 1fr}
+.mp-nu{border-radius:16px;padding:12px 13px;display:flex;flex-direction:column;justify-content:flex-end;min-height:0;min-width:0}
+.mp-nu b{font-family:var(--titre);font-weight:800;font-size:14.5px;letter-spacing:-.02em;line-height:1.1}
+.mp-nu i{font-style:normal;font-family:var(--mono);font-size:9.5px;letter-spacing:.04em;opacity:.84;margin-top:3px}
+.mp-nu span{font-size:10.5px;line-height:1.25;opacity:.86;margin-top:5px;font-weight:600}
+.mp-pal-a .mp-nu{padding:16px 18px}
+.mp-pal-a .mp-nu b{font-size:24px;letter-spacing:-.03em}
+.mp-pal-a .mp-nu span{font-size:12px}
+
+.mp-prop{display:flex;flex-direction:column;gap:11px}
+.mp-prop-b{display:flex;height:74px;border-radius:14px;overflow:hidden;box-shadow:0 0 0 1px var(--filet)}
+.mp-prop-l{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:11.5px;font-weight:600}
+.mp-prop-l span{display:flex;align-items:center;gap:7px;white-space:nowrap}
+.mp-prop-l u{width:11px;height:11px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(42,30,23,.14)}
+.mp-prop-l b{font-family:var(--titre);font-weight:800;letter-spacing:-.02em}
+.mp-ctr{display:flex;flex-direction:column;gap:8px}
+.mp-ctr-g{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;grid-auto-flow:column;grid-template-rows:repeat(5,1fr);column-gap:28px}
+.mp-ctr-g>div{display:grid;grid-template-columns:84px 1fr auto;gap:12px;align-items:center;border-top:1px solid var(--mp-ligne)}
+.mp-ctr-e{height:34px;border-radius:9px;display:grid;place-items:center;font-family:var(--titre);font-weight:800;font-size:15px;letter-spacing:-.02em}
+.mp-ctr-g p{margin:0;line-height:1.2;min-width:0}
+.mp-ctr-g p b{display:block;font-size:12.5px;font-weight:700}
+.mp-ctr-g p span{font-family:var(--mono);font-size:9px;letter-spacing:.06em;text-transform:uppercase;opacity:.62}
+.mp-ctr-g>div>i{font-style:normal;font-family:var(--titre);font-weight:800;font-size:19px;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+
+/* =================================================================== 05 La typographie */
+.mp-typo-h{flex:none;height:366px}
+.mp-fam{grid-template-columns:repeat(3,1fr)}
+.mp-fam section{display:flex;flex-direction:column}
+.mp-fam-aa{font-size:92px;line-height:.9;letter-spacing:-.05em}
+.mp-fam h3{margin:12px 0 2px;font-family:var(--titre);font-weight:800;font-size:19px;letter-spacing:-.025em}
+.mp-fam section>p:last-child{margin:auto 0 0}
+.mp-fam-g{display:flex;gap:9px;margin-top:16px;font-size:13.5px;letter-spacing:-.01em}
+.mp-fam-g span{display:grid;gap:3px}
+.mp-fam-g i{font-style:normal;font-family:var(--mono);font-size:8.5px;font-weight:500;letter-spacing:.04em;opacity:.55}
+.mp-typo-g{margin:14px 0 0 -9px;font-family:var(--titre);font-weight:900;font-size:196px;line-height:.86;letter-spacing:-.055em;color:var(--vermillon);white-space:nowrap}
+.mp-typo-n{position:absolute;left:56px;right:56px;bottom:20px;display:flex;justify-content:space-between;gap:16px;font-family:var(--mono);font-size:9px;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap}
+.mp-typo-n span{opacity:.8}
+.mp-typo-n b{font-weight:600;margin-right:8px}
+
+/* =================================================================== 06 Matière et image */
+.mp-aq-g{border-radius:22px;min-height:0;padding:20px 24px 22px;display:flex;flex-direction:column;justify-content:space-between}
+.mp-aq-t{margin:0;font-family:var(--titre);font-weight:800;font-size:46px;letter-spacing:-.04em;line-height:.98;max-width:340px;color:var(--encre)}
+.mp-aq-r{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.mp-aq-r .aq{height:92px;border-radius:14px}
+.mp-aq-r figcaption{margin-top:7px;font-family:var(--mono);font-size:8.5px;letter-spacing:.05em;text-transform:uppercase;line-height:1.4;opacity:.72}
+.mp-aq-r figcaption b{display:block;font-weight:600}
+
+.mp-map{padding:0;background:var(--papier)}
+.mp-map-s{position:absolute;inset:0;width:100%;height:100%}
+.mp-map .mp-lbl{position:absolute;left:18px;bottom:14px}
+.mp-photos{display:grid;grid-template-rows:repeat(3,1fr);gap:12px;min-height:0}
+.mp-photos figure{position:relative;min-height:0;border-radius:18px;overflow:hidden}
+.mp-photos .ph{position:absolute;inset:0}
+.mp-photos .mp-leg{position:absolute;left:12px;bottom:10px;z-index:8;padding:4px 9px;border-radius:9px;background:rgba(255,251,246,.92);color:var(--encre);opacity:1}
+
+/* =================================================================== 07 Marge et graphiques */
+.mp-feuille{display:flex;flex-direction:column;padding:20px 22px}
+.mp-f-tete{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.mp-f-tete .tampon{font-size:9.5px}
+.mp-f-total{font-size:64px;margin:16px 0 16px;line-height:1}
+.mp-f-total .montant{font-weight:900;letter-spacing:-.05em}
+.mp-f-t{width:100%;border-collapse:collapse;table-layout:fixed;font-size:12px}
+.mp-f-t th{padding:0 8px 8px;text-align:left;font-family:var(--mono);font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;color:rgba(42,30,23,.6);border-bottom:1px solid var(--mp-ligne);white-space:nowrap}
+.mp-f-t td{padding:9px 8px;border-bottom:1px solid var(--mp-ligne);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:600}
+.mp-f-t td.d{text-align:right;font-family:var(--titre);font-weight:800;letter-spacing:-.02em;font-size:13px}
+.mp-f-t th.d{text-align:right}
+.mp-f-t .l{color:var(--lagune)}
+.mp-f-t td:first-child,.mp-f-t th:first-child{padding-left:0}
+.mp-f-t td:last-child,.mp-f-t th:last-child{padding-right:0}
+.mp-f-t .code{font-size:10px;height:19px}
+.mp-f-pied{margin-top:auto;display:grid;gap:9px;padding-top:12px}
+.mp-anat{display:grid;grid-template-rows:repeat(3,1fr);gap:12px;min-height:0}
+.mp-anat section{display:flex;flex-direction:column}
+.mp-anat-v{flex:1;display:flex;gap:6px;align-items:center;flex-wrap:wrap;align-content:center}
+.mp-anat p:last-child{margin:0;font-size:11.5px;line-height:1.4;color:var(--mp-doux)}
+.mp-anat .tampon{font-size:9px}
+
+.mp-gr-c{display:flex;flex-direction:column;gap:8px;padding-bottom:12px}
+.mp-gr-c svg{width:100%;height:auto}
+.mp-gr-j{display:flex;flex-direction:column}
+.mp-gr-j>div{flex:1;display:grid;grid-template-columns:54px 1fr auto;gap:12px;align-items:center}
+.mp-gr-j b{font-family:var(--titre);font-weight:800;font-size:14px;letter-spacing:-.02em;min-width:42px;text-align:right}
+.mp-gr-j .code{font-size:10px;height:20px;justify-self:start}
+.mp-gr-j svg{max-width:100%;height:auto}
+
+/* =================================================================== 09 Le mouvement */
+.mp-film{display:flex;flex-direction:column;gap:10px}
+.mp-film>div{flex:1;display:flex;justify-content:space-between;align-items:center;padding:0 8px}
+.mp-film figure{display:grid;gap:12px;justify-items:center}
+
+/* =================================================================== 10 En situation */
+.mp-sit{display:grid;grid-template-columns:1fr 1fr 1.9fr;grid-template-rows:1.15fr 1fr;gap:12px;min-height:0;height:100%}
+
+/* =================================================================== Crédits */
+.mp-cred-e{position:absolute;right:-310px;top:-70px;height:1000px;z-index:-1}
+.mp-cred-e svg{height:100%;width:auto}
+.mp-cred{position:absolute;left:56px;right:56px;top:44px;bottom:40px;display:flex;flex-direction:column;justify-content:space-between}
+.mp-cred-t p{margin:0;font-family:var(--titre);font-weight:900;font-size:72px;line-height:.92;letter-spacing:-.05em}
+.mp-cred-t em{font-style:normal;color:var(--miel)}
+.mp-cred-g{display:grid;grid-template-columns:1fr 1fr;gap:20px 34px;max-width:640px}
+.mp-cred-g p:last-child{margin:8px 0 0;font-size:12.5px;line-height:1.45;color:rgba(255,251,246,.84)}

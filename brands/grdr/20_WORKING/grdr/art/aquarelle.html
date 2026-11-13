@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><title>Aquarelle — matière du kit</title>
+<link rel="stylesheet" href="../brand/marque.css">
+<style>
+  html,body{margin:0;background:#F6EADE}
+  .plate{width:2400px;height:1600px;position:relative;overflow:hidden;background:#F6EADE}
+  .plate svg{position:absolute;inset:0;width:100%;height:100%}
+</style></head>
+<body>
+<!-- La matière de la marque : un lavis d'aquarelle rendu par filtres SVG. Une recette par nom (?nom=aube|lagune|terre|nuit|brume).
+     Chaque tache de pigment est un ensemble d'ellipses déformées par un bruit (bord organique), bordées d'un cerne plus dense
+     (le pigment s'accumule au bord en séchant), granulées, puis multipliées sur le papier. Rendu : tools/shot.mjs → photos/aq-<nom>.jpg -->
+<div class="plate" id="p"></div>
+<script src="../brand/marque.js"></script>
+<script>
+const nom = new URLSearchParams(location.search).get('nom') || 'aube';
+const C = Marque.COULEURS;
+/* taches : [couleur, cx, cy, rx, ry, rotation, opacité]  (repère 2400 × 1600) */
+const RECETTES = {
+  aube: { papier: C.papier, graine: 7, taches: [
+    [C.corail, 520, 300, 980, 560, -14, .92], [C.corail, 1700, 180, 900, 420, 8, .78], [C.rose, 1180, 760, 820, 380, 12, .8], [C.rose, 260, 980, 520, 420, 30, .6],
+    [C.peche, 1500, 1050, 980, 420, -10, .85], [C.miel, 900, 1420, 1300, 420, 4, .95], [C.miel, 2150, 1180, 620, 620, 0, .9], ['#E86A4A', 300, 120, 420, 240, -20, .5], ['#F7C2A0', 1250, 420, 520, 220, -6, .45]] },
+  lagune: { papier: '#EEF3EC', graine: 21, taches: [
+    [C.lagune, 480, 380, 900, 620, -18, .82], ['#3F8C84', 1500, 260, 980, 460, 10, .7], [C.emeraude, 1250, 980, 900, 420, -8, .55], ['#7CC6AE', 2050, 1150, 700, 560, 14, .8],
+    [C.menthe, 700, 1350, 1100, 420, 6, .95], ['#1E5557', 180, 150, 420, 300, -30, .6], [C.brume, 1900, 620, 560, 300, 20, .8]] },
+  terre: { papier: C.papier, graine: 33, taches: [
+    [C.ocre, 520, 420, 900, 560, -12, .78], ['#C97A3A', 1560, 300, 940, 480, 14, .7], [C.peche, 1200, 980, 900, 400, -6, .75], [C.sable, 2000, 1250, 800, 520, 8, .95],
+    [C.sable, 500, 1350, 900, 380, 4, .9], ['#8E4318', 260, 200, 380, 260, -25, .5], [C.miel, 1850, 760, 480, 300, 22, .55]] },
+  nuit: { papier: '#16403D', graine: 44, mode: 'screen', sombre: true, taches: [
+    ['#1F5F5C', 500, 380, 960, 600, -16, .9], ['#2B7A74', 1600, 300, 900, 460, 12, .7], ['#0E2826', 1250, 1000, 1000, 460, -8, .0], ['#3C9488', 2050, 1200, 640, 520, 10, .55],
+    ['#235E5A', 700, 1380, 1100, 400, 6, .8], [C.emeraude, 1750, 720, 420, 260, 22, .28]] },
+  brume: { papier: '#FBF4EB', graine: 55, taches: [
+    ['#F6D9C6', 600, 360, 1000, 600, -14, .8], ['#F3C9B8', 1750, 260, 820, 420, 10, .6], ['#F5E3B5', 1350, 1150, 1100, 460, -6, .7], ['#F2D5CC', 300, 1250, 620, 420, 20, .55]] },
+};
+const R = RECETTES[nom] || RECETTES.aube, sombre = !!R.sombre, mode = R.mode || 'multiply';
+const filtre = (i, g) => `
+  <filter id="f${i}" x="-40%" y="-40%" width="180%" height="180%" color-interpolation-filters="sRGB">
+    <feTurbulence type="fractalNoise" baseFrequency="${(0.0026 + (i % 3) * 0.0006).toFixed(4)}" numOctaves="4" seed="${g + i * 13}" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="${300 + (i % 4) * 50}" xChannelSelector="R" yChannelSelector="G"/>
+    <feGaussianBlur stdDeviation="20"/>
+    <!-- le flou puis un seuil doux : un bord organique et net, sans marches -->
+    <feComponentTransfer result="forme"><feFuncA type="linear" slope="5" intercept="-2"/></feComponentTransfer>
+    <!-- le cerne : le pigment s'accumule au bord en séchant -->
+    <feGaussianBlur in="forme" stdDeviation="11"/>
+    <feComponentTransfer result="dedans"><feFuncA type="linear" slope="3.4" intercept="-2.25"/></feComponentTransfer>
+    <feComposite in="forme" in2="dedans" operator="out"/>
+    <feGaussianBlur stdDeviation="2.6"/>
+    <feComponentTransfer result="bord"><feFuncA type="linear" slope="${sombre ? 0.3 : 0.42}"/></feComponentTransfer>
+    <!-- la densité varie dans la tache : zones chargées, zones lavées -->
+    <feTurbulence type="fractalNoise" baseFrequency="0.0052" numOctaves="4" seed="${g + i * 7 + 3}"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  2.1 0 0 0 -0.42" result="dens"/>
+    <feComposite in="forme" in2="dens" operator="in"/>
+    <feGaussianBlur stdDeviation="3"/>
+    <feComponentTransfer result="charge"><feFuncA type="linear" slope="0.55"/></feComponentTransfer>
+    <feComponentTransfer in="forme" result="voile"><feFuncA type="linear" slope="0.36"/></feComponentTransfer>
+    <feMerge><feMergeNode in="voile"/><feMergeNode in="charge"/><feMergeNode in="bord"/></feMerge>
+  </filter>`;
+let defs = '', corps = '';
+R.taches.forEach((t, i) => { if (!t[6]) return; defs += filtre(i, R.graine);
+  const [c, cx, cy, rx, ry, rot, op] = t;
+  corps += `<g opacity="${op}" filter="url(#f${i})"><ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill="${c}" transform="rotate(${rot} ${cx} ${cy})"/><ellipse cx="${cx + rx * 0.5}" cy="${cy + ry * 0.4}" rx="${rx * 0.5}" ry="${ry * 0.6}" fill="${c}" transform="rotate(${rot + 30} ${cx} ${cy})"/></g>`; });
+corps = `<g style="mix-blend-mode:${mode}">${corps}</g>`;
+/* auréoles : des reprises d'eau, plus claires (ou plus sombres sur fond sombre), en chou-fleur */
+defs += `
+  <filter id="aureoles" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+    <feTurbulence type="fractalNoise" baseFrequency="0.0034" numOctaves="4" seed="${R.graine + 91}" result="n"/>
+    <feColorMatrix in="n" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  9 0 0 0 -5.3" result="s"/>
+    <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="3" seed="${R.graine + 5}" result="n2"/>
+    <feDisplacementMap in="s" in2="n2" scale="46" xChannelSelector="R" yChannelSelector="G" result="sd"/>
+    <feGaussianBlur in="sd" stdDeviation="5"/>
+  </filter>
+  <filter id="papier" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+    <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" seed="${R.graine}" result="n"/>
+    <feColorMatrix in="n" type="matrix" values="0 0 0 0 0.35  0 0 0 0 0.25  0 0 0 0 0.18  -1.2 -1.2 -1.2 0 1.95" result="g"/>
+    <feTurbulence type="fractalNoise" baseFrequency="0.09" numOctaves="2" seed="${R.graine + 2}" result="f"/>
+    <feColorMatrix in="f" type="matrix" values="0 0 0 0 0.3  0 0 0 0 0.22  0 0 0 0 0.16  0 0 0 1.1 -0.5" result="fib"/>
+    <feMerge><feMergeNode in="g"/><feMergeNode in="fib"/></feMerge>
+  </filter>`;
+document.getElementById('p').innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2400 1600" preserveAspectRatio="none"><defs>${defs}</defs>
+  <rect width="2400" height="1600" fill="${R.papier}"/>${corps}
+  <rect width="2400" height="1600" fill="${sombre ? '#0B2221' : '#FFF8EF'}" filter="url(#aureoles)" style="mix-blend-mode:${sombre ? 'multiply' : 'soft-light'}" opacity="${sombre ? .4 : .5}"/>
+  <rect width="2400" height="1600" filter="url(#papier)" style="mix-blend-mode:${sombre ? 'soft-light' : 'multiply'}" opacity="${sombre ? .5 : .26}"/></svg>`;
+</script>
+</body></html>
